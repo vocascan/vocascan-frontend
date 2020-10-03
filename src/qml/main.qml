@@ -4,7 +4,7 @@ import QtQuick.Controls 2.5
 
 ApplicationWindow {
     id: mainWindow
-    width: 1400
+    width: 1440
     height: 900
     visible: true
     color: "#F1F3FA"
@@ -22,9 +22,49 @@ ApplicationWindow {
 
     Rectangle {
         id: navBarTop
-        width: parent.width
+        width: parent.width - 200
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 200
         height: 60
         color: "#313A46"
+
+        TextField {
+            id: searchInputField
+            width: 210
+            height: 32
+            placeholderText: qsTr("Search...")
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 50
+            color: "#8790A3"
+
+            background: Rectangle {
+                color: "#FFFFFF"
+                //#242424
+            }
+            
+        }
+        Button {
+            id: searchFieldButton
+            width: 90
+            height: 32
+            text: qsTr("SEARCH")
+            anchors.left: searchInputField.right
+            anchors.verticalCenter: parent.verticalCenter
+
+            background: Rectangle {
+                color: "#727CF5"
+            }
+            contentItem: Text {
+                text: searchFieldButton.text
+                font.pointSize: 12
+                color: "#FFFFFF"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+            
+        }
     }
 
 
@@ -33,6 +73,8 @@ ApplicationWindow {
         width: 200
         height: parent.height
         color: "#313A46"
+
+
 
         Button {
             id: button1
