@@ -3,6 +3,6 @@
         <file>src/qml/main.qml</file>
         <file>src/qml/page2.qml</file>
         <file>src/qml/addVocab.qml</file>
-        <file>src/images/logo.png</file>
+        <file>src/images/logo-56px.png</file>
     </qresource>
 </RCC>
