@@ -47,4 +47,5 @@ target_link_libraries(Vocascan
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+target_link_libraries(Vocascan LINK_PUBLIC sqlite3)
 add_subdirectory(src)
