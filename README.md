@@ -1,4 +1,12 @@
 # Vocascan
+![Github license](https://img.shields.io/github/license/ENDER-9/Vocascan)
+
+![Github Open Issues](https://img.shields.io/github/issues/ENDER-9/Vocascan)
+![Github Stars](https://img.shields.io/github/stars/ENDER-9/Vocascan)
+![Github forks](https://img.shields.io/github/forks/ENDER-9/Vocascan)
+
+
+
 ![alt text](https://github.com/ENDER-9/Vocascan/blob/master/src/images/Vocascan-github-logo.png)
 Vocascan is a highly configurable vocabulary trainer
 
