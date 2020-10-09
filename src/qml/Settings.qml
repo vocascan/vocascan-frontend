@@ -19,7 +19,7 @@ Popup {
     leftPadding: 0
     modal: true
     focus: true
-    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
 
     TabBar {
         id: bar
