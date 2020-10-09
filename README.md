@@ -1,5 +1,5 @@
 # Vocascan
-
+![Github license](https://img.shields.io/github/license/ENDER-9/Vocascan)
 
 ![Github Open Issues](https://img.shields.io/github/issues/ENDER-9/Vocascan)
 ![Github Stars](https://img.shields.io/github/stars/ENDER-9/Vocascan)
