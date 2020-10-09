@@ -7,16 +7,6 @@ Rectangle {
     width: parent.width
     height: parent.height
     color: "#F1F3FA"
-    
-    /*DropShadow {
-        anchors.fill: formField
-        horizontalOffset: 3
-        verticalOffset: 3
-        radius: 8.0
-        samples: 17
-        color: "#80000000"
-        source: formField
-    }*/
 
     Rectangle {
         id: formField
