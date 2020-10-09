@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.5
+import com.shsSolutions.FrontendHandler 1.0
 
 ApplicationWindow {
     id: mainWindow
@@ -10,6 +11,8 @@ ApplicationWindow {
     color: "#F1F3FA"
     title: qsTr("Vocascan")
 
+    
+
     Settings {
         id: settings
         width: parent.width * 0.8
@@ -17,7 +20,20 @@ ApplicationWindow {
         anchors.centerIn: parent
     }
 
+    FrontendHandler {
+        id: frontendHandler
+    }
+
+    //loading the startup page
+    StartupPage {
+        id: startupPage
+        width: parent.width * 0.6
+        height: parent.height * 0.8
+        anchors.centerIn: parent
+    }
+
     
+
 
     Loader {                         // Declaration of a Loader. It will be activated later.
         id: main
@@ -105,7 +121,7 @@ ApplicationWindow {
                 //#242424
             }
             onClicked: {
-                main.source = "addVocab.qml"; // Load a new page
+                main.source = "AddVocab.qml"; // Load a new page
             }
             Rectangle {
                 width: 5
@@ -134,7 +150,7 @@ ApplicationWindow {
                 //#242424
             }
             onClicked: {
-                main.source = "addVocab.qml"; // Load a new page
+                main.source = "AddVocab.qml"; // Load a new page
             }
             Rectangle {
                 width: 5
@@ -239,7 +255,7 @@ ApplicationWindow {
             contentItem: Text {
                 text: button6.text
                 font.pointSize: 12
-                color: button5.activeFocus ? "#FFFFFF" : "#8790A3"
+                color: button6.activeFocus ? "#FFFFFF" : "#8790A3"
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
