@@ -10,7 +10,7 @@ Rectangle {
         id: languagePackageNameText
         text: qsTr("NAME")
         font.family: "Helvetica"
-        font.pointSize: 12
+        font.pointSize: 9
         color: "#000000"
     }
 
@@ -29,7 +29,7 @@ Rectangle {
         width: parent.width
         anchors.top: languagePackageNameText.bottom
         anchors.topMargin: 4
-        height: 55
+        height: 35
         placeholderText: qsTr("Englisch - Deutsch")
         //anchors.top: startupPageHeader.bottom
         //anchors.topMargin: 24
@@ -50,13 +50,13 @@ Rectangle {
         anchors.topMargin: 50
         text: qsTr("FREMDSPRACHE")
         font.family: "Helvetica"
-        font.pointSize: 12
+        font.pointSize: 9
         color: "#000000"
     }
     ComboBox {
         id: foreignLanguageCombobox
         width: 150
-        height: 30
+        height: 35
         anchors.left: dropDownforeignLanguageText.left
         anchors.top: dropDownforeignLanguageText.bottom
         model: [ "Englisch", "Latein", "Deutsch" ]
@@ -68,7 +68,7 @@ Rectangle {
 
         contentItem: Text {
             text: foreignLanguageCombobox.currentText
-            font.pointSize: 9
+            font.pointSize: 10
             color: "#000000"
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -84,13 +84,13 @@ Rectangle {
         anchors.topMargin: 50
         text: qsTr("FREMDSPRACHE")
         font.family: "Helvetica"
-        font.pointSize: 12
+        font.pointSize: 10
         color: "#000000"
     }
     ComboBox {
         id: translatedLanguageCombobox
         width: 150
-        height: 30
+        height: 35
         anchors.right: dropDownTranslatedLanguageText.right
         anchors.top: dropDownTranslatedLanguageText.bottom
         model: [ "Englisch", "Latein" ]
@@ -102,7 +102,7 @@ Rectangle {
 
         contentItem: Text {
             text: translatedLanguageCombobox.currentText
-            font.pointSize: 9
+            font.pointSize: 10
             color: "#000000"
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -117,7 +117,7 @@ Rectangle {
         anchors.topMargin: 50
         text: qsTr("VOBABELN PRO TAG")
         font.family: "Helvetica"
-        font.pointSize: 12
+        font.pointSize: 10
         color: "#000000"
     }
 
@@ -134,7 +134,7 @@ Rectangle {
     TextField {
         id: vocabsPerDayField
         width: parent.width
-        height: 55
+        height: 35
         placeholderText: qsTr("z.B. 100")
         anchors.top: vocabsPersDayText.bottom
         anchors.topMargin: 4
@@ -154,7 +154,7 @@ Rectangle {
         anchors.topMargin: 50
         text: qsTr("RICHTIGE ÜBERSETZUNG UM VOKABELPAAR ZU BESTEHEN")
         font.family: "Helvetica"
-        font.pointSize: 12
+        font.pointSize: 10
         color: "#000000"
     }
 
@@ -171,7 +171,7 @@ Rectangle {
     TextField {
         id: rightWordsforSuccessField
         width: parent.width
-        height: 55
+        height: 35
         placeholderText: qsTr("Fremdwort")
         anchors.top: rightWordsText.bottom
         anchors.topMargin: 4
@@ -181,6 +181,41 @@ Rectangle {
             color: "#FFFFFF"
             radius: 15
         }      
+    }
+
+    //------------------------Submit button----------------------//
+
+    DropShadow {
+        anchors.fill: addLanguagePageSubmitButton
+        horizontalOffset: 3
+        verticalOffset: 3
+        radius: 8.0
+        samples: 17
+        color: "#80000000"
+        source: addLanguagePageSubmitButton
+    }
+
+    Button {
+        id: addLanguagePageSubmitButton
+        width: 150
+        height: 35
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: rightWordsforSuccessField.top
+        anchors.topMargin: 50
+        text: qsTr("WEITER")
+
+        background: Rectangle {
+            color: "#727CF5"
+            radius: 15
+        } 
+
+        contentItem: Text {
+            text: addLanguagePageSubmitButton.text
+            font.pointSize: 9
+            color: "#FFFFFF"
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+        }
     }
 
 

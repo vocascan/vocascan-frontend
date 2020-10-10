@@ -22,7 +22,7 @@ Popup {
     Text {
         id: startupPageHeader
         text: qsTr("ERSTELLE DEIN ERSTES VOKABELPACKET")
-        font.pointSize: 22.5
+        font.pointSize: 15
         font.underline: true
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
@@ -30,11 +30,10 @@ Popup {
 
     AddLanguagePackage {
         id: addLanguagePackage
-        width: parent.width * 0.8
-        height: parent.height * 0.8
-        anchors.top: startupPageHeader.bottom
+        width: parent.width * 0.5
+        height: parent.height * 0.5
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: 80
+        anchors.verticalCenter: parent.verticalCenter
 
     }
     
