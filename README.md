@@ -7,7 +7,7 @@
 
 
 
-![alt text](https://github.com/ENDER-9/Vocascan/blob/master/src/images/Vocascan-github-logo.png)
+![alt text](https://github.com/Incognitus-9/Vocascan/blob/master/frontend/src/images/Vocascan-github-logo.png)
 Vocascan is a highly configurable vocabulary trainer
 
 coming soon:
