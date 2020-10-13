@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     Database database("database");
     //database.checkTableEmpty("language_package");
 
-    qmlRegisterType<FrontendHandler>("com.shsSolutions.FrontendHandler", 1, 0, "FrontendHandler");
+    qmlRegisterType<FrontendHandler>("FrontendHandler", 1, 0, "FrontendHandler");
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     

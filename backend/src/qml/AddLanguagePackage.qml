@@ -2,9 +2,15 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.5
 import QtGraphicalEffects 1.0
+import FrontendHandler 1.0
 
 Rectangle {
     color: "#F1F3FA"
+
+    FrontendHandler {
+        id: frontendHandler
+    }
+
     //------------------------Input field for language package Name----------------------//
     Text {
         id: languagePackageNameText
@@ -30,15 +36,14 @@ Rectangle {
         anchors.top: languagePackageNameText.bottom
         anchors.topMargin: 4
         height: 35
-        placeholderText: qsTr("Englisch - Deutsch")
-        //anchors.top: startupPageHeader.bottom
-        //anchors.topMargin: 24
+        placeholderText: qsTr("z.B. Englisch - Deutsch")
         color: "#8790A3"
 
         background: Rectangle {
             color: "#FFFFFF"
             radius: 15
-        }      
+        }    
+        onTextChanged: frontendHandler.languagePackageName = text  
     }
 
     //------------------------Combobox for foreign language----------------------//
@@ -50,7 +55,7 @@ Rectangle {
         anchors.topMargin: 50
         text: qsTr("FREMDSPRACHE")
         font.family: "Helvetica"
-        font.pointSize: 9
+        font.pointSize: 10
         color: "#000000"
     }
     ComboBox {
@@ -59,7 +64,7 @@ Rectangle {
         height: 35
         anchors.left: dropDownforeignLanguageText.left
         anchors.top: dropDownforeignLanguageText.bottom
-        model: [ "Englisch", "Latein", "Deutsch" ]
+        model: [ "-- Sprache --", "Englisch", "Latein", "Deutsch" ]
 
         background: Rectangle {
             color: "#FFFFFF"
@@ -73,6 +78,7 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
+        onActivated: frontendHandler.translatedWordLanguage = translatedLanguageCombobox.currentText
     }
 
     //------------------------Combobox for translated language----------------------//
@@ -82,7 +88,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: languagePackageName.bottom
         anchors.topMargin: 50
-        text: qsTr("FREMDSPRACHE")
+        text: qsTr("ÜBERSETZUNG")
         font.family: "Helvetica"
         font.pointSize: 10
         color: "#000000"
@@ -93,7 +99,7 @@ Rectangle {
         height: 35
         anchors.right: dropDownTranslatedLanguageText.right
         anchors.top: dropDownTranslatedLanguageText.bottom
-        model: [ "Englisch", "Latein" ]
+        model: [ "-- Sprache --", "Englisch", "Latein", "Deutsch" ]
 
         background: Rectangle {
             color: "#FFFFFF"
@@ -107,6 +113,7 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
+        onActivated: frontendHandler.foreignWordLanguage = translatedLanguageCombobox.currentText
     }
 
     //------------------------Input field for vocabs per day----------------------//
@@ -138,12 +145,14 @@ Rectangle {
         placeholderText: qsTr("z.B. 100")
         anchors.top: vocabsPersDayText.bottom
         anchors.topMargin: 4
+        validator: IntValidator {bottom: 1; top: 1000000000}
         color: "#8790A3"
 
         background: Rectangle {
             color: "#FFFFFF"
             radius: 15
         }      
+        onTextChanged: frontendHandler.vocabsPerDay = text  
     }
 
     //------------------------Input field for right words for success----------------------//
@@ -172,7 +181,8 @@ Rectangle {
         id: rightWordsforSuccessField
         width: parent.width
         height: 35
-        placeholderText: qsTr("Fremdwort")
+        placeholderText: qsTr("z.B. 2")
+        validator: IntValidator {bottom: 1; top: 100}
         anchors.top: rightWordsText.bottom
         anchors.topMargin: 4
         color: "#8790A3"
@@ -181,6 +191,7 @@ Rectangle {
             color: "#FFFFFF"
             radius: 15
         }      
+        onTextChanged: frontendHandler.rightWords = text  
     }
 
     //------------------------Submit button----------------------//
@@ -216,6 +227,8 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
+        onClicked: frontendHandler.printInput()
+        
     }
 
 
