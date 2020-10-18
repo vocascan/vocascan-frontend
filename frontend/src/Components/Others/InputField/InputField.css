@@ -1,0 +1,19 @@
+.input_field {
+    width: 100%;
+    height: auto;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: -1px 3px 5px#c1cce6;
+}
+
+.input_field input {
+    width: 80%;
+    height: 40px;
+    padding-left: 15px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 400;
+}

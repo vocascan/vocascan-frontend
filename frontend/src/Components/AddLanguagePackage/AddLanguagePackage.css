@@ -1,0 +1,17 @@
+.lngpckg_inner_div {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.lngpckg_inner_div label {
+    text-align: left;
+}
+
+.lngpckg_inner_div h3 {
+    text-align: left;
+    margin: 0;
+    font-size: 15px;
+}
