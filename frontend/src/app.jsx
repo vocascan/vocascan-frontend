@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, BrowserRouter } from "react-router-dom";
 
 import Nav from './Components/Nav/Nav';
 import AddVocab from './Components/AddVocab/AddVocab';
+import StartPopup from './Components/Popups/StartPopup';
 
-export default class App extends React.Component {
-  render() {
-    return (<div>
+function App() {
+
+  const [popupOpen, setPopupOpen] = useState(true);
+
+  function togglePopup() {
+    setPopupOpen(false)
+  }
+
+  return (
+    <div>
+      {popupOpen ?
+        <StartPopup
+          text='Close Me'
+          closePopup={togglePopup}
+        /> : null}
+
       <BrowserRouter>
         <div className="root">
           <Nav />
@@ -14,5 +28,6 @@ export default class App extends React.Component {
         </div>
       </BrowserRouter>
     </div>);
-  }
 }
+
+export default App;
