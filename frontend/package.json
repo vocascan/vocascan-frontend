@@ -1,6 +1,6 @@
 {
-  "name": "frontend",
-  "productName": "frontend",
+  "name": "Vocascan",
+  "productName": "Vocascan",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/index.js",
@@ -32,7 +32,7 @@
         "packageManager": "npm"
       },
       "electronWinstallerConfig": {
-        "name": "frontend"
+        "name": "Vocascan"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -42,7 +42,7 @@
       },
       "windowsStoreConfig": {
         "packageName": "",
-        "name": "frontend"
+        "name": "Vocascan"
       }
     }
   },
