@@ -1,12 +1,12 @@
-.input_field {
+.inputField {
     width: 100%;
     height: auto;
-    color: #ffffff;
+    background: #ffffff;
     border-radius: 5px;
     box-shadow: -1px 3px 5px#c1cce6;
 }
 
-.input_field input {
+.inputField input {
     width: 80%;
     height: 40px;
     padding-left: 15px;

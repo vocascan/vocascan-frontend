@@ -10,7 +10,7 @@
   background-color: rgba(0,0,0, 0.5);
   display: flex;
 }
-.popup_inner {
+.popup-inner {
   width: 60%;
   height: 70%;
   left: 25%;
@@ -24,7 +24,7 @@
   text-align: center;
 }
 
-.popup_inner .text_field {
+.popup-inner .popup-inner__textField {
     width: 70%;
     height: 100%;
     margin: auto;

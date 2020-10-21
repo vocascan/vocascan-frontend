@@ -4,8 +4,8 @@ import NavButton from './NavButton';
 
 function Nav() {
     return (
-        <div className="navbar">
-            <div className="bar-title">
+        <div className="nav">
+            <div className="nav-title">
                 <h1>Vocascan</h1>
             </div>
             <ul>
@@ -18,7 +18,7 @@ function Nav() {
             </ul>
 
             <Link to="#" style={{ outline: 0 }}>
-                <button className="settings-button">
+                <button className="nav-button-settings">
                     <h5>Einstellungen</h5>
                 </button>
             </Link>
