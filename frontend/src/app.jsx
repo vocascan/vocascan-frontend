@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Route, BrowserRouter } from "react-router-dom";
 
+
 import Nav from './Components/Nav/Nav';
 import AddVocab from './Components/AddVocab/AddVocab';
 import StartPopup from './Components/Popups/StartPopup';
 
 function App() {
 
+  const vocascanModule = require('../build/Release/vocascan.node');
   const [popupOpen, setPopupOpen] = useState(true);
 
   function togglePopup() {
@@ -15,7 +17,7 @@ function App() {
 
   return (
     <div>
-      {popupOpen ?
+      {vocascanModule.checkTableEmpty("language_package") ?
         <StartPopup
           text='Close Me'
           closePopup={togglePopup}
