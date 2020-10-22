@@ -76,5 +76,9 @@ build
 node_modules
 out
 .eslintcache
-
+build
+database
+settings.json
+database.png
+database_new.png
 
