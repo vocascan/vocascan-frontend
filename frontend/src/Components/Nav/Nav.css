@@ -1,30 +1,30 @@
-.navbar {
+.nav {
   width: 200px;
   height: 100vh;
   background: #313A46;
   position: relative;
 }
 
-.navbar ul {
+.nav ul {
     margin: 0;
     padding: 0;
 }
 
-.navbar .bar-title {
+.nav .nav-title {
   width: 200px;
   height: 35px;
   float: left;
   margin: 30px 0 60px;
 }
 
-.navbar .bar-title h1{
+.nav .nav-title h1{
   color: #FFFFFF;
   text-transform: uppercase;
   text-align: center;
   font-size: 17px;
 }
 
-.settings-button {
+.nav-button-settings {
   background-color: #242424;
   border: none;
   outline: none;
@@ -34,14 +34,14 @@
   bottom: 0;
 }
 
-.settings-button h5{
+.nav-button-settings h5{
   color: #8790A3;
   text-transform: uppercase;
   font-size: 17px;
   margin: 0;
 }
 
-.settings-button:hover {
+.nav-button-settings:hover {
   background-color: #2e2e2e;
 }
 

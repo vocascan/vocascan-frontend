@@ -15,7 +15,7 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     width: 1440,
     height: 900,
-    icon: __dirname + '/images/logo-56px.png',
+    icon: __dirname + '/images/vocascan-logo.png',
 
     webPreferences: {nodeIntegration: true}
   });

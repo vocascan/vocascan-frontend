@@ -1,22 +1,24 @@
 import React from 'react';
 import InputField from '../Others/InputField/InputField';
-import Dropdown from '../Others/Dropdown/Dropdown';
+import DropdownMenu from '../Others/Dropdown/Dropdown';
 
 function AddLanguagePackage(props) {
 
-    const options = [
-        'one', 'two', 'three'
-    ];
-
     return (
-        <form className="lngpckg_inner_div">
+        <form className="lngpckg">
             <label>
                 <h3>Name</h3>
                 <InputField placeholder="z.B. Englisch - Deutsch" />
             </label>
 
-
-            <Dropdown />
+            <div className="lngpckg-dropdown">
+                <div className="lngpckg-dropdown-field">
+                    <DropdownMenu title="Fremdsprache" />
+                </div>
+                <div className="lngpckg-dropdown-field">
+                    <DropdownMenu title="Übersetzung" />
+                </div>
+            </div>
 
             <label>
                 <h3>Vokabeln pro Tag</h3>
@@ -28,7 +30,7 @@ function AddLanguagePackage(props) {
                 <InputField placeholder="z.B. 2" />
             </label>
 
-            <input type="submit" value="Submit" />
+            <button type="button" value="Submit" onClick={() => { console.log("Test") }} />
         </form>
     );
 }
