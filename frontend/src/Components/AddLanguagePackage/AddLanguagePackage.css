@@ -28,3 +28,12 @@
     width: 30%;
     margin: 0;
 }
+
+.lngpckg button {
+    width: 150px;
+    height: 35px;
+    background: #727CF5;
+    border: none;
+    outline: none;
+    box-shadow: -1px 3px 5px#c1cce6;
+}
