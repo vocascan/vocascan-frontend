@@ -30,7 +30,7 @@ function AddLanguagePackage(props) {
                 <InputField placeholder="z.B. 2" />
             </label>
 
-            <button type="button" value="Submit" onClick={() => { console.log("Test") }} />
+            <button type="button" value="Submit" onClick={() => { console.log("Test") }}>Weiter</button>
         </form>
     );
 }
