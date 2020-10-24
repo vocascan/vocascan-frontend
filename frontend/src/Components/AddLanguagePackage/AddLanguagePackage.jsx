@@ -3,6 +3,13 @@ import InputField from '../Others/InputField/InputField';
 import DropdownMenu from '../Others/Dropdown/Dropdown';
 
 function AddLanguagePackage(props) {
+    const vocascanModule = require('../../../build/Debug/vocascan.node');
+
+    function submitHandler() {
+        vocascanModule.addLanguagePackage("Englisch - Deutsch", "Englisch", "Deutsch", 100, 2);
+        console.log("Added");
+        props.function()
+    }
 
     return (
         <form className="lngpckg">
@@ -12,12 +19,14 @@ function AddLanguagePackage(props) {
             </label>
 
             <div className="lngpckg-dropdown">
-                <div className="lngpckg-dropdown-field">
-                    <DropdownMenu title="Fremdsprache" />
-                </div>
-                <div className="lngpckg-dropdown-field">
-                    <DropdownMenu title="Übersetzung" />
-                </div>
+                <label className="lngpckg-dropdown-field">
+                    Fremdsprache
+                    <DropdownMenu title="Auswählen..." />
+                </label>
+                <label className="lngpckg-dropdown-field">
+                    Übersetzung
+                    <DropdownMenu title="Auswählen..." />
+                </label>
             </div>
 
             <label>
@@ -30,8 +39,8 @@ function AddLanguagePackage(props) {
                 <InputField placeholder="z.B. 2" />
             </label>
 
-            <button type="button" value="Submit" onClick={() => { console.log("Test") }}>Weiter</button>
-        </form>
+            <button className="lngpckg-submitBtn" type="button" value="Submit" onClick={submitHandler}>Weiter</button>
+        </form >
     );
 }
 
