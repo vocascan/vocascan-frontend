@@ -8,8 +8,8 @@ import StartPopup from './Components/Popups/StartPopup';
 
 function App() {
 
-  const vocascanModule = require('../build/Release/vocascan.node');
-  const [popupOpen, setPopupOpen] = useState(true);
+  const vocascanModule = require('../build/Debug/vocascan.node');
+  const [popupOpen, setPopupOpen] = useState(vocascanModule.checkTableEmpty("language_package"));
 
   function togglePopup() {
     setPopupOpen(false)
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div>
-      {vocascanModule.checkTableEmpty("language_package") ?
+      {popupOpen ?
         <StartPopup
           text='Close Me'
           closePopup={togglePopup}
