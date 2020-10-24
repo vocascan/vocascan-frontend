@@ -7,8 +7,7 @@ function StartPopup(props) {
             <div className="popup-inner">
                 <div className="popup-inner__textField">
                     <h1>Erstelle dein erstes Vokabelpaket</h1>
-                    <button onClick={props.closePopup}>close me</button>
-                    <AddLanguagePackage />
+                    <AddLanguagePackage function={props.closePopup} />
                 </div>
 
             </div>

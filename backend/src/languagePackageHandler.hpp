@@ -2,15 +2,19 @@
 #define LANGUAGEPACKAGEHANDLER_H
 
 #include "database.hpp"
+#include "languagePackage.hpp"
+#include "string"
 #include <vector>
 
-class LanguagePackageHandler {
+class LanguagePackageHandler
+{
 
 public:
-    LanguagePackageHandler(const Database &db);
+    LanguagePackageHandler(Database &db) : database(db) {}
+    bool addLanguagePackage(LanguagePackage lngpckg);
 
 private:
-    Database database;
+    Database &database;
 };
 
 #endif // LANGUAGEPACKAGEHANDLER_H

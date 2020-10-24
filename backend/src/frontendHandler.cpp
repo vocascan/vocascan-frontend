@@ -4,8 +4,11 @@
 #include <napi.h>
 #include <string>
 #include "database.hpp"
+#include "languagePackageHandler.hpp"
+#include "languagePackage.hpp"
 
 Database database("database");
+LanguagePackageHandler languagePackageHandler(database);
 
 // Wrapping my C++ Methods to Js
 Napi::Boolean checkTableEmpty(const Napi::CallbackInfo &info)
@@ -15,6 +18,21 @@ Napi::Boolean checkTableEmpty(const Napi::CallbackInfo &info)
     std::string tableName = (std::string)info[0].ToString();
     // calling the C++ method
     bool result = database.checkTableEmpty("language_package");
+
+    return Napi::Boolean::New(env, result);
+}
+
+Napi::Boolean addLanguagePackage(const Napi::CallbackInfo &info)
+{
+    Napi::Env env = info.Env();
+    // fetching the given variables from Js
+    std::string name = (std::string)info[0].ToString();
+    std::string foreignWordLanguage = (std::string)info[1].ToString();
+    std::string translatedWordLanguage = (std::string)info[2].ToString();
+    int vocabsPerDay = (int)info[3].ToNumber();
+    int rightWords = (int)info[4].ToNumber();
+    // calling the C++ method
+    bool result = database.addLanguagePackage(LanguagePackage(name, foreignWordLanguage, translatedWordLanguage, vocabsPerDay, rightWords));
 
     return Napi::Boolean::New(env, result);
 }
@@ -62,6 +80,7 @@ Napi::Object sendGetPersonInformationServerJs(const Napi::CallbackInfo &info)
 Napi::Object Init(Napi::Env env, Napi::Object exports)
 {
     exports.Set("checkTableEmpty", Napi::Function::New(env, checkTableEmpty));
+    exports.Set("addLanguagePackage", Napi::Function::New(env, addLanguagePackage));
 
     return exports;
 }

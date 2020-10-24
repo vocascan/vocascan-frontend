@@ -9,13 +9,10 @@ function AddVocab(props) {
 
     return (
         <div className="routed_section">
-            <div className="add_vocab_form_field">
-                <div id="add_person_interface" className="routed_section">
-                    <h1>Test</h1>
+            <div className="addVocab-form">
+                <h1>Test</h1>
 
-
-                    <InputField />
-                </div>
+                <InputField placeholder="Fremdwort" />
             </div>
         </div>
     )
