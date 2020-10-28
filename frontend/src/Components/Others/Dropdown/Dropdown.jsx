@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-import { DropdownMultiple, Dropdown } from 'reactjs-dropdown-component';
-import location from './Examples';
 
-function DropdownMenu(props) {
+function Dropdown(props) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [currentSelection, setCurrentSelection] = useState(props.title);
+    //const [selection, setSelection] = useState(props.selection)
+    let selection = props.selection;
 
     function handleSelection(e) {
         setCurrentSelection(e.target.value);
+        props.function(e);
     }
 
     //iterate over array to create list items
-    const items = location.map((item) =>
+    const items = selection.map((item) =>
         <li key={item.id}>
             <button
                 type="button"
@@ -42,4 +43,4 @@ function DropdownMenu(props) {
 
 }
 
-export default DropdownMenu
+export default Dropdown

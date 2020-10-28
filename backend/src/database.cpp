@@ -37,7 +37,7 @@ void Database::createTables()
 		"id	INTEGER NOT NULL,"
 		"language_package_id INTEGER NOT NULL,"
 		"name	TEXT NOT NULL,"
-		"FOREIGN KEY(language_package_id) REFERENCES language_package,"
+		"FOREIGN KEY(language_package_id) REFERENCES language_package(id),"
 		"PRIMARY KEY(id AUTOINCREMENT));"
 
 		"CREATE TABLE IF NOT EXISTS foreign_word ("
@@ -128,6 +128,98 @@ bool Database::addLanguagePackage(const LanguagePackage &lngpckg)
 	sqlite3_bind_text(addStmt, 3, lngpckg.translatedWordLanguage.c_str(), lngpckg.translatedWordLanguage.length(), SQLITE_TRANSIENT);
 	sqlite3_bind_int(addStmt, 4, lngpckg.vocabsPerDay);
 	sqlite3_bind_int(addStmt, 5, lngpckg.rightWords);
+
+	sqlite3_step(addStmt);
+	sqlite3_finalize(addStmt);
+}
+
+//return all Language Packages of table
+std::vector<std::string> Database::getLanguagePackages()
+{
+	std::vector<std::string> pckgNames;
+	// select every entry, in the table
+	sqlite3_stmt *selectStmt;
+	rc = sqlite3_prepare_v2(db, "SELECT * FROM language_package", -1, &selectStmt, NULL);
+	if (rc != SQLITE_OK)
+	{
+		std::cerr << "Error preparing statement: " << sqlite3_errmsg;
+	}
+
+	// if entity is in database fetch name
+	for (;;)
+	{
+		rc = sqlite3_step(selectStmt);
+
+		if (rc == SQLITE_DONE)
+		{
+			break;
+		}
+
+		if (rc != SQLITE_ROW)
+		{
+			break;
+		}
+
+		const unsigned char *packageName = sqlite3_column_text(selectStmt, 1);
+		std::string str_packageName = reinterpret_cast<char const *>(packageName);
+
+		pckgNames.push_back(str_packageName);
+	}
+	sqlite3_finalize(selectStmt);
+	return pckgNames;
+}
+
+//get group names that belong to a package name
+std::vector<std::string> Database::getGroups(std::string packageName)
+{
+	std::string sql = "SELECT * FROM groups JOIN language_package ON groups.language_package_id = language_package.id Where language_package.name = ? ";
+	//get group names with the stored id
+	std::vector<std::string> groupNames;
+	// select every entry, in the table
+	sqlite3_stmt *selectStmt;
+	rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &selectStmt, NULL);
+	rc = sqlite3_bind_text(selectStmt, 1, packageName.c_str(), packageName.length(), SQLITE_TRANSIENT);
+	if (rc != SQLITE_OK)
+	{
+		std::cerr << "Error preparing statement: " << sqlite3_errmsg;
+	}
+
+	// if entity is in database fetch name
+	for (;;)
+	{
+		rc = sqlite3_step(selectStmt);
+
+		if (rc == SQLITE_DONE)
+		{
+			break;
+		}
+
+		if (rc != SQLITE_ROW)
+		{
+			break;
+		}
+
+		const unsigned char *groupName = sqlite3_column_text(selectStmt, 2);
+		std::string str_groupName = reinterpret_cast<char const *>(groupName);
+
+		groupNames.push_back(str_groupName);
+	}
+	sqlite3_finalize(selectStmt);
+	//std::vector<std::string> name = {"Test", "Hallo", packageName};
+	return groupNames;
+}
+
+//------------------------ ADD LANGUAGE PACKAGE ------------------------//
+
+bool Database::addForeignWord(const ForeignWord &lngpckg)
+{
+	std::string sql = "INSERT INTO language_package (name, language_package_id, group_id, drawer_id) VALUES(?, ?, ?, ?);";
+	sqlite3_stmt *addStmt;
+	sqlite3_prepare_v2(db, sql.c_str(), -1, &addStmt, NULL);
+	sqlite3_bind_text(addStmt, 1, lngpckg.name.c_str(), lngpckg.name.length(), SQLITE_TRANSIENT);
+	sqlite3_bind_int(addStmt, 2, lngpckg.languagePackageId);
+	sqlite3_bind_int(addStmt, 3, lngpckg.groupId);
+	sqlite3_bind_int(addStmt, 4, lngpckg.drawerId);
 
 	sqlite3_step(addStmt);
 	sqlite3_finalize(addStmt);
