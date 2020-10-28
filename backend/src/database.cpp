@@ -205,11 +205,10 @@ std::vector<std::string> Database::getGroups(std::string packageName)
 		groupNames.push_back(str_groupName);
 	}
 	sqlite3_finalize(selectStmt);
-	//std::vector<std::string> name = {"Test", "Hallo", packageName};
 	return groupNames;
 }
 
-//------------------------ ADD LANGUAGE PACKAGE ------------------------//
+//------------------------ ADD FOREIGN WORD ------------------------//
 
 bool Database::addForeignWord(const ForeignWord &lngpckg)
 {
@@ -221,6 +220,32 @@ bool Database::addForeignWord(const ForeignWord &lngpckg)
 	sqlite3_bind_int(addStmt, 3, lngpckg.groupId);
 	sqlite3_bind_int(addStmt, 4, lngpckg.drawerId);
 
-	sqlite3_step(addStmt);
+	rc = sqlite3_step(addStmt);
 	sqlite3_finalize(addStmt);
+	if (rc != SQLITE_OK)
+	{
+		return false;
+	}
+	return true;
+}
+
+//------------------------ ADD TRANSLATED WORD ------------------------//
+
+bool Database::addTranslatedWord(const TranslatedWord &lngpckg)
+{
+	std::string sql = "INSERT INTO language_package (foreign_word_id, name, language_package_id) VALUES(?, ?, ?);";
+	sqlite3_stmt *addStmt;
+	sqlite3_prepare_v2(db, sql.c_str(), -1, &addStmt, NULL);
+
+	sqlite3_bind_int(addStmt, 1, lngpckg.foreignWordId);
+	sqlite3_bind_text(addStmt, 1, lngpckg.name.c_str(), lngpckg.name.length(), SQLITE_TRANSIENT);
+	sqlite3_bind_int(addStmt, 3, lngpckg.languagePackageId);
+
+	rc = sqlite3_step(addStmt);
+	sqlite3_finalize(addStmt);
+	if (rc != SQLITE_OK)
+	{
+		return false;
+	}
+	return true;
 }

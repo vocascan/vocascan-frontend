@@ -6,7 +6,7 @@
 // struct for creating a languagePackage object
 struct TranslatedWord
 {
-    TranslatedWord(std::int foreignWordId, std::string name, int languagePackageId)
+    TranslatedWord(int foreignWordId, std::string name, int languagePackageId)
         : foreignWordId(foreignWordId), name(name), languagePackageId(languagePackageId) {}
     int foreignWordId;
     std::string name;
