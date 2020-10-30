@@ -4,7 +4,7 @@ import Dropdown from '../Others/Dropdown/Dropdown';
 import languages from './Languages';
 
 function AddLanguagePackage(props) {
-    const vocascanModule = require('../../../build/Debug/vocascan.node');
+    var vocascanModule = require('bindings')('vocascan.node');
 
     const [name, setName] = useState('');
     const [foreignLanguage, setForeignLanguage] = useState('');
@@ -17,11 +17,20 @@ function AddLanguagePackage(props) {
         props.function()
     }
 
+    function checkTableName() {
+        if (vocascanModule.checkPackageName(name) == false) {
+            console.log("Double");
+        }
+        else {
+            console.log("not");
+        }
+    }
+
     return (
         <form className="lngpckg">
             <label>
                 <h3>Name</h3>
-                <InputField placeholder="z.B. Englisch - Deutsch" function={e => setName(e.target.value)}/>
+                <InputField placeholder="z.B. Englisch - Deutsch" function={e => { setName(e.target.value), checkTableName() }}/>
             </label>
 
             <div className="lngpckg-dropdown">

@@ -47,12 +47,13 @@
     }
   },
   "dependencies": {
+    "bindings": "^1.5.0",
     "electron-compile": "^6.4.4",
     "electron-devtools-installer": "^3.1.1",
     "electron-squirrel-startup": "^1.0.0",
     "node-addon-api": "^3.0.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-hot-loader": "^4.13.0",
     "react-router-dom": "^5.2.0"
   },
@@ -63,10 +64,10 @@
     "babel-preset-react": "^6.24.1",
     "electron-forge": "^5.2.4",
     "electron-prebuilt-compile": "8.2.0",
-    "eslint": "^7.11.0",
+    "eslint": "^7.12.1",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.21.4"
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5"
   }
 }
