@@ -5,7 +5,7 @@ import languages from '../AddLanguagePackage/Languages';
 
 function AddVocab(props) {
 
-    const vocascanModule = require('../../../build/Debug/vocascan.node');
+    var vocascanModule = require('bindings')('vocascan.node');
     const packages = vocascanModule.getLanguagePackages();
     const [groups, setGroups] = useState([]);
 
@@ -32,7 +32,7 @@ function AddVocab(props) {
                 <div className="addVocab-dropdowns">
                     <label className="addVocab-dropdowns-field">
                         Vokabelpaket
-                        <Dropdown title="Auswählen..." function={e => { setPackageName(e.target.value), refreshGroups() }} selection={packages}/>
+                        <Dropdown title="Auswählen..." function={e => { packageName = e.target.value, refreshGroups() } } selection={packages}/>
                     </label>
                     <label className="addVocab-dropdowns-field">
                         Gruppe
