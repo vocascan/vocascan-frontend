@@ -32,7 +32,7 @@ Napi::Boolean addLanguagePackage(const Napi::CallbackInfo &info)
     int vocabsPerDay = (int)info[3].ToNumber();
     int rightWords = (int)info[4].ToNumber();
     // calling the C++ method
-    bool result = database.addLanguagePackage(LanguagePackage(name, foreignWordLanguage, translatedWordLanguage, vocabsPerDay, rightWords));
+    bool result = languagePackageHandler.addLanguagePackage(LanguagePackage(name, foreignWordLanguage, translatedWordLanguage, vocabsPerDay, rightWords));
 
     return Napi::Boolean::New(env, result);
 }
@@ -72,7 +72,7 @@ Napi::Object getGroups(const Napi::CallbackInfo &info)
     return Napi::Object(env, result);
 }
 
-Napi::Object addVocab(const Napi::CallbackInfo &info)
+/*Napi::Object addVocab(const Napi::CallbackInfo &info)
 {
     Napi::Env env = info.Env();
 
@@ -92,7 +92,7 @@ Napi::Object addVocab(const Napi::CallbackInfo &info)
     }
 
     return Napi::Object(env, result);
-}
+}*/
 
 Napi::Object Init(Napi::Env env, Napi::Object exports)
 {

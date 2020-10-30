@@ -11,7 +11,7 @@ class LanguagePackageHandler
 
 public:
     LanguagePackageHandler(Database &db) : database(db) {}
-    bool addLanguagePackage(LanguagePackage lngpckg);
+    bool addLanguagePackage(LanguagePackage lngPckg);
 
 private:
     Database &database;

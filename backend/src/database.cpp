@@ -53,7 +53,7 @@ void Database::createTables()
 
 		"CREATE TABLE IF NOT EXISTS drawer ("
 		"id	INTEGER NOT NULL,"
-		"drawer_number	TEXT NOT NULL,"
+		"name TEXT NOT NULL,"
 		"query_interval	INTEGER NOT NULL,"
 		"language_package_id	INTEGER NOT NULL,"
 		"PRIMARY KEY(id AUTOINCREMENT),"
@@ -93,6 +93,20 @@ bool Database::checkTableEmpty(const std::string &tableName)
 	}
 }
 
+bool Database::createDrawer(const std::string &name, int queryInterval, const std::string &lngPckgName)
+{
+	std::string sql = "INSERT INTO drawer (name, query_interval, language_package_id) VALUES (?, ?, (SELECT id FROM language_package WHERE name=?));";
+	sqlite3_stmt *addStmt;
+	sqlite3_prepare_v2(db, sql.c_str(), -1, &addStmt, NULL);
+	sqlite3_bind_text(addStmt, 1, name.c_str(), name.length(), SQLITE_TRANSIENT);
+	sqlite3_bind_int(addStmt, 2, queryInterval);
+	sqlite3_bind_text(addStmt, 3, lngPckgName.c_str(), lngPckgName.length(), SQLITE_TRANSIENT);
+
+	sqlite3_step(addStmt);
+	sqlite3_finalize(addStmt);
+	return 0;
+}
+
 // check if Entity is already in the database
 bool Database::checkExistingEntity(const std::string &name, const std::string &tableName, const std::string &columnName)
 {
@@ -118,16 +132,16 @@ bool Database::checkExistingEntity(const std::string &name, const std::string &t
 	sqlite3_finalize(selectstmt);
 }
 
-bool Database::addLanguagePackage(const LanguagePackage &lngpckg)
+void Database::addLanguagePackage(const LanguagePackage &lngPckg)
 {
 	std::string sql = "INSERT INTO language_package (name, foreign_word_language, translated_word_language, vocabs_per_day, right_words) VALUES(?, ?, ?, ?, ?);";
 	sqlite3_stmt *addStmt;
 	sqlite3_prepare_v2(db, sql.c_str(), -1, &addStmt, NULL);
-	sqlite3_bind_text(addStmt, 1, lngpckg.name.c_str(), lngpckg.name.length(), SQLITE_TRANSIENT);
-	sqlite3_bind_text(addStmt, 2, lngpckg.foreignWordLanguage.c_str(), lngpckg.foreignWordLanguage.length(), SQLITE_TRANSIENT);
-	sqlite3_bind_text(addStmt, 3, lngpckg.translatedWordLanguage.c_str(), lngpckg.translatedWordLanguage.length(), SQLITE_TRANSIENT);
-	sqlite3_bind_int(addStmt, 4, lngpckg.vocabsPerDay);
-	sqlite3_bind_int(addStmt, 5, lngpckg.rightWords);
+	sqlite3_bind_text(addStmt, 1, lngPckg.name.c_str(), lngPckg.name.length(), SQLITE_TRANSIENT);
+	sqlite3_bind_text(addStmt, 2, lngPckg.foreignWordLanguage.c_str(), lngPckg.foreignWordLanguage.length(), SQLITE_TRANSIENT);
+	sqlite3_bind_text(addStmt, 3, lngPckg.translatedWordLanguage.c_str(), lngPckg.translatedWordLanguage.length(), SQLITE_TRANSIENT);
+	sqlite3_bind_int(addStmt, 4, lngPckg.vocabsPerDay);
+	sqlite3_bind_int(addStmt, 5, lngPckg.rightWords);
 
 	sqlite3_step(addStmt);
 	sqlite3_finalize(addStmt);

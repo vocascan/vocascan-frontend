@@ -6,7 +6,7 @@
 #include <vector>
 #include "boilerplate/languagePackage.hpp"
 #include "boilerplate/translatedWord.hpp"
-#include "boilerplate/foreignWord.hpp";
+#include "boilerplate/foreignWord.hpp"
 
 class Database
 {
@@ -17,7 +17,8 @@ public:
     bool checkTableEmpty(const std::string &tableName);
     bool checkExistingEntity(const std::string &name, const std::string &tableName, const std::string &columnName);
 
-    bool addLanguagePackage(const LanguagePackage &lngpckg);
+    void addLanguagePackage(const LanguagePackage &lngPckg);
+    bool createDrawer(const std::string &name, int queryInterval, const std::string &lngPckgName);
     std::vector<std::string> getLanguagePackages();
     std::vector<std::string> getGroups(std::string packageName);
     bool addForeignWord(const ForeignWord &foreignWord);
