@@ -17,20 +17,11 @@ function AddLanguagePackage(props) {
         props.function()
     }
 
-    function checkTableName() {
-        if (vocascanModule.checkPackageName(name) == false) {
-            console.log("Double");
-        }
-        else {
-            console.log("not");
-        }
-    }
-
     return (
         <form className="lngpckg">
             <label>
                 <h3>Name</h3>
-                <InputField placeholder="z.B. Englisch - Deutsch" function={e => { setName(e.target.value), checkTableName() }}/>
+                <InputField placeholder="z.B. Englisch - Deutsch" function={e => { setName(e.target.value)}}/>
             </label>
 
             <div className="lngpckg-dropdown">

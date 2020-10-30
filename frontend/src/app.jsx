@@ -8,8 +8,8 @@ import StartPopup from './Components/Popups/StartPopup';
 
 function App() {
 
-  var vocascan = require('bindings')('vocascan.node');
-  const [popupOpen, setPopupOpen] = useState(true/*vocascanModule.checkTableEmpty("language_package")*/);
+  var vocascanModule = require('bindings')('vocascan.node');
+  const [popupOpen, setPopupOpen] = useState(vocascanModule.checkTableEmpty("language_package"));
 
   function togglePopup() {
     setPopupOpen(false)
