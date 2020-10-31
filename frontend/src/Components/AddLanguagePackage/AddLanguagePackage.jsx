@@ -27,11 +27,11 @@ function AddLanguagePackage(props) {
             <div className="lngpckg-dropdown">
                 <label className="lngpckg-dropdown-field">
                     Fremdsprache
-                    <Dropdown title="Auswählen..." function={e => setForeignLanguage(e.target.value)} selection={languages}/>
+                    <Dropdown title="Auswählen..." function={e => setForeignLanguage(e.target.value)} selection={languages} addField={true} addFieldFunction={e => console.log(e.target.value)}/>
                 </label>
                 <label className="lngpckg-dropdown-field">
                     Übersetzung
-                    <Dropdown title="Auswählen..." function={e => setTranslatedLanguage(e.target.value)} selection={languages}/>
+                    <Dropdown title="Auswählen..." function={e => setTranslatedLanguage(e.target.value)} selection={languages} addField={true} addFieldFunction={e => console.log(e.target.value)}/>
                 </label>
             </div>
 

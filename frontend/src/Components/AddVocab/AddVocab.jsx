@@ -24,6 +24,10 @@ function AddVocab(props) {
         vocascanModule.addVocab(packageName, groupName, foreignWord, translations, description);
     }
 
+    function addFieldHandler(value) {
+        console.log(value)
+    }
+
     return (
         <div className="routed_section">
             <div className="addVocab-form">
@@ -32,11 +36,11 @@ function AddVocab(props) {
                 <div className="addVocab-dropdowns">
                     <label className="addVocab-dropdowns-field">
                         Vokabelpaket
-                        <Dropdown title="Auswählen..." function={e => { packageName = e.target.value, refreshGroups() } } selection={packages}/>
+                        <Dropdown title="Auswählen..." function={e => { packageName = e.target.value, refreshGroups() } } selection={packages} addField={false}/>
                     </label>
                     <label className="addVocab-dropdowns-field">
                         Gruppe
-                        <Dropdown title="Auswählen..." function={e => { setGroupName(e.target.value) }} selection={groups}/>
+                        <Dropdown title="Auswählen..." function={e => { setGroupName(e.target.value) }} selection={groups} addField={true} addFieldFunction={addFieldHandler}/>
                     </label>
                 </div>
 

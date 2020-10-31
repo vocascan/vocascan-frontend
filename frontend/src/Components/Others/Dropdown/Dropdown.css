@@ -44,6 +44,54 @@
     display: none;
 }
 
+/*------------------------------------------------------------------------------------*/
+/*                                    ADD FIELD                                       */
+/*------------------------------------------------------------------------------------*/
+
+.dropdown .dropdown-list__open .dropdown-list-addField__active {
+    display: flex;
+    box-shadow: 0px 0px 5px#b4bed6;
+    margin: 0 0 5px 0;
+}
+
+.dropdown .dropdown-list__open .dropdown-list-addField__inactive {
+    display: none;
+    visibility: hidden;
+}
+.dropdown .dropdown-list__open .dropdown-list-addField__active .dropdown-list-addField-input {
+    width: 80%;
+    height: 30px;
+    background: #ffffff;
+}
+
+.dropdown .dropdown-list__open .dropdown-list-addField__active .dropdown-list-addField-input input {
+    width: 80%;
+    height: 25px;
+    padding-left: 15px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.dropdown .dropdown-list__open .dropdown-list-addField__active button {
+    background-image: url( '../../../images/icons/addBtn-grey.png' );
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 22px 22px;
+    height: 30px;  
+    width: 20%;
+
+}
+
+.dropdown .dropdown-list__open .dropdown-list-addField__active button:hover {
+    background-image: url( '../../../images/icons/addBtn-blue.png' );
+    background-size: 24px 24px;
+
+}
+
 .dropdown .dropdown-list__btn:hover {
     background: #727CF5;
     color: #ffffff;
