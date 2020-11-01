@@ -1,6 +1,6 @@
 import React from 'react';
 import AddLanguagePackage from '../AddLanguagePackage/AddLanguagePackage.jsx';
-import './StartPopup.css';
+import './StartPopup.scss';
 
 function StartPopup(props) {
     return (

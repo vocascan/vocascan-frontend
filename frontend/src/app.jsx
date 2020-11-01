@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Route, BrowserRouter } from "react-router-dom";
-import './index.css';
-import './Components/sections.css';
+
+import './Components/sections.scss';
 
 
 

@@ -24,6 +24,10 @@ module.exports = [
   {
     test: /\.(png|jpg)$/,
     loader: 'url-loader'
+  },
+  {
+    test: /\.scss$/,
+    loaders : [ "style-loader", "css-loader", "sass-loader" ]
   }
   
   // Put your webpack loader rules in this array.  This is where you would put

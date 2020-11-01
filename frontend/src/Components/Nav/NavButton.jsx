@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Link } from 'react-router-dom';
-import './NavButton.css';
+import './NavButton.scss';
 
 function NavButton(props) {
     return (

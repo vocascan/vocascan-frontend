@@ -1,0 +1,92 @@
+.dropdown {
+    button{
+        width: 100%;
+        height: 25px;
+        border: none;
+        outline: none;
+        background: #ffffff;
+        font-size: 15px;
+        font-weight: 400;
+        color: hsla(0, 0%, 0%, 0.5);
+        cursor: pointer;
+    }
+
+    .dropdown-mainButton__closed {
+        height: 40px;
+        border-radius: 5px;
+        box-shadow: -1px 3px 5px#c1cce6;
+    }
+
+    .dropdown-mainButton__open {
+        height: 40px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        box-shadow: 0px 0px 5px#9199aa;
+    }
+
+    .dropdown-list__open {
+        overflow: auto;
+        max-height: 250px;
+        list-style: none;
+        padding: 0 0 5px 0;
+        margin: 0;
+        background: #ffffff;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top: 1px solid #c1cce6;
+        box-shadow: 0px 0px 5px#9199aa;
+
+        .dropdown-list-addField__active {
+            display: flex;
+            border-bottom: 1px solid #9199aa;
+            margin: 0 0 5px 0;
+
+            .dropdown-list-addField-input {
+                width: 80%;
+                height: 35px;
+                background: #ffffff;
+                display: flex;
+                justify-content: center;
+
+                input {
+                    width: 80%;
+                    height: 25px;
+                    margin: auto 0;
+                    padding-left: 15px;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: #000000;
+                    font-size: 15px;
+                    font-weight: 400;
+                }
+            }
+
+            button {
+                background-image: url( '../../../images/icons/addBtn-grey.png' );
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: 22px 22px;
+                height: 35px;  
+                width: 20%;
+
+                &:hover {
+                    background-image: url( '../../../images/icons/addBtn-blue.png' );
+                    background-size: 24px 24px;
+                }
+            }
+        }
+
+        .dropdown-list-addField__inactive {
+            display: none;
+            visibility: hidden;
+        }
+    }
+
+    .dropdown-list__closed {
+        position: absolute;
+        display: none;
+    }
+}

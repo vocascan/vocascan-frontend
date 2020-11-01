@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import InputField from '../Others/InputField/InputField.jsx';
 import Dropdown from '../Others/Dropdown/Dropdown.jsx';
 import languages from '../AddLanguagePackage/Languages.js';
-import './AddVocab.css';
+import './AddVocab.scss';
 
 function AddVocab(props) {
 

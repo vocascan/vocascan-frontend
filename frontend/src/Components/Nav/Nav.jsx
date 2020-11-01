@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Link } from 'react-router-dom';
 import NavButton from './NavButton.jsx';
-import './Nav.css';
+import './Nav.scss';
 
 function Nav() {
     return (
