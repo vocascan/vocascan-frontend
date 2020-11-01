@@ -54,6 +54,20 @@ Napi::Object getLanguagePackages(const Napi::CallbackInfo &info)
     return Napi::Object(env, result);
 }
 
+Napi::Boolean addGroup(const Napi::CallbackInfo &info)
+{
+    Napi::Env env = info.Env();
+    // fetching the given variables from Js
+    std::string name = (std::string)info[0].ToString();
+    std::string lngPckgName = (std::string)info[1].ToString();
+
+    // calling the C++ method
+    database.addGroup(name, lngPckgName);
+    bool result = 0;
+
+    return Napi::Boolean::New(env, result);
+}
+
 Napi::Object getGroups(const Napi::CallbackInfo &info)
 {
     Napi::Env env = info.Env();
@@ -99,11 +113,12 @@ Napi::Object Init(Napi::Env env, Napi::Object exports)
     exports.Set("checkTableEmpty", Napi::Function::New(env, checkTableEmpty));
     exports.Set("addLanguagePackage", Napi::Function::New(env, addLanguagePackage));
     exports.Set("getLanguagePackages", Napi::Function::New(env, getLanguagePackages));
+    exports.Set("addGroup", Napi::Function::New(env, addGroup));
     exports.Set("getGroups", Napi::Function::New(env, getGroups));
 
     return exports;
 }
 
-NODE_API_MODULE(vocascanModule, Init)
+NODE_API_MODULE(vocascan, Init)
 
 #endif
