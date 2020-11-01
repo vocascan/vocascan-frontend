@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './Dropdown.css';
 
 function Dropdown(props) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [currentSelection, setCurrentSelection] = useState(props.title);
+    const [addField, setAddField] = useState(props.addField);
+    const [addFieldInput, setAddFieldInput] = useState("");
     //const [selection, setSelection] = useState(props.selection)
     let selection = props.selection;
 
@@ -11,6 +14,8 @@ function Dropdown(props) {
         setCurrentSelection(e.target.value);
         props.function(e);
     }
+
+
 
     //iterate over array to create list items
     const items = selection.map((item) =>
@@ -35,6 +40,13 @@ function Dropdown(props) {
             </button>
 
             <ul className={isOpen ? "dropdown-list__open" : "dropdown-list__closed"} >
+                <div className={addField ? "dropdown-list-addField__active" : "dropdown-list-addField__inactive"}>
+                    <div className="dropdown-list-addField-input">
+                        <input placeholder="Hinzufügen" onChange={e => setAddFieldInput(e.target.value)}/>
+                    </div>
+                    <button type="button" onClick={() => { props.addFieldFunction(addFieldInput) }}></button>
+                </div>
+                
                 {items}
             </ul>
         </div>

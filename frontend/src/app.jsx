@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Route, BrowserRouter } from "react-router-dom";
+import './index.css';
+import './Components/sections.css';
 
 
-import Nav from './Components/Nav/Nav';
-import AddVocab from './Components/AddVocab/AddVocab';
-import StartPopup from './Components/Popups/StartPopup';
+
+import Nav from './Components/Nav/Nav.jsx';
+import AddVocab from './Components/AddVocab/AddVocab.jsx';
+import StartPopup from './Components/Popups/StartPopup.jsx';
 
 function App() {
 
-  var vocascanModule = require('bindings')('vocascan.node');
-  const [popupOpen, setPopupOpen] = useState(vocascanModule.checkTableEmpty("language_package"));
+  var vocascan = require('bindings')('vocascan.node');
+  const [popupOpen, setPopupOpen] = useState(vocascan.checkTableEmpty("language_package"));
 
   function togglePopup() {
     setPopupOpen(false)

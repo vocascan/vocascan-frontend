@@ -183,6 +183,22 @@ std::vector<std::string> Database::getLanguagePackages()
 	return pckgNames;
 }
 
+//------------------------------------------------------------------------------//
+//                                    GROUPS                                    //
+//------------------------------------------------------------------------------//
+
+void Database::addGroup(const std::string &name, const std::string &lngPckName)
+{
+	std::string sql = "INSERT INTO groups (language_package_id, name) VALUES ((SELECT id FROM language_package WHERE name=?), ?);";
+	sqlite3_stmt *addStmt;
+	sqlite3_prepare_v2(db, sql.c_str(), -1, &addStmt, NULL);
+	sqlite3_bind_text(addStmt, 1, lngPckName.c_str(), lngPckName.length(), SQLITE_TRANSIENT);
+	sqlite3_bind_text(addStmt, 2, name.c_str(), name.length(), SQLITE_TRANSIENT);
+
+	sqlite3_step(addStmt);
+	sqlite3_finalize(addStmt);
+}
+
 //get group names that belong to a package name
 std::vector<std::string> Database::getGroups(std::string packageName)
 {

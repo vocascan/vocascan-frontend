@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
-import InputField from '../Others/InputField/InputField';
-import Dropdown from '../Others/Dropdown/Dropdown';
-import languages from '../AddLanguagePackage/Languages';
+import InputField from '../Others/InputField/InputField.jsx';
+import Dropdown from '../Others/Dropdown/Dropdown.jsx';
+import languages from '../AddLanguagePackage/Languages.js';
+import './AddVocab.css';
 
 function AddVocab(props) {
 
-    var vocascanModule = require('bindings')('vocascan.node');
-    const packages = vocascanModule.getLanguagePackages();
+    var vocascan = require('bindings')('vocascan.node');
+    const packages = vocascan.getLanguagePackages();
     const [groups, setGroups] = useState([]);
 
-    var packageName = "";
+    const [packageName, setPackageName] = useState("");
     const [groupName, setGroupName] = useState("");
     const [foreignWord, setForeignWord] = useState("");
     const [translations, setTranslations] = useState([]);
@@ -17,11 +18,18 @@ function AddVocab(props) {
 
     
     function refreshGroups() {
-        setGroups(vocascanModule.getGroups(packageName)); 
+        setGroups(vocascan.getGroups(packageName)); 
     }
 
     function submit() {
-        vocascanModule.addVocab(packageName, groupName, foreignWord, translations, description);
+        vocascan.addVocab(packageName, groupName, foreignWord, translations, description);
+    }
+
+    function addGroup(value) {
+        vocascan.addGroup(value, packageName);
+        refreshGroups();
+        console.log(value);
+        console.log(packageName);
     }
 
     return (
@@ -32,11 +40,11 @@ function AddVocab(props) {
                 <div className="addVocab-dropdowns">
                     <label className="addVocab-dropdowns-field">
                         Vokabelpaket
-                        <Dropdown title="Auswählen..." function={e => { packageName = e.target.value, refreshGroups() } } selection={packages}/>
+                        <Dropdown title="Auswählen..." function={e => { setPackageName(e.target.value), refreshGroups() } } selection={packages} addField={false}/>
                     </label>
                     <label className="addVocab-dropdowns-field">
                         Gruppe
-                        <Dropdown title="Auswählen..." function={e => { setGroupName(e.target.value) }} selection={groups}/>
+                        <Dropdown title="Auswählen..." function={e => { setGroupName(e.target.value) }} selection={groups} addField={true} addFieldFunction={addGroup}/>
                     </label>
                 </div>
 
