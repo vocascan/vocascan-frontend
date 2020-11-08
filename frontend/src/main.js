@@ -1,6 +1,8 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
+
+app.allowRendererProcessReuse = true
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
@@ -12,7 +14,10 @@ const createWindow = () => {
     width: 1440,
     height: 900,
     icon: __dirname + '/images/vocascan-logo.png',
-    webPreferences: {nodeIntegration: true}
+    webPreferences: {
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true
+    }
   });
 
   // and load the index.html of the app.

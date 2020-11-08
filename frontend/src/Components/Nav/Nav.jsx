@@ -10,17 +10,17 @@ function Nav() {
                 <h1>Vocascan</h1>
             </div>
             <ul>
-                <NavButton name="Neue Vokabeln" link="/addVocab" />
-                <NavButton name="Lernen" link="#" />
-                <NavButton name="Fortschritt" link="#" />
-                <NavButton name="Alle Vokabeln" link="#" />
-                <NavButton name="Gruppe lernen" link="#" />
+                <NavButton name="New Vokabulary" link="/addVocab" />
+                <NavButton name="Learn" link="#" />
+                <NavButton name="Progress" link="#" />
+                <NavButton name="All vocabulary" link="#" />
+                <NavButton name="Group learning" link="#" />
 
             </ul>
 
             <Link to="#" style={{ outline: 0 }}>
                 <button className="nav-button-settings">
-                    <h5>Einstellungen</h5>
+                    <h5>Settings</h5>
                 </button>
             </Link>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Route, BrowserRouter } from "react-router-dom";
-
+import { Route, HashRouter } from "react-router-dom";
+import { vocascanModule } from '../vocascanModule.js';
 import './Components/sections.scss';
 
 
@@ -9,10 +9,11 @@ import Nav from './Components/Nav/Nav.jsx';
 import AddVocab from './Components/AddVocab/AddVocab.jsx';
 import StartPopup from './Components/Popups/StartPopup.jsx';
 
+
 function App() {
 
-  var vocascan = require('bindings')('vocascan.node');
-  const [popupOpen, setPopupOpen] = useState(vocascan.checkTableEmpty("language_package"));
+  
+  const [popupOpen, setPopupOpen] = useState(vocascanModule.checkTableEmpty("language_package"));
 
   function togglePopup() {
     setPopupOpen(false)
@@ -26,12 +27,12 @@ function App() {
           closePopup={togglePopup}
         /> : null}
 
-      <BrowserRouter>
+      <HashRouter>
         <div className="root">
           <Nav />
           <Route path="/addVocab" component={AddVocab} />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </div>);
 }
 

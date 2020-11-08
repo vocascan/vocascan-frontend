@@ -1,5 +1,5 @@
 {
-  "name": "Vocascan",
+  "name": "vocascan",
   "productName": "Vocascan",
   "version": "1.0.0",
   "description": "A highly configurable vocabulary trainer",
@@ -9,7 +9,9 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "build": "electron-forge start && electron-builder --linux",
+    "rebuild": "electron-rebuild"
   },
   "keywords": [],
   "author": {
@@ -19,7 +21,9 @@
   "license": "Apache 2.0",
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon": "src/images/vocascan-logo.png"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -70,24 +74,26 @@
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "@electron-forge/plugin-webpack": "^6.0.0-beta.54",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
-    "css-loader": "^4.3.0",
+    "css-loader": "^5.0.1",
     "electron": "10.1.5",
+    "electron-builder": "^22.9.1",
+    "native-ext-loader": "^2.3.0",
     "node-loader": "^1.0.2",
-    "style-loader": "^1.3.0",
+    "style-loader": "^2.0.0",
     "url-loader": "^4.1.1"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
     "babel-loader": "^8.1.0",
     "bindings": "^1.5.0",
     "electron-squirrel-startup": "^1.0.0",
     "node-addon-api": "^3.0.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "sass-loader": "^10.0.4"
+    "sass-loader": "^10.0.5"
   }
 }

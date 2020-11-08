@@ -45,7 +45,7 @@
 
             .dropdown-list-addField-input {
                 width: 80%;
-                height: 35px;
+                height: 25px;
                 background: #ffffff;
                 display: flex;
                 justify-content: center;
@@ -68,13 +68,13 @@
                 background-image: url( '../../../images/icons/addBtn-grey.png' );
                 background-repeat: no-repeat;
                 background-position: 50% 50%;
-                background-size: 22px 22px;
-                height: 35px;  
+                background-size: 20px 20px;
+                height: 25px;  
                 width: 20%;
 
                 &:hover {
                     background-image: url( '../../../images/icons/addBtn-blue.png' );
-                    background-size: 24px 24px;
+                    background-size: 22px 22px;
                 }
             }
         }
