@@ -1,31 +1,32 @@
 import React, { useState } from 'react';
 import { Route, HashRouter } from "react-router-dom";
 import './Components/sections.scss';
+import { useSelector } from 'react-redux';
 
 
 
 import Nav from './Components/Nav/Nav.jsx';
 import AddVocab from './Components/AddVocab/AddVocab.jsx';
-import StartPopup from './Components/Popups/StartPopup.jsx';
+import SelectionScreen from './Components/Authorisation/SelectionScreen.jsx';
 
 
 function App() {
 
-  
+  const isLoggedIn = useSelector(state => state.login.isLoggedIn);
   const [popupOpen, setPopupOpen] = useState(true);
 
   function togglePopup() {
     setPopupOpen(false)
   }
 
-  return (
+  if (!isLoggedIn) {
+    return (
+      <SelectionScreen />
+    );
+  }
+  else {
+    return (
     <div>
-      {popupOpen ?
-        <StartPopup
-          text='Close Me'
-          closePopup={togglePopup}
-        /> : null}
-
       <HashRouter>
         <div className="root">
           <Nav />
@@ -33,6 +34,8 @@ function App() {
         </div>
       </HashRouter>
     </div>);
+  }
+  
 }
 
 export default App;
