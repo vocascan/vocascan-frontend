@@ -1,6 +1,6 @@
 {
-  "name": "vocascan-desktop",
-  "productName": "vocascan-desktop",
+  "name": "vocascan",
+  "productName": "vocascan",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".webpack/main",
@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": {
-    "name": "Incognitus-9",
+    "name": "noctera",
     "email": "julian.jaksch@gmx.de"
   },
   "license": "MIT",
