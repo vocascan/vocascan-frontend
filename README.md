@@ -10,37 +10,78 @@
 
 ![Vocascan cover](https://github.com/vocascan/vocascan-desktop/blob/main/src/images/vocascan-github-cover.png)
 
-Vocascan is a highly configurable vocabulary trainer. You can learn your vocabulary synchronized via computer and smartphone at any time.  But why Vocascan? There are many ways to adapt the trainer to your preferences and learning strategies, for example by adjusting the time spans of the individual boxes or by determining how many correct translations you need to make the pair
+## Table of Contents
 
-coming soon:
-1. Add, modify and delete Vocabs and divide them into groups optionally
-2. decide how many right translations you need to pass the vocab pair 100%
-3. scan whole book pages with the OpenCv text recognition option
-4. Smartphone App
-5. synchronize all your devices over a self selected cloud (Google Coloud, etc...)
-and many more features...
+Vocascan is a highly configurable vocabulary trainer. You can learn your vocabulary synchronized via computer and smartphone at any time. But why Vocascan? There are many ways to adapt the trainer to your preferences and learning strategies, for example by adjusting the time spans of the individual boxes or by determining how many correct translations you need to make the pair
 
 
-## INSTALLATION
 
-clone project
+  \- [Table of Contents](#table-of-contents)
+
+  \- [Installation](#installation)
+
+  \- [Usage](#usage)
+
+  \- [Support](#support)
+
+  \- [Author](#author)
+
+
+
+## Installation
+
+
+
+Download to your project directory, start or package it:
+
+
+
+clone repository
+
 ```
-git clone https://github.com/noctera/Vocascan
+https://github.com/vocascan/vocascan-desktop.git
 ```
-move into the frontend folder
+
+switch to directory
+
 ```
-cd Vocascan
-cd frontend
+cd vocascan-desktop
 ```
-install node-modules
+
+install node_modules
+
 ```
 npm install
 ```
-build native node module
-```
-cmake-js compile
-```
-Now you can start the app
+
+start vocascan-desktop
+
 ```
 npm run start
 ```
+
+build packaged version
+
+```
+npm run package
+```
+
+## Usage
+
+
+
+Nothing provided yet
+
+
+
+## Support
+
+
+
+Please [open an issue](https://github.com/vocascan/vocascan-desktop/issues/new) for support.
+
+
+
+## Author
+
+[Noctera](https://github.com/noctera)
