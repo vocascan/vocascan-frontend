@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectionBox from './SelectionBox.jsx';
 import './SelectionScreen.scss';
-import Image from './vocascan-logo.png';
+import Image from '../../../images/vocascan-logo.png';
 
 function SelectionScreen(props) {
     return (
