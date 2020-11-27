@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 import Nav from './Components/Nav/Nav.jsx';
 import AddVocab from './Components/AddVocab/AddVocab.jsx';
-import SelectionScreen from './Components/Authorisation/SelectionScreen.jsx';
+import SelectionScreen from './Components/Authorisation/SelectionScreen/SelectionScreen.jsx';
 
 
 function App() {
