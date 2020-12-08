@@ -25,7 +25,7 @@ function App() {
           </Route>
         <Route path="/plans" component={SelectionScreen } />
         <Route path="/login" component={() => <Login image={Image} />} />
-        <Route path="/register" component={Register} />
+        <Route path="/register" component={() => <Register image={Image} />} />
       </HashRouter>
       
     );
