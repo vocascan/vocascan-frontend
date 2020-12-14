@@ -2,7 +2,7 @@ let initialState = {
     user: {
         userName: "",
         email: "",
-        token: "",
+        jwt: "",
     },
     isLoggedIn: false
 
@@ -19,7 +19,7 @@ const loginReducer = (state = initialState, action) => {
                 user: {
                     userName: action.payload.userName,
                     email: action.payload.email,
-                    token: action.payload.token
+                    jwt: action.payload.jwt
                 }
                 
             }

@@ -4,7 +4,7 @@ export const login = (props) => {
         payload: {
             userName: props.userName,
             email: props.email,
-            token: props.token
+            jwt: props.jwt
         }
     }
 } 
