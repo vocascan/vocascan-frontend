@@ -1,0 +1,94 @@
+.selectBox {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 10px;
+    background: #FFFFFF;
+    box-shadow: -1px 3px 5px#b4bed6;
+
+    .selectBox-header {
+        width: 100%;
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+
+        .selectBox-header-heading {
+            width: 100%;
+            height: 20%;
+            background: #E05C5C;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: center;
+            
+            .selectBox-header-heading-text {
+                color: #FFFFFF;
+                font-size: 20px;
+                margin: auto;
+            }
+        }
+
+        .selectBox-header-logo {
+            width: 100%;
+            height: 80%;
+            background: #FAFAFA;
+            display: flex;
+            justify-content: center;
+
+            .selectBox-header-logo-img {
+                width: 40%;
+                margin: auto;
+            }
+        }
+    }
+    .selectBox-description {
+        width: 100%;
+        height: 45%;
+
+        .selectBox-description-ul {
+            width: 100%;
+            height: 100%;
+            padding: 0 0 0 10%;
+
+            .description-listItem {
+                display: flex;
+                margin: 5px 0;
+
+                .selectBox-header-logo-img {
+                    width: 5%;
+                    margin: 0 10px 0 0;
+                    object-fit: scale-down;
+                }
+                .description-listItem-item {
+                    text-align: left;
+                    width: 80%;
+                }
+
+
+            }
+        }
+    }
+
+    .selectBox-btn {
+        width: 70%;
+        height: 35px;
+        background: transparent;
+        outline: none;
+        border: 1px solid #8790A3;
+        margin: 0 auto 20px;
+        cursor: pointer;
+        border-radius: 10px;
+        color: #000000;
+        font-size: 15px;
+
+        &:hover {
+            background: #E05C5C;
+            color: #FFFFFF;
+            border: 1px solid #E05C5C;
+        }
+    }
+}
+
+
