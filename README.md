@@ -79,6 +79,7 @@ Nothing provided yet
 
 
 Please [open an issue](https://github.com/vocascan/vocascan-desktop/issues/new) for support.
+For questions or ideas please use [Discussions](https://github.com/vocascan/vocascan-desktop/discussions)
 
 
 
