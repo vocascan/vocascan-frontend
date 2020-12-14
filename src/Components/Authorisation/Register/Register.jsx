@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './Register.scss';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
-const Querystring = require('querystring');
 import regeneratorRuntime from "regenerator-runtime";
 
 function Register(props) {
