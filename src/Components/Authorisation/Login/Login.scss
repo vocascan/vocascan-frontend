@@ -38,7 +38,17 @@
                 margin: 20px 0;
 
             }
+            .login-form-errorMsg__inactive {
+                display: none;
+            }
+
+            .login-form-errorMsg__active {
+                font-size: 15px;
+                color: red;
+            }
         }
+
+        
 
         .login-form-submit {
             .login-form-submit-Btn {
