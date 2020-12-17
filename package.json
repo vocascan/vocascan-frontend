@@ -2,7 +2,7 @@
   "name": "vocascan",
   "productName": "vocascan",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A highly configurable vocabulary trainer",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -82,6 +82,7 @@
     "@babel/preset-react": "^7.12.7",
     "axios": "^0.21.0",
     "babel-loader": "^8.2.1",
+    "cors": "^2.8.5",
     "electron-squirrel-startup": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
