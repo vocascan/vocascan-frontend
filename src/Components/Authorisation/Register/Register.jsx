@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import './Register.scss';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
+import {useDispatch} from "react-redux"
 import regeneratorRuntime from "regenerator-runtime";
+import { register } from '../../../redux/Actions/register.js';
 
 function Register(props) {
 
@@ -12,12 +14,15 @@ function Register(props) {
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
     const [isSamePassword, setIsSamePassword] = useState(true);
+    const [emailIsUsed, setEmailIsUsed] = useState(false);
+    const dispatch = useDispatch();
 
     let history = useHistory();
     function handleClickLogin() {
         history.push("/login");
     }
 
+    //function to check if typed in passwords are the same
     function checkPassword() {
         if (password != passwordRepeat) {
             setIsSamePassword(false);
@@ -48,8 +53,15 @@ function Register(props) {
                 'Content-Type': 'application/json',
             }
         }
-        axios.post('http://127.0.0.1:8080/api/register', body, config)
-            .then(response => console.log(response.data));
+        axios.post('http://127.0.0.1:13200/api/register', body, config)
+            .then(response => {
+                dispatch(register({userName: response.data["username"], email: email, jwt: response.data["jwt"]}));
+            })
+            .catch(function (error) {
+                if (error.response.status == 409) {
+                    setEmailIsUsed(true);
+                }
+            });
     }
 
     return (
@@ -61,10 +73,11 @@ function Register(props) {
                 </div>
                 <div className="register-form-input">
                     <input className="register-form-input-field" type="text" placeholder="Username" onChange={(e) => {setUsername(e.target.value)}}/>
-                    <input className="register-form-input-field" type="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value)}}/>
+                    <input className="register-form-input-field" type="email" placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} />
+                    <p className={emailIsUsed ? "register-form-warning__visible" : "register-form-warning__invisible"}>The email is already used</p>
                     <input className="register-form-input-field" type="password" placeholder="Password" onChange={(e) => {setPassword(e.target.value)}}/>
                     <input className="register-form-input-field" type="password" placeholder="Repeat password" onChange={(e) => { setPasswordRepeat(e.target.value) }} />
-                    <p className={isSamePassword ? "register-form-password-warning__invisible" : "register-form-password-warning__visible"}>The passwords are not the same</p>
+                    <p className={isSamePassword ? "register-form-warning__invisible" : "register-form-warning__visible"}>The passwords are not the same</p>
                 </div>
                 <div className="register-form-submit">
                     <button className="register-form-submit-Btn" onClick={submitRegisterPerson}>SIGN IN</button>

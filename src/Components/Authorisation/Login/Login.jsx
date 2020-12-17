@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import './Login.scss';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
-import { useForm } from 'react-hook-form';
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { login } from "../../../redux/Actions/index.js";
 
 function Login(props) {
@@ -12,8 +11,8 @@ function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState(""); 
     const [errorMsg, setErrorMsg] = useState(false);
+    const serverAddress = useSelector(state => state.login.serverAddress);
 
-    const { register, handleSubmit, getValues, watch, errors } = useForm();
     const dispatch = useDispatch();
 
 
@@ -35,11 +34,11 @@ function Login(props) {
                 'Content-Type': 'application/json',
             }
         }
-        axios.post('http://127.0.0.1:13200/api/signIn', body, config)
+        axios.post(serverAddress + '/api/signIn', body, config)
             .then(response => {
                 setErrorMsg(false);
                 //store username, email and jwt token in redux store
-                dispatch(login({userName: "Julian Jaksch", email: email, token: response.data}));
+                dispatch(login({userName: response.data["username"], email: email, jwt: response.data["jwt"]}));
 
             })
             .catch(function (error) {
@@ -57,8 +56,8 @@ function Login(props) {
                     <h1 className="login-form-header-heading">LOGIN</h1>
                 </div>
                 <div className="login-form-input">
-                    <input className="login-form-input-field" type="text" placeholder="Email" onChange={(e) => {setEmail(e.target.value)}} />
-                    <input className="login-form-input-field" type="text" placeholder="Password" onChange={(e) => {setPassword(e.target.value)}}/>
+                    <input className="login-form-input-field" type="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value)}} />
+                    <input className="login-form-input-field" type="password" placeholder="Password" onChange={(e) => {setPassword(e.target.value)}}/>
                     <p className={errorMsg ? "login-form-errorMsg__active" : "login-form-errorMsg__inactive"}>Your email or password is wrong</p>
                 </div>
                 <div className="login-form-submit">
