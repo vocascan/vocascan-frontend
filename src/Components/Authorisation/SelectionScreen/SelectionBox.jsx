@@ -38,7 +38,7 @@ function SelectionBox(props) {
                     {items}
                 </ul>
             </div>
-            <button className="selectBox-btn" onClick={handleClick}>Select this plan</button>
+            <button className="selectBox-btn" onClick={() => { handleClick(); props.function() }}>Select this plan</button>
         </div>
     );
 }
