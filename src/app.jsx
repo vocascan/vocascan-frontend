@@ -11,6 +11,7 @@ import AddVocab from './Components/AddVocab/AddVocab.jsx';
 import SelectionScreen from './Components/Authorisation/SelectionScreen/SelectionScreen.jsx';
 import Login from './Components/Authorisation/Login/Login.jsx';
 import Register from './Components/Authorisation/Register/Register.jsx';
+import FirstStartup from './Components/Popups/FirstStartup.jsx';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
       <HashRouter>
         <div className="root">
           <Nav />
+          <FirstStartup />
           <Route path="/addVocab" component={AddVocab} />
         </div>
       </HashRouter>);
