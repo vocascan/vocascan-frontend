@@ -1,11 +1,10 @@
-export const login = (props) => {
+export const register = (props) => {
     return {
-        type: 'SIGN_IN',
+        type: 'REGISTER',
         payload: {
             userName: props.userName,
             email: props.email,
-            jwt: props.jwt,
-            
+            jwt: props.jwt
         }
     }
 } 

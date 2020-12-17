@@ -4,30 +4,45 @@ let initialState = {
         email: "",
         jwt: "",
     },
-    isLoggedIn: false
-
-
-
+    serverAddress: "",
+    isLoggedIn: false,
+    firstLogin: false
 }
 
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'REGISTER':
+            return {
+                ...state,
+                user: {
+                    username: action.payload.username,
+                    email: action.payload.email,
+                    jwt: action.payload.jwt
+                },
+                isLoggedIn: true,
+                firstLogin: true
+            }
         case 'SIGN_IN':
             return {
                 ...state,
-                isLoggedIn: true,
                 user: {
                     userName: action.payload.userName,
                     email: action.payload.email,
                     jwt: action.payload.jwt
-                }
-                
+                },
+                isLoggedIn: true
             }
+            
         case 'SIGN_OUT':
             return {
-                state,
+                ...state,
                 isLoggedIn: false
             };
+        case 'SET_SERVER_SETTINGS':
+            return {
+                ...state,
+                serverAddress: action.payload.serverAddress
+            }
         default:
             return state;
     }
