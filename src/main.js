@@ -17,7 +17,8 @@ const createWindow = () => {
     icon: __dirname + '/images/vocascan-logo.png',
     webPreferences: {
       nodeIntegration: true,
-      nodeIntegrationInWorker: true
+      nodeIntegrationInWorker: true,
+      webSecurity: false
     }
   });
 
