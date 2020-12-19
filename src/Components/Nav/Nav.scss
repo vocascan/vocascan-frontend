@@ -3,6 +3,7 @@
   height: 100vh;
   background: #313A46;
   position: relative;
+  z-index: 4;
 
   ul {
     margin: 0;
@@ -13,7 +14,7 @@
     width: 200px;
     height: 35px;
     float: left;
-    margin: 30px 0 60px;
+    margin: 12px 0 60px;
 
     h1{
       color: #FFFFFF;

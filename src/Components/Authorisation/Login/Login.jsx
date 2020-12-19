@@ -3,7 +3,7 @@ import './Login.scss';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import {useDispatch, useSelector} from "react-redux"
-import { login } from "../../../redux/Actions/index.js";
+import { signIn } from "../../../redux/Actions/signIn.js";
 
 function Login(props) {
 
@@ -38,7 +38,7 @@ function Login(props) {
             .then(response => {
                 setErrorMsg(false);
                 //store username, email and jwt token in redux store
-                dispatch(login({userName: response.data["username"], email: email, jwt: response.data["jwt"]}));
+                dispatch(signIn({username: response.data["username"], email: email, jwt: response.data["jwt"]}));
 
             })
             .catch(function (error) {
