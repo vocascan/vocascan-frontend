@@ -1,6 +1,6 @@
 let initialState = {
     user: {
-        userName: "",
+        username: "",
         email: "",
         jwt: "",
     },
@@ -26,7 +26,7 @@ const loginReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: {
-                    userName: action.payload.userName,
+                    username: action.payload.username,
                     email: action.payload.email,
                     jwt: action.payload.jwt
                 },
@@ -36,7 +36,14 @@ const loginReducer = (state = initialState, action) => {
         case 'SIGN_OUT':
             return {
                 ...state,
-                isLoggedIn: false
+                user: {
+                    username: "",
+                    email: "",
+                    jwt: "",
+                },
+                serverAddress: "",
+                isLoggedIn: false,
+                firstLogin: false
             };
         case 'SET_SERVER_SETTINGS':
             return {

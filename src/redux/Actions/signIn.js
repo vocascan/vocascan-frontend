@@ -1,8 +1,8 @@
-export const login = (props) => {
+export const signIn = (props) => {
     return {
         type: 'SIGN_IN',
         payload: {
-            userName: props.userName,
+            username: props.username,
             email: props.email,
             jwt: props.jwt,
             

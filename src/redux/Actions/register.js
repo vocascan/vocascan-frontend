@@ -2,7 +2,7 @@ export const register = (props) => {
     return {
         type: 'REGISTER',
         payload: {
-            userName: props.userName,
+            username: props.username,
             email: props.email,
             jwt: props.jwt
         }
