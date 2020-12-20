@@ -3,6 +3,7 @@ import './SelectionBox.scss'
 import CheckSign from '../../../images/icons/check.png';
 import description from './Description.js';
 import { useHistory } from "react-router-dom";
+import Button from '@material-ui/core/Button'; 
 
 
 function SelectionBox(props) {
@@ -38,7 +39,9 @@ function SelectionBox(props) {
                     {items}
                 </ul>
             </div>
-            <button className="selectBox-btn" onClick={handleClick}>Select this plan</button>
+            <Button variant="outlined" color="primary" onClick={handleClick}>
+                Primary
+            </Button>
         </div>
     );
 }
