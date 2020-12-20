@@ -2,17 +2,12 @@ import React, {useState} from 'react';
 import './Login.scss';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
-<<<<<<< HEAD
-import {useDispatch, useSelector} from "react-redux"
-import { signIn } from "../../../redux/Actions/signIn.js";
-=======
 import { useForm } from 'react-hook-form';
 import {useDispatch} from "react-redux"
 import { login } from "../../../redux/Actions/index.js";
 import Button from '@material-ui/core/Button'; 
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../../colors.js';
->>>>>>> mui
 
 function Login(props) {
 
