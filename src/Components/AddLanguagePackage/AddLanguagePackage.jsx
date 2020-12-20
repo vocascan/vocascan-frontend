@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import InputField from '../Others/InputField/InputField.jsx';
 import Dropdown from '../Others/Dropdown/Dropdown.jsx';
 import languages from './Languages.js';
+import {useSelector} from "react-redux"
 import './AddLanguagePackage.scss';
 
 function AddLanguagePackage(props) {
@@ -11,10 +12,34 @@ function AddLanguagePackage(props) {
     const [translatedLanguage, setTranslatedLanguage] = useState('');
     const [vocabsPerDay, setVocabsPerDay] = useState(100);
     const [rightTranslations, setRightTranslations] = useState(2);
+    const jwtToken = useSelector(state => state.login.user.jwt);
 
-    function submitHandler() {
-        //vocascanModule.addLanguagePackage(name, foreignLanguage, translatedLanguage, vocabsPerDay, rightTranslations);
-        props.function()
+    //make api call to add vocab package
+    async function submitHandler() {
+        //create the post request body
+        let body = {
+            "name": name,
+            "foreignLanguage": foreignLanguage,
+            "translatedLanguage": translatedLanguage,
+            "vocabsPerDay": vocabsPerDay,
+            "rightTranslations": rightTranslations
+        }
+        //create the config header file for request
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'jwt': jwtToken
+            }
+        }
+        axios.post(serverAddress + '/api/createPackage', body, config)
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(function (error) {
+                if (error.response.status == 401) {
+                    console.log("jwt expired")
+                }
+            })
     }
 
     return (

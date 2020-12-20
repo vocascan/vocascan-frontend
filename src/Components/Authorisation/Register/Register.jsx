@@ -48,8 +48,20 @@ function Register(props) {
                 'Content-Type': 'application/json',
             }
         }
+<<<<<<< Updated upstream
         axios.post('http://127.0.0.1:8080/api/register', body, config)
             .then(response => console.log(response.data));
+=======
+        axios.post('http://127.0.0.1:13200/api/register', body, config)
+            .then(response => {
+                dispatch(register({username: username, email: email, jwt: response.data["jwt"]}));
+            })
+            .catch(function (error) {
+                if (error.response.status == 409) {
+                    setEmailIsUsed(true);
+                }
+            });
+>>>>>>> Stashed changes
     }
 
     return (
