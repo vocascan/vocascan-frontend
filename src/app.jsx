@@ -6,6 +6,7 @@ import Image from './images/vocascan-logo.png';
 
 
 
+
 import Nav from './Components/Nav/Nav.jsx';
 import AddVocab from './Components/AddVocab/AddVocab.jsx';
 import SelectionScreen from './Components/Authorisation/SelectionScreen/SelectionScreen.jsx';

@@ -53,9 +53,16 @@ function Register(props) {
                 'Content-Type': 'application/json',
             }
         }
+<<<<<<< HEAD
         axios.post('http://127.0.0.1:13200/api/register', body, config)
             .then(response => {
                 dispatch(register({userName: response.data["username"], email: email, jwt: response.data["jwt"]}));
+=======
+
+        axios.post('http://127.0.0.1:13200/api/register', body, config)
+            .then(response => {
+                dispatch(register({username: username, email: email, jwt: response.data["jwt"]}));
+>>>>>>> mui
             })
             .catch(function (error) {
                 if (error.response.status == 409) {
