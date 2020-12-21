@@ -3,7 +3,10 @@ import { Button, Link } from 'react-router-dom';
 import NavButton from './NavButton.jsx';
 import './Nav.scss';
 
+
+
 function Nav() {
+
     return (
         <div className="nav">
             <div className="nav-title">

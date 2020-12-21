@@ -2,11 +2,10 @@ import React, {useState} from 'react';
 import './Login.scss';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
-import { useForm } from 'react-hook-form';
-import {useDispatch} from "react-redux"
-import { login } from "../../../redux/Actions/index.js";
-import Button from '@material-ui/core/Button'; 
-import { ThemeProvider } from '@material-ui/styles';
+import {useDispatch, useSelector} from "react-redux"
+import { signIn } from "../../../redux/Actions/signIn.js";
+import Button from '@material-ui/core/Button';
+import { ThemeProvider } from '@material-ui/styles'; 
 import theme from '../../../colors.js';
 
 function Login(props) {
@@ -53,9 +52,6 @@ function Login(props) {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-
-        
         <div className="login">
             <div className="login-form">
                 <div className="login-form-header">
@@ -68,14 +64,13 @@ function Login(props) {
                     <p className={errorMsg ? "login-form-errorMsg__active" : "login-form-errorMsg__inactive"}>Your email or password is wrong</p>
                 </div>
                 <div className="login-form-submit">
-                    <Button variant="contained" color="secondary">
+                    <Button variant="contained" color="palette.info.main" onClick={submitLogin}>
                         Primary
                     </Button>
                     <p className="login-form-submit-register">Don't have an account? <a className="login-form-submit-register-link" onClick={handleClickRegister}>Sign Up</a></p>
                 </div>
             </div>
-            </div>
-        </ThemeProvider>
+        </div>
     )
 }
 

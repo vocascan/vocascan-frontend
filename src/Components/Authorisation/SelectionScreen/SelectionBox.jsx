@@ -4,10 +4,21 @@ import CheckSign from '../../../images/icons/check.png';
 import description from './Description.js';
 import { useHistory } from "react-router-dom";
 import Button from '@material-ui/core/Button'; 
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+  selectBox: {
+    width: "70%",
+    height: "30px",
+    margin: "0 auto 10px",
+  },
+})
 
 
 function SelectionBox(props) {
 
+    const classes = useStyles();
     //execute function on button click
     let history = useHistory();
 
@@ -39,13 +50,9 @@ function SelectionBox(props) {
                     {items}
                 </ul>
             </div>
-<<<<<<< HEAD
-            <button className="selectBox-btn" onClick={() => { handleClick(); props.function() }}>Select this plan</button>
-=======
-            <Button variant="outlined" color="primary" onClick={handleClick}>
+            <Button className={classes.selectBox} variant="outlined" color="primary" onClick={handleClick}>
                 Primary
             </Button>
->>>>>>> mui
         </div>
     );
 }
