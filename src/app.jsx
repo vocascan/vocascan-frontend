@@ -6,6 +6,7 @@ import Image from './images/vocascan-logo.png';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './colors.js';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import './index.scss'
 
 
@@ -54,12 +55,12 @@ function App() {
     return (
       <ThemeProvider theme={theme}>
         <HashRouter>
-          <div className="root">
+          <Box className={classes.root}>
             <Nav />
             <TopNav />
             <FirstStartup />
             <Route path="/addVocab" component={AddVocab} />
-          </div>
+          </Box>
         </HashRouter>
       </ThemeProvider>);
   }

@@ -7,13 +7,14 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 
-const useStyles = makeStyles({
-  selectBox: {
-    width: "70%",
-    height: "30px",
-    margin: "0 auto 10px",
-  },
-})
+const useStyles = makeStyles((theme) => ({
+    selectBox: {
+        width: "70%",
+        height: "30px",
+        margin: "0 auto 10px",
+        background: theme.palette.error.main,
+    }
+}));
 
 
 function SelectionBox(props) {
@@ -50,7 +51,7 @@ function SelectionBox(props) {
                     {items}
                 </ul>
             </div>
-            <Button className={classes.selectBox} variant="outlined" color="primary" onClick={handleClick}>
+            <Button className={classes.selectBox} variant="outlined" onClick={handleClick}>
                 Primary
             </Button>
         </div>

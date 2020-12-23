@@ -5,17 +5,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     topNav: {
         width: "calc(100% - 200px)",
         height: "40px",
-        background: "#313A46",
+        background: theme.palette.secondary.main,
         margin: "0 0 0 200px",
         position: "absolute",
         zIndex: 3,
     },
     user: {
-        color: "#FFFFFF",
+        color: theme.palette.font.light,
         position: "absolute",
         left: "85%",
         top: "50%",
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
         width: "200px",
         height: "150px",
         margin: "40px 0 0 0",
-        background: "#313A46",
+        background: theme.palette.secondary.main,
         position: "absolute",
         left: "85%",
         transform: "translate(-50%,0)",
@@ -50,9 +50,9 @@ const useStyles = makeStyles({
     menuListItemBtn: {
         padding: "10px 0",
         width: "100%",
-        color: "#ffffff"
+        color: theme.palette.font.light
     }
-})
+}));
 
 
 function TopNav() {

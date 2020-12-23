@@ -4,8 +4,31 @@ import Dropdown from '../Others/Dropdown/Dropdown.jsx';
 import languages from './Languages.js';
 import {useSelector} from "react-redux"
 import './AddLanguagePackage.scss';
+import { makeStyles } from '@material-ui/core/styles';
+import { Box } from "@material-ui/core";
+
+
+const useStyles = makeStyles((theme) => ({
+    lngpckg: {
+        width: "100%",
+        height: "75%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+    },
+    dropdown: {
+        width: "100%",
+        height: "50px",
+        display: "flex",
+        justifyContent: "space-between",
+        zIndex: 4,
+    }
+}));
+
 
 function AddLanguagePackage(props) {
+
+    const classes = useStyles();
 
     const [name, setName] = useState('');
     const [foreignLanguage, setForeignLanguage] = useState('');
@@ -43,7 +66,7 @@ function AddLanguagePackage(props) {
     }
 
     return (
-        <form className="lngpckg">
+        <Box className={classes.lngpckg}>
             <label>
                 <h3>Name</h3>
                 <InputField placeholder="z.B. Englisch - Deutsch" function={e => { setName(e.target.value)}}/>
@@ -71,7 +94,7 @@ function AddLanguagePackage(props) {
             </label>
 
             <button className="lngpckg-submitBtn" type="button" value="Submit" onClick={submitHandler}>Weiter</button>
-        </form >
+        </Box >
     );
 }
 

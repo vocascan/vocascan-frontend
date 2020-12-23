@@ -6,14 +6,14 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button'
 //import './Nav.scss';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     nav: {
         width: "200px",
         height: "100vh",
-        background: "#313A46",
+        background: theme.palette.secondary.main,
         position: "relative",
         zIndex: 4,
-        },
+    },
     title: {
         width: "200px",
         height: "35px",
@@ -21,13 +21,13 @@ const useStyles = makeStyles({
         margin: "12px 0 60px",
     },
     text: {
-        color: "#FFFFFF",
+        color: theme.palette.font.light,
         textTransform: "uppercase",
         textAlign: "center",
         fontSize: "17px",
     },
     settings: {
-        backgroundColor: "#242424",
+        backgroundColor: theme.palette.third.main,
         border: "none",
         outline: "none",
         width: "100%",
@@ -37,13 +37,13 @@ const useStyles = makeStyles({
         left: 0,
     },
     settingsText: {
-        color: "#8790A3",
+        color: theme.palette.font.middle,
         textTransform: "uppercase",
         fontSize: "17px",
         margin: 0,
     }
 
-})
+}));
 
 
 

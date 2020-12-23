@@ -8,18 +8,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, Select, InputLabel, MenuItem } from '@material-ui/core';
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     routedSection: {
         width: "100%",
         height: "100vh",
         display: "flex",
         flexDirection: "column",
-        background: "#F1F3FA",
     },
     addVocabForm: {
         width: "50%",
         height: "60%",
-        color: "#000000",
+        color: theme.palette.font.dark,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -33,25 +32,27 @@ const useStyles = makeStyles({
         zIndex: 4,
     },
     formControl: {
+        margin: theme.spacing(1),
         minWidth: "200px",
     },
     selectEmpty: {
+        marginTop: theme.spacing(2),
     },
     submitBtn: {
         width: "150px",
         height: "35px",
-        background: "#727CF5",
+        background: theme.palette.action.main,
         borderRadius: "5px",
         border: "none",
         outline: "none",
-        boxShadow: "-1px 3px 5px#b4bed6",
+        boxShadow: "-1px 3px 5px " + theme.palette.shadow.main,
         margin: "0 auto",
         cursor: "pointer",
-        color: "#ffffff",
+        color: theme.palette.font.light,
         fontSize: "15px",
     }
     
-})
+}));
 
 
 function AddVocab(props) {
@@ -90,7 +91,7 @@ function AddVocab(props) {
     };
 
     return (
-        <Box className={classes.routedSection}>
+        <Box className={classes.routedSection} color="secondary">
             <Box className={classes.addVocabForm}>
                 <h1>Add vocabulary</h1>
 
