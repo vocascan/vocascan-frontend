@@ -5,7 +5,7 @@ let initialState = {
         jwt: "",
     },
     serverAddress: "",
-    isLoggedIn: true,
+    isLoggedIn: false,
     firstLogin: false
 }
 

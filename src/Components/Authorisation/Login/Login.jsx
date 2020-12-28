@@ -1,15 +1,69 @@
 import React, {useState} from 'react';
-import './Login.scss';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import {useDispatch, useSelector} from "react-redux"
 import { signIn } from "../../../redux/Actions/signIn.js";
-import Button from '@material-ui/core/Button';
-import { ThemeProvider } from '@material-ui/styles'; 
-import theme from '../../../colors.js';
+import { Button, TextField, makeStyles, Box } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+    login: {
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        background: theme.palette.primaryColour.main,
+    },
+    loginForm: {
+        width: "25%",
+        height: "60%",
+        margin: "auto",
+        display: "flex",
+        justifyContent: "space-around",
+        flexDirection: "column",
+        padding: "40px",
+        boxShadow: "-1px 3px 5px " + theme.palette.shadow.main,
+    },
+    header: {
+        width: "100%",
+        height: "33%",
+    },
+    headerLogo: {
+        height: "70%",
+        margin: "auto",
+    },
+    formInput: {
+        width: "60%",
+        height: "30%",
+        margin: "0 auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-around",
+    },
+    errorMsgInactive: {
+        display: "none",
+    },
+    errorMsgActive: {
+        fontSize: "15px",
+        color: theme.palette.error.main,
+    },
+    submitBtn: {
+        width: "60%",
+        height: "40px",
+        color: theme.palette.font.light,
+        background: theme.palette.action.main,
+    },
+    submitRegister: {
+        fontSize: "12px",
+},
+    submitRegisterLink: {
+        color: "blue",
+        cursor: "pointer",
+    }
+}));
 
 function Login(props) {
 
+    const classes = useStyles();
     //variables
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState(""); 
@@ -52,25 +106,31 @@ function Login(props) {
     }
 
     return (
-        <div className="login">
-            <div className="login-form">
-                <div className="login-form-header">
-                    <img className="login-form-header-logo" src={props.image} alt="server-logo" />
+        <Box className={classes.login}>
+            <Box className={classes.loginForm}>
+                <Box className={classes.header}>
+                    <img className={classes.headerLogo} src={props.image} alt="server-logo" />
                     <h1 className="login-form-header-heading">LOGIN</h1>
-                </div>
-                <div className="login-form-input">
-                    <input className="login-form-input-field" type="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value)}} />
-                    <input className="login-form-input-field" type="password" placeholder="Password" onChange={(e) => {setPassword(e.target.value)}}/>
-                    <p className={errorMsg ? "login-form-errorMsg__active" : "login-form-errorMsg__inactive"}>Your email or password is wrong</p>
-                </div>
-                <div className="login-form-submit">
-                    <Button variant="contained" color="palette.info.main" onClick={submitLogin}>
-                        Primary
+                </Box>
+                <Box className={classes.formInput}>
+                    <TextField required id="standard-basic" label="Email" onChange={(e) => { setEmail(e.target.value) }} />
+                    <TextField
+                        required
+                        id="standard-password-input"
+                        label="Password"
+                        type="password"
+                        autoComplete="current-password"
+                        onChange={(e) => { setPassword(e.target.value) }} />
+                    <p className={errorMsg ? classes.errorMsgActive : classes.errorMsgInactive}>Your email or password is wrong</p>
+                </Box>
+                <Box>
+                    <Button variant="contained" className={classes.submitBtn} onClick={submitLogin}>
+                        SIGN IN
                     </Button>
-                    <p className="login-form-submit-register">Don't have an account? <a className="login-form-submit-register-link" onClick={handleClickRegister}>Sign Up</a></p>
-                </div>
-            </div>
-        </div>
+                    <p className={classes.submitRegister}>Don't have an account? <a className={classes.submitRegisterLink} onClick={handleClickRegister}>Sign Up</a></p>
+                </Box>
+            </Box>
+        </Box>
     )
 }
 
