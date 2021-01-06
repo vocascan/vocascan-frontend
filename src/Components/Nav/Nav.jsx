@@ -10,31 +10,44 @@ const useStyles = makeStyles((theme) => ({
     nav: {
         width: "200px",
         height: "100vh",
-        background: theme.palette.secondary.main,
-        position: "relative",
+        background: theme.palette.secondaryColour.main,
+        gridColumnStart:1,
+        gridColumnEnd:1,
+        gridRowStart:1,
+        gridRowEnd:2,
         zIndex: 4,
+        display: "grid",
+        gridTemplateColumns: "100%",
+        gridTemplateRows: "40px auto 40px",
+
     },
     title: {
-        width: "200px",
-        height: "35px",
         float: "left",
-        margin: "12px 0 60px",
+        gridColumn: 1,
+        gridRow: 1,
+        textAlign: "center",
     },
     text: {
         color: theme.palette.font.light,
         textTransform: "uppercase",
-        textAlign: "center",
         fontSize: "17px",
+        margin: "auto",
+    },
+    buttonList: {
+        gridColumn: 1,
+        gridRow: 2,
+        marginTop: "40px"
     },
     settings: {
         backgroundColor: theme.palette.third.main,
         border: "none",
         outline: "none",
         width: "100%",
-        height: "55px",
-        position: "absolute",
+        height: "100%",
         bottom: 0,
         left: 0,
+        gridColumn: 1,
+        gridRow: 3,
     },
     settingsText: {
         color: theme.palette.font.middle,
@@ -54,7 +67,7 @@ function Nav() {
             <Box className={classes.title}>
                 <h1 className={classes.text}>Vocascan</h1>
             </Box>
-            <ul>
+            <ul className={classes.buttonList}>
                 <NavButton name="New Vokabulary" link="/addVocab" />
                 <NavButton name="Learn" link="#" />
                 <NavButton name="Progress" link="#" />

@@ -13,9 +13,9 @@ import './index.scss'
 
 import Nav from './Components/Nav/Nav.jsx';
 import AddVocab from './Components/AddVocab/AddVocab.jsx';
-import SelectionScreen from './Components/Authorisation/SelectionScreen/SelectionScreen.jsx';
-import Login from './Components/Authorisation/Login/Login.jsx';
-import Register from './Components/Authorisation/Register/Register.jsx';
+import SelectionScreen from './Components/Authorization/SelectionScreen/SelectionScreen.jsx';
+import Login from './Components/Authorization/Login/Login.jsx';
+import Register from './Components/Authorization/Register/Register.jsx';
 import FirstStartup from './Components/Popups/FirstStartup.jsx';
 import TopNav from './Components/Nav/TopNav.jsx';
 
@@ -24,7 +24,11 @@ import TopNav from './Components/Nav/TopNav.jsx';
 
 const useStyles = makeStyles({
   root: {
-    display: "flex",
+    display: "grid",
+    width: "100%",
+    height: "100vh",
+    gridTemplateColumns: "200px auto",
+    gridTemplateRows: "40px auto",
     margin: 0,
     padding: 0,
   },

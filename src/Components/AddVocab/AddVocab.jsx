@@ -5,31 +5,34 @@ import languages from '../AddLanguagePackage/Languages.js';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, Select, InputLabel, MenuItem } from '@material-ui/core';
+import { FormControl, Select, InputLabel, MenuItem, TextField } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
-    routedSection: {
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-    },
     addVocabForm: {
-        width: "50%",
-        height: "60%",
-        color: theme.palette.font.dark,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
+        gridColumn: 2,
+        gridRow: 2,
         margin: "auto",
+        color: theme.palette.font.dark,
+        width: "100%",
+        height: "100%",
+        display: "grid",
+        gridTemplateColumns: "25% auto 25%",
+        gridTemplateRows: "20% 40px 80px auto 40px 20%",
+    },
+    heading: {
+        gridColumn: 2,
+        gridRow: 2,
     },
     dropdowns: {
         width: "100%",
         height: "50px",
+        gridColumn: 2,
+        gridRow: 3,
         display: "flex",
         justifyContent: "space-between",
         zIndex: 4,
+        margin: "auto",
     },
     formControl: {
         margin: theme.spacing(1),
@@ -38,18 +41,21 @@ const useStyles = makeStyles((theme) => ({
     selectEmpty: {
         marginTop: theme.spacing(2),
     },
+    inputFields: {
+        gridColumn: 2,
+        gridRow: 4,
+        display: "grid",
+        flexDirection: "column",
+        justifyContent: "space-around",
+    },
     submitBtn: {
         width: "150px",
         height: "35px",
+        gridColumn: 2,
+        gridRow: 5,
         background: theme.palette.action.main,
-        borderRadius: "5px",
-        border: "none",
-        outline: "none",
         boxShadow: "-1px 3px 5px " + theme.palette.shadow.main,
         margin: "0 auto",
-        cursor: "pointer",
-        color: theme.palette.font.light,
-        fontSize: "15px",
     }
     
 }));
@@ -90,10 +96,29 @@ function AddVocab(props) {
         setAge(event.target.value);
     };
 
+    //make api call to get language packages
+    async function submitLogin() {
+        //create the post request body
+        let body = {
+        }
+        //create the config header file for request
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+        axios.post(serverAddress + '/api/signIn', body, config)
+            .then(response => {
+                <MenuItem value={10}>Ten</MenuItem>
+            })
+            .catch(function (error) {
+
+            })
+    }
+
     return (
-        <Box className={classes.routedSection} color="secondary">
             <Box className={classes.addVocabForm}>
-                <h1>Add vocabulary</h1>
+                <h1 className={classes.heading}>Add vocabulary</h1>
 
                 <Box className={classes.dropdowns}>
                     {/*<label className="addVocab-dropdowns-field">
@@ -112,9 +137,7 @@ function AddVocab(props) {
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        <PackageItems />
                         </Select>
                     </FormControl>
                     <FormControl required variant="outlined" className={classes.formControl}>
@@ -135,16 +158,17 @@ function AddVocab(props) {
                         </Select>
                     </FormControl>
                 </Box>
-
-                <InputField placeholder="Fremdwort" function={e => { setForeignWord(e.target.value) }}/>
-                <InputField placeholder="1. Übersetzung" function={e => { setGroupName(e.target.value) }}/>
-                <InputField placeholder="2. Übersetzung" function={e => { setGroupName(e.target.value) }}/>
-                <InputField placeholder="3. Übersetzung" function={e => { setGroupName(e.target.value) }} />
-                <InputField placeholder="Beschreibung" function={e => { setDescription(e.target.value) }}/>
+                <Box className={classes.inputFields}>
+                    <TextField required id="standard-basic" label="Fremdwort" onChange={(e) => { setEmail(e.target.value) }} />
+                    <TextField required id="standard-basic" label="1. Übersetzung" onChange={(e) => { setEmail(e.target.value) }} />
+                    <TextField required id="standard-basic" label="2. Übersetzung" onChange={(e) => { setEmail(e.target.value) }} />
+                    <TextField required id="standard-basic" label="3. Übersetzung" onChange={(e) => { setEmail(e.target.value) }} />
+                    <TextField required id="standard-basic" label="Beschreibung" onChange={(e) => { setEmail(e.target.value) }} />
+                </Box>
+                
 
                 <Button className={classes.submitBtn} onClick={() => {submit()}}>Add</Button>
             </Box>
-        </Box>
     )
 }
 

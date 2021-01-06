@@ -7,12 +7,12 @@ import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
     topNav: {
-        width: "calc(100% - 200px)",
-        height: "40px",
-        background: theme.palette.secondary.main,
-        margin: "0 0 0 200px",
-        position: "absolute",
+        background: theme.palette.secondaryColour.main,
+        gridColumn: 2,
+        gridRow: 1,
         zIndex: 3,
+        height: "100%",
+        width: "100%",
     },
     user: {
         color: theme.palette.font.light,
