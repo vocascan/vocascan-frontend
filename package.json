@@ -13,10 +13,9 @@
   },
   "keywords": [],
   "author": {
-    "name": "noctera",
-    "email": "julian.jaksch@gmx.de"
+    "name": "noctera"
   },
-  "license": "MIT",
+  "license": "Apache 2.0",
   "config": {
     "forge": {
       "packagerConfig": {},

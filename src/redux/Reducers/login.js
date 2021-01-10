@@ -1,11 +1,11 @@
 let initialState = {
     user: {
-        username: "Julian",
+        username: "",
         email: "",
         jwt: "",
     },
     serverAddress: "",
-    isLoggedIn: true,
+    isLoggedIn: false,
     firstLogin: false
 }
 
