@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import InputField from '../Others/InputField/InputField.jsx';
 import Dropdown from '../Others/Dropdown/Dropdown.jsx';
 import languages from './Languages.js';
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
 import './AddLanguagePackage.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@material-ui/core";

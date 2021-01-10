@@ -25,6 +25,7 @@ function SelectionBox(props) {
 
     function handleClick() {
         history.push("/login");
+        props.function();
     }
 
 

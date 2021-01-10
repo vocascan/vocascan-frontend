@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, Select, InputLabel, MenuItem, TextField } from '@material-ui/core';
+import { useSelector } from "react-redux";
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -63,18 +65,20 @@ const useStyles = makeStyles((theme) => ({
 
 function AddVocab(props) {
     const classes = useStyles();
-    const packages = [];//vocascanModule.getLanguagePackages();
-    const [groups, setGroups] = useState([
-        {id: 0, title: 'Deutsch'},
-        {id: 1, title: 'Englisch'},
-        {id: 2, title: 'Spanisch'},
-    ]);
 
+    const [packages, setPackages] = useState([]);
     const [packageName, setPackageName] = useState("");
+    const [groups, setGroups] = useState([]);
     const [groupName, setGroupName] = useState("");
     const [foreignWord, setForeignWord] = useState("");
     const [translations, setTranslations] = useState([]);
     const [description, setDescription] = useState("");
+    const jwt = useSelector(state => state.login.user.jwt);
+    const serverAddress = useSelector(state => state.login.serverAddress);
+
+    useEffect(() => {
+        getPackages()
+    }, [jwt, serverAddress]);
 
     
     function refreshGroups() {
@@ -97,23 +101,48 @@ function AddVocab(props) {
     };
 
     //make api call to get language packages
-    async function submitLogin() {
-        //create the post request body
-        let body = {
-        }
-        //create the config header file for request
-        const config = {
+    function getPackages() {
+
+
+        axios({
+            method: "GET",
+            url: serverAddress + "/api/packages",
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `${ jwt }`,
             }
-        }
-        axios.post(serverAddress + '/api/signIn', body, config)
-            .then(response => {
-                <MenuItem value={10}>Ten</MenuItem>
-            })
-            .catch(function (error) {
+        })
+        .then(response => {
+            setPackages(response.data);
+            console.log(response.data);
+        })
+        .catch(function (error) {
 
-            })
+        })
+    }
+
+    //make api call to get group
+    function getGroups(name) {
+
+        console.log(name);
+        axios({
+            method: "GET",
+            url: serverAddress + "/api/groups",
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `${ jwt }`,
+            },
+            params: {
+                languagePackage: name
+            }
+        })
+        .then(response => {
+            setGroups(response.data);
+            console.log(response.data);
+        })
+        .catch(function (error) {
+
+        })
     }
 
     return (
@@ -121,23 +150,21 @@ function AddVocab(props) {
                 <h1 className={classes.heading}>Add vocabulary</h1>
 
                 <Box className={classes.dropdowns}>
-                    {/*<label className="addVocab-dropdowns-field">
-                        Vocabulary pack
-                        <Dropdown title="Auswählen..." function={(e) => {setPackageName(e.target.value), refreshGroups() } } selection={packages} addField={false}/>
-    </label>*/}
                     <FormControl required variant="outlined" className={classes.formControl}>
                         <InputLabel id="demo-simple-select-outlined-label">Package</InputLabel>
                         <Select
                             labelId="demo-simple-select-outlined-label"
                             id="demo-simple-select-outlined"
                             value={packageName}
-                            onChange={(e) => setPackageName(e.target.value)}
+                        onChange={(e) => { setPackageName(e.target.value), getGroups(e.target.value) } }
                             label="Package"
                         >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <PackageItems />
+                        {packages.map((p) => (
+                            <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
+                        ))}
                         </Select>
                     </FormControl>
                     <FormControl required variant="outlined" className={classes.formControl}>
@@ -146,15 +173,16 @@ function AddVocab(props) {
                             labelId="demo-simple-select-outlined-label"
                             id="demo-simple-select-outlined"
                             value={groupName}
-                            onChange={(e) => setGroupName(e.target.value)}
+                        onChange={(e) => { setGroupName(e.target.value)}}
                             label="Group"
                         >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        
+                        {groups.map((p) => (
+                            <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
+                        ))}
                         </Select>
                     </FormControl>
                 </Box>
