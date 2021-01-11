@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         width: "40%",
         height: "60%",
         margin: "auto",
-        background: theme.palette.primary.main,
+        background: theme.palette.primaryColour.main,
         zIndex: "11",
         padding: "3% 10%",
         display: "flex",
