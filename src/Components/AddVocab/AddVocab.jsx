@@ -145,6 +145,25 @@ function AddVocab(props) {
         })
     }
 
+    //create dropdown items for language packages
+    const languagePackageDropdownItems = packages.map((p) => (
+        <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
+    ))
+
+    
+    //create dropdown items for groups
+    let groupDropdownItems;
+    //show if array of groups is 0, because .map is not working with empty array
+    if (groups != null) {
+        groupDropdownItems = groups.map((p) => (
+            <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
+        ))
+    }
+    else {
+        groupDropdownItems = <MenuItem value="">no groups</MenuItem>
+    }
+    
+
     return (
             <Box className={classes.addVocabForm}>
                 <h1 className={classes.heading}>Add vocabulary</h1>
@@ -162,9 +181,7 @@ function AddVocab(props) {
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        {packages.map((p) => (
-                            <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
-                        ))}
+                        {languagePackageDropdownItems}
                         </Select>
                     </FormControl>
                     <FormControl required variant="outlined" className={classes.formControl}>
@@ -180,9 +197,7 @@ function AddVocab(props) {
                             <em>None</em>
                         </MenuItem>
                         
-                        {groups.map((p) => (
-                            <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
-                        ))}
+                        {groupDropdownItems}
                         </Select>
                     </FormControl>
                 </Box>
