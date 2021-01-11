@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import InputField from '../Others/InputField/InputField.jsx';
-import Dropdown from '../Others/Dropdown/Dropdown.jsx';
 import languages from './Languages.js';
 import { useSelector } from "react-redux";
 import './AddLanguagePackage.scss';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box } from "@material-ui/core";
+import { Box, TextField, Dropdown, FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -13,15 +12,14 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         height: "75%",
         display: "flex",
+        background: theme.palette.primaryColour.main,
         flexDirection: "column",
         justifyContent: "space-between",
     },
     dropdown: {
-        width: "100%",
-        height: "50px",
-        display: "flex",
-        justifyContent: "space-between",
-        zIndex: 4,
+        display: "grid",
+        gridTemplateColumns: "50% 50%",
+        gridTemplateRows: "100px",
     }
 }));
 
@@ -65,33 +63,53 @@ function AddLanguagePackage(props) {
             })
     }
 
+    //create language dropdown items
+    const languageDropdownItems = languages.map((p) => (
+            <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
+        ))
+
     return (
         <Box className={classes.lngpckg}>
-            <label>
-                <h3>Name</h3>
-                <InputField placeholder="z.B. Englisch - Deutsch" function={e => { setName(e.target.value)}}/>
-            </label>
+            <TextField required id="standard-basic" label="Name" onChange={e => { setName(e.target.value) }} />
 
-            <div className="lngpckg-dropdown">
-                <label className="lngpckg-dropdown-field">
-                    Foreign language
-                    <Dropdown title="Auswählen..." function={e => setForeignLanguage(e.target.value)} selection={languages} addField={true} addFieldFunction={e => console.log(e.target.value)}/>
-                </label>
-                <label className="lngpckg-dropdown-field">
-                    Translated language
-                    <Dropdown title="Auswählen..." function={e => setTranslatedLanguage(e.target.value)} selection={languages} addField={true} addFieldFunction={e => console.log(e.target.value)}/>
-                </label>
-            </div>
+            <Box className={classes.dropdown}>
+                <FormControl required variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">Foreign language</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={foreignLanguage}
+                        onChange={(e) => { setForeignLanguage(e.target.value)}}
+                        label="Group"
+                        >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
+                        
+                        {languageDropdownItems}
+                        </Select>
+                </FormControl>
+                <FormControl required variant="outlined" className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-outlined-label">Translated language</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-outlined-label"
+                            id="demo-simple-select-outlined"
+                            value={translatedLanguage}
+                        onChange={(e) => { setTranslatedLanguage(e.target.value)}}
+                            label="Group"
+                        >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
+                        
+                        {languageDropdownItems}
+                        </Select>
+                    </FormControl>
+            </Box>
 
-            <label>
-                <h3>Vocabs per day</h3>
-                <InputField placeholder="z.B. 100" function={e => setVocabsPerDay(e.target.value)}/>
-            </label>
+            <TextField required id="standard-basic" label="Vocabs per day" onChange={e => setVocabsPerDay(e.target.value)} />
 
-            <label>
-                <h3>Correct translations to have successful vocabulary pairs</h3>
-                <InputField placeholder="z.B. 2" function={e => setRightTranslations(e.target.value)}/>
-            </label>
+            <TextField required id="standard-basic" label="Correct translations to have successful vocabulary pairs" onChange={e => setRightTranslations(e.target.value)} />
 
             <button className="lngpckg-submitBtn" type="button" value="Submit" onClick={submitHandler}>Weiter</button>
         </Box >

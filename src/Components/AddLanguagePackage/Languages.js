@@ -1,11 +1,11 @@
 let languagees = [
-  {id: 0, title: 'Deutsch'},
-  {id: 1, title: 'Englisch'},
-  {id: 2, title: 'Spanisch'},
-  {id: 3, title: 'Portugisisch'},
-  {id: 4, title: 'Türkisch'},
-  {id: 5, title: 'Russisch'},
-  {id: 6, title: 'Französisch'}
+  {id: 0, name: 'Deutsch'},
+  {id: 1, name: 'Englisch'},
+  {id: 2, name: 'Spanisch'},
+  {id: 3, name: 'Portugisisch'},
+  {id: 4, name: 'Türkisch'},
+  {id: 5, name: 'Russisch'},
+  {id: 6, name: 'Französisch'}
 ];
 
 export default languagees;

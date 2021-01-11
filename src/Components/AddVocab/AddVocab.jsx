@@ -145,10 +145,18 @@ function AddVocab(props) {
         })
     }
 
+
     //create dropdown items for language packages
-    const languagePackageDropdownItems = packages.map((p) => (
-        <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
-    ))
+    let languagePackageDropdownItems;
+    //show if array of groups is 0, because .map is not working with empty array
+    if (packages != null) {
+        languagePackageDropdownItems = groups.map((p) => (
+            <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
+        ))
+    }
+    else {
+        languagePackageDropdownItems = <MenuItem value="">no language packages</MenuItem>
+    }
 
     
     //create dropdown items for groups
