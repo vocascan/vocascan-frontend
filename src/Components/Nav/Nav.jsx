@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import NavButton from './NavButton.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import { useTranslation } from "react-i18next";
 //import './Nav.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -61,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Nav() {
+    const { t, i18n } = useTranslation();
     const classes = useStyles();
     return (
         <Box className={classes.nav}>
@@ -68,11 +70,11 @@ function Nav() {
                 <h1 className={classes.text}>Vocascan</h1>
             </Box>
             <ul className={classes.buttonList}>
-                <NavButton name="New Vokabulary" link="/addVocab" />
-                <NavButton name="Learn" link="#" />
-                <NavButton name="Progress" link="#" />
-                <NavButton name="All vocabulary" link="#" />
-                <NavButton name="Group learning" link="#" />
+                <NavButton name={t("navNewVocab")} link="/addVocab" />
+                <NavButton name={t("navLearn")} link="#" />
+                <NavButton name={t("navProgress")} link="#" />
+                <NavButton name={t("navAllVocabulary")} link="#" />
+                <NavButton name={t("navGroupLearning")} link="#" />
 
             </ul>
 

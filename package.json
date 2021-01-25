@@ -90,6 +90,8 @@
     "react-hook-form": "^6.13.0",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
+    "react-i18next": "^11.8.5",
+    "i18next": "^19.8.4",
     "redux": "^4.0.5",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",

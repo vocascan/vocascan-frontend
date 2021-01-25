@@ -5,8 +5,8 @@ let initialState = {
         jwt: "",
     },
     serverAddress: "",
-    isLoggedIn: false,
-    firstLogin: false
+    isLoggedIn: true,
+    firstLogin: true
 }
 
 const loginReducer = (state = initialState, action) => {
