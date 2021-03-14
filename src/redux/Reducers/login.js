@@ -6,7 +6,7 @@ let initialState = {
     },
     serverAddress: "",
     isLoggedIn: true,
-    firstLogin: true
+    firstLogin: false
 }
 
 const loginReducer = (state = initialState, action) => {

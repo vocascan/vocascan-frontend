@@ -1,100 +1,76 @@
 {
-  "name": "vocascan",
-  "productName": "vocascan",
-  "version": "1.0.0",
-  "description": "A highly configurable vocabulary trainer",
-  "main": ".webpack/main",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+  "name": "vocascan-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "a highly configurable vocabulary trainer",
+  "author": "noctera",
+  "build": {
+    "appId": "com.vocascan-desktop",
+    "files": [
+      "public/**/*",
+      "src/**/*",
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ]
   },
-  "keywords": [],
-  "author": {
-    "name": "noctera"
-  },
-  "license": "Apache 2.0",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "vocascan_desktop"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ],
-      "plugins": [
-        [
-          "@electron-forge/plugin-webpack",
-          {
-            "mainConfig": "./webpack.main.config.js",
-            "renderer": {
-              "config": "./webpack.renderer.config.js",
-              "entryPoints": [
-                {
-                  "html": "./src/index.html",
-                  "js": "./src/renderer.jsx",
-                  "name": "main_window"
-                }
-              ]
-            }
-          }
-        ]
-      ]
-    }
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/maker-deb": "^6.0.0-beta.54",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
-    "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "@electron-forge/plugin-webpack": "6.0.0-beta.54",
-    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
-    "css-loader": "^5.0.1",
-    "electron": "11.0.3",
-    "electron-devtools-installer": "^3.1.1",
-    "node-loader": "^1.0.2",
-    "style-loader": "^2.0.0"
-  },
+  "main": "public/electron.js",
+  "homepage": "./",
   "dependencies": {
-    "@babel/core": "^7.12.8",
-    "@babel/preset-env": "^7.12.7",
-    "@babel/preset-react": "^7.12.7",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
-    "axios": "^0.21.0",
-    "babel-loader": "^8.2.1",
-    "cors": "^2.8.5",
-    "electron-squirrel-startup": "^1.0.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "concurrently": "^6.0.0",
+    "cross-env": "^7.0.3",
+    "electron-is-dev": "^2.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-hook-form": "^6.13.0",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "wait-on": "^5.2.1",
+    "web-vitals": "^1.1.0",
     "react-i18next": "^11.8.5",
     "i18next": "^19.8.4",
     "redux": "^4.0.5",
+    "react-redux": "^7.2.2",
+    "electron-squirrel-startup": "^1.0.0",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
-    "url-loader": "^4.1.1"
+    "react-router-dom": "^5.2.0"
+  },
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "npm run react-build && electron-builder --publish=always",
+    "build": "npm run react-build && npm run electron-build",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^12.0.1",
+    "electron-builder": "^22.10.5",
+    "electron-devtools-installer": "^3.1.1"
   }
 }

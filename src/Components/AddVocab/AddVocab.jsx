@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import InputField from '../Others/InputField/InputField.jsx';
 import Dropdown from '../Others/Dropdown/Dropdown.jsx';
 import languages from '../AddLanguagePackage/Languages.js';
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: "-1px 3px 5px " + theme.palette.shadow.main,
         margin: "0 auto",
     }
-    
+
 }));
 
 
@@ -80,7 +80,7 @@ function AddVocab(props) {
         getPackages()
     }, [jwt, serverAddress]);
 
-    
+
     function refreshGroups() {
         //setGroups(vocascanModule.getGroups(packageName)); 
     }
@@ -97,7 +97,7 @@ function AddVocab(props) {
     }
 
     const handleChange = (event) => {
-        setAge(event.target.value);
+        //setAge(event.target.value);
     };
 
     //make api call to get language packages
@@ -109,16 +109,16 @@ function AddVocab(props) {
             url: serverAddress + "/api/packages",
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `${ jwt }`,
+                Authorization: `${jwt}`,
             }
         })
-        .then(response => {
-            setPackages(response.data);
-            console.log(response.data);
-        })
-        .catch(function (error) {
+            .then(response => {
+                setPackages(response.data);
+                console.log(response.data);
+            })
+            .catch(function (error) {
 
-        })
+            })
     }
 
     //make api call to get group
@@ -130,19 +130,19 @@ function AddVocab(props) {
             url: serverAddress + "/api/groups",
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `${ jwt }`,
+                Authorization: `${jwt}`,
             },
             params: {
                 languagePackage: name
             }
         })
-        .then(response => {
-            setGroups(response.data);
-            console.log(response.data);
-        })
-        .catch(function (error) {
+            .then(response => {
+                setGroups(response.data);
+                console.log(response.data);
+            })
+            .catch(function (error) {
 
-        })
+            })
     }
 
 
@@ -158,7 +158,7 @@ function AddVocab(props) {
         languagePackageDropdownItems = <MenuItem value="">no language packages</MenuItem>
     }
 
-    
+
     //create dropdown items for groups
     let groupDropdownItems;
     //show if array of groups is 0, because .map is not working with empty array
@@ -170,56 +170,56 @@ function AddVocab(props) {
     else {
         groupDropdownItems = <MenuItem value="">no groups</MenuItem>
     }
-    
+
 
     return (
-            <Box className={classes.addVocabForm}>
-                <h1 className={classes.heading}>Add vocabulary</h1>
+        <Box className={classes.addVocabForm}>
+            <h1 className={classes.heading}>Add vocabulary</h1>
 
-                <Box className={classes.dropdowns}>
-                    <FormControl required variant="outlined" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">Package</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-outlined-label"
-                            id="demo-simple-select-outlined"
-                            value={packageName}
-                        onChange={(e) => { setPackageName(e.target.value), getGroups(e.target.value) } }
-                            label="Package"
-                        >
+            <Box className={classes.dropdowns}>
+                <FormControl required variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">Package</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={packageName}
+                        onChange={/*(e) => { setPackageName(e.target.value), getGroups(e.target.value) }*/console.log("changed")}
+                        label="Package"
+                    >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
                         {languagePackageDropdownItems}
-                        </Select>
-                    </FormControl>
-                    <FormControl required variant="outlined" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">Group</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-outlined-label"
-                            id="demo-simple-select-outlined"
-                            value={groupName}
-                        onChange={(e) => { setGroupName(e.target.value)}}
-                            label="Group"
-                        >
+                    </Select>
+                </FormControl>
+                <FormControl required variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">Group</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={groupName}
+                        onChange={(e) => { setGroupName(e.target.value) }}
+                        label="Group"
+                    >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        
-                        {groupDropdownItems}
-                        </Select>
-                    </FormControl>
-                </Box>
-                <Box className={classes.inputFields}>
-                    <TextField required id="standard-basic" label="Fremdwort" onChange={(e) => { setEmail(e.target.value) }} />
-                    <TextField required id="standard-basic" label="1. Übersetzung" onChange={(e) => { setEmail(e.target.value) }} />
-                    <TextField required id="standard-basic" label="2. Übersetzung" onChange={(e) => { setEmail(e.target.value) }} />
-                    <TextField required id="standard-basic" label="3. Übersetzung" onChange={(e) => { setEmail(e.target.value) }} />
-                    <TextField required id="standard-basic" label="Beschreibung" onChange={(e) => { setEmail(e.target.value) }} />
-                </Box>
-                
 
-                <Button className={classes.submitBtn} onClick={() => {submit()}}>Add</Button>
+                        {groupDropdownItems}
+                    </Select>
+                </FormControl>
             </Box>
+            <Box className={classes.inputFields}>
+                <TextField required id="standard-basic" label="Fremdwort" onChange={(e) => { setForeignWord(e.target.value) }} />
+                <TextField required id="standard-basic" label="1. Übersetzung" onChange={(e) => { setTranslations(e.target.value) }} />
+                <TextField required id="standard-basic" label="2. Übersetzung" onChange={(e) => { setTranslations(e.target.value) }} />
+                <TextField required id="standard-basic" label="3. Übersetzung" onChange={(e) => { setTranslations(e.target.value) }} />
+                <TextField required id="standard-basic" label="Beschreibung" onChange={(e) => { setDescription(e.target.value) }} />
+            </Box>
+
+
+            <Button className={classes.submitBtn} onClick={() => { console.log("added") }}>Add</Button>
+        </Box>
     )
 }
 

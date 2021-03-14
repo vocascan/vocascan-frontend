@@ -80,7 +80,7 @@ function Nav() {
 
             <Link to="#" style={{ outline: 0 }}>
                 <Button className={classes.settings}>
-                    <h5 className={classes.settingsText}>Settings</h5>
+                    <h5 className={classes.settingsText}>{t("navSettings")}</h5>
                 </Button>
             </Link>
         </Box>

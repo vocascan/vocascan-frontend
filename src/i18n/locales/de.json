@@ -1,8 +1,7 @@
 {
-  "navAllVocabulary": "Alle Vokabeln",
-  "navGroupLearning": "Gruppe-lernen",
-  "navLearn": "Lernen",
   "navNewVocab": "Neue Vokabeln",
+  "navLearn": "Lernen",
   "navProgress": "Fortschritt",
-  "navSettings": "Einstellungen"
+  "navAllVocabulary": "Alle Vokabeln",
+  "navGroupLearning": "Gruppe lernen"
 }

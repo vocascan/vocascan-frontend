@@ -24,7 +24,7 @@ function Dropdown(props) {
                 type="button"
                 className="dropdown-list__btn"
                 value={item.title}
-                onClick={e => { handleSelection(e, "value"), setIsOpen(isOpen => !isOpen) }}>
+                onClick={/*e => { handleSelection(e, "value"), setIsOpen(isOpen => !isOpen) }*/console.log("changed")}>
                 {item.title}
             </button>
         </li>
@@ -42,11 +42,11 @@ function Dropdown(props) {
             <ul className={isOpen ? "dropdown-list__open" : "dropdown-list__closed"} >
                 <div className={addField ? "dropdown-list-addField__active" : "dropdown-list-addField__inactive"}>
                     <div className="dropdown-list-addField-input">
-                        <input placeholder="Hinzufügen" onChange={e => setAddFieldInput(e.target.value)}/>
+                        <input placeholder="Hinzufügen" onChange={e => setAddFieldInput(e.target.value)} />
                     </div>
                     <button type="button" onClick={() => { props.addFieldFunction(addFieldInput) }}></button>
                 </div>
-                
+
                 {items}
             </ul>
         </div>

@@ -43,16 +43,16 @@ function App() {
   if (!isLoggedIn) {
     return (
       <ThemeProvider theme={theme}>
-      <HashRouter>
+        <HashRouter>
           <Route path="/">
-            <Redirect to="/plans"/>
+            <Redirect to="/plans" />
           </Route>
-        <Route path="/plans" component={SelectionScreen } />
-        <Route path="/login" component={() => <Login image={Image} />} />
-        <Route path="/register" component={() => <Register image={Image} />} />
-      </HashRouter>
+          <Route path="/plans" component={SelectionScreen} />
+          <Route path="/login" component={() => <Login image={Image} />} />
+          <Route path="/register" component={() => <Register image={Image} />} />
+        </HashRouter>
       </ThemeProvider>
-      
+
     );
   }
   else {
@@ -68,7 +68,7 @@ function App() {
         </HashRouter>
       </ThemeProvider>);
   }
-  
+
 }
 
 export default App;

@@ -89,3 +89,7 @@ typings/
 out/
 
 .vscode
+
+dist/
+
+build/

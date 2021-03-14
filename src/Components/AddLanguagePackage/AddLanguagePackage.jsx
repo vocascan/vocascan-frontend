@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import InputField from '../Others/InputField/InputField.jsx';
+import axios from 'axios';
 import languages from './Languages.js';
 import { useSelector } from "react-redux";
 import './AddLanguagePackage.scss';
@@ -34,6 +35,7 @@ function AddLanguagePackage(props) {
     const [vocabsPerDay, setVocabsPerDay] = useState(100);
     const [rightTranslations, setRightTranslations] = useState(2);
     const jwtToken = useSelector(state => state.login.user.jwt);
+    const serverAddress = useSelector(state => state.login.serverAddress);
 
     //make api call to add vocab package
     async function submitHandler() {
@@ -65,8 +67,8 @@ function AddLanguagePackage(props) {
 
     //create language dropdown items
     const languageDropdownItems = languages.map((p) => (
-            <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
-        ))
+        <MenuItem key={p.id} value={p.name}>{p.name}</MenuItem>
+    ))
 
     return (
         <Box className={classes.lngpckg}>
@@ -79,32 +81,32 @@ function AddLanguagePackage(props) {
                         labelId="demo-simple-select-outlined-label"
                         id="demo-simple-select-outlined"
                         value={foreignLanguage}
-                        onChange={(e) => { setForeignLanguage(e.target.value)}}
+                        onChange={(e) => { setForeignLanguage(e.target.value) }}
                         label="Group"
-                        >
+                    >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        
+
                         {languageDropdownItems}
-                        </Select>
+                    </Select>
                 </FormControl>
                 <FormControl required variant="outlined" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">Translated language</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-outlined-label"
-                            id="demo-simple-select-outlined"
-                            value={translatedLanguage}
-                        onChange={(e) => { setTranslatedLanguage(e.target.value)}}
-                            label="Group"
-                        >
+                    <InputLabel id="demo-simple-select-outlined-label">Translated language</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={translatedLanguage}
+                        onChange={(e) => { setTranslatedLanguage(e.target.value) }}
+                        label="Group"
+                    >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        
+
                         {languageDropdownItems}
-                        </Select>
-                    </FormControl>
+                    </Select>
+                </FormControl>
             </Box>
 
             <TextField required id="standard-basic" label="Vocabs per day" onChange={e => setVocabsPerDay(e.target.value)} />
