@@ -12,27 +12,12 @@ import './index.scss'
 
 
 import Nav from './Components/Nav/Nav.jsx';
-import AddVocab from './Components/AddVocab/AddVocab.jsx';
-import SelectionScreen from './Components/Authorization/SelectionScreen/SelectionScreen.jsx';
-import Login from './Components/Authorization/Login/Login.jsx';
-import Register from './Components/Authorization/Register/Register.jsx';
-import FirstStartup from './Components/Popups/FirstStartup.jsx';
+import AddVocab from './screens/AddVocab.jsx';
+import SelectionScreen from './screens/SelectionScreen.jsx';
+import Login from './screens/Login.jsx';
+import Register from './screens/Register.jsx';
+import FirstStartup from './screens/FirstStartup.jsx';
 import TopNav from './Components/Nav/TopNav.jsx';
-
-
-
-
-const useStyles = makeStyles({
-  root: {
-    display: "grid",
-    width: "100%",
-    height: "100vh",
-    gridTemplateColumns: "200px auto",
-    gridTemplateRows: "40px auto",
-    margin: 0,
-    padding: 0,
-  },
-})
 
 
 function App() {
@@ -70,5 +55,18 @@ function App() {
   }
 
 }
+
+
+const useStyles = makeStyles({
+  root: {
+    display: "grid",
+    width: "100%",
+    height: "100vh",
+    gridTemplateColumns: "200px auto",
+    gridTemplateRows: "40px auto",
+    margin: 0,
+    padding: 0,
+  },
+})
 
 export default App;

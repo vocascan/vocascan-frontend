@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import AddLanguagePackage from '../AddLanguagePackage/AddLanguagePackage.jsx';
+import AddLanguagePackage from './AddLanguagePackage.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 
@@ -46,7 +46,7 @@ function FirstStartup(props) {
                 <h1 className={classes.firstStartupHeading}>CREATE YOUR FIRST VOCABULARY PACKAGE</h1>
                 <AddLanguagePackage />
             </Box>
-            
+
         </Box>
     )
 }
