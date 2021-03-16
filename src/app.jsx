@@ -4,10 +4,9 @@ import './Components/sections.scss';
 import { useSelector } from 'react-redux';
 import Image from './images/vocascan-logo.png';
 import { ThemeProvider } from '@material-ui/styles';
-import theme from './colors.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import './index.scss'
+import './index.scss';
 
 
 
@@ -27,31 +26,27 @@ function App() {
 
   if (!isLoggedIn) {
     return (
-      <ThemeProvider theme={theme}>
-        <HashRouter>
-          <Route path="/">
-            <Redirect to="/plans" />
-          </Route>
-          <Route path="/plans" component={SelectionScreen} />
-          <Route path="/login" component={() => <Login image={Image} />} />
-          <Route path="/register" component={() => <Register image={Image} />} />
-        </HashRouter>
-      </ThemeProvider>
+      <HashRouter>
+        <Route path="/">
+          <Redirect to="/plans" />
+        </Route>
+        <Route path="/plans" component={SelectionScreen} />
+        <Route path="/login" component={() => <Login image={Image} />} />
+        <Route path="/register" component={() => <Register image={Image} />} />
+      </HashRouter>
 
     );
   }
   else {
     return (
-      <ThemeProvider theme={theme}>
-        <HashRouter>
-          <Box className={classes.root}>
-            <Nav />
-            <TopNav />
-            <FirstStartup />
-            <Route path="/addVocab" component={AddVocab} />
-          </Box>
-        </HashRouter>
-      </ThemeProvider>);
+      <HashRouter>
+        <Box className={classes.root}>
+          <Nav />
+          <TopNav />
+          <FirstStartup />
+          <Route path="/addVocab" component={AddVocab} />
+        </Box>
+      </HashRouter>);
   }
 
 }
