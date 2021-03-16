@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { signOut } from '../../redux/Actions/signOut.js';
-import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
+import './TopNav.scss';
 
 
 function TopNav() {
 
-    const classes = useStyles();
     const [menuActive, setMenuActive] = useState(false);
     const dispatch = useDispatch();
 
@@ -26,9 +25,9 @@ function TopNav() {
             <h3 className="user" onClick={handleClick}>{username}</h3>
             <div className={menuActive ? "menu__active" : "menu__inactive"}>
                 <ul className="menu-list">
-                    <li className="menu-list-item"><Button className={classes.menuListItemBtn}>Profile</Button></li>
-                    <li className="menu-list-item"><Button className={classes.menuListItemBtn}>Settings</Button></li>
-                    <li className="menu-list-item" onClick={handleLogout}><Button className="menu-list-btn">Log out</Button></li>
+                    <li className="menu-list-item"><Button className="menu-list-item-btn">Profile</Button></li>
+                    <li className="menu-list-item"><Button className="menu-list-item-btn">Settings</Button></li>
+                    <li className="menu-list-item" onClick={handleLogout}><Button className="menu-list-item-btn">Log out</Button></li>
                 </ul>
 
             </div>

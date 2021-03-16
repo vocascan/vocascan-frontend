@@ -1,5 +1,7 @@
-.navButton {
+@import "../../colors.scss";
+
+.nav-button {
     width: 100%;
     height: 60px;
-    color: theme.palette.font.light
+    color: $color-alternative
 }

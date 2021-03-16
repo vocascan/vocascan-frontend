@@ -1,5 +1,7 @@
+@import "../../colors.scss";
+
 .topNav {
-        background: theme.palette.secondaryColour.main;
+        background: $color-alternative;
         grid-column: 2;
         grid-row: 1;
         z-index: 3;
@@ -7,7 +9,7 @@
         width: "100%";
 
         .user {
-            color: theme.palette.font.light;
+            color: $color-mainText;
             position: "absolute";
             left: "85%";
             top: "50%";
@@ -19,7 +21,7 @@
             width: "200px";
             height: "150px";
             margin: "40px 0 0 0";
-            background: theme.palette.secondary.main;
+            background: $color-alternative;
             position: "absolute";
             left: "85%";
             transform: "translate(-50%,0)";
@@ -37,10 +39,10 @@
                 .menu-list-item {
                     list-style: "none";
 
-                    .menu-list-btn {
+                    .menu-list-item-btn {
                         padding: "10px 0";
                         width: "100%";
-                        color: theme.palette.font.light;
+                        color: $color-background;
                     }
                 }  
             }  

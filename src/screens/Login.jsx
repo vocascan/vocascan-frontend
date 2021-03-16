@@ -3,12 +3,11 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
 import { signIn } from "../redux/Actions/signIn.js";
-import { Button, TextField, makeStyles, Box } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
+import './Login.scss';
 
 
 function Login(props) {
-
-    const classes = useStyles();
     //variables
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -51,13 +50,13 @@ function Login(props) {
     }
 
     return (
-        <div className={classes.login}>
-            <div className={classes.loginForm}>
-                <div className={classes.header}>
-                    <img className={classes.headerLogo} src={props.image} alt="server-logo" />
+        <div className="login">
+            <div className="login-form">
+                <div className="header">
+                    <img className="header-logo" src={props.image} alt="server-logo" />
                     <h1 className="login-form-header-heading">LOGIN</h1>
                 </div>
-                <div className={classes.formInput}>
+                <div className="form-input">
                     <TextField required id="standard-basic" label="Email" onChange={(e) => { setEmail(e.target.value) }} />
                     <TextField
                         required
@@ -66,76 +65,17 @@ function Login(props) {
                         type="password"
                         autoComplete="current-password"
                         onChange={(e) => { setPassword(e.target.value) }} />
-                    <p className={errorMsg ? classes.errorMsgActive : classes.errorMsgInactive}>Your email or password is wrong</p>
+                    <p className={errorMsg ? "error-msg__active" : "error-msg__inactive"}>Your email or password is wrong</p>
                 </div>
                 <div>
-                    <Button variant="contained" className={classes.submitBtn} onClick={submitLogin}>
+                    <Button variant="contained" className="submit-btn" onClick={submitLogin}>
                         SIGN IN
                     </Button>
-                    <p className={classes.submitRegister}>Don't have an account? <a className={classes.submitRegisterLink} onClick={handleClickRegister}>Sign Up</a></p>
+                    <p className="submit-register">Don't have an account? <a className="submit-register-link" onClick={handleClickRegister}>Sign Up</a></p>
                 </div>
             </div>
         </div>
     )
 }
-
-
-const useStyles = makeStyles((theme) => ({
-    login: {
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        backgroundImage: "linear-gradient(to top right, #2e5695, #F7D0FB)"
-    },
-    loginForm: {
-        width: "25%",
-        height: "60%",
-        margin: "auto",
-        display: "flex",
-        justifyContent: "space-around",
-        flexDirection: "column",
-        padding: "40px",
-        background: theme.palette.primaryColour.main,
-        boxShadow: "-1px 3px 5px " + theme.palette.shadow.main,
-    },
-    header: {
-        width: "100%",
-        height: "33%",
-    },
-    headerLogo: {
-        height: "70%",
-        margin: "auto",
-    },
-    formInput: {
-        width: "60%",
-        height: "30%",
-        margin: "0 auto",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-around",
-    },
-    errorMsgInactive: {
-        display: "none",
-    },
-    errorMsgActive: {
-        fontSize: "15px",
-        color: theme.palette.error.main,
-    },
-    submitBtn: {
-        width: "60%",
-        height: "40px",
-        color: theme.palette.font.light,
-        background: theme.palette.action.main,
-    },
-    submitRegister: {
-        fontSize: "12px",
-    },
-    submitRegisterLink: {
-        color: "blue",
-        cursor: "pointer",
-    }
-}));
-
 
 export default Login

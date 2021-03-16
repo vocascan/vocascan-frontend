@@ -1,14 +1,14 @@
 .register {
-    width: 100%;
-    height: 100vh;
+    width: "100%";
+    height: "100vh";
     display: flex;
     justify-content: center;
     background: #F1F3FA;
     background-image: linear-gradient(to top right, #2e5695, #F7D0FB);
 
     .register-form {
-        width: 25%;
-        height: 70%;
+        width: "25%";
+        height: "70%";
         margin: auto;
         display: flex;
         justify-content: space-around;
@@ -18,19 +18,19 @@
         background
 
         .register-form-header {
-            width: 100%;
-            height: 33%;
+            width: "100%";
+            height: "33%";
             .register-form-header-logo {
-                height: 70%;
+                height: "70%";
                 margin: auto;
             }
         }
 
         .register-form-input {
-            width: 100%;
+            width: "100%";
 
             .register-form-input-field {
-                width: 80%;
+                width: "80%";
                 height: 35px;
                 background: transparent;
                 outline: none;
@@ -53,7 +53,7 @@
 
         .register-form-submit {
             .register-form-submit-Btn {
-                width: 80%;
+                width: "80%";
                 height: 45px;
                 background: #727CF5;
                 outline: none;
