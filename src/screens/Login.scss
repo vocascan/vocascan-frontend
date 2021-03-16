@@ -1,54 +1,54 @@
 @import "../colors.scss";
 
 .login {
-    width: "100%";
-    height: "100vh";
-    display: "flex";
-    justify-content: "center";
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
     background-image: linear-gradient(to top right, #2e5695, #F7D0FB);
 
     .login-form {
-        width: "25%";
-        height: "60%";
-        margin: "auto";
-        display: "flex";
-        justify-content: "space-around";
-        flex-direction: "column";
+        width: 25%;
+        height: 60%;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
         padding: 40px;
         background: $color-white;
-        box-shadow: "-1px 3px 5px " + $color-mainText;
+        box-shadow: -1px 3px 5px $color-mainText;
 
         .header {
-            width: "100%";
-            height: "33%";
+            width: 100%;
+            height: 33%;
 
             .header-logo {
-                height: "70%";
-                margin: "auto";
+                height: 70%;
+                margin: auto;
             }
         }
 
         .form-nput {
-            width: "60%";
-            height: "30%";
+            width: 60%;
+            height: 30%;
             margin: 0 auto;
-            display: "flex";
-            flex-direction: "column";
-            justify-content: "space-around";
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
 
             .error-msg__inactive {
-                display: "none";
+                display: none;
             }
             .error-msg__active {
                 font-size: 15px;
-                color: "red";
+                color: red;
             }
         }
 
         .submit-btn {
             width: 60%;
             height: 40px;
-            color: "black";
+            color: black;
             background: $color-primary;
         }
 
@@ -56,8 +56,8 @@
             font-size: 12px;
 
             .submit-register-link {
-                color: "blue";
-                cursor: "pointer";
+                color: blue;
+                cursor: pointer;
             }
         }
     }
