@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import InputField from '../Others/InputField/InputField.jsx';
-import Dropdown from '../Others/Dropdown/Dropdown.jsx';
-import languages from '../AddLanguagePackage/Languages.js';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';

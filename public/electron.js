@@ -16,7 +16,7 @@ function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 1440,
         height: 900,
-        icon: __dirname + '/images/vocascan-logo.png',
+        icon: path.join(__dirname, "../src/images/vocascan-logo.png"),
         webPreferences: {
         nodeIntegration: true,
         nodeIntegrationInWorker: true,

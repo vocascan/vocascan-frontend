@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import InputField from '../Others/InputField/InputField.jsx';
 import axios from 'axios';
-import languages from './Languages.js';
+import languages from '../utils/Languages.js';
 import { useSelector } from "react-redux";
 import './AddLanguagePackage.scss';
 import { makeStyles } from '@material-ui/core/styles';
