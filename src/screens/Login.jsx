@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
         height: "100vh",
         display: "flex",
         justifyContent: "center",
-        background: theme.palette.primaryColour.main,
+        backgroundImage: "linear-gradient(to top right, #2e5695, #F7D0FB)"
     },
     loginForm: {
         width: "25%",
@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-around",
         flexDirection: "column",
         padding: "40px",
+        background: theme.palette.primaryColour.main,
         boxShadow: "-1px 3px 5px " + theme.palette.shadow.main,
     },
     header: {
