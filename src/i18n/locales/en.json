@@ -1,8 +1,14 @@
 {
-  "navNewVocab": "New Vocab",
-  "navLearn": "Learn",
-  "navProgress": "Progress",
-  "navAllVocabulary": "All vocabulary",
-  "navGroupLearning": "Group learning",
-  "navSettings": "Settings"
+  "global": {
+    "add": "Add",
+    "none": "None"
+  },
+  "nav": {
+    "newVocab": "New Vocab",
+    "learn": "Learn",
+    "progress": "Progress",
+    "allVocabulary": "All vocabulary",
+    "groupLearning": "Group learning",
+    "settings": "Settings"
+  }
 }

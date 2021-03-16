@@ -70,17 +70,17 @@ function Nav() {
                 <h1 className={classes.text}>Vocascan</h1>
             </Box>
             <ul className={classes.buttonList}>
-                <NavButton name={t("navNewVocab")} link="/addVocab" />
-                <NavButton name={t("navLearn")} link="#" />
-                <NavButton name={t("navProgress")} link="#" />
-                <NavButton name={t("navAllVocabulary")} link="#" />
-                <NavButton name={t("navGroupLearning")} link="#" />
+                <NavButton name={t("nav.newVocab")} link="/addVocab" />
+                <NavButton name={t("nav.learn")} link="#" />
+                <NavButton name={t("nav.progress")} link="#" />
+                <NavButton name={t("nav.allVocabulary")} link="#" />
+                <NavButton name={t("nav.groupLearning")} link="#" />
 
             </ul>
 
             <Link to="#" style={{ outline: 0 }}>
                 <Button className={classes.settings}>
-                    <h5 className={classes.settingsText}>{t("navSettings")}</h5>
+                    <h5 className={classes.settingsText}>{t("nav.settings")}</h5>
                 </Button>
             </Link>
         </Box>
