@@ -1,7 +1,8 @@
 {
   "upload": {
     "type": "json",
-    "files": "src/i18n/locales/en.json"
+    "files": "src/i18n/locales/en.json",
+    "features": ["array", "filter_untranslated", "plural_postfix_us"]
   },
   "download": {
     "files": "src/i18n/locales/${lang}.json"

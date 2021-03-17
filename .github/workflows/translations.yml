@@ -1,31 +1,36 @@
-name: Download from Localazy
+name: translations
 on:
+  push:
+    branches:
+      - 'main'
+  schedule:
+    - cron: '0 12 * * 0'
   workflow_dispatch:
 
 jobs:
-  localazy-download:
-    name: Download strings from Localazy
+  update-translations:
+    name: update translations
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Download Localazy
+      - name: download
         uses: localazy/download@v1
         with:
           read_key: ${{ secrets.LOCALAZY_READ_KEY }}
           write_key: ${{ secrets.LOCALAZY_WRITE_KEY }}
 
-      - name: Commit new translations
+      - name: push
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Updated translations via Localazy
           file_pattern: src/i18n/locales/*.json
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: upload
+        uses: localazy/upload@v1
+        with:
+          read_key: ${{ secrets.LOCALAZY_READ_KEY }}
+          write_key: ${{ secrets.LOCALAZY_WRITE_KEY }}
