@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, Select, InputLabel, MenuItem, TextField } from '@material-ui/core';
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import axios from 'axios';
 
 
@@ -61,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function AddVocab(props) {
+    const { t } = useTranslation();
     const classes = useStyles();
 
     const [packages, setPackages] = useState([]);
@@ -79,7 +81,7 @@ function AddVocab(props) {
 
 
     function refreshGroups() {
-        //setGroups(vocascanModule.getGroups(packageName)); 
+        //setGroups(vocascanModule.getGroups(packageName));
     }
 
     /*function submit() {
@@ -184,7 +186,7 @@ function AddVocab(props) {
                         label="Package"
                     >
                         <MenuItem value="">
-                            <em>None</em>
+                            <em>{t("global.none")}</em>
                         </MenuItem>
                         {languagePackageDropdownItems}
                     </Select>
@@ -215,7 +217,7 @@ function AddVocab(props) {
             </Box>
 
 
-            <Button className={classes.submitBtn} onClick={() => { console.log("added") }}>Add</Button>
+            <Button className={classes.submitBtn} onClick={() => { console.log("added") }}>{t("global.add")}</Button>
         </Box>
     )
 }

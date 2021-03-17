@@ -14,17 +14,17 @@ function Nav() {
                 <h1 className="text">Vocascan</h1>
             </div>
             <ul className="button-list">
-                <NavButton name={t("navNewVocab")} link="/addVocab" />
-                <NavButton name={t("navLearn")} link="#" />
-                <NavButton name={t("navProgress")} link="#" />
-                <NavButton name={t("navAllVocabulary")} link="#" />
-                <NavButton name={t("navGroupLearning")} link="#" />
+                <NavButton name={t("nav.newVocab")} link="/addVocab" />
+                <NavButton name={t("nav.learn")} link="#" />
+                <NavButton name={t("nav.progress")} link="#" />
+                <NavButton name={t("nav.allVocabulary")} link="#" />
+                <NavButton name={t("nav.groupLearning")} link="#" />
 
             </ul>
 
             <Link to="#" style={{ outline: 0 }}>
                 <Button className="settings">
-                    <h5 className="settings-text">{t("navSettings")}</h5>
+                    <h5 className="settings-text">{t("nav.settings")}</h5>
                 </Button>
             </Link>
         </div>
