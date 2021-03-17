@@ -11,10 +11,10 @@
     "progress": "Progress",
     "settings": "Settings"
   },
-  "navAllVocabulary": "Alle Vokabeln",
-  "navGroupLearning": "Gruppe-lernen",
-  "navLearn": "Lernen",
-  "navNewVocab": "Neue Vokabeln",
-  "navProgress": "Fortschritt",
-  "navSettings": "Einstellungen"
+  "navAllVocabulary": "Tout le vocabulaire",
+  "navGroupLearning": "Apprentissage en groupe",
+  "navLearn": "Apprendre",
+  "navNewVocab": "Nouveau vocabulaire",
+  "navProgress": "Progression",
+  "navSettings": "Paramètres"
 }
