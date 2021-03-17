@@ -2,6 +2,8 @@
   "upload": {
     "type": "json",
     "files": "src/i18n/locales/en.json",
+    "deprecateMissing": true,
+    "appVersion": 0,
     "features": ["array", "filter_untranslated", "plural_postfix_us"]
   },
   "download": {
