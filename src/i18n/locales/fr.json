@@ -1,16 +1,4 @@
 {
-  "global": {
-    "add": "Add",
-    "none": "None"
-  },
-  "nav": {
-    "allVocabulary": "All vocabulary",
-    "groupLearning": "Group learning",
-    "learn": "Learn",
-    "newVocab": "New Vocab",
-    "progress": "Progress",
-    "settings": "Settings"
-  },
   "navAllVocabulary": "Tout le vocabulaire",
   "navGroupLearning": "Apprentissage en groupe",
   "navLearn": "Apprendre",
