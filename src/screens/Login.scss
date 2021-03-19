@@ -5,7 +5,7 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-image: linear-gradient(to top right, #2e5695, #F7D0FB);
+    background-image: linear-gradient(to top right, #2e5695, #f7d0fb);
 
     .login-form {
         width: 25%;
@@ -45,14 +45,10 @@
             }
         }
 
-        .submit-btn {
-            width: 60%;
-            height: 40px;
-            color: black;
-            background: $color-primary;
-        }
-
         .submit-register {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
             font-size: 12px;
 
             .submit-register-link {
@@ -62,11 +58,3 @@
         }
     }
 }
-    
-    
-    
-    
-    
-    
-    
-    

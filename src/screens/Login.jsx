@@ -3,8 +3,10 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
 import { signIn } from "../redux/Actions/signIn.js";
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import './Login.scss';
+
+import Button from "../Components/Button/Button"
 
 
 function Login(props) {
@@ -68,10 +70,10 @@ function Login(props) {
                     <p className={errorMsg ? "error-msg__active" : "error-msg__inactive"}>Your email or password is wrong</p>
                 </div>
                 <div>
-                    <Button variant="contained" className="submit-btn" onClick={submitLogin}>
-                        SIGN IN
+                    <Button onClick={submitLogin}>
+                        Sign in
                     </Button>
-                    <p className="submit-register">Don't have an account? <a className="submit-register-link" onClick={handleClickRegister}>Sign Up</a></p>
+                    <p className="submit-register">Don't have an account? <div className="submit-register-link" onClick={handleClickRegister}>Sign Up</div></p>
                 </div>
             </div>
         </div>
