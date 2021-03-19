@@ -3,8 +3,8 @@ import './SelectionBox.scss'
 import CheckSign from '../../images/icons/check.png';
 import description from '../../utils/Description.js';
 import { useHistory } from "react-router-dom";
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from "../Button/Button"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,7 +52,7 @@ function SelectionBox(props) {
                     {items}
                 </ul>
             </div>
-            <Button className={classes.selectBox} variant="outlined" onClick={handleClick}>
+            <Button appearance="red" onClick={handleClick}>
                 Primary
             </Button>
         </div>
