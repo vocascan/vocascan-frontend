@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import regeneratorRuntime from "regenerator-runtime";
 import { register } from '../redux/Actions/register.js';
 import { makeStyles } from '@material-ui/core';
+import Button from "../Components/Button/Button"
 
 function Register(props) {
 
@@ -82,7 +83,7 @@ function Register(props) {
                     <p className={isSamePassword ? "register-form-warning--invisible" : "register-form-warning--visible"}>The passwords are not the same</p>
                 </div>
                 <div className="register-form-submit">
-                    <button className="register-form-submit-Btn" onClick={submitRegisterPerson}>SIGN IN</button>
+                    <Button onClick={submitRegisterPerson}>SIGN IN</Button>
                     <p className="register-form-submit-register">Don't have an account? <a className="register-form-submit-register-link" onClick={handleClickLogin}>Sign Up</a></p>
                 </div>
             </div>
