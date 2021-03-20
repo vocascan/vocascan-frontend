@@ -2,18 +2,17 @@ import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
-import { signIn } from "../redux/Actions/signIn.js";
-import { TextField } from '@material-ui/core';
+
+import { signIn } from "../../redux/Actions/signIn.js";
+import Button from "../../Components/Button/Button";
+import TextInput from "../../Components/TextInput/TextInput";
 import './Login.scss';
 
-import Button from "../Components/Button/Button"
-
-
-function Login(props) {
+const Login = (props) => {
     //variables
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errorMsg, setErrorMsg] = useState(false);
+    const [error, setError] = useState(false);
     const serverAddress = useSelector(state => state.login.serverAddress);
 
     const dispatch = useDispatch();
@@ -39,14 +38,14 @@ function Login(props) {
         }
         axios.post(serverAddress + '/api/signIn', body, config)
             .then(response => {
-                setErrorMsg(false);
+                setError(false);
                 //store username, email and jwt token in redux store
                 dispatch(signIn({ username: response.data["username"], email: email, jwt: response.data["jwt"] }));
 
             })
-            .catch(function (error) {
-                if (error.response.status === 403) {
-                    setErrorMsg(true);
+            .catch(function (e) {
+                if (e.response?.status === 403) {
+                    setError(true);
                 }
             })
     }
@@ -56,24 +55,36 @@ function Login(props) {
             <div className="login-form">
                 <div className="header">
                     <img className="header-logo" src={props.image} alt="server-logo" />
-                    <h1 className="login-form-header-heading">LOGIN</h1>
+                    <h1 className="login-form-header-heading">Login</h1>
                 </div>
                 <div className="form-input">
-                    <TextField required id="standard-basic" label="Email" onChange={(e) => { setEmail(e.target.value) }} />
-                    <TextField
+                    <TextInput
                         required
-                        id="standard-password-input"
-                        label="Password"
+                        placeholder="Email"
+                        onChange={(value) => {
+                            setError(false);
+                            setEmail(value);
+                        }}
+                    />
+                    <TextInput
+                        required
                         type="password"
+                        placeholder="Password"
                         autoComplete="current-password"
-                        onChange={(e) => { setPassword(e.target.value) }} />
-                    <p className={errorMsg ? "error-msg__active" : "error-msg__inactive"}>Your email or password is wrong</p>
+                        onChange={(value) => {
+                            setError(false);
+                            setPassword(value);
+                        }}
+                        error={error}
+                        errorText={"Your email or password is wrong"}
+                    />
                 </div>
                 <div className="login-footer">
                     <Button
                         block
                         uppercase
                         onClick={submitLogin}
+                        disabled={!(email && password)}
                     >
                         Sign in
                     </Button>
