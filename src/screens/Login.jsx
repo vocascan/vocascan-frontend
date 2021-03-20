@@ -77,7 +77,9 @@ function Login(props) {
                     >
                         Sign in
                     </Button>
-                    <p className="submit-register">Don't have an account? <div className="submit-register-link" onClick={handleClickRegister}>Sign Up</div></p>
+                    <div className="submit-register">
+                        Don't have an account? <div className="submit-register-link" onClick={handleClickRegister}>Sign Up</div>
+                    </div>
                 </div>
             </div>
         </div>

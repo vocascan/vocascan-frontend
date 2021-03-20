@@ -84,7 +84,9 @@ function Register(props) {
                 </div>
                 <div className="register-form-submit">
                     <Button onClick={submitRegisterPerson}>SIGN IN</Button>
-                    <p className="register-form-submit-register">Don't have an account? <div className="register-form-submit-register-link" onClick={handleClickLogin}>Sign Up</div></p>
+                    <div className="register-form-submit-register">
+                        Don't have an account? <div className="register-form-submit-register-link" onClick={handleClickLogin}>Sign Up</div>
+                    </div>
                 </div>
             </div>
         </div>
