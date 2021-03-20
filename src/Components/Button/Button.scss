@@ -1,12 +1,14 @@
 @import "../../colors.scss";
 
 .btn {
+    display: flex;
     padding: 10px 14px;
     font-size: 16px;
-    border-radius: 15px;
-    border: none;
     text-transform: none;
     color: #ffffff;
+    justify-content: center;
+    border-radius: 15px;
+    border: none;
     transition: all 0.3s ease-in;
 
     &.btn-default {
@@ -104,6 +106,10 @@
                 cursor: pointer;
             }
         }
+    }
+
+    &.btn-block {
+        width: 100%;
     }
 
     &.btn-uppercase {

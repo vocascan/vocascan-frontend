@@ -7,13 +7,14 @@ const Button = ({
     variant = "default",
     disabled = false,
     appearance = "primary",
-    onClick,
+    block = false,
+    onClick = () => null,
     children
 }) => {
     return (
         <button
             onClick={onClick}
-            className={`btn btn-${appearance} ${disabled && "btn-disabled"} btn-${variant} ${uppercase && "btn-uppercase"}`}
+            className={`btn btn-${appearance} ${disabled && "btn-disabled"} btn-${variant} ${uppercase && "btn-uppercase"} ${block && "btn-block"}`}
         >
             {children}
         </button>
