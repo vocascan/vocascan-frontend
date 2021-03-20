@@ -3,8 +3,10 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
 import { signIn } from "../redux/Actions/signIn.js";
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import './Login.scss';
+
+import Button from "../Components/Button/Button"
 
 
 function Login(props) {
@@ -43,7 +45,7 @@ function Login(props) {
 
             })
             .catch(function (error) {
-                if (error.response.status == 403) {
+                if (error.response.status === 403) {
                     setErrorMsg(true);
                 }
             })
@@ -67,11 +69,17 @@ function Login(props) {
                         onChange={(e) => { setPassword(e.target.value) }} />
                     <p className={errorMsg ? "error-msg__active" : "error-msg__inactive"}>Your email or password is wrong</p>
                 </div>
-                <div>
-                    <Button variant="contained" className="submit-btn" onClick={submitLogin}>
-                        SIGN IN
+                <div className="login-footer">
+                    <Button
+                        block
+                        uppercase
+                        onClick={submitLogin}
+                    >
+                        Sign in
                     </Button>
-                    <p className="submit-register">Don't have an account? <a className="submit-register-link" onClick={handleClickRegister}>Sign Up</a></p>
+                    <div className="submit-register">
+                        Don't have an account? <div className="submit-register-link" onClick={handleClickRegister}>Sign Up</div>
+                    </div>
                 </div>
             </div>
         </div>
