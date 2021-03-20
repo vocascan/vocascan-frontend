@@ -8,13 +8,17 @@
     background-image: linear-gradient(to top right, #2e5695, #f7d0fb);
 
     .login-form {
-        width: 25%;
-        height: 60%;
+        max-width: 450px;
+        max-height: 550px;
+
         margin: auto;
+        border-radius: 10px;
+
         display: flex;
         justify-content: space-around;
         flex-direction: column;
-        padding: 40px;
+
+        padding: 40px 100px;
         background: $color-white;
         box-shadow: -1px 3px 5px $color-mainText;
 
@@ -23,15 +27,16 @@
             height: 33%;
 
             .header-logo {
-                height: 70%;
-                margin: auto;
+                width: 100px;
+                height: auto;
+                margin-bottom: 10px;
             }
         }
 
-        .form-nput {
-            width: 60%;
-            height: 30%;
-            margin: 0 auto;
+        .form-input {
+            width: 100%;
+            min-width: 200px;
+            margin: 30px auto;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -45,15 +50,25 @@
             }
         }
 
-        .submit-register {
+        .login-footer {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
-            font-size: 12px;
+            margin: 20px 0;
 
-            .submit-register-link {
-                color: blue;
-                cursor: pointer;
+            .submit-register {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                font-size: 12px;
+                margin-top: 12px;
+
+                .submit-register-link {
+                    color: $color-primary;
+
+                    margin-left: 5px;
+                    cursor: pointer;
+                }
             }
         }
     }

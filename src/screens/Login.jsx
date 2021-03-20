@@ -45,7 +45,7 @@ function Login(props) {
 
             })
             .catch(function (error) {
-                if (error.response.status == 403) {
+                if (error.response.status === 403) {
                     setErrorMsg(true);
                 }
             })
@@ -69,8 +69,12 @@ function Login(props) {
                         onChange={(e) => { setPassword(e.target.value) }} />
                     <p className={errorMsg ? "error-msg__active" : "error-msg__inactive"}>Your email or password is wrong</p>
                 </div>
-                <div>
-                    <Button onClick={submitLogin}>
+                <div class="login-footer">
+                    <Button
+                        block
+                        uppercase
+                        onClick={submitLogin}
+                    >
                         Sign in
                     </Button>
                     <p className="submit-register">Don't have an account? <div className="submit-register-link" onClick={handleClickRegister}>Sign Up</div></p>
