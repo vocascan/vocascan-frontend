@@ -29,8 +29,26 @@ jobs:
           commit_message: Updated translations via Localazy
           file_pattern: src/i18n/locales/*.json
 
+      - name: get version
+        id: prepare
+        run: |
+          mv package.json package.json.bak
+          npm i --no-save git-describe semver
+          mv package.json.bak package.json
+          version=$(node -e "
+            const { gitDescribeSync } = require('git-describe');
+            const gitInfo = gitDescribeSync();
+            let version = 0;
+            if (gitInfo.semver) {
+              version = 100000000 * gitInfo.semver.major + 10000 * gitInfo.semver.minor + gitInfo.semver.patch;
+            }
+            console.log(version.toString(10));
+          ")
+          echo ::set-output name=version::${version}
+
       - name: upload
         uses: localazy/upload@v1
         with:
           read_key: ${{ secrets.LOCALAZY_READ_KEY }}
           write_key: ${{ secrets.LOCALAZY_WRITE_KEY }}
+          app_version: ${{ steps.prepare.outputs.version }}
