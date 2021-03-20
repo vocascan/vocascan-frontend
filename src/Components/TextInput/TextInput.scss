@@ -1,0 +1,69 @@
+@import "../../colors.scss";
+
+.text-input-wrapper {
+    position: relative;
+
+    .text-input {
+        height: 32px;
+        margin: 5px 0;
+        width: 200px;
+        display: block;
+        border: none;
+        padding-top: 10px;
+        border-bottom: solid 1px $color-primary;
+        -webkit-transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+        transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+        background: -webkit-linear-gradient(
+            top,
+            rgba(255, 255, 255, 0) 96%,
+            $color-primary 4%
+        );
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0) 96%,
+            $color-primary 4%
+        );
+        background-position: -200px 0;
+        background-size: 200px 100%;
+        background-repeat: no-repeat;
+
+        text-align: left;
+
+        &:focus,
+        &:valid {
+            box-shadow: none;
+            outline: none;
+            background-position: 0 0;
+        }
+
+        &::-webkit-input-placeholder {
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        &:focus::-webkit-input-placeholder,
+        &:valid::-webkit-input-placeholder {
+            color: $color-primary;
+            font-size: 11px;
+            font-weight: bold;
+            -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+            visibility: visible !important;
+        }
+    }
+
+    .text-input-label {
+        position: absolute;
+        left: 0;
+        top: 6px;
+        color: $color-primary;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    .text-input-error {
+        text-align: left;
+        font-size: 11px;
+        color: red;
+    }
+}

@@ -1,4 +1,4 @@
-@import "../colors.scss";
+@import "../../colors.scss";
 
 .login {
     width: 100%;
@@ -31,6 +31,10 @@
                 height: auto;
                 margin-bottom: 10px;
             }
+
+            .login-form-header-heading {
+                text-transform: uppercase;
+            }
         }
 
         .form-input {
@@ -60,7 +64,7 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
-                font-size: 12px;
+                font-size: 14px;
                 margin-top: 12px;
 
                 .submit-register-link {

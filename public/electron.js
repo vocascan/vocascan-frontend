@@ -8,12 +8,14 @@ const isDev = require("electron-is-dev");
 app.allowRendererProcessReuse = true
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
-  app.quit();
+    app.quit();
 }
+
+let mainWindow = null;
 
 function createWindow() {
     // Create the browser window.
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 1440,
         height: 900,
         icon: path.join(__dirname, "../src/images/vocascan-logo.png"),
@@ -23,8 +25,8 @@ function createWindow() {
         webSecurity: false
         }
     });
-    mainWindow.loadURL(isDev ? "http://localhost:3000" : `file://${path.join(__dirname, "../build/index.html")}`);
 
+    mainWindow.loadURL(isDev ? "http://localhost:3000" : `file://${path.join(__dirname, "../build/index.html")}`);
 
     mainWindow.on("closed", () => (mainWindow = null));
 }
