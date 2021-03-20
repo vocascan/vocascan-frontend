@@ -69,7 +69,7 @@ function Login(props) {
                         onChange={(e) => { setPassword(e.target.value) }} />
                     <p className={errorMsg ? "error-msg__active" : "error-msg__inactive"}>Your email or password is wrong</p>
                 </div>
-                <div class="login-footer">
+                <div className="login-footer">
                     <Button
                         block
                         uppercase
