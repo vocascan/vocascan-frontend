@@ -24,11 +24,15 @@ function SelectionScreen(props) {
     }
     return (
         <div className="selectScrn">
-            <h1 className="selectScrn-title" >LOG IN</h1>
-            <h1 className="selectScrn-heading">SELECT YOUR OPTION</h1>
-            <div className="boxes">
-                <SelectionBox heading="Vocascan Server" description={primary} image={Image} function={handleSubmit} />
-                <SelectionBox heading="Own Server" description={secondary} image={Image} function={() => { }} />
+            <div className="selectSrn-wrapper">
+                <div className="selectSrn-header-wrapper">
+                    <h1 className="selectScrn-title" >LOG IN</h1>
+                    <h1 className="selectScrn-heading">SELECT YOUR OPTION</h1>
+                </div>
+                <div className="boxes">
+                    <SelectionBox heading="Vocascan Server" description={primary} image={Image} function={handleSubmit} />
+                    <SelectionBox heading="Own Server" description={secondary} image={Image} function={() => { }} />
+                </div>
             </div>
         </div>
     );

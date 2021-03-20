@@ -52,9 +52,15 @@ function SelectionBox(props) {
                     {items}
                 </ul>
             </div>
-            <Button appearance="red" onClick={handleClick}>
-                Primary
-            </Button>
+            <div className="selectBox-footer">
+                <Button
+                    block
+                    appearance="red"
+                    onClick={handleClick}
+                >
+                    Start for free
+                </Button>
+            </div>
         </div>
     );
 }
