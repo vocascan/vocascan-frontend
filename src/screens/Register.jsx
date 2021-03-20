@@ -26,7 +26,7 @@ function Register(props) {
 
     //function to check if typed in passwords are the same
     function checkPassword() {
-        if (password != passwordRepeat) {
+        if (password !== passwordRepeat) {
             setIsSamePassword(false);
             return false;
         }
@@ -61,7 +61,7 @@ function Register(props) {
                 dispatch(register({ username: username, email: email, jwt: response.data["jwt"] }));
             })
             .catch(function (error) {
-                if (error.response.status == 409) {
+                if (error.response.status === 409) {
                     setEmailIsUsed(true);
                 }
             });
@@ -84,7 +84,7 @@ function Register(props) {
                 </div>
                 <div className="register-form-submit">
                     <Button onClick={submitRegisterPerson}>SIGN IN</Button>
-                    <p className="register-form-submit-register">Don't have an account? <a className="register-form-submit-register-link" onClick={handleClickLogin}>Sign Up</a></p>
+                    <p className="register-form-submit-register">Don't have an account? <div className="register-form-submit-register-link" onClick={handleClickLogin}>Sign Up</div></p>
                 </div>
             </div>
         </div>
