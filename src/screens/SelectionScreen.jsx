@@ -1,5 +1,6 @@
 import React from "react";
 import SelectionBox from "../Components/SelectionBox/SelectionBox.jsx";
+import UnauthenticatedLayout from "../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 import "./SelectionScreen.scss";
 import { useDispatch } from "react-redux";
 import Image from "../images/vocascan-server-logo-small.png";
@@ -22,7 +23,7 @@ function SelectionScreen(props) {
     dispatch(setServerSettings({ serverAddress: "http://127.0.0.1:13200" }));
   }
   return (
-    <div className="selectScrn">
+    <UnauthenticatedLayout>
       <div className="selectSrn-wrapper">
         <div className="selectSrn-header-wrapper">
           <h1 className="selectScrn-title">LOG IN</h1>
@@ -33,7 +34,7 @@ function SelectionScreen(props) {
           <SelectionBox heading="Own Server" description={secondary} image={Image} function={() => {}} />
         </div>
       </div>
-    </div>
+    </UnauthenticatedLayout>
   );
 }
 
