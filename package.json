@@ -50,9 +50,12 @@
     "build": "npm run react-build && npm run electron-build",
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
     "test": "npm run lint",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "stylelint": "stylelint '**/*.scss'"
+    "lint": "npm run lint:js && npm run lint:style",
+    "lint:fix": "npm run lint:js:fix && npm run lint:style:fix",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint . --fix",
+    "lint:style": "stylelint \"src/**/*.scss\"",
+    "lint:style:fix": "stylelint --fix \"src/**/*.scss\""
   },
   "browserslist": {
     "production": [

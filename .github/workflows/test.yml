@@ -17,5 +17,9 @@ jobs:
       - name: install
         run: npm i
 
-      - name: lint
-        run: npm run lint -- --max-warnings=0
+      - name: lint js
+        run: npm run lint:js -- --max-warnings=0
+
+      - name: lint style
+        if: always()
+        run: npm run lint:style
