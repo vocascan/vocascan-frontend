@@ -1,127 +1,127 @@
 @import "../../colors.scss";
 
 .btn {
-    display: flex;
-    padding: 10px 14px;
-    font-size: 16px;
-    text-transform: none;
-    color: #ffffff;
-    justify-content: center;
-    border-radius: 15px;
-    border: none;
-    transition: all 0.3s ease-in;
+  display: flex;
+  padding: 10px 14px;
+  font-size: 16px;
+  text-transform: none;
+  color: #ffffff;
+  justify-content: center;
+  border-radius: 15px;
+  border: none;
+  transition: all 0.3s ease-in;
 
-    &.btn-default {
-        &.btn-primary {
-            background-color: $color-primary;
+  &.btn-default {
+    &.btn-primary {
+      background-color: $color-primary;
 
-            &:hover {
-                background-color: $color-primary-dark;
-                cursor: pointer;
-            }
-        }
-
-        &.btn-red {
-            background-color: $color-red;
-
-            &:hover {
-                background-color: $color-red-dark;
-                cursor: pointer;
-            }
-        }
-
-        &.btn-green {
-            background-color: $color-green;
-
-            &:hover {
-                background-color: $color-green-dark;
-                cursor: pointer;
-            }
-        }
+      &:hover {
+        background-color: $color-primary-dark;
+        cursor: pointer;
+      }
     }
 
-    &.btn-outline {
-        background-color: transparent;
+    &.btn-red {
+      background-color: $color-red;
 
-        &.btn-primary {
-            color: $color-primary;
-            border: 1px solid $color-primary;
-
-            &:hover {
-                background-color: $color-primary;
-                color: #ffffff;
-                cursor: pointer;
-            }
-        }
-
-        &.btn-red {
-            color: $color-red;
-            border: 1px solid $color-red;
-
-            &:hover {
-                background-color: $color-red;
-                color: #ffffff;
-                cursor: pointer;
-            }
-        }
-
-        &.btn-green {
-            color: $color-green;
-            border: 1px solid $color-green;
-
-            &:hover {
-                background-color: $color-green;
-                color: #ffffff;
-                cursor: pointer;
-            }
-        }
+      &:hover {
+        background-color: $color-red-dark;
+        cursor: pointer;
+      }
     }
 
-    &.btn-transparent {
-        background-color: transparent;
+    &.btn-green {
+      background-color: $color-green;
 
-        &.btn-primary {
-            color: $color-primary;
+      &:hover {
+        background-color: $color-green-dark;
+        cursor: pointer;
+      }
+    }
+  }
 
-            &:hover {
-                color: $color-primary-dark;
-                cursor: pointer;
-            }
-        }
+  &.btn-outline {
+    background-color: transparent;
 
-        &.btn-red {
-            color: $color-red;
+    &.btn-primary {
+      color: $color-primary;
+      border: 1px solid $color-primary;
 
-            &:hover {
-                color: $color-red-dark;
-                cursor: pointer;
-            }
-        }
-
-        &.btn-green {
-            color: $color-green;
-
-            &:hover {
-                color: $color-green-dark;
-                cursor: pointer;
-            }
-        }
+      &:hover {
+        background-color: $color-primary;
+        color: #ffffff;
+        cursor: pointer;
+      }
     }
 
-    &.btn-block {
-        width: 100%;
+    &.btn-red {
+      color: $color-red;
+      border: 1px solid $color-red;
+
+      &:hover {
+        background-color: $color-red;
+        color: #ffffff;
+        cursor: pointer;
+      }
     }
 
-    &.btn-uppercase {
-        text-transform: uppercase;
+    &.btn-green {
+      color: $color-green;
+      border: 1px solid $color-green;
+
+      &:hover {
+        background-color: $color-green;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &.btn-transparent {
+    background-color: transparent;
+
+    &.btn-primary {
+      color: $color-primary;
+
+      &:hover {
+        color: $color-primary-dark;
+        cursor: pointer;
+      }
     }
 
-    &.btn-disabled {
-        opacity: 0.5;
-        pointer-events: none;
+    &.btn-red {
+      color: $color-red;
+
+      &:hover {
+        color: $color-red-dark;
+        cursor: pointer;
+      }
     }
 
-    &:focus {
-        outline: none;
+    &.btn-green {
+      color: $color-green;
+
+      &:hover {
+        color: $color-green-dark;
+        cursor: pointer;
+      }
     }
+  }
+
+  &.btn-block {
+    width: 100%;
+  }
+
+  &.btn-uppercase {
+    text-transform: uppercase;
+  }
+
+  &.btn-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
