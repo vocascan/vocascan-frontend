@@ -9,17 +9,23 @@
   z-index: 10;
   display: flex;
   justify-content: center;
+  position: absolute;
 
   .first-startup-inner {
-    width: 40%;
+    min-width: 450px;
+    max-width: 550px;
+    min-height: 450px;
+    max-height: 550px;
+    width: 60%;
     height: 60%;
     margin: auto;
     background: #fff;
     z-index: 11;
-    padding: 3% 10%;
+    padding: 40px 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 5px;
 
     .first-startup-inner-heading {
       font-size: 25px;
