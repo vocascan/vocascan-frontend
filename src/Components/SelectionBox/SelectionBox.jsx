@@ -1,21 +1,11 @@
 import React from "react";
-import "./SelectionBox.scss";
-import CheckSign from "../../images/icons/check.png";
 import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "../Button/Button";
 
-const useStyles = makeStyles((theme) => ({
-  selectBox: {
-    width: "70%",
-    height: "30px",
-    margin: "0 auto 10px",
-    background: theme.palette.error.main,
-  },
-}));
+import CheckSign from "../../images/icons/check.png";
+import Button from "../Button/Button";
+import "./SelectionBox.scss";
 
 function SelectionBox(props) {
-  const classes = useStyles();
   //execute function on button click
   let history = useHistory();
 
