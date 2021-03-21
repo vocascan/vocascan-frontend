@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../redux/Actions/signIn.js";
 import Button from "../../Components/Button/Button";
 import TextInput from "../../Components/TextInput/TextInput";
+import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout";
 import "./Login.scss";
 
 const Login = (props) => {
@@ -50,7 +51,7 @@ const Login = (props) => {
   }
 
   return (
-    <div className="login">
+    <UnauthenticatedLayout>
       <div className="login-form">
         <div className="header">
           <img className="header-logo" src={props.image} alt="server-logo" />
@@ -90,7 +91,7 @@ const Login = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </UnauthenticatedLayout>
   );
 };
 
