@@ -1,14 +1,14 @@
-@import "../../colors.scss";
+@import "../../colors";
 
 .btn {
   display: flex;
   padding: 10px 14px;
   font-size: 16px;
   text-transform: none;
-  color: #ffffff;
+  color: $color-white;
   justify-content: center;
   border-radius: 15px;
-  border: none;
+  border: unset;
   transition: all 0.3s ease-in;
 
   &.btn-default {
@@ -49,7 +49,7 @@
 
       &:hover {
         background-color: $color-primary;
-        color: #ffffff;
+        color: $color-white;
         cursor: pointer;
       }
     }
@@ -60,7 +60,7 @@
 
       &:hover {
         background-color: $color-red;
-        color: #ffffff;
+        color: $color-white;
         cursor: pointer;
       }
     }
@@ -71,7 +71,7 @@
 
       &:hover {
         background-color: $color-green;
-        color: #ffffff;
+        color: $color-white;
         cursor: pointer;
       }
     }

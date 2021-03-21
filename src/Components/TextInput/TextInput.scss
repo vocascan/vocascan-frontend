@@ -1,4 +1,4 @@
-@import "../../colors.scss";
+@import "../../colors";
 
 .text-input-wrapper {
   position: relative;
@@ -8,12 +8,10 @@
     margin: 5px 0;
     width: 200px;
     display: block;
-    border: none;
+    border: unset;
     padding-top: 10px;
     border-bottom: solid 1px $color-primary;
-    -webkit-transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, $color-primary 4%);
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary 4%);
     background-position: -200px 0;
     background-size: 200px 100%;
@@ -28,17 +26,15 @@
       background-position: 0 0;
     }
 
-    &::-webkit-input-placeholder {
-      -webkit-transition: all 0.2s ease-in-out;
+    &::placeholder {
       transition: all 0.2s ease-in-out;
     }
 
-    &:focus::-webkit-input-placeholder,
-    &:valid::-webkit-input-placeholder {
+    &:focus::placeholder,
+    &:valid::placeholder {
       color: $color-primary;
       font-size: 11px;
       font-weight: bold;
-      -webkit-transform: translateY(-20px);
       transform: translateY(-20px);
       visibility: visible !important;
     }
@@ -47,7 +43,7 @@
   .text-input-label {
     position: absolute;
     left: 0;
-    top: 6px;
+    top: 5px;
     color: $color-primary;
     font-size: 11px;
     font-weight: bold;
@@ -56,6 +52,6 @@
   .text-input-error {
     text-align: left;
     font-size: 11px;
-    color: red;
+    color: $color-red;
   }
 }

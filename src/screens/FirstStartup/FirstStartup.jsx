@@ -9,9 +9,9 @@ function FirstStartup(props) {
   const isFirstLogin = useSelector((state) => state.login.firstLogin);
 
   return (
-    <Box className={isFirstLogin ? "firstStartup__visible" : "firstStartup__invisible"}>
-      <Box className="firstStartup-inner">
-        <h1 className="firstStartup-inner-heading">CREATE YOUR FIRST VOCABULARY PACKAGE</h1>
+    <Box className={isFirstLogin ? "first-startup-visible" : "first-startup-invisible"}>
+      <Box className="first-startup-inner">
+        <h1 className="first-startup-inner-heading">CREATE YOUR FIRST VOCABULARY PACKAGE</h1>
         <AddLanguagePackage />
       </Box>
     </Box>

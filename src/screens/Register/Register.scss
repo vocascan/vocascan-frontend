@@ -1,8 +1,8 @@
-@import "../../colors.scss";
+@import "../../colors";
 
 .register-form {
-  max-width: 450px;
   max-height: 550px;
+  max-width: 450px;
 
   margin: auto;
   border-radius: 10px;
@@ -37,26 +37,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
-    .register-form-input-field {
-      width: 80%;
-      height: 35px;
-      background: transparent;
-      outline: none;
-      border: none;
-      border-bottom: 1px solid #8790a3;
-      text-align: left;
-      margin: 10px 0;
-    }
-
-    .register-form-warning__invisible {
-      display: none;
-    }
-
-    .register-form-warning__visible {
-      font-size: 15px;
-      color: red;
-    }
   }
 
   .register-form-submit {
@@ -66,7 +46,7 @@
       margin-top: 12px;
 
       .register-form-submit-register-link {
-        color: blue;
+        color: $color-primary;
         cursor: pointer;
         margin-left: 5px;
       }

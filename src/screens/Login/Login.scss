@@ -1,4 +1,4 @@
-@import "../../colors.scss";
+@import "../../colors";
 
 .login-form {
   max-width: 450px;
@@ -13,7 +13,7 @@
 
   padding: 40px 100px;
   background: $color-white;
-  box-shadow: -1px 3px 5px $color-mainText;
+  box-shadow: -1px 3px 5px $color-main-text;
 
   .header {
     width: 100%;
@@ -37,14 +37,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
-    .error-msg__inactive {
-      display: none;
-    }
-    .error-msg__active {
-      font-size: 15px;
-      color: red;
-    }
   }
 
   .login-footer {

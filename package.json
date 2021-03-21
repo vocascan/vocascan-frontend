@@ -51,7 +51,8 @@
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
     "test": "npm run lint",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "stylelint": "stylelint '**/*.scss'"
   },
   "browserslist": {
     "production": [
@@ -72,6 +73,8 @@
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.12.0",
+    "stylelint-config-sass-guidelines": "^8.0.0"
   }
 }

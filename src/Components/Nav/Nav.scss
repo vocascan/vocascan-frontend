@@ -1,4 +1,4 @@
-@import "../../colors.scss";
+@import "../../colors";
 
 .nav {
   width: "200px";
@@ -20,14 +20,14 @@
     text-align: "center";
 
     .text {
-      color: $color-mainText;
+      color: $color-main-text;
       text-transform: "uppercase";
       font-size: "17px";
       margin: "auto";
     }
   }
 
-  .buttonList {
+  .button-list {
     grid-column: 1;
     grid-row: 2;
     margin-top: "40px";
@@ -44,8 +44,8 @@
     grid-column: 1;
     grid-row: 3;
 
-    .settingsText {
-      color: $color-mainText;
+    .settings-text {
+      color: $color-main-text;
       text-transform: "uppercase";
       font-size: "17px";
       margin: 0;

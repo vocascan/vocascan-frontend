@@ -25,8 +25,8 @@ function SelectionScreen(props) {
   }
   return (
     <UnauthenticatedLayout>
-      <div className="selectSrn-wrapper">
-        <div className="selectSrn-header-wrapper">
+      <div className="select-srn-wrapper">
+        <div className="select-srn-header-wrapper">
           <h1 className="selectScrn-title">LOG IN</h1>
           <h1 className="selectScrn-heading">SELECT YOUR OPTION</h1>
         </div>

@@ -1,6 +1,6 @@
-@import "../../colors.scss";
+@import "../../colors";
 
-.topNav {
+.top-nav {
   background: $color-alternative;
   grid-column: 2;
   grid-row: 1;
@@ -9,7 +9,7 @@
   width: "100%";
 
   .user {
-    color: $color-mainText;
+    color: $color-main-text;
     position: "absolute";
     left: "85%";
     top: "50%";
@@ -17,7 +17,7 @@
     cursor: "pointer";
   }
 
-  .menu__active {
+  .menu-active {
     width: "200px";
     height: "150px";
     margin: "40px 0 0 0";
@@ -48,7 +48,7 @@
     }
   }
 
-  .menu__inactive {
+  .menu-inactive {
     display: "none";
   }
 }

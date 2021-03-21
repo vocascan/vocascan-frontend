@@ -1,6 +1,6 @@
-@import "../../colors.scss";
+@import "../../colors";
 
-.selectBox {
+.select-box {
   min-width: 300px;
   max-width: 400px;
   margin: 0 20px;
@@ -9,14 +9,14 @@
   justify-content: space-between;
   flex-direction: column;
   border-radius: 10px;
-  background: #ffffff;
+  background: $color-white;
   box-shadow: -1px 3px 5px#b4bed6;
 
-  .selectBox-header {
+  .select-box-header {
     display: flex;
     flex-direction: column;
 
-    .selectBox-header-heading {
+    .select-box-header-heading {
       background: $color-red;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
@@ -24,45 +24,47 @@
       display: flex;
       justify-content: center;
 
-      .selectBox-header-heading-text {
-        color: #ffffff;
+      .select-box-header-heading-text {
+        color: $color-white;
         font-size: 20px;
         margin: auto;
       }
     }
 
-    .selectBox-header-logo {
+    .select-box-header-logo {
       width: 100%;
-      padding: 20px 0px;
+      padding: 20px 0;
       display: flex;
       justify-content: center;
 
-      .selectBox-header-logo-img {
+      .select-box-header-logo-img {
         width: 40%;
         margin: auto;
       }
     }
   }
-  .selectBox-description {
+
+  .select-box-description {
     width: 100%;
-    padding: 20px 0px;
+    padding: 20px 0;
     min-height: 200px;
 
-    .selectBox-description-ul {
+    .select-box-description-ul {
       width: 100%;
       height: 100%;
       padding: 0 0 0 10%;
 
-      .description-listItem {
+      .description-list-item {
         display: flex;
         margin: 5px 0;
 
-        .selectBox-header-logo-img {
+        .select-box-header-logo-img {
           width: 5%;
           margin: 0 10px 0 0;
           object-fit: scale-down;
         }
-        .description-listItem-item {
+
+        .description-list-item-item {
           text-align: left;
           width: 80%;
         }
@@ -70,7 +72,7 @@
     }
   }
 
-  .selectBox-footer {
+  .select-box-footer {
     display: flex;
     justify-content: center;
     align-items: stretch;
