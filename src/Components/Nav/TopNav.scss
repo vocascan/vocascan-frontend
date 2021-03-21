@@ -1,59 +1,54 @@
-@import "../../colors.scss";
+@import "../../colors";
 
-.topNav {
-        background: $color-alternative;
-        grid-column: 2;
-        grid-row: 1;
-        z-index: 3;
-        height: "100%";
-        width: "100%";
+.top-nav {
+  background: $color-alternative;
+  grid-column: 2;
+  grid-row: 1;
+  z-index: 3;
+  height: "100%";
+  width: "100%";
 
-        .user {
-            color: $color-mainText;
-            position: "absolute";
-            left: "85%";
-            top: "50%";
-            transform: "translate(-50%,-50%)";
-            cursor: "pointer";
+  .user {
+    color: $color-main-text;
+    position: "absolute";
+    left: "85%";
+    top: "50%";
+    transform: "translate(-50%,-50%)";
+    cursor: "pointer";
+  }
+
+  .menu-active {
+    width: "200px";
+    height: "150px";
+    margin: "40px 0 0 0";
+    background: $color-alternative;
+    position: "absolute";
+    left: "85%";
+    transform: "translate(-50%,0)";
+    padding: "10px";
+
+    .menu-list {
+      width: 100%;
+      height: 100%;
+      display: "flex";
+      justify-content: "space-around";
+      flex-direction: "column";
+      margin: 0;
+      padding: 0;
+
+      .menu-list-item {
+        list-style: "none";
+
+        .menu-list-item-btn {
+          padding: "10px 0";
+          width: "100%";
+          color: $color-background;
         }
+      }
+    }
+  }
 
-        .menu__active {
-            width: "200px";
-            height: "150px";
-            margin: "40px 0 0 0";
-            background: $color-alternative;
-            position: "absolute";
-            left: "85%";
-            transform: "translate(-50%,0)";
-            padding: "10px";
-
-            .menu-list {
-                width: 100%;
-                height: 100%;
-                display: "flex";
-                justify-content: "space-around";
-                flex-direction: "column";
-                margin: 0;
-                padding: 0;
-
-                .menu-list-item {
-                    list-style: "none";
-
-                    .menu-list-item-btn {
-                        padding: "10px 0";
-                        width: "100%";
-                        color: $color-background;
-                    }
-                }  
-            }  
-        }
-
-        .menu__inactive {
-            display: "none"
-        }
+  .menu-inactive {
+    display: "none";
+  }
 }
-    
-    
-    
-    
-    

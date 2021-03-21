@@ -1,84 +1,55 @@
-@import "../../colors.scss";
+@import "../../colors";
 
-.register {
+.register-form {
+  max-height: 550px;
+  max-width: 450px;
+
+  margin: auto;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
+  padding: 40px 100px;
+  background: $color-white;
+  box-shadow: -1px 3px 5px#b4bed6;
+
+  .register-form-header {
     width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    background: #f1f3fa;
-    background-image: linear-gradient(to top right, #2e5695, #f7d0fb);
+    height: 33%;
 
-    .register-form {
-        max-width: 450px;
-        max-height: 550px;
-
-        margin: auto;
-        border-radius: 10px;
-
-        display: flex;
-        justify-content: space-around;
-        flex-direction: column;
-
-        padding: 40px 100px;
-        background: $color-white;
-        box-shadow: -1px 3px 5px#b4bed6;
-
-        .register-form-header {
-            width: 100%;
-            height: 33%;
-
-            .register-form-header-logo {
-                width: 100px;
-                height: auto;
-                margin-bottom: 10px;
-            }
-
-            .register-form-header-heading {
-                text-transform: uppercase;
-            }
-        }
-
-        .register-form-input {
-            width: 100%;
-            min-width: 200px;
-            margin: 30px auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-
-            .register-form-input-field {
-                width: 80%;
-                height: 35px;
-                background: transparent;
-                outline: none;
-                border: none;
-                border-bottom: 1px solid #8790a3;
-                text-align: left;
-                margin: 10px 0;
-            }
-
-            .register-form-warning__invisible {
-                display: none;
-            }
-
-            .register-form-warning__visible {
-                font-size: 15px;
-                color: red;
-            }
-        }
-
-        .register-form-submit {
-            .register-form-submit-register {
-                display: flex;
-                font-size: 14px;
-                margin-top: 12px;
-
-                .register-form-submit-register-link {
-                    color: blue;
-                    cursor: pointer;
-                    margin-left: 5px;
-                }
-            }
-        }
+    .register-form-header-logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
     }
+
+    .register-form-header-heading {
+      text-transform: uppercase;
+    }
+  }
+
+  .register-form-input {
+    width: 100%;
+    min-width: 200px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .register-form-submit {
+    .register-form-submit-register {
+      display: flex;
+      font-size: 14px;
+      margin-top: 12px;
+
+      .register-form-submit-register-link {
+        color: $color-primary;
+        cursor: pointer;
+        margin-left: 5px;
+      }
+    }
+  }
 }

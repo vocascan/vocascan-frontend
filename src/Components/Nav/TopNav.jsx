@@ -23,7 +23,7 @@ function TopNav() {
       <h3 className="user" onClick={handleClick}>
         {username}
       </h3>
-      <div className={menuActive ? "menu__active" : "menu__inactive"}>
+      <div className={menuActive ? "menu-active" : "menu-inactive"}>
         <ul className="menu-list">
           <li className="menu-list-item">
             <Button className="menu-list-item-btn">Profile</Button>

@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/Actions/register.js";
 import Button from "../../Components/Button/Button";
 import TextInput from "../../Components/TextInput/TextInput";
+import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout";
 
 const Register = (props) => {
   //variables
@@ -65,7 +66,7 @@ const Register = (props) => {
   }
 
   return (
-    <div className="register">
+    <UnauthenticatedLayout>
       <div className="register-form">
         <div className="register-form-header">
           <img className="register-form-header-logo" src={props.image} alt="server-logo" />
@@ -132,7 +133,7 @@ const Register = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </UnauthenticatedLayout>
   );
 };
 

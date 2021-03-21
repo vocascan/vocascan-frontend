@@ -1,9 +1,11 @@
 import React from "react";
-import SelectionBox from "../Components/SelectionBox/SelectionBox.jsx";
-import "./SelectionScreen.scss";
 import { useDispatch } from "react-redux";
-import Image from "../images/vocascan-server-logo-small.png";
-import { setServerSettings } from "../redux/Actions/setServerSettings.js";
+
+import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
+import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import Image from "../../images/vocascan-server-logo-small.png";
+import { setServerSettings } from "../../redux/Actions/setServerSettings.js";
+import "./SelectionScreen.scss";
 
 function SelectionScreen(props) {
   let primary = [
@@ -22,9 +24,9 @@ function SelectionScreen(props) {
     dispatch(setServerSettings({ serverAddress: "http://127.0.0.1:13200" }));
   }
   return (
-    <div className="selectScrn">
-      <div className="selectSrn-wrapper">
-        <div className="selectSrn-header-wrapper">
+    <UnauthenticatedLayout>
+      <div className="select-srn-wrapper">
+        <div className="select-srn-header-wrapper">
           <h1 className="selectScrn-title">LOG IN</h1>
           <h1 className="selectScrn-heading">SELECT YOUR OPTION</h1>
         </div>
@@ -33,7 +35,7 @@ function SelectionScreen(props) {
           <SelectionBox heading="Own Server" description={secondary} image={Image} function={() => {}} />
         </div>
       </div>
-    </div>
+    </UnauthenticatedLayout>
   );
 }
 

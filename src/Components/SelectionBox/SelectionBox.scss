@@ -1,79 +1,81 @@
-@import "../../colors.scss";
+@import "../../colors";
 
-.selectBox {
-    min-width: 300px;
-    max-width: 400px;
-    margin: 0 20px;
-    height: 100%;
+.select-box {
+  min-width: 300px;
+  max-width: 400px;
+  margin: 0 20px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 10px;
+  background: $color-white;
+  box-shadow: -1px 3px 5px#b4bed6;
+
+  .select-box-header {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    border-radius: 10px;
-    background: #ffffff;
-    box-shadow: -1px 3px 5px#b4bed6;
 
-    .selectBox-header {
+    .select-box-header-heading {
+      background: $color-red;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+
+      .select-box-header-heading-text {
+        color: $color-white;
+        font-size: 20px;
+        margin: auto;
+      }
+    }
+
+    .select-box-header-logo {
+      width: 100%;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+
+      .select-box-header-logo-img {
+        width: 40%;
+        margin: auto;
+      }
+    }
+  }
+
+  .select-box-description {
+    width: 100%;
+    padding: 20px 0;
+    min-height: 200px;
+
+    .select-box-description-ul {
+      width: 100%;
+      height: 100%;
+      padding: 0 0 0 10%;
+
+      .description-list-item {
         display: flex;
-        flex-direction: column;
+        margin: 5px 0;
 
-        .selectBox-header-heading {
-            background: $color-red;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-
-            .selectBox-header-heading-text {
-                color: #ffffff;
-                font-size: 20px;
-                margin: auto;
-            }
+        .select-box-header-logo-img {
+          width: 5%;
+          margin: 0 10px 0 0;
+          object-fit: scale-down;
         }
 
-        .selectBox-header-logo {
-            width: 100%;
-            padding: 20px 0px;
-            display: flex;
-            justify-content: center;
-
-            .selectBox-header-logo-img {
-                width: 40%;
-                margin: auto;
-            }
+        .description-list-item-item {
+          text-align: left;
+          width: 80%;
         }
+      }
     }
-    .selectBox-description {
-        width: 100%;
-        padding: 20px 0px;
-        min-height: 200px;
+  }
 
-        .selectBox-description-ul {
-            width: 100%;
-            height: 100%;
-            padding: 0 0 0 10%;
-
-            .description-listItem {
-                display: flex;
-                margin: 5px 0;
-
-                .selectBox-header-logo-img {
-                    width: 5%;
-                    margin: 0 10px 0 0;
-                    object-fit: scale-down;
-                }
-                .description-listItem-item {
-                    text-align: left;
-                    width: 80%;
-                }
-            }
-        }
-    }
-
-    .selectBox-footer {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        padding: 20px;
-    }
+  .select-box-footer {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 20px;
+  }
 }

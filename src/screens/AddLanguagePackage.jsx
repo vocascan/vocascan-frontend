@@ -133,7 +133,7 @@ function AddLanguagePackage(props) {
         onChange={(e) => setRightTranslations(e.target.value)}
       />
 
-      <button className="lngpckg-submitBtn" type="button" value="Submit" onClick={submitHandler}>
+      <button className="lngpckg-submit-btn" type="button" value="Submit" onClick={submitHandler}>
         Weiter
       </button>
     </Box>
