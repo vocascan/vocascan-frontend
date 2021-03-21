@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Box from "@material-ui/core/Box";
 import { FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -105,10 +104,10 @@ function AddVocab(props) {
   }
 
   return (
-    <Box className="add-vocab-form">
+    <div className="add-vocab-form">
       <h1 className="heading">Add vocabulary</h1>
 
-      <Box className="dropdowns">
+      <div className="dropdowns">
         <FormControl required variant="outlined" className="form-control">
           <InputLabel id="demo-simple-select-outlined-label">Package</InputLabel>
           <Select
@@ -142,8 +141,8 @@ function AddVocab(props) {
             {groupDropdownItems}
           </Select>
         </FormControl>
-      </Box>
-      <Box className="input-fields">
+      </div>
+      <div className="input-fields">
         <TextInput
           required
           placeholder="Fremdwort"
@@ -179,7 +178,7 @@ function AddVocab(props) {
             setDescription(value);
           }}
         />
-      </Box>
+      </div>
 
       <div className="form-submit">
         <Button
@@ -190,7 +189,7 @@ function AddVocab(props) {
           {t("global.add")}
         </Button>
       </div>
-    </Box>
+    </div>
   );
 }
 

@@ -3,7 +3,6 @@ import { Route, HashRouter, Redirect } from "react-router-dom";
 import "./Components/sections.scss";
 import { useSelector } from "react-redux";
 import Image from "./images/vocascan-logo.png";
-import Box from "@material-ui/core/Box";
 import "./index.scss";
 
 import Nav from "./Components/Nav/Nav.jsx";
@@ -31,12 +30,12 @@ function App() {
   } else {
     return (
       <HashRouter>
-        <Box className="root">
+        <div className="root">
           <Nav />
           <TopNav />
           <FirstStartup />
           <Route path="/addVocab" component={AddVocab} />
-        </Box>
+        </div>
       </HashRouter>
     );
   }

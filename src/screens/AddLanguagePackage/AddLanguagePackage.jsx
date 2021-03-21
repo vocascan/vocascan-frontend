@@ -3,7 +3,7 @@ import axios from "axios";
 import languages from "../../utils/Languages.js";
 import { useSelector } from "react-redux";
 import "./AddLanguagePackage.scss";
-import { Box, FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
+import { FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
 
 import TextInput from "../../Components/TextInput/TextInput";
 import Button from "../../Components/Button/Button";
@@ -54,7 +54,7 @@ function AddLanguagePackage(props) {
   ));
 
   return (
-    <Box className="lngpckg">
+    <div className="lngpckg">
       <TextInput
         required
         placeholder="Name"
@@ -63,7 +63,7 @@ function AddLanguagePackage(props) {
         }}
       />
 
-      <Box className="dropdown">
+      <div className="dropdown">
         <FormControl required variant="outlined" className="field">
           <InputLabel id="demo-simple-select-outlined-label">Foreign language</InputLabel>
           <Select
@@ -100,7 +100,7 @@ function AddLanguagePackage(props) {
             {languageDropdownItems}
           </Select>
         </FormControl>
-      </Box>
+      </div>
 
       <TextInput
         required
@@ -119,7 +119,7 @@ function AddLanguagePackage(props) {
       />
 
       <Button onClick={submitHandler}>Weiter</Button>
-    </Box>
+    </div>
   );
 }
 
