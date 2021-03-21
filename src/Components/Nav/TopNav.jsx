@@ -18,7 +18,7 @@ function TopNav() {
   }
 
   const username = useSelector((state) => state.login.user.username);
-  console.log(username);
+
   return (
     <div className="top-nav">
       <h3 className="user" onClick={handleClick}>
