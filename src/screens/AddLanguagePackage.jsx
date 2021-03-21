@@ -4,7 +4,7 @@ import languages from "../utils/Languages.js";
 import { useSelector } from "react-redux";
 import "./AddLanguagePackage.scss";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, TextField, Dropdown, FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
+import { Box, TextField, FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   lngpckg: {
@@ -56,7 +56,7 @@ function AddLanguagePackage(props) {
         console.log(response.data);
       })
       .catch(function (error) {
-        if (error.response.status == 401) {
+        if (error.response.status === 401) {
           console.log("jwt expired");
         }
       });

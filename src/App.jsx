@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, HashRouter, Redirect } from "react-router-dom";
 import "./Components/sections.scss";
 import { useSelector } from "react-redux";
 import Image from "./images/vocascan-logo.png";
-import { ThemeProvider } from "@material-ui/styles";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import "./index.scss";
@@ -11,8 +10,8 @@ import "./index.scss";
 import Nav from "./Components/Nav/Nav.jsx";
 import AddVocab from "./screens/AddVocab.jsx";
 import SelectionScreen from "./screens/SelectionScreen.jsx";
-import Login from "./screens/Login.jsx";
-import Register from "./screens/Register.jsx";
+import Login from "./screens/Login/Login.jsx";
+import Register from "./screens/Register/Register.jsx";
 import FirstStartup from "./screens/FirstStartup.jsx";
 import TopNav from "./Components/Nav/TopNav.jsx";
 

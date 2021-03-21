@@ -1,7 +1,6 @@
 import React from "react";
 import "./SelectionBox.scss";
 import CheckSign from "../../images/icons/check.png";
-import description from "../../utils/Description.js";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "../Button/Button";

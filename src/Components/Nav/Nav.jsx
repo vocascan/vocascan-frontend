@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import "./Nav.scss";
 
 function Nav() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="nav">
       <div className="title">
