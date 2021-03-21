@@ -1,10 +1,11 @@
 import React from "react";
-import SelectionBox from "../Components/SelectionBox/SelectionBox.jsx";
-import UnauthenticatedLayout from "../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
-import "./SelectionScreen.scss";
 import { useDispatch } from "react-redux";
-import Image from "../images/vocascan-server-logo-small.png";
-import { setServerSettings } from "../redux/Actions/setServerSettings.js";
+
+import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
+import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import Image from "../../images/vocascan-server-logo-small.png";
+import { setServerSettings } from "../../redux/Actions/setServerSettings.js";
+import "./SelectionScreen.scss";
 
 function SelectionScreen(props) {
   let primary = [
