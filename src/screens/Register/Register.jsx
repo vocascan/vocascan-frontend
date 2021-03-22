@@ -1,34 +1,37 @@
-import React, { useCallback, useEffect, useState } from "react";
-import "./Register.scss";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-import { register } from "../../redux/Actions/register.js";
-import { setServerSettings } from "../../redux/Actions/setServerSettings.js";
 import Button from "../../Components/Button/Button";
 import TextInput from "../../Components/TextInput/TextInput";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout";
 
+import { register as registerAPI } from "../../utils/api";
+import { setServerUrl, register } from "../../redux/Actions/login";
+
+import "./Register.scss";
+
 const Register = (props) => {
   const { t } = useTranslation();
 
-  //variables
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const [isSamePassword, setIsSamePassword] = useState(true);
   const [emailIsUsed, setEmailIsUsed] = useState(false);
-  const [serverAddress, setServerAddress] = useState(useSelector((state) => state.login.serverAddress));
-  const [selfHosted] = useState(!serverAddress);
   const [serverError, setServerError] = useState(false);
+
+  const serverAddress = useSelector((state) => state.login.serverAddress);
+  const selfHosted = useSelector((state) => state.login.selfHosted);
 
   const dispatch = useDispatch();
 
-  let history = useHistory();
+  const history = useHistory();
+
   const handleClickLogin = useCallback(() => {
     history.push("/login");
   }, [history]);
@@ -49,38 +52,31 @@ const Register = (props) => {
     if (!checkPassword()) {
       return;
     }
-    //create the post request body
-    let body = {
-      username: username,
-      email: email,
-      password: password,
-    };
-    //create the config header file for request
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
 
-    axios
-      .post(`${serverAddress}/api/register`, body, config)
+    registerAPI({
+      username,
+      email,
+      password,
+    })
       .then((response) => {
-        dispatch(register({ username: username, email: email, jwt: response.data["jwt"] }));
+        dispatch(
+          register({
+            username: response.data.user.username,
+            email: email,
+            token: response.data.token,
+          })
+        );
       })
       .catch(function (error) {
         if (error.response.status === 409) {
+          setServerError(false);
           setEmailIsUsed(true);
-
           return;
         }
 
         setServerError(true);
       });
   }
-
-  useEffect(() => {
-    dispatch(setServerSettings({ serverAddress }));
-  }, [serverAddress, dispatch]);
 
   return (
     <UnauthenticatedLayout>
@@ -140,8 +136,9 @@ const Register = (props) => {
               placeholder={t("global.server")}
               onChange={(value) => {
                 setServerError(false);
-                setServerAddress(value);
+                dispatch(setServerUrl({ serverAddress: value }));
               }}
+              value={serverAddress}
               error={serverError}
               errorText={t("global.serverNotResponding")}
             />

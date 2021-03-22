@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 import Image from "../../images/vocascan-server-logo-small.png";
-import { setServerSettings } from "../../redux/Actions/setServerSettings.js";
 import "./SelectionScreen.scss";
+import { setSelfHosted } from "../../redux/Actions/login.js";
 
-function SelectionScreen(props) {
+function SelectionScreen() {
   let primary = [
     { id: 0, bulletPoint: "No need of a server" },
     { id: 1, bulletPoint: "sync every device" },
@@ -20,25 +20,30 @@ function SelectionScreen(props) {
   //dispatch to set Server address in redux
   const dispatch = useDispatch();
 
-  function handleSubmit(serverAddress) {
-    dispatch(setServerSettings({ serverAddress }));
+  function handleSubmit(selfHosted) {
+    dispatch(setSelfHosted({ selfHosted }));
   }
 
   return (
     <UnauthenticatedLayout>
       <div className="select-srn-wrapper">
         <div className="select-srn-header-wrapper">
-          <h1 className="selectScrn-title">LOG IN</h1>
-          <h1 className="selectScrn-heading">SELECT YOUR OPTION</h1>
+          <h1 className="select-srn-title">LOG IN</h1>
+          <h1 className="select-srn-heading">SELECT YOUR OPTION</h1>
         </div>
         <div className="boxes">
           <SelectionBox
             heading="Vocascan Server"
             description={primary}
             image={Image}
-            function={() => handleSubmit("http://127.0.0.1:13200")}
+            onSubmit={() => handleSubmit(false)}
           />
-          <SelectionBox heading="Own Server" description={secondary} image={Image} function={() => handleSubmit("")} />
+          <SelectionBox
+            heading="Own Server"
+            description={secondary}
+            image={Image}
+            onSubmit={() => handleSubmit(true)}
+          />
         </div>
       </div>
     </UnauthenticatedLayout>

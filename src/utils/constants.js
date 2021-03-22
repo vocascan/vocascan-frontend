@@ -1,4 +1,4 @@
-let languagees = [
+export const languages = [
   { id: 0, name: "Deutsch" },
   { id: 1, name: "Englisch" },
   { id: 2, name: "Spanisch" },
@@ -8,4 +8,4 @@ let languagees = [
   { id: 6, name: "Französisch" },
 ];
 
-export default languagees;
+export const vocascanServer = "https://vocascan.com"; // TODO: add domain later
