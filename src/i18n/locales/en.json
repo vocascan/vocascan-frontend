@@ -1,4 +1,7 @@
 {
+  "addVocab": {
+    "title": "Add vocabulary"
+  },
   "global": {
     "username": "Username",
     "email": "Email",
@@ -7,10 +10,18 @@
     "server": "Server",
     "add": "Add",
     "none": "None",
+    "group": "Group",
+    "description": "Description",
+    "foreignWord": "Foreign word",
+    "translation": "Übersetzung",
     "LogIn": "Log in",
+    "package": "Package",
     "signIn": "Sign in",
     "signUp": "Sign up",
     "serverNotResponding": "The server is not responding"
+  },
+  "firstStartup": {
+    "title": "Create your first vocabulary package"
   },
   "login": {
     "title": "Login",
