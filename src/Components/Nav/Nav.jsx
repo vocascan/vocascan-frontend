@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import NavButton from "./NavButton.jsx";
-import Button from "@material-ui/core/Button";
 import { useTranslation } from "react-i18next";
 import "./Nav.scss";
 
@@ -20,11 +18,9 @@ function Nav() {
         <NavButton name={t("nav.groupLearning")} link="#" />
       </ul>
 
-      <Link to="#" style={{ outline: 0 }}>
-        <Button className="settings">
-          <h5 className="settings-text">{t("nav.settings")}</h5>
-        </Button>
-      </Link>
+      <div>
+        <NavButton name={t("nav.settings")} link="#" />
+      </div>
     </div>
   );
 }

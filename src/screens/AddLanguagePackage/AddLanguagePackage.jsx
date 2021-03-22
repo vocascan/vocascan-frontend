@@ -1,30 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import languages from "../utils/Languages.js";
+import languages from "../../utils/Languages.js";
 import { useSelector } from "react-redux";
 import "./AddLanguagePackage.scss";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box, TextField, FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
+import { FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  lngpckg: {
-    width: "100%",
-    height: "75%",
-    display: "flex",
-    background: theme.palette.primaryColour.main,
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-  dropdown: {
-    display: "grid",
-    gridTemplateColumns: "50% 50%",
-    gridTemplateRows: "100px",
-  },
-}));
+import TextInput from "../../Components/TextInput/TextInput";
+import Button from "../../Components/Button/Button";
 
 function AddLanguagePackage(props) {
-  const classes = useStyles();
-
   const [name, setName] = useState("");
   const [foreignLanguage, setForeignLanguage] = useState("");
   const [translatedLanguage, setTranslatedLanguage] = useState("");
@@ -70,18 +54,17 @@ function AddLanguagePackage(props) {
   ));
 
   return (
-    <Box className={classes.lngpckg}>
-      <TextField
+    <div className="lngpckg">
+      <TextInput
         required
-        id="standard-basic"
-        label="Name"
-        onChange={(e) => {
-          setName(e.target.value);
+        placeholder="Name"
+        onChange={(value) => {
+          setName(value);
         }}
       />
 
-      <Box className={classes.dropdown}>
-        <FormControl required variant="outlined" className={classes.formControl}>
+      <div className="dropdown">
+        <FormControl required variant="outlined" className="field">
           <InputLabel id="demo-simple-select-outlined-label">Foreign language</InputLabel>
           <Select
             labelId="demo-simple-select-outlined-label"
@@ -99,7 +82,7 @@ function AddLanguagePackage(props) {
             {languageDropdownItems}
           </Select>
         </FormControl>
-        <FormControl required variant="outlined" className={classes.formControl}>
+        <FormControl required variant="outlined" className="field">
           <InputLabel id="demo-simple-select-outlined-label">Translated language</InputLabel>
           <Select
             labelId="demo-simple-select-outlined-label"
@@ -117,26 +100,26 @@ function AddLanguagePackage(props) {
             {languageDropdownItems}
           </Select>
         </FormControl>
-      </Box>
+      </div>
 
-      <TextField
+      <TextInput
         required
-        id="standard-basic"
-        label="Vocabs per day"
-        onChange={(e) => setVocabsPerDay(e.target.value)}
+        placeholder="Vocabs per day"
+        onChange={(value) => {
+          setVocabsPerDay(value);
+        }}
       />
 
-      <TextField
+      <TextInput
         required
-        id="standard-basic"
-        label="Correct translations to have successful vocabulary pairs"
-        onChange={(e) => setRightTranslations(e.target.value)}
+        placeholder="Correct translations to have successful vocabulary pairs"
+        onChange={(value) => {
+          setRightTranslations(value);
+        }}
       />
 
-      <button className="lngpckg-submit-btn" type="button" value="Submit" onClick={submitHandler}>
-        Weiter
-      </button>
-    </Box>
+      <Button onClick={submitHandler}>Weiter</Button>
+    </div>
   );
 }
 

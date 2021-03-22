@@ -10,6 +10,7 @@ const TextInput = ({
   errorText = null,
   required = false,
   autoComplete = null,
+  ...props
 }) => {
   const [value, setValue] = useState("");
 
@@ -31,6 +32,7 @@ const TextInput = ({
         onChange={(e) => handleChange(e.target.value)}
         required={required}
         autoComplete={autoComplete}
+        {...props}
       />
       {error && errorText && <p className="text-input-error">{errorText}</p>}
     </div>

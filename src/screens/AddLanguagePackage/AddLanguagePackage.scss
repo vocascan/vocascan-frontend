@@ -1,4 +1,4 @@
-@import "../colors";
+@import "../../colors";
 
 .lngpckg {
   width: 100%;
@@ -17,16 +17,16 @@
     font-size: 15px;
   }
 
-  .lngpckg-dropdown {
-    width: 100%;
+  .dropdown {
     height: 50px;
     display: flex;
     justify-content: space-between;
     z-index: 4;
+    margin: 0 -10px;
 
-    .lngpckg-dropdown-field {
-      width: 30%;
-      margin: 0;
+    .field {
+      width: 90%;
+      margin: 0 10px;
     }
   }
 

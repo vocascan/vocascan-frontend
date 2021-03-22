@@ -1,7 +1,27 @@
 {
   "global": {
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "passwordRepeat": "Repeat password",
+    "server": "Server",
     "add": "Add",
-    "none": "None"
+    "none": "None",
+    "LogIn": "Log in",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "serverNotResponding": "The server is not responding"
+  },
+  "login": {
+    "title": "Login",
+    "wrongCredentials": "Your email or password is wrong",
+    "dontHaveAccount": "Don't have an account?"
+  },
+  "signUp": {
+    "title": "Register",
+    "emailInUse": "The email is already used",
+    "passwordsDontMatch": "The passwords are not the same",
+    "alreadyHaveAccount": "Already have an account?"
   },
   "nav": {
     "newVocab": "New Vocab",

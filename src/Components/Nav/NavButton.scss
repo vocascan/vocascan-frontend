@@ -3,5 +3,18 @@
 .nav-button {
   width: 100%;
   height: 60px;
-  color: $color-alternative;
+  color: $color-white !important;
+  border: unset;
+  background-color: $color-background;
+  transition: all 0.3s ease-in;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $color-primary !important;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }

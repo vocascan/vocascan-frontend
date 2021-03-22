@@ -6,21 +6,20 @@
   .text-input {
     height: 32px;
     margin: 5px 0;
-    width: 200px;
+    width: 100%;
     display: block;
     border: unset;
     padding-top: 10px;
-    border-bottom: solid 1px $color-primary;
+    border-bottom: solid 1px $color-alternative;
     transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary 4%);
-    background-position: -200px 0;
-    background-size: 200px 100%;
+    background-position: -9999px 0;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 
     text-align: left;
 
-    &:focus,
-    &:valid {
+    &:focus {
       box-shadow: none;
       outline: none;
       background-position: 0 0;
@@ -32,21 +31,27 @@
 
     &:focus::placeholder,
     &:valid::placeholder {
-      color: $color-primary;
+      color: $color-primary-dark;
       font-size: 11px;
-      font-weight: bold;
       transform: translateY(-20px);
       visibility: visible !important;
+    }
+
+    &:hover {
+      border-bottom-color: $color-primary-dark;
+      box-shadow: none;
+      outline: none;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-alternative 4%);
+      background-position: 0 0;
     }
   }
 
   .text-input-label {
     position: absolute;
     left: 0;
-    top: 5px;
-    color: $color-primary;
+    top: 6px;
+    color: $color-primary-dark;
     font-size: 11px;
-    font-weight: bold;
   }
 
   .text-input-error {

@@ -20,9 +20,10 @@ function SelectionScreen(props) {
   //dispatch to set Server address in redux
   const dispatch = useDispatch();
 
-  function handleSubmit() {
-    dispatch(setServerSettings({ serverAddress: "http://127.0.0.1:13200" }));
+  function handleSubmit(serverAddress) {
+    dispatch(setServerSettings({ serverAddress }));
   }
+
   return (
     <UnauthenticatedLayout>
       <div className="select-srn-wrapper">
@@ -31,8 +32,13 @@ function SelectionScreen(props) {
           <h1 className="selectScrn-heading">SELECT YOUR OPTION</h1>
         </div>
         <div className="boxes">
-          <SelectionBox heading="Vocascan Server" description={primary} image={Image} function={handleSubmit} />
-          <SelectionBox heading="Own Server" description={secondary} image={Image} function={() => {}} />
+          <SelectionBox
+            heading="Vocascan Server"
+            description={primary}
+            image={Image}
+            function={() => handleSubmit("http://127.0.0.1:13200")}
+          />
+          <SelectionBox heading="Own Server" description={secondary} image={Image} function={() => handleSubmit("")} />
         </div>
       </div>
     </UnauthenticatedLayout>
