@@ -7,6 +7,7 @@
   margin: auto;
   border-radius: 10px;
 
+  position: relative;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -14,6 +15,18 @@
   padding: 40px 100px;
   background: $color-white;
   box-shadow: -1px 3px 5px#b4bed6;
+
+  .back-icon {
+    color: $color-primary;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    &:hover {
+      color: $color-primary-dark;
+      cursor: pointer;
+    }
+  }
 
   .register-form-header {
     width: 100%;

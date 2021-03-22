@@ -23,6 +23,11 @@ function SelectionScreen(props) {
   function handleSubmit() {
     dispatch(setServerSettings({ serverAddress: "http://127.0.0.1:13200" }));
   }
+
+  function handleSelfHosted() {
+    dispatch(setServerSettings({ serverAddress: "" }));
+  }
+
   return (
     <UnauthenticatedLayout>
       <div className="select-srn-wrapper">
@@ -32,7 +37,7 @@ function SelectionScreen(props) {
         </div>
         <div className="boxes">
           <SelectionBox heading="Vocascan Server" description={primary} image={Image} function={handleSubmit} />
-          <SelectionBox heading="Own Server" description={secondary} image={Image} function={() => {}} />
+          <SelectionBox heading="Own Server" description={secondary} image={Image} function={handleSelfHosted} />
         </div>
       </div>
     </UnauthenticatedLayout>
