@@ -44,7 +44,7 @@ const Login = (props) => {
       },
     };
     axios
-      .post(`${serverAddress} + /api/signIn`, body, config)
+      .post(`${serverAddress}/api/signIn`, body, config)
       .then((response) => {
         setError(false);
         //store username, email and jwt token in redux store
