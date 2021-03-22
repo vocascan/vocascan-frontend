@@ -2,6 +2,8 @@ import { REGISTER, SIGN_IN, SIGN_OUT, SET_SERVER_URL, SET_SELF_HOSTED } from "..
 import { setBaseUrl } from "../../utils/api";
 import { vocascanServer } from "../../utils/constants";
 
+const user = JSON.parse(localStorage.getItem("user")) || {};
+
 const initialState = {
   user: {
     username: "",
@@ -12,7 +14,14 @@ const initialState = {
   serverAddress: "",
   isLoggedIn: false,
   firstLogin: false,
+  ...user,
 };
+
+if (initialState.selfHosted) {
+  setBaseUrl(initialState.serverAddress);
+} else {
+  setBaseUrl(vocascanServer);
+}
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -54,6 +63,9 @@ const loginReducer = (state = initialState, action) => {
     case SET_SERVER_URL:
       setBaseUrl(action.payload.serverAddress);
 
+      user.serverAddress = action.payload.serverAddress;
+      localStorage.setItem("user", JSON.stringify(user));
+
       return {
         ...state,
         serverAddress: action.payload.serverAddress,
@@ -65,6 +77,9 @@ const loginReducer = (state = initialState, action) => {
       } else {
         setBaseUrl(state.serverAddress);
       }
+
+      user.selfHosted = action.payload.selfHosted;
+      localStorage.setItem("user", JSON.stringify(user));
 
       return {
         ...state,
