@@ -25,7 +25,7 @@ const Modal = ({ title, onClose, open = false, renderClose = true, closeOnClickO
     },
     // Modal specific depenency
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [ref.current]
+    []
   );
 
   useEffect(() => {
