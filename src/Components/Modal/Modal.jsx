@@ -12,7 +12,7 @@ const Modal = ({ title, onClose, open = false, renderClose = true, closeOnClickO
         onClose?.();
       }
     },
-    // Modal specific depenency
+    // Modal specific dependency
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
@@ -23,7 +23,7 @@ const Modal = ({ title, onClose, open = false, renderClose = true, closeOnClickO
         onClose?.();
       }
     },
-    // Modal specific depenency
+    // Modal specific dependency
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
@@ -38,7 +38,7 @@ const Modal = ({ title, onClose, open = false, renderClose = true, closeOnClickO
         document.removeEventListener("keyup", escapeListener);
       };
     }
-    // Modal specific depenency
+    // Modal specific dependency
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [closeOnClickOutside]);
 
