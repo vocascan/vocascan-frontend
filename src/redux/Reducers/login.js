@@ -1,6 +1,6 @@
 let initialState = {
   user: {
-    username: "My Username",
+    username: "",
     email: "",
     jwt: "",
   },
