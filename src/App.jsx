@@ -1,9 +1,6 @@
 import React from "react";
-import { Route, HashRouter, Redirect } from "react-router-dom";
-import "./Components/sections.scss";
 import { useSelector } from "react-redux";
-import Image from "./images/vocascan-logo.png";
-import "./index.scss";
+import { Route, HashRouter, Redirect } from "react-router-dom";
 
 import Nav from "./Components/Nav/Nav.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
@@ -13,7 +10,11 @@ import Register from "./screens/Register/Register.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
 import TopNav from "./Components/Nav/TopNav.jsx";
 
-function App() {
+import Image from "./images/vocascan-logo.png";
+import "./Components/sections.scss";
+import "./index.scss";
+
+const App = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
 
   if (!isLoggedIn) {
@@ -39,6 +40,6 @@ function App() {
       </HashRouter>
     );
   }
-}
+};
 
 export default App;

@@ -14,7 +14,7 @@ import { setServerUrl, signIn } from "../../redux/Actions/login";
 
 import "./Login.scss";
 
-const Login = (props) => {
+const Login = ({ image }) => {
   const { t } = useTranslation();
 
   const [email, setEmail] = useState("");
@@ -67,7 +67,7 @@ const Login = (props) => {
       <div className="login-form">
         <ArrowBackIcon className="back-icon" onClick={() => history.push("/plans")} />
         <div className="header">
-          <img className="header-logo" src={props.image} alt="server-logo" />
+          <img className="header-logo" src={image} alt="server-logo" />
           <h1 className="login-form-header-heading">{t("login.title")}</h1>
         </div>
         <div className="form-input">

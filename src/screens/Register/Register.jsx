@@ -14,7 +14,7 @@ import { setServerUrl, register } from "../../redux/Actions/login";
 
 import "./Register.scss";
 
-const Register = (props) => {
+const Register = ({ image }) => {
   const { t } = useTranslation();
 
   const [username, setUsername] = useState("");
@@ -83,7 +83,7 @@ const Register = (props) => {
       <div className="register-form">
         <ArrowBackIcon className="back-icon" onClick={() => history.push("/plans")} />
         <div className="register-form-header">
-          <img className="register-form-header-logo" src={props.image} alt="server-logo" />
+          <img className="register-form-header-logo" src={image} alt="server-logo" />
           <h1 className="register-form-header-heading">{t("signUp.title")}</h1>
         </div>
         <div className="register-form-input">

@@ -3,11 +3,13 @@ import { useDispatch } from "react-redux";
 
 import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
-import Image from "../../images/vocascan-server-logo-small.png";
-import "./SelectionScreen.scss";
+
 import { setSelfHosted } from "../../redux/Actions/login.js";
 
-function SelectionScreen() {
+import Image from "../../images/vocascan-server-logo-small.png";
+import "./SelectionScreen.scss";
+
+const SelectionScreen = () => {
   let primary = [
     { id: 0, bulletPoint: "No need of a server" },
     { id: 1, bulletPoint: "sync every device" },
@@ -48,6 +50,6 @@ function SelectionScreen() {
       </div>
     </UnauthenticatedLayout>
   );
-}
+};
 
 export default SelectionScreen;

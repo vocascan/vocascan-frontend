@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import "./NavButton.scss";
 
-function NavButton(props) {
+function NavButton({ name, link }) {
   return (
-    <Link to={props.link} style={{ outline: 0, textDecoration: "none" }}>
-      <button className="nav-button">{props.name}</button>
+    <Link to={link} style={{ outline: 0, textDecoration: "none" }}>
+      <button className="nav-button">{name}</button>
     </Link>
   );
 }
