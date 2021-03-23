@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { languages } from "../../utils/constants.js";
 import { useSelector } from "react-redux";
-import "./AddLanguagePackage.scss";
+import { useTranslation } from "react-i18next";
 
 import TextInput from "../../Components/TextInput/TextInput";
 import Select from "../../Components/Select/Select";
 import Button from "../../Components/Button/Button";
 
+import { languages } from "../../utils/constants.js";
+
+import "./AddLanguagePackage.scss";
+
 const AddLanguagePackage = () => {
+  const { t } = useTranslation();
+
   const [name, setName] = useState("");
   const [foreignLanguage, setForeignLanguage] = useState("");
   const [translatedLanguage, setTranslatedLanguage] = useState("");
@@ -57,7 +62,7 @@ const AddLanguagePackage = () => {
     <div className="lngpckg">
       <TextInput
         required
-        placeholder="Name"
+        placeholder={t("global.name")}
         onChange={(value) => {
           setName(value);
         }}
@@ -68,7 +73,7 @@ const AddLanguagePackage = () => {
           <Select
             required
             value={foreignLanguage}
-            label="Foreign language"
+            label={t("screens.addLanguagePackage.foreignLanguage")}
             options={selectOptions}
             onChange={(value) => {
               setForeignLanguage(value);
@@ -79,7 +84,7 @@ const AddLanguagePackage = () => {
           <Select
             required
             value={translatedLanguage}
-            label="Translated language"
+            label={t("screens.addLanguagePackage.translatedLanguage")}
             options={selectOptions}
             onChange={(value) => {
               setTranslatedLanguage(value);
@@ -90,7 +95,7 @@ const AddLanguagePackage = () => {
 
       <TextInput
         required
-        placeholder="Vocabs per day"
+        placeholder={t("screens.addLanguagePackage.vocabsPerDay")}
         onChange={(value) => {
           setVocabsPerDay(value);
         }}
@@ -98,13 +103,13 @@ const AddLanguagePackage = () => {
 
       <TextInput
         required
-        placeholder="Correct translations to have successful vocabulary pairs"
+        placeholder={t("screens.addLanguagePackage.correctTranslationsGoal")}
         onChange={(value) => {
           setRightTranslations(value);
         }}
       />
 
-      <Button onClick={submitHandler}>Weiter</Button>
+      <Button onClick={submitHandler}>{t("global.submit")}</Button>
     </div>
   );
 };
