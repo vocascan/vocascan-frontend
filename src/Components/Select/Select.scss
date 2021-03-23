@@ -1,0 +1,79 @@
+@import "../../colors";
+
+.select-input-container {
+  width: 100%;
+  position: relative;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+
+  select {
+    display: none;
+  }
+
+  .select-text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    padding: 10px 0 0;
+    border-bottom: 1px solid $color-alternative;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary 4%);
+    background-position: -9999px 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    .select-label {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-30%);
+      font-size: 13px;
+      transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+
+      &.flow {
+        top: 0;
+        left: 0;
+        font-size: 11px;
+        color: $color-primary-dark;
+        transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+      }
+    }
+
+    .select-icon {
+      margin-left: auto;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-bottom-color: $color-primary-dark;
+      box-shadow: none;
+      outline: none;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-alternative 4%);
+      background-position: 0 0;
+    }
+  }
+
+  .select-options-list {
+    width: 100%;
+    position: absolute;
+    top: 15px;
+    background-color: $color-white;
+    list-style-type: none;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%);
+
+    .select-option {
+      font-size: 13px;
+      padding: 10px 20px;
+      text-align: left;
+
+      &:hover {
+        background-color: $color-primary;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+}
