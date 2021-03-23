@@ -1,7 +1,7 @@
 {
   "global": {
     "name": "Name",
-    "noOptionMessage": "no options",
+    "noOptionMessage": "No options",
     "continue": "Continue",
     "submit": "Submit",
     "save": "Save",
