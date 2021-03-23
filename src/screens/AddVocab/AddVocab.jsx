@@ -108,7 +108,7 @@ const AddVocab = () => {
 
   return (
     <div className="add-vocab-form">
-      <h1 className="heading">{t("addVocab.title")}</h1>
+      <h1 className="heading">{t("screens.addVocab.title")}</h1>
 
       <div className="dropdowns">
         <FormControl required variant="outlined" className="form-control">

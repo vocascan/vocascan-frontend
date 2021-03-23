@@ -10,7 +10,7 @@ function Nav() {
   return (
     <div className="nav">
       <div className="title">
-        <h1 className="text">Vocascan</h1>
+        <h1 className="text">{t("global.vocascan")}</h1>
       </div>
       <ul className="button-list">
         <NavButton name={t("nav.newVocab")} link="/addVocab" />

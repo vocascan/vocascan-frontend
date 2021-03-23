@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import Button from "@material-ui/core/Button";
 
@@ -10,6 +11,7 @@ import "./TopNav.scss";
 function TopNav() {
   const [menuActive, setMenuActive] = useState(false);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   function handleClick() {
     setMenuActive((value) => !value);
@@ -31,13 +33,13 @@ function TopNav() {
       <div className={menuActive ? "menu-active" : "menu-inactive"}>
         <ul className="menu-list">
           <li className="menu-list-item">
-            <Button className="menu-list-item-btn">Profile</Button>
+            <Button className="menu-list-item-btn">{t("nav.profile")}</Button>
           </li>
           <li className="menu-list-item">
-            <Button className="menu-list-item-btn">Settings</Button>
+            <Button className="menu-list-item-btn">{t("nav.settings")}</Button>
           </li>
           <li className="menu-list-item" onClick={handleLogout}>
-            <Button className="menu-list-item-btn">Log out</Button>
+            <Button className="menu-list-item-btn">{t("nav.logout")}</Button>
           </li>
         </ul>
       </div>

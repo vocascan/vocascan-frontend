@@ -84,7 +84,7 @@ const Register = ({ image }) => {
         <ArrowBackIcon className="back-icon" onClick={() => history.push("/plans")} />
         <div className="register-form-header">
           <img className="register-form-header-logo" src={image} alt="server-logo" />
-          <h1 className="register-form-header-heading">{t("signUp.title")}</h1>
+          <h1 className="register-form-header-heading">{t("screens.register.title")}</h1>
         </div>
         <div className="register-form-input">
           <TextInput
@@ -106,7 +106,7 @@ const Register = ({ image }) => {
               setEmail(value);
             }}
             error={emailIsUsed}
-            errorText={t("signUp.emailInUse")}
+            errorText={t("screens.register.emailInUse")}
           />
           <TextInput
             required
@@ -117,7 +117,7 @@ const Register = ({ image }) => {
               setPassword(value);
             }}
             error={!isSamePassword}
-            errorText={t("signUp.passwordsDontMatch")}
+            errorText={t("screens.register.passwordsDontMatch")}
           />
           <TextInput
             required
@@ -128,7 +128,7 @@ const Register = ({ image }) => {
               setPasswordRepeat(value);
             }}
             error={!isSamePassword}
-            errorText={t("signUp.passwordsDontMatch")}
+            errorText={t("screens.register.passwordsDontMatch")}
           />
           {selfHosted && (
             <TextInput
@@ -154,7 +154,7 @@ const Register = ({ image }) => {
             {t("global.signUp")}
           </Button>
           <div className="register-form-submit-register">
-            {t("signUp.alreadyHaveAccount")}{" "}
+            {t("screens.register.alreadyHaveAccount")}{" "}
             <div className="register-form-submit-register-link" onClick={handleClickLogin}>
               {t("global.signIn")}
             </div>
