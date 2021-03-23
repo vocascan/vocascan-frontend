@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import Button from "@material-ui/core/Button";
 
-import { signOut } from "../../redux/Actions/login";
+import { signOut } from "redux/Actions/login";
 
 import "./TopNav.scss";
 

@@ -3,11 +3,11 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import TextInput from "../../Components/TextInput/TextInput";
-import Select from "../../Components/Select/Select";
-import Button from "../../Components/Button/Button";
+import TextInput from "Components/TextInput/TextInput";
+import Select from "Components/Select/Select";
+import Button from "Components/Button/Button";
 
-import { languages } from "../../utils/constants.js";
+import { languages } from "utils/constants.js";
 
 import "./AddLanguagePackage.scss";
 

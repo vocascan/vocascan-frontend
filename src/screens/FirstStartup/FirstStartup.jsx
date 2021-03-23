@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import AddLanguagePackage from "../AddLanguagePackage/AddLanguagePackage";
-import Modal from "../../Components/Modal/Modal";
+import AddLanguagePackage from "screens/AddLanguagePackage/AddLanguagePackage";
+import Modal from "Components/Modal/Modal";
 import "./FirstStartup.scss";
 
 const FirstStartup = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 
-import Nav from "../../Nav/Nav.jsx";
-import TopNav from "../../Nav/TopNav.jsx";
+import Nav from "Components/Nav/Nav.jsx";
+import TopNav from "Components/Nav/TopNav.jsx";
 
 import "./AuthenticatedLayout.scss";
 

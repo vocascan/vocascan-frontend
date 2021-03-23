@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 
-import Button from "../../Components/Button/Button";
-import TextInput from "../../Components/TextInput/TextInput";
-import Select from "../../Components/Select/Select";
+import Button from "Components/Button/Button";
+import TextInput from "Components/TextInput/TextInput";
+import Select from "Components/Select/Select";
 import "./AddVocab.scss";
 
 const AddVocab = () => {

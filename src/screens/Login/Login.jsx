@@ -5,12 +5,12 @@ import { useTranslation } from "react-i18next";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-import Button from "../../Components/Button/Button";
-import TextInput from "../../Components/TextInput/TextInput";
-import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout";
+import Button from "Components/Button/Button";
+import TextInput from "Components/TextInput/TextInput";
+import UnauthenticatedLayout from "Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout";
 
-import { login } from "../../utils/api";
-import { setServerUrl, signIn } from "../../redux/Actions/login";
+import { login } from "utils/api";
+import { setServerUrl, signIn } from "redux/Actions/login";
 
 import "./Login.scss";
 

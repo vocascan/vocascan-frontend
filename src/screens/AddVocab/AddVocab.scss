@@ -1,4 +1,4 @@
-@import "../../colors";
+@import "colors";
 
 .add-vocab-form {
   display: flex;
@@ -33,16 +33,6 @@
     grid-row: 4;
     display: flex;
     flex-direction: column;
-
-    .submit-btn {
-      width: 150px;
-      height: 35px;
-      grid-column: 2;
-      grid-row: 5;
-      background: $color-primary;
-      box-shadow: -1px 3px 5px $color-alternative;
-      margin: 0 auto;
-    }
   }
 
   .form-submit {
