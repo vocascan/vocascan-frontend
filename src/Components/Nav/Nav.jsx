@@ -1,6 +1,8 @@
 import React from "react";
-import NavButton from "./NavButton.jsx";
 import { useTranslation } from "react-i18next";
+
+import NavButton from "./NavButton.jsx";
+
 import "./Nav.scss";
 
 function Nav() {

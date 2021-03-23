@@ -25,7 +25,23 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadURL(isDev ? "http://localhost:3000" : `file://${path.join(__dirname, "../build/index.html")}`);
+  if (isDev) {
+    // load redux and react dev tools
+    const { default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } = require("electron-devtools-installer");
+
+    installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS])
+      .then((name) => {
+        console.log(`Added Extension:  ${name}`);
+
+        // open dev tools
+        mainWindow.webContents.openDevTools();
+
+        mainWindow.loadURL("http://localhost:3000");
+      })
+      .catch((err) => console.log("An error occurred: ", err));
+  } else {
+    mainWindow.loadURL(`file://${path.join(__dirname, "../build/index.html")}`);
+  }
 
   mainWindow.on("closed", () => (mainWindow = null));
 }

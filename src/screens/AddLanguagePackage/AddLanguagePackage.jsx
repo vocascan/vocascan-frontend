@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import languages from "../../utils/Languages.js";
+import { languages } from "../../utils/constants.js";
 import { useSelector } from "react-redux";
 import "./AddLanguagePackage.scss";
 import { FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";

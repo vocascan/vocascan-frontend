@@ -1,59 +1,60 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-import { signIn } from "../../redux/Actions/signIn.js";
-import { setServerSettings } from "../../redux/Actions/setServerSettings.js";
 import Button from "../../Components/Button/Button";
 import TextInput from "../../Components/TextInput/TextInput";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout";
+
+import { login } from "../../utils/api";
+import { setServerUrl, signIn } from "../../redux/Actions/login";
+
 import "./Login.scss";
 
-const Login = (props) => {
+const Login = ({ image }) => {
   const { t } = useTranslation();
 
-  //variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const [serverAddress, setServerAddress] = useState(useSelector((state) => state.login.serverAddress));
-  const [selfHosted] = useState(!serverAddress);
   const [serverError, setServerError] = useState(false);
+
+  const serverAddress = useSelector((state) => state.login.serverAddress);
+  const selfHosted = useSelector((state) => state.login.selfHosted);
 
   const dispatch = useDispatch();
 
-  let history = useHistory();
-  function handleClickRegister() {
+  const history = useHistory();
+
+  const handleClickRegister = useCallback(() => {
     history.push("/register");
-  }
+  }, [history]);
 
   //make api call to login
   async function submitLogin() {
-    //create the post request body
-    let body = {
-      email: email,
-      password: password,
-    };
-    //create the config header file for request
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    axios
-      .post(`${serverAddress}/api/signIn`, body, config)
+    login({
+      email,
+      password,
+    })
       .then((response) => {
         setError(false);
+
         //store username, email and jwt token in redux store
-        dispatch(signIn({ username: response.data["username"], email: email, jwt: response.data["jwt"] }));
+        dispatch(
+          signIn({
+            username: response.data.user.username,
+            email,
+            token: response.data.token,
+          })
+        );
       })
       .catch(function (e) {
-        if (e.response?.status === 403) {
+        if (e.response?.status === 401 || e.response?.status === 404) {
+          setServerError(false);
           setError(true);
-
           return;
         }
 
@@ -61,16 +62,12 @@ const Login = (props) => {
       });
   }
 
-  useEffect(() => {
-    dispatch(setServerSettings({ serverAddress }));
-  }, [serverAddress, dispatch]);
-
   return (
     <UnauthenticatedLayout>
       <div className="login-form">
         <ArrowBackIcon className="back-icon" onClick={() => history.push("/plans")} />
         <div className="header">
-          <img className="header-logo" src={props.image} alt="server-logo" />
+          <img className="header-logo" src={image} alt="server-logo" />
           <h1 className="login-form-header-heading">{t("login.title")}</h1>
         </div>
         <div className="form-input">
@@ -101,8 +98,9 @@ const Login = (props) => {
               placeholder={t("global.server")}
               onChange={(value) => {
                 setServerError(false);
-                setServerAddress(value);
+                dispatch(setServerUrl({ serverAddress: value }));
               }}
+              value={serverAddress}
               error={serverError}
               errorText={t("global.serverNotResponding")}
             />
