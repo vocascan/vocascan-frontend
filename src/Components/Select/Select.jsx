@@ -1,80 +1,56 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import React, { useCallback, useState } from "react";
+import ReactSelect from "react-select";
 
 import "./Select.scss";
 
-const Select = ({ onChange = () => null, required = false, options = [], label = "", value, children, ...props }) => {
-  const ref = useRef(null);
+const Select = ({
+  defaultValue = "",
+  multi = false,
+  onChange = () => null,
+  required = false,
+  options = [],
+  label = "",
+  value,
+  ...props
+}) => {
+  const [flow, setFlow] = useState(false);
+  const [val, setVal] = useState(value);
 
-  const [defaultText, setDefaultText] = useState(value);
-  const [showOptions, setShowOptions] = useState(false);
-
-  const escapeKeyListener = useCallback(
+  const handleChange = useCallback(
     (e) => {
-      if (e.key === "Escape") {
-        setShowOptions(false);
-      }
-    },
-    // Select Input specific dependency
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-
-  const clickOutsideListener = useCallback(
-    (e) => {
-      if (!ref.current?.contains(e.target)) {
-        setShowOptions(false);
-      }
-    },
-    // Select Input specific dependency
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-
-  const toggleShowOptions = useCallback(() => {
-    setShowOptions((state) => !state);
-  }, []);
-
-  const handleOptionClick = useCallback(
-    (e) => {
-      setDefaultText(e.target.getAttribute("data-name"));
-      onChange(e.target.getAttribute("data-name"));
-      setShowOptions(false);
+      onChange(e.id);
+      setVal(e.value);
     },
     [onChange]
   );
 
-  useEffect(() => {
-    document.addEventListener("click", clickOutsideListener);
-    document.addEventListener("keyup", escapeKeyListener);
+  const handleFocus = () => setFlow(true);
 
-    return () => {
-      document.removeEventListener("click", clickOutsideListener);
-      document.removeEventListener("keyup", escapeKeyListener);
-    };
-    // Select Input specific dependency
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const handleBlur = useCallback(() => {
+    setFlow(val !== "");
+  }, [val]);
 
   return (
-    <div className="select-input-container" ref={ref}>
-      <select className="select-input" label={label} value={value} {...props} onChange={onChange} />
-      <div className={`select-text ${showOptions ? "active" : ""}`} onClick={toggleShowOptions}>
-        <span className={`select-label ${showOptions || !!defaultText ? "flow" : ""}`}>{`${label}${
-          required ? " *" : ""
-        }`}</span>
-        {defaultText}
-        <ArrowDropDownIcon className="select-icon" />
-      </div>
-      {showOptions && (
-        <ul className="select-options-list">
-          {options.map((option) => (
-            <li className="select-option" data-name={option.name} key={option.id} onClick={handleOptionClick}>
-              {option.name}
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="select-input-container">
+      <span className={`select-label ${flow ? "flow" : ""}`}>{`${label}${required ? " *" : ""}`}</span>
+      <ReactSelect
+        required={required}
+        isMulti={multi}
+        className="react-select"
+        classNamePrefix="react-select"
+        options={options}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        placeholder={false}
+        styles={{
+          input: (provided) => ({
+            ...provided,
+            margin: 0,
+          }),
+        }}
+        {...props}
+      />
     </div>
   );
 };
