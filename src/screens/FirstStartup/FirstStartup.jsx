@@ -17,7 +17,7 @@ const FirstStartup = () => {
 
   return (
     <Modal
-      title={t("firstStartup.title")}
+      title={t("screens.firstStartup.title")}
       open={show}
       onClose={() => setShow(false)}
       renderClose={false}

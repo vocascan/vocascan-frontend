@@ -1,27 +1,26 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import CheckSign from "../../images/icons/check.png";
+import CheckIcon from "@material-ui/icons/Check";
+import CloseIcon from "@material-ui/icons/Close";
+
 import Button from "../Button/Button";
 import "./SelectionBox.scss";
 
-function SelectionBox({ onSubmit, description, heading, image }) {
+const Item = ({ Icon, text }) => (
+  <li className="description-list-item">
+    <Icon className="select-box-header-logo-img" />
+    <p className="description-list-item-item">{text}</p>
+  </li>
+);
+
+function SelectionBox({ onSubmit, pro, contra, heading, image, buttonText }) {
   const history = useHistory();
 
   function handleClick() {
     onSubmit();
     history.push("/login");
   }
-
-  //iterate over array to create list items
-  const items = description.map((item) => (
-    <li key={item.id} className="description-list-item">
-      <img className="select-box-header-logo-img" src={CheckSign} alt="checkbutton"></img>
-      <p className="description-list-item-item" value={item.bulletPoint}>
-        {item.bulletPoint}
-      </p>
-    </li>
-  ));
 
   return (
     <div className="select-box">
@@ -34,11 +33,18 @@ function SelectionBox({ onSubmit, description, heading, image }) {
         </div>
       </div>
       <div className="select-box-description">
-        <ul className="select-box-description-ul">{items}</ul>
+        <ul className="select-box-description-ul">
+          {pro.map((text) => (
+            <Item text={text} Icon={CheckIcon} />
+          ))}
+          {contra.map((text) => (
+            <Item text={text} Icon={CloseIcon} />
+          ))}
+        </ul>
       </div>
       <div className="select-box-footer">
         <Button block appearance="red" onClick={handleClick}>
-          Start for free
+          {buttonText}
         </Button>
       </div>
     </div>

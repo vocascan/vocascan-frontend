@@ -68,7 +68,7 @@ const Login = ({ image }) => {
         <ArrowBackIcon className="back-icon" onClick={() => history.push("/plans")} />
         <div className="header">
           <img className="header-logo" src={image} alt="server-logo" />
-          <h1 className="login-form-header-heading">{t("login.title")}</h1>
+          <h1 className="login-form-header-heading">{t("screens.login.title")}</h1>
         </div>
         <div className="form-input">
           <TextInput
@@ -90,7 +90,7 @@ const Login = ({ image }) => {
               setPassword(value);
             }}
             error={error}
-            errorText={t("login.wrongCredentials")}
+            errorText={t("screens.login.wrongCredentials")}
           />
           {selfHosted && (
             <TextInput
@@ -111,7 +111,7 @@ const Login = ({ image }) => {
             {t("global.signIn")}
           </Button>
           <div className="submit-register">
-            {t("login.dontHaveAccount")}{" "}
+            {t("screens.login.dontHaveAccount")}{" "}
             <div className="submit-register-link" onClick={handleClickRegister}>
               {t("global.signUp")}
             </div>
