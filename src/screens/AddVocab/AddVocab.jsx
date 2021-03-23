@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 
 import Button from "../../Components/Button/Button";
 import TextInput from "../../Components/TextInput/TextInput";
+import Select from "../../Components/Select/Select";
 import "./AddVocab.scss";
 
 const AddVocab = () => {
@@ -84,26 +84,28 @@ const AddVocab = () => {
   let languagePackageDropdownItems;
   //show if array of groups is 0, because .map is not working with empty array
   if (packages != null) {
-    languagePackageDropdownItems = groups.map((p) => (
-      <MenuItem key={p.id} value={p.name}>
-        {p.name}
-      </MenuItem>
-    ));
+    languagePackageDropdownItems = groups.map((p) => {
+      return {
+        value: p.name,
+        label: p.name,
+      };
+    });
   } else {
-    languagePackageDropdownItems = <MenuItem value="">no language packages</MenuItem>;
+    languagePackageDropdownItems = [];
   }
 
   //create dropdown items for groups
   let groupDropdownItems;
   //show if array of groups is 0, because .map is not working with empty array
   if (groups != null) {
-    groupDropdownItems = groups.map((p) => (
-      <MenuItem key={p.id} value={p.name}>
-        {p.name}
-      </MenuItem>
-    ));
+    groupDropdownItems = groups.map((p) => {
+      return {
+        value: p.name,
+        label: p.name,
+      };
+    });
   } else {
-    groupDropdownItems = <MenuItem value="">no groups</MenuItem>;
+    groupDropdownItems = [];
   }
 
   return (
@@ -111,39 +113,32 @@ const AddVocab = () => {
       <h1 className="heading">{t("screens.addVocab.title")}</h1>
 
       <div className="dropdowns">
-        <FormControl required variant="outlined" className="form-control">
-          <InputLabel id="demo-simple-select-outlined-label">{t("global.package")}</InputLabel>
+        <div className="select-wrapper">
           <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
+            required
             value={packageName}
-            onChange={/*(e) => { setPackageName(e.target.value), getGroups(e.target.value) }*/ console.log("changed")}
             label={t("global.package")}
-          >
-            <MenuItem value="">
-              <em>{t("global.none")}</em>
-            </MenuItem>
-            {languagePackageDropdownItems}
-          </Select>
-        </FormControl>
-        <FormControl required variant="outlined" className="form-control">
-          <InputLabel id="demo-simple-select-outlined-label">{t("global.group")}</InputLabel>
-          <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
-            value={groupName}
-            onChange={(e) => {
-              setGroupName(e.target.value);
+            options={languagePackageDropdownItems}
+            onChange={(value) => {
+              // setPackageName(value);
+              // getGroups(e.target.value);
+              console.log("changed: ", value);
             }}
+            noOptionsMessage={t("screens.addVocab.noPackagesMessage")}
+          />
+        </div>
+        <div className="select-wrapper">
+          <Select
+            required
+            value={groupName}
             label={t("global.group")}
-          >
-            <MenuItem value="">
-              <em>{t("global.none")}</em>
-            </MenuItem>
-
-            {groupDropdownItems}
-          </Select>
-        </FormControl>
+            options={groupDropdownItems}
+            onChange={(value) => {
+              setGroupName(value);
+            }}
+            noOptionsMessage={t("screens.addVocab.noGroupsMessage")}
+          />
+        </div>
       </div>
       <div className="input-fields">
         <TextInput
