@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
-import AddLanguagePackage from "../AddLanguagePackage/AddLanguagePackage.jsx";
+import AddLanguagePackage from "../AddLanguagePackage/AddLanguagePackage";
+import Modal from "../../Components/Modal/Modal";
 import "./FirstStartup.scss";
 
-function FirstStartup(props) {
+const FirstStartup = () => {
+  const { t } = useTranslation();
   const isFirstLogin = useSelector((state) => state.login.firstLogin);
+  const [show, setShow] = useState(isFirstLogin);
 
   if (!isFirstLogin) {
     return null;
   }
 
   return (
-    <div className="first-startup-visible">
-      <div className="first-startup-inner">
-        <h1 className="first-startup-inner-heading">CREATE YOUR FIRST VOCABULARY PACKAGE</h1>
-        <AddLanguagePackage />
-      </div>
-    </div>
+    <Modal
+      title={t("firstStartup.title")}
+      open={show}
+      onClose={() => setShow(false)}
+      renderClose={false}
+      closeOnClickOutside={false}
+    >
+      <AddLanguagePackage />
+    </Modal>
   );
-}
+};
 
 export default FirstStartup;

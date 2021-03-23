@@ -5,13 +5,12 @@ import { useSelector } from "react-redux";
 import Image from "./images/vocascan-logo.png";
 import "./index.scss";
 
-import Nav from "./Components/Nav/Nav.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
 import Login from "./screens/Login/Login.jsx";
 import Register from "./screens/Register/Register.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
-import TopNav from "./Components/Nav/TopNav.jsx";
+import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
@@ -30,12 +29,10 @@ function App() {
   } else {
     return (
       <HashRouter>
-        <div className="root">
-          <Nav />
-          <TopNav />
+        <AuthenticatedLayout>
           <FirstStartup />
           <Route path="/addVocab" component={AddVocab} />
-        </div>
+        </AuthenticatedLayout>
       </HashRouter>
     );
   }

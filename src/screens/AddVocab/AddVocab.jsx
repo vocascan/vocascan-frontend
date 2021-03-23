@@ -8,7 +8,7 @@ import Button from "../../Components/Button/Button";
 import TextInput from "../../Components/TextInput/TextInput";
 import "./AddVocab.scss";
 
-function AddVocab(props) {
+const AddVocab = () => {
   const { t } = useTranslation();
 
   const [packages, setPackages] = useState([]);
@@ -20,6 +20,9 @@ function AddVocab(props) {
   const [description, setDescription] = useState("");
   const jwt = useSelector((state) => state.login.user.jwt);
   const serverAddress = useSelector((state) => state.login.serverAddress);
+
+  // default number of translation inputs to render
+  const translationInputs = [1, 2, 3];
 
   useEffect(() => {
     axios({
@@ -105,17 +108,17 @@ function AddVocab(props) {
 
   return (
     <div className="add-vocab-form">
-      <h1 className="heading">Add vocabulary</h1>
+      <h1 className="heading">{t("addVocab.title")}</h1>
 
       <div className="dropdowns">
         <FormControl required variant="outlined" className="form-control">
-          <InputLabel id="demo-simple-select-outlined-label">Package</InputLabel>
+          <InputLabel id="demo-simple-select-outlined-label">{t("global.package")}</InputLabel>
           <Select
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             value={packageName}
             onChange={/*(e) => { setPackageName(e.target.value), getGroups(e.target.value) }*/ console.log("changed")}
-            label="Package"
+            label={t("global.package")}
           >
             <MenuItem value="">
               <em>{t("global.none")}</em>
@@ -124,7 +127,7 @@ function AddVocab(props) {
           </Select>
         </FormControl>
         <FormControl required variant="outlined" className="form-control">
-          <InputLabel id="demo-simple-select-outlined-label">Group</InputLabel>
+          <InputLabel id="demo-simple-select-outlined-label">{t("global.group")}</InputLabel>
           <Select
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
@@ -132,10 +135,10 @@ function AddVocab(props) {
             onChange={(e) => {
               setGroupName(e.target.value);
             }}
-            label="Group"
+            label={t("global.group")}
           >
             <MenuItem value="">
-              <em>None</em>
+              <em>{t("global.none")}</em>
             </MenuItem>
 
             {groupDropdownItems}
@@ -145,35 +148,28 @@ function AddVocab(props) {
       <div className="input-fields">
         <TextInput
           required
-          placeholder="Fremdwort"
+          placeholder={t("global.foreignWord")}
           onChange={(value) => {
             setForeignWord(value);
           }}
         />
+        {translationInputs.map((elem, key) => (
+          <TextInput
+            required
+            key={elem}
+            placeholder={`${elem} ${t("global.translation")}`}
+            onChange={(value) => {
+              setTranslations((trans) => {
+                trans[key] = value;
+
+                return trans;
+              });
+            }}
+          />
+        ))}
         <TextInput
           required
-          placeholder="1. Übersetzung"
-          onChange={(value) => {
-            setTranslations(value);
-          }}
-        />
-        <TextInput
-          required
-          placeholder="2. Übersetzung"
-          onChange={(value) => {
-            setTranslations(value);
-          }}
-        />
-        <TextInput
-          required
-          placeholder="3. Übersetzung"
-          onChange={(value) => {
-            setTranslations(value);
-          }}
-        />
-        <TextInput
-          required
-          placeholder="Beschreibung"
+          placeholder={t("global.description")}
           onChange={(value) => {
             setDescription(value);
           }}
@@ -191,6 +187,6 @@ function AddVocab(props) {
       </div>
     </div>
   );
-}
+};
 
 export default AddVocab;

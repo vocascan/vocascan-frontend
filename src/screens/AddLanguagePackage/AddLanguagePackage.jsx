@@ -8,7 +8,7 @@ import { FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
 import TextInput from "../../Components/TextInput/TextInput";
 import Button from "../../Components/Button/Button";
 
-function AddLanguagePackage(props) {
+const AddLanguagePackage = () => {
   const [name, setName] = useState("");
   const [foreignLanguage, setForeignLanguage] = useState("");
   const [translatedLanguage, setTranslatedLanguage] = useState("");
@@ -121,6 +121,6 @@ function AddLanguagePackage(props) {
       <Button onClick={submitHandler}>Weiter</Button>
     </div>
   );
-}
+};
 
 export default AddLanguagePackage;
