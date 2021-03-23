@@ -1,10 +1,10 @@
+import { defineState } from "redux-localstore";
+
 import { REGISTER, SIGN_IN, SIGN_OUT, SET_SERVER_URL, SET_SELF_HOSTED } from "../Actions";
-import { setBaseUrl } from "../../utils/api";
+import { setBaseUrl, setTokenHeader } from "../../utils/api";
 import { vocascanServer } from "../../utils/constants";
 
-const user = JSON.parse(localStorage.getItem("user")) || {};
-
-const initialState = {
+const defaultState = {
   user: {
     username: "",
     email: "",
@@ -14,7 +14,12 @@ const initialState = {
   serverAddress: "",
   isLoggedIn: false,
   firstLogin: false,
-  ...user,
+};
+
+const initialState = {
+  ...defineState(defaultState)("login"),
+  isLoggedIn: false,
+  firstLogin: false,
 };
 
 if (initialState.selfHosted) {
@@ -23,9 +28,13 @@ if (initialState.selfHosted) {
   setBaseUrl(vocascanServer);
 }
 
+setTokenHeader(initialState.user.token);
+
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER:
+      setTokenHeader(action.payload.token);
+
       return {
         ...state,
         user: {
@@ -38,6 +47,8 @@ const loginReducer = (state = initialState, action) => {
       };
 
     case SIGN_IN:
+      setTokenHeader(action.payload.token);
+
       return {
         ...state,
         user: {
@@ -49,6 +60,8 @@ const loginReducer = (state = initialState, action) => {
       };
 
     case SIGN_OUT:
+      setTokenHeader(null);
+
       return {
         ...state,
         user: {
@@ -63,9 +76,6 @@ const loginReducer = (state = initialState, action) => {
     case SET_SERVER_URL:
       setBaseUrl(action.payload.serverAddress);
 
-      user.serverAddress = action.payload.serverAddress;
-      localStorage.setItem("user", JSON.stringify(user));
-
       return {
         ...state,
         serverAddress: action.payload.serverAddress,
@@ -77,9 +87,6 @@ const loginReducer = (state = initialState, action) => {
       } else {
         setBaseUrl(state.serverAddress);
       }
-
-      user.selfHosted = action.payload.selfHosted;
-      localStorage.setItem("user", JSON.stringify(user));
 
       return {
         ...state,

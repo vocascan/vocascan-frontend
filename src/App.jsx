@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Route, HashRouter, Redirect } from "react-router-dom";
 
 import Nav from "./Components/Nav/Nav.jsx";
@@ -10,12 +10,40 @@ import Register from "./screens/Register/Register.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
 import TopNav from "./Components/Nav/TopNav.jsx";
 
+import { getProfile } from "./utils/api.js";
+import { signIn, signOut } from "./redux/Actions/login.js";
+
 import Image from "./images/vocascan-logo.png";
 import "./Components/sections.scss";
 import "./index.scss";
 
 const App = () => {
+  const dispatch = useDispatch();
+
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const user = useSelector((state) => state.login.user);
+
+  const shouldLogin = !!user.token && !isLoggedIn;
+
+  // Try login if token is set
+  useEffect(() => {
+    if (shouldLogin) {
+      getProfile()
+        .then((res) => {
+          dispatch(
+            signIn({
+              username: res.data.username,
+              email: user.email,
+              token: user.token,
+            })
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+          dispatch(signOut());
+        });
+    }
+  });
 
   if (!isLoggedIn) {
     return (

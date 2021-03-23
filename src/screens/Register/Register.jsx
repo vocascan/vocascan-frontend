@@ -62,7 +62,7 @@ const Register = ({ image }) => {
         dispatch(
           register({
             username: response.data.user.username,
-            email: email,
+            email,
             token: response.data.token,
           })
         );
