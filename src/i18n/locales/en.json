@@ -1,6 +1,7 @@
 {
   "global": {
     "name": "Name",
+    "noOptionMessage": "no options",
     "continue": "Continue",
     "submit": "Submit",
     "save": "Save",
@@ -24,7 +25,9 @@
   },
   "screens": {
     "addVocab": {
-      "title": "Add vocabulary"
+      "title": "Add vocabulary",
+      "noPackagesMessage": "No packages found",
+      "noGroupsMessage": "No groups found"
     },
     "addLanguagePackage": {
       "foreignLanguage": "Foreign language",

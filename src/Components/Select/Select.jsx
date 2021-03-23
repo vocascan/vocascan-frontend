@@ -1,9 +1,11 @@
 import React, { useCallback, useState } from "react";
 import ReactSelect from "react-select";
+import { useTranslation } from "react-i18next";
 
 import "./Select.scss";
 
 const Select = ({
+  noOptionsMessage = false,
   defaultValue = "",
   multi = false,
   onChange = () => null,
@@ -13,6 +15,8 @@ const Select = ({
   value,
   ...props
 }) => {
+  const { t } = useTranslation();
+
   const [flow, setFlow] = useState(false);
   const [val, setVal] = useState(value);
 
@@ -43,6 +47,7 @@ const Select = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         placeholder={false}
+        noOptionsMessage={() => (noOptionsMessage ? noOptionsMessage : t("global.noOptionMessage"))}
         styles={{
           input: (provided) => ({
             ...provided,
