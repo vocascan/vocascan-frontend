@@ -1,0 +1,107 @@
+@import "../../colors";
+
+.select-input-container {
+  width: 100%;
+  position: relative;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+
+  .select-label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 13px;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+
+    &.flow {
+      top: 0;
+      left: 0;
+      font-size: 11px;
+      color: $color-primary-dark;
+      transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    }
+  }
+
+  .react-select {
+    display: flex;
+    width: 100%;
+
+    &__control {
+      width: 100%;
+      border: unset;
+      border-radius: 0;
+      border-bottom: 1px solid $color-alternative;
+      transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary 4%);
+      background-position: -9999px 0;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+
+      &--is-focused {
+        box-shadow: none;
+        border-bottom: 1px solid $color-primary;
+        background-position: 0 0;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary 4%);
+      }
+
+      &:hover {
+        box-shadow: none;
+        outline: none;
+        transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+        // background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary-dark 4%);
+        background-position: 0 0;
+        border-bottom-color: $color-primary;
+        cursor: pointer;
+      }
+    }
+
+    &__indicators {
+      .react-select {
+        &__indicator-separator {
+          display: none;
+        }
+      }
+
+      .react-select {
+        &__indicator {
+          padding-right: 0;
+        }
+      }
+    }
+
+    &__menu {
+      text-align: left;
+    }
+  }
+
+  .react-select {
+    &__value-container {
+      padding-left: 0;
+    }
+  }
+
+  .react-select {
+    &__single-value {
+      margin-left: 0;
+      font-size: 13px;
+    }
+  }
+
+  .react-select {
+    &__option {
+      text-align: left;
+
+      &--is-selected {
+        background-color: $color-primary;
+      }
+
+      &--is-focused {
+        background-color: $color-primary;
+        opacity: 0.5;
+        color: $color-white;
+      }
+    }
+  }
+}

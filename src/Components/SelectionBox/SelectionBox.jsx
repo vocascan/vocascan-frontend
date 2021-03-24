@@ -34,11 +34,11 @@ function SelectionBox({ onSubmit, pro, contra, heading, image, buttonText }) {
       </div>
       <div className="select-box-description">
         <ul className="select-box-description-ul">
-          {pro.map((text) => (
-            <Item text={text} Icon={CheckIcon} />
+          {pro.map((text, i) => (
+            <Item text={text} Icon={CheckIcon} key={i} />
           ))}
-          {contra.map((text) => (
-            <Item text={text} Icon={CloseIcon} />
+          {contra.map((text, i) => (
+            <Item text={text} Icon={CloseIcon} key={i} />
           ))}
         </ul>
       </div>

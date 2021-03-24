@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { languages } from "../../utils/constants.js";
 import { useSelector } from "react-redux";
-import "./AddLanguagePackage.scss";
-import { FormControl, Select, InputLabel, MenuItem } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 
 import TextInput from "../../Components/TextInput/TextInput";
+import Select from "../../Components/Select/Select";
 import Button from "../../Components/Button/Button";
 
+import { languages } from "../../utils/constants.js";
+
+import "./AddLanguagePackage.scss";
+
 const AddLanguagePackage = () => {
+  const { t } = useTranslation();
+
   const [name, setName] = useState("");
   const [foreignLanguage, setForeignLanguage] = useState("");
   const [translatedLanguage, setTranslatedLanguage] = useState("");
@@ -46,65 +51,51 @@ const AddLanguagePackage = () => {
       });
   }
 
-  //create language dropdown items
-  const languageDropdownItems = languages.map((p) => (
-    <MenuItem key={p.id} value={p.name}>
-      {p.name}
-    </MenuItem>
-  ));
+  const selectOptions = languages.map((language) => {
+    return {
+      value: language.name,
+      label: language.name,
+    };
+  });
 
   return (
     <div className="lngpckg">
       <TextInput
         required
-        placeholder="Name"
+        placeholder={t("global.name")}
         onChange={(value) => {
           setName(value);
         }}
       />
 
       <div className="dropdown">
-        <FormControl required variant="outlined" className="field">
-          <InputLabel id="demo-simple-select-outlined-label">Foreign language</InputLabel>
+        <div class="select-wrapper">
           <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
+            required
             value={foreignLanguage}
-            onChange={(e) => {
-              setForeignLanguage(e.target.value);
+            label={t("screens.addLanguagePackage.foreignLanguage")}
+            options={selectOptions}
+            onChange={(value) => {
+              setForeignLanguage(value);
             }}
-            label="Group"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-
-            {languageDropdownItems}
-          </Select>
-        </FormControl>
-        <FormControl required variant="outlined" className="field">
-          <InputLabel id="demo-simple-select-outlined-label">Translated language</InputLabel>
+          />
+        </div>
+        <div class="select-wrapper">
           <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
+            required
             value={translatedLanguage}
-            onChange={(e) => {
-              setTranslatedLanguage(e.target.value);
+            label={t("screens.addLanguagePackage.translatedLanguage")}
+            options={selectOptions}
+            onChange={(value) => {
+              setTranslatedLanguage(value);
             }}
-            label="Group"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-
-            {languageDropdownItems}
-          </Select>
-        </FormControl>
+          />
+        </div>
       </div>
 
       <TextInput
         required
-        placeholder="Vocabs per day"
+        placeholder={t("screens.addLanguagePackage.vocabsPerDay")}
         onChange={(value) => {
           setVocabsPerDay(value);
         }}
@@ -112,13 +103,13 @@ const AddLanguagePackage = () => {
 
       <TextInput
         required
-        placeholder="Correct translations to have successful vocabulary pairs"
+        placeholder={t("screens.addLanguagePackage.correctTranslationsGoal")}
         onChange={(value) => {
           setRightTranslations(value);
         }}
       />
 
-      <Button onClick={submitHandler}>Weiter</Button>
+      <Button onClick={submitHandler}>{t("global.submit")}</Button>
     </div>
   );
 };

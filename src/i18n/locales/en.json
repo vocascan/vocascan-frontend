@@ -1,5 +1,10 @@
 {
   "global": {
+    "name": "Name",
+    "noOptionMessage": "No options",
+    "continue": "Continue",
+    "submit": "Submit",
+    "save": "Save",
     "vocascan": "Vocascan",
     "username": "Username",
     "email": "Email",
@@ -20,7 +25,15 @@
   },
   "screens": {
     "addVocab": {
-      "title": "Add vocabulary"
+      "title": "Add vocabulary",
+      "noPackagesMessage": "No packages found",
+      "noGroupsMessage": "No groups found"
+    },
+    "addLanguagePackage": {
+      "foreignLanguage": "Foreign language",
+      "translatedLanguage": "Translated language",
+      "vocabsPerDay": "Vocabs per day",
+      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs"
     },
     "selectionScreen": {
       "title": "Login",
