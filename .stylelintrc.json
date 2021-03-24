@@ -1,0 +1,9 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "rules": {
+    "order/properties-alphabetical-order": null,
+    "max-nesting-depth": 4,
+    "string-quotes": "double",
+    "selector-max-compound-selectors": null
+  }
+}

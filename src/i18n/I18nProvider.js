@@ -11,7 +11,7 @@ i18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
   lng: "en-EN",
   load: "all",
-  react: { wait: true },
+  react: { useSuspense: true },
   resources: {
     en: { translation: en },
     de: { translation: de },

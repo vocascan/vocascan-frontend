@@ -1,8 +1,79 @@
 {
-  "navNewVocab": "New Vocab",
-  "navLearn": "Learn",
-  "navProgress": "Progress",
-  "navAllVocabulary": "All vocabulary",
-  "navGroupLearning": "Group learning",
-  "navSettings": "Settings"
+  "global": {
+    "name": "Name",
+    "noOptionMessage": "No options",
+    "continue": "Continue",
+    "submit": "Submit",
+    "save": "Save",
+    "vocascan": "Vocascan",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "passwordRepeat": "Repeat password",
+    "server": "Server",
+    "add": "Add",
+    "none": "None",
+    "group": "Group",
+    "description": "Description",
+    "foreignWord": "Foreign word",
+    "translation": "Translation",
+    "LogIn": "Log in",
+    "package": "Package",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "serverNotResponding": "The server is not responding"
+  },
+  "screens": {
+    "addVocab": {
+      "title": "Add vocabulary",
+      "noPackagesMessage": "No packages found",
+      "noGroupsMessage": "No groups found"
+    },
+    "addLanguagePackage": {
+      "foreignLanguage": "Foreign language",
+      "translatedLanguage": "Translated language",
+      "vocabsPerDay": "Vocabs per day",
+      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs"
+    },
+    "selectionScreen": {
+      "title": "Login",
+      "heading": "Select your option",
+      "vocascanCloud": {
+        "heading": "Vocascan cloud",
+        "pro": ["No need of a server", "sync every device"],
+        "contra": ["Your data is stored on vocascan servers"],
+        "button": "Start for free"
+      },
+      "vocascanServer": {
+        "heading": "Vocascan server",
+        "pro": ["sync every device", "Use your own Server", "Full control over the settings"],
+        "contra": ["You need a own server"],
+        "button": "Start for free"
+      }
+    },
+    "firstStartup": {
+      "title": "Create your first vocabulary package"
+    },
+    "login": {
+      "title": "Login",
+      "wrongCredentials": "Your email or password is wrong",
+      "dontHaveAccount": "Don't have an account?"
+    },
+    "register": {
+      "title": "Register",
+      "emailInUse": "The email is already used",
+      "passwordsDontMatch": "The passwords are not the same",
+      "alreadyHaveAccount": "Already have an account?"
+    }
+  },
+  "nav": {
+    "newVocab": "New Vocab",
+    "learn": "Learn",
+    "progress": "Progress",
+    "allVocabulary": "All vocabulary",
+    "groupLearning": "Group learning",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout"
+  }
 }
