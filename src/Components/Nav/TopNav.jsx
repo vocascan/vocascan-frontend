@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import PersonIcon from "@material-ui/icons/Person";
 
 import Button from "@material-ui/core/Button";
 
@@ -27,22 +28,26 @@ function TopNav() {
 
   return (
     <div className="top-nav">
-      <h3 className="user" onClick={handleClick}>
-        {username || email}
-      </h3>
-      <div className={menuActive ? "menu-active" : "menu-inactive"}>
-        <ul className="menu-list">
-          <li className="menu-list-item">
-            <Button className="menu-list-item-btn">{t("nav.profile")}</Button>
-          </li>
-          <li className="menu-list-item">
-            <Button className="menu-list-item-btn">{t("nav.settings")}</Button>
-          </li>
-          <li className="menu-list-item" onClick={handleLogout}>
-            <Button className="menu-list-item-btn">{t("nav.logout")}</Button>
-          </li>
-        </ul>
+      <div className="title">
+        <h1 className="text">{t("global.vocascan")}</h1>
       </div>
+      <h3 className="user" onClick={handleClick}>
+        <PersonIcon />
+        {username || email}
+        <div className={menuActive ? "menu-active" : "menu-inactive"}>
+          <ul className="menu-list">
+            <li className="menu-list-item">
+              <Button className="menu-list-item-btn">{t("nav.profile")}</Button>
+            </li>
+            <li className="menu-list-item">
+              <Button className="menu-list-item-btn">{t("nav.settings")}</Button>
+            </li>
+            <li className="menu-list-item" onClick={handleLogout}>
+              <Button className="menu-list-item-btn">{t("nav.logout")}</Button>
+            </li>
+          </ul>
+        </div>
+      </h3>
     </div>
   );
 }

@@ -6,15 +6,38 @@
   color: $color-white !important;
   border: unset;
   background-color: $color-background;
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
   text-transform: uppercase;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .button-name {
+    position: absolute;
+    left: 60px;
+    opacity: 0;
+  }
+
+  .button-icon {
+    position: absolute;
+    left: 20px;
+    transition: all 0.2s ease-in;
+  }
 
   &:hover {
-    background-color: $color-primary !important;
+    background-color: $color-primary;
     cursor: pointer;
   }
 
   &:focus {
     outline: none;
   }
+}
+
+.nav:hover .button-name {
+  opacity: 1;
+  transition: all 0.2s ease-in;
+  transition-delay: 0.2s;
 }

@@ -2,21 +2,41 @@
 
 .top-nav {
   background: $color-background;
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  justify-content: space-between;
   align-items: center;
   z-index: 3;
   height: 100%;
   width: 100%;
   grid-area: topnav;
 
+  grid-template-columns: 200px auto;
+  grid-template-rows: 50px;
+  grid-template-areas:
+    "topnav topnav"
+    "sidenav main";
+
   .user {
     color: $color-main-text;
     cursor: pointer;
     padding: 9px 30px;
+    position: relative;
 
     &:hover {
       background-color: $color-primary;
+    }
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .text {
+      color: $color-main-text;
+      text-transform: uppercase;
+      font-size: 17px;
+      margin: auto;
     }
   }
 }
@@ -24,7 +44,8 @@
 .menu-active {
   width: 200px;
   height: 150px;
-  top: 40px;
+  top: 50px;
+  right: 0;
   background: $color-background;
   position: absolute;
   padding: 0;
