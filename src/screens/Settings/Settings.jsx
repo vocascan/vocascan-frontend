@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import Switch from "../../Components/Switch/Switch";
@@ -11,11 +11,9 @@ const Settings = () => {
 
   const dispatch = useDispatch();
   const menuStyle = useSelector((state) => state.setting.menuStyle);
-  const [isMenuFancy, setIsMenuFancy] = useState(menuStyle !== "default");
 
   const onChangeMenu = useCallback(() => {
     dispatch(setMenuStyle({ menuStyle: menuStyle === "default" ? "fancy" : "default" }));
-    setIsMenuFancy((value) => !value);
   }, [dispatch, menuStyle]);
 
   return (
@@ -27,7 +25,7 @@ const Settings = () => {
         optionLeft={t("screens.settings.menu.optionLeft")}
         optionRight={t("screens.settings.menu.optionRight")}
         onChange={onChangeMenu}
-        checked={isMenuFancy}
+        checked={menuStyle !== "default"}
       />
     </div>
   );

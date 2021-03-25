@@ -14,7 +14,7 @@ import "./Nav.scss";
 
 function Nav() {
   const { t } = useTranslation();
-  const menuStyle = useSelector((state) => state.setting.menuStyle) || "default";
+  const menuStyle = useSelector((state) => state.setting.menuStyle);
   const [initialStyle, setInitialStyle] = useState(menuStyle);
   const [loading, setLoading] = useState(false);
 
