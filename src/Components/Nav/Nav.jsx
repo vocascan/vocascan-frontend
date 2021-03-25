@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import AddIcon from "@material-ui/icons/Add";
@@ -15,9 +15,27 @@ import "./Nav.scss";
 function Nav() {
   const { t } = useTranslation();
   const menuStyle = useSelector((state) => state.setting.menuStyle) || "default";
+  const [initialStyle, setInitialStyle] = useState(menuStyle);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (menuStyle === initialStyle) {
+      return;
+    }
+
+    setLoading(true);
+    setInitialStyle(menuStyle);
+    let timer = setTimeout(() => setLoading(false), 400);
+
+    return () => {
+      clearTimeout(timer);
+    };
+    // initialStyle counts only for initial render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [menuStyle]);
 
   return (
-    <div className={`nav nav-${menuStyle}`}>
+    <div className={`nav nav-${menuStyle} ${loading ? "nav-loading" : ""}`}>
       <ul className="button-list">
         <NavButton name={t("nav.newVocab")} design={menuStyle} icon={<AddIcon />} link="/addVocab" />
         <NavButton name={t("nav.learn")} design={menuStyle} icon={<LocalLibraryIcon />} link="#" />
@@ -27,7 +45,7 @@ function Nav() {
       </ul>
 
       <div>
-        <NavButton name={t("nav.settings")} design={menuStyle} icon={<SettingsIcon />} link="#" />
+        <NavButton name={t("nav.settings")} design={menuStyle} icon={<SettingsIcon />} link="/settings" />
       </div>
     </div>
   );
