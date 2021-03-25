@@ -66,13 +66,13 @@
   &:hover {
     background-color: $color-primary;
     cursor: pointer;
-    width: 150px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    width: 160px;
+    border-top-right-radius: 23px;
+    border-bottom-right-radius: 23px;
 
     .button-name {
       font-size: 11px;
-      left: 10px;
+      left: 15px;
     }
 
     .button-icon {
