@@ -1,28 +1,30 @@
 @import "../../colors";
 
 .nav {
-  width: 200px;
-  height: calc(100vh - 20px);
+  width: 65px;
+  height: calc(100vh - 50px);
   background: $color-background;
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  z-index: 4;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 40px auto 40px;
+  grid-area: sidenav;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  justify-content: space-between;
+  transition: width 0.2s ease-in;
 
-  .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  &.nav-default {
+    &:hover {
+      width: 200px;
+      transition: width 0.2s ease-in;
+    }
+  }
 
-    .text {
-      color: $color-main-text;
-      text-transform: uppercase;
-      font-size: 17px;
-      margin: auto;
+  &.nav-blur {
+    filter: blur(5px);
+  }
+
+  &.nav-loading {
+    * {
+      opacity: 0;
     }
   }
 

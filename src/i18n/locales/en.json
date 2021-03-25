@@ -64,6 +64,14 @@
       "emailInUse": "The email is already used",
       "passwordsDontMatch": "The passwords are not the same",
       "alreadyHaveAccount": "Already have an account?"
+    },
+    "settings": {
+      "title": "Settings",
+      "menu": {
+        "label": "Menu style",
+        "optionLeft": "Default",
+        "optionRight": "Fancy"
+      }
     }
   },
   "nav": {

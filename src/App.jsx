@@ -8,6 +8,7 @@ import Login from "./screens/Login/Login.jsx";
 import Register from "./screens/Register/Register.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
 import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
+import Settings from "./screens/Settings/Settings.jsx";
 
 import { getProfile } from "./utils/api.js";
 import { signIn, signOut } from "./redux/Actions/login.js";
@@ -61,6 +62,7 @@ const App = () => {
         <AuthenticatedLayout>
           <FirstStartup />
           <Route path="/addVocab" component={AddVocab} />
+          <Route path="/settings" component={Settings} />
         </AuthenticatedLayout>
       </HashRouter>
     );
