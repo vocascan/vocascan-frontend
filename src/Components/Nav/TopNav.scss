@@ -17,44 +17,57 @@
     "sidenav main";
 
   .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: $color-main-text;
     cursor: pointer;
-    padding: 9px 30px;
+    height: 100%;
     position: relative;
+    font-size: 13px;
+    width: 200px;
 
     &:hover {
       background-color: $color-primary;
+
+      .menu {
+        transition: all 0.2s ease-in;
+        right: 0;
+      }
     }
   }
 
   .title {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 
     .text {
       color: $color-main-text;
       text-transform: uppercase;
       font-size: 17px;
-      margin: auto;
+      margin: auto 20px;
     }
   }
 }
 
-.menu-active {
+.menu {
   width: 200px;
   height: 150px;
   top: 50px;
-  right: 0;
+  right: -200px;
   background: $color-background;
   position: absolute;
   padding: 0;
+  transition: all 0.2s ease-in;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
 
   .menu-list {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: column;
     margin: 0;
     padding: 0;
@@ -63,9 +76,16 @@
       list-style: none;
 
       .menu-list-item-btn {
-        padding: 10px 0;
+        font-size: 13px;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 12px 0;
+        line-height: 22px;
         width: 100%;
+        display: flex;
+        justify-content: center;
         color: $color-white;
+        border-radius: 0;
 
         &:hover {
           background-color: $color-primary;
@@ -73,8 +93,4 @@
       }
     }
   }
-}
-
-.menu-inactive {
-  display: none;
 }
