@@ -12,11 +12,11 @@ const TextInput = ({
   autoComplete = null,
   ...props
 }) => {
-  const [value, setValue] = useState("");
+  const [val, setVal] = useState("");
 
   const handleChange = useCallback(
     (v) => {
-      setValue(v);
+      setVal(v);
       onChange(v);
     },
     [onChange]
@@ -24,7 +24,7 @@ const TextInput = ({
 
   return (
     <div className="text-input-wrapper">
-      {value.length > 0 && <span className="text-input-label">{`${placeholder}${required && " *"}`}</span>}
+      {val.length > 0 && <span className="text-input-label">{`${placeholder}${required && " *"}`}</span>}
       <input
         className={`text-input ${error && "input-error"}`}
         type={type}
