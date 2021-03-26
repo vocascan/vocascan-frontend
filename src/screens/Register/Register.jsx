@@ -86,8 +86,14 @@ const Register = ({ image }) => {
   }
 
   useEffect(() => {
+    if (selfHosted && !serverAddress) {
+      setCanSubmit(false);
+
+      return;
+    }
+
     setCanSubmit(!(!username || !email || !password || !passwordRepeat));
-  }, [username, email, password, passwordRepeat]);
+  }, [username, email, password, passwordRepeat, selfHosted, serverAddress]);
 
   return (
     <UnauthenticatedLayout>

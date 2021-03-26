@@ -70,13 +70,13 @@ const Login = ({ image }) => {
   }
 
   useEffect(() => {
-    if (!selfHosted) {
-      setCanSubmit(!(!email || !password));
+    if (selfHosted && !serverAddress) {
+      setCanSubmit(false);
 
       return;
     }
 
-    setCanSubmit(!(!email || !password || !serverAddress));
+    setCanSubmit(!(!email || !password));
   }, [email, password, selfHosted, serverAddress]);
 
   return (
