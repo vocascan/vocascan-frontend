@@ -87,7 +87,7 @@ const Login = ({ image }) => {
           <img className="header-logo" src={image} alt="server-logo" />
           <h1 className="login-form-header-heading">{t("screens.login.title")}</h1>
         </div>
-        <form onSubmit={(e) => submitLogin(e)}>
+        <form onSubmit={submitLogin}>
           <div className="form-input">
             <TextInput
               autoFocus
