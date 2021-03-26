@@ -7,6 +7,7 @@
   text-transform: none;
   color: $color-white;
   justify-content: center;
+  align-items: center;
   border-radius: 15px;
   border: unset;
   transition: all 0.3s ease-in;
@@ -85,6 +86,7 @@
 
       &:hover {
         color: $color-primary-dark;
+        background-color: $color-background-muted;
         cursor: pointer;
       }
     }
@@ -94,6 +96,7 @@
 
       &:hover {
         color: $color-red-dark;
+        background-color: $color-background-muted;
         cursor: pointer;
       }
     }
@@ -103,6 +106,7 @@
 
       &:hover {
         color: $color-green-dark;
+        background-color: $color-background-muted;
         cursor: pointer;
       }
     }
@@ -119,6 +123,10 @@
   &.btn-disabled {
     opacity: 0.5;
     pointer-events: none;
+  }
+
+  &.btn-round {
+    border-radius: 100%;
   }
 
   &:focus {

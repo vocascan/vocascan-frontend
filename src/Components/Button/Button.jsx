@@ -14,9 +14,9 @@ const Button = ({
   return (
     <button
       onClick={onClick}
-      className={`btn btn-${appearance} ${disabled && "btn-disabled"} btn-${variant} ${uppercase && "btn-uppercase"} ${
-        block && "btn-block"
-      }`}
+      className={`btn btn-${appearance}${disabled ? " btn-disabled" : ""} btn-${variant}${
+        uppercase ? " btn-uppercase" : ""
+      }${block ? " btn-block" : ""}`}
     >
       {children}
     </button>
