@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -21,6 +21,7 @@ const Login = ({ image }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [serverError, setServerError] = useState(false);
+  const [canSubmit, setCanSubmit] = useState(false);
 
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const selfHosted = useSelector((state) => state.login.selfHosted);
@@ -34,7 +35,13 @@ const Login = ({ image }) => {
   }, [history]);
 
   //make api call to login
-  async function submitLogin() {
+  async function submitLogin(e) {
+    e.preventDefault();
+
+    if (!canSubmit) {
+      return;
+    }
+
     login({
       email,
       password,
@@ -62,6 +69,16 @@ const Login = ({ image }) => {
       });
   }
 
+  useEffect(() => {
+    if (!selfHosted) {
+      setCanSubmit(!(!email || !password));
+
+      return;
+    }
+
+    setCanSubmit(!(!email || !password || !serverAddress));
+  }, [email, password, selfHosted, serverAddress]);
+
   return (
     <UnauthenticatedLayout>
       <div className="login-form">
@@ -70,53 +87,54 @@ const Login = ({ image }) => {
           <img className="header-logo" src={image} alt="server-logo" />
           <h1 className="login-form-header-heading">{t("screens.login.title")}</h1>
         </div>
-        <div className="form-input">
-          <TextInput
-            autoFocus
-            required
-            placeholder={t("global.email")}
-            onChange={(value) => {
-              setError(false);
-              setEmail(value);
-            }}
-          />
-          <TextInput
-            required
-            type="password"
-            placeholder={t("global.password")}
-            autoComplete="current-password"
-            onChange={(value) => {
-              setError(false);
-              setPassword(value);
-            }}
-            error={error}
-            errorText={t("screens.login.wrongCredentials")}
-          />
-          {selfHosted && (
+        <form onSubmit={(e) => submitLogin(e)}>
+          <div className="form-input">
+            <TextInput
+              autoFocus
+              required
+              placeholder={t("global.email")}
+              onChange={(value) => {
+                setError(false);
+                setEmail(value);
+              }}
+            />
             <TextInput
               required
-              placeholder={t("global.server")}
+              type="password"
+              placeholder={t("global.password")}
+              autoComplete="current-password"
               onChange={(value) => {
-                setServerError(false);
-                dispatch(setServerUrl({ serverAddress: value }));
+                setError(false);
+                setPassword(value);
               }}
-              value={serverAddress}
-              error={serverError}
-              errorText={t("global.serverNotResponding")}
+              error={error}
+              errorText={t("screens.login.wrongCredentials")}
             />
-          )}
-        </div>
-        <div className="login-footer">
-          <Button block uppercase onClick={submitLogin} disabled={!(email && password && serverAddress)}>
-            {t("global.signIn")}
-          </Button>
-          <div className="submit-register">
-            {t("screens.login.dontHaveAccount")}{" "}
-            <div className="submit-register-link" onClick={handleClickRegister}>
-              {t("global.signUp")}
+            {selfHosted && (
+              <TextInput
+                required
+                placeholder={t("global.server")}
+                onChange={(value) => {
+                  setServerError(false);
+                  dispatch(setServerUrl({ serverAddress: value }));
+                }}
+                value={serverAddress}
+              />
+            )}
+            {serverError && <p className="form-error">{t("global.serverNotResponding")}</p>}
+          </div>
+          <div className="login-footer">
+            <Button block uppercase onClick={(e) => submitLogin(e)} disabled={!canSubmit}>
+              {t("global.signIn")}
+            </Button>
+            <div className="submit-register">
+              {t("screens.login.dontHaveAccount")}{" "}
+              <div className="submit-register-link" onClick={handleClickRegister}>
+                {t("global.signUp")}
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </UnauthenticatedLayout>
   );
