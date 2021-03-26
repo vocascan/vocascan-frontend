@@ -69,6 +69,7 @@ const ArrayTextInput = ({
                   );
                 });
               }}
+              value={elem.value}
             />
             <Button
               tabIndex={-1}

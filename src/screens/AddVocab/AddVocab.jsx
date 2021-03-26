@@ -6,9 +6,11 @@ import axios from "axios";
 import Button from "../../Components/Button/Button";
 import TextInput from "../../Components/TextInput/TextInput";
 import Select from "../../Components/Select/Select";
+import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput";
+
+import { maxTranslations } from "../../utils/constants";
 
 import "./AddVocab.scss";
-import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput";
 
 const AddVocab = () => {
   const { t } = useTranslation();
@@ -22,8 +24,6 @@ const AddVocab = () => {
   const [description, setDescription] = useState("");
   const jwt = useSelector((state) => state.login.user.jwt);
   const serverAddress = useSelector((state) => state.login.serverAddress);
-
-  const maxTranslations = 10;
 
   useEffect(() => {
     axios({
@@ -120,7 +120,6 @@ const AddVocab = () => {
           <Select
             required
             tabIndex={1}
-            value={packageName}
             label={t("global.package")}
             options={languagePackageDropdownItems}
             onChange={(value) => {
@@ -128,6 +127,7 @@ const AddVocab = () => {
               // getGroups(e.target.value);
               console.log("changed: ", value);
             }}
+            value={packageName}
             noOptionsMessage={t("screens.addVocab.noPackagesMessage")}
           />
         </div>
@@ -135,12 +135,12 @@ const AddVocab = () => {
           <Select
             required
             tabIndex={1}
-            value={groupName}
             label={t("global.group")}
             options={groupDropdownItems}
             onChange={(value) => {
               setGroupName(value);
             }}
+            value={groupName}
             noOptionsMessage={t("screens.addVocab.noGroupsMessage")}
           />
         </div>
@@ -150,10 +150,10 @@ const AddVocab = () => {
           required
           tabIndex={1}
           placeholder={t("global.foreignWord")}
-          value={foreignWord}
           onChange={(value) => {
             setForeignWord(value);
           }}
+          value={foreignWord}
         />
         <ArrayTextInput
           required
@@ -167,10 +167,10 @@ const AddVocab = () => {
           tabIndex={1}
           required
           placeholder={t("global.description")}
-          value={description}
           onChange={(value) => {
             setDescription(value);
           }}
+          value={description}
         />
       </div>
 

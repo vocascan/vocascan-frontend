@@ -9,3 +9,5 @@ export const languages = [
 ];
 
 export const vocascanServer = "https://vocascan.com"; // TODO: add domain later
+
+export const maxTranslations = 10;
