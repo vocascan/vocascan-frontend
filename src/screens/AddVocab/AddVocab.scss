@@ -34,21 +34,6 @@
     display: flex;
     flex-direction: column;
 
-    .translation-input-wrapper {
-      display: flex;
-      align-items: center;
-    }
-
-    .add-translation-wrapper {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-
-      .add-icon {
-        margin-right: 5px;
-      }
-    }
-
     .submit-btn {
       width: 150px;
       height: 35px;

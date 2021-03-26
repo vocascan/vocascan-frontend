@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import uniqid from "uniqid";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import RemoveIcon from "@material-ui/icons/Remove";
 
 import Button from "../../Components/Button/Button";
 import TextInput from "../../Components/TextInput/TextInput";
 import Select from "../../Components/Select/Select";
 
 import "./AddVocab.scss";
+import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput";
 
 const AddVocab = () => {
   const { t } = useTranslation();
@@ -20,30 +18,12 @@ const AddVocab = () => {
   const [groups] = useState([]);
   const [groupName, setGroupName] = useState("");
   const [foreignWord, setForeignWord] = useState("");
-  const [translations, setTranslations] = useState(() => [{ id: uniqid(), value: "" }]);
+  const [translations, setTranslations] = useState([""]);
   const [description, setDescription] = useState("");
   const jwt = useSelector((state) => state.login.user.jwt);
   const serverAddress = useSelector((state) => state.login.serverAddress);
 
   const maxTranslations = 10;
-
-  const addTranslation = useCallback(() => {
-    if (translations.length >= maxTranslations) {
-      return;
-    }
-
-    setTranslations((trans) => [
-      ...trans,
-      {
-        id: uniqid(),
-        value: "",
-      },
-    ]);
-  }, [translations]);
-
-  const removeTranslation = useCallback((key) => {
-    setTranslations((trans) => trans.filter((elem) => elem.id !== key));
-  }, []);
 
   useEffect(() => {
     axios({
@@ -131,6 +111,9 @@ const AddVocab = () => {
     groupDropdownItems = [];
   }
 
+  useEffect(() => {
+    console.info(translations);
+  }, [translations]);
   return (
     <div className="add-vocab-form">
       <h1 className="heading">{t("screens.addVocab.title")}</h1>
@@ -175,49 +158,14 @@ const AddVocab = () => {
             setForeignWord(value);
           }}
         />
-        {translations.map((elem, key) => {
-          return (
-            <div key={elem.id} className="translation-input-wrapper">
-              <TextInput
-                required
-                placeholder={`${key + 1}. ${t("global.translation")}`}
-                tabIndex={1}
-                onChange={(value) => {
-                  setTranslations((trans) => {
-                    return trans.map((element) =>
-                      element.id === elem.id
-                        ? {
-                            id: elem.id,
-                            value,
-                          }
-                        : element
-                    );
-                  });
-                }}
-              />
-              <Button
-                tabIndex={-1}
-                disabled={!key}
-                appearance="red"
-                variant="transparent"
-                onClick={() => removeTranslation(elem.id)}
-              >
-                <RemoveIcon />
-              </Button>
-            </div>
-          );
-        })}
-        <div className="add-translation-wrapper">
-          <Button
-            tabIndex={-1}
-            variant="transparent"
-            onClick={addTranslation}
-            disabled={translations.length >= maxTranslations}
-          >
-            <AddCircleOutlineIcon className="add-icon" />
-            {t("screens.addVocab.addTranslation")}
-          </Button>
-        </div>
+        <ArrayTextInput
+          required
+          max={maxTranslations}
+          data={translations}
+          placeholder={t("global.translation")}
+          onChange={setTranslations}
+          addText={t("screens.addVocab.addTranslation")}
+        />
         <TextInput
           tabIndex={1}
           required
