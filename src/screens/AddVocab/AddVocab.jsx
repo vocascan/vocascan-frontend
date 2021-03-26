@@ -111,9 +111,6 @@ const AddVocab = () => {
     groupDropdownItems = [];
   }
 
-  useEffect(() => {
-    console.info(translations);
-  }, [translations]);
   return (
     <div className="add-vocab-form">
       <h1 className="heading">{t("screens.addVocab.title")}</h1>
