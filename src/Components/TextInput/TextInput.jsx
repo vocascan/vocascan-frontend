@@ -15,9 +15,9 @@ const TextInput = ({
   const [value, setValue] = useState("");
 
   const handleChange = useCallback(
-    (v) => {
-      setValue(v);
-      onChange(v);
+    (e) => {
+      setValue(e.target.value);
+      onChange(e.target.value);
     },
     [onChange]
   );
@@ -29,7 +29,7 @@ const TextInput = ({
         className={`text-input ${error && "input-error"}`}
         type={type}
         placeholder={`${placeholder}${required ? " *" : ""}`}
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={handleChange}
         required={required}
         autoComplete={autoComplete}
         {...props}
