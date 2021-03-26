@@ -5,5 +5,17 @@
   "printWidth": 120,
   "singleQuote": false,
   "semi": true,
-  "useTabs": false
+  "useTabs": false,
+  "importOrder": [
+    "^(react|uniqid|i18next|redux|axios|@testing-library)(.*)$",
+    "^@material-ui/core(.*)$",
+    "^@material-ui/icons(.*)$",
+    "^(.*).jsx$",
+    "^(.*).js$",
+    "^(.*).(png|jpg|json)$",
+    "^(.*).(scss)$",
+    ".*"
+  ],
+  "importOrderSeparation": true,
+  "experimentalBabelParserPluginsList": ["jsx"]
 }
