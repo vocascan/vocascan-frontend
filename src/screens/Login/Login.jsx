@@ -124,7 +124,7 @@ const Login = ({ image }) => {
             {serverError && <p className="form-error">{t("global.serverNotResponding")}</p>}
           </div>
           <div className="login-footer">
-            <Button block uppercase onClick={(e) => submitLogin(e)} disabled={!canSubmit}>
+            <Button block uppercase onClick={submitLogin} disabled={!canSubmit}>
               {t("global.signIn")}
             </Button>
             <div className="submit-register">
