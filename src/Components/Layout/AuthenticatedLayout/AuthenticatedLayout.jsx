@@ -10,7 +10,7 @@ const AuthenticatedLayout = ({ children }) => {
     <div className="root">
       <Nav />
       <TopNav />
-      {children}
+      <div className="content">{children}</div>
     </div>
   );
 };
