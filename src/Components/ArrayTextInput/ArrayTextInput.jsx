@@ -1,0 +1,95 @@
+import React, { useEffect, useCallback, useState } from "react";
+import uniqid from "uniqid";
+
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+
+import Button from "../Button/Button";
+import TextInput from "../TextInput/TextInput";
+
+import "./ArrayTextInput.scss";
+
+const ArrayTextInput = ({
+  data = [],
+  max = 10,
+  onChange = () => null,
+  placeholder = null,
+  addText = null,
+  required = false,
+}) => {
+  const [arrayData, setArrayData] = useState(() =>
+    data.map((elem) => {
+      return {
+        id: uniqid(),
+        value: elem,
+      };
+    })
+  );
+
+  const addArrayData = useCallback(() => {
+    if (arrayData.length >= max) {
+      return;
+    }
+
+    setArrayData((trans) => [
+      ...trans,
+      {
+        id: uniqid(),
+        value: "",
+      },
+    ]);
+  }, [arrayData, max]);
+
+  const removeArrayData = useCallback((key) => {
+    setArrayData((trans) => trans.filter((elem) => elem.id !== key));
+  }, []);
+
+  useEffect(() => {
+    onChange(arrayData.map((elem) => elem.value));
+  }, [arrayData, onChange]);
+
+  return (
+    <>
+      {arrayData.map((elem, key) => {
+        return (
+          <div key={elem.id} className="array-input-wrapper">
+            <TextInput
+              required={required}
+              placeholder={`${key + 1}. ${placeholder ? placeholder : ""}`}
+              tabIndex={1}
+              onChange={(value) => {
+                setArrayData((trans) => {
+                  return trans.map((element) =>
+                    element.id === elem.id
+                      ? {
+                          id: elem.id,
+                          value,
+                        }
+                      : element
+                  );
+                });
+              }}
+            />
+            <Button
+              tabIndex={-1}
+              disabled={!key}
+              appearance="red"
+              variant="transparent"
+              onClick={() => removeArrayData(elem.id)}
+            >
+              <RemoveCircleIcon />
+            </Button>
+          </div>
+        );
+      })}
+      <div className="add-input-wrapper">
+        <Button tabIndex={-1} variant="transparent" onClick={addArrayData} disabled={arrayData.length >= max}>
+          <AddCircleIcon />
+          {addText && <span className="add-text">{addText}</span>}
+        </Button>
+      </div>
+    </>
+  );
+};
+
+export default ArrayTextInput;
