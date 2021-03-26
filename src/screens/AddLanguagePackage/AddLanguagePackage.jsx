@@ -69,7 +69,7 @@ const AddLanguagePackage = () => {
       />
 
       <div className="dropdown">
-        <div class="select-wrapper">
+        <div className="select-wrapper">
           <Select
             required
             value={foreignLanguage}
@@ -80,7 +80,7 @@ const AddLanguagePackage = () => {
             }}
           />
         </div>
-        <div class="select-wrapper">
+        <div className="select-wrapper">
           <Select
             required
             value={translatedLanguage}
