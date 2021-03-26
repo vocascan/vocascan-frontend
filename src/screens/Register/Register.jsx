@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -24,6 +24,7 @@ const Register = ({ image }) => {
   const [isSamePassword, setIsSamePassword] = useState(true);
   const [emailIsUsed, setEmailIsUsed] = useState(false);
   const [serverError, setServerError] = useState(false);
+  const [canSubmit, setCanSubmit] = useState(false);
 
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const selfHosted = useSelector((state) => state.login.selfHosted);
@@ -48,7 +49,13 @@ const Register = ({ image }) => {
   }, [password, passwordRepeat]);
 
   //make api call to register user
-  async function submitRegisterPerson() {
+  async function submitRegisterPerson(e) {
+    e.preventDefault();
+
+    if (!canSubmit) {
+      return;
+    }
+
     if (!checkPassword()) {
       return;
     }
@@ -68,7 +75,7 @@ const Register = ({ image }) => {
         );
       })
       .catch(function (error) {
-        if (error.response.status === 409) {
+        if (error.response?.status === 409) {
           setServerError(false);
           setEmailIsUsed(true);
           return;
@@ -78,6 +85,10 @@ const Register = ({ image }) => {
       });
   }
 
+  useEffect(() => {
+    setCanSubmit(!(!username || !email || !password || !passwordRepeat));
+  }, [username, email, password, passwordRepeat]);
+
   return (
     <UnauthenticatedLayout>
       <div className="register-form">
@@ -86,80 +97,80 @@ const Register = ({ image }) => {
           <img className="register-form-header-logo" src={image} alt="server-logo" />
           <h1 className="register-form-header-heading">{t("screens.register.title")}</h1>
         </div>
-        <div className="register-form-input">
-          <TextInput
-            required
-            autoFocus
-            placeholder={t("global.username")}
-            autoComplete="current-password"
-            onChange={(value) => {
-              setEmailIsUsed(false);
-              setUsername(value);
-            }}
-          />
-          <TextInput
-            required
-            type="email"
-            placeholder={t("global.email")}
-            onChange={(value) => {
-              setEmailIsUsed(false);
-              setEmail(value);
-            }}
-            error={emailIsUsed}
-            errorText={t("screens.register.emailInUse")}
-          />
-          <TextInput
-            required
-            type="password"
-            placeholder={t("global.password")}
-            onChange={(value) => {
-              setIsSamePassword(true);
-              setPassword(value);
-            }}
-            error={!isSamePassword}
-            errorText={t("screens.register.passwordsDontMatch")}
-          />
-          <TextInput
-            required
-            type="password"
-            placeholder={t("global.passwordRepeat")}
-            onChange={(value) => {
-              setIsSamePassword(true);
-              setPasswordRepeat(value);
-            }}
-            error={!isSamePassword}
-            errorText={t("screens.register.passwordsDontMatch")}
-          />
-          {selfHosted && (
+        <form onSubmit={submitRegisterPerson}>
+          <div className="register-form-input">
             <TextInput
               required
-              placeholder={t("global.server")}
+              autoFocus
+              placeholder={t("global.username")}
+              autoComplete="current-password"
               onChange={(value) => {
+                setEmailIsUsed(false);
                 setServerError(false);
-                dispatch(setServerUrl({ serverAddress: value }));
+                setUsername(value);
               }}
-              value={serverAddress}
-              error={serverError}
-              errorText={t("global.serverNotResponding")}
             />
-          )}
-        </div>
-        <div className="register-form-submit">
-          <Button
-            block
-            uppercase
-            onClick={submitRegisterPerson}
-            disabled={!(username && email && password && passwordRepeat && serverAddress)}
-          >
-            {t("global.signUp")}
-          </Button>
-          <div className="register-form-submit-register">
-            {t("screens.register.alreadyHaveAccount")}{" "}
-            <div className="register-form-submit-register-link" onClick={handleClickLogin}>
-              {t("global.signIn")}
+            <TextInput
+              required
+              type="email"
+              placeholder={t("global.email")}
+              onChange={(value) => {
+                setEmailIsUsed(false);
+                setServerError(false);
+                setEmail(value);
+              }}
+              error={emailIsUsed}
+              errorText={t("screens.register.emailInUse")}
+            />
+            <TextInput
+              required
+              type="password"
+              placeholder={t("global.password")}
+              onChange={(value) => {
+                setIsSamePassword(true);
+                setServerError(false);
+                setPassword(value);
+              }}
+              error={!isSamePassword}
+              errorText={t("screens.register.passwordsDontMatch")}
+            />
+            <TextInput
+              required
+              type="password"
+              placeholder={t("global.passwordRepeat")}
+              onChange={(value) => {
+                setIsSamePassword(true);
+                setServerError(false);
+                setPasswordRepeat(value);
+              }}
+              error={!isSamePassword}
+              errorText={t("screens.register.passwordsDontMatch")}
+            />
+            {selfHosted && (
+              <TextInput
+                required
+                placeholder={t("global.server")}
+                onChange={(value) => {
+                  setServerError(false);
+                  dispatch(setServerUrl({ serverAddress: value }));
+                }}
+                value={serverAddress}
+              />
+            )}
+            {serverError && <p className="form-error">{t("global.serverNotResponding")}</p>}
+          </div>
+          <div className="register-form-submit">
+            <Button block uppercase onClick={submitRegisterPerson} disabled={!canSubmit}>
+              {t("global.signUp")}
+            </Button>
+            <div className="register-form-submit-register">
+              {t("screens.register.alreadyHaveAccount")}{" "}
+              <div className="register-form-submit-register-link" onClick={handleClickLogin}>
+                {t("global.signIn")}
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </UnauthenticatedLayout>
   );
