@@ -82,10 +82,15 @@ const Login = ({ image }) => {
   return (
     <UnauthenticatedLayout>
       <div className="login-form">
-        <ArrowBackIcon className="back-icon" onClick={() => history.push("/plans")} />
+        <ArrowBackIcon
+          className="back-icon"
+          onClick={() => history.push("/plans")}
+        />
         <div className="header">
           <img className="header-logo" src={image} alt="server-logo" />
-          <h1 className="login-form-header-heading">{t("screens.login.title")}</h1>
+          <h1 className="login-form-header-heading">
+            {t("screens.login.title")}
+          </h1>
         </div>
         <form onSubmit={submitLogin}>
           <div className="form-input">
@@ -123,7 +128,9 @@ const Login = ({ image }) => {
                 value={serverAddress}
               />
             )}
-            {serverError && <p className="form-error">{t("global.serverNotResponding")}</p>}
+            {serverError && (
+              <p className="form-error">{t("global.serverNotResponding")}</p>
+            )}
           </div>
           <div className="login-footer">
             <Button block uppercase onClick={submitLogin} disabled={!canSubmit}>
@@ -131,7 +138,10 @@ const Login = ({ image }) => {
             </Button>
             <div className="submit-register">
               {t("screens.login.dontHaveAccount")}{" "}
-              <div className="submit-register-link" onClick={handleClickRegister}>
+              <div
+                className="submit-register-link"
+                onClick={handleClickRegister}
+              >
                 {t("global.signUp")}
               </div>
             </div>

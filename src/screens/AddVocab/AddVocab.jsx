@@ -179,7 +179,15 @@ const AddVocab = () => {
           block
           tabIndex={-1}
           onClick={() => console.log("added")}
-          disabled={!(foreignWord && setTranslations.length && description && groupName.length && packageName)}
+          disabled={
+            !(
+              foreignWord &&
+              setTranslations.length &&
+              description &&
+              groupName.length &&
+              packageName
+            )
+          }
         >
           {t("global.add")}
         </Button>

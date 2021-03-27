@@ -84,7 +84,12 @@ const ArrayTextInput = ({
         );
       })}
       <div className="add-input-wrapper">
-        <Button tabIndex={-1} variant="transparent" onClick={addArrayData} disabled={arrayData.length >= max}>
+        <Button
+          tabIndex={-1}
+          variant="transparent"
+          onClick={addArrayData}
+          disabled={arrayData.length >= max}
+        >
           <AddCircleIcon />
           {addText && <span className="add-text">{addText}</span>}
         </Button>

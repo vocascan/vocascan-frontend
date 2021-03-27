@@ -24,22 +24,34 @@ const SelectionScreen = () => {
     <UnauthenticatedLayout>
       <div className="select-srn-wrapper">
         <div className="select-srn-header-wrapper">
-          <h1 className="select-srn-title">{t("screens.selectionScreen.title")}</h1>
-          <h1 className="select-srn-heading">{t("screens.selectionScreen.heading")}</h1>
+          <h1 className="select-srn-title">
+            {t("screens.selectionScreen.title")}
+          </h1>
+          <h1 className="select-srn-heading">
+            {t("screens.selectionScreen.heading")}
+          </h1>
         </div>
         <div className="boxes">
           <SelectionBox
             heading={t("screens.selectionScreen.vocascanCloud.heading")}
-            pro={t("screens.selectionScreen.vocascanCloud.pro", { returnObjects: true })}
-            contra={t("screens.selectionScreen.vocascanCloud.contra", { returnObjects: true })}
+            pro={t("screens.selectionScreen.vocascanCloud.pro", {
+              returnObjects: true,
+            })}
+            contra={t("screens.selectionScreen.vocascanCloud.contra", {
+              returnObjects: true,
+            })}
             buttonText={t("screens.selectionScreen.vocascanCloud.button")}
             image={Image}
             onSubmit={() => handleSubmit(false)}
           />
           <SelectionBox
             heading={t("screens.selectionScreen.vocascanServer.heading")}
-            pro={t("screens.selectionScreen.vocascanServer.pro", { returnObjects: true })}
-            contra={t("screens.selectionScreen.vocascanServer.contra", { returnObjects: true })}
+            pro={t("screens.selectionScreen.vocascanServer.pro", {
+              returnObjects: true,
+            })}
+            contra={t("screens.selectionScreen.vocascanServer.contra", {
+              returnObjects: true,
+            })}
             buttonText={t("screens.selectionScreen.vocascanServer.button")}
             image={Image}
             onSubmit={() => handleSubmit(true)}

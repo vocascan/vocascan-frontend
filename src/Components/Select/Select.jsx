@@ -36,7 +36,9 @@ const Select = ({
 
   return (
     <div className="select-input-container">
-      <span className={`select-label ${flow ? "flow" : ""}`}>{`${label}${required ? " *" : ""}`}</span>
+      <span className={`select-label ${flow ? "flow" : ""}`}>{`${label}${
+        required ? " *" : ""
+      }`}</span>
       <ReactSelect
         required={required}
         isMulti={multi}
@@ -47,7 +49,9 @@ const Select = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         placeholder={false}
-        noOptionsMessage={() => (noOptionsMessage ? noOptionsMessage : t("global.noOptionMessage"))}
+        noOptionsMessage={() =>
+          noOptionsMessage ? noOptionsMessage : t("global.noOptionMessage")
+        }
         styles={{
           input: (provided) => ({
             ...provided,

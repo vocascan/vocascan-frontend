@@ -30,7 +30,11 @@ function SelectionBox({ onSubmit, pro, contra, heading, image, buttonText }) {
           <h1 className="select-box-header-heading-text">{heading}</h1>
         </div>
         <div className="select-box-header-logo">
-          <img className="select-box-header-logo-img" src={image} alt="logo"></img>
+          <img
+            className="select-box-header-logo-img"
+            src={image}
+            alt="logo"
+          ></img>
         </div>
       </div>
       <div className="select-box-description">

@@ -14,7 +14,11 @@ const TextInput = ({
 }) => {
   return (
     <div className="text-input-wrapper">
-      {value.length > 0 && <span className="text-input-label">{`${placeholder}${required && " *"}`}</span>}
+      {value.length > 0 && (
+        <span className="text-input-label">{`${placeholder}${
+          required && " *"
+        }`}</span>
+      )}
       <input
         className={`text-input ${error && "input-error"}`}
         type={type}

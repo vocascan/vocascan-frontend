@@ -4,7 +4,14 @@ import CloseIcon from "@material-ui/icons/Close";
 
 import "./Modal.scss";
 
-const Modal = ({ title, onClose, open = false, renderClose = true, closeOnClickOutside = true, children }) => {
+const Modal = ({
+  title,
+  onClose,
+  open = false,
+  renderClose = true,
+  closeOnClickOutside = true,
+  children,
+}) => {
   const ref = useRef(null);
 
   const escapeListener = useCallback(

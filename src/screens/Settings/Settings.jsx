@@ -15,7 +15,9 @@ const Settings = () => {
   const menuStyle = useSelector((state) => state.setting.menuStyle);
 
   const onChangeMenu = useCallback(() => {
-    dispatch(setMenuStyle({ menuStyle: menuStyle === "default" ? "fancy" : "default" }));
+    dispatch(
+      setMenuStyle({ menuStyle: menuStyle === "default" ? "fancy" : "default" })
+    );
   }, [dispatch, menuStyle]);
 
   return (

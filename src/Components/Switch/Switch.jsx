@@ -15,7 +15,9 @@ const Switch = ({
     <div className="switch-wrapper">
       <h3>{label}</h3>
       <div className="switch-wrapper-inner">
-        {switcher && optionLeft && <label className="label-left">{optionLeft}</label>}
+        {switcher && optionLeft && (
+          <label className="label-left">{optionLeft}</label>
+        )}
         <label className={`switch ${disabled ? "disabled" : ""}`}>
           <input type="checkbox" checked={checked} onChange={onChange} />
           <span className="slider"></span>
