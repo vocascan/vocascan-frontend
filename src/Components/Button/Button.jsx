@@ -11,14 +11,17 @@ const Button = ({
   onClick = () => null,
   children,
 }) => {
+  const classes = ["btn", `btn-${appearance}`, `btn-${variant}`];
+
+  uppercase && classes.push("btn-uppercase");
+  block && classes.push("btn-block");
+  disabled && classes.push("btn-disabled");
+
+
   return (
     <button
       onClick={onClick}
-      className={`btn btn-${appearance}${
-        disabled ? " btn-disabled" : ""
-      } btn-${variant}${uppercase ? " btn-uppercase" : ""}${
-        block ? " btn-block" : ""
-      }`}
+      className={classes.join(" ")}
     >
       {children}
     </button>
