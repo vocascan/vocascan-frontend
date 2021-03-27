@@ -27,7 +27,8 @@
     "addVocab": {
       "title": "Add vocabulary",
       "noPackagesMessage": "No packages found",
-      "noGroupsMessage": "No groups found"
+      "noGroupsMessage": "No groups found",
+      "addTranslation": "Add translation"
     },
     "addLanguagePackage": {
       "foreignLanguage": "Foreign language",

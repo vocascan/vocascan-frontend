@@ -66,29 +66,30 @@ const AddLanguagePackage = () => {
         onChange={(value) => {
           setName(value);
         }}
+        value={name}
       />
 
       <div className="dropdown">
         <div className="select-wrapper">
           <Select
             required
-            value={foreignLanguage}
             label={t("screens.addLanguagePackage.foreignLanguage")}
             options={selectOptions}
             onChange={(value) => {
               setForeignLanguage(value);
             }}
+            value={foreignLanguage}
           />
         </div>
         <div className="select-wrapper">
           <Select
             required
-            value={translatedLanguage}
             label={t("screens.addLanguagePackage.translatedLanguage")}
             options={selectOptions}
             onChange={(value) => {
               setTranslatedLanguage(value);
             }}
+            value={translatedLanguage}
           />
         </div>
       </div>
@@ -99,6 +100,7 @@ const AddLanguagePackage = () => {
         onChange={(value) => {
           setVocabsPerDay(value);
         }}
+        value={vocabsPerDay}
       />
 
       <TextInput
@@ -107,6 +109,7 @@ const AddLanguagePackage = () => {
         onChange={(value) => {
           setRightTranslations(value);
         }}
+        value={rightTranslations}
       />
 
       <Button onClick={submitHandler}>{t("global.submit")}</Button>

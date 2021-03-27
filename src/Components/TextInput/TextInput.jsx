@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 
 import "./TextInput.scss";
 
@@ -9,19 +9,9 @@ const TextInput = ({
   error = false,
   errorText = null,
   required = false,
-  autoComplete = null,
+  value = "",
   ...props
 }) => {
-  const [value, setValue] = useState("");
-
-  const handleChange = useCallback(
-    (e) => {
-      setValue(e.target.value);
-      onChange(e.target.value);
-    },
-    [onChange]
-  );
-
   return (
     <div className="text-input-wrapper">
       {value.length > 0 && <span className="text-input-label">{`${placeholder}${required && " *"}`}</span>}
@@ -29,9 +19,9 @@ const TextInput = ({
         className={`text-input ${error && "input-error"}`}
         type={type}
         placeholder={`${placeholder}${required ? " *" : ""}`}
-        onChange={handleChange}
+        onChange={(e) => onChange(e.target.value)}
         required={required}
-        autoComplete={autoComplete}
+        value={value}
         {...props}
       />
       {error && errorText && <p className="text-input-error">{errorText}</p>}

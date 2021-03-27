@@ -1,0 +1,16 @@
+@import "../../colors";
+
+.array-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.add-input-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+
+  .add-text {
+    margin-left: 5px;
+  }
+}

@@ -6,6 +6,10 @@ import axios from "axios";
 import Button from "../../Components/Button/Button";
 import TextInput from "../../Components/TextInput/TextInput";
 import Select from "../../Components/Select/Select";
+import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput";
+
+import { maxTranslations } from "../../utils/constants";
+
 import "./AddVocab.scss";
 
 const AddVocab = () => {
@@ -16,13 +20,10 @@ const AddVocab = () => {
   const [groups] = useState([]);
   const [groupName, setGroupName] = useState("");
   const [foreignWord, setForeignWord] = useState("");
-  const [, setTranslations] = useState([]);
+  const [translations, setTranslations] = useState([""]);
   const [description, setDescription] = useState("");
   const jwt = useSelector((state) => state.login.user.jwt);
   const serverAddress = useSelector((state) => state.login.serverAddress);
-
-  // default number of translation inputs to render
-  const translationInputs = [1, 2, 3];
 
   useEffect(() => {
     axios({
@@ -44,9 +45,11 @@ const AddVocab = () => {
   //   setGroups(vocascanModule.getGroups(packageName));
   // }
 
-  // function submit() {
-  //   vocascan.addVocab(packageName, groupName, foreignWord, translations, description);
-  // }
+  // const submit = useCallback(() => {
+  //   const submitTranslations = translations.map((elem) => elem.value);
+
+  //   vocascan.addVocab(packageName, groupName, foreignWord, submitTranslations, description);
+  // }, [packageName, groupName, foreignWord, translations, description]);
 
   // function addGroup(value) {
   //   vocascan.addGroup(value, packageName);
@@ -116,7 +119,7 @@ const AddVocab = () => {
         <div className="select-wrapper">
           <Select
             required
-            value={packageName}
+            tabIndex={1}
             label={t("global.package")}
             options={languagePackageDropdownItems}
             onChange={(value) => {
@@ -124,18 +127,20 @@ const AddVocab = () => {
               // getGroups(e.target.value);
               console.log("changed: ", value);
             }}
+            value={packageName}
             noOptionsMessage={t("screens.addVocab.noPackagesMessage")}
           />
         </div>
         <div className="select-wrapper">
           <Select
             required
-            value={groupName}
+            tabIndex={1}
             label={t("global.group")}
             options={groupDropdownItems}
             onChange={(value) => {
               setGroupName(value);
             }}
+            value={groupName}
             noOptionsMessage={t("screens.addVocab.noGroupsMessage")}
           />
         </div>
@@ -143,37 +148,36 @@ const AddVocab = () => {
       <div className="input-fields">
         <TextInput
           required
+          tabIndex={1}
           placeholder={t("global.foreignWord")}
           onChange={(value) => {
             setForeignWord(value);
           }}
+          value={foreignWord}
         />
-        {translationInputs.map((elem, key) => (
-          <TextInput
-            required
-            key={elem}
-            placeholder={`${elem} ${t("global.translation")}`}
-            onChange={(value) => {
-              setTranslations((trans) => {
-                trans[key] = value;
-
-                return trans;
-              });
-            }}
-          />
-        ))}
+        <ArrayTextInput
+          required
+          max={maxTranslations}
+          data={translations}
+          placeholder={t("global.translation")}
+          onChange={setTranslations}
+          addText={t("screens.addVocab.addTranslation")}
+        />
         <TextInput
+          tabIndex={1}
           required
           placeholder={t("global.description")}
           onChange={(value) => {
             setDescription(value);
           }}
+          value={description}
         />
       </div>
 
       <div className="form-submit">
         <Button
           block
+          tabIndex={-1}
           onClick={() => console.log("added")}
           disabled={!(foreignWord && setTranslations.length && description && groupName.length && packageName)}
         >

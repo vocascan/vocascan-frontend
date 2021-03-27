@@ -115,6 +115,7 @@ const Register = ({ image }) => {
                 setServerError(false);
                 setUsername(value);
               }}
+              value={username}
             />
             <TextInput
               required
@@ -125,6 +126,7 @@ const Register = ({ image }) => {
                 setServerError(false);
                 setEmail(value);
               }}
+              value={email}
               error={emailIsUsed}
               errorText={t("screens.register.emailInUse")}
             />
@@ -137,6 +139,7 @@ const Register = ({ image }) => {
                 setServerError(false);
                 setPassword(value);
               }}
+              value={password}
               error={!isSamePassword}
               errorText={t("screens.register.passwordsDontMatch")}
             />
@@ -149,6 +152,7 @@ const Register = ({ image }) => {
                 setServerError(false);
                 setPasswordRepeat(value);
               }}
+              value={passwordRepeat}
               error={!isSamePassword}
               errorText={t("screens.register.passwordsDontMatch")}
             />

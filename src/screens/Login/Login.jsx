@@ -97,6 +97,7 @@ const Login = ({ image }) => {
                 setError(false);
                 setEmail(value);
               }}
+              value={email}
             />
             <TextInput
               required
@@ -107,6 +108,7 @@ const Login = ({ image }) => {
                 setError(false);
                 setPassword(value);
               }}
+              value={password}
               error={error}
               errorText={t("screens.login.wrongCredentials")}
             />
