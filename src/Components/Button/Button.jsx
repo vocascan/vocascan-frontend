@@ -2,6 +2,8 @@ import React from "react";
 
 import "./Button.scss";
 
+import clsx from "clsx";
+
 const Button = ({
   uppercase = false,
   variant = "default",
@@ -11,18 +13,17 @@ const Button = ({
   onClick = () => null,
   children,
 }) => {
-  const classes = ["btn", `btn-${appearance}`, `btn-${variant}`];
-
-  uppercase && classes.push("btn-uppercase");
-  block && classes.push("btn-block");
-  disabled && classes.push("btn-disabled");
-
+  const classes = clsx(
+    "btn",
+    `btn-${appearance}`,
+    `btn-${variant}`,
+    uppercase && "btn-uppercase",
+    block && "btn-block",
+    disabled && "btn-disabled"
+  );
 
   return (
-    <button
-      onClick={onClick}
-      className={classes.join(" ")}
-    >
+    <button onClick={onClick} className={classes}>
       {children}
     </button>
   );
