@@ -9,7 +9,6 @@ const TextInput = ({
   error = false,
   errorText = null,
   required = false,
-  autoComplete = null,
   value = "",
   ...props
 }) => {
@@ -22,7 +21,7 @@ const TextInput = ({
         placeholder={`${placeholder}${required ? " *" : ""}`}
         onChange={(e) => onChange(e.target.value)}
         required={required}
-        autoComplete={autoComplete}
+        value={value}
         {...props}
       />
       {error && errorText && <p className="text-input-error">{errorText}</p>}
