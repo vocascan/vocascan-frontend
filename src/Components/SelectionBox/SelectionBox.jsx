@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 
-import Button from "../Button/Button";
+import Button from "../Button/Button.jsx";
+
 import "./SelectionBox.scss";
 
 const Item = ({ Icon, text }) => (
@@ -29,7 +30,11 @@ function SelectionBox({ onSubmit, pro, contra, heading, image, buttonText }) {
           <h1 className="select-box-header-heading-text">{heading}</h1>
         </div>
         <div className="select-box-header-logo">
-          <img className="select-box-header-logo-img" src={image} alt="logo"></img>
+          <img
+            className="select-box-header-logo-img"
+            src={image}
+            alt="logo"
+          ></img>
         </div>
       </div>
       <div className="select-box-description">

@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App.jsx";
 import { Provider } from "react-redux";
-import store from "./redux/Store/index";
-import I18nProvider from "./i18n/I18nProvider";
-import reportWebVitals from "./reportWebVitals";
+
+import App from "./App.jsx";
+
+import I18nProvider from "./i18n/I18nProvider.js";
+import store from "./redux/Store/index.js";
+import reportWebVitals from "./reportWebVitals.js";
 
 ReactDOM.render(
   <React.StrictMode>

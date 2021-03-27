@@ -1,4 +1,4 @@
-import { SET_MENU_STYLE } from "./index";
+import { SET_MENU_STYLE } from "./index.js";
 
 export const setMenuStyle = ({ menuStyle }) => {
   return {

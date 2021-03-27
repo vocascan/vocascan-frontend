@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-import Button from "../../Components/Button/Button";
-import TextInput from "../../Components/TextInput/TextInput";
-import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout";
+import Button from "../../Components/Button/Button.jsx";
+import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import TextInput from "../../Components/TextInput/TextInput.jsx";
 
-import { register as registerAPI } from "../../utils/api";
-import { setServerUrl, register } from "../../redux/Actions/login";
+import { setServerUrl, register } from "../../redux/Actions/login.js";
+import { register as registerAPI } from "../../utils/api.js";
 
 import "./Register.scss";
 
@@ -98,10 +98,19 @@ const Register = ({ image }) => {
   return (
     <UnauthenticatedLayout>
       <div className="register-form">
-        <ArrowBackIcon className="back-icon" onClick={() => history.push("/plans")} />
+        <ArrowBackIcon
+          className="back-icon"
+          onClick={() => history.push("/plans")}
+        />
         <div className="register-form-header">
-          <img className="register-form-header-logo" src={image} alt="server-logo" />
-          <h1 className="register-form-header-heading">{t("screens.register.title")}</h1>
+          <img
+            className="register-form-header-logo"
+            src={image}
+            alt="server-logo"
+          />
+          <h1 className="register-form-header-heading">
+            {t("screens.register.title")}
+          </h1>
         </div>
         <form onSubmit={submitRegisterPerson}>
           <div className="register-form-input">
@@ -167,15 +176,25 @@ const Register = ({ image }) => {
                 value={serverAddress}
               />
             )}
-            {serverError && <p className="form-error">{t("global.serverNotResponding")}</p>}
+            {serverError && (
+              <p className="form-error">{t("global.serverNotResponding")}</p>
+            )}
           </div>
           <div className="register-form-submit">
-            <Button block uppercase onClick={submitRegisterPerson} disabled={!canSubmit}>
+            <Button
+              block
+              uppercase
+              onClick={submitRegisterPerson}
+              disabled={!canSubmit}
+            >
               {t("global.signUp")}
             </Button>
             <div className="register-form-submit-register">
               {t("screens.register.alreadyHaveAccount")}{" "}
-              <div className="register-form-submit-register-link" onClick={handleClickLogin}>
+              <div
+                className="register-form-submit-register-link"
+                onClick={handleClickLogin}
+              >
                 {t("global.signIn")}
               </div>
             </div>

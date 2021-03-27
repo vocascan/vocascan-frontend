@@ -2,18 +2,19 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, HashRouter, Redirect } from "react-router-dom";
 
+import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
-import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
+import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
 import Login from "./screens/Login/Login.jsx";
 import Register from "./screens/Register/Register.jsx";
-import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
-import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
+import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
 import Settings from "./screens/Settings/Settings.jsx";
 
-import { getProfile } from "./utils/api.js";
 import { signIn, signOut } from "./redux/Actions/login.js";
+import { getProfile } from "./utils/api.js";
 
 import Image from "./images/vocascan-logo.png";
+
 import "./Components/sections.scss";
 import "./index.scss";
 

@@ -1,7 +1,7 @@
-import loginReducer from "./login";
-import settingReducer from "./setting";
-
 import { combineReducers } from "redux";
+
+import loginReducer from "./login.js";
+import settingReducer from "./setting.js";
 
 const allReducers = combineReducers({
   login: loginReducer,

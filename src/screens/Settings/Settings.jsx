@@ -1,8 +1,10 @@
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import Switch from "../../Components/Switch/Switch";
-import { setMenuStyle } from "../../redux/Actions/setting";
+
+import Switch from "../../Components/Switch/Switch.jsx";
+
+import { setMenuStyle } from "../../redux/Actions/setting.js";
 
 import "./Settings.scss";
 
@@ -13,7 +15,9 @@ const Settings = () => {
   const menuStyle = useSelector((state) => state.setting.menuStyle);
 
   const onChangeMenu = useCallback(() => {
-    dispatch(setMenuStyle({ menuStyle: menuStyle === "default" ? "fancy" : "default" }));
+    dispatch(
+      setMenuStyle({ menuStyle: menuStyle === "default" ? "fancy" : "default" })
+    );
   }, [dispatch, menuStyle]);
 
   return (

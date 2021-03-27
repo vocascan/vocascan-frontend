@@ -27,7 +27,11 @@ function createWindow() {
 
   if (isDev) {
     // load redux and react dev tools
-    const { default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } = require("electron-devtools-installer");
+    const {
+      default: installExtension,
+      REACT_DEVELOPER_TOOLS,
+      REDUX_DEVTOOLS,
+    } = require("electron-devtools-installer");
 
     installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS])
       .then((name) => {

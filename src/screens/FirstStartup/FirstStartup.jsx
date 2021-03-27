@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
-import AddLanguagePackage from "../AddLanguagePackage/AddLanguagePackage";
-import Modal from "../../Components/Modal/Modal";
+import Modal from "../../Components/Modal/Modal.jsx";
+import AddLanguagePackage from "../AddLanguagePackage/AddLanguagePackage.jsx";
+
 import "./FirstStartup.scss";
 
 const FirstStartup = () => {

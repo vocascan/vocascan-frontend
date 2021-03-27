@@ -1,12 +1,13 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import PersonIcon from "@material-ui/icons/Person";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
 
-import { signOut } from "../../redux/Actions/login";
-import { NavLink } from "react-router-dom";
+import PersonIcon from "@material-ui/icons/Person";
+
+import { signOut } from "../../redux/Actions/login.js";
 
 import "./TopNav.scss";
 

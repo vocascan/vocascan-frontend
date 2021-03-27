@@ -1,6 +1,6 @@
 import { defineState } from "redux-localstore";
 
-import { SET_MENU_STYLE } from "../Actions";
+import { SET_MENU_STYLE } from "../Actions/index.js";
 
 const defaultState = {
   menuStyle: "default", // fancy, default
