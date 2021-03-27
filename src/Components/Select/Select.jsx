@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
-import ReactSelect from "react-select";
 import { useTranslation } from "react-i18next";
+import ReactSelect from "react-select";
 
 import "./Select.scss";
 

@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 
-import Button from "../Button/Button";
+import Button from "../Button/Button.jsx";
+
 import "./SelectionBox.scss";
 
 const Item = ({ Icon, text }) => (

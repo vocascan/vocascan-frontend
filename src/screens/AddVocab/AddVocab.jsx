@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
 import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
-import Button from "../../Components/Button/Button";
-import TextInput from "../../Components/TextInput/TextInput";
-import Select from "../../Components/Select/Select";
-import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput";
+import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput.jsx";
+import Button from "../../Components/Button/Button.jsx";
+import Select from "../../Components/Select/Select.jsx";
+import TextInput from "../../Components/TextInput/TextInput.jsx";
 
-import { maxTranslations } from "../../utils/constants";
+import { maxTranslations } from "../../utils/constants.js";
 
 import "./AddVocab.scss";
 

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef } from "react";
+
 import CloseIcon from "@material-ui/icons/Close";
 
 import "./Modal.scss";

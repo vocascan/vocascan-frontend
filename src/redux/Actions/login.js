@@ -1,4 +1,4 @@
-import { REGISTER, SIGN_IN, SIGN_OUT, SET_SELF_HOSTED, SET_SERVER_URL } from "./index";
+import { REGISTER, SIGN_IN, SIGN_OUT, SET_SELF_HOSTED, SET_SERVER_URL } from "./index.js";
 
 export const register = ({ username, email, token }) => {
   return {

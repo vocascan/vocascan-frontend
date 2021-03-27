@@ -1,13 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 
-import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
 
 import { setSelfHosted } from "../../redux/Actions/login.js";
 
 import Image from "../../images/vocascan-server-logo-small.png";
+
 import "./SelectionScreen.scss";
 
 const SelectionScreen = () => {

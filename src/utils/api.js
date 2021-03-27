@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { vocascanServer } from "./constants";
+import { vocascanServer } from "./constants.js";
 
 const api = axios.create({
   baseURL: vocascanServer,

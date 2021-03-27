@@ -1,11 +1,11 @@
-import React, { useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
-import TextInput from "../../Components/TextInput/TextInput";
-import Select from "../../Components/Select/Select";
-import Button from "../../Components/Button/Button";
+import Button from "../../Components/Button/Button.jsx";
+import Select from "../../Components/Select/Select.jsx";
+import TextInput from "../../Components/TextInput/TextInput.jsx";
 
 import { languages } from "../../utils/constants.js";
 

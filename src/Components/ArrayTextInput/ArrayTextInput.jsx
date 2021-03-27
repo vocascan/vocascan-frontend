@@ -1,11 +1,11 @@
 import React, { useEffect, useCallback, useState } from "react";
 import uniqid from "uniqid";
 
-import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
-import Button from "../Button/Button";
-import TextInput from "../TextInput/TextInput";
+import Button from "../Button/Button.jsx";
+import TextInput from "../TextInput/TextInput.jsx";
 
 import "./ArrayTextInput.scss";
 

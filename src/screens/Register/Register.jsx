@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-import Button from "../../Components/Button/Button";
-import TextInput from "../../Components/TextInput/TextInput";
-import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout";
+import Button from "../../Components/Button/Button.jsx";
+import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import TextInput from "../../Components/TextInput/TextInput.jsx";
 
-import { register as registerAPI } from "../../utils/api";
-import { setServerUrl, register } from "../../redux/Actions/login";
+import { setServerUrl, register } from "../../redux/Actions/login.js";
+import { register as registerAPI } from "../../utils/api.js";
 
 import "./Register.scss";
 

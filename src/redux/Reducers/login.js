@@ -1,8 +1,8 @@
 import { defineState } from "redux-localstore";
 
-import { REGISTER, SIGN_IN, SIGN_OUT, SET_SERVER_URL, SET_SELF_HOSTED } from "../Actions";
-import { setBaseUrl, setTokenHeader } from "../../utils/api";
-import { vocascanServer } from "../../utils/constants";
+import { setBaseUrl, setTokenHeader } from "../../utils/api.js";
+import { vocascanServer } from "../../utils/constants.js";
+import { REGISTER, SIGN_IN, SIGN_OUT, SET_SERVER_URL, SET_SELF_HOSTED } from "../Actions.js";
 
 const defaultState = {
   user: {
