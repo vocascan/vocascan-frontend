@@ -13,11 +13,19 @@ import NavButton from "./NavButton.jsx";
 
 import "./Nav.scss";
 
+import clsx from "clsx";
+
 function Nav() {
   const { t } = useTranslation();
   const menuStyle = useSelector((state) => state.setting.menuStyle);
   const [initialStyle, setInitialStyle] = useState(menuStyle);
   const [loading, setLoading] = useState(false);
+
+  const navLayoutClasses = clsx(
+    "nav",
+    `nav-${menuStyle}`,
+    loading && "nav-loading"
+  );
 
   useEffect(() => {
     if (menuStyle === initialStyle) {
@@ -36,7 +44,7 @@ function Nav() {
   }, [menuStyle]);
 
   return (
-    <div className={`nav nav-${menuStyle} ${loading ? "nav-loading" : ""}`}>
+    <div className={navLayoutClasses}>
       <ul className="button-list">
         <NavButton
           name={t("nav.newVocab")}
