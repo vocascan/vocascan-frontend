@@ -9,7 +9,6 @@ function NavButton({ name, design = "default", link, icon = null }) {
       to={link}
       activeClassName="nav-button-active"
       className="nav-button-wrapper"
-      replace
     >
       <button className={`nav-button nav-button-${design}`}>
         {icon ? <span className="button-icon">{icon}</span> : null}

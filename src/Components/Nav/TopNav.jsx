@@ -34,12 +34,12 @@ function TopNav() {
         <div className="menu">
           <ul className="menu-list">
             <li className="menu-list-item">
-              <NavLink to="/profile" className="menu-list-item-btn" replace>
+              <NavLink to="/profile" className="menu-list-item-btn">
                 {t("nav.profile")}
               </NavLink>
             </li>
             <li className="menu-list-item">
-              <NavLink to="/settings" className="menu-list-item-btn" replace>
+              <NavLink to="/settings" className="menu-list-item-btn">
                 {t("nav.settings")}
               </NavLink>
             </li>
