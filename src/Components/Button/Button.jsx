@@ -1,8 +1,7 @@
+import clsx from "clsx";
 import React from "react";
 
 import "./Button.scss";
-
-import clsx from "clsx";
 
 const Button = ({
   uppercase = false,

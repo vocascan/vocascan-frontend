@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -12,8 +13,6 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import NavButton from "./NavButton.jsx";
 
 import "./Nav.scss";
-
-import clsx from "clsx";
 
 function Nav() {
   const { t } = useTranslation();
