@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -19,6 +20,12 @@ function Nav() {
   const [initialStyle, setInitialStyle] = useState(menuStyle);
   const [loading, setLoading] = useState(false);
 
+  const navLayoutClasses = clsx(
+    "nav",
+    `nav-${menuStyle}`,
+    loading && "nav-loading"
+  );
+
   useEffect(() => {
     if (menuStyle === initialStyle) {
       return;
@@ -36,7 +43,7 @@ function Nav() {
   }, [menuStyle]);
 
   return (
-    <div className={`nav nav-${menuStyle} ${loading ? "nav-loading" : ""}`}>
+    <div className={navLayoutClasses}>
       <ul className="button-list">
         <NavButton
           name={t("nav.newVocab")}
