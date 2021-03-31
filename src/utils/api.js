@@ -14,6 +14,6 @@ export function setTokenHeader(token) {
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
-export const login = (data) => api.post("/auth/login", data);
-export const register = (data) => api.post("/auth/register", data);
-export const getProfile = () => api.get("/auth");
+export const login = (data) => api.post("/user/login", data);
+export const register = (data) => api.post("/user/register", data);
+export const getProfile = () => api.get("/user");
