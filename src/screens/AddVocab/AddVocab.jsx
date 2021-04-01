@@ -1,13 +1,12 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 
 import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput.jsx";
 import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Select/Select.jsx";
 import TextInput from "../../Components/TextInput/TextInput.jsx";
 
+import { getPackages, createVocabulary } from "../../utils/api.js";
 import { maxTranslations } from "../../utils/constants.js";
 
 import "./AddVocab.scss";
@@ -16,100 +15,90 @@ const AddVocab = () => {
   const { t } = useTranslation();
 
   const [packages, setPackages] = useState([]);
-  const [packageName] = useState("");
-  const [groups] = useState([]);
-  const [groupName, setGroupName] = useState("");
+  const [packageItems, setPackageItems] = useState([]);
+  const [packageId, setPackageId] = useState(null);
+  const [groups, setGroups] = useState([]);
+  const [groupsItems, setGroupsItems] = useState([]);
+  const [groupId, setGroupId] = useState(null);
   const [foreignWord, setForeignWord] = useState("");
   const [translations, setTranslations] = useState([""]);
   const [description, setDescription] = useState("");
-  const jwt = useSelector((state) => state.login.user.jwt);
-  const serverAddress = useSelector((state) => state.login.serverAddress);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    axios({
-      method: "GET",
-      url: serverAddress + "/api/packages",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${jwt}`,
-      },
+    getPackages(true)
+      .then(({ data }) => {
+        setPackages(data);
+      })
+      .catch(function (err) {});
+  }, []);
+
+  useEffect(() => {
+    setGroups(() => {
+      const grps = packages.find((x) => x.id === packageId);
+
+      if (!grps) {
+        return [];
+      }
+
+      return grps.Groups;
+    });
+
+    setGroupId(null);
+  }, [packages, packageId]);
+
+  const onSubmit = useCallback(() => {
+    const submitTranslations = translations.map((elem) => {
+      return {
+        name: elem,
+      };
+    });
+
+    createVocabulary(packageId, groupId, {
+      name: foreignWord,
+      translations: submitTranslations,
     })
       .then((response) => {
-        setPackages(response.data);
-        console.log(response.data);
+        setError(false);
+        setPackageId("");
       })
-      .catch(function (error) {});
-  }, [jwt, serverAddress]);
-
-  // function refreshGroups() {
-  //   setGroups(vocascanModule.getGroups(packageName));
-  // }
-
-  // const submit = useCallback(() => {
-  //   const submitTranslations = translations.map((elem) => elem.value);
-
-  //   vocascan.addVocab(packageName, groupName, foreignWord, submitTranslations, description);
-  // }, [packageName, groupName, foreignWord, translations, description]);
+      .catch(function (e) {
+        setError(true);
+      });
+  }, [packageId, groupId, foreignWord, translations]);
 
   // function addGroup(value) {
-  //   vocascan.addGroup(value, packageName);
+  //   vocascan.addGroup(value, packageId);
   //   refreshGroups();
   //   console.log(value);
-  //   console.log(packageName);
+  //   console.log(packageId);
   // }
 
   // const handleChange = (event) => {
   //   setAge(event.target.value);
   // };
 
-  //make api call to get group
-  // function getGroups(name) {
-  //   console.log(name);
-  //   axios({
-  //     method: "GET",
-  //     url: serverAddress + "/api/groups",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `${jwt}`,
-  //     },
-  //     params: {
-  //       languagePackage: name,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       setGroups(response.data);
-  //       console.log(response.data);
-  //     })
-  //     .catch(function (error) {});
-  // }
+  useEffect(() => {
+    setPackageItems(() =>
+      packages.map((p) => {
+        return {
+          value: p.id,
+          label: p.name,
+        };
+      })
+    );
+  }, [packages]);
 
-  //create dropdown items for language packages
-  let languagePackageDropdownItems;
-  //show if array of groups is 0, because .map is not working with empty array
-  if (packages != null) {
-    languagePackageDropdownItems = groups.map((p) => {
-      return {
-        value: p.name,
-        label: p.name,
-      };
-    });
-  } else {
-    languagePackageDropdownItems = [];
-  }
-
-  //create dropdown items for groups
-  let groupDropdownItems;
-  //show if array of groups is 0, because .map is not working with empty array
-  if (groups != null) {
-    groupDropdownItems = groups.map((p) => {
-      return {
-        value: p.name,
-        label: p.name,
-      };
-    });
-  } else {
-    groupDropdownItems = [];
-  }
+  useEffect(() => {
+    setGroupsItems(() =>
+      groups.map((p) => {
+        return {
+          value: p.id,
+          label: p.name,
+        };
+      })
+    );
+  }, [groups]);
 
   return (
     <div className="add-vocab-form">
@@ -121,13 +110,11 @@ const AddVocab = () => {
             required
             tabIndex={1}
             label={t("global.package")}
-            options={languagePackageDropdownItems}
+            options={packageItems}
             onChange={(value) => {
-              // setPackageName(value);
-              // getGroups(e.target.value);
-              console.log("changed: ", value);
+              setPackageId(value);
             }}
-            value={packageName}
+            value={packageId}
             noOptionsMessage={t("screens.addVocab.noPackagesMessage")}
           />
         </div>
@@ -136,11 +123,11 @@ const AddVocab = () => {
             required
             tabIndex={1}
             label={t("global.group")}
-            options={groupDropdownItems}
+            options={groupsItems}
             onChange={(value) => {
-              setGroupName(value);
+              setGroupId(value);
             }}
-            value={groupName}
+            value={groupId}
             noOptionsMessage={t("screens.addVocab.noGroupsMessage")}
           />
         </div>
@@ -165,7 +152,6 @@ const AddVocab = () => {
         />
         <TextInput
           tabIndex={1}
-          required
           placeholder={t("global.description")}
           onChange={(value) => {
             setDescription(value);
@@ -178,14 +164,13 @@ const AddVocab = () => {
         <Button
           block
           tabIndex={-1}
-          onClick={() => console.log("added")}
+          onClick={onSubmit}
           disabled={
             !(
               foreignWord &&
-              setTranslations.length &&
-              description &&
-              groupName.length &&
-              packageName
+              translations?.length &&
+              groupId?.length &&
+              packageId
             )
           }
         >

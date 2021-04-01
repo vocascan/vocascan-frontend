@@ -22,8 +22,8 @@ const Select = ({
 
   const handleChange = useCallback(
     (e) => {
-      onChange(e.id);
-      setVal(e.value);
+      onChange(e.value);
+      setVal(e.label);
     },
     [onChange]
   );
