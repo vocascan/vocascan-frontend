@@ -9,9 +9,9 @@ import PersonIcon from "@material-ui/icons/Person";
 
 import { signOut } from "../../redux/Actions/login.js";
 
-import "./TopNav.scss";
-
 import LogoRound from "../../images/logo-round.svg";
+
+import "./TopNav.scss";
 
 function TopNav() {
   const dispatch = useDispatch();
