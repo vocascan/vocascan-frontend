@@ -93,6 +93,7 @@ out/
 dist/
 
 build/
+builds/
 
 # localazy
 localazy.keys.json

@@ -6,6 +6,8 @@ import Switch from "../../Components/Switch/Switch.jsx";
 
 import { setMenuStyle } from "../../redux/Actions/setting.js";
 
+import { version } from "../../../package.json";
+
 import "./Settings.scss";
 
 const Settings = () => {
@@ -31,6 +33,7 @@ const Settings = () => {
         onChange={onChangeMenu}
         checked={menuStyle !== "default"}
       />
+      <h3>v{version}</h3>
     </div>
   );
 };
