@@ -11,6 +11,8 @@ import { signOut } from "../../redux/Actions/login.js";
 
 import "./TopNav.scss";
 
+import LogoRound from "../../images/logo-round.svg";
+
 function TopNav() {
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -26,10 +28,10 @@ function TopNav() {
   return (
     <div className="top-nav">
       <div className="title">
-        <h1 className="text">{t("global.vocascan")}</h1>
+        <img src={LogoRound} alt="" className="brand" />
       </div>
       <div className="user">
-        <PersonIcon />
+        <PersonIcon className="icon" />
         {username || email}
         <div className="menu">
           <ul className="menu-list">
