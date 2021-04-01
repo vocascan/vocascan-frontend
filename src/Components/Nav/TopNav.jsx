@@ -13,7 +13,7 @@ import LogoRound from "../../images/logo-round.svg";
 
 import "./TopNav.scss";
 
-function TopNav() {
+const TopNav = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -53,6 +53,6 @@ function TopNav() {
       </div>
     </div>
   );
-}
+};
 
 export default TopNav;
