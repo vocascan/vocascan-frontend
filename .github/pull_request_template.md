@@ -1,9 +1,9 @@
 <!--- Provide a general summary of your changes in the Title above -->
 <!--- If there is no changelog entry, label this PR as trivial to bypass the Danger warning -->
 
-| Status  | Type  | Env Vars Change | Review App | Ticket |
-| :---: | :---: | :---: | :--: | :--: |
-| Ready/Hold | Feature/Bug/Tooling/Refactor/Hotfix | Yes/No | [Link](<Review app link here>) | [Link](<ticket link here>) |
+| Status  | Type  |
+| :---: | :---: |
+| Ready/Hold | Feature/Bug/Tooling/Refactor/Hotfix |
 
 ## Description
 
@@ -38,7 +38,6 @@
 <!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
 
 - [ ] I have read the **CONTRIBUTING** document.
-- [ ] I have added unit tests to code changes that make sense.
 - [ ] I have considered the accessibility of my changes (i.e. did I add proper content descriptions to images, or run my changes with talkback enabled?)
 - [ ] I have documented my code if needed
 
