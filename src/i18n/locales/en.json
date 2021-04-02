@@ -28,7 +28,9 @@
       "title": "Add vocabulary",
       "noPackagesMessage": "No packages found",
       "noGroupsMessage": "No groups found",
-      "addTranslation": "Add translation"
+      "addTranslation": "Add translation",
+      "saveSuccessMessage": "New vocabulaty added",
+      "saveErrorMessage": "New vocabulaty coul not be added"
     },
     "addLanguagePackage": {
       "foreignLanguage": "Foreign language",

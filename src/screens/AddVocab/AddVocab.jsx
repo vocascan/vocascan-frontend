@@ -5,6 +5,7 @@ import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput.jsx";
 import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Select/Select.jsx";
 import TextInput from "../../Components/TextInput/TextInput.jsx";
+import Toast from "../../Components/Toast/Snackbar.jsx";
 
 import { getPackages, createVocabulary } from "../../utils/api.js";
 import { maxTranslations } from "../../utils/constants.js";
@@ -24,6 +25,7 @@ const AddVocab = () => {
   const [translations, setTranslations] = useState(null);
   const [description, setDescription] = useState("");
   const [error, setError] = useState(false);
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     getPackages(true)
@@ -79,6 +81,7 @@ const AddVocab = () => {
       .then((response) => {
         setError(false);
         onClear();
+        setSaved(true);
       })
       .catch(function (e) {
         setError(true);
@@ -117,6 +120,17 @@ const AddVocab = () => {
       })
     );
   }, [groups]);
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setError(false);
+      setSaved(false);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [error, saved]);
 
   return (
     <div className="add-vocab-form">
@@ -195,6 +209,16 @@ const AddVocab = () => {
           {t("global.add")}
         </Button>
       </div>
+      <Toast
+        show={saved}
+        variant="success"
+        text={t("screens.addVocab.saveSuccessMessage")}
+      />
+      <Toast
+        show={error}
+        variant="danger"
+        text={t("screens.addVocab.saveErrorMessage")}
+      />
     </div>
   );
 };
