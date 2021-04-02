@@ -17,14 +17,7 @@ const ArrayTextInput = ({
   addText = null,
   required = false,
 }) => {
-  const [arrayData, setArrayData] = useState(() =>
-    data.map((elem) => {
-      return {
-        id: uniqid(),
-        value: elem,
-      };
-    })
-  );
+  const [arrayData, setArrayData] = useState([]);
 
   const addArrayData = useCallback(() => {
     if (arrayData.length >= max) {
@@ -47,6 +40,17 @@ const ArrayTextInput = ({
   useEffect(() => {
     onChange(arrayData.map((elem) => elem.value));
   }, [arrayData, onChange]);
+
+  useEffect(() => {
+    if (!data) {
+      setArrayData([
+        {
+          id: uniqid(),
+          value: "",
+        },
+      ]);
+    }
+  }, [data]);
 
   return (
     <>

@@ -16,12 +16,12 @@ const AddVocab = () => {
 
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
-  const [packageId, setPackageId] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState(null);
   const [groups, setGroups] = useState([]);
   const [groupsItems, setGroupsItems] = useState([]);
-  const [groupId, setGroupId] = useState(null);
+  const [selectedGroup, setSelectedGroup] = useState(null);
   const [foreignWord, setForeignWord] = useState("");
-  const [translations, setTranslations] = useState([""]);
+  const [translations, setTranslations] = useState(null);
   const [description, setDescription] = useState("");
   const [error, setError] = useState(false);
 
@@ -34,8 +34,12 @@ const AddVocab = () => {
   }, []);
 
   useEffect(() => {
+    if (!selectedPackage) {
+      return;
+    }
+
     setGroups(() => {
-      const grps = packages.find((x) => x.id === packageId);
+      const grps = packages.find((x) => x.id === selectedPackage.value);
 
       if (!grps) {
         return [];
@@ -44,8 +48,22 @@ const AddVocab = () => {
       return grps.Groups;
     });
 
-    setGroupId(null);
-  }, [packages, packageId]);
+    setSelectedGroup(null);
+  }, [packages, selectedPackage]);
+
+  const onClear = useCallback(() => {
+    setSelectedPackage(null);
+    setSelectedGroup(null);
+    setForeignWord("");
+    setTranslations(null);
+    setDescription("");
+  }, [
+    setSelectedPackage,
+    setSelectedGroup,
+    setForeignWord,
+    setTranslations,
+    setDescription,
+  ]);
 
   const onSubmit = useCallback(() => {
     const submitTranslations = translations.map((elem) => {
@@ -54,18 +72,18 @@ const AddVocab = () => {
       };
     });
 
-    createVocabulary(packageId, groupId, {
+    createVocabulary(selectedPackage.value, selectedGroup.value, {
       name: foreignWord,
       translations: submitTranslations,
     })
       .then((response) => {
         setError(false);
-        setPackageId("");
+        onClear();
       })
       .catch(function (e) {
         setError(true);
       });
-  }, [packageId, groupId, foreignWord, translations]);
+  }, [selectedGroup, selectedPackage, foreignWord, translations, onClear]);
 
   // function addGroup(value) {
   //   vocascan.addGroup(value, packageId);
@@ -91,10 +109,10 @@ const AddVocab = () => {
 
   useEffect(() => {
     setGroupsItems(() =>
-      groups.map((p) => {
+      groups.map((g) => {
         return {
-          value: p.id,
-          label: p.name,
+          value: g.id,
+          label: g.name,
         };
       })
     );
@@ -111,10 +129,10 @@ const AddVocab = () => {
             tabIndex={1}
             label={t("global.package")}
             options={packageItems}
-            onChange={(value) => {
-              setPackageId(value);
+            onChange={(v) => {
+              setSelectedPackage(v);
             }}
-            value={packageId}
+            value={selectedPackage}
             noOptionsMessage={t("screens.addVocab.noPackagesMessage")}
           />
         </div>
@@ -124,10 +142,10 @@ const AddVocab = () => {
             tabIndex={1}
             label={t("global.group")}
             options={groupsItems}
-            onChange={(value) => {
-              setGroupId(value);
+            onChange={(v) => {
+              setSelectedGroup(v);
             }}
-            value={groupId}
+            value={selectedGroup}
             noOptionsMessage={t("screens.addVocab.noGroupsMessage")}
           />
         </div>
@@ -169,8 +187,8 @@ const AddVocab = () => {
             !(
               foreignWord &&
               translations?.length &&
-              groupId?.length &&
-              packageId
+              selectedGroup &&
+              selectedPackage
             )
           }
         >

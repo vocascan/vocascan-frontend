@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ReactSelect from "react-select";
 
@@ -18,21 +18,19 @@ const Select = ({
   const { t } = useTranslation();
 
   const [flow, setFlow] = useState(false);
-  const [val, setVal] = useState(value);
 
   const handleChange = useCallback(
-    (e) => {
-      onChange(e.value);
-      setVal(e.label);
+    (newValue) => {
+      onChange(newValue);
     },
     [onChange]
   );
 
   const handleFocus = () => setFlow(true);
 
-  const handleBlur = useCallback(() => {
-    setFlow(val !== "");
-  }, [val]);
+  useEffect(() => {
+    setFlow(!!value);
+  }, [value]);
 
   return (
     <div className="select-input-container">
@@ -47,7 +45,7 @@ const Select = ({
         options={options}
         onChange={handleChange}
         onFocus={handleFocus}
-        onBlur={handleBlur}
+        value={value}
         placeholder={false}
         noOptionsMessage={() =>
           noOptionsMessage ? noOptionsMessage : t("global.noOptionMessage")
