@@ -28,6 +28,10 @@ const Select = ({
 
   const handleFocus = () => setFlow(true);
 
+  const onBlur = useCallback(() => {
+    setFlow(!!value);
+  }, [value]);
+
   useEffect(() => {
     setFlow(!!value);
   }, [value]);
@@ -45,6 +49,7 @@ const Select = ({
         options={options}
         onChange={handleChange}
         onFocus={handleFocus}
+        onBlur={onBlur}
         value={value}
         placeholder={false}
         noOptionsMessage={() =>
