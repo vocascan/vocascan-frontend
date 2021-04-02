@@ -8,7 +8,7 @@ import TextInput from "../../Components/TextInput/TextInput.jsx";
 import Toast from "../../Components/Toast/Snackbar.jsx";
 
 import { getPackages, createVocabulary } from "../../utils/api.js";
-import { maxTranslations } from "../../utils/constants.js";
+import { languages, maxTranslations } from "../../utils/constants.js";
 
 import "./AddVocab.scss";
 
@@ -102,9 +102,14 @@ const AddVocab = () => {
   useEffect(() => {
     setPackageItems(() =>
       packages.map((p) => {
+        const langs = p.name.split(" - ").map((e) => {
+          const icon = languages.find((x) => x.name === e);
+          return icon ? icon.icon + e : " " + e;
+        });
+
         return {
           value: p.id,
-          label: p.name,
+          label: langs.join(" - "),
         };
       })
     );

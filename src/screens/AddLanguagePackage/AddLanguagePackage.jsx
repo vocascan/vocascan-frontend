@@ -54,7 +54,7 @@ const AddLanguagePackage = () => {
   const selectOptions = languages.map((language) => {
     return {
       value: language.name,
-      label: language.name,
+      label: language.icon + " " + language.name,
     };
   });
 
