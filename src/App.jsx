@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Route, HashRouter, Redirect } from "react-router-dom";
 
 import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
+import Snackbar from "./Components/Snackbar/Snackbar.jsx";
+import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
 import Login from "./screens/Login/Login.jsx";
@@ -60,11 +62,14 @@ const App = () => {
   } else {
     return (
       <HashRouter>
-        <AuthenticatedLayout>
-          <FirstStartup />
-          <Route path="/addVocab" component={AddVocab} />
-          <Route path="/settings" component={Settings} />
-        </AuthenticatedLayout>
+        <SnackbarProvider>
+          <AuthenticatedLayout>
+            <FirstStartup />
+            <Route path="/addVocab" component={AddVocab} />
+            <Route path="/settings" component={Settings} />
+            <Snackbar />
+          </AuthenticatedLayout>
+        </SnackbarProvider>
       </HashRouter>
     );
   }

@@ -1,11 +1,11 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 
 import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput.jsx";
 import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Select/Select.jsx";
 import TextInput from "../../Components/TextInput/TextInput.jsx";
-import Toast from "../../Components/Toast/Snackbar.jsx";
+import SnackbarContext from "../../context/SnackbarContext.jsx";
 
 import { getPackages, createVocabulary } from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
@@ -14,6 +14,7 @@ import "./AddVocab.scss";
 
 const AddVocab = () => {
   const { t } = useTranslation();
+  const { showSnack } = useContext(SnackbarContext);
 
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
@@ -24,8 +25,6 @@ const AddVocab = () => {
   const [foreignWord, setForeignWord] = useState("");
   const [translations, setTranslations] = useState(null);
   const [description, setDescription] = useState("");
-  const [error, setError] = useState(false);
-  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     getPackages(true)
@@ -79,14 +78,22 @@ const AddVocab = () => {
       translations: submitTranslations,
     })
       .then((response) => {
-        setError(false);
         onClear();
-        setSaved(true);
+        // setSaved(true);
+        showSnack("success", t("screens.addVocab.saveSuccessMessage"));
       })
       .catch(function (e) {
-        setError(true);
+        showSnack("error", t("screens.addVocab.saveSuccessMessage"));
       });
-  }, [selectedGroup, selectedPackage, foreignWord, translations, onClear]);
+  }, [
+    selectedGroup,
+    selectedPackage,
+    foreignWord,
+    translations,
+    onClear,
+    showSnack,
+    t,
+  ]);
 
   // function addGroup(value) {
   //   vocascan.addGroup(value, packageId);
@@ -125,17 +132,6 @@ const AddVocab = () => {
       })
     );
   }, [groups]);
-
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      setError(false);
-      setSaved(false);
-    }, 2000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [error, saved]);
 
   return (
     <div className="add-vocab-form">
@@ -214,16 +210,6 @@ const AddVocab = () => {
           {t("global.add")}
         </Button>
       </div>
-      <Toast
-        show={saved}
-        variant="success"
-        text={t("screens.addVocab.saveSuccessMessage")}
-      />
-      <Toast
-        show={error}
-        variant="danger"
-        text={t("screens.addVocab.saveErrorMessage")}
-      />
     </div>
   );
 };

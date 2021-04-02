@@ -2,11 +2,12 @@
 
 .snackbar {
   position: absolute;
-  bottom: 30px;
+  bottom: 15px;
   opacity: 0;
-  left: 50%;
+  // left: calc(50% + 32px);
   visibility: hidden;
-  transform: translateX(-50%);
+  // transform: translateX(-50%);
+  right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,22 +18,22 @@
   transition: all 0.4s ease-in;
 
   &.snackbar-success {
-    background-color: $color-green-dark;
-    color: $color-green-light;
+    background-color: $color-green-light;
+    color: $color-green-dark;
   }
 
-  &.snackbar-danger {
-    background-color: $color-red-dark;
-    color: $color-red-light;
+  &.snackbar-error {
+    background-color: $color-red-light;
+    color: $color-red-dark;
   }
 
   &.snackbar-info {
-    background-color: $color-primary-dark;
-    color: $color-primary-light;
+    background-color: $color-primary-light;
+    color: $color-primary-dark;
   }
 
   .snackbar-text {
-    font-weight: 500;
+    font-weight: 400;
   }
 
   &.show {

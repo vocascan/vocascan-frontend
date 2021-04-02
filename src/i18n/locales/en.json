@@ -21,7 +21,8 @@
     "package": "Package",
     "signIn": "Sign in",
     "signUp": "Sign up",
-    "serverNotResponding": "The server is not responding"
+    "serverNotResponding": "The server is not responding",
+    "successMessage": "Success"
   },
   "screens": {
     "addVocab": {
@@ -29,8 +30,8 @@
       "noPackagesMessage": "No packages found",
       "noGroupsMessage": "No groups found",
       "addTranslation": "Add translation",
-      "saveSuccessMessage": "New vocabulaty added",
-      "saveErrorMessage": "New vocabulaty coul not be added"
+      "saveSuccessMessage": "New vocabulary added",
+      "saveErrorMessage": "New vocabulary coul not be added"
     },
     "addLanguagePackage": {
       "foreignLanguage": "Foreign language",
