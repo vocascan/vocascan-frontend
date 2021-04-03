@@ -17,7 +17,18 @@ const ArrayTextInput = ({
   addText = null,
   required = false,
 }) => {
-  const [arrayData, setArrayData] = useState([]);
+  const [arrayData, setArrayData] = useState(() => {
+    if (!data || !data.length) {
+      return [
+        {
+          id: uniqid(),
+          value: "",
+        },
+      ];
+    }
+
+    return data;
+  });
 
   const addArrayData = useCallback(() => {
     if (arrayData.length >= max) {

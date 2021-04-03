@@ -23,7 +23,7 @@ const AddVocab = () => {
   const [groupsItems, setGroupsItems] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [foreignWord, setForeignWord] = useState("");
-  const [translations, setTranslations] = useState(null);
+  const [translations, setTranslations] = useState([]);
   const [description, setDescription] = useState("");
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const AddVocab = () => {
     }
 
     setGroups(() => {
-      const grps = packages.find((x) => x.id === selectedPackage.value);
+      const grps = packages.find((p) => p.id === selectedPackage.value);
 
       if (!grps) {
         return [];
