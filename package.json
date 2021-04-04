@@ -33,10 +33,16 @@
     },
     "files": [
       "build/**/*",
+      "resources/**/*",
+      "src/images/**/*",
       "package.json"
-    ]
+    ],
+    "extraMetadata": {
+      "main": "resources/electron.js"
+    },
+    "extends": null
   },
-  "main": "public/electron.js",
+  "main": "resources/electron.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/vocascan/vocascan-desktop.git"

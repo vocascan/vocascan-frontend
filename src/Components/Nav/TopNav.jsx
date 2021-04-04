@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button";
 
 import PersonIcon from "@material-ui/icons/Person";
 
+import UpdateAvailable from "./UpdateAvailable.jsx";
+
 import { signOut } from "../../redux/Actions/login.js";
 
 import "./TopNav.scss";
@@ -29,6 +31,7 @@ function TopNav() {
         <h1 className="text">{t("global.vocascan")}</h1>
       </div>
       <div className="user">
+        <UpdateAvailable />
         <PersonIcon />
         {username || email}
         <div className="menu">
