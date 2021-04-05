@@ -9,7 +9,7 @@ import PersonIcon from "@material-ui/icons/Person";
 
 import { signOut } from "../../redux/Actions/login.js";
 
-import LogoRound from "../../images/logo/logo-round.svg";
+import LogoRound from "../../images/logo/transparent-round.svg";
 
 import "./TopNav.scss";
 
