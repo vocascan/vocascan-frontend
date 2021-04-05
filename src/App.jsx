@@ -13,7 +13,7 @@ import Settings from "./screens/Settings/Settings.jsx";
 import { signIn, signOut } from "./redux/Actions/login.js";
 import { getProfile } from "./utils/api.js";
 
-import Image from "./images/vocascan-logo.png";
+import Image from "./images/logo/color-round.svg";
 
 import "./Components/sections.scss";
 import "./index.scss";

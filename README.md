@@ -6,7 +6,7 @@
 ![Github downloads](https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat-square)
 
-![Vocascan cover](https://github.com/vocascan/vocascan-desktop/blob/main/src/images/vocascan-github-cover.png)
+![Vocascan cover](https://github.com/vocascan/vocascan-desktop/blob/main/src/images/logo/vocascan-github-cover.png)
 
 ## Table of Contents
 

@@ -7,7 +7,7 @@ import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
 
 import { setSelfHosted } from "../../redux/Actions/login.js";
 
-import Image from "../../images/vocascan-server-logo-small.png";
+import Image from "../../images/logo/vocascan-server-logo-small.png";
 
 import "./SelectionScreen.scss";
 
