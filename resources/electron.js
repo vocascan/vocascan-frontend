@@ -52,6 +52,7 @@ const createWindow = () => {
   windows.splash = new BrowserWindow({
     width: 350,
     height: 450,
+    resizable: false,
     icon: path.join(__dirname, "../src/images/logo/vocascan-round-linux.png"),
     frame: false,
     webPreferences: {
