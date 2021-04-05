@@ -30,26 +30,32 @@ function TopNav() {
       <div className="title">
         <h1 className="text">{t("global.vocascan")}</h1>
       </div>
-      <div className="user">
-        <UpdateAvailable />
-        <PersonIcon />
-        {username || email}
-        <div className="menu">
-          <ul className="menu-list">
-            <li className="menu-list-item">
-              <NavLink to="/profile" className="menu-list-item-btn">
-                {t("nav.profile")}
-              </NavLink>
-            </li>
-            <li className="menu-list-item">
-              <NavLink to="/settings" className="menu-list-item-btn">
-                {t("nav.settings")}
-              </NavLink>
-            </li>
-            <li className="menu-list-item" onClick={handleLogout}>
-              <Button className="menu-list-item-btn">{t("nav.logout")}</Button>
-            </li>
-          </ul>
+      <div className="nav-wrapper">
+        <div className="update">
+          <UpdateAvailable />
+        </div>
+        <div className="user">
+          <PersonIcon />
+          {username || email}
+          <div className="menu">
+            <ul className="menu-list">
+              <li className="menu-list-item">
+                <NavLink to="/profile" className="menu-list-item-btn">
+                  {t("nav.profile")}
+                </NavLink>
+              </li>
+              <li className="menu-list-item">
+                <NavLink to="/settings" className="menu-list-item-btn">
+                  {t("nav.settings")}
+                </NavLink>
+              </li>
+              <li className="menu-list-item" onClick={handleLogout}>
+                <Button className="menu-list-item-btn">
+                  {t("nav.logout")}
+                </Button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

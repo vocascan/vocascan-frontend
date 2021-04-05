@@ -4,6 +4,8 @@ import GetAppIcon from "@material-ui/icons/GetApp";
 
 import { nodeRequire } from "../../utils/index.js";
 
+import "./UpdateAvailable.scss";
+
 const { ipcRenderer } = nodeRequire("electron");
 
 const UpdateAvailable = () => {
@@ -26,7 +28,11 @@ const UpdateAvailable = () => {
     ipcRenderer.send("start-update");
   };
 
-  return <div>{show && <GetAppIcon onClick={handleUpdate} />}</div>;
+  if (!show) {
+    return null;
+  }
+
+  return <GetAppIcon onClick={handleUpdate} className="update-button" />;
 };
 
 export default UpdateAvailable;

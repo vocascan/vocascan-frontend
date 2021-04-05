@@ -16,11 +16,28 @@
     "topnav topnav"
     "sidenav main";
 
+  .nav-wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  .update {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+
+    &:hover {
+      background-color: $color-primary;
+      cursor: pointer;
+    }
+  }
+
   .user {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $color-main-text;
+    color: $color-white;
     cursor: pointer;
     height: 100%;
     position: relative;
@@ -43,7 +60,7 @@
     align-items: flex-start;
 
     .text {
-      color: $color-main-text;
+      color: $color-white;
       text-transform: uppercase;
       font-size: 17px;
       margin: auto 20px;
