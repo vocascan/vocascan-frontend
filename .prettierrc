@@ -12,7 +12,7 @@
     "^@material-ui/icons(.*)$",
     "^(.*).jsx$",
     "^(.*).js$",
-    "^(.*).(png|jpg|json)$",
+    "^(.*).(png|jpg|svg|json)$",
     "^(.*).(scss)$",
     ".*"
   ],

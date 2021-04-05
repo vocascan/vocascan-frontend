@@ -52,12 +52,21 @@
         right: 0;
       }
     }
+
+    .icon {
+      margin-right: 5px;
+    }
   }
 
   .title {
+    width: 65px;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+
+    .brand {
+      height: 35px;
+    }
 
     .text {
       color: $color-white;

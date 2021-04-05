@@ -11,9 +11,11 @@ import UpdateAvailable from "./UpdateAvailable.jsx";
 
 import { signOut } from "../../redux/Actions/login.js";
 
+import LogoRound from "../../images/logo/transparent-round.svg";
+
 import "./TopNav.scss";
 
-function TopNav() {
+const TopNav = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -28,14 +30,14 @@ function TopNav() {
   return (
     <div className="top-nav">
       <div className="title">
-        <h1 className="text">{t("global.vocascan")}</h1>
+        <img src={LogoRound} alt="" className="brand" />
       </div>
       <div className="nav-wrapper">
         <div className="update">
           <UpdateAvailable />
         </div>
         <div className="user">
-          <PersonIcon />
+          <PersonIcon className="icon" />
           {username || email}
           <div className="menu">
             <ul className="menu-list">
@@ -60,6 +62,6 @@ function TopNav() {
       </div>
     </div>
   );
-}
+};
 
 export default TopNav;
