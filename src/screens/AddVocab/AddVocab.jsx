@@ -3,9 +3,11 @@ import { useTranslation } from "react-i18next";
 
 import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput.jsx";
 import Button from "../../Components/Button/Button.jsx";
+import Modal from "../../Components/Modal/Modal.jsx";
 import Select from "../../Components/Select/Select.jsx";
 import TextInput from "../../Components/TextInput/TextInput.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
+import AddLanguagePackage from "../AddLanguagePackage/AddLanguagePackage.jsx";
 
 import { getPackages, createVocabulary } from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
@@ -25,32 +27,16 @@ const AddVocab = () => {
   const [foreignWord, setForeignWord] = useState("");
   const [translations, setTranslations] = useState([]);
   const [description, setDescription] = useState("");
+  const [showAddPackage, setShowAddPackage] = useState(false);
+  const [showAddGroup, setShowAddGroup] = useState(false);
 
-  useEffect(() => {
+  const fetchPackages = useCallback(() => {
     getPackages(true)
       .then(({ data }) => {
         setPackages(data);
       })
       .catch(function (err) {});
   }, []);
-
-  useEffect(() => {
-    if (!selectedPackage) {
-      return;
-    }
-
-    setGroups(() => {
-      const grps = packages.find((p) => p.id === selectedPackage.value);
-
-      if (!grps) {
-        return [];
-      }
-
-      return grps.Groups;
-    });
-
-    setSelectedGroup(null);
-  }, [packages, selectedPackage]);
 
   const onClear = useCallback(() => {
     setSelectedPackage(null);
@@ -66,6 +52,22 @@ const AddVocab = () => {
     setDescription,
   ]);
 
+  const openPackageModal = useCallback(() => {
+    setShowAddPackage(true);
+  }, []);
+
+  const openGroupModal = useCallback(() => {
+    setShowAddGroup(true);
+  }, []);
+
+  const closePackageModal = useCallback(() => {
+    setShowAddPackage(false);
+  }, []);
+
+  const closeGroupModal = useCallback(() => {
+    setShowAddGroup(false);
+  }, []);
+
   const onSubmit = useCallback(() => {
     const submitTranslations = translations.map((elem) => {
       return {
@@ -79,7 +81,6 @@ const AddVocab = () => {
     })
       .then((response) => {
         onClear();
-        // setSaved(true);
         showSnack("success", t("screens.addVocab.saveSuccessMessage"));
       })
       .catch(function (e) {
@@ -105,6 +106,29 @@ const AddVocab = () => {
   // const handleChange = (event) => {
   //   setAge(event.target.value);
   // };
+
+  useEffect(() => {
+    fetchPackages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!selectedPackage) {
+      return;
+    }
+
+    setGroups(() => {
+      const grps = packages.find((p) => p.id === selectedPackage.value);
+
+      if (!grps) {
+        return [];
+      }
+
+      return grps.Groups;
+    });
+
+    setSelectedGroup(null);
+  }, [packages, selectedPackage]);
 
   useEffect(() => {
     setPackageItems(() =>
@@ -134,83 +158,102 @@ const AddVocab = () => {
   }, [groups]);
 
   return (
-    <div className="add-vocab-form">
-      <h1 className="heading">{t("screens.addVocab.title")}</h1>
+    <>
+      <div className="add-vocab-form">
+        <h1 className="heading">{t("screens.addVocab.title")}</h1>
 
-      <div className="dropdowns">
-        <div className="select-wrapper">
-          <Select
+        <div className="dropdowns">
+          <div className="select-wrapper">
+            <Select
+              required
+              creatable
+              createText={"Create new Package"}
+              onCreate={openPackageModal}
+              tabIndex={1}
+              label={t("global.package")}
+              options={packageItems}
+              onChange={(v) => {
+                setSelectedPackage(v);
+              }}
+              value={selectedPackage}
+              noOptionsMessage={t("screens.addVocab.noPackagesMessage")}
+            />
+          </div>
+          <div className="select-wrapper">
+            <Select
+              required
+              creatable
+              createText={"Create new Group"}
+              onCreate={openGroupModal}
+              disabled={!selectedPackage}
+              tabIndex={1}
+              label={t("global.group")}
+              options={groupsItems}
+              onChange={(v) => {
+                setSelectedGroup(v);
+              }}
+              value={selectedGroup}
+              noOptionsMessage={t("screens.addVocab.noGroupsMessage")}
+            />
+          </div>
+        </div>
+        <div className="input-fields">
+          <TextInput
             required
             tabIndex={1}
-            label={t("global.package")}
-            options={packageItems}
-            onChange={(v) => {
-              setSelectedPackage(v);
+            placeholder={t("global.foreignWord")}
+            onChange={(value) => {
+              setForeignWord(value);
             }}
-            value={selectedPackage}
-            noOptionsMessage={t("screens.addVocab.noPackagesMessage")}
+            value={foreignWord}
           />
-        </div>
-        <div className="select-wrapper">
-          <Select
+          <ArrayTextInput
             required
+            max={maxTranslations}
+            data={translations}
+            placeholder={t("global.translation")}
+            onChange={setTranslations}
+            addText={t("screens.addVocab.addTranslation")}
+          />
+          <TextInput
             tabIndex={1}
-            label={t("global.group")}
-            options={groupsItems}
-            onChange={(v) => {
-              setSelectedGroup(v);
+            placeholder={t("global.description")}
+            onChange={(value) => {
+              setDescription(value);
             }}
-            value={selectedGroup}
-            noOptionsMessage={t("screens.addVocab.noGroupsMessage")}
+            value={description}
           />
         </div>
-      </div>
-      <div className="input-fields">
-        <TextInput
-          required
-          tabIndex={1}
-          placeholder={t("global.foreignWord")}
-          onChange={(value) => {
-            setForeignWord(value);
-          }}
-          value={foreignWord}
-        />
-        <ArrayTextInput
-          required
-          max={maxTranslations}
-          data={translations}
-          placeholder={t("global.translation")}
-          onChange={setTranslations}
-          addText={t("screens.addVocab.addTranslation")}
-        />
-        <TextInput
-          tabIndex={1}
-          placeholder={t("global.description")}
-          onChange={(value) => {
-            setDescription(value);
-          }}
-          value={description}
-        />
-      </div>
 
-      <div className="form-submit">
-        <Button
-          block
-          tabIndex={-1}
-          onClick={onSubmit}
-          disabled={
-            !(
-              foreignWord &&
-              translations?.length &&
-              selectedGroup &&
-              selectedPackage
-            )
-          }
-        >
-          {t("global.add")}
-        </Button>
+        <div className="form-submit">
+          <Button
+            block
+            tabIndex={-1}
+            onClick={onSubmit}
+            disabled={
+              !(
+                foreignWord &&
+                translations?.length &&
+                selectedGroup &&
+                selectedPackage
+              )
+            }
+          >
+            {t("global.add")}
+          </Button>
+        </div>
       </div>
-    </div>
+      <Modal
+        title={"Add Package"}
+        open={showAddPackage}
+        onClose={closePackageModal}
+      >
+        <AddLanguagePackage />
+      </Modal>
+      <Modal title={"Add Group"} open={showAddGroup} onClose={closeGroupModal}>
+        <AddLanguagePackage />
+      </Modal>
+    </>
   );
 };
 

@@ -22,7 +22,6 @@ const FirstStartup = () => {
       open={show}
       onClose={() => setShow(false)}
       renderClose={false}
-      closeOnClickOutside={false}
     >
       <AddLanguagePackage />
     </Modal>

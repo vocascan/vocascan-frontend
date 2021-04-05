@@ -9,7 +9,7 @@ const Modal = ({
   onClose,
   open = false,
   renderClose = true,
-  closeOnClickOutside = true,
+  closeOnClickOutside = false,
   children,
 }) => {
   const ref = useRef(null);
