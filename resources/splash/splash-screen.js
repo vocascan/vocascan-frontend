@@ -20,7 +20,7 @@ ipcRenderer.on("skipCheck", (_event) => {
 });
 
 ipcRenderer.on("launch", (_event) => {
-  header.textContent = "Starting...";
+  header.textContent = "Launching...";
   launchBtn.style.display = "none";
 });
 
