@@ -46,10 +46,32 @@ h4 {
   height: 10px;
   border-radius: 5px;
   background-color: #4c51ec;
-  transition: all 0.2s;
+  transition: all 0.5s;
+}
+
+.btn {
+  padding: 10px 14px;
+  font-size: 16px;
+  text-transform: none;
+  color: #ffffff;
+  background-color: #727cf5;
+  border-radius: 15px;
+  border: unset;
+  transition: all 0.3s ease-in;
+  -webkit-app-region: no-drag;
+  outline-width: 0;
+}
+
+.btn:hover {
+  background-color: #4c51ec;
+  cursor: pointer;
 }
 
 #progress {
+  display: none;
+}
+
+#launch {
   display: none;
 }
 

@@ -17,13 +17,16 @@ const windows = {
 const timerIds = {
   showInterval: null,
   checkForUpdates: null,
+  skipUpdateTimeout: null,
 };
 
 const TIMES = {
-  beforeQuitAndUpdate: 2000,
-  beforeStart: 2000,
-  checkLaunchingInterval: 500,
+  beforeQuitAndUpdate: 2 * 1000,
+  beforeStart: 2 * 1000,
+  checkLaunchingInterval: 0.5 * 1000,
   checkUpdate: 1 * 60 * 60 * 1000, // every hour
+  skipUpdateTimeout: 15 * 1000,
+  skipUpdateShow: 1 * 1000,
 };
 
 let mainIsReady = false;
@@ -130,7 +133,9 @@ const updateNotify = (isDarwin, info) => {
   clearInterval(timerIds.checkForUpdates);
 
   // send notification to main window
-  windows.main.webContents.send("update-available", isDarwin, info);
+  if (windows.main) {
+    windows.main.webContents.send("update-available", isDarwin, info);
+  }
 
   // show push notification
   const notification = {
@@ -144,6 +149,25 @@ const updateNotify = (isDarwin, info) => {
   }
 
   new Notification(notification).show();
+};
+
+const skipUpdateCheck = () => {
+  if (windows.splash) {
+    windows.splash.webContents.send("skipCheck");
+
+    setTimeout(() => {
+      launch();
+    }, TIMES.skipUpdateShow);
+
+    cancelSkipUpdate();
+  }
+};
+
+const cancelSkipUpdate = () => {
+  if (timerIds.skipUpdateTimeout) {
+    clearTimeout(timerIds.skipUpdateTimeout);
+    timerIds.skipUpdateTimeout = null;
+  }
 };
 
 app.on("ready", () => {
@@ -167,6 +191,10 @@ ipcMain.on("start-update", () => {
   }
 });
 
+ipcMain.on("skip-check", () => {
+  skipUpdateCheck();
+});
+
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
@@ -183,6 +211,11 @@ autoUpdater.on("checking-for-update", () => {
   if (windows.splash) {
     windows.splash.webContents.send("check");
   }
+
+  cancelSkipUpdate();
+  timerIds.skipUpdateTimeout = setTimeout(() => {
+    skipUpdateCheck();
+  }, TIMES.skipUpdateTimeout);
 });
 
 autoUpdater.on("update-available", (info) => {
@@ -190,6 +223,11 @@ autoUpdater.on("update-available", (info) => {
     // download update if platform is not darwin
     autoUpdater.downloadUpdate();
   }
+
+  cancelSkipUpdate();
+  timerIds.skipUpdateTimeout = setTimeout(() => {
+    skipUpdateCheck();
+  }, TIMES.skipUpdateTimeout);
 
   if (windows.splash) {
     // check if mac -> cannot update without certificate
@@ -210,6 +248,7 @@ autoUpdater.on("update-not-available", (info) => {
     windows.splash.webContents.send("launch", info);
 
     launch();
+    cancelSkipUpdate();
   }
 });
 
@@ -219,6 +258,8 @@ autoUpdater.on("download-progress", (progress) => {
     windows.splash.webContents.send("progress", formatted);
     windows.splash.setProgressBar(formatted);
   }
+
+  cancelSkipUpdate();
 });
 
 autoUpdater.on("update-downloaded", (info) => {
@@ -232,7 +273,9 @@ autoUpdater.on("update-downloaded", (info) => {
     }, TIMES.beforeQuitAndUpdate);
   }
 
-  if (windows.main) {
+  if (windows.main && !windows.splash) {
     updateNotify(false, info);
   }
+
+  cancelSkipUpdate();
 });
