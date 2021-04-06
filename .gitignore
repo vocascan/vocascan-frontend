@@ -85,15 +85,17 @@ typings/
 # Webpack
 .webpack/
 
-# Electron-Forge
-out/
-
+# vscode
 .vscode
 
 dist/
 
+# react
 build/
+
+# electron-builder
 builds/
+dev-app-update.yml
 
 # localazy
 localazy.keys.json

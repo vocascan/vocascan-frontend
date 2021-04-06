@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button";
 
 import PersonIcon from "@material-ui/icons/Person";
 
+import UpdateAvailable from "./UpdateAvailable.jsx";
+
 import { signOut } from "../../redux/Actions/login.js";
 
 import LogoRound from "../../images/logo/transparent-round.svg";
@@ -30,25 +32,32 @@ const TopNav = () => {
       <div className="title">
         <img src={LogoRound} alt="" className="brand" />
       </div>
-      <div className="user">
-        <PersonIcon className="icon" />
-        {username || email}
-        <div className="menu">
-          <ul className="menu-list">
-            <li className="menu-list-item">
-              <NavLink to="/profile" className="menu-list-item-btn">
-                {t("nav.profile")}
-              </NavLink>
-            </li>
-            <li className="menu-list-item">
-              <NavLink to="/settings" className="menu-list-item-btn">
-                {t("nav.settings")}
-              </NavLink>
-            </li>
-            <li className="menu-list-item" onClick={handleLogout}>
-              <Button className="menu-list-item-btn">{t("nav.logout")}</Button>
-            </li>
-          </ul>
+      <div className="nav-wrapper">
+        <div className="update">
+          <UpdateAvailable />
+        </div>
+        <div className="user">
+          <PersonIcon className="icon" />
+          {username || email}
+          <div className="menu">
+            <ul className="menu-list">
+              <li className="menu-list-item">
+                <NavLink to="/profile" className="menu-list-item-btn">
+                  {t("nav.profile")}
+                </NavLink>
+              </li>
+              <li className="menu-list-item">
+                <NavLink to="/settings" className="menu-list-item-btn">
+                  {t("nav.settings")}
+                </NavLink>
+              </li>
+              <li className="menu-list-item" onClick={handleLogout}>
+                <Button className="menu-list-item-btn">
+                  {t("nav.logout")}
+                </Button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
