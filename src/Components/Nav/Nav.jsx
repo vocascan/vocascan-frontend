@@ -14,7 +14,7 @@ import NavButton from "./NavButton.jsx";
 
 import "./Nav.scss";
 
-function Nav() {
+const Nav = () => {
   const { t } = useTranslation();
   const menuStyle = useSelector((state) => state.setting.menuStyle);
   const [initialStyle, setInitialStyle] = useState(menuStyle);
@@ -88,6 +88,6 @@ function Nav() {
       </div>
     </div>
   );
-}
+};
 
 export default Nav;
