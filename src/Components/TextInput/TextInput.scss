@@ -3,6 +3,7 @@
 .text-input-wrapper {
   position: relative;
   display: flex;
+  flex-direction: column;
   width: 100%;
   margin: 5px 0;
   height: 43px;
@@ -54,14 +55,14 @@
     pointer-events: none;
     position: absolute;
     left: 0;
-    top: 24px;
+    top: 16px;
     font-size: 13px;
     transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     opacity: 0.3;
 
     &.flow {
       opacity: 1;
-      top: 5px;
+      top: 0px;
       font-size: 11px;
       color: $color-primary-dark;
       transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);

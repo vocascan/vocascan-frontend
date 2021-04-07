@@ -10,6 +10,7 @@ const TextInput = ({
   errorText = null,
   required = false,
   value = "",
+  autoFocus = false,
   ...props
 }) => {
   const [flow, setFlow] = useState(false);
@@ -23,7 +24,7 @@ const TextInput = ({
   }, [value]);
 
   useEffect(() => {
-    setFlow(!!value || props.autofocus);
+    setFlow(!!value || autoFocus);
     // only trigger once the component renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -42,6 +43,7 @@ const TextInput = ({
         value={value}
         onBlur={onBlur}
         onFocus={handleFocus}
+        autoFocus={autoFocus}
         {...props}
       />
       {error && errorText && <p className="text-input-error">{errorText}</p>}
