@@ -11,6 +11,7 @@ const Button = ({
   block = false,
   onClick = () => null,
   children,
+  className = "",
 }) => {
   const classes = clsx(
     "btn",
@@ -18,7 +19,8 @@ const Button = ({
     `btn-${variant}`,
     uppercase && "btn-uppercase",
     block && "btn-block",
-    disabled && "btn-disabled"
+    disabled && "btn-disabled",
+    className
   );
 
   return (

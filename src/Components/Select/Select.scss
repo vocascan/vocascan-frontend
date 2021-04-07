@@ -18,9 +18,11 @@
     left: 0;
     transform: translateY(-50%);
     font-size: 13px;
+    opacity: 0.3;
     transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
 
     &.flow {
+      opacity: 1;
       top: 15px;
       left: 0;
       font-size: 11px;
