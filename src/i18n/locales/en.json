@@ -24,6 +24,17 @@
     "serverNotResponding": "The server is not responding",
     "successMessage": "Success"
   },
+  "components": {
+    "groupForm": {
+      "languagePackage": "Package"
+    },
+    "packageForm": {
+      "foreignLanguage": "Foreign language",
+      "translatedLanguage": "Translated language",
+      "vocabsPerDay": "Vocabs per day",
+      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs"
+    }
+  },
   "screens": {
     "addVocab": {
       "title": "Add vocabulary",
@@ -31,13 +42,9 @@
       "noGroupsMessage": "No groups found",
       "addTranslation": "Add translation",
       "saveSuccessMessage": "New vocabulary added",
-      "saveErrorMessage": "New vocabulary could not be added"
-    },
-    "addLanguagePackage": {
-      "foreignLanguage": "Foreign language",
-      "translatedLanguage": "Translated language",
-      "vocabsPerDay": "Vocabs per day",
-      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs"
+      "saveErrorMessage": "New vocabulary could not be added",
+      "savePackageSuccessMessage": "New package added",
+      "saveGroupSuccessMessage": "New group added"
     },
     "selectionScreen": {
       "title": "Login",

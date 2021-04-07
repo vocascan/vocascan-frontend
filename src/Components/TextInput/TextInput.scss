@@ -2,7 +2,10 @@
 
 .text-input-wrapper {
   position: relative;
+  display: flex;
   width: 100%;
+  margin: 5px 0;
+  height: 43px;
 
   .text-input {
     height: 32px;
@@ -48,11 +51,19 @@
   }
 
   .text-input-label {
+    pointer-events: none;
     position: absolute;
     left: 0;
-    top: 6px;
-    color: $color-primary-dark;
-    font-size: 11px;
+    top: 24px;
+    font-size: 13px;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+
+    &.flow {
+      top: 5px;
+      font-size: 11px;
+      color: $color-primary-dark;
+      transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    }
   }
 
   .text-input-error {

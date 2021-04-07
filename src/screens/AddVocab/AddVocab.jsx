@@ -3,11 +3,12 @@ import { useTranslation } from "react-i18next";
 
 import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput.jsx";
 import Button from "../../Components/Button/Button.jsx";
+import GroupForm from "../../Components/GroupForm/GroupForm.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
+import PackageForm from "../../Components/PackageForm/PackageForm.jsx";
 import Select from "../../Components/Select/Select.jsx";
 import TextInput from "../../Components/TextInput/TextInput.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
-import AddLanguagePackage from "../AddLanguagePackage/AddLanguagePackage.jsx";
 
 import { getPackages, createVocabulary } from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
@@ -26,7 +27,6 @@ const AddVocab = () => {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [foreignWord, setForeignWord] = useState("");
   const [translations, setTranslations] = useState([]);
-  const [description, setDescription] = useState("");
   const [showAddPackage, setShowAddPackage] = useState(false);
   const [showAddGroup, setShowAddGroup] = useState(false);
 
@@ -43,14 +43,7 @@ const AddVocab = () => {
     setSelectedGroup(null);
     setForeignWord("");
     setTranslations(null);
-    setDescription("");
-  }, [
-    setSelectedPackage,
-    setSelectedGroup,
-    setForeignWord,
-    setTranslations,
-    setDescription,
-  ]);
+  }, [setSelectedPackage, setSelectedGroup, setForeignWord, setTranslations]);
 
   const openPackageModal = useCallback(() => {
     setShowAddPackage(true);
@@ -67,6 +60,26 @@ const AddVocab = () => {
   const closeGroupModal = useCallback(() => {
     setShowAddGroup(false);
   }, []);
+
+  const packageAdded = useCallback(
+    (newPackage) => {
+      setSelectedPackage({ value: newPackage.id, label: newPackage.name });
+      closePackageModal();
+      fetchPackages();
+      showSnack("success", t("screens.addVocab.savePackageSuccessMessage"));
+    },
+    [closePackageModal, fetchPackages, t, showSnack]
+  );
+
+  const groupAdded = useCallback(
+    (newGroup) => {
+      closeGroupModal();
+      fetchPackages();
+      setSelectedGroup({ value: newGroup.id, label: newGroup.name });
+      showSnack("success", t("screens.addVocab.saveGroupSuccessMessage"));
+    },
+    [closeGroupModal, fetchPackages, t, showSnack]
+  );
 
   const onSubmit = useCallback(() => {
     const submitTranslations = translations.map((elem) => {
@@ -96,17 +109,6 @@ const AddVocab = () => {
     t,
   ]);
 
-  // function addGroup(value) {
-  //   vocascan.addGroup(value, packageId);
-  //   refreshGroups();
-  //   console.log(value);
-  //   console.log(packageId);
-  // }
-
-  // const handleChange = (event) => {
-  //   setAge(event.target.value);
-  // };
-
   useEffect(() => {
     fetchPackages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -117,9 +119,9 @@ const AddVocab = () => {
       return;
     }
 
-    setGroups(() => {
-      const grps = packages.find((p) => p.id === selectedPackage.value);
+    const grps = packages.find((p) => p.id === selectedPackage.value);
 
+    setGroups(() => {
       if (!grps) {
         return [];
       }
@@ -127,7 +129,19 @@ const AddVocab = () => {
       return grps.Groups;
     });
 
-    setSelectedGroup(null);
+    setSelectedGroup((grp) => {
+      if (!grp) {
+        return null;
+      }
+
+      const contain = grps.Groups.find((g) => g.id === grp.value);
+
+      if (!contain) {
+        return null;
+      }
+
+      return grp;
+    });
   }, [packages, selectedPackage]);
 
   useEffect(() => {
@@ -215,14 +229,6 @@ const AddVocab = () => {
             onChange={setTranslations}
             addText={t("screens.addVocab.addTranslation")}
           />
-          <TextInput
-            tabIndex={1}
-            placeholder={t("global.description")}
-            onChange={(value) => {
-              setDescription(value);
-            }}
-            value={description}
-          />
         </div>
 
         <div className="form-submit">
@@ -248,10 +254,14 @@ const AddVocab = () => {
         open={showAddPackage}
         onClose={closePackageModal}
       >
-        <AddLanguagePackage />
+        <PackageForm onSubmitCallback={packageAdded} />
       </Modal>
       <Modal title={"Add Group"} open={showAddGroup} onClose={closeGroupModal}>
-        <AddLanguagePackage />
+        <GroupForm
+          fixedPackage
+          selectedPackage={selectedPackage}
+          onSubmitCallback={groupAdded}
+        />
       </Modal>
     </>
   );

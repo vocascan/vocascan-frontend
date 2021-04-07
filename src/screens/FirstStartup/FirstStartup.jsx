@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 import Modal from "../../Components/Modal/Modal.jsx";
-import AddLanguagePackage from "../AddLanguagePackage/AddLanguagePackage.jsx";
+import PackageForm from "../../Components/PackageForm/PackageForm.jsx";
 
 import "./FirstStartup.scss";
 
@@ -23,7 +23,7 @@ const FirstStartup = () => {
       onClose={() => setShow(false)}
       renderClose={false}
     >
-      <AddLanguagePackage />
+      <PackageForm />
     </Modal>
   );
 };
