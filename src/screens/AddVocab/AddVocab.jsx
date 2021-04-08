@@ -15,6 +15,15 @@ import { languages, maxTranslations } from "../../utils/constants.js";
 
 import "./AddVocab.scss";
 
+const CustomSelectOption = ({ name, postfix }) => {
+  return (
+    <span>
+      {name}
+      <small className="option-postfix">{postfix}</small>
+    </span>
+  );
+};
+
 const AddVocab = () => {
   const { t } = useTranslation();
   const { showSnack } = useContext(SnackbarContext);
@@ -147,14 +156,21 @@ const AddVocab = () => {
   useEffect(() => {
     setPackageItems(() =>
       packages.map((p) => {
-        const langs = p.name.split(" - ").map((e) => {
-          const icon = languages.find((x) => x.name === e);
-          return icon ? icon.icon + e : " " + e;
-        });
+        const foreignIcon = languages.find(
+          (x) => x.name === p.foreignWordLanguage
+        ).icon;
+        const translatedIcon = languages.find(
+          (x) => x.name === p.translatedWordLanguage
+        ).icon;
 
         return {
           value: p.id,
-          label: langs.join(" - "),
+          label: (
+            <CustomSelectOption
+              name={p.name}
+              postfix={foreignIcon + " - " + translatedIcon}
+            />
+          ),
         };
       })
     );
