@@ -52,7 +52,15 @@
   }
 }
 
-.option-postfix {
-  font-size: 16px;
-  margin-left: 5px;
+.custom-option-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .postfix {
+    font-size: 16px;
+    padding-left: 5px;
+    margin-left: auto;
+  }
 }

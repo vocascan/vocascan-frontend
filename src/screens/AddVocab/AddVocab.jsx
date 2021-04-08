@@ -17,9 +17,9 @@ import "./AddVocab.scss";
 
 const CustomSelectOption = ({ name, postfix }) => {
   return (
-    <span>
+    <span className="custom-option-wrapper">
       {name}
-      <small className="option-postfix">{postfix}</small>
+      <small className="postfix">{postfix}</small>
     </span>
   );
 };
