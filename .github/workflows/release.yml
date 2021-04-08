@@ -24,9 +24,14 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Date
+        id: date
+        run: echo "::set-output name=date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
           build_script_name: react-build
           github_token: ${{ secrets.github_token }}
+          args: "-c.extraMetadata.commit='${{ github.sha }}' -c.extraMetadata.date='${{ steps.date.outputs.date }}'"
           release: true

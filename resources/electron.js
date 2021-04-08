@@ -1,8 +1,11 @@
 const path = require("path");
-const { app, BrowserWindow, ipcMain, Notification } = require("electron");
+const { app, BrowserWindow, ipcMain, Notification, Menu } = require("electron");
 const isDev = require("electron-is-dev");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
+
+const { MENU_TEMPLATE } = require("./utils/menu");
+const { RegisterIpcHandler } = require("./utils/ipc");
 
 app.allowRendererProcessReuse = true;
 log.transports.file.level = "debug";
@@ -62,6 +65,13 @@ const createWindow = () => {
     },
     show: false,
   });
+
+  // insert menubar
+  const mainMenu = Menu.buildFromTemplate(MENU_TEMPLATE);
+  Menu.setApplicationMenu(mainMenu);
+
+  // register ipc handler
+  RegisterIpcHandler();
 
   windows.splash.loadURL(
     `file://${path.join(__dirname, "../resources/splash/splash-screen.html")}`
