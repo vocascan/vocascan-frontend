@@ -1,0 +1,17 @@
+@import "../../colors";
+
+.table {
+  width: 100%;
+
+  .th {
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    text-align: left;
+  }
+
+  .td {
+    padding: 5px;
+    text-align: left;
+  }
+}
