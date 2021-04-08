@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import EditIcon from "@material-ui/icons/Edit";
@@ -11,6 +11,7 @@ import Table from "../../Components/Table/Table";
 import { getGroups } from "../../utils/api";
 
 const AllGroups = () => {
+  const history = useHistory();
   const { packageId } = useParams();
   const [data, setData] = useState([]);
 
@@ -53,7 +54,7 @@ const AllGroups = () => {
   return (
     <div className="all-groups-wrapper">
       <div class="header-wrapper">
-        <ArrowBackIcon className="back" />
+        <ArrowBackIcon className="back" onClick={history.goBack} />
         <h1 className="heading">All groups</h1>
       </div>
       <div>

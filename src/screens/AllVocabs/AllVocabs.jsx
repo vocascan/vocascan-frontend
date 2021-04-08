@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import EditIcon from "@material-ui/icons/Edit";
@@ -10,6 +10,7 @@ import Table from "../../Components/Table/Table";
 import { getGroupVocabulary } from "../../utils/api";
 
 const AllVocabs = () => {
+  const history = useHistory();
   const { groupId } = useParams();
   const [data, setData] = useState([]);
 
@@ -54,7 +55,7 @@ const AllVocabs = () => {
   return (
     <div className="all-vocabs-wrapper">
       <div class="header-wrapper">
-        <ArrowBackIcon className="back" />
+        <ArrowBackIcon className="back" onClick={history.goBack} />
         <h1 className="heading">All groups</h1>
       </div>
       <div>
