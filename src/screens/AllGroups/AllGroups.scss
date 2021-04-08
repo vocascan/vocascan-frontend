@@ -1,0 +1,26 @@
+@import "../../colors";
+
+.all-groups-wrapper {
+  padding: 50px;
+
+  .header-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    .back {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      &:hover {
+        cursor: pointer;
+        color: $color-primary-dark;
+      }
+    }
+
+    .heading {
+      margin-bottom: 20px;
+    }
+  }
+}

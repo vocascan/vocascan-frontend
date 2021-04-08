@@ -4,7 +4,9 @@ import { Route, HashRouter, Redirect } from "react-router-dom";
 
 import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
-import AllVocabulary from "./screens/AllVocabulary/AllVocabulary.jsx";
+import AllGroups from "./screens/AllGroups/AllGroups.jsx";
+import AllPackages from "./screens/AllPackages/AllPackages.jsx";
+import AllVocabs from "./screens/AllVocabs/AllVocabs.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
 import Login from "./screens/Login/Login.jsx";
 import Register from "./screens/Register/Register.jsx";
@@ -64,7 +66,9 @@ const App = () => {
         <AuthenticatedLayout>
           <FirstStartup />
           <Route path="/addVocab" component={AddVocab} />
-          <Route path="/allVocabs" component={AllVocabulary} />
+          <Route path="/allPackages" component={AllPackages} />
+          <Route path="/allGroups/:packageId" component={AllGroups} />
+          <Route path="/allVocabs/:groupId" component={AllVocabs} />
           <Route path="/settings" component={Settings} />
         </AuthenticatedLayout>
       </HashRouter>
