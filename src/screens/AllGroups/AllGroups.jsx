@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import EditIcon from "@material-ui/icons/Edit";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
 import "./AllGroups.scss";
@@ -37,9 +36,6 @@ const AllGroups = () => {
             ...elem,
             action: (
               <div style={{ textAlign: "right" }}>
-                <Link to={`/editGroup/${elem.id}`}>
-                  <EditIcon />
-                </Link>
                 <Link to={`/allVocabs/${elem.id}`}>
                   <KeyboardArrowRightIcon />
                 </Link>
@@ -53,7 +49,7 @@ const AllGroups = () => {
 
   return (
     <div className="all-groups-wrapper">
-      <div class="header-wrapper">
+      <div className="header-wrapper">
         <ArrowBackIcon className="back" onClick={history.goBack} />
         <h1 className="heading">All groups</h1>
       </div>

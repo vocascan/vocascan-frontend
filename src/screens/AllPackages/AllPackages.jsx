@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
-import EditIcon from "@material-ui/icons/Edit";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
 import "./AllPackages.scss";
@@ -42,9 +41,6 @@ const AllPackages = () => {
             ...elem,
             action: (
               <div style={{ textAlign: "right" }}>
-                <Link to={`/editPackage/${elem.id}`}>
-                  <EditIcon />
-                </Link>
                 <Link to={`/allGroups/${elem.id}`}>
                   <KeyboardArrowRightIcon />
                 </Link>
@@ -58,7 +54,7 @@ const AllPackages = () => {
 
   return (
     <div className="all-packages-wrapper">
-      <div class="header-wrapper">
+      <div className="header-wrapper">
         <h1 className="heading">All packages</h1>
       </div>
       <div>

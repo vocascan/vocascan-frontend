@@ -54,7 +54,7 @@ const AllVocabs = () => {
 
   return (
     <div className="all-vocabs-wrapper">
-      <div class="header-wrapper">
+      <div className="header-wrapper">
         <ArrowBackIcon className="back" onClick={history.goBack} />
         <h1 className="heading">All groups</h1>
       </div>
