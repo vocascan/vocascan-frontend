@@ -37,7 +37,7 @@ const AllGroups = () => {
         ),
       },
     ],
-    []
+    [t]
   );
 
   useEffect(() => {

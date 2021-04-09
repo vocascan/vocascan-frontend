@@ -41,7 +41,7 @@ const AllVocabs = () => {
         ),
       },
     ],
-    []
+    [t]
   );
 
   useEffect(() => {

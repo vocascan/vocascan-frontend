@@ -44,7 +44,7 @@ const AllPackages = () => {
         ),
       },
     ],
-    []
+    [t]
   );
 
   useEffect(() => {
