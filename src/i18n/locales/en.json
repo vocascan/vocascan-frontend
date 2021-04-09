@@ -24,6 +24,21 @@
     "serverNotResponding": "The server is not responding"
   },
   "screens": {
+    "allPackages": {
+      "title": "All packages",
+      "packageName": "Package",
+      "foreignLanguage": "Foreign language",
+      "translatedLanguage": "Translated language"
+    },
+    "allGroups": {
+      "title": "All groups",
+      "groupName": "Group"
+    },
+    "allVocabs": {
+      "title": "All vocabulary",
+      "vocabel": "Vocabel",
+      "translations": "Translations"
+    },
     "addVocab": {
       "title": "Add vocabulary",
       "noPackagesMessage": "No packages found",

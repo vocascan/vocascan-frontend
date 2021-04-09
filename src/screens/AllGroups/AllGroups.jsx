@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -10,6 +11,7 @@ import Table from "../../Components/Table/Table";
 import { getGroups } from "../../utils/api";
 
 const AllGroups = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { packageId } = useParams();
   const [data, setData] = useState([]);
@@ -17,12 +19,22 @@ const AllGroups = () => {
   const columns = useMemo(
     () => [
       {
-        Header: "Name",
+        Header: t("screens.allGroups.groupName"),
         accessor: "name",
+        Cell: ({ row }) => (
+          <Link to={`/editGroup/${row.original.id}`}>{row.original.name}</Link>
+        ),
       },
       {
         Header: "",
         accessor: "action",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "right" }}>
+            <Link to={`/allVocabs/${row.original.id}`}>
+              <KeyboardArrowRightIcon />
+            </Link>
+          </div>
+        ),
       },
     ],
     []
@@ -30,20 +42,7 @@ const AllGroups = () => {
 
   useEffect(() => {
     getGroups(packageId).then((response) => {
-      setData(() =>
-        response.data.map((elem) => {
-          return {
-            ...elem,
-            action: (
-              <div style={{ textAlign: "right" }}>
-                <Link to={`/allVocabs/${elem.id}`}>
-                  <KeyboardArrowRightIcon />
-                </Link>
-              </div>
-            ),
-          };
-        })
-      );
+      setData(response.data);
     });
   }, [packageId]);
 
@@ -51,7 +50,7 @@ const AllGroups = () => {
     <div className="all-groups-wrapper">
       <div className="header-wrapper">
         <ArrowBackIcon className="back" onClick={history.goBack} />
-        <h1 className="heading">All groups</h1>
+        <h1 className="heading">{t("screens.allGroups.title")}</h1>
       </div>
       <div>
         <Table columns={columns} data={data} />

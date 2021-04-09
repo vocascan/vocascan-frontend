@@ -2,17 +2,39 @@
 
 .table {
   width: 100%;
+  border-spacing: 0;
 
   .th {
     padding: 5px;
-    font-weight: bold;
-    color: $color-primary-dark;
-    border-bottom: 1px solid $color-primary-dark;
     text-align: left;
+    border-bottom: 1px solid $color-main-text;
+
+    .header-text {
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      line-height: 24px;
+    }
+
+    .sort-placeholder {
+      width: 24px;
+    }
   }
 
   .td {
     padding: 5px;
     text-align: left;
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: $color-primary;
+
+      &:hover {
+        color: $color-primary-dark;
+      }
+    }
   }
 }

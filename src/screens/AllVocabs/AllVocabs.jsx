@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -10,6 +11,7 @@ import Table from "../../Components/Table/Table";
 import { getGroupVocabulary } from "../../utils/api";
 
 const AllVocabs = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { groupId } = useParams();
   const [data, setData] = useState([]);
@@ -17,16 +19,26 @@ const AllVocabs = () => {
   const columns = useMemo(
     () => [
       {
-        Header: "Name",
+        Header: t("screens.allVocabs.vocabel"),
         accessor: "name",
+        Cell: ({ row }) => (
+          <Link to={`/editVocab/${row.original.id}`}>{row.original.name}</Link>
+        ),
       },
       {
-        Header: "Translations",
+        Header: t("screens.allVocabs.translations"),
         accessor: "translations",
       },
       {
         Header: "",
         accessor: "action",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "right" }}>
+            <Link to={`/editVocab/${row.original.id}`}>
+              <EditIcon />
+            </Link>
+          </div>
+        ),
       },
     ],
     []
@@ -39,13 +51,6 @@ const AllVocabs = () => {
           return {
             ...elem,
             translations: elem.Translations.map((el) => el.name).join(", "),
-            action: (
-              <div style={{ textAlign: "right" }}>
-                <Link to={`/editVocab/${elem.id}`}>
-                  <EditIcon />
-                </Link>
-              </div>
-            ),
           };
         })
       );
@@ -56,7 +61,7 @@ const AllVocabs = () => {
     <div className="all-vocabs-wrapper">
       <div className="header-wrapper">
         <ArrowBackIcon className="back" onClick={history.goBack} />
-        <h1 className="heading">All groups</h1>
+        <h1 className="heading">{t("screens.allVocabs.title")}</h1>
       </div>
       <div>
         <Table columns={columns} data={data} />

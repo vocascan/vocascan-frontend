@@ -1,5 +1,8 @@
 import React from "react";
-import { useTable } from "react-table";
+import { useSortBy, useTable } from "react-table";
+
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 
 import "./Table.scss";
 
@@ -10,7 +13,7 @@ const Table = ({ columns, data }) => {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ columns, data });
+  } = useTable({ columns, data }, useSortBy);
 
   return (
     <table {...getTableProps()} className="table">
@@ -18,8 +21,22 @@ const Table = ({ columns, data }) => {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()} className="th">
-                {column.render("Header")}
+              <th
+                {...column.getHeaderProps(column.getSortByToggleProps())}
+                className="th"
+              >
+                <span className="header-text">
+                  {column.render("Header")}
+                  {column.isSorted ? (
+                    column.isSortedDesc ? (
+                      <ArrowDropUpIcon />
+                    ) : (
+                      <ArrowDropDownIcon />
+                    )
+                  ) : (
+                    <span className="sort-placeholder"></span>
+                  )}
+                </span>
               </th>
             ))}
           </tr>
