@@ -22,7 +22,8 @@
     "signIn": "Sign in",
     "signUp": "Sign up",
     "serverNotResponding": "The server is not responding",
-    "successMessage": "Success"
+    "successMessage": "Success",
+    "fetchError": "Something went wrong, please try again later"
   },
   "components": {
     "groupForm": {
