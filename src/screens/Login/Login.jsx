@@ -35,39 +35,45 @@ const Login = ({ image }) => {
   }, [history]);
 
   //make api call to login
-  async function submitLogin(e) {
-    e.preventDefault();
+  const submitLogin = useCallback(
+    async (e) => {
+      e.preventDefault();
 
-    if (!canSubmit) {
-      return;
-    }
+      if (!canSubmit) {
+        return;
+      }
 
-    login({
-      email,
-      password,
-    })
-      .then((response) => {
-        setError(false);
-
-        //store username, email and jwt token in redux store
-        dispatch(
-          signIn({
-            username: response.data.user.username,
-            email,
-            token: response.data.token,
-          })
-        );
+      login({
+        email,
+        password,
       })
-      .catch(function (e) {
-        if (e.response?.status === 401 || e.response?.status === 404) {
-          setServerError(false);
-          setError(true);
-          return;
-        }
+        .then((response) => {
+          setError(false);
 
-        setServerError(true);
-      });
-  }
+          //store username, email and jwt token in redux store
+          dispatch(
+            signIn({
+              username: response.data.user.username,
+              email,
+              token: response.data.token,
+            })
+          );
+        })
+        .catch((event) => {
+          if (
+            event.response?.status === 401 ||
+            event.response?.status === 404
+          ) {
+            setServerError(false);
+            setError(true);
+            return;
+          }
+
+          setServerError(true);
+        });
+    },
+    [canSubmit, dispatch, email, password]
+  );
 
   useEffect(() => {
     if (selfHosted && !serverAddress) {

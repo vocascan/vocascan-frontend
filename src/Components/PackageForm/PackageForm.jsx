@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "../Button/Button.jsx";
@@ -21,7 +21,7 @@ const PackageForm = ({ onSubmitCallback = null }) => {
   const [canSubmit, setCanSubmit] = useState(false);
 
   //make api call to add vocab package
-  async function submitHandler() {
+  const submitHandler = useCallback(async () => {
     const newPackage = {
       name: name,
       foreignWordLanguage: foreignLanguage.value,
@@ -39,7 +39,14 @@ const PackageForm = ({ onSubmitCallback = null }) => {
           console.log("jwt expired");
         }
       });
-  }
+  }, [
+    foreignLanguage.value,
+    name,
+    onSubmitCallback,
+    rightTranslations,
+    translatedLanguage.value,
+    vocabsPerDay,
+  ]);
 
   const selectOptions = languages.map((language) => {
     return {

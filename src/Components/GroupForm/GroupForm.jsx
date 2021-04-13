@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import SnackbarContext from "../../context/SnackbarContext.jsx";
 import Button from "../Button/Button.jsx";
 import Select from "../Select/Select.jsx";
 import TextInput from "../TextInput/TextInput.jsx";
@@ -16,6 +17,7 @@ const GroupForm = ({
   onSubmitCallback = null,
 }) => {
   const { t } = useTranslation();
+  const { showSnack } = useContext(SnackbarContext);
 
   const [name, setName] = useState("");
   const [languagePackage, setLanguagePackage] = useState(selectedPackage);
@@ -28,11 +30,12 @@ const GroupForm = ({
       .then(({ data }) => {
         setLanguagePackages(data);
       })
-      .catch(function (err) {});
-  }, []);
+      .catch((err) => {
+        showSnack("error", t("global.fetchError"));
+      });
+  }, [showSnack, t]);
 
-  //make api call to add vocab package
-  async function submitHandler() {
+  const submitHandler = useCallback(async () => {
     const newGroup = {
       name,
       active: true,
@@ -42,12 +45,12 @@ const GroupForm = ({
       .then(({ data }) => {
         onSubmitCallback && onSubmitCallback(data);
       })
-      .catch(function (error) {
+      .catch((error) => {
         if (error.response.status === 401) {
           console.log("jwt expired");
         }
       });
-  }
+  }, [languagePackage.id, languagePackage.value, name, onSubmitCallback]);
 
   useEffect(() => {
     setCanSubmit(!(!name || !languagePackage));

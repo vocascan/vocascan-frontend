@@ -44,8 +44,10 @@ const AddVocab = () => {
       .then(({ data }) => {
         setPackages(data);
       })
-      .catch(function (err) {});
-  }, []);
+      .catch((err) => {
+        showSnack("error", t("global.fetchError"));
+      });
+  }, [showSnack, t]);
 
   const onClear = useCallback(() => {
     setSelectedPackage(null);
@@ -105,7 +107,7 @@ const AddVocab = () => {
         onClear();
         showSnack("success", t("screens.addVocab.saveSuccessMessage"));
       })
-      .catch(function (e) {
+      .catch((e) => {
         showSnack("error", t("screens.addVocab.saveSuccessMessage"));
       });
   }, [
@@ -139,7 +141,7 @@ const AddVocab = () => {
     });
 
     setSelectedGroup((grp) => {
-      if (!grp) {
+      if (!grp || !grps) {
         return null;
       }
 
