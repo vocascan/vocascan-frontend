@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 import Button from "../Button/Button.jsx";
 import Select from "../Select/Select.jsx";
+import Switch from "../Switch/Switch.jsx";
 import TextInput from "../TextInput/TextInput.jsx";
 
 import { getPackages, createGroup } from "../../utils/api.js";
@@ -22,6 +23,7 @@ const GroupForm = ({
   const [name, setName] = useState("");
   const [languagePackage, setLanguagePackage] = useState(selectedPackage);
   const [canSubmit, setCanSubmit] = useState(false);
+  const [active, setActive] = useState(false);
   const [languagePackages, setLanguagePackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
 
@@ -38,7 +40,7 @@ const GroupForm = ({
   const submitHandler = useCallback(async () => {
     const newGroup = {
       name,
-      active: true,
+      active,
     };
 
     createGroup(languagePackage.id || languagePackage.value, newGroup)
@@ -50,7 +52,13 @@ const GroupForm = ({
           console.log("jwt expired");
         }
       });
-  }, [languagePackage.id, languagePackage.value, name, onSubmitCallback]);
+  }, [
+    active,
+    languagePackage.id,
+    languagePackage.value,
+    name,
+    onSubmitCallback,
+  ]);
 
   useEffect(() => {
     setCanSubmit(!(!name || !languagePackage));
@@ -106,6 +114,12 @@ const GroupForm = ({
             setName(value);
           }}
           value={name}
+        />
+        <Switch
+          appearance="on-off"
+          optionLeft={t("screens.addVocab.activeLabel")}
+          onChange={() => setActive((a) => !a)}
+          checked={active}
         />
       </div>
 

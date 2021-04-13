@@ -269,7 +269,6 @@ const AddVocab = () => {
             }}
             value={description}
           />
-
           <Switch
             appearance="on-off"
             optionLeft={t("screens.addVocab.activeLabel")}
