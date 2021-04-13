@@ -31,11 +31,14 @@ const AddVocab = () => {
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
+
   const [groups, setGroups] = useState([]);
   const [groupsItems, setGroupsItems] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(null);
+
   const [foreignWord, setForeignWord] = useState("");
   const [translations, setTranslations] = useState([]);
+  const [description, setDescription] = useState("");
   const [showAddPackage, setShowAddPackage] = useState(false);
   const [showAddGroup, setShowAddGroup] = useState(false);
 
@@ -53,6 +56,7 @@ const AddVocab = () => {
     setSelectedPackage(null);
     setSelectedGroup(null);
     setForeignWord("");
+    setDescription("");
     setTranslations(null);
   }, [setSelectedPackage, setSelectedGroup, setForeignWord, setTranslations]);
 
@@ -102,6 +106,7 @@ const AddVocab = () => {
     createVocabulary(selectedPackage.value, selectedGroup.value, {
       name: foreignWord,
       translations: submitTranslations,
+      description,
     })
       .then((response) => {
         onClear();
@@ -111,6 +116,7 @@ const AddVocab = () => {
         showSnack("error", t("screens.addVocab.saveSuccessMessage"));
       });
   }, [
+    description,
     selectedGroup,
     selectedPackage,
     foreignWord,
@@ -246,6 +252,14 @@ const AddVocab = () => {
             placeholder={t("global.translation")}
             onChange={setTranslations}
             addText={t("screens.addVocab.addTranslation")}
+          />
+          <TextInput
+            tabIndex={1}
+            placeholder={t("global.description")}
+            onChange={(value) => {
+              setDescription(value);
+            }}
+            value={description}
           />
         </div>
 

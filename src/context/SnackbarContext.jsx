@@ -28,7 +28,7 @@ export const SnackbarProvider = ({ children }) => {
       return;
     }
 
-    let timer = setTimeout(() => {
+    const timer = setTimeout(() => {
       setSnack((s) => {
         return {
           ...s,

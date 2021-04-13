@@ -14,20 +14,28 @@ const TextInput = ({
   ...props
 }) => {
   const [flow, setFlow] = useState(false);
+  const [focused, setFocused] = useState(false);
 
   const handleFocus = useCallback(() => {
+    setFocused(true);
     setFlow(true);
   }, []);
 
   const onBlur = useCallback(() => {
+    setFocused(false);
     setFlow(!!value);
   }, [value]);
 
   useEffect(() => {
     setFlow(!!value || autoFocus);
+    setFocused(autoFocus);
     // only trigger once the component renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setFlow(!!value || focused);
+  }, [value, focused]);
 
   return (
     <div className="text-input-wrapper">
