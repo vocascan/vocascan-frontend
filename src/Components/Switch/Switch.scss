@@ -48,6 +48,10 @@
     &::before {
       border-radius: 50%;
     }
+
+    &.slider-on-off {
+      background-color: $color-red;
+    }
   }
 
   .slider::before {
@@ -62,15 +66,27 @@
   }
 
   input {
-    &:checked + .slider {
+    &:checked + .slider-default {
       background-color: $color-primary;
     }
 
-    &:focus + .slider {
+    &:focus + .slider-default {
       box-shadow: 0 0 1px $color-primary;
     }
 
-    &:checked + .slider::before {
+    &:checked + .slider-default::before {
+      transform: translateX(26px);
+    }
+
+    &:checked + .slider-on-off {
+      background-color: $color-green;
+    }
+
+    &:focus + .slider-on-off {
+      box-shadow: 0 0 1px $color-green;
+    }
+
+    &:checked + .slider-on-off::before {
       transform: translateX(26px);
     }
   }

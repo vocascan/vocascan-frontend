@@ -7,6 +7,7 @@ import GroupForm from "../../Components/GroupForm/GroupForm.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import PackageForm from "../../Components/PackageForm/PackageForm.jsx";
 import Select from "../../Components/Select/Select.jsx";
+import Switch from "../../Components/Switch/Switch.jsx";
 import TextInput from "../../Components/TextInput/TextInput.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 
@@ -39,6 +40,7 @@ const AddVocab = () => {
   const [foreignWord, setForeignWord] = useState("");
   const [translations, setTranslations] = useState([]);
   const [description, setDescription] = useState("");
+  const [active, setActive] = useState(true);
   const [showAddPackage, setShowAddPackage] = useState(false);
   const [showAddGroup, setShowAddGroup] = useState(false);
 
@@ -103,11 +105,16 @@ const AddVocab = () => {
       };
     });
 
-    createVocabulary(selectedPackage.value, selectedGroup.value, {
-      name: foreignWord,
-      translations: submitTranslations,
-      description,
-    })
+    createVocabulary(
+      selectedPackage.value,
+      selectedGroup.value,
+      {
+        name: foreignWord,
+        translations: submitTranslations,
+        description,
+      },
+      active
+    )
       .then((response) => {
         onClear();
         showSnack("success", t("screens.addVocab.saveSuccessMessage"));
@@ -116,6 +123,7 @@ const AddVocab = () => {
         showSnack("error", t("screens.addVocab.saveSuccessMessage"));
       });
   }, [
+    active,
     description,
     selectedGroup,
     selectedPackage,
@@ -260,6 +268,13 @@ const AddVocab = () => {
               setDescription(value);
             }}
             value={description}
+          />
+
+          <Switch
+            appearance="on-off"
+            optionLeft={t("screens.addVocab.activeLabel")}
+            onChange={() => setActive((a) => !a)}
+            checked={active}
           />
         </div>
 
