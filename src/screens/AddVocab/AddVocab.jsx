@@ -40,6 +40,7 @@ const AddVocab = () => {
   const [foreignWord, setForeignWord] = useState("");
   const [translations, setTranslations] = useState([]);
   const [description, setDescription] = useState("");
+  const [activate, setActivate] = useState(true);
   const [active, setActive] = useState(true);
   const [showAddPackage, setShowAddPackage] = useState(false);
   const [showAddGroup, setShowAddGroup] = useState(false);
@@ -111,18 +112,20 @@ const AddVocab = () => {
       {
         name: foreignWord,
         translations: submitTranslations,
+        active,
         description,
       },
-      active
+      activate
     )
       .then((response) => {
         onClear();
         showSnack("success", t("screens.addVocab.saveSuccessMessage"));
       })
       .catch((e) => {
-        showSnack("error", t("screens.addVocab.saveSuccessMessage"));
+        showSnack("error", t("screens.addVocab.saveErrorMessage"));
       });
   }, [
+    activate,
     active,
     description,
     selectedGroup,
@@ -272,8 +275,16 @@ const AddVocab = () => {
           <Switch
             appearance="on-off"
             optionLeft={t("screens.addVocab.activeLabel")}
+            infoLeft="Test information"
             onChange={() => setActive((a) => !a)}
             checked={active}
+          />
+          <Switch
+            appearance="on-off"
+            optionLeft={t("screens.addVocab.activateLabel")}
+            infoLeft="Test information w"
+            onChange={() => setActivate((a) => !a)}
+            checked={activate}
           />
         </div>
 
