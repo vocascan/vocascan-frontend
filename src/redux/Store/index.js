@@ -8,5 +8,5 @@ const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__?.());
 export default store;
 
 storeSynchronize(store, {
-  whitelist: ["login", "setting"],
+  whitelist: ["login", "setting", "form"],
 });

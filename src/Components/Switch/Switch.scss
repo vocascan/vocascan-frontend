@@ -22,37 +22,6 @@
     &:hover {
       cursor: help;
     }
-
-    .tooltip-wrapper {
-      position: absolute;
-      visibility: hidden;
-      opacity: 0;
-      color: $color-main-text;
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 1px 1px 3px $color-box-shadow;
-      background-color: $color-background;
-      top: 30px;
-      z-index: 5;
-      left: -50px;
-      width: 200px;
-    }
-  }
-
-  .info-left {
-    &:hover .tooltip-left {
-      visibility: visible;
-      opacity: 1;
-      transition: all 0.2s ease-in-out;
-    }
-  }
-
-  .info-right {
-    &:hover .tooltip-right {
-      visibility: visible;
-      opacity: 1;
-      transition: all 0.2s ease-in-out;
-    }
   }
 }
 

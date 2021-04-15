@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 
 import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput.jsx";
 import Button from "../../Components/Button/Button.jsx";
@@ -11,6 +12,7 @@ import Switch from "../../Components/Switch/Switch.jsx";
 import TextInput from "../../Components/TextInput/TextInput.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 
+import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
 import { getPackages, createVocabulary } from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
 
@@ -28,6 +30,10 @@ const CustomSelectOption = ({ name, postfix }) => {
 const AddVocab = () => {
   const { t } = useTranslation();
   const { showSnack } = useContext(SnackbarContext);
+  const dispatch = useDispatch();
+
+  const active = useSelector((state) => state.form.vocab.active);
+  const activate = useSelector((state) => state.form.vocab.activate);
 
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
@@ -40,10 +46,17 @@ const AddVocab = () => {
   const [foreignWord, setForeignWord] = useState("");
   const [translations, setTranslations] = useState([]);
   const [description, setDescription] = useState("");
-  const [activate, setActivate] = useState(true);
-  const [active, setActive] = useState(true);
+
   const [showAddPackage, setShowAddPackage] = useState(false);
   const [showAddGroup, setShowAddGroup] = useState(false);
+
+  const onChangeActive = useCallback(() => {
+    dispatch(setVocabActive({ active: !!active ? false : true }));
+  }, [dispatch, active]);
+
+  const onChangeActivate = useCallback(() => {
+    dispatch(setVocabActivate({ activate: !!activate ? false : true }));
+  }, [dispatch, activate]);
 
   const fetchPackages = useCallback(() => {
     getPackages(true)
@@ -276,14 +289,14 @@ const AddVocab = () => {
             appearance="on-off"
             optionLeft={t("screens.addVocab.activeLabel")}
             infoLeft="Test information"
-            onChange={() => setActive((a) => !a)}
+            onChange={onChangeActive}
             checked={active}
           />
           <Switch
             appearance="on-off"
             optionLeft={t("screens.addVocab.activateLabel")}
             infoLeft="Test information w"
-            onChange={() => setActivate((a) => !a)}
+            onChange={onChangeActivate}
             checked={activate}
           />
         </div>

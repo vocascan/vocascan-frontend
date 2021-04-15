@@ -1,0 +1,42 @@
+@import "../../colors";
+
+.tooltip {
+  &.tooltip-default {
+    background-color: $color-background-inverse !important;
+    color: $color-main-text-inverse !important;
+
+    &::after {
+      border-top-color: $color-background-inverse !important;
+      border-bottom-color: $color-background-inverse !important;
+    }
+  }
+
+  &.tooltip-info {
+    background-color: $color-primary-light;
+
+    &::after {
+      border-top-color: $color-primary-light !important;
+      border-bottom-color: $color-primary-light !important;
+    }
+  }
+
+  &.tooltip-green {
+    background-color: $color-green;
+    color: $color-main-text-inverse !important;
+
+    &::after {
+      border-top-color: $color-green !important;
+      border-bottom-color: $color-green !important;
+    }
+  }
+
+  &.tooltip-red {
+    background-color: $color-red;
+    color: $color-main-text-inverse !important;
+
+    &::after {
+      border-top-color: $color-red !important;
+      border-bottom-color: $color-red !important;
+    }
+  }
+}

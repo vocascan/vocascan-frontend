@@ -4,6 +4,8 @@ import InfoIcon from "@material-ui/icons/Info";
 
 import "./Switch.scss";
 
+import Tooltip from "../Tooltip/Tooltip";
+
 const Switch = ({
   disabled = false,
   onChange = () => null,
@@ -27,12 +29,7 @@ const Switch = ({
         {optionLeft && (
           <div className="label-wrapper">
             <label className="label-left">{optionLeft}</label>
-            {infoLeft && (
-              <div className="info-sign info-left">
-                <InfoIcon />
-                <div className="tooltip-wrapper tooltip-left">{infoLeft}</div>
-              </div>
-            )}
+            {infoLeft && <InfoIcon data-tip={infoLeft} className="info-sign" />}
           </div>
         )}
         <label className={`switch ${disabled ? "disabled" : ""}`}>
@@ -42,15 +39,13 @@ const Switch = ({
         {switcher && optionRight && (
           <div className="label-wrapper">
             {infoRight && (
-              <div className="info-sign info-right">
-                <InfoIcon />
-                <div className="tooltip-wrapper tooltip-right">{infoRight}</div>
-              </div>
+              <InfoIcon data-tip={infoRight} className="info-sign" />
             )}
             <label className="label-right">{optionRight}</label>
           </div>
         )}
       </div>
+      <Tooltip />
     </div>
   );
 };
