@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 import Button from "../Button/Button.jsx";
-import Select from "../Select/Select.jsx";
+import Select from "../Form/Select/Select.jsx";
 import Switch from "../Switch/Switch.jsx";
 import TextInput from "../TextInput/TextInput.jsx";
 

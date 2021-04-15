@@ -2,14 +2,14 @@ import React, { useCallback, useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-import ArrayTextInput from "../../Components/ArrayTextInput/ArrayTextInput.jsx";
 import Button from "../../Components/Button/Button.jsx";
+import ArrayTextInput from "../../Components/Form/ArrayTextInput/ArrayTextInput.jsx";
+import Select from "../../Components/Form/Select/Select.jsx";
+import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import GroupForm from "../../Components/GroupForm/GroupForm.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import PackageForm from "../../Components/PackageForm/PackageForm.jsx";
-import Select from "../../Components/Select/Select.jsx";
 import Switch from "../../Components/Switch/Switch.jsx";
-import TextInput from "../../Components/TextInput/TextInput.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 
 import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";

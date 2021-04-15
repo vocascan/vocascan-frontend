@@ -4,7 +4,7 @@ import uniqid from "uniqid";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
-import Button from "../Button/Button.jsx";
+import Button from "../../Button/Button.jsx";
 import TextInput from "../TextInput/TextInput.jsx";
 
 import "./ArrayTextInput.scss";
