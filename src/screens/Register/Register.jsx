@@ -6,8 +6,8 @@ import { useHistory } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Button from "../../Components/Button/Button.jsx";
+import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
-import TextInput from "../../Components/TextInput/TextInput.jsx";
 
 import { setServerUrl, register } from "../../redux/Actions/login.js";
 import { register as registerAPI } from "../../utils/api.js";

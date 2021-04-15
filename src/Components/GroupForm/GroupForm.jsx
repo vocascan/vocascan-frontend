@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 import Button from "../Button/Button.jsx";
 import Select from "../Form/Select/Select.jsx";
-import Switch from "../Switch/Switch.jsx";
-import TextInput from "../TextInput/TextInput.jsx";
+import Switch from "../Form/Switch/Switch.jsx";
+import TextInput from "../Form/TextInput/TextInput.jsx";
 
 import { getPackages, createGroup } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";

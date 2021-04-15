@@ -4,7 +4,7 @@ import InfoIcon from "@material-ui/icons/Info";
 
 import "./Switch.scss";
 
-import Tooltip from "../Tooltip/Tooltip";
+import Tooltip from "../../Tooltip/Tooltip";
 
 const Switch = ({
   disabled = false,
