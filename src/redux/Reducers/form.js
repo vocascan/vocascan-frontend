@@ -17,7 +17,7 @@ const formReducer = (state = initialState, action) => {
       return {
         ...state,
         vocab: {
-          activate: state.vocab.activate,
+          ...state.vocab,
           active: action.payload.vocab.active,
         },
       };
@@ -26,7 +26,7 @@ const formReducer = (state = initialState, action) => {
       return {
         ...state,
         vocab: {
-          avtive: state.vocab.active,
+          ...state.vocab,
           activate: action.payload.vocab.activate,
         },
       };

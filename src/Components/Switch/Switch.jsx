@@ -29,7 +29,13 @@ const Switch = ({
         {optionLeft && (
           <div className="label-wrapper">
             <label className="label-left">{optionLeft}</label>
-            {infoLeft && <InfoIcon data-tip={infoLeft} className="info-sign" />}
+            {infoLeft && (
+              <InfoIcon
+                data-tip={infoLeft}
+                data-for="switch-tooltip"
+                className="info-sign"
+              />
+            )}
           </div>
         )}
         <label className={`switch ${disabled ? "disabled" : ""}`}>
@@ -39,13 +45,17 @@ const Switch = ({
         {switcher && optionRight && (
           <div className="label-wrapper">
             {infoRight && (
-              <InfoIcon data-tip={infoRight} className="info-sign" />
+              <InfoIcon
+                data-tip={infoRight}
+                data-for="switch-tooltip"
+                className="info-sign"
+              />
             )}
             <label className="label-right">{optionRight}</label>
           </div>
         )}
       </div>
-      <Tooltip />
+      <Tooltip id="switch-tooltip" />
     </div>
   );
 };

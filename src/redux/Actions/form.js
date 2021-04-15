@@ -4,9 +4,7 @@ export const setVocabActive = ({ active }) => {
   return {
     type: SET_VOCAB_ACTIVE,
     payload: {
-      vocab: {
-        active,
-      },
+      active,
     },
   };
 };
@@ -15,9 +13,7 @@ export const setVocabActivate = ({ activate }) => {
   return {
     type: SET_VOCAB_ACTIVATE,
     payload: {
-      vocab: {
-        activate,
-      },
+      activate,
     },
   };
 };
