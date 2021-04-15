@@ -1,11 +1,18 @@
 import { defineState } from "redux-localstore";
 
-import { SET_VOCAB_ACTIVE, SET_VOCAB_ACTIVATE } from "../Actions/index.js";
+import {
+  SET_VOCAB_ACTIVE,
+  SET_VOCAB_ACTIVATE,
+  SET_GROUP_ACTIVATE,
+} from "../Actions/index.js";
 
 const defaultState = {
   vocab: {
     active: true,
     activate: false,
+  },
+  group: {
+    active: true,
   },
 };
 
@@ -28,6 +35,14 @@ const formReducer = (state = initialState, action) => {
         vocab: {
           ...state.vocab,
           activate: action.payload.activate,
+        },
+      };
+
+    case SET_GROUP_ACTIVATE:
+      return {
+        ...state,
+        group: {
+          active: action.payload.active,
         },
       };
 

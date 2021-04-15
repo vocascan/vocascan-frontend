@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Form/Select/Select.jsx";
@@ -7,6 +8,7 @@ import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 
+import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";
 
@@ -19,11 +21,12 @@ const GroupForm = ({
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useContext(SnackbarContext);
+  const dispatch = useDispatch();
+  const active = useSelector((state) => state.form.group.active);
 
   const [name, setName] = useState("");
   const [languagePackage, setLanguagePackage] = useState(selectedPackage);
   const [canSubmit, setCanSubmit] = useState(false);
-  const [active, setActive] = useState(false);
   const [languagePackages, setLanguagePackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
 
@@ -59,6 +62,10 @@ const GroupForm = ({
     name,
     onSubmitCallback,
   ]);
+
+  const onChangeActive = useCallback(() => {
+    dispatch(setGroupActive({ active: !!active ? false : true }));
+  }, [dispatch, active]);
 
   useEffect(() => {
     setCanSubmit(!(!name || !languagePackage));
@@ -118,7 +125,7 @@ const GroupForm = ({
         <Switch
           appearance="on-off"
           optionLeft={t("screens.addVocab.activeLabel")}
-          onChange={() => setActive((a) => !a)}
+          onChange={onChangeActive}
           checked={active}
         />
       </div>
