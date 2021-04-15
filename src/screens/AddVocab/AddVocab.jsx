@@ -7,9 +7,9 @@ import ArrayTextInput from "../../Components/Form/ArrayTextInput/ArrayTextInput.
 import Select from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
-import GroupForm from "../../Components/GroupForm/GroupForm.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
-import PackageForm from "../../Components/PackageForm/PackageForm.jsx";
+import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
+import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 
 import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";

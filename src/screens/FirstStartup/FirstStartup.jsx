@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 import Modal from "../../Components/Modal/Modal.jsx";
-import PackageForm from "../../Components/PackageForm/PackageForm.jsx";
+import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 
 import "./FirstStartup.scss";
 

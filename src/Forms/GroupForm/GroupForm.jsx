@@ -1,11 +1,11 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import Button from "../../Components/Button/Button.jsx";
+import Select from "../../Components/Form/Select/Select.jsx";
+import Switch from "../../Components/Form/Switch/Switch.jsx";
+import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
-import Button from "../Button/Button.jsx";
-import Select from "../Form/Select/Select.jsx";
-import Switch from "../Form/Switch/Switch.jsx";
-import TextInput from "../Form/TextInput/TextInput.jsx";
 
 import { getPackages, createGroup } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";

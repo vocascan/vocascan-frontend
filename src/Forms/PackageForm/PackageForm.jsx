@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import Button from "../Button/Button.jsx";
-import Select from "../Form/Select/Select.jsx";
-import TextInput from "../Form/TextInput/TextInput.jsx";
+import Button from "../../Components/Button/Button.jsx";
+import Select from "../../Components/Form/Select/Select.jsx";
+import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
 import { createPackage } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";
