@@ -64,7 +64,7 @@ const GroupForm = ({
   ]);
 
   const onChangeActive = useCallback(() => {
-    dispatch(setGroupActive({ active: !!active ? false : true }));
+    dispatch(setGroupActive({ active: !active }));
   }, [dispatch, active]);
 
   useEffect(() => {

@@ -50,11 +50,11 @@ const VocabForm = () => {
   const [showAddGroup, setShowAddGroup] = useState(false);
 
   const onChangeActive = useCallback(() => {
-    dispatch(setVocabActive({ active: !!active ? false : true }));
+    dispatch(setVocabActive({ active: !active }));
   }, [dispatch, active]);
 
   const onChangeActivate = useCallback(() => {
-    dispatch(setVocabActivate({ activate: !!activate ? false : true }));
+    dispatch(setVocabActivate({ activate: !activate }));
   }, [dispatch, activate]);
 
   const fetchPackages = useCallback(() => {
