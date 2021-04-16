@@ -21,7 +21,7 @@ const FirstStartup = () => {
       title={t("screens.firstStartup.title")}
       open={show}
       onClose={() => setShow(false)}
-      renderClose={false}
+      closeOnClickOutside
     >
       <PackageForm />
     </Modal>
