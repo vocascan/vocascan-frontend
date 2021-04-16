@@ -68,12 +68,10 @@ const VocabForm = () => {
   }, [showSnack, t]);
 
   const onClear = useCallback(() => {
-    setSelectedPackage(null);
-    setSelectedGroup(null);
     setForeignWord("");
     setDescription("");
     setTranslations(null);
-  }, [setSelectedPackage, setSelectedGroup, setForeignWord, setTranslations]);
+  }, [setForeignWord, setTranslations]);
 
   const openPackageModal = useCallback(() => {
     setShowAddPackage(true);

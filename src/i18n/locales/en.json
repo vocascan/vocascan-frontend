@@ -66,7 +66,8 @@
       }
     },
     "firstStartup": {
-      "title": "Create your first vocabulary package"
+      "title": "Create your first vocabulary package",
+      "savePackageSuccessMessage": "New package added"
     },
     "login": {
       "title": "Login",
