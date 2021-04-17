@@ -1,64 +1,158 @@
-import React from "react";
-import { useSortBy, useTable } from "react-table";
+import React, { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { useSortBy, usePagination, useTable } from "react-table";
 
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+
+import { setTablePageSize } from "../../redux/Actions/table.js";
 
 import "./Table.scss";
 
-const Table = ({ columns, data }) => {
+import Button from "../Button/Button";
+
+const Table = ({ columns, data, striped = true }) => {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
-  } = useTable({ columns, data }, useSortBy);
+    page,
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    nextPage,
+    previousPage,
+    state: { pageIndex },
+  } = useTable(
+    { columns, data, initialState: { pageIndex: 0 } },
+    useSortBy,
+    usePagination
+  );
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const pageSize = useSelector((state) => state.table.pageSize);
+
+  const onChangePageSize = useCallback(
+    (value) => {
+      dispatch(setTablePageSize({ pageSize: value }));
+    },
+    [dispatch]
+  );
+
+  const RenderPagination = () => {
+    return (
+      <div className="pagination">
+        <div className="pagination-options">
+          <Button
+            variant="transparent"
+            className="pagination-button"
+            onClick={() => previousPage()}
+            disabled={!canPreviousPage}
+          >
+            <ChevronLeftIcon />
+          </Button>
+          <span className="pagination-text">
+            {t("global.paginationPage", {
+              page: pageIndex + 1,
+              pageLength: pageOptions.length,
+            })}
+          </span>
+          <Button
+            variant="transparent"
+            className="pagination-button"
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+          >
+            <ChevronRightIcon />
+          </Button>
+        </div>
+        <select
+          value={pageSize}
+          onChange={(e) => {
+            onChangePageSize(Number(e.target.value));
+          }}
+        >
+          {[10, 20, 50, 100].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              {t("global.paginationShow", { size: pageSize })}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
+  };
 
   return (
-    <table {...getTableProps()} className="table">
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-                className="th"
-              >
-                <span className="header-text">
-                  {column.render("Header")}
-                  {column.isSorted ? (
-                    column.isSortedDesc ? (
-                      <ArrowDropUpIcon />
+    <>
+      <RenderPagination />
+      <table {...getTableProps()} className="table">
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  className="th"
+                >
+                  <span className="header-text">
+                    {column.render("Header")}
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <ArrowDropUpIcon />
+                      ) : (
+                        <ArrowDropDownIcon />
+                      )
                     ) : (
-                      <ArrowDropDownIcon />
-                    )
-                  ) : (
-                    <span className="sort-placeholder"></span>
-                  )}
-                </span>
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td {...cell.getCellProps()} className="td">
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
+                      <span className="sort-placeholder"></span>
+                    )}
+                  </span>
+                </th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody
+          {...getTableBodyProps()}
+          className={striped ? "table-striped" : ""}
+        >
+          {page.map((row) => {
+            prepareRow(row);
+
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()} className="td">
+                      {cell.render("Cell")}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+          {!canNextPage && page.length < pageSize
+            ? [...Array(pageSize - page.length).keys()].map((index) => (
+                <tr key={`header-${index}`}>
+                  {headerGroups.map((headerGroup, keyIndex) => (
+                    <React.Fragment key={keyIndex}>
+                      {headerGroup.headers.map((key) => (
+                        <td key={`${index}-${key.id}`} className="td">
+                          <span>&nbsp;</span>
+                        </td>
+                      ))}
+                    </React.Fragment>
+                  ))}
+                </tr>
+              ))
+            : null}
+        </tbody>
+      </table>
+      <RenderPagination />
+    </>
   );
 };
 

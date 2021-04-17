@@ -96,9 +96,8 @@ const VocabForm = () => {
       closeGroupModal();
       fetchPackages();
       setSelectedGroup({ value: newGroup.id, label: newGroup.name });
-      showSnack("success", t("screens.addVocab.saveGroupSuccessMessage"));
     },
-    [closeGroupModal, fetchPackages, t, showSnack]
+    [closeGroupModal, fetchPackages]
   );
 
   const onSubmit = useCallback(() => {

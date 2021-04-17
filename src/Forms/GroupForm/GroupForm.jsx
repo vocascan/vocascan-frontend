@@ -25,7 +25,7 @@ const GroupForm = ({
   const dispatch = useDispatch();
   const active = useSelector((state) => state.form.group.active);
 
-  const [name, setName] = useState(defaultData.name ? defaultData.name : "");
+  const [name, setName] = useState(defaultData ? defaultData.name : "");
   const [languagePackage, setLanguagePackage] = useState(selectedPackage);
   const [canSubmit, setCanSubmit] = useState(false);
   const [languagePackages, setLanguagePackages] = useState([]);

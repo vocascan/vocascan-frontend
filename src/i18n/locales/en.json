@@ -23,7 +23,9 @@
     "signUp": "Sign up",
     "serverNotResponding": "The server is not responding",
     "successMessage": "Success",
-    "fetchError": "Something went wrong, please try again later"
+    "fetchError": "Something went wrong, please try again later",
+    "paginationPage": "Page {{page}} of {{pageLength}}",
+    "paginationShow": "Show {{size}}"
   },
   "components": {
     "groupForm": {
