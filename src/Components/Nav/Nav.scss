@@ -3,7 +3,7 @@
 .nav {
   width: 65px;
   height: calc(100vh - 50px);
-  background: $color-background;
+  background: $color-background-inverse;
   grid-area: sidenav;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@
   }
 
   .settings {
-    background-color: $color-background;
+    background-color: $color-background-inverse;
     border: unset;
     outline: none;
     width: 100%;
@@ -46,7 +46,7 @@
     grid-row: 3;
 
     .settings-text {
-      color: $color-main-text;
+      color: $color-main-text-inverse;
       text-transform: uppercase;
       font-size: 17px;
       margin: 0;

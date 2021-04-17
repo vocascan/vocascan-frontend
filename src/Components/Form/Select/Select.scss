@@ -1,4 +1,4 @@
-@import "../../colors";
+@import "../../../colors";
 
 .select-input-container {
   width: 100%;
@@ -7,16 +7,22 @@
   display: flex;
   justify-content: center;
 
+  &.select-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
   .select-label {
     position: absolute;
-    top: 50%;
+    top: 30px;
     left: 0;
     transform: translateY(-50%);
     font-size: 13px;
     transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    color: $color-main-text-light;
 
     &.flow {
-      top: 0;
+      top: 15px;
       left: 0;
       font-size: 11px;
       color: $color-primary-dark;
@@ -31,6 +37,7 @@
     &__control {
       width: 100%;
       border: unset;
+      align-items: flex-end;
       border-radius: 0;
       border-bottom: 1px solid $color-alternative;
       transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
@@ -58,6 +65,8 @@
     }
 
     &__indicators {
+      align-items: flex-end;
+
       .react-select {
         &__indicator-separator {
           display: none;
@@ -66,7 +75,7 @@
 
       .react-select {
         &__indicator {
-          padding-right: 0;
+          padding-left: 0;
         }
       }
     }
@@ -85,7 +94,10 @@
   .react-select {
     &__single-value {
       margin-left: 0;
+      padding-bottom: 8px;
       font-size: 13px;
+      width: 100%;
+      text-align: left;
     }
   }
 
@@ -103,5 +115,28 @@
         color: $color-white;
       }
     }
+  }
+}
+
+.select-create {
+  color: $color-primary;
+  background-color: $color-white;
+  border: 0;
+  padding: 15px 0;
+  border-top: 1px solid $color-background-muted;
+  font-size: 13px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
   }
 }

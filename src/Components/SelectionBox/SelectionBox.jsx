@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
 
 import CheckIcon from "@material-ui/icons/Check";
@@ -15,13 +15,20 @@ const Item = ({ Icon, text }) => (
   </li>
 );
 
-function SelectionBox({ onSubmit, pro, contra, heading, image, buttonText }) {
+const SelectionBox = ({
+  onSubmit,
+  pro,
+  contra,
+  heading,
+  image,
+  buttonText,
+}) => {
   const history = useHistory();
 
-  function handleClick() {
+  const handleClick = useCallback(() => {
     onSubmit();
     history.push("/login");
-  }
+  }, [history, onSubmit]);
 
   return (
     <div className="select-box">
@@ -54,6 +61,6 @@ function SelectionBox({ onSubmit, pro, contra, heading, image, buttonText }) {
       </div>
     </div>
   );
-}
+};
 
 export default SelectionBox;

@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-import Switch from "../../Components/Switch/Switch.jsx";
+import Switch from "../../Components/Form/Switch/Switch.jsx";
 
 import { setMenuStyle } from "../../redux/Actions/setting.js";
 

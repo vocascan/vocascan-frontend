@@ -1,12 +1,17 @@
-@import "../../colors";
+@import "../../../colors";
 
 .text-input-wrapper {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
   width: 100%;
+  margin: 5px 0;
+  height: 50px;
 
   .text-input {
     height: 32px;
-    margin: 5px 0;
     width: 100%;
     display: block;
     border: unset;
@@ -48,11 +53,20 @@
   }
 
   .text-input-label {
+    pointer-events: none;
     position: absolute;
     left: 0;
-    top: 6px;
-    color: $color-primary-dark;
-    font-size: 11px;
+    top: 24px;
+    font-size: 13px;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    color: $color-main-text-light;
+
+    &.flow {
+      top: 6px;
+      font-size: 11px;
+      color: $color-primary-dark;
+      transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    }
   }
 
   .text-input-error {

@@ -10,7 +10,7 @@
   height: 60px;
   color: $color-white !important;
   border: unset;
-  background-color: $color-background;
+  background-color: $color-background-inverse;
   transition: all 0.2s ease-in;
   text-transform: uppercase;
   display: flex;
@@ -31,6 +31,7 @@
     position: absolute;
     left: 60px;
     opacity: 0;
+    visibility: hidden;
   }
 
   .button-icon {
@@ -87,6 +88,7 @@
 
 .nav-default:hover .button-name {
   opacity: 1;
+  visibility: visible;
   transition: all 0.2s ease-in;
   transition-delay: 0.2s;
 }

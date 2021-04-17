@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
@@ -16,9 +16,12 @@ const SelectionScreen = () => {
 
   const dispatch = useDispatch();
 
-  function handleSubmit(selfHosted) {
-    dispatch(setSelfHosted({ selfHosted }));
-  }
+  const handleSubmit = useCallback(
+    (selfHosted) => {
+      dispatch(setSelfHosted({ selfHosted }));
+    },
+    [dispatch]
+  );
 
   return (
     <UnauthenticatedLayout>
