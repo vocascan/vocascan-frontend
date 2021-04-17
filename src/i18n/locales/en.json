@@ -33,7 +33,11 @@
       "foreignLanguage": "Foreign language",
       "translatedLanguage": "Translated language",
       "vocabsPerDay": "Vocabs per day",
-      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs"
+      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs",
+      "savePackageSuccessMessage": "New package added",
+      "savePackageFailMessage": "Could not add package",
+      "modifyPackageSuccessMessage": "Package saved",
+      "modifyPackageFailedMessage": "Could not save package"
     }
   },
   "screens": {
@@ -75,7 +79,11 @@
       },
       "vocascanServer": {
         "heading": "Vocascan server",
-        "pro": ["sync every device", "Use your own Server", "Full control over the settings"],
+        "pro": [
+          "sync every device",
+          "Use your own Server",
+          "Full control over the settings"
+        ],
         "contra": ["You need a own server"],
         "button": "Start for free"
       }

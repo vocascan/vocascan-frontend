@@ -94,9 +94,8 @@ const VocabForm = () => {
       setSelectedPackage({ value: newPackage.id, label: newPackage.name });
       closePackageModal();
       fetchPackages();
-      showSnack("success", t("screens.addVocab.savePackageSuccessMessage"));
     },
-    [closePackageModal, fetchPackages, t, showSnack]
+    [closePackageModal, fetchPackages]
   );
 
   const groupAdded = useCallback(
