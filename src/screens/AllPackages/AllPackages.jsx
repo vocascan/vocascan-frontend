@@ -71,6 +71,14 @@ const AllPackages = () => {
         ),
       },
       {
+        Header: t("screens.allPackages.vocabsPerDay"),
+        accessor: "vocabsPerDay",
+      },
+      {
+        Header: t("screens.allPackages.rightWords"),
+        accessor: "rightWords",
+      },
+      {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (

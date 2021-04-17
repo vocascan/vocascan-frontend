@@ -27,7 +27,12 @@
   },
   "components": {
     "groupForm": {
-      "languagePackage": "Package"
+      "languagePackage": "Package",
+      "activeLabel": "Active",
+      "saveGroupSuccessMessage": "New group added",
+      "savGroupFailMessage": "Could not add group",
+      "modifyGroupSuccessMessage": "Group saved",
+      "modifyGroupFailMessage": "Could not save Group"
     },
     "packageForm": {
       "foreignLanguage": "Foreign language",
@@ -45,11 +50,14 @@
       "title": "All packages",
       "packageName": "Package",
       "foreignLanguage": "Foreign language",
-      "translatedLanguage": "Translated language"
+      "translatedLanguage": "Translated language",
+      "vocabsPerDay": "Vocabs/Day",
+      "rightWords": "Right words"
     },
     "allGroups": {
       "title": "All groups",
-      "groupName": "Group"
+      "groupName": "Group",
+      "active": "Active"
     },
     "allVocabs": {
       "title": "All vocabulary",
@@ -63,7 +71,6 @@
       "addTranslation": "Add translation",
       "saveSuccessMessage": "New vocabulary added",
       "saveErrorMessage": "New vocabulary could not be added",
-      "savePackageSuccessMessage": "New package added",
       "saveGroupSuccessMessage": "New group added",
       "activeLabel": "Active",
       "activateLabel": "Activate"

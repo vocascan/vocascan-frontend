@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
 import ArrayTextInput from "../../Components/Form/ArrayTextInput/ArrayTextInput.jsx";
-import Select from "../../Components/Form/Select/Select.jsx";
+import Select, {
+  CustomPackageSelectOption,
+} from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
@@ -15,15 +17,6 @@ import SnackbarContext from "../../context/SnackbarContext.jsx";
 import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
 import { getPackages, createVocabulary } from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
-
-const CustomSelectOption = ({ name, postfix }) => {
-  return (
-    <span className="custom-option-wrapper">
-      {name}
-      <small className="postfix">{postfix}</small>
-    </span>
-  );
-};
 
 const VocabForm = () => {
   const { t } = useTranslation();
@@ -194,7 +187,7 @@ const VocabForm = () => {
         return {
           value: p.id,
           label: (
-            <CustomSelectOption
+            <CustomPackageSelectOption
               name={p.name}
               postfix={foreignIcon + " - " + translatedIcon}
             />
