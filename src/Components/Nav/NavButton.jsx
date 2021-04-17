@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import "./NavButton.scss";
 
-function NavButton({ name, design = "default", link, icon = null }) {
+const NavButton = ({ name, design = "default", link, icon = null }) => {
   return (
     <NavLink
       to={link}
@@ -16,6 +16,6 @@ function NavButton({ name, design = "default", link, icon = null }) {
       </button>
     </NavLink>
   );
-}
+};
 
 export default NavButton;

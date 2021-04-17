@@ -6,8 +6,8 @@ import { useHistory } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Button from "../../Components/Button/Button.jsx";
+import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
-import TextInput from "../../Components/TextInput/TextInput.jsx";
 
 import { setServerUrl, register } from "../../redux/Actions/login.js";
 import { register as registerAPI } from "../../utils/api.js";
@@ -37,7 +37,7 @@ const Register = ({ image }) => {
     history.push("/login");
   }, [history]);
 
-  //function to check if typed in passwords are the same
+  // check if typed in passwords are the same
   const checkPassword = useCallback(() => {
     if (password !== passwordRepeat) {
       setIsSamePassword(false);
@@ -49,41 +49,44 @@ const Register = ({ image }) => {
   }, [password, passwordRepeat]);
 
   //make api call to register user
-  async function submitRegisterPerson(e) {
-    e.preventDefault();
+  const submitRegisterPerson = useCallback(
+    async (e) => {
+      e.preventDefault();
 
-    if (!canSubmit) {
-      return;
-    }
+      if (!canSubmit) {
+        return;
+      }
 
-    if (!checkPassword()) {
-      return;
-    }
+      if (!checkPassword()) {
+        return;
+      }
 
-    registerAPI({
-      username,
-      email,
-      password,
-    })
-      .then((response) => {
-        dispatch(
-          register({
-            username: response.data.user.username,
-            email,
-            token: response.data.token,
-          })
-        );
+      registerAPI({
+        username,
+        email,
+        password,
       })
-      .catch(function (error) {
-        if (error.response?.status === 409) {
-          setServerError(false);
-          setEmailIsUsed(true);
-          return;
-        }
+        .then((response) => {
+          dispatch(
+            register({
+              username: response.data.user.username,
+              email,
+              token: response.data.token,
+            })
+          );
+        })
+        .catch((error) => {
+          if (error.response?.status === 409) {
+            setServerError(false);
+            setEmailIsUsed(true);
+            return;
+          }
 
-        setServerError(true);
-      });
-  }
+          setServerError(true);
+        });
+    },
+    [canSubmit, checkPassword, dispatch, email, password, username]
+  );
 
   useEffect(() => {
     if (selfHosted && !serverAddress) {

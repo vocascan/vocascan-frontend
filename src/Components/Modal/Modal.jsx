@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useRef } from "react";
 
 import CloseIcon from "@material-ui/icons/Close";
 
+import Button from "../Button/Button.jsx";
+
 import "./Modal.scss";
 
 const Modal = ({
@@ -9,7 +11,7 @@ const Modal = ({
   onClose,
   open = false,
   renderClose = true,
-  closeOnClickOutside = true,
+  closeOnClickOutside = false,
   children,
 }) => {
   const ref = useRef(null);
@@ -57,7 +59,17 @@ const Modal = ({
   return (
     <div className="modal">
       <div className="inner" ref={ref}>
-        {renderClose && <CloseIcon className="close" onClick={onClose} />}
+        {renderClose && (
+          <Button
+            tabIndex={-1}
+            appearance="primary"
+            variant="transparent"
+            onClick={onClose}
+            className="close"
+          >
+            <CloseIcon />
+          </Button>
+        )}
         {title && <h1 className="heading">{title}</h1>}
         {children}
       </div>

@@ -1,8 +1,10 @@
-@import "../../colors";
+@import "../../../colors";
 
 .array-input-wrapper {
   display: flex;
   align-items: center;
+  height: 53px;
+  margin: 5px 0;
 }
 
 .add-input-wrapper {

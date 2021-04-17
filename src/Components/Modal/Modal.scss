@@ -33,6 +33,8 @@
       position: absolute;
       top: 20px;
       right: 20px;
+      border-radius: 100%;
+      padding: 10px;
 
       &:hover {
         color: $color-primary-dark;

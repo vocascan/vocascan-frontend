@@ -21,20 +21,33 @@
     "package": "Package",
     "signIn": "Sign in",
     "signUp": "Sign up",
-    "serverNotResponding": "The server is not responding"
+    "serverNotResponding": "The server is not responding",
+    "successMessage": "Success",
+    "fetchError": "Something went wrong, please try again later"
+  },
+  "components": {
+    "groupForm": {
+      "languagePackage": "Package"
+    },
+    "packageForm": {
+      "foreignLanguage": "Foreign language",
+      "translatedLanguage": "Translated language",
+      "vocabsPerDay": "Vocabs per day",
+      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs"
+    }
   },
   "screens": {
     "addVocab": {
       "title": "Add vocabulary",
       "noPackagesMessage": "No packages found",
       "noGroupsMessage": "No groups found",
-      "addTranslation": "Add translation"
-    },
-    "addLanguagePackage": {
-      "foreignLanguage": "Foreign language",
-      "translatedLanguage": "Translated language",
-      "vocabsPerDay": "Vocabs per day",
-      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs"
+      "addTranslation": "Add translation",
+      "saveSuccessMessage": "New vocabulary added",
+      "saveErrorMessage": "New vocabulary could not be added",
+      "savePackageSuccessMessage": "New package added",
+      "saveGroupSuccessMessage": "New group added",
+      "activeLabel": "Active",
+      "activateLabel": "Activate"
     },
     "selectionScreen": {
       "title": "Login",
@@ -53,7 +66,8 @@
       }
     },
     "firstStartup": {
-      "title": "Create your first vocabulary package"
+      "title": "Create your first vocabulary package",
+      "savePackageSuccessMessage": "New package added"
     },
     "login": {
       "title": "Login",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -19,10 +19,9 @@ const TopNav = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  //call redux store function to log out user
-  function handleLogout() {
+  const handleLogout = useCallback(() => {
     dispatch(signOut());
-  }
+  }, [dispatch]);
 
   const username = useSelector((state) => state.login.user.username);
   const email = useSelector((state) => state.login.user.email);

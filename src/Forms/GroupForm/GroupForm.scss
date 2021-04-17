@@ -1,6 +1,6 @@
 @import "../../colors";
 
-.lngpckg {
+.group-form {
   width: 100%;
   height: 75%;
   display: flex;
@@ -28,24 +28,6 @@
       display: flex;
       width: 100%;
       margin: 0 10px;
-    }
-  }
-
-  .lngpckg-submit-btn {
-    width: 150px;
-    height: 35px;
-    background: #727cf5;
-    border-radius: 5px;
-    border: unset;
-    outline: none;
-    box-shadow: -1px 3px 5px#b4bed6;
-    margin: 0 auto;
-    cursor: pointer;
-    color: $color-white;
-    font-size: 15px;
-
-    &:hover {
-      background: #7f8aff;
     }
   }
 }

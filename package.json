@@ -98,6 +98,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-select": "^4.3.0",
+    "react-tooltip": "^4.2.17",
     "redux": "^4.0.5",
     "redux-localstore": "^1.0.0",
     "sass": "^1.29.0",

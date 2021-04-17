@@ -4,7 +4,7 @@ import uniqid from "uniqid";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
-import Button from "../Button/Button.jsx";
+import Button from "../../Button/Button.jsx";
 import TextInput from "../TextInput/TextInput.jsx";
 
 import "./ArrayTextInput.scss";
@@ -17,14 +17,18 @@ const ArrayTextInput = ({
   addText = null,
   required = false,
 }) => {
-  const [arrayData, setArrayData] = useState(() =>
-    data.map((elem) => {
-      return {
-        id: uniqid(),
-        value: elem,
-      };
-    })
-  );
+  const [arrayData, setArrayData] = useState(() => {
+    if (!data || !data.length) {
+      return [
+        {
+          id: uniqid(),
+          value: "",
+        },
+      ];
+    }
+
+    return data;
+  });
 
   const addArrayData = useCallback(() => {
     if (arrayData.length >= max) {
@@ -47,6 +51,17 @@ const ArrayTextInput = ({
   useEffect(() => {
     onChange(arrayData.map((elem) => elem.value));
   }, [arrayData, onChange]);
+
+  useEffect(() => {
+    if (!data) {
+      setArrayData([
+        {
+          id: uniqid(),
+          value: "",
+        },
+      ]);
+    }
+  }, [data]);
 
   return (
     <>
