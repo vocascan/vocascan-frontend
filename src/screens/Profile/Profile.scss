@@ -1,0 +1,32 @@
+@import "../../colors";
+
+.profile-screen {
+  display: flex;
+  flex-direction: column;
+  grid-area: main;
+  padding: 50px;
+  max-width: 600px;
+  justify-content: center;
+  margin: 0 auto;
+
+  .profile-avatar-wrapper {
+      width: 150px;
+      height: 150px;
+      border-radius: 100px;
+      border: 1px solid $color-alternative;
+      margin: 0 auto;
+
+      .profile-avatar {
+          width: 70px;
+          height: 70px;
+          vertical-align: center;
+          margin: auto;
+      }
+
+  }
+  .profile-username {
+      margin-top: 20px;
+  }
+}
+
+
