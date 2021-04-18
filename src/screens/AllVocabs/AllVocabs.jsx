@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import EditIcon from "@material-ui/icons/Edit";
 
 import "./AllVocabs.scss";
 
@@ -45,7 +47,11 @@ const AllVocabs = () => {
         Header: t("screens.allVocabs.vocabel"),
         accessor: "name",
         Cell: ({ row }) => (
-          <Button variant="link" onClick={() => editVocab(row.original)}>
+          <Button
+            className="text-normal"
+            variant="link"
+            onClick={() => editVocab(row.original)}
+          >
             {row.original.name}
           </Button>
         ),
@@ -53,6 +59,24 @@ const AllVocabs = () => {
       {
         Header: t("screens.allVocabs.translations"),
         accessor: "translations",
+      },
+      {
+        Header: "",
+        accessor: "action",
+        Cell: ({ row }) => (
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Button variant="link" onClick={() => editVocab(row.original)}>
+              <EditIcon />
+            </Button>
+            <Button
+              appearance="red"
+              variant="link"
+              onClick={() => console.log("deleting vocab")}
+            >
+              <DeleteOutlineIcon />
+            </Button>
+          </div>
+        ),
       },
     ],
     [editVocab, t]

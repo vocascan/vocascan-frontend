@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import EditIcon from "@material-ui/icons/Edit";
 
 import { languages } from "../../utils/constants.js";
 
@@ -39,9 +40,9 @@ const AllPackages = () => {
         Header: t("screens.allPackages.packageName"),
         accessor: "name",
         Cell: ({ row }) => (
-          <Button variant="link" onClick={() => editPackage(row.original)}>
+          <Link className="text-normal" to={`/allGroups/${row.original.id}`}>
             {row.original.name}
-          </Button>
+          </Link>
         ),
       },
       {
@@ -82,10 +83,21 @@ const AllPackages = () => {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (
-          <div style={{ textAlign: "right" }}>
-            <Link to={`/allGroups/${row.original.id}`}>
-              <KeyboardArrowRightIcon />
-            </Link>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Button
+              appearance="primary"
+              variant="link"
+              onClick={() => editPackage(row.original)}
+            >
+              <EditIcon />
+            </Button>
+            <Button
+              appearance="red"
+              variant="link"
+              onClick={() => console.log("deleting package")}
+            >
+              <DeleteOutlineIcon />
+            </Button>
           </div>
         ),
       },
