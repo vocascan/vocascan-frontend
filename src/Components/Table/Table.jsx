@@ -17,6 +17,7 @@ import Button from "../Button/Button";
 const Table = ({
   columns,
   data,
+  pagination = true,
   paginationTop = true,
   paginationBottom = true,
   striped = true,
@@ -97,7 +98,7 @@ const Table = ({
 
   return (
     <>
-      {paginationTop && <RenderPagination />}
+      {pagination && paginationTop && <RenderPagination />}
       <table {...getTableProps()} className="table">
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -143,7 +144,7 @@ const Table = ({
               </tr>
             );
           })}
-          {!canNextPage && page.length < pageSize
+          {pagination && !canNextPage && page.length < pageSize
             ? [...Array(pageSize - page.length).keys()].map((index) => (
                 <tr key={`header-${index}`}>
                   {headerGroups.map((headerGroup, keyIndex) => (
@@ -160,7 +161,7 @@ const Table = ({
             : null}
         </tbody>
       </table>
-      {paginationBottom && <RenderPagination />}
+      {pagination && paginationBottom && <RenderPagination />}
     </>
   );
 };
