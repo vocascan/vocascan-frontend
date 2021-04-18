@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
 import "./AllVocabs.scss";
 
@@ -15,7 +17,7 @@ import { getGroupVocabulary } from "../../utils/api";
 const AllVocabs = () => {
   const { t } = useTranslation();
   const history = useHistory();
-  const { groupId } = useParams();
+  const { packageId, groupId } = useParams();
 
   const [data, setData] = useState([]);
   const [currentVocab, setCurrentVocab] = useState(null);
@@ -36,6 +38,7 @@ const AllVocabs = () => {
           };
         })
       );
+      setShowVocabModal(false);
     });
   }, [groupId]);
 
@@ -45,7 +48,11 @@ const AllVocabs = () => {
         Header: t("screens.allVocabs.vocabel"),
         accessor: "name",
         Cell: ({ row }) => (
-          <Button variant="link" onClick={() => editVocab(row.original)}>
+          <Button
+            className="text-normal"
+            variant="link"
+            onClick={() => editVocab(row.original)}
+          >
             {row.original.name}
           </Button>
         ),
@@ -53,6 +60,24 @@ const AllVocabs = () => {
       {
         Header: t("screens.allVocabs.translations"),
         accessor: "translations",
+      },
+      {
+        Header: "",
+        accessor: "action",
+        Cell: ({ row }) => (
+          <div className="action-col">
+            <Button variant="link" onClick={() => editVocab(row.original)}>
+              <EditOutlinedIcon />
+            </Button>
+            <Button
+              appearance="red"
+              variant="link"
+              onClick={() => console.log("deleting vocab")}
+            >
+              <DeleteOutlineIcon />
+            </Button>
+          </div>
+        ),
       },
     ],
     [editVocab, t]
@@ -90,6 +115,8 @@ const AllVocabs = () => {
         xxl
       >
         <VocabForm
+          packageId={packageId}
+          groupId={groupId}
           defaultData={currentVocab}
           onSubmitCallback={vocabSubmitted}
         />

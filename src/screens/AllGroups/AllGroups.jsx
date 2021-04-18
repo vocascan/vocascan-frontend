@@ -4,7 +4,8 @@ import { Link, useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import "./AllGroups.scss";
@@ -71,9 +72,12 @@ const AllGroups = () => {
         Header: t("screens.allGroups.groupName"),
         accessor: "name",
         Cell: ({ row }) => (
-          <Button variant="link" onClick={() => editGroup(row.original)}>
+          <Link
+            className="text-normal"
+            to={`/allVocabs/${packageId}/${row.original.id}`}
+          >
             {row.original.name}
-          </Button>
+          </Link>
         ),
       },
       {
@@ -93,15 +97,22 @@ const AllGroups = () => {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (
-          <div style={{ textAlign: "right" }}>
-            <Link to={`/allVocabs/${row.original.id}`}>
-              <KeyboardArrowRightIcon />
-            </Link>
+          <div className="action-col">
+            <Button variant="link" onClick={() => editGroup(row.original)}>
+              <EditOutlinedIcon />
+            </Button>
+            <Button
+              appearance="red"
+              variant="link"
+              onClick={() => console.log("deleting group")}
+            >
+              <DeleteOutlineIcon />
+            </Button>
           </div>
         ),
       },
     ],
-    [editGroup, t]
+    [editGroup, packageId, t]
   );
 
   useEffect(() => {

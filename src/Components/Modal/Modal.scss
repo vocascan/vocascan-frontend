@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 5px;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     &.xxl {
       width: 80vw;

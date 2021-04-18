@@ -144,7 +144,10 @@ const Table = ({
               </tr>
             );
           })}
-          {pagination && !canNextPage && page.length < pageSize
+          {pagination &&
+          !canNextPage &&
+          canPreviousPage &&
+          page.length < pageSize
             ? [...Array(pageSize - page.length).keys()].map((index) => (
                 <tr key={`header-${index}`}>
                   {headerGroups.map((headerGroup, keyIndex) => (

@@ -72,7 +72,10 @@ const App = () => {
             <Route path="/addVocab" component={AddVocab} />
             <Route path="/allPackages" component={AllPackages} />
             <Route path="/allGroups/:packageId" component={AllGroups} />
-            <Route path="/allVocabs/:groupId" component={AllVocabs} />
+            <Route
+              path="/allVocabs/:packageId/:groupId"
+              component={AllVocabs}
+            />
             <Route path="/settings" component={Settings} />
             <Route path="/profile" component={Profile} />
             <Snackbar />

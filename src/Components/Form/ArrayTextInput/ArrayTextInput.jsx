@@ -27,7 +27,12 @@ const ArrayTextInput = ({
       ];
     }
 
-    return data;
+    return data.map((elem) => {
+      return {
+        id: uniqid(),
+        value: elem.value,
+      };
+    });
   });
 
   const addArrayData = useCallback(() => {

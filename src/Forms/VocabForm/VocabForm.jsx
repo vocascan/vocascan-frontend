@@ -15,13 +15,19 @@ import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 
 import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
-import { getPackages, createVocabulary } from "../../utils/api.js";
+import {
+  getPackages,
+  createVocabulary,
+  modifyVocabulary,
+} from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
 
 const VocabForm = ({
   defaultData = null,
   onSubmitCallback = null,
   title = null,
+  packageId = null,
+  groupId = null,
 }) => {
   const { t } = useTranslation();
 
@@ -43,7 +49,14 @@ const VocabForm = ({
     defaultData ? defaultData.name : ""
   );
   const [translations, setTranslations] = useState(
-    defaultData ? defaultData.Translations.map((ele) => ele.name) : ""
+    defaultData
+      ? defaultData.Translations.map((elem) => {
+          return {
+            id: elem.id,
+            value: elem.name,
+          };
+        })
+      : [""]
   );
   const [description, setDescription] = useState(
     defaultData ? defaultData.description : ""
@@ -117,28 +130,47 @@ const VocabForm = ({
       };
     });
 
+    const dataToSubmit = {
+      name: foreignWord,
+      translations: submitTranslations,
+      active,
+      description,
+    };
+
+    if (defaultData?.id) {
+      dataToSubmit.id = defaultData.id;
+
+      modifyVocabulary(dataToSubmit)
+        .then((response) => {
+          onClear();
+          showSnack("success", t("components.vocabForm.modifySuccessMessage"));
+          onSubmitCallback && onSubmitCallback();
+        })
+        .catch((e) => {
+          showSnack("error", t("components.vocabForm.modifyErrorMessage"));
+        });
+
+      return;
+    }
+
     createVocabulary(
       selectedPackage.value,
       selectedGroup.value,
-      {
-        name: foreignWord,
-        translations: submitTranslations,
-        active,
-        description,
-      },
+      dataToSubmit,
       activate
     )
       .then((response) => {
         onClear();
-        showSnack("success", t("screens.addVocab.saveSuccessMessage"));
+        showSnack("success", t("components.vocabForm.saveSuccessMessage"));
         onSubmitCallback && onSubmitCallback();
       })
       .catch((e) => {
-        showSnack("error", t("screens.addVocab.saveErrorMessage"));
+        showSnack("error", t("components.vocabForm.saveErrorMessage"));
       });
   }, [
     activate,
     active,
+    defaultData,
     description,
     onSubmitCallback,
     selectedGroup,
@@ -161,6 +193,28 @@ const VocabForm = ({
     fetchPackages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (packageId && packages.length) {
+      setSelectedPackage(() => {
+        return {
+          value: packageId,
+          label: packages.find((elem) => elem.id === packageId).name,
+        };
+      });
+    }
+  }, [packages, packageId]);
+
+  useEffect(() => {
+    if (groupId && groups.length) {
+      setSelectedGroup(() => {
+        return {
+          value: groupId,
+          label: groups.find((elem) => elem.id === groupId).name,
+        };
+      });
+    }
+  }, [groups, groupId]);
 
   useEffect(() => {
     if (!selectedPackage) {
@@ -235,6 +289,7 @@ const VocabForm = ({
           <Select
             required
             creatable
+            disabled={packageId}
             createText={"Create new Package"}
             onCreate={openPackageModal}
             tabIndex={1}
@@ -244,7 +299,7 @@ const VocabForm = ({
               setSelectedPackage(v);
             }}
             value={selectedPackage}
-            noOptionsMessage={t("screens.addVocab.noPackagesMessage")}
+            noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
           />
         </div>
         <div className="select-wrapper">
@@ -253,7 +308,7 @@ const VocabForm = ({
             creatable
             createText={"Create new Group"}
             onCreate={openGroupModal}
-            disabled={!selectedPackage}
+            disabled={!selectedPackage || groupId}
             tabIndex={1}
             label={t("global.group")}
             options={groupsItems}
@@ -261,7 +316,7 @@ const VocabForm = ({
               setSelectedGroup(v);
             }}
             value={selectedGroup}
-            noOptionsMessage={t("screens.addVocab.noGroupsMessage")}
+            noOptionsMessage={t("components.vocabForm.noGroupsMessage")}
           />
         </div>
       </div>
@@ -281,7 +336,7 @@ const VocabForm = ({
           data={translations}
           placeholder={t("global.translation")}
           onChange={setTranslations}
-          addText={t("screens.addVocab.addTranslation")}
+          addText={t("components.vocabForm.addTranslation")}
         />
         <TextInput
           tabIndex={1}
@@ -293,14 +348,14 @@ const VocabForm = ({
         />
         <Switch
           appearance="on-off"
-          optionLeft={t("screens.addVocab.activeLabel")}
+          optionLeft={t("components.vocabForm.activeLabel")}
           infoLeft="Test information"
           onChange={onChangeActive}
           checked={active}
         />
         <Switch
           appearance="on-off"
-          optionLeft={t("screens.addVocab.activateLabel")}
+          optionLeft={t("components.vocabForm.activateLabel")}
           infoLeft="Test information w"
           onChange={onChangeActivate}
           checked={activate}
@@ -321,7 +376,7 @@ const VocabForm = ({
             )
           }
         >
-          {t("global.add")}
+          {t("global.submit")}
         </Button>
       </div>
       <Modal

@@ -120,7 +120,7 @@
       color: $color-primary;
 
       &:hover {
-        color: $color-primary-dark;
+        color: $color-primary-light;
         cursor: pointer;
       }
     }
@@ -129,7 +129,7 @@
       color: $color-red;
 
       &:hover {
-        color: $color-red-dark;
+        color: $color-red-light;
         cursor: pointer;
       }
     }
@@ -138,7 +138,7 @@
       color: $color-green;
 
       &:hover {
-        color: $color-green-dark;
+        color: $color-green-light;
         cursor: pointer;
       }
     }

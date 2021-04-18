@@ -16,4 +16,16 @@
   &-error {
     color: $color-red;
   }
+
+  &-light {
+    font-weight: lighter !important;
+  }
+
+  &-normal {
+    font-weight: normal !important;
+  }
+
+  &-bold {
+    font-weight: bold !important;
+  }
 }
