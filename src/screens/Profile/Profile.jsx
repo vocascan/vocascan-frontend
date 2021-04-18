@@ -78,21 +78,21 @@ const Profile = () => {
     () => [
       {
         stats: t("screens.profile.stats.total"),
-        packages: stats.languagePackages,
-        groups: stats.inactiveGroups + stats.activeGroups,
-        vocabs: stats.inactiveVocabulary + stats.activeVocabulary,
+        packages: stats.languagePackages || "-",
+        groups: stats.inactiveGroups + stats.activeGroups || "-",
+        vocabs: stats.inactiveVocabulary + stats.activeVocabulary || "-",
       },
       {
         stats: t("screens.profile.stats.active"),
         packages: "-",
-        groups: stats.activeGroups,
-        vocabs: stats.activeVocabulary,
+        groups: stats.activeGroups || "-",
+        vocabs: stats.activeVocabulary || "-",
       },
       {
         stats: t("screens.profile.stats.inactive"),
         packages: "-",
-        groups: stats.inactiveGroups,
-        vocabs: stats.inactiveVocabulary,
+        groups: stats.inactiveGroups || "-",
+        vocabs: stats.inactiveVocabulary || "-",
       },
     ],
     [
