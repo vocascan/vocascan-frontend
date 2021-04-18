@@ -18,7 +18,11 @@ import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
 import { getPackages, createVocabulary } from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
 
-const VocabForm = ({ title = null }) => {
+const VocabForm = ({
+  defaultData = null,
+  onSubmitCallback = null,
+  title = null,
+}) => {
   const { t } = useTranslation();
 
   const { showSnack } = useContext(SnackbarContext);
@@ -35,9 +39,15 @@ const VocabForm = ({ title = null }) => {
   const [groupsItems, setGroupsItems] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(null);
 
-  const [foreignWord, setForeignWord] = useState("");
-  const [translations, setTranslations] = useState([]);
-  const [description, setDescription] = useState("");
+  const [foreignWord, setForeignWord] = useState(
+    defaultData ? defaultData.name : ""
+  );
+  const [translations, setTranslations] = useState(
+    defaultData ? defaultData.Translations.map((ele) => ele.name) : ""
+  );
+  const [description, setDescription] = useState(
+    defaultData ? defaultData.description : ""
+  );
 
   const [showAddPackage, setShowAddPackage] = useState(false);
   const [showAddGroup, setShowAddGroup] = useState(false);
@@ -121,6 +131,7 @@ const VocabForm = ({ title = null }) => {
       .then((response) => {
         onClear();
         showSnack("success", t("screens.addVocab.saveSuccessMessage"));
+        onSubmitCallback && onSubmitCallback();
       })
       .catch((e) => {
         showSnack("error", t("screens.addVocab.saveErrorMessage"));
@@ -129,6 +140,7 @@ const VocabForm = ({ title = null }) => {
     activate,
     active,
     description,
+    onSubmitCallback,
     selectedGroup,
     selectedPackage,
     foreignWord,
@@ -137,6 +149,13 @@ const VocabForm = ({ title = null }) => {
     showSnack,
     t,
   ]);
+
+  useEffect(() => {
+    if (defaultData) {
+      dispatch(setVocabActive({ active: defaultData.active }));
+      dispatch(setVocabActivate({ activate: defaultData.activate }));
+    }
+  }, [defaultData, dispatch]);
 
   useEffect(() => {
     fetchPackages();

@@ -97,6 +97,12 @@ const GroupForm = ({
   }, [dispatch, active]);
 
   useEffect(() => {
+    if (defaultData) {
+      dispatch(setGroupActive({ active: defaultData.active }));
+    }
+  }, [defaultData, dispatch]);
+
+  useEffect(() => {
     setCanSubmit(!(!name || !languagePackage));
   }, [languagePackage, name]);
 

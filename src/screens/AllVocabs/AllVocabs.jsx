@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import EditIcon from "@material-ui/icons/Edit";
 
 import "./AllVocabs.scss";
 
@@ -27,7 +26,7 @@ const AllVocabs = () => {
     setShowVocabModal(true);
   }, []);
 
-  const packageSubmitted = useCallback(() => {
+  const vocabSubmitted = useCallback(() => {
     getGroupVocabulary(groupId).then((response) => {
       setData(() =>
         response.data.map((elem) => {
@@ -55,19 +54,8 @@ const AllVocabs = () => {
         Header: t("screens.allVocabs.translations"),
         accessor: "translations",
       },
-      {
-        Header: "",
-        accessor: "action",
-        Cell: ({ row }) => (
-          <div style={{ textAlign: "right" }}>
-            <Link to={`/editVocab/${row.original.id}`}>
-              <EditIcon />
-            </Link>
-          </div>
-        ),
-      },
     ],
-    [t]
+    [editVocab, t]
   );
 
   useEffect(() => {
@@ -103,7 +91,7 @@ const AllVocabs = () => {
       >
         <VocabForm
           defaultData={currentVocab}
-          onSubmitCallback={packageSubmitted}
+          onSubmitCallback={vocabSubmitted}
         />
       </Modal>
     </>
