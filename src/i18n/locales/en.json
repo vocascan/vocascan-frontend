@@ -119,6 +119,18 @@
           "title": "Delete account",
           "description": "Once you deleted your account it is gone forever"
         }
+      },
+      "modals": {
+        "changePassword": {
+          "heading": "Change Password"
+        },
+        "changeEmail": {
+          "heading": "Change Email"
+        },
+        "deleteAccount": {
+          "heading": "Delete Account",
+          "input": "Type 'delete' to confirm deletion"
+        }
       }
     },
     "selectionScreen": {
