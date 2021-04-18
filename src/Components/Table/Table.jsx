@@ -14,7 +14,13 @@ import "./Table.scss";
 
 import Button from "../Button/Button";
 
-const Table = ({ columns, data, striped = true }) => {
+const Table = ({
+  columns,
+  data,
+  paginationTop = true,
+  paginationBottom = true,
+  striped = true,
+}) => {
   const customPageSize = useSelector((state) => state.table.pageSize);
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -91,7 +97,7 @@ const Table = ({ columns, data, striped = true }) => {
 
   return (
     <>
-      <RenderPagination />
+      {paginationTop && <RenderPagination />}
       <table {...getTableProps()} className="table">
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -122,7 +128,7 @@ const Table = ({ columns, data, striped = true }) => {
           {...getTableBodyProps()}
           className={striped ? "table-striped" : ""}
         >
-          {page.map((row) => {
+          {page.map((row, i) => {
             prepareRow(row);
 
             return (
@@ -154,7 +160,7 @@ const Table = ({ columns, data, striped = true }) => {
             : null}
         </tbody>
       </table>
-      <RenderPagination />
+      {paginationBottom && <RenderPagination />}
     </>
   );
 };

@@ -18,7 +18,7 @@ import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
 import { getPackages, createVocabulary } from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
 
-const VocabForm = () => {
+const VocabForm = ({ title = null }) => {
   const { t } = useTranslation();
 
   const { showSnack } = useContext(SnackbarContext);
@@ -208,8 +208,8 @@ const VocabForm = () => {
   }, [groups]);
 
   return (
-    <div className="add-vocab-form">
-      <h1 className="heading">{t("screens.addVocab.title")}</h1>
+    <>
+      {title && <h1 className="heading">{title}</h1>}
 
       <div className="dropdowns">
         <div className="select-wrapper">
@@ -319,7 +319,7 @@ const VocabForm = () => {
           onSubmitCallback={groupAdded}
         />
       </Modal>
-    </div>
+    </>
   );
 };
 
