@@ -94,8 +94,8 @@
       "accountSettings": {
         "title": "Account settings",
         "password": {
-          "title": "Reset password",
-          "description": "Reset old password if you forgot it"
+          "title": "Change password",
+          "description": "Change old password if you forgot it"
         },
         "email": {
           "title": "Change email",
