@@ -1,0 +1,16 @@
+@import "../../colors";
+
+.submit-dialog {
+  display: flex;
+  flex-direction: column;
+
+  .description {
+    padding: 20px 0;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

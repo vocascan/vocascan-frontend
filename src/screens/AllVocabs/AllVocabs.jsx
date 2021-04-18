@@ -9,26 +9,28 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import "./AllVocabs.scss";
 
 import Button from "../../Components/Button/Button";
+import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog";
 import Modal from "../../Components/Modal/Modal";
 import Table from "../../Components/Table/Table";
 import VocabForm from "../../Forms/VocabForm/VocabForm";
-import { getGroupVocabulary } from "../../utils/api";
+import useSnack from "../../hooks/useSnack";
+import { getGroupVocabulary, deleteVocabulary } from "../../utils/api";
 
 const AllVocabs = () => {
   const { t } = useTranslation();
+  const { showSnack } = useSnack();
   const history = useHistory();
   const { packageId, groupId } = useParams();
 
   const [data, setData] = useState([]);
   const [currentVocab, setCurrentVocab] = useState(null);
   const [showVocabModal, setShowVocabModal] = useState(false);
+  const [
+    showDeleteConfirmationModal,
+    setShowDeleteConfirmationModal,
+  ] = useState(false);
 
-  const editVocab = useCallback((pack) => {
-    setCurrentVocab(pack);
-    setShowVocabModal(true);
-  }, []);
-
-  const vocabSubmitted = useCallback(() => {
+  const fetchVocabs = useCallback(() => {
     getGroupVocabulary(groupId).then((response) => {
       setData(() =>
         response.data.map((elem) => {
@@ -38,9 +40,38 @@ const AllVocabs = () => {
           };
         })
       );
-      setShowVocabModal(false);
     });
   }, [groupId]);
+
+  const editVocab = useCallback((voc) => {
+    setCurrentVocab(voc);
+    setShowVocabModal(true);
+  }, []);
+
+  const onDeleteVocab = useCallback((voc) => {
+    setCurrentVocab(voc);
+    setShowDeleteConfirmationModal(true);
+  }, []);
+
+  const deleteVocab = useCallback(() => {
+    if (currentVocab) {
+      deleteVocabulary(currentVocab.id)
+        .then(() => {
+          setCurrentVocab(null);
+          fetchVocabs();
+          setShowDeleteConfirmationModal(false);
+          showSnack("success", t("screens.allVocabs.deleteSuccessMessage"));
+        })
+        .catch((e) => {
+          showSnack("error", t("screens.allVocabs.deleteFailMessage"));
+        });
+    }
+  }, [currentVocab, fetchVocabs, showSnack, t]);
+
+  const vocabSubmitted = useCallback(() => {
+    fetchVocabs();
+    setShowVocabModal(false);
+  }, [fetchVocabs]);
 
   const columns = useMemo(
     () => [
@@ -72,7 +103,7 @@ const AllVocabs = () => {
             <Button
               appearance="red"
               variant="link"
-              onClick={() => console.log("deleting vocab")}
+              onClick={() => onDeleteVocab(row.original)}
             >
               <DeleteOutlineIcon />
             </Button>
@@ -80,21 +111,12 @@ const AllVocabs = () => {
         ),
       },
     ],
-    [editVocab, t]
+    [editVocab, onDeleteVocab, t]
   );
 
   useEffect(() => {
-    getGroupVocabulary(groupId).then((response) => {
-      setData(() =>
-        response.data.map((elem) => {
-          return {
-            ...elem,
-            translations: elem.Translations.map((el) => el.name).join(", "),
-          };
-        })
-      );
-    });
-  }, [groupId]);
+    fetchVocabs();
+  }, [fetchVocabs]);
 
   return (
     <>
@@ -112,7 +134,7 @@ const AllVocabs = () => {
         title={"Edit Vocabular"}
         open={showVocabModal}
         onClose={() => setShowVocabModal(false)}
-        xxl
+        size="xl"
       >
         <VocabForm
           packageId={packageId}
@@ -121,6 +143,18 @@ const AllVocabs = () => {
           onSubmitCallback={vocabSubmitted}
         />
       </Modal>
+
+      {currentVocab && (
+        <ConfirmDialog
+          title={t("screens.allVocabs.deleteTitle")}
+          description={t("screens.allVocabs.deleteDescription", {
+            name: currentVocab.name,
+          })}
+          onSubmit={deleteVocab}
+          onClose={() => setShowDeleteConfirmationModal(false)}
+          show={showDeleteConfirmationModal}
+        />
+      )}
     </>
   );
 };

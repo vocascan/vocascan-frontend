@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useContext } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
-import SnackbarContext from "../../context/SnackbarContext.jsx";
+import useSnack from "../../hooks/useSnack.jsx";
 
 import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
 import {
@@ -30,8 +30,7 @@ const VocabForm = ({
   groupId = null,
 }) => {
   const { t } = useTranslation();
-
-  const { showSnack } = useContext(SnackbarContext);
+  const { showSnack } = useSnack();
   const dispatch = useDispatch();
 
   const active = useSelector((state) => state.form.vocab.active);

@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
+import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import useSnack from "../../hooks/useSnack.jsx";
+
 import { languages } from "../../utils/constants.js";
 
 import "./AllPackages.scss";
@@ -13,14 +16,19 @@ import Button from "../../Components/Button/Button";
 import Modal from "../../Components/Modal/Modal";
 import Table from "../../Components/Table/Table";
 import PackageForm from "../../Forms/PackageForm/PackageForm";
-import { getPackages } from "../../utils/api";
+import { getPackages, deletePackage } from "../../utils/api";
 
 const AllPackages = () => {
   const { t } = useTranslation();
-  const [data, setData] = useState([]);
+  const { showSnack } = useSnack();
 
+  const [data, setData] = useState([]);
   const [currentPackage, setCurrentPackage] = useState(null);
   const [showPackageModal, setShowPackageModal] = useState(false);
+  const [
+    showDeleteConfirmationModal,
+    setShowDeleteConfirmationModal,
+  ] = useState(false);
 
   const editPackage = useCallback((pack) => {
     setCurrentPackage(pack);
@@ -33,6 +41,28 @@ const AllPackages = () => {
       setData(response.data);
     });
   }, []);
+
+  const onDeletePckge = useCallback((grp) => {
+    setCurrentPackage(grp);
+    setShowDeleteConfirmationModal(true);
+  }, []);
+
+  const deletePckge = useCallback(() => {
+    if (currentPackage) {
+      deletePackage(currentPackage.id)
+        .then(() => {
+          setCurrentPackage(null);
+          getPackages().then((response) => {
+            setData(response.data);
+          });
+          setShowDeleteConfirmationModal(false);
+          showSnack("success", t("screens.allPackages.deleteSuccessMessage"));
+        })
+        .catch((e) => {
+          showSnack("error", t("screens.allPackages.deleteFailMessage"));
+        });
+    }
+  }, [currentPackage, showSnack, t]);
 
   const columns = useMemo(
     () => [
@@ -94,7 +124,7 @@ const AllPackages = () => {
             <Button
               appearance="red"
               variant="link"
-              onClick={() => console.log("deleting package")}
+              onClick={() => onDeletePckge(row.original)}
             >
               <DeleteOutlineIcon />
             </Button>
@@ -102,7 +132,7 @@ const AllPackages = () => {
         ),
       },
     ],
-    [editPackage, t]
+    [editPackage, onDeletePckge, t]
   );
 
   useEffect(() => {
@@ -132,6 +162,18 @@ const AllPackages = () => {
           onSubmitCallback={packageSubmitted}
         />
       </Modal>
+
+      {currentPackage && (
+        <ConfirmDialog
+          title={t("screens.allPackages.deleteTitle")}
+          description={t("screens.allPackages.deleteDescription", {
+            name: currentPackage.name,
+          })}
+          onSubmit={deletePckge}
+          onClose={() => setShowDeleteConfirmationModal(false)}
+          show={showDeleteConfirmationModal}
+        />
+      )}
     </>
   );
 };

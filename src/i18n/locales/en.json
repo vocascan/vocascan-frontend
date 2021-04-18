@@ -4,6 +4,8 @@
     "noOptionMessage": "No options",
     "continue": "Continue",
     "submit": "Submit",
+    "abort": "Abort",
+    "delete": "Delete",
     "save": "Save",
     "vocascan": "Vocascan",
     "username": "Username",
@@ -69,17 +71,29 @@
       "foreignLanguage": "Foreign language",
       "translatedLanguage": "Translated language",
       "vocabsPerDay": "Vocabs/Day",
-      "rightWords": "Right words"
+      "rightWords": "Right words",
+      "deleteTitle": "Delete Package",
+      "deleteDescription": "Are you sure you want to delete the package {{name}}?",
+      "deleteSuccessMessage": "Package deleted",
+      "deleteFailMessage": "Package could not be deleted"
     },
     "allGroups": {
       "title": "All groups",
       "groupName": "Group",
-      "active": "Active"
+      "active": "Active",
+      "deleteTitle": "Delete Group",
+      "deleteDescription": "Are you sure you want to delete the group {{name}}?",
+      "deleteSuccessMessage": "Group deleted",
+      "deleteFailMessage": "Group could not be deleted"
     },
     "allVocabs": {
       "title": "All vocabulary",
       "vocabel": "Vocabel",
-      "translations": "Translations"
+      "translations": "Translations",
+      "deleteTitle": "Delete Vocabulary",
+      "deleteDescription": "Are you sure you want to delete the vocabulary {{name}}?",
+      "deleteSuccessMessage": "Vocabulary deleted",
+      "deleteFailMessage": "Vocabulary could not be deleted"
     },
     "addVocab": {
       "title": "Add vocabulary"
