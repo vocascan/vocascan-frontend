@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useTable } from "react-table";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
-import { StarsTwoTone } from "@material-ui/icons";
 import PersonIcon from "@material-ui/icons/Person";
+
+import Button from "../../Components/Button/Button.jsx";
 
 import { getStats } from "../../utils/api.js";
 
@@ -12,6 +13,7 @@ import "./Profile.scss";
 import Table from "../../Components/Table/Table";
 
 const Profile = () => {
+  const { t } = useTranslation();
   const username = useSelector((state) => state.login.user.username);
   const [error, setError] = useState(false);
   const [serverError, setServerError] = useState(false);
@@ -48,19 +50,19 @@ const Profile = () => {
   const columns = React.useMemo(
     () => [
       {
-        Header: "Stats",
+        Header: t("screens.profile.stats.stats"),
         accessor: "stats", // accessor is the "key" in the data
       },
       {
-        Header: "Packages",
+        Header: t("global.packages"),
         accessor: "packages",
       },
       {
-        Header: "Groups",
+        Header: t("global.groups"),
         accessor: "groups",
       },
       {
-        Header: "Vocabs",
+        Header: t("global.vocabs"),
         accessor: "vocabs",
       },
     ],
@@ -70,19 +72,19 @@ const Profile = () => {
   const data = React.useMemo(
     () => [
       {
-        stats: "Total",
+        stats: t("screens.profile.stats.total"),
         packages: stats.languagePackages,
         groups: stats.inactiveGroups + stats.activeGroups,
         vocabs: stats.inactiveVocabulary + stats.activeVocabulary,
       },
       {
-        stats: "Active",
+        stats: t("screens.profile.stats.active"),
         packages: "-",
         groups: stats.activeGroups,
         vocabs: stats.activeVocabulary,
       },
       {
-        stats: "Inactive",
+        stats: t("screens.profile.stats.inactive"),
         packages: "-",
         groups: stats.inactiveGroups,
         vocabs: stats.inactiveVocabulary,
@@ -98,6 +100,44 @@ const Profile = () => {
       </div>
       <h1 className="profile-username">{username}</h1>
       <Table columns={columns} data={data} pagination={false} />
+      <h1 className="account-settings-header">
+        {t("screens.profile.accountSettings.title")}
+      </h1>
+      <div className="account-settings">
+        <div className="account-settings-fields border-bottom">
+          <div className="description-wrapper">
+            <h3>{t("screens.profile.accountSettings.password.title")}</h3>
+            <p>{t("screens.profile.accountSettings.password.description")}</p>
+          </div>
+          <div className="button-wrapper">
+            <Button block uppercase appearance="red">
+              {t("screens.profile.accountSettings.password.title")}
+            </Button>
+          </div>
+        </div>
+        <div className="account-settings-fields border-bottom">
+          <div className="description-wrapper">
+            <h3>{t("screens.profile.accountSettings.email.title")}</h3>
+            <p>{t("screens.profile.accountSettings.email.description")}</p>
+          </div>
+          <div className="button-wrapper">
+            <Button block uppercase appearance="red">
+              {t("screens.profile.accountSettings.email.title")}
+            </Button>
+          </div>
+        </div>
+        <div className="account-settings-fields">
+          <div className="description-wrapper">
+            <h3>{t("screens.profile.accountSettings.delete.title")}</h3>
+            <p>{t("screens.profile.accountSettings.delete.description")}</p>
+          </div>
+          <div className="button-wrapper">
+            <Button block uppercase appearance="red">
+              {t("screens.profile.accountSettings.delete.title")}
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

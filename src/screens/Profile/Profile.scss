@@ -29,6 +29,61 @@
   .profile-username {
       margin: 20px 0
   }
+
+  .account-settings-header {
+      font-size: 15px;
+      text-transform: uppercase;
+      text-align: left;
+      margin: 15px 0 5px 0;
+  }
+
+  .account-settings {
+      height: 210px;
+      width: 100%;
+      border: 1px solid $color-red;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .account-settings-fields {
+          width: 100%;
+          height: calc(100% / 0.3);
+        display: flex;
+        justify-content: space-between;
+
+        &.border-bottom {
+            border-bottom: 1px solid $color-background-muted;
+        }
+
+        .description-wrapper {
+            width: 70%;
+            height: 60%;
+            margin: auto 0;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            h3 {
+                font-size: 15px;
+                text-align: left;
+            }
+            p {
+                font-size: 11px;
+                text-align: left;
+            }
+          }
+      }
+      .button-wrapper {
+          width: 30%;
+          height: 60%;
+          margin: auto 0;
+          margin-right: 10px;
+      }
+
+      
+  }
 }
 
 
