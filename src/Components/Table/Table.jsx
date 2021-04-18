@@ -15,6 +15,10 @@ import "./Table.scss";
 import Button from "../Button/Button";
 
 const Table = ({ columns, data, striped = true }) => {
+  const customPageSize = useSelector((state) => state.table.pageSize);
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -26,21 +30,20 @@ const Table = ({ columns, data, striped = true }) => {
     pageOptions,
     nextPage,
     previousPage,
-    state: { pageIndex },
+    setPageSize,
+    state: { pageIndex, pageSize },
   } = useTable(
-    { columns, data, initialState: { pageIndex: 0 } },
+    { columns, data, initialState: { pageIndex: 0, pageSize: customPageSize } },
     useSortBy,
     usePagination
   );
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const pageSize = useSelector((state) => state.table.pageSize);
 
   const onChangePageSize = useCallback(
     (value) => {
       dispatch(setTablePageSize({ pageSize: value }));
+      setPageSize(value);
     },
-    [dispatch]
+    [dispatch, setPageSize]
   );
 
   const RenderPagination = () => {

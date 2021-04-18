@@ -7,20 +7,18 @@
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 
     .back {
       position: absolute;
       left: 0;
-      top: 0;
+      align-self: center;
 
       &:hover {
         cursor: pointer;
         color: $color-primary-dark;
       }
-    }
-
-    .heading {
-      margin-bottom: 20px;
     }
   }
 }
