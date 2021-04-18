@@ -9,7 +9,7 @@ import "./Modal.scss";
 const Modal = ({
   title,
   onClose,
-  xxl = false,
+  size = "", // small, large, ""
   open = false,
   renderClose = true,
   closeOnClickOutside = false,
@@ -66,7 +66,7 @@ const Modal = ({
 
   return (
     <div className="modal">
-      <div className={`inner ${xxl ? "xxl" : ""}`} ref={ref}>
+      <div className={`inner ${size ? size : ""}`} ref={ref}>
         {renderClose && (
           <Button
             tabIndex={-1}
