@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import EditIcon from "@material-ui/icons/Edit";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
 import { languages } from "../../utils/constants.js";
 
@@ -83,13 +83,13 @@ const AllPackages = () => {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div className="action-col">
             <Button
               appearance="primary"
               variant="link"
               onClick={() => editPackage(row.original)}
             >
-              <EditIcon />
+              <EditOutlinedIcon />
             </Button>
             <Button
               appearance="red"

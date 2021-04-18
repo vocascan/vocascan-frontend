@@ -45,6 +45,18 @@
       "savePackageFailMessage": "Could not add package",
       "modifyPackageSuccessMessage": "Package saved",
       "modifyPackageFailedMessage": "Could not save package"
+    },
+    "vocabForm": {
+      "noPackagesMessage": "No packages found",
+      "noGroupsMessage": "No groups found",
+      "addTranslation": "Add translation",
+      "saveSuccessMessage": "New vocabulary added",
+      "saveErrorMessage": "New vocabulary could not be added",
+      "modifySuccessMessage": "Vocabulary saved",
+      "modifyErrorMessage": "Cocabulary could not be saved",
+      "saveGroupSuccessMessage": "New group added",
+      "activeLabel": "Active",
+      "activateLabel": "Activate"
     }
   },
   "screens": {
@@ -67,15 +79,7 @@
       "translations": "Translations"
     },
     "addVocab": {
-      "title": "Add vocabulary",
-      "noPackagesMessage": "No packages found",
-      "noGroupsMessage": "No groups found",
-      "addTranslation": "Add translation",
-      "saveSuccessMessage": "New vocabulary added",
-      "saveErrorMessage": "New vocabulary could not be added",
-      "saveGroupSuccessMessage": "New group added",
-      "activeLabel": "Active",
-      "activateLabel": "Activate"
+      "title": "Add vocabulary"
     },
     "selectionScreen": {
       "title": "Login",

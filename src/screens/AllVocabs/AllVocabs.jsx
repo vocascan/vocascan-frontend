@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import EditIcon from "@material-ui/icons/Edit";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
 import "./AllVocabs.scss";
 
@@ -17,7 +17,7 @@ import { getGroupVocabulary } from "../../utils/api";
 const AllVocabs = () => {
   const { t } = useTranslation();
   const history = useHistory();
-  const { groupId } = useParams();
+  const { packageId, groupId } = useParams();
 
   const [data, setData] = useState([]);
   const [currentVocab, setCurrentVocab] = useState(null);
@@ -38,6 +38,7 @@ const AllVocabs = () => {
           };
         })
       );
+      setShowVocabModal(false);
     });
   }, [groupId]);
 
@@ -64,9 +65,9 @@ const AllVocabs = () => {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div className="action-col">
             <Button variant="link" onClick={() => editVocab(row.original)}>
-              <EditIcon />
+              <EditOutlinedIcon />
             </Button>
             <Button
               appearance="red"
@@ -114,6 +115,8 @@ const AllVocabs = () => {
         xxl
       >
         <VocabForm
+          packageId={packageId}
+          groupId={groupId}
           defaultData={currentVocab}
           onSubmitCallback={vocabSubmitted}
         />

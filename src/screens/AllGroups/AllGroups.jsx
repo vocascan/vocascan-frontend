@@ -5,7 +5,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import EditIcon from "@material-ui/icons/Edit";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import "./AllGroups.scss";
@@ -72,7 +72,10 @@ const AllGroups = () => {
         Header: t("screens.allGroups.groupName"),
         accessor: "name",
         Cell: ({ row }) => (
-          <Link className="text-normal" to={`/allVocabs/${row.original.id}`}>
+          <Link
+            className="text-normal"
+            to={`/allVocabs/${packageId}/${row.original.id}`}
+          >
             {row.original.name}
           </Link>
         ),
@@ -94,9 +97,9 @@ const AllGroups = () => {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div className="action-col">
             <Button variant="link" onClick={() => editGroup(row.original)}>
-              <EditIcon />
+              <EditOutlinedIcon />
             </Button>
             <Button
               appearance="red"
@@ -109,7 +112,7 @@ const AllGroups = () => {
         ),
       },
     ],
-    [editGroup, t]
+    [editGroup, packageId, t]
   );
 
   useEffect(() => {
