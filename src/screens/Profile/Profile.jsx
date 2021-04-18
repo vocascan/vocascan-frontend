@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import PersonIcon from "@material-ui/icons/Person";
 
 import Button from "../../Components/Button/Button.jsx";
+import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import useSnack from "../../hooks/useSnack.jsx";
 
+import { signOut } from "../../redux/Actions/login.js";
 import { getStats, deleteUser } from "../../utils/api.js";
 
 import "./Profile.scss";
@@ -16,19 +18,41 @@ import Table from "../../Components/Table/Table";
 
 const Profile = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const { showSnack } = useSnack();
 
   const username = useSelector((state) => state.login.user.username);
   const [stats, setStats] = useState({});
 
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
 
-  const openDeleteModal = useCallback(() => {
-    setShowDeleteModal(true);
+  const [deleteConfirmation, setDeleteConfirmation] = useState("");
+  const [canSubmitDelete, setCanSubmitDelete] = useState(false);
+
+  const openPasswordModal = useCallback(() => {
+    setShowPasswordModal(true);
   }, []);
 
-  const closeDeleteModal = useCallback(() => {
-    setShowDeleteModal(false);
+  const closePasswordModal = useCallback(() => {
+    setShowPasswordModal(false);
+  }, []);
+
+  const openEmailModal = useCallback(() => {
+    setShowEmailModal(true);
+  }, []);
+
+  const closeEmailModal = useCallback(() => {
+    setShowEmailModal(false);
+  }, []);
+
+  const openDeleteAccountModal = useCallback(() => {
+    setShowDeleteAccountModal(true);
+  }, []);
+
+  const closeDeleteAccountModal = useCallback(() => {
+    setShowDeleteAccountModal(false);
   }, []);
 
   useEffect(() => {
@@ -51,6 +75,18 @@ const Profile = () => {
         showSnack("error", "Internal Server Error");
       });
   };
+
+  const checkDeleteConfirmation = (value) => {
+    if (value === "delete") {
+      setCanSubmitDelete(true);
+    } else {
+      setCanSubmitDelete(false);
+    }
+  };
+
+  const handleLogout = useCallback(() => {
+    dispatch(signOut());
+  }, [dispatch]);
 
   const columns = React.useMemo(
     () => [
@@ -123,7 +159,12 @@ const Profile = () => {
               <p>{t("screens.profile.accountSettings.password.description")}</p>
             </div>
             <div className="button-wrapper">
-              <Button block uppercase appearance="red">
+              <Button
+                block
+                uppercase
+                appearance="red"
+                onClick={openPasswordModal}
+              >
                 {t("screens.profile.accountSettings.password.title")}
               </Button>
             </div>
@@ -134,7 +175,7 @@ const Profile = () => {
               <p>{t("screens.profile.accountSettings.email.description")}</p>
             </div>
             <div className="button-wrapper">
-              <Button block uppercase appearance="red">
+              <Button block uppercase appearance="red" onClick={openEmailModal}>
                 {t("screens.profile.accountSettings.email.title")}
               </Button>
             </div>
@@ -149,7 +190,7 @@ const Profile = () => {
                 block
                 uppercase
                 appearance="red"
-                onClick={openDeleteModal}
+                onClick={openDeleteAccountModal}
               >
                 {t("screens.profile.accountSettings.delete.title")}
               </Button>
@@ -158,12 +199,47 @@ const Profile = () => {
         </div>
       </div>
       <Modal
-        title={"Delete Account"}
-        open={showDeleteModal}
-        onClose={closeDeleteModal}
-        closeOnClickOutside={false}
+        title={t("screens.profile.modals.changePassword.heading")}
+        open={showPasswordModal}
+        onClose={closePasswordModal}
       >
         <h1 style={{ margin: "auto" }}>Hello World</h1>
+      </Modal>
+      <Modal
+        title={t("screens.profile.modals.changeEmail.heading")}
+        open={showEmailModal}
+        onClose={closeEmailModal}
+      >
+        <h1 style={{ margin: "auto" }}>Hello World</h1>
+      </Modal>
+      <Modal
+        title={t("screens.profile.modals.deleteAccount.heading")}
+        open={showDeleteAccountModal}
+        onClose={closeDeleteAccountModal}
+      >
+        <div className="deletion-modal">
+          <TextInput
+            required
+            placeholder={t("screens.profile.modals.deleteAccount.input")}
+            onChange={(value) => {
+              setDeleteConfirmation(value);
+              checkDeleteConfirmation(value);
+            }}
+            value={deleteConfirmation}
+          />
+          <Button
+            block
+            uppercase
+            appearance={"red"}
+            onClick={() => {
+              deleteUser();
+              handleLogout();
+            }}
+            disabled={!canSubmitDelete}
+          >
+            {t("global.delete")}
+          </Button>
+        </div>
       </Modal>
     </>
   );
