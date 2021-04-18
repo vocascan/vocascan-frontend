@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -12,6 +6,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
 import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import useSnack from "../../hooks/useSnack.jsx";
 
 import { languages } from "../../utils/constants.js";
 
@@ -21,13 +16,11 @@ import Button from "../../Components/Button/Button";
 import Modal from "../../Components/Modal/Modal";
 import Table from "../../Components/Table/Table";
 import PackageForm from "../../Forms/PackageForm/PackageForm";
-import SnackbarContext from "../../context/SnackbarContext";
 import { getPackages, deletePackage } from "../../utils/api";
 
 const AllPackages = () => {
   const { t } = useTranslation();
-
-  const { showSnack } = useContext(SnackbarContext);
+  const { showSnack } = useSnack();
 
   const [data, setData] = useState([]);
   const [currentPackage, setCurrentPackage] = useState(null);

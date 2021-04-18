@@ -1,16 +1,16 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 import Modal from "../../Components/Modal/Modal.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
-import SnackbarContext from "../../context/SnackbarContext.jsx";
+import useSnack from "../../hooks/useSnack.jsx";
 
 import "./FirstStartup.scss";
 
 const FirstStartup = () => {
   const { t } = useTranslation();
-  const { showSnack } = useContext(SnackbarContext);
+  const { showSnack } = useSnack();
   const isFirstLogin = useSelector((state) => state.login.firstLogin);
   const [show, setShow] = useState(isFirstLogin);
 

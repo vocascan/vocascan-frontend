@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,7 +6,7 @@ import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
-import SnackbarContext from "../../context/SnackbarContext.jsx";
+import useSnack from "../../hooks/useSnack.jsx";
 
 import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
@@ -21,7 +21,7 @@ const GroupForm = ({
   onSubmitCallback = null,
 }) => {
   const { t } = useTranslation();
-  const { showSnack } = useContext(SnackbarContext);
+  const { showSnack } = useSnack();
   const dispatch = useDispatch();
   const active = useSelector((state) => state.form.group.active);
 

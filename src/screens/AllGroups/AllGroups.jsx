@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams, useHistory } from "react-router-dom";
 
@@ -22,14 +16,13 @@ import { CustomPackageSelectOption } from "../../Components/Form/Select/Select";
 import Modal from "../../Components/Modal/Modal";
 import Table from "../../Components/Table/Table";
 import GroupForm from "../../Forms/GroupForm/GroupForm";
-import SnackbarContext from "../../context/SnackbarContext";
+import useSnack from "../../hooks/useSnack";
 import { getGroups, getPackages, deleteGroup } from "../../utils/api";
 import { languages } from "../../utils/constants";
 
 const AllGroups = () => {
   const { t } = useTranslation();
-
-  const { showSnack } = useContext(SnackbarContext);
+  const { showSnack } = useSnack();
   const history = useHistory();
   const { packageId } = useParams();
 

@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, useHistory } from "react-router-dom";
 
@@ -19,13 +13,12 @@ import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog";
 import Modal from "../../Components/Modal/Modal";
 import Table from "../../Components/Table/Table";
 import VocabForm from "../../Forms/VocabForm/VocabForm";
-import SnackbarContext from "../../context/SnackbarContext";
+import useSnack from "../../hooks/useSnack";
 import { getGroupVocabulary, deleteVocabulary } from "../../utils/api";
 
 const AllVocabs = () => {
   const { t } = useTranslation();
-
-  const { showSnack } = useContext(SnackbarContext);
+  const { showSnack } = useSnack();
   const history = useHistory();
   const { packageId, groupId } = useParams();
 

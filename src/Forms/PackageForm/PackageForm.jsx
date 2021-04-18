@@ -1,10 +1,10 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Form/Select/Select.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
-import SnackbarContext from "../../context/SnackbarContext.jsx";
+import useSnack from "../../hooks/useSnack.jsx";
 
 import { createPackage, modifyPackage } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";
@@ -13,7 +13,7 @@ import "./PackageForm.scss";
 
 const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
   const { t } = useTranslation();
-  const { showSnack } = useContext(SnackbarContext);
+  const { showSnack } = useSnack();
 
   const [name, setName] = useState(defaultData ? defaultData.name : "");
   const [foreignLanguage, setForeignLanguage] = useState(
