@@ -15,6 +15,8 @@
       border-radius: 100px;
       border: 1px solid $color-alternative;
       margin: 0 auto;
+      display: flex;
+      justify-content: center;
 
       .profile-avatar {
           width: 70px;
@@ -25,7 +27,7 @@
 
   }
   .profile-username {
-      margin-top: 20px;
+      margin: 20px 0
   }
 }
 
