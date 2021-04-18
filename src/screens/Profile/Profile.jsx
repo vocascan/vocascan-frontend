@@ -6,7 +6,7 @@ import PersonIcon from "@material-ui/icons/Person";
 
 import Button from "../../Components/Button/Button.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
-import SnackbarContext from "../../context/SnackbarContext.jsx";
+import useSnack from "../../hooks/useSnack.jsx";
 
 import { getStats, deleteUser } from "../../utils/api.js";
 
@@ -16,7 +16,7 @@ import Table from "../../Components/Table/Table";
 
 const Profile = () => {
   const { t } = useTranslation();
-  const { showSnack } = useContext(SnackbarContext);
+  const { showSnack } = useSnack();
 
   const username = useSelector((state) => state.login.user.username);
   const [stats, setStats] = useState({});
