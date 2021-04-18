@@ -4,6 +4,15 @@ import ReactSelect, { components } from "react-select";
 
 import "./Select.scss";
 
+export const CustomPackageSelectOption = ({ name, postfix }) => {
+  return (
+    <span className="custom-option-wrapper">
+      {name}
+      <small className="postfix">{postfix}</small>
+    </span>
+  );
+};
+
 const Menu = (props) => {
   const { children, selectProps } = props;
 

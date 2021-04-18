@@ -23,20 +23,49 @@
     "signUp": "Sign up",
     "serverNotResponding": "The server is not responding",
     "successMessage": "Success",
-    "fetchError": "Something went wrong, please try again later"
+    "fetchError": "Something went wrong, please try again later",
+    "paginationPage": "Page {{page}} of {{pageLength}}",
+    "paginationShow": "Show {{size}}"
   },
   "components": {
     "groupForm": {
-      "languagePackage": "Package"
+      "languagePackage": "Package",
+      "activeLabel": "Active",
+      "saveGroupSuccessMessage": "New group added",
+      "savGroupFailMessage": "Could not add group",
+      "modifyGroupSuccessMessage": "Group saved",
+      "modifyGroupFailMessage": "Could not save Group"
     },
     "packageForm": {
       "foreignLanguage": "Foreign language",
       "translatedLanguage": "Translated language",
       "vocabsPerDay": "Vocabs per day",
-      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs"
+      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs",
+      "savePackageSuccessMessage": "New package added",
+      "savePackageFailMessage": "Could not add package",
+      "modifyPackageSuccessMessage": "Package saved",
+      "modifyPackageFailedMessage": "Could not save package"
     }
   },
   "screens": {
+    "allPackages": {
+      "title": "All packages",
+      "packageName": "Package",
+      "foreignLanguage": "Foreign language",
+      "translatedLanguage": "Translated language",
+      "vocabsPerDay": "Vocabs/Day",
+      "rightWords": "Right words"
+    },
+    "allGroups": {
+      "title": "All groups",
+      "groupName": "Group",
+      "active": "Active"
+    },
+    "allVocabs": {
+      "title": "All vocabulary",
+      "vocabel": "Vocabel",
+      "translations": "Translations"
+    },
     "addVocab": {
       "title": "Add vocabulary",
       "noPackagesMessage": "No packages found",
@@ -44,7 +73,6 @@
       "addTranslation": "Add translation",
       "saveSuccessMessage": "New vocabulary added",
       "saveErrorMessage": "New vocabulary could not be added",
-      "savePackageSuccessMessage": "New package added",
       "saveGroupSuccessMessage": "New group added",
       "activeLabel": "Active",
       "activateLabel": "Activate"
@@ -60,7 +88,11 @@
       },
       "vocascanServer": {
         "heading": "Vocascan server",
-        "pro": ["sync every device", "Use your own Server", "Full control over the settings"],
+        "pro": [
+          "sync every device",
+          "Use your own Server",
+          "Full control over the settings"
+        ],
         "contra": ["You need a own server"],
         "button": "Start for free"
       }

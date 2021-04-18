@@ -1,7 +1,19 @@
+@import "./colors";
+
 * {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   margin: 0;
   padding: 0;
   text-align: center;
+}
+
+.text {
+  &-success {
+    color: $color-green;
+  }
+
+  &-error {
+    color: $color-red;
+  }
 }

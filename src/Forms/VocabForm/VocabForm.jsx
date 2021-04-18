@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
 import ArrayTextInput from "../../Components/Form/ArrayTextInput/ArrayTextInput.jsx";
-import Select from "../../Components/Form/Select/Select.jsx";
+import Select, {
+  CustomPackageSelectOption,
+} from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
@@ -16,16 +18,11 @@ import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
 import { getPackages, createVocabulary } from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
 
-const CustomSelectOption = ({ name, postfix }) => {
-  return (
-    <span className="custom-option-wrapper">
-      {name}
-      <small className="postfix">{postfix}</small>
-    </span>
-  );
-};
-
-const VocabForm = () => {
+const VocabForm = ({
+  defaultData = null,
+  onSubmitCallback = null,
+  title = null,
+}) => {
   const { t } = useTranslation();
 
   const { showSnack } = useContext(SnackbarContext);
@@ -42,9 +39,15 @@ const VocabForm = () => {
   const [groupsItems, setGroupsItems] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(null);
 
-  const [foreignWord, setForeignWord] = useState("");
-  const [translations, setTranslations] = useState([]);
-  const [description, setDescription] = useState("");
+  const [foreignWord, setForeignWord] = useState(
+    defaultData ? defaultData.name : ""
+  );
+  const [translations, setTranslations] = useState(
+    defaultData ? defaultData.Translations.map((ele) => ele.name) : ""
+  );
+  const [description, setDescription] = useState(
+    defaultData ? defaultData.description : ""
+  );
 
   const [showAddPackage, setShowAddPackage] = useState(false);
   const [showAddGroup, setShowAddGroup] = useState(false);
@@ -94,9 +97,8 @@ const VocabForm = () => {
       setSelectedPackage({ value: newPackage.id, label: newPackage.name });
       closePackageModal();
       fetchPackages();
-      showSnack("success", t("screens.addVocab.savePackageSuccessMessage"));
     },
-    [closePackageModal, fetchPackages, t, showSnack]
+    [closePackageModal, fetchPackages]
   );
 
   const groupAdded = useCallback(
@@ -104,9 +106,8 @@ const VocabForm = () => {
       closeGroupModal();
       fetchPackages();
       setSelectedGroup({ value: newGroup.id, label: newGroup.name });
-      showSnack("success", t("screens.addVocab.saveGroupSuccessMessage"));
     },
-    [closeGroupModal, fetchPackages, t, showSnack]
+    [closeGroupModal, fetchPackages]
   );
 
   const onSubmit = useCallback(() => {
@@ -130,6 +131,7 @@ const VocabForm = () => {
       .then((response) => {
         onClear();
         showSnack("success", t("screens.addVocab.saveSuccessMessage"));
+        onSubmitCallback && onSubmitCallback();
       })
       .catch((e) => {
         showSnack("error", t("screens.addVocab.saveErrorMessage"));
@@ -138,6 +140,7 @@ const VocabForm = () => {
     activate,
     active,
     description,
+    onSubmitCallback,
     selectedGroup,
     selectedPackage,
     foreignWord,
@@ -146,6 +149,13 @@ const VocabForm = () => {
     showSnack,
     t,
   ]);
+
+  useEffect(() => {
+    if (defaultData) {
+      dispatch(setVocabActive({ active: defaultData.active }));
+      dispatch(setVocabActivate({ activate: defaultData.activate }));
+    }
+  }, [defaultData, dispatch]);
 
   useEffect(() => {
     fetchPackages();
@@ -195,7 +205,7 @@ const VocabForm = () => {
         return {
           value: p.id,
           label: (
-            <CustomSelectOption
+            <CustomPackageSelectOption
               name={p.name}
               postfix={foreignIcon + " - " + translatedIcon}
             />
@@ -217,8 +227,8 @@ const VocabForm = () => {
   }, [groups]);
 
   return (
-    <div className="add-vocab-form">
-      <h1 className="heading">{t("screens.addVocab.title")}</h1>
+    <>
+      {title && <h1 className="heading">{title}</h1>}
 
       <div className="dropdowns">
         <div className="select-wrapper">
@@ -328,7 +338,7 @@ const VocabForm = () => {
           onSubmitCallback={groupAdded}
         />
       </Modal>
-    </div>
+    </>
   );
 };
 

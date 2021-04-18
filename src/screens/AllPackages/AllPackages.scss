@@ -1,0 +1,24 @@
+@import "../../colors";
+
+.all-packages-wrapper {
+  padding: 50px;
+
+  .header-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .back {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      &:hover {
+        cursor: pointer;
+        color: $color-primary-dark;
+      }
+    }
+  }
+}

@@ -9,13 +9,14 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 
 import { setGroupActive } from "../../redux/Actions/form.js";
-import { getPackages, createGroup } from "../../utils/api.js";
+import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";
 
 import "./GroupForm.scss";
 
 const GroupForm = ({
   fixedPackage = false,
+  defaultData = null,
   selectedPackage = null,
   onSubmitCallback = null,
 }) => {
@@ -24,7 +25,7 @@ const GroupForm = ({
   const dispatch = useDispatch();
   const active = useSelector((state) => state.form.group.active);
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState(defaultData ? defaultData.name : "");
   const [languagePackage, setLanguagePackage] = useState(selectedPackage);
   const [canSubmit, setCanSubmit] = useState(false);
   const [languagePackages, setLanguagePackages] = useState([]);
@@ -46,26 +47,60 @@ const GroupForm = ({
       active,
     };
 
+    if (defaultData?.id) {
+      newGroup.id = defaultData.id;
+
+      modifyGroup(newGroup)
+        .then(({ data }) => {
+          onSubmitCallback && onSubmitCallback(data);
+          showSnack(
+            "success",
+            t("components.groupForm.modifyGroupSuccessMessage")
+          );
+        })
+        .catch((error) => {
+          if (error.response.status === 401) {
+            console.log("jwt expired");
+            showSnack(
+              "error",
+              t("components.groupForm.modifyGroupFailMessage")
+            );
+          }
+        });
+
+      return;
+    }
     createGroup(languagePackage.id || languagePackage.value, newGroup)
       .then(({ data }) => {
         onSubmitCallback && onSubmitCallback(data);
+        showSnack("success", t("components.groupForm.saveGroupSuccessMessage"));
       })
       .catch((error) => {
         if (error.response.status === 401) {
           console.log("jwt expired");
+          showSnack("error", t("components.groupForm.saveGroupFailMessage"));
         }
       });
   }, [
     active,
+    defaultData?.id,
     languagePackage.id,
     languagePackage.value,
     name,
     onSubmitCallback,
+    showSnack,
+    t,
   ]);
 
   const onChangeActive = useCallback(() => {
     dispatch(setGroupActive({ active: !active }));
   }, [dispatch, active]);
+
+  useEffect(() => {
+    if (defaultData) {
+      dispatch(setGroupActive({ active: defaultData.active }));
+    }
+  }, [defaultData, dispatch]);
 
   useEffect(() => {
     setCanSubmit(!(!name || !languagePackage));
@@ -124,7 +159,7 @@ const GroupForm = ({
         />
         <Switch
           appearance="on-off"
-          optionLeft={t("screens.addVocab.activeLabel")}
+          optionLeft={t("components.groupForm.activeLabel")}
           onChange={onChangeActive}
           checked={active}
         />

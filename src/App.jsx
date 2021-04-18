@@ -6,6 +6,9 @@ import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/Authent
 import Snackbar from "./Components/Snackbar/Snackbar.jsx";
 import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
+import AllGroups from "./screens/AllGroups/AllGroups.jsx";
+import AllPackages from "./screens/AllPackages/AllPackages.jsx";
+import AllVocabs from "./screens/AllVocabs/AllVocabs.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
 import Login from "./screens/Login/Login.jsx";
 import Profile from "./screens/Profile/Profile.jsx";
@@ -67,6 +70,9 @@ const App = () => {
           <AuthenticatedLayout>
             <FirstStartup />
             <Route path="/addVocab" component={AddVocab} />
+            <Route path="/allPackages" component={AllPackages} />
+            <Route path="/allGroups/:packageId" component={AllGroups} />
+            <Route path="/allVocabs/:groupId" component={AllVocabs} />
             <Route path="/settings" component={Settings} />
             <Route path="/profile" component={Profile} />
             <Snackbar />

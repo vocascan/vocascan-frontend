@@ -68,7 +68,7 @@ const Nav = () => {
           name={t("nav.allVocabulary")}
           design={menuStyle}
           icon={<LibraryBooksIcon />}
-          link="/allVocabulary"
+          link="/allPackages"
         />
         <NavButton
           name={t("nav.groupLearning")}
