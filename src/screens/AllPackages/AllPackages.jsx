@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
@@ -32,6 +33,11 @@ const AllPackages = () => {
 
   const editPackage = useCallback((pack) => {
     setCurrentPackage(pack);
+    setShowPackageModal(true);
+  }, []);
+
+  const addPackage = useCallback(() => {
+    setCurrentPackage(null);
     setShowPackageModal(true);
   }, []);
 
@@ -146,6 +152,9 @@ const AllPackages = () => {
       <div className="all-packages-wrapper">
         <div className="header-wrapper">
           <h1 className="heading">{t("screens.allPackages.title")}</h1>
+          <Button className="add" variant="transparent">
+            <AddCircleOutlinedIcon onClick={addPackage} />
+          </Button>
         </div>
         <div>
           <Table columns={columns} data={data} />
@@ -153,7 +162,11 @@ const AllPackages = () => {
       </div>
 
       <Modal
-        title={"Edit Package"}
+        title={
+          currentPackage
+            ? t("screens.allPackages.editPackage")
+            : t("screens.allPackages.addPackage")
+        }
         open={showPackageModal}
         onClose={() => setShowPackageModal(false)}
       >

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams, useHistory } from "react-router-dom";
 
+import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
@@ -65,6 +66,34 @@ const AllGroups = () => {
     },
     [packageId]
   );
+
+  const addGroup = useCallback(() => {
+    getPackages()
+      .then(({ data }) => {
+        const currPack = data.find((ele) => ele.id === packageId);
+
+        const foreignIcon = languages.find(
+          (x) => x.name === currPack.foreignWordLanguage
+        ).icon;
+        const translatedIcon = languages.find(
+          (x) => x.name === currPack.translatedWordLanguage
+        ).icon;
+
+        setCurrentPackage({
+          value: currPack.id,
+          label: (
+            <CustomPackageSelectOption
+              name={currPack.name}
+              postfix={foreignIcon + " - " + translatedIcon}
+            />
+          ),
+        });
+      })
+      .then(() => {
+        setCurrentGroup(null);
+        setShowGroupModal(true);
+      });
+  }, [packageId]);
 
   const groupSubmitted = useCallback(() => {
     getGroups(packageId).then((response) => {
@@ -154,8 +183,17 @@ const AllGroups = () => {
     <>
       <div className="all-groups-wrapper">
         <div className="header-wrapper">
-          <ArrowBackIcon className="back" onClick={history.goBack} />
+          <Button
+            className="back"
+            variant="transparent"
+            onClick={history.goBack}
+          >
+            <ArrowBackIcon />
+          </Button>
           <h1 className="heading">{t("screens.allGroups.title")}</h1>
+          <Button className="add" variant="transparent">
+            <AddCircleOutlinedIcon onClick={addGroup} />
+          </Button>
         </div>
         <div>
           <Table columns={columns} data={data} />
@@ -163,7 +201,11 @@ const AllGroups = () => {
       </div>
 
       <Modal
-        title={"Edit Group"}
+        title={
+          currentGroup
+            ? t("screens.allGroups.editGroup")
+            : t("screens.allGroups.addGroup")
+        }
         open={showGroupModal}
         onClose={() => setShowGroupModal(false)}
       >

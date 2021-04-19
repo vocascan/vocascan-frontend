@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, useHistory } from "react-router-dom";
 
+import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
@@ -45,6 +46,11 @@ const AllVocabs = () => {
 
   const editVocab = useCallback((voc) => {
     setCurrentVocab(voc);
+    setShowVocabModal(true);
+  }, []);
+
+  const addVocab = useCallback(() => {
+    setCurrentVocab(null);
     setShowVocabModal(true);
   }, []);
 
@@ -122,8 +128,17 @@ const AllVocabs = () => {
     <>
       <div className="all-vocabs-wrapper">
         <div className="header-wrapper">
-          <ArrowBackIcon className="back" onClick={history.goBack} />
+          <Button
+            className="back"
+            variant="transparent"
+            onClick={history.goBack}
+          >
+            <ArrowBackIcon />
+          </Button>
           <h1 className="heading">{t("screens.allVocabs.title")}</h1>
+          <Button className="add" variant="transparent">
+            <AddCircleOutlinedIcon onClick={addVocab} />
+          </Button>
         </div>
         <div>
           <Table columns={columns} data={data} />
@@ -131,7 +146,11 @@ const AllVocabs = () => {
       </div>
 
       <Modal
-        title={"Edit Vocabular"}
+        title={
+          currentVocab
+            ? t("screens.allVocabs.editVocab")
+            : t("screens.allVocabs.addVocab")
+        }
         open={showVocabModal}
         onClose={() => setShowVocabModal(false)}
         size="xl"

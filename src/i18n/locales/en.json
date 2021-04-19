@@ -72,7 +72,9 @@
       "deleteTitle": "Delete Package",
       "deleteDescription": "Are you sure you want to delete the package {{name}}?",
       "deleteSuccessMessage": "Package deleted",
-      "deleteFailMessage": "Package could not be deleted"
+      "deleteFailMessage": "Package could not be deleted",
+      "editPackage": "Edit Package",
+      "addPackage": "Add Package"
     },
     "allGroups": {
       "title": "All groups",
@@ -81,7 +83,9 @@
       "deleteTitle": "Delete Group",
       "deleteDescription": "Are you sure you want to delete the group {{name}}?",
       "deleteSuccessMessage": "Group deleted",
-      "deleteFailMessage": "Group could not be deleted"
+      "deleteFailMessage": "Group could not be deleted",
+      "editGroup": "Edit Group",
+      "addGroup": "Add Group"
     },
     "allVocabs": {
       "title": "All vocabulary",
@@ -90,7 +94,9 @@
       "deleteTitle": "Delete Vocabulary",
       "deleteDescription": "Are you sure you want to delete the vocabulary {{name}}?",
       "deleteSuccessMessage": "Vocabulary deleted",
-      "deleteFailMessage": "Vocabulary could not be deleted"
+      "deleteFailMessage": "Vocabulary could not be deleted",
+      "editVocab": "Edit Vocabular",
+      "addVocab": "Add Vocabular"
     },
     "addVocab": {
       "title": "Add vocabulary"
