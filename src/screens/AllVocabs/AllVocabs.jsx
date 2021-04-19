@@ -7,15 +7,16 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
-import "./AllVocabs.scss";
+import Button from "../../Components/Button/Button.jsx";
+import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import Modal from "../../Components/Modal/Modal.jsx";
+import Table from "../../Components/Table/Table.jsx";
+import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
 
-import Button from "../../Components/Button/Button";
-import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog";
-import Modal from "../../Components/Modal/Modal";
-import Table from "../../Components/Table/Table";
-import VocabForm from "../../Forms/VocabForm/VocabForm";
-import useSnack from "../../hooks/useSnack";
-import { getGroupVocabulary, deleteVocabulary } from "../../utils/api";
+import useSnack from "../../hooks/useSnack.js";
+import { getGroupVocabulary, deleteVocabulary } from "../../utils/api.js";
+
+import "./AllVocabs.scss";
 
 const AllVocabs = () => {
   const { t } = useTranslation();

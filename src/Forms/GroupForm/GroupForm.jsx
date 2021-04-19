@@ -6,8 +6,8 @@ import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
-import useSnack from "../../hooks/useSnack.jsx";
 
+import useSnack from "../../hooks/useSnack.js";
 import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";

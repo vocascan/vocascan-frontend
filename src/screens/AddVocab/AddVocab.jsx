@@ -1,9 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import "./AddVocab.scss";
+import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
 
-import VocabForm from "../../Forms/VocabForm/VocabForm";
+import "./AddVocab.scss";
 
 const AddVocab = () => {
   const { t } = useTranslation();

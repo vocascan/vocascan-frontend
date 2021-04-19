@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Form/Select/Select.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
-import useSnack from "../../hooks/useSnack.jsx";
 
+import useSnack from "../../hooks/useSnack.js";
 import { createPackage, modifyPackage } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";
 
@@ -21,7 +21,9 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
       ? {
           value: defaultData.foreignWordLanguage,
           label:
-            languages.find((ele) => ele.name === "Deutsch").icon +
+            languages.find(
+              (ele) => ele.name === defaultData.foreignWordLanguage
+            ).icon +
             " " +
             defaultData.foreignWordLanguage,
         }
@@ -32,7 +34,9 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
       ? {
           value: defaultData.translatedWordLanguage,
           label:
-            languages.find((ele) => ele.name === "Deutsch").icon +
+            languages.find(
+              (ele) => ele.name === defaultData.translatedWordLanguage
+            ).icon +
             " " +
             defaultData.translatedWordLanguage,
         }

@@ -12,8 +12,8 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
-import useSnack from "../../hooks/useSnack.jsx";
 
+import useSnack from "../../hooks/useSnack.js";
 import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
 import {
   getPackages,

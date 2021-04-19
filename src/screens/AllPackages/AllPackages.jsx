@@ -6,18 +6,17 @@ import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
+import Button from "../../Components/Button/Button.jsx";
 import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
-import useSnack from "../../hooks/useSnack.jsx";
+import Modal from "../../Components/Modal/Modal.jsx";
+import Table from "../../Components/Table/Table.jsx";
+import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 
+import useSnack from "../../hooks/useSnack.js";
+import { getPackages, deletePackage } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";
 
 import "./AllPackages.scss";
-
-import Button from "../../Components/Button/Button";
-import Modal from "../../Components/Modal/Modal";
-import Table from "../../Components/Table/Table";
-import PackageForm from "../../Forms/PackageForm/PackageForm";
-import { getPackages, deletePackage } from "../../utils/api";
 
 const AllPackages = () => {
   const { t } = useTranslation();
