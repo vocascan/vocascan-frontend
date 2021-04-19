@@ -4,8 +4,10 @@ import { useParams, useHistory } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import Button from "../../Components/Button/Button.jsx";
 import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
@@ -98,6 +100,19 @@ const AllVocabs = () => {
       {
         Header: t("screens.allVocabs.translations"),
         accessor: "translations",
+      },
+      {
+        Header: t("screens.allGroups.active"),
+        accessor: "active",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            {row.original.active ? (
+              <CheckCircleIcon className="text-success" />
+            ) : (
+              <RemoveCircleIcon className="text-error" />
+            )}
+          </div>
+        ),
       },
       {
         Header: "",

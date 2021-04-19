@@ -25,6 +25,10 @@ const GroupForm = ({
   const dispatch = useDispatch();
   const active = useSelector((state) => state.form.group.active);
 
+  const [localActive, setLocalActive] = useState(
+    defaultData ? defaultData.active : active
+  );
+
   const [name, setName] = useState(defaultData ? defaultData.name : "");
   const [languagePackage, setLanguagePackage] = useState(selectedPackage);
   const [canSubmit, setCanSubmit] = useState(false);
@@ -44,7 +48,7 @@ const GroupForm = ({
   const submitHandler = useCallback(async () => {
     const newGroup = {
       name,
-      active,
+      active: localActive,
     };
 
     if (defaultData?.id) {
@@ -73,6 +77,7 @@ const GroupForm = ({
     createGroup(languagePackage.id || languagePackage.value, newGroup)
       .then(({ data }) => {
         onSubmitCallback && onSubmitCallback(data);
+        dispatch(setGroupActive({ active: localActive }));
         showSnack("success", t("components.groupForm.saveGroupSuccessMessage"));
       })
       .catch((error) => {
@@ -82,10 +87,11 @@ const GroupForm = ({
         }
       });
   }, [
-    active,
     defaultData?.id,
-    languagePackage.id,
-    languagePackage.value,
+    dispatch,
+    languagePackage?.id,
+    languagePackage?.value,
+    localActive,
     name,
     onSubmitCallback,
     showSnack,
@@ -93,14 +99,8 @@ const GroupForm = ({
   ]);
 
   const onChangeActive = useCallback(() => {
-    dispatch(setGroupActive({ active: !active }));
-  }, [dispatch, active]);
-
-  useEffect(() => {
-    if (defaultData) {
-      dispatch(setGroupActive({ active: defaultData.active }));
-    }
-  }, [defaultData, dispatch]);
+    setLocalActive((act) => !act);
+  }, []);
 
   useEffect(() => {
     setCanSubmit(!(!name || !languagePackage));
@@ -161,7 +161,7 @@ const GroupForm = ({
           appearance="on-off"
           optionLeft={t("components.groupForm.activeLabel")}
           onChange={onChangeActive}
-          checked={active}
+          checked={localActive}
         />
       </div>
 
