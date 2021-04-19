@@ -58,7 +58,9 @@
       "modifyErrorMessage": "Cocabulary could not be saved",
       "saveGroupSuccessMessage": "New group added",
       "activeLabel": "Active",
-      "activateLabel": "Activate"
+      "activeTooltip": "Decides whether vocabulary is included in the query",
+      "activateLabel": "Activate",
+      "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query"
     }
   },
   "screens": {

@@ -358,7 +358,7 @@ const VocabForm = ({
         <Switch
           appearance="on-off"
           optionLeft={t("components.vocabForm.activeLabel")}
-          infoLeft="Test information"
+          infoLeft={t("components.vocabForm.activeTooltip")}
           onChange={onChangeActive}
           checked={localActive}
         />
@@ -366,7 +366,7 @@ const VocabForm = ({
           <Switch
             appearance="on-off"
             optionLeft={t("components.vocabForm.activateLabel")}
-            infoLeft="Test information w"
+            infoLeft={t("components.vocabForm.activateTooltip")}
             onChange={onChangeActivate}
             checked={localActivate}
           />
