@@ -362,13 +362,15 @@ const VocabForm = ({
           onChange={onChangeActive}
           checked={localActive}
         />
-        <Switch
-          appearance="on-off"
-          optionLeft={t("components.vocabForm.activateLabel")}
-          infoLeft="Test information w"
-          onChange={onChangeActivate}
-          checked={localActivate}
-        />
+        {!defaultData && (
+          <Switch
+            appearance="on-off"
+            optionLeft={t("components.vocabForm.activateLabel")}
+            infoLeft="Test information w"
+            onChange={onChangeActivate}
+            checked={localActivate}
+          />
+        )}
       </div>
 
       <div className="form-submit">
