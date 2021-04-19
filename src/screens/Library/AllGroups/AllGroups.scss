@@ -1,8 +1,6 @@
-@import "../../colors";
+@import "../../../colors";
 
-.all-packages-wrapper {
-  padding: 50px;
-
+.all-groups-wrapper {
   .header-wrapper {
     position: relative;
     display: flex;
@@ -13,7 +11,9 @@
     .back {
       position: absolute;
       left: 0;
-      top: 0;
+      align-self: center;
+      padding: 5px;
+      border-radius: 100%;
 
       &:hover {
         cursor: pointer;
@@ -27,6 +27,11 @@
       align-self: center;
       padding: 5px;
       border-radius: 100%;
+
+      &:hover {
+        cursor: pointer;
+        color: $color-primary-dark;
+      }
     }
   }
 }

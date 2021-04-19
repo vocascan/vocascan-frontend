@@ -133,7 +133,7 @@ const AllGroups = () => {
         Cell: ({ row }) => (
           <Link
             className="text-normal"
-            to={`/allVocabs/${packageId}/${row.original.id}`}
+            to={`/library/allVocabs/${packageId}/${row.original.id}`}
           >
             {row.original.name}
           </Link>
@@ -191,7 +191,7 @@ const AllGroups = () => {
           >
             <ArrowBackIcon />
           </Button>
-          <h1 className="heading">{t("screens.allGroups.title")}</h1>
+          <h2 className="heading">{t("screens.allGroups.title")}</h2>
           <Button className="add" variant="transparent">
             <AddCircleOutlinedIcon onClick={addGroup} />
           </Button>

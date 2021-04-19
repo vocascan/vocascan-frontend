@@ -151,7 +151,7 @@ const AllVocabs = () => {
           >
             <ArrowBackIcon />
           </Button>
-          <h1 className="heading">{t("screens.allVocabs.title")}</h1>
+          <h2 className="heading">{t("screens.allVocabs.title")}</h2>
           <Button className="add" variant="transparent">
             <AddCircleOutlinedIcon onClick={addVocab} />
           </Button>

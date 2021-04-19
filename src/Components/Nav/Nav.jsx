@@ -46,29 +46,29 @@ const Nav = () => {
     <div className={navLayoutClasses}>
       <ul className="button-list">
         <NavButton
-          name={t("nav.newVocab")}
+          name={t("nav.learn")}
+          design={menuStyle}
+          icon={<LocalLibraryIcon />}
+          link="/"
           exact
+        />
+        <NavButton
+          name={t("nav.newVocab")}
           design={menuStyle}
           icon={<AddIcon />}
           link="/addVocab"
         />
         <NavButton
-          name={t("nav.learn")}
+          name={t("nav.allVocabulary")}
           design={menuStyle}
-          icon={<LocalLibraryIcon />}
-          link="/learn"
+          icon={<LibraryBooksIcon />}
+          link="/library"
         />
         <NavButton
           name={t("nav.progress")}
           design={menuStyle}
           icon={<BarChartIcon />}
           link="/progress"
-        />
-        <NavButton
-          name={t("nav.allVocabulary")}
-          design={menuStyle}
-          icon={<LibraryBooksIcon />}
-          link="/allPackages"
         />
         <NavButton
           name={t("nav.groupLearning")}
