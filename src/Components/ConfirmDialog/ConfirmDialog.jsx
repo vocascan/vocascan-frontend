@@ -14,6 +14,9 @@ const ConfirmDialog = ({
   cancelText,
   onClose = null,
   show = false,
+  canSubmit = true,
+  showAbortButton = true,
+  children,
 }) => {
   const [t] = useTranslation();
 
@@ -22,12 +25,20 @@ const ConfirmDialog = ({
       <div className="submit-dialog">
         <div className="description">
           <span>{description}</span>
+          {children}
         </div>
         <div className="actions">
-          <Button onClick={onClose} appearance="primary">
-            {cancelText || t("global.abort")}
-          </Button>
-          <Button onClick={onSubmit} appearance="red">
+          {showAbortButton && (
+            <Button onClick={onClose} appearance="primary">
+              {cancelText || t("global.abort")}
+            </Button>
+          )}
+          <Button
+            disabled={!canSubmit}
+            onClick={onSubmit}
+            appearance="red"
+            block={!showAbortButton}
+          >
             {submitText || t("global.delete")}
           </Button>
         </div>

@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 
 import PersonIcon from "@material-ui/icons/Person";
 
 import Button from "../../Components/Button/Button.jsx";
+import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import StatsTable from "../../Components/StatsTable/StatsTable.jsx";
@@ -51,17 +52,19 @@ const Profile = () => {
     setShowDeleteAccountModal(false);
   }, []);
 
-  const checkDeleteConfirmation = (value) => {
-    if (value === username) {
-      setCanSubmitDelete(true);
-    } else {
-      setCanSubmitDelete(false);
-    }
-  };
-
-  const handleLogout = useCallback(() => {
-    dispatch(signOut());
+  const onDelete = useCallback(async () => {
+    deleteUser()
+      .then((response) => {
+        dispatch(signOut());
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }, [dispatch]);
+
+  useEffect(() => {
+    setCanSubmitDelete(deleteConfirmation === username);
+  }, [deleteConfirmation, username]);
 
   return (
     <>
@@ -134,35 +137,24 @@ const Profile = () => {
       >
         <h1 style={{ margin: "auto" }}>Hello World</h1>
       </Modal>
-      <Modal
+
+      <ConfirmDialog
         title={t("screens.profile.modals.deleteAccount.heading")}
-        open={showDeleteAccountModal}
+        onSubmit={onDelete}
         onClose={closeDeleteAccountModal}
+        show={showDeleteAccountModal}
+        canSubmit={canSubmitDelete}
+        showAbortButton={false}
       >
-        <div className="deletion-modal">
-          <TextInput
-            required
-            placeholder={t("screens.profile.modals.deleteAccount.input")}
-            onChange={(value) => {
-              setDeleteConfirmation(value);
-              checkDeleteConfirmation(value);
-            }}
-            value={deleteConfirmation}
-          />
-          <Button
-            block
-            uppercase
-            appearance={"red"}
-            onClick={() => {
-              deleteUser();
-              handleLogout();
-            }}
-            disabled={!canSubmitDelete}
-          >
-            {t("global.delete")}
-          </Button>
-        </div>
-      </Modal>
+        <TextInput
+          required
+          placeholder={t("screens.profile.modals.deleteAccount.input")}
+          onChange={(value) => {
+            setDeleteConfirmation(value);
+          }}
+          value={deleteConfirmation}
+        />
+      </ConfirmDialog>
     </>
   );
 };
