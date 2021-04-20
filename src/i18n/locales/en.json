@@ -138,7 +138,7 @@
         },
         "deleteAccount": {
           "heading": "Delete Account",
-          "input": "Type 'delete' to confirm deletion"
+          "input": "Type in your username to confirm deletion"
         }
       }
     },

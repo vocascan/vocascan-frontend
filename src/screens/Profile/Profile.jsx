@@ -56,7 +56,7 @@ const Profile = () => {
 
   useEffect(() => {
     getProfileStats();
-  });
+  }, []);
 
   //make api call to login
   const getProfileStats = useCallback(() => {
@@ -76,7 +76,7 @@ const Profile = () => {
   }, []);
 
   const checkDeleteConfirmation = (value) => {
-    if (value === "delete") {
+    if (value === username) {
       setCanSubmitDelete(true);
     } else {
       setCanSubmitDelete(false);
