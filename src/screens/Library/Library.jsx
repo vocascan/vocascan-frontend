@@ -2,9 +2,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Route, Switch, useRouteMatch } from "react-router";
 
-import AllGroups from "../AllGroups/AllGroups.jsx";
-import AllVocabs from "../AllVocabs/AllVocabs.jsx";
+import AllGroups from "./AllGroups/AllGroups.jsx";
 import AllPackages from "./AllPackages/AllPackages.jsx";
+import AllVocabs from "./AllVocabs/AllVocabs.jsx";
 
 import "./Library.scss";
 

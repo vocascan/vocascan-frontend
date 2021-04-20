@@ -9,16 +9,16 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
-import Button from "../../Components/Button/Button.jsx";
-import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
-import { CustomPackageSelectOption } from "../../Components/Form/Select/Select.jsx";
-import Modal from "../../Components/Modal/Modal.jsx";
-import Table from "../../Components/Table/Table.jsx";
-import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
+import Button from "../../../Components/Button/Button.jsx";
+import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import { CustomPackageSelectOption } from "../../../Components/Form/Select/Select.jsx";
+import Modal from "../../../Components/Modal/Modal.jsx";
+import Table from "../../../Components/Table/Table.jsx";
+import GroupForm from "../../../Forms/GroupForm/GroupForm.jsx";
 
-import useSnack from "../../hooks/useSnack.js";
-import { getGroups, getPackages, deleteGroup } from "../../utils/api.js";
-import { languages } from "../../utils/constants.js";
+import useSnack from "../../../hooks/useSnack.js";
+import { getGroups, getPackages, deleteGroup } from "../../../utils/api.js";
+import { languages } from "../../../utils/constants.js";
 
 import "./AllGroups.scss";
 
