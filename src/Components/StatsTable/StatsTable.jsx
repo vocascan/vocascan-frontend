@@ -32,8 +32,7 @@ const StatsTable = () => {
 
         showSnack("error", "Internal Server Error");
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [showSnack]);
 
   const columns = React.useMemo(
     () => [
