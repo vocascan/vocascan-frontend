@@ -7,14 +7,13 @@ import PersonIcon from "@material-ui/icons/Person";
 import Button from "../../Components/Button/Button.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
+import Table from "../../Components/Table/Table.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 import { signOut } from "../../redux/Actions/login.js";
 import { getStats, deleteUser } from "../../utils/api.js";
 
 import "./Profile.scss";
-
-import Table from "../../Components/Table/Table";
 
 const Profile = () => {
   const { t } = useTranslation();
@@ -60,7 +59,7 @@ const Profile = () => {
   });
 
   //make api call to login
-  const getProfileStats = () => {
+  const getProfileStats = useCallback(() => {
     getStats()
       .then((response) => {
         //store stats in variables
@@ -74,7 +73,7 @@ const Profile = () => {
 
         showSnack("error", "Internal Server Error");
       });
-  };
+  }, []);
 
   const checkDeleteConfirmation = (value) => {
     if (value === "delete") {
