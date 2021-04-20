@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -7,21 +7,18 @@ import PersonIcon from "@material-ui/icons/Person";
 import Button from "../../Components/Button/Button.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
-import Table from "../../Components/Table/Table.jsx";
+import StatsTable from "../../Components/StatsTable/StatsTable.jsx";
 
-import useSnack from "../../hooks/useSnack.js";
 import { signOut } from "../../redux/Actions/login.js";
-import { getStats, deleteUser } from "../../utils/api.js";
+import { deleteUser } from "../../utils/api.js";
 
 import "./Profile.scss";
 
 const Profile = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { showSnack } = useSnack();
 
   const username = useSelector((state) => state.login.user.username);
-  const [stats, setStats] = useState({});
 
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showEmailModal, setShowEmailModal] = useState(false);
@@ -54,27 +51,6 @@ const Profile = () => {
     setShowDeleteAccountModal(false);
   }, []);
 
-  useEffect(() => {
-    getProfileStats();
-  }, []);
-
-  //make api call to login
-  const getProfileStats = useCallback(() => {
-    getStats()
-      .then((response) => {
-        //store stats in variables
-        setStats(response.data);
-      })
-      .catch((event) => {
-        if (event.response?.status === 401 || event.response?.status === 404) {
-          showSnack("error", "Error fetching stats");
-          return;
-        }
-
-        showSnack("error", "Internal Server Error");
-      });
-  }, []);
-
   const checkDeleteConfirmation = (value) => {
     if (value === username) {
       setCanSubmitDelete(true);
@@ -87,59 +63,6 @@ const Profile = () => {
     dispatch(signOut());
   }, [dispatch]);
 
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: t("screens.profile.stats.stats"),
-        accessor: "stats", // accessor is the "key" in the data
-      },
-      {
-        Header: t("global.packages"),
-        accessor: "packages",
-      },
-      {
-        Header: t("global.groups"),
-        accessor: "groups",
-      },
-      {
-        Header: t("global.vocabs"),
-        accessor: "vocabs",
-      },
-    ],
-    [t]
-  );
-
-  const data = React.useMemo(
-    () => [
-      {
-        stats: t("screens.profile.stats.total"),
-        packages: stats.languagePackages || "-",
-        groups: stats.inactiveGroups + stats.activeGroups || "-",
-        vocabs: stats.inactiveVocabulary + stats.activeVocabulary || "-",
-      },
-      {
-        stats: t("screens.profile.stats.active"),
-        packages: "-",
-        groups: stats.activeGroups || "-",
-        vocabs: stats.activeVocabulary || "-",
-      },
-      {
-        stats: t("screens.profile.stats.inactive"),
-        packages: "-",
-        groups: stats.inactiveGroups || "-",
-        vocabs: stats.inactiveVocabulary || "-",
-      },
-    ],
-    [
-      stats.activeGroups,
-      stats.activeVocabulary,
-      stats.inactiveGroups,
-      stats.inactiveVocabulary,
-      stats.languagePackages,
-      t,
-    ]
-  );
-
   return (
     <>
       <div className="profile-screen">
@@ -147,7 +70,7 @@ const Profile = () => {
           <PersonIcon className="profile-avatar" />
         </div>
         <h1 className="profile-username">{username}</h1>
-        <Table columns={columns} data={data} pagination={false} />
+        <StatsTable />
         <h1 className="account-settings-header">
           {t("screens.profile.accountSettings.title")}
         </h1>
