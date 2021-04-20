@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 
 import Modal from "../../Components/Modal/Modal.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
-import useSnack from "../../hooks/useSnack.jsx";
+
+import useSnack from "../../hooks/useSnack.js";
 
 import "./FirstStartup.scss";
 

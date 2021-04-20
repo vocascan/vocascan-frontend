@@ -3,12 +3,19 @@ import { NavLink } from "react-router-dom";
 
 import "./NavButton.scss";
 
-const NavButton = ({ name, design = "default", link, icon = null }) => {
+const NavButton = ({
+  name,
+  design = "default",
+  link,
+  icon = null,
+  exact = false,
+}) => {
   return (
     <NavLink
       to={link}
       activeClassName="nav-button-active"
       className="nav-button-wrapper"
+      exact={exact}
     >
       <button className={`nav-button nav-button-${design}`}>
         {icon ? <span className="button-icon">{icon}</span> : null}

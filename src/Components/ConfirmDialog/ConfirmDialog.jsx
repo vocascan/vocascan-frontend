@@ -1,10 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import "./ConfirmDialog.scss";
+import Button from "../Button/Button.jsx";
+import Modal from "../Modal/Modal.jsx";
 
-import Button from "../Button/Button";
-import Modal from "../Modal/Modal";
+import "./ConfirmDialog.scss";
 
 const ConfirmDialog = ({
   title = null,
@@ -25,10 +25,10 @@ const ConfirmDialog = ({
         </div>
         <div className="actions">
           <Button onClick={onClose} appearance="primary">
-            {cancelText ? cancelText : t("global.abort")}
+            {cancelText || t("global.abort")}
           </Button>
           <Button onClick={onSubmit} appearance="red">
-            {submitText ? submitText : t("global.delete")}
+            {submitText || t("global.delete")}
           </Button>
         </div>
       </div>

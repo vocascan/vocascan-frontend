@@ -21,6 +21,7 @@
     "foreignWord": "Foreign word",
     "translation": "Translation",
     "LogIn": "Log in",
+    "library": "Library",
     "package": "Package",
     "packages": "Packages",
     "vocabs": "Vocabs",
@@ -61,7 +62,9 @@
       "modifyErrorMessage": "Cocabulary could not be saved",
       "saveGroupSuccessMessage": "New group added",
       "activeLabel": "Active",
-      "activateLabel": "Activate"
+      "activeTooltip": "Decides whether vocabulary is included in the query",
+      "activateLabel": "Activate",
+      "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query"
     }
   },
   "screens": {
@@ -75,7 +78,9 @@
       "deleteTitle": "Delete Package",
       "deleteDescription": "Are you sure you want to delete the package {{name}}?",
       "deleteSuccessMessage": "Package deleted",
-      "deleteFailMessage": "Package could not be deleted"
+      "deleteFailMessage": "Package could not be deleted",
+      "editPackage": "Edit Package",
+      "addPackage": "Add Package"
     },
     "allGroups": {
       "title": "All groups",
@@ -84,7 +89,9 @@
       "deleteTitle": "Delete Group",
       "deleteDescription": "Are you sure you want to delete the group {{name}}?",
       "deleteSuccessMessage": "Group deleted",
-      "deleteFailMessage": "Group could not be deleted"
+      "deleteFailMessage": "Group could not be deleted",
+      "editGroup": "Edit Group",
+      "addGroup": "Add Group"
     },
     "allVocabs": {
       "title": "All vocabulary",
@@ -93,7 +100,9 @@
       "deleteTitle": "Delete Vocabulary",
       "deleteDescription": "Are you sure you want to delete the vocabulary {{name}}?",
       "deleteSuccessMessage": "Vocabulary deleted",
-      "deleteFailMessage": "Vocabulary could not be deleted"
+      "deleteFailMessage": "Vocabulary could not be deleted",
+      "editVocab": "Edit Vocabular",
+      "addVocab": "Add Vocabular"
     },
     "addVocab": {
       "title": "Add vocabulary"
@@ -181,7 +190,7 @@
     "newVocab": "New Vocab",
     "learn": "Learn",
     "progress": "Progress",
-    "allVocabulary": "All vocabulary",
+    "allVocabulary": "Library",
     "groupLearning": "Group learning",
     "settings": "Settings",
     "profile": "Profile",

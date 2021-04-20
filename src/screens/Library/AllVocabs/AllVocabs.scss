@@ -1,8 +1,6 @@
-@import "../../colors";
+@import "../../../colors";
 
 .all-vocabs-wrapper {
-  padding: 50px;
-
   .header-wrapper {
     position: relative;
     display: flex;
@@ -14,6 +12,21 @@
       position: absolute;
       left: 0;
       align-self: center;
+      padding: 5px;
+      border-radius: 100%;
+
+      &:hover {
+        cursor: pointer;
+        color: $color-primary-dark;
+      }
+    }
+
+    .add {
+      position: absolute;
+      right: 0;
+      align-self: center;
+      padding: 5px;
+      border-radius: 100%;
 
       &:hover {
         cursor: pointer;

@@ -2,21 +2,21 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
-import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
-import useSnack from "../../hooks/useSnack.jsx";
+import Button from "../../../Components/Button/Button.jsx";
+import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import Modal from "../../../Components/Modal/Modal.jsx";
+import Table from "../../../Components/Table/Table.jsx";
+import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
-import { languages } from "../../utils/constants.js";
+import useSnack from "../../../hooks/useSnack.js";
+import { getPackages, deletePackage } from "../../../utils/api.js";
+import { languages } from "../../../utils/constants.js";
 
 import "./AllPackages.scss";
-
-import Button from "../../Components/Button/Button";
-import Modal from "../../Components/Modal/Modal";
-import Table from "../../Components/Table/Table";
-import PackageForm from "../../Forms/PackageForm/PackageForm";
-import { getPackages, deletePackage } from "../../utils/api";
 
 const AllPackages = () => {
   const { t } = useTranslation();
@@ -32,6 +32,11 @@ const AllPackages = () => {
 
   const editPackage = useCallback((pack) => {
     setCurrentPackage(pack);
+    setShowPackageModal(true);
+  }, []);
+
+  const addPackage = useCallback(() => {
+    setCurrentPackage(null);
     setShowPackageModal(true);
   }, []);
 
@@ -70,7 +75,10 @@ const AllPackages = () => {
         Header: t("screens.allPackages.packageName"),
         accessor: "name",
         Cell: ({ row }) => (
-          <Link className="text-normal" to={`/allGroups/${row.original.id}`}>
+          <Link
+            className="text-normal"
+            to={`/library/allGroups/${row.original.id}`}
+          >
             {row.original.name}
           </Link>
         ),
@@ -145,7 +153,10 @@ const AllPackages = () => {
     <>
       <div className="all-packages-wrapper">
         <div className="header-wrapper">
-          <h1 className="heading">{t("screens.allPackages.title")}</h1>
+          <h2 className="heading">{t("screens.allPackages.title")}</h2>
+          <Button className="add" variant="transparent">
+            <AddCircleOutlinedIcon onClick={addPackage} />
+          </Button>
         </div>
         <div>
           <Table columns={columns} data={data} />
@@ -153,7 +164,11 @@ const AllPackages = () => {
       </div>
 
       <Modal
-        title={"Edit Package"}
+        title={
+          currentPackage
+            ? t("screens.allPackages.editPackage")
+            : t("screens.allPackages.addPackage")
+        }
         open={showPackageModal}
         onClose={() => setShowPackageModal(false)}
       >

@@ -2,19 +2,23 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, useHistory } from "react-router-dom";
 
+import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+
+import Button from "../../Components/Button/Button.jsx";
+import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import Modal from "../../Components/Modal/Modal.jsx";
+import Table from "../../Components/Table/Table.jsx";
+import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
+
+import useSnack from "../../hooks/useSnack.js";
+import { getGroupVocabulary, deleteVocabulary } from "../../utils/api.js";
 
 import "./AllVocabs.scss";
-
-import Button from "../../Components/Button/Button";
-import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog";
-import Modal from "../../Components/Modal/Modal";
-import Table from "../../Components/Table/Table";
-import VocabForm from "../../Forms/VocabForm/VocabForm";
-import useSnack from "../../hooks/useSnack";
-import { getGroupVocabulary, deleteVocabulary } from "../../utils/api";
 
 const AllVocabs = () => {
   const { t } = useTranslation();
@@ -45,6 +49,11 @@ const AllVocabs = () => {
 
   const editVocab = useCallback((voc) => {
     setCurrentVocab(voc);
+    setShowVocabModal(true);
+  }, []);
+
+  const addVocab = useCallback(() => {
+    setCurrentVocab(null);
     setShowVocabModal(true);
   }, []);
 
@@ -93,6 +102,19 @@ const AllVocabs = () => {
         accessor: "translations",
       },
       {
+        Header: t("screens.allGroups.active"),
+        accessor: "active",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            {row.original.active ? (
+              <CheckCircleIcon className="text-success" />
+            ) : (
+              <RemoveCircleIcon className="text-error" />
+            )}
+          </div>
+        ),
+      },
+      {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (
@@ -122,8 +144,17 @@ const AllVocabs = () => {
     <>
       <div className="all-vocabs-wrapper">
         <div className="header-wrapper">
-          <ArrowBackIcon className="back" onClick={history.goBack} />
-          <h1 className="heading">{t("screens.allVocabs.title")}</h1>
+          <Button
+            className="back"
+            variant="transparent"
+            onClick={history.goBack}
+          >
+            <ArrowBackIcon />
+          </Button>
+          <h2 className="heading">{t("screens.allVocabs.title")}</h2>
+          <Button className="add" variant="transparent">
+            <AddCircleOutlinedIcon onClick={addVocab} />
+          </Button>
         </div>
         <div>
           <Table columns={columns} data={data} />
@@ -131,7 +162,11 @@ const AllVocabs = () => {
       </div>
 
       <Modal
-        title={"Edit Vocabular"}
+        title={
+          currentVocab
+            ? t("screens.allVocabs.editVocab")
+            : t("screens.allVocabs.addVocab")
+        }
         open={showVocabModal}
         onClose={() => setShowVocabModal(false)}
         size="xl"

@@ -2,9 +2,9 @@ import React from "react";
 
 import InfoIcon from "@material-ui/icons/Info";
 
-import "./Switch.scss";
+import Tooltip from "../../Tooltip/Tooltip.jsx";
 
-import Tooltip from "../../Tooltip/Tooltip";
+import "./Switch.scss";
 
 const Switch = ({
   disabled = false,

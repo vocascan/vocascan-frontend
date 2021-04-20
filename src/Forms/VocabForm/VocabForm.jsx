@@ -12,8 +12,8 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
-import useSnack from "../../hooks/useSnack.jsx";
 
+import useSnack from "../../hooks/useSnack.js";
 import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
 import {
   getPackages,
@@ -35,6 +35,13 @@ const VocabForm = ({
 
   const active = useSelector((state) => state.form.vocab.active);
   const activate = useSelector((state) => state.form.vocab.activate);
+
+  const [localActive, setLocalActive] = useState(
+    defaultData ? defaultData.active : active
+  );
+  const [localActivate, setLocalActivate] = useState(
+    defaultData ? defaultData.activate : activate
+  );
 
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
@@ -65,12 +72,12 @@ const VocabForm = ({
   const [showAddGroup, setShowAddGroup] = useState(false);
 
   const onChangeActive = useCallback(() => {
-    dispatch(setVocabActive({ active: !active }));
-  }, [dispatch, active]);
+    setLocalActive((act) => !act);
+  }, []);
 
   const onChangeActivate = useCallback(() => {
-    dispatch(setVocabActivate({ activate: !activate }));
-  }, [dispatch, activate]);
+    setLocalActivate((acte) => !acte);
+  }, []);
 
   const fetchPackages = useCallback(() => {
     getPackages(true)
@@ -132,7 +139,7 @@ const VocabForm = ({
     const dataToSubmit = {
       name: foreignWord,
       translations: submitTranslations,
-      active,
+      active: localActive,
       description,
     };
 
@@ -156,10 +163,12 @@ const VocabForm = ({
       selectedPackage.value,
       selectedGroup.value,
       dataToSubmit,
-      activate
+      localActivate
     )
       .then((response) => {
         onClear();
+        dispatch(setVocabActive({ active: localActive }));
+        dispatch(setVocabActivate({ activate: localActivate }));
         showSnack("success", t("components.vocabForm.saveSuccessMessage"));
         onSubmitCallback && onSubmitCallback();
       })
@@ -167,18 +176,19 @@ const VocabForm = ({
         showSnack("error", t("components.vocabForm.saveErrorMessage"));
       });
   }, [
-    activate,
-    active,
-    defaultData,
-    description,
-    onSubmitCallback,
-    selectedGroup,
-    selectedPackage,
-    foreignWord,
     translations,
+    foreignWord,
+    localActive,
+    description,
+    defaultData?.id,
+    selectedPackage?.value,
+    selectedGroup?.value,
+    localActivate,
     onClear,
     showSnack,
     t,
+    onSubmitCallback,
+    dispatch,
   ]);
 
   useEffect(() => {
@@ -348,17 +358,19 @@ const VocabForm = ({
         <Switch
           appearance="on-off"
           optionLeft={t("components.vocabForm.activeLabel")}
-          infoLeft="Test information"
+          infoLeft={t("components.vocabForm.activeTooltip")}
           onChange={onChangeActive}
-          checked={active}
+          checked={localActive}
         />
-        <Switch
-          appearance="on-off"
-          optionLeft={t("components.vocabForm.activateLabel")}
-          infoLeft="Test information w"
-          onChange={onChangeActivate}
-          checked={activate}
-        />
+        {!defaultData && (
+          <Switch
+            appearance="on-off"
+            optionLeft={t("components.vocabForm.activateLabel")}
+            infoLeft={t("components.vocabForm.activateTooltip")}
+            onChange={onChangeActivate}
+            checked={localActivate}
+          />
+        )}
       </div>
 
       <div className="form-submit">

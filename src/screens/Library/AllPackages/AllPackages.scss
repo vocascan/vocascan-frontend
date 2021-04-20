@@ -1,8 +1,6 @@
-@import "../../colors";
+@import "../../../colors";
 
 .all-packages-wrapper {
-  padding: 50px;
-
   .header-wrapper {
     position: relative;
     display: flex;
@@ -19,6 +17,14 @@
         cursor: pointer;
         color: $color-primary-dark;
       }
+    }
+
+    .add {
+      position: absolute;
+      right: 0;
+      align-self: center;
+      padding: 5px;
+      border-radius: 100%;
     }
   }
 }

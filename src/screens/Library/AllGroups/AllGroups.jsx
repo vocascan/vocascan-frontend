@@ -2,23 +2,25 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams, useHistory } from "react-router-dom";
 
+import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
-import "./AllGroups.scss";
+import Button from "../../Components/Button/Button.jsx";
+import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import { CustomPackageSelectOption } from "../../Components/Form/Select/Select.jsx";
+import Modal from "../../Components/Modal/Modal.jsx";
+import Table from "../../Components/Table/Table.jsx";
+import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 
-import Button from "../../Components/Button/Button";
-import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog";
-import { CustomPackageSelectOption } from "../../Components/Form/Select/Select";
-import Modal from "../../Components/Modal/Modal";
-import Table from "../../Components/Table/Table";
-import GroupForm from "../../Forms/GroupForm/GroupForm";
-import useSnack from "../../hooks/useSnack";
-import { getGroups, getPackages, deleteGroup } from "../../utils/api";
-import { languages } from "../../utils/constants";
+import useSnack from "../../hooks/useSnack.js";
+import { getGroups, getPackages, deleteGroup } from "../../utils/api.js";
+import { languages } from "../../utils/constants.js";
+
+import "./AllGroups.scss";
 
 const AllGroups = () => {
   const { t } = useTranslation();
@@ -66,6 +68,34 @@ const AllGroups = () => {
     [packageId]
   );
 
+  const addGroup = useCallback(() => {
+    getPackages()
+      .then(({ data }) => {
+        const currPack = data.find((ele) => ele.id === packageId);
+
+        const foreignIcon = languages.find(
+          (x) => x.name === currPack.foreignWordLanguage
+        ).icon;
+        const translatedIcon = languages.find(
+          (x) => x.name === currPack.translatedWordLanguage
+        ).icon;
+
+        setCurrentPackage({
+          value: currPack.id,
+          label: (
+            <CustomPackageSelectOption
+              name={currPack.name}
+              postfix={foreignIcon + " - " + translatedIcon}
+            />
+          ),
+        });
+      })
+      .then(() => {
+        setCurrentGroup(null);
+        setShowGroupModal(true);
+      });
+  }, [packageId]);
+
   const groupSubmitted = useCallback(() => {
     getGroups(packageId).then((response) => {
       setShowGroupModal(false);
@@ -103,7 +133,7 @@ const AllGroups = () => {
         Cell: ({ row }) => (
           <Link
             className="text-normal"
-            to={`/allVocabs/${packageId}/${row.original.id}`}
+            to={`/library/allVocabs/${packageId}/${row.original.id}`}
           >
             {row.original.name}
           </Link>
@@ -154,8 +184,17 @@ const AllGroups = () => {
     <>
       <div className="all-groups-wrapper">
         <div className="header-wrapper">
-          <ArrowBackIcon className="back" onClick={history.goBack} />
-          <h1 className="heading">{t("screens.allGroups.title")}</h1>
+          <Button
+            className="back"
+            variant="transparent"
+            onClick={history.goBack}
+          >
+            <ArrowBackIcon />
+          </Button>
+          <h2 className="heading">{t("screens.allGroups.title")}</h2>
+          <Button className="add" variant="transparent">
+            <AddCircleOutlinedIcon onClick={addGroup} />
+          </Button>
         </div>
         <div>
           <Table columns={columns} data={data} />
@@ -163,7 +202,11 @@ const AllGroups = () => {
       </div>
 
       <Modal
-        title={"Edit Group"}
+        title={
+          currentGroup
+            ? t("screens.allGroups.editGroup")
+            : t("screens.allGroups.addGroup")
+        }
         open={showGroupModal}
         onClose={() => setShowGroupModal(false)}
       >

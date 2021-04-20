@@ -8,11 +8,11 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
+import Button from "../Button/Button.jsx";
+
 import { setTablePageSize } from "../../redux/Actions/table.js";
 
 import "./Table.scss";
-
-import Button from "../Button/Button";
 
 const Table = ({
   columns,
