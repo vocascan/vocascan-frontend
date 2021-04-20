@@ -5,24 +5,54 @@ import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Form/Select/Select.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
-import { createPackage } from "../../utils/api.js";
+import useSnack from "../../hooks/useSnack.js";
+import { createPackage, modifyPackage } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";
 
 import "./PackageForm.scss";
 
-const PackageForm = ({ onSubmitCallback = null }) => {
+const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
   const { t } = useTranslation();
+  const { showSnack } = useSnack();
 
-  const [name, setName] = useState("");
-  const [foreignLanguage, setForeignLanguage] = useState("");
-  const [translatedLanguage, setTranslatedLanguage] = useState("");
-  const [vocabsPerDay, setVocabsPerDay] = useState(100);
-  const [rightTranslations, setRightTranslations] = useState(2);
+  const [name, setName] = useState(defaultData ? defaultData.name : "");
+  const [foreignLanguage, setForeignLanguage] = useState(
+    defaultData
+      ? {
+          value: defaultData.foreignWordLanguage,
+          label:
+            languages.find(
+              (ele) => ele.name === defaultData.foreignWordLanguage
+            ).icon +
+            " " +
+            defaultData.foreignWordLanguage,
+        }
+      : ""
+  );
+  const [translatedLanguage, setTranslatedLanguage] = useState(
+    defaultData
+      ? {
+          value: defaultData.translatedWordLanguage,
+          label:
+            languages.find(
+              (ele) => ele.name === defaultData.translatedWordLanguage
+            ).icon +
+            " " +
+            defaultData.translatedWordLanguage,
+        }
+      : ""
+  );
+  const [vocabsPerDay, setVocabsPerDay] = useState(
+    defaultData ? defaultData.vocabsPerDay : 100
+  );
+  const [rightTranslations, setRightTranslations] = useState(
+    defaultData ? defaultData.rightWords : 2
+  );
   const [canSubmit, setCanSubmit] = useState(false);
 
   //make api call to add vocab package
   const submitHandler = useCallback(async () => {
-    const newPackage = {
+    const packageToSave = {
       name: name,
       foreignWordLanguage: foreignLanguage.value,
       translatedWordLanguage: translatedLanguage.value,
@@ -30,20 +60,55 @@ const PackageForm = ({ onSubmitCallback = null }) => {
       rightWords: rightTranslations,
     };
 
-    createPackage(newPackage)
+    if (defaultData?.id) {
+      packageToSave.id = defaultData.id;
+
+      modifyPackage(packageToSave)
+        .then(({ data }) => {
+          onSubmitCallback && onSubmitCallback(data);
+          showSnack(
+            "success",
+            t("components.packageForm.modifyPackageSuccessMessage")
+          );
+        })
+        .catch((error) => {
+          if (error?.response?.status === 401) {
+            console.log("jwt expired");
+            showSnack(
+              "error",
+              t("components.packageForm.modifyPackageFailedMessage")
+            );
+          }
+        });
+
+      return;
+    }
+
+    createPackage(packageToSave)
       .then(({ data }) => {
         onSubmitCallback && onSubmitCallback(data);
+        showSnack(
+          "success",
+          t("components.packageForm.savePackageSuccessMessage")
+        );
       })
       .catch((error) => {
         if (error?.response?.status === 401) {
           console.log("jwt expired");
         }
+        showSnack(
+          "success",
+          t("components.packageForm.savePackageFailMessage")
+        );
       });
   }, [
+    defaultData?.id,
     foreignLanguage.value,
     name,
     onSubmitCallback,
     rightTranslations,
+    showSnack,
+    t,
     translatedLanguage.value,
     vocabsPerDay,
   ]);

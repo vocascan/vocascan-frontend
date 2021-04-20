@@ -1,38 +1,47 @@
-import React, { useCallback, useState, useEffect, useContext } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
 import ArrayTextInput from "../../Components/Form/ArrayTextInput/ArrayTextInput.jsx";
-import Select from "../../Components/Form/Select/Select.jsx";
+import Select, {
+  CustomPackageSelectOption,
+} from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
-import SnackbarContext from "../../context/SnackbarContext.jsx";
 
+import useSnack from "../../hooks/useSnack.js";
 import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
-import { getPackages, createVocabulary } from "../../utils/api.js";
+import {
+  getPackages,
+  createVocabulary,
+  modifyVocabulary,
+} from "../../utils/api.js";
 import { languages, maxTranslations } from "../../utils/constants.js";
 
-const CustomSelectOption = ({ name, postfix }) => {
-  return (
-    <span className="custom-option-wrapper">
-      {name}
-      <small className="postfix">{postfix}</small>
-    </span>
-  );
-};
-
-const VocabForm = () => {
+const VocabForm = ({
+  defaultData = null,
+  onSubmitCallback = null,
+  title = null,
+  packageId = null,
+  groupId = null,
+}) => {
   const { t } = useTranslation();
-
-  const { showSnack } = useContext(SnackbarContext);
+  const { showSnack } = useSnack();
   const dispatch = useDispatch();
 
   const active = useSelector((state) => state.form.vocab.active);
   const activate = useSelector((state) => state.form.vocab.activate);
+
+  const [localActive, setLocalActive] = useState(
+    defaultData ? defaultData.active : active
+  );
+  const [localActivate, setLocalActivate] = useState(
+    defaultData ? defaultData.activate : activate
+  );
 
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
@@ -42,20 +51,33 @@ const VocabForm = () => {
   const [groupsItems, setGroupsItems] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(null);
 
-  const [foreignWord, setForeignWord] = useState("");
-  const [translations, setTranslations] = useState([]);
-  const [description, setDescription] = useState("");
+  const [foreignWord, setForeignWord] = useState(
+    defaultData ? defaultData.name : ""
+  );
+  const [translations, setTranslations] = useState(
+    defaultData
+      ? defaultData.Translations.map((elem) => {
+          return {
+            id: elem.id,
+            value: elem.name,
+          };
+        })
+      : [""]
+  );
+  const [description, setDescription] = useState(
+    defaultData ? defaultData.description : ""
+  );
 
   const [showAddPackage, setShowAddPackage] = useState(false);
   const [showAddGroup, setShowAddGroup] = useState(false);
 
   const onChangeActive = useCallback(() => {
-    dispatch(setVocabActive({ active: !active }));
-  }, [dispatch, active]);
+    setLocalActive((act) => !act);
+  }, []);
 
   const onChangeActivate = useCallback(() => {
-    dispatch(setVocabActivate({ activate: !activate }));
-  }, [dispatch, activate]);
+    setLocalActivate((acte) => !acte);
+  }, []);
 
   const fetchPackages = useCallback(() => {
     getPackages(true)
@@ -94,9 +116,8 @@ const VocabForm = () => {
       setSelectedPackage({ value: newPackage.id, label: newPackage.name });
       closePackageModal();
       fetchPackages();
-      showSnack("success", t("screens.addVocab.savePackageSuccessMessage"));
     },
-    [closePackageModal, fetchPackages, t, showSnack]
+    [closePackageModal, fetchPackages]
   );
 
   const groupAdded = useCallback(
@@ -104,9 +125,8 @@ const VocabForm = () => {
       closeGroupModal();
       fetchPackages();
       setSelectedGroup({ value: newGroup.id, label: newGroup.name });
-      showSnack("success", t("screens.addVocab.saveGroupSuccessMessage"));
     },
-    [closeGroupModal, fetchPackages, t, showSnack]
+    [closeGroupModal, fetchPackages]
   );
 
   const onSubmit = useCallback(() => {
@@ -116,41 +136,94 @@ const VocabForm = () => {
       };
     });
 
+    const dataToSubmit = {
+      name: foreignWord,
+      translations: submitTranslations,
+      active: localActive,
+      description,
+    };
+
+    if (defaultData?.id) {
+      dataToSubmit.id = defaultData.id;
+
+      modifyVocabulary(dataToSubmit)
+        .then((response) => {
+          onClear();
+          showSnack("success", t("components.vocabForm.modifySuccessMessage"));
+          onSubmitCallback && onSubmitCallback();
+        })
+        .catch((e) => {
+          showSnack("error", t("components.vocabForm.modifyErrorMessage"));
+        });
+
+      return;
+    }
+
     createVocabulary(
       selectedPackage.value,
       selectedGroup.value,
-      {
-        name: foreignWord,
-        translations: submitTranslations,
-        active,
-        description,
-      },
-      activate
+      dataToSubmit,
+      localActivate
     )
       .then((response) => {
         onClear();
-        showSnack("success", t("screens.addVocab.saveSuccessMessage"));
+        dispatch(setVocabActive({ active: localActive }));
+        dispatch(setVocabActivate({ activate: localActivate }));
+        showSnack("success", t("components.vocabForm.saveSuccessMessage"));
+        onSubmitCallback && onSubmitCallback();
       })
       .catch((e) => {
-        showSnack("error", t("screens.addVocab.saveErrorMessage"));
+        showSnack("error", t("components.vocabForm.saveErrorMessage"));
       });
   }, [
-    activate,
-    active,
-    description,
-    selectedGroup,
-    selectedPackage,
-    foreignWord,
     translations,
+    foreignWord,
+    localActive,
+    description,
+    defaultData?.id,
+    selectedPackage?.value,
+    selectedGroup?.value,
+    localActivate,
     onClear,
     showSnack,
     t,
+    onSubmitCallback,
+    dispatch,
   ]);
+
+  useEffect(() => {
+    if (defaultData) {
+      dispatch(setVocabActive({ active: defaultData.active }));
+      dispatch(setVocabActivate({ activate: defaultData.activate }));
+    }
+  }, [defaultData, dispatch]);
 
   useEffect(() => {
     fetchPackages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (packageId && packages.length) {
+      setSelectedPackage(() => {
+        return {
+          value: packageId,
+          label: packages.find((elem) => elem.id === packageId).name,
+        };
+      });
+    }
+  }, [packages, packageId]);
+
+  useEffect(() => {
+    if (groupId && groups.length) {
+      setSelectedGroup(() => {
+        return {
+          value: groupId,
+          label: groups.find((elem) => elem.id === groupId).name,
+        };
+      });
+    }
+  }, [groups, groupId]);
 
   useEffect(() => {
     if (!selectedPackage) {
@@ -195,7 +268,7 @@ const VocabForm = () => {
         return {
           value: p.id,
           label: (
-            <CustomSelectOption
+            <CustomPackageSelectOption
               name={p.name}
               postfix={foreignIcon + " - " + translatedIcon}
             />
@@ -217,14 +290,15 @@ const VocabForm = () => {
   }, [groups]);
 
   return (
-    <div className="add-vocab-form">
-      <h1 className="heading">{t("screens.addVocab.title")}</h1>
+    <>
+      {title && <h1 className="heading">{title}</h1>}
 
       <div className="dropdowns">
         <div className="select-wrapper">
           <Select
             required
             creatable
+            disabled={packageId}
             createText={"Create new Package"}
             onCreate={openPackageModal}
             tabIndex={1}
@@ -234,7 +308,7 @@ const VocabForm = () => {
               setSelectedPackage(v);
             }}
             value={selectedPackage}
-            noOptionsMessage={t("screens.addVocab.noPackagesMessage")}
+            noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
           />
         </div>
         <div className="select-wrapper">
@@ -243,7 +317,7 @@ const VocabForm = () => {
             creatable
             createText={"Create new Group"}
             onCreate={openGroupModal}
-            disabled={!selectedPackage}
+            disabled={!selectedPackage || groupId}
             tabIndex={1}
             label={t("global.group")}
             options={groupsItems}
@@ -251,7 +325,7 @@ const VocabForm = () => {
               setSelectedGroup(v);
             }}
             value={selectedGroup}
-            noOptionsMessage={t("screens.addVocab.noGroupsMessage")}
+            noOptionsMessage={t("components.vocabForm.noGroupsMessage")}
           />
         </div>
       </div>
@@ -271,7 +345,7 @@ const VocabForm = () => {
           data={translations}
           placeholder={t("global.translation")}
           onChange={setTranslations}
-          addText={t("screens.addVocab.addTranslation")}
+          addText={t("components.vocabForm.addTranslation")}
         />
         <TextInput
           tabIndex={1}
@@ -283,18 +357,20 @@ const VocabForm = () => {
         />
         <Switch
           appearance="on-off"
-          optionLeft={t("screens.addVocab.activeLabel")}
-          infoLeft="Test information"
+          optionLeft={t("components.vocabForm.activeLabel")}
+          infoLeft={t("components.vocabForm.activeTooltip")}
           onChange={onChangeActive}
-          checked={active}
+          checked={localActive}
         />
-        <Switch
-          appearance="on-off"
-          optionLeft={t("screens.addVocab.activateLabel")}
-          infoLeft="Test information w"
-          onChange={onChangeActivate}
-          checked={activate}
-        />
+        {!defaultData && (
+          <Switch
+            appearance="on-off"
+            optionLeft={t("components.vocabForm.activateLabel")}
+            infoLeft={t("components.vocabForm.activateTooltip")}
+            onChange={onChangeActivate}
+            checked={localActivate}
+          />
+        )}
       </div>
 
       <div className="form-submit">
@@ -311,7 +387,7 @@ const VocabForm = () => {
             )
           }
         >
-          {t("global.add")}
+          {t("global.submit")}
         </Button>
       </div>
       <Modal
@@ -328,7 +404,7 @@ const VocabForm = () => {
           onSubmitCallback={groupAdded}
         />
       </Modal>
-    </div>
+    </>
   );
 };
 

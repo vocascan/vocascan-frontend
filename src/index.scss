@@ -1,7 +1,31 @@
+@import "./colors";
+
 * {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   margin: 0;
   padding: 0;
   text-align: center;
+}
+
+.text {
+  &-success {
+    color: $color-green;
+  }
+
+  &-error {
+    color: $color-red;
+  }
+
+  &-light {
+    font-weight: lighter !important;
+  }
+
+  &-normal {
+    font-weight: normal !important;
+  }
+
+  &-bold {
+    font-weight: bold !important;
+  }
 }

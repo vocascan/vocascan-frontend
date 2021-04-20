@@ -112,6 +112,38 @@
     }
   }
 
+  &.btn-link {
+    background-color: transparent;
+    padding: 0;
+
+    &.btn-primary {
+      color: $color-primary;
+
+      &:hover {
+        color: $color-primary-light;
+        cursor: pointer;
+      }
+    }
+
+    &.btn-red {
+      color: $color-red;
+
+      &:hover {
+        color: $color-red-light;
+        cursor: pointer;
+      }
+    }
+
+    &.btn-green {
+      color: $color-green;
+
+      &:hover {
+        color: $color-green-light;
+        cursor: pointer;
+      }
+    }
+  }
+
   &.btn-block {
     width: 100%;
   }

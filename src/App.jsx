@@ -7,6 +7,7 @@ import Snackbar from "./Components/Snackbar/Snackbar.jsx";
 import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
+import Library from "./screens/Library/Library.jsx";
 import Login from "./screens/Login/Login.jsx";
 import Register from "./screens/Register/Register.jsx";
 import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
@@ -65,7 +66,9 @@ const App = () => {
         <SnackbarProvider>
           <AuthenticatedLayout>
             <FirstStartup />
+            <Route exact path="/" component={null} />
             <Route path="/addVocab" component={AddVocab} />
+            <Route path="/library" component={Library} />
             <Route path="/settings" component={Settings} />
             <Snackbar />
           </AuthenticatedLayout>

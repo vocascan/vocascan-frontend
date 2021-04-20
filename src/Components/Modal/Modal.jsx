@@ -9,6 +9,7 @@ import "./Modal.scss";
 const Modal = ({
   title,
   onClose,
+  size = "", // small, large, ""
   open = false,
   renderClose = true,
   closeOnClickOutside = false,
@@ -41,16 +42,23 @@ const Modal = ({
   useEffect(() => {
     if (closeOnClickOutside) {
       document.addEventListener("click", clickListener);
-      document.addEventListener("keyup", escapeListener);
 
       return () => {
         document.removeEventListener("click", clickListener);
-        document.removeEventListener("keyup", escapeListener);
       };
     }
     // Modal specific dependency
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [closeOnClickOutside]);
+
+  useEffect(() => {
+    document.addEventListener("keyup", escapeListener);
+    return () => {
+      document.removeEventListener("keyup", escapeListener);
+    };
+    // Modal specific dependency
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!open) {
     return null;
@@ -58,7 +66,7 @@ const Modal = ({
 
   return (
     <div className="modal">
-      <div className="inner" ref={ref}>
+      <div className={`inner ${size ? size : ""}`} ref={ref}>
         {renderClose && (
           <Button
             tabIndex={-1}
