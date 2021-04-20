@@ -7,8 +7,8 @@ import PersonIcon from "@material-ui/icons/Person";
 import Button from "../../Components/Button/Button.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
-import useSnack from "../../hooks/useSnack.jsx";
 
+import useSnack from "../../hooks/useSnack.js";
 import { signOut } from "../../redux/Actions/login.js";
 import { getStats, deleteUser } from "../../utils/api.js";
 
