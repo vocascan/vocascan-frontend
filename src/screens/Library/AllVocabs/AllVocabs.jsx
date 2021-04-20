@@ -9,14 +9,14 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
-import Button from "../../Components/Button/Button.jsx";
-import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
-import Modal from "../../Components/Modal/Modal.jsx";
-import Table from "../../Components/Table/Table.jsx";
-import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
+import Button from "../../../Components/Button/Button.jsx";
+import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import Modal from "../../../Components/Modal/Modal.jsx";
+import Table from "../../../Components/Table/Table.jsx";
+import VocabForm from "../../../Forms/VocabForm/VocabForm.jsx";
 
-import useSnack from "../../hooks/useSnack.js";
-import { getGroupVocabulary, deleteVocabulary } from "../../utils/api.js";
+import useSnack from "../../../hooks/useSnack.js";
+import { getGroupVocabulary, deleteVocabulary } from "../../../utils/api.js";
 
 import "./AllVocabs.scss";
 
