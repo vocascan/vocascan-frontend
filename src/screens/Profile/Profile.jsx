@@ -49,10 +49,11 @@ const Profile = () => {
   }, []);
 
   const closeDeleteAccountModal = useCallback(() => {
+    setDeleteConfirmation("");
     setShowDeleteAccountModal(false);
   }, []);
 
-  const onDelete = useCallback(async () => {
+  const onDelete = useCallback(() => {
     deleteUser()
       .then((response) => {
         dispatch(signOut());
