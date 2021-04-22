@@ -60,29 +60,31 @@ const StatsTable = () => {
     () => [
       {
         stats: t("screens.profile.stats.total"),
-        packages: stats.languagePackages || "-",
-        groups: stats.inactiveGroups + stats.activeGroups || "-",
-        vocabs: stats.inactiveVocabulary + stats.activeVocabulary || "-",
+        packages: stats.languagePackages.all || "-",
+        groups: stats.groups.all || "-",
+        vocabs: stats.vocabularies.all || "-",
       },
       {
         stats: t("screens.profile.stats.active"),
         packages: "-",
-        groups: stats.activeGroups || "-",
-        vocabs: stats.activeVocabulary || "-",
+        groups: stats.groups.active || "-",
+        vocabs: stats.vocabularies.active || "-",
       },
       {
         stats: t("screens.profile.stats.inactive"),
         packages: "-",
-        groups: stats.inactiveGroups || "-",
-        vocabs: stats.inactiveVocabulary || "-",
+        groups: stats.groups.inactive || "-",
+        vocabs: stats.vocabularies.inactive || "-",
       },
     ],
     [
-      stats.activeGroups,
-      stats.activeVocabulary,
-      stats.inactiveGroups,
-      stats.inactiveVocabulary,
-      stats.languagePackages,
+      stats.groups.active,
+      stats.groups.all,
+      stats.groups.inactive,
+      stats.languagePackages.all,
+      stats.vocabularies.active,
+      stats.vocabularies.all,
+      stats.vocabularies.inactive,
       t,
     ]
   );
