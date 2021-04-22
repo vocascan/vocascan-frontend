@@ -1,9 +1,9 @@
-import React from "react";
 import i18n from "i18next";
+import React from "react";
 import { initReactI18next, I18nextProvider } from "react-i18next";
 
-import en from "./locales/en.json";
 import de from "./locales/de.json";
+import en from "./locales/en.json";
 
 i18n.use(initReactI18next).init({
   debug: false,
@@ -11,7 +11,7 @@ i18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
   lng: "en-EN",
   load: "all",
-  react: { wait: true },
+  react: { useSuspense: true },
   resources: {
     en: { translation: en },
     de: { translation: de },

@@ -1,14 +1,12 @@
 # Vocascan
 ![Github license](https://img.shields.io/github/license/noctera/Vocascan?style=flat-square)
+![Github Open Issues](https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat-square)
+![Github Stars](https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat-square)
+![Github forks](https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat-square)
+![Github downloads](https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat-square)
 
-![Github Open Issues](https://img.shields.io/github/issues/noctera/Vocascan?style=flat-square)
-![Github Stars](https://img.shields.io/github/stars/noctera/Vocascan?style=flat-square)
-![Github forks](https://img.shields.io/github/forks/noctera/Vocascan?style=flat-square)
-![Github downloads](https://img.shields.io/github/downloads/noctera/Vocascan/total?label=Downloads)
-
-
-
-![Vocascan cover](https://github.com/vocascan/vocascan-desktop/blob/main/src/images/vocascan-github-cover.png)
+![Vocascan cover](https://github.com/vocascan/vocascan-desktop/blob/main/src/images/logo/vocascan-github-cover.png)
 
 ## Table of Contents
 
@@ -85,6 +83,6 @@ For questions or ideas please use [Discussions](https://github.com/vocascan/voca
 
 ## Contributors
 
-[<img src="https://avatars3.githubusercontent.com/u/54618409?s=400&v=4" width="50" />](https://github.com/noctera)
-[<img src="https://avatars3.githubusercontent.com/u/60048565?s=400&v=4" width="50" />](https://github.com/luwol03)
-[<img src="https://avatars3.githubusercontent.com/u/16488024?s=400&v=4" width="50" />](https://github.com/zikowang)
+[<img src="https://github.com/noctera.png" width="50" />](https://github.com/noctera)
+[<img src="https://github.com/luwol03.png" width="50" />](https://github.com/luwol03)
+[<img src="https://github.com/zikowang.png" width="50" />](https://github.com/zikowang)

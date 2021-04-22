@@ -1,0 +1,55 @@
+@import "../../colors";
+
+.nav {
+  width: 65px;
+  height: calc(100vh - 50px);
+  background: $color-background-inverse;
+  grid-area: sidenav;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  justify-content: space-between;
+  transition: width 0.2s ease-in;
+
+  &.nav-default {
+    &:hover {
+      width: 200px;
+      transition: width 0.2s ease-in;
+    }
+  }
+
+  &.nav-blur {
+    filter: blur(5px);
+  }
+
+  &.nav-loading {
+    * {
+      opacity: 0;
+    }
+  }
+
+  .button-list {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 40px;
+  }
+
+  .settings {
+    background-color: $color-background-inverse;
+    border: unset;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    grid-column: 1;
+    grid-row: 3;
+
+    .settings-text {
+      color: $color-main-text-inverse;
+      text-transform: uppercase;
+      font-size: 17px;
+      margin: 0;
+    }
+  }
+}

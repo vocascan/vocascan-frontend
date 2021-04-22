@@ -1,0 +1,77 @@
+@import "../../../colors";
+
+.text-input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 5px 0;
+  height: 50px;
+
+  .text-input {
+    height: 32px;
+    width: 100%;
+    display: block;
+    border: unset;
+    padding-top: 10px;
+    border-bottom: solid 1px $color-alternative;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary 4%);
+    background-position: -9999px 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    text-align: left;
+
+    &:focus {
+      box-shadow: none;
+      outline: none;
+      background-position: 0 0;
+      border-bottom-color: $color-primary;
+    }
+
+    &::placeholder {
+      transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    }
+
+    &:focus::placeholder,
+    &:valid::placeholder {
+      color: $color-primary-dark;
+      font-size: 11px;
+      transform: translateY(-20px);
+      visibility: visible !important;
+    }
+
+    &:hover {
+      border-bottom-color: $color-primary;
+      box-shadow: none;
+      outline: none;
+      background-position: 0 0;
+    }
+  }
+
+  .text-input-label {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 24px;
+    font-size: 13px;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    color: $color-main-text-light;
+
+    &.flow {
+      top: 6px;
+      font-size: 11px;
+      color: $color-primary-dark;
+      transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    }
+  }
+
+  .text-input-error {
+    text-align: left;
+    font-size: 11px;
+    color: $color-red;
+  }
+}

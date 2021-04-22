@@ -1,23 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  navButton: {
-    width: "100%",
-    height: "60px",
-    color: theme.palette.font.light
-  },
-}));
+import "./NavButton.scss";
 
-function NavButton(props) {
-    const classes = useStyles();
-    return (
-        <Link to={props.link} style={{ outline: 0, textDecoration: 'none' }}>
-            <Button className={classes.navButton} >{props.name}</Button>
-        </Link>
-    )
-}
+const NavButton = ({
+  name,
+  design = "default",
+  link,
+  icon = null,
+  exact = false,
+}) => {
+  return (
+    <NavLink
+      to={link}
+      activeClassName="nav-button-active"
+      className="nav-button-wrapper"
+      exact={exact}
+    >
+      <button className={`nav-button nav-button-${design}`}>
+        {icon ? <span className="button-icon">{icon}</span> : null}
+        <span className="button-name">{name}</span>
+      </button>
+    </NavLink>
+  );
+};
 
-export default NavButton
+export default NavButton;

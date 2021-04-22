@@ -1,0 +1,75 @@
+@import "../../colors";
+
+.register-form {
+  max-height: 550px;
+  max-width: 450px;
+
+  margin: auto;
+  border-radius: 10px;
+
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
+  padding: 40px 100px;
+  background: $color-white;
+  box-shadow: -1px 3px 5px#b4bed6;
+
+  .back-icon {
+    color: $color-primary;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    &:hover {
+      color: $color-primary-dark;
+      cursor: pointer;
+    }
+  }
+
+  .register-form-header {
+    width: 100%;
+    height: 33%;
+
+    .register-form-header-logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .register-form-header-heading {
+      text-transform: uppercase;
+    }
+  }
+
+  .register-form-input {
+    width: 100%;
+    min-width: 200px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .form-error {
+      text-align: left;
+      padding-top: 10px;
+      font-size: 11px;
+      color: $color-red;
+    }
+  }
+
+  .register-form-submit {
+    .register-form-submit-register {
+      display: flex;
+      font-size: 14px;
+      margin-top: 12px;
+
+      .register-form-submit-register-link {
+        color: $color-primary;
+        cursor: pointer;
+        margin-left: 5px;
+      }
+    }
+  }
+}
