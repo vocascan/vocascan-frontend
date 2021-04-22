@@ -9,6 +9,7 @@ import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
 import Library from "./screens/Library/Library.jsx";
 import Login from "./screens/Login/Login.jsx";
+import Profile from "./screens/Profile/Profile.jsx";
 import Register from "./screens/Register/Register.jsx";
 import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
 import Settings from "./screens/Settings/Settings.jsx";
@@ -70,6 +71,7 @@ const App = () => {
             <Route path="/addVocab" component={AddVocab} />
             <Route path="/library" component={Library} />
             <Route path="/settings" component={Settings} />
+            <Route path="/profile" component={Profile} />
             <Snackbar />
           </AuthenticatedLayout>
         </SnackbarProvider>

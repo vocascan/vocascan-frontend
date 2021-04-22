@@ -16,12 +16,15 @@
     "add": "Add",
     "none": "None",
     "group": "Group",
+    "groups": "Groups",
     "description": "Description",
     "foreignWord": "Foreign word",
     "translation": "Translation",
     "LogIn": "Log in",
     "library": "Library",
     "package": "Package",
+    "packages": "Packages",
+    "vocabs": "Vocabs",
     "signIn": "Sign in",
     "signUp": "Sign up",
     "serverNotResponding": "The server is not responding",
@@ -103,6 +106,41 @@
     },
     "addVocab": {
       "title": "Add vocabulary"
+    },
+    "profile": {
+      "stats": {
+        "stats": "Stats",
+        "total": "Total",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "accountSettings": {
+        "title": "Account settings",
+        "password": {
+          "title": "Change password",
+          "description": "Change old password if you forgot it"
+        },
+        "email": {
+          "title": "Change email",
+          "description": "Be careful to use a valid email"
+        },
+        "delete": {
+          "title": "Delete account",
+          "description": "Once you deleted your account it is gone forever"
+        }
+      },
+      "modals": {
+        "changePassword": {
+          "heading": "Change Password"
+        },
+        "changeEmail": {
+          "heading": "Change Email"
+        },
+        "deleteAccount": {
+          "heading": "Delete Account",
+          "input": "Type in your username to confirm deletion"
+        }
+      }
     },
     "selectionScreen": {
       "title": "Login",

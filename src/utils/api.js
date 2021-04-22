@@ -68,3 +68,6 @@ export const getQueryVocabulary = (
   );
 export const checkQuery = (vocabularyId, answer = false) =>
   api.patch(`/vocabulary/${vocabularyId}?answer=${answer}`);
+
+// Stats
+export const getStats = () => api.get("/user/stats");
