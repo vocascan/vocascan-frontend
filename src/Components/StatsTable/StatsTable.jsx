@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import Table from "../Table/Table.jsx";
@@ -34,7 +34,7 @@ const StatsTable = () => {
       });
   }, [showSnack]);
 
-  const columns = React.useMemo(
+  const columns = useMemo(
     () => [
       {
         Header: t("screens.profile.stats.stats"),
@@ -56,7 +56,7 @@ const StatsTable = () => {
     [t]
   );
 
-  const data = React.useMemo(
+  const data = useMemo(
     () => [
       {
         stats: t("screens.profile.stats.total"),
