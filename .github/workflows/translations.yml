@@ -2,7 +2,7 @@ name: translations
 on:
   push:
     branches:
-      - 'main'
+      - 'experimental'
   schedule:
     - cron: '0 12 * * 0'
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+          ref: experimental
 
       - name: download
         uses: localazy/download@v1
@@ -26,7 +26,7 @@ jobs:
       - name: push
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Updated translations via Localazy
+          commit_message: "[skip ci] updated translations via Localazy"
           file_pattern: src/i18n/locales/*.json
 
       - name: get version
