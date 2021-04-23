@@ -1,0 +1,50 @@
+@import "../../colors.scss";
+
+.package-overview {
+    display: grid;
+    width: 100%;
+    height: 120px;
+    grid-template-columns: 46% 27% 27%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "heading today learnbtn"
+        "unresolved unactivated activatebtn";
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: $color-background-inverse;
+    margin-bottom: 40px;
+    border-radius: 15px;
+
+    .package-heading {
+        grid-area: heading;
+        color: $color-main-text-inverse;
+        font-size: 25px;
+        margin: auto;
+        margin-left: 15px;
+    }
+
+    .package-unresolved {
+        grid-area: unresolved;
+        color: $color-main-text-inverse;
+        font-size: 15px;
+        margin: auto;
+        margin-left: 15px;
+    }
+
+    .package-today {
+        grid-area: today;
+        color: $color-main-text-inverse;
+        font-size: 15px;
+        margin: auto;
+        margin-left: 15px;
+    }
+
+    .package-unactivated {
+        grid-area: unactivated;
+        color: $color-main-text-inverse;
+        font-size: 15px;
+        margin: auto;
+        margin-left: 15px;
+    }
+}
