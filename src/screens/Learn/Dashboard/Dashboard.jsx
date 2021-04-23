@@ -14,13 +14,13 @@ const Dashboard = () => {
 
   useEffect(() => {
     getLanguagePackages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getLanguagePackages = useCallback(() => {
     getPackages(false, true)
       .then((response) => {
-        //store stats in variables
-        console.log(response.data);
+        //store stats
         setLanguagePackages(response.data);
       })
       .catch((event) => {
@@ -36,8 +36,8 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="package-views">
-        {languagePackages.map((languagePackage) => (
-          <PackageOverview data={languagePackage} />
+        {languagePackages.map((languagePackage, index) => (
+          <PackageOverview key={index} data={languagePackage} />
         ))}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sequence = () => {
+const Direction = () => {
   return (
     <div>
       <h1>This is the Sequence screen</h1>
@@ -8,4 +8,4 @@ const Sequence = () => {
   );
 };
 
-export default Sequence;
+export default Direction;
