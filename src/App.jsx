@@ -7,6 +7,7 @@ import Snackbar from "./Components/Snackbar/Snackbar.jsx";
 import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
+import Learn from "./screens/Learn/Learn.jsx";
 import Library from "./screens/Library/Library.jsx";
 import Login from "./screens/Login/Login.jsx";
 import Profile from "./screens/Profile/Profile.jsx";
@@ -67,7 +68,7 @@ const App = () => {
         <SnackbarProvider>
           <AuthenticatedLayout>
             <FirstStartup />
-            <Route exact path="/" component={null} />
+            <Route exact path="/" component={Learn} />
             <Route path="/addVocab" component={AddVocab} />
             <Route path="/library" component={Library} />
             <Route path="/settings" component={Settings} />
