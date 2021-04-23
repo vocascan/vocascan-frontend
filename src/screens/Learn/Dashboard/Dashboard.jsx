@@ -1,10 +1,11 @@
 import React, { useEffect, useCallback, useState } from "react";
-import { NavLink } from "react-router-dom";
 
-import Button from "../../../Components/Button/Button.jsx";
+import PackageOverview from "../../../Components/PackageOverview/PackageOverview.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
 import { getPackages } from "../../../utils/api.js";
+
+import "./Dashboard.scss";
 
 const Dashboard = () => {
   const { showSnack } = useSnack();
@@ -33,11 +34,12 @@ const Dashboard = () => {
   }, [showSnack]);
 
   return (
-    <div>
-      <h1>Hello World</h1>
-      {languagePackages.map((languagePackage) => (
-        <h1>{languagePackage?.stats?.vocabularies?.all}</h1>
-      ))}
+    <div className="dashboard">
+      <div className="package-views">
+        {languagePackages.map((languagePackage) => (
+          <PackageOverview data={languagePackage} />
+        ))}
+      </div>
     </div>
   );
 };
