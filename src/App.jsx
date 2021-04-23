@@ -68,8 +68,11 @@ const App = () => {
         <SnackbarProvider>
           <AuthenticatedLayout>
             <FirstStartup />
-            <Route exact path="/" component={Learn} />
+            <Route path="/">
+              <Redirect to="learn" />
+            </Route>
             <Route path="/addVocab" component={AddVocab} />
+            <Route path="/learn" component={Learn} />
             <Route path="/library" component={Library} />
             <Route path="/settings" component={Settings} />
             <Route path="/profile" component={Profile} />
