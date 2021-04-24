@@ -4,23 +4,48 @@
   max-width: 600px;
   max-height: 600px;
   padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  color: $color-main-text-inverse;
   background: $color-background-inverse;
+
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
+  transition: all 0.2s ease-in-out;
 
-
-  .direction-box-heading {
-    color: $color-main-text-inverse;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 10px $color-primary;
+    transition: all 0.2s ease-in-out;
   }
 
-  .direction-box-flags {
+  .flags {
+    margin-top: 30px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    .flag {
-        width: 100px;
+    * {
+      margin: 0 5px;
     }
 
-        
+    .direction-arrow {
+      font-size: 32px;
+
+      &.invert {
+        transform: rotate(180deg);
+      }
+    }
+
+    .flag {
+      width: 70px;
+    }
+  }
+
+  .languages {
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 }
