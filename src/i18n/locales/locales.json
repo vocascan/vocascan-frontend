@@ -1,0 +1,22 @@
+{
+    "projectUrl": "https://localazy.com/p/vocascan",
+    "baseLocale": "en",
+    "languages": [
+        {
+            "language": "en",
+            "region": "",
+            "script": "",
+            "isRtl": false,
+            "name": "English",
+            "localizedName": "English"
+        },
+        {
+            "language": "de",
+            "region": "",
+            "script": "",
+            "isRtl": false,
+            "name": "German",
+            "localizedName": "Deutsch"
+        }
+    ]
+}

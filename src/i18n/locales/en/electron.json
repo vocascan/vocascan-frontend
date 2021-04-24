@@ -1,0 +1,14 @@
+{
+  "splash": {
+    "updates": {
+      "check": "Checking for updates...",
+      "skipCheck": "Skipping update checks...",
+      "download": "Downloading update...",
+      "downloadPercentage": "Downloading update... ({percentage]%)"
+    },
+    "start": {
+      "starting": "Launching...",
+      "restarting": "Restarting..."
+    }
+  }
+}

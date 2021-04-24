@@ -17,7 +17,8 @@ jobs:
           list-files: json
           filters: |
             translations:
-              - "src/i18n/locales/!(en)*.json"
+              - "src/i18n/locales/!(en)/*.json"
+              - "src/i18n/locales/locales.json"
 
       - name: format files output
         if: steps.changes.outputs.translations == 'true'

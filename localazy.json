@@ -1,11 +1,13 @@
 {
   "upload": {
+    "appVersion": 0,
     "type": "json",
-    "files": "src/i18n/locales/en.json",
+    "files": "src/i18n/locales/en/*.json",
     "deprecateMissing": true,
     "features": ["array", "filter_untranslated", "plural_postfix_us"]
   },
   "download": {
-    "files": "src/i18n/locales/${lang}.json"
+    "metadataFileJson": "src/i18n/locales/locales.json",
+    "files": "src/i18n/locales/${lang}/${file}"
   }
 }
