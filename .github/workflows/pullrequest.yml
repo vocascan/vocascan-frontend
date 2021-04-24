@@ -37,7 +37,7 @@ jobs:
           msg: |
             Thank you for your pull request.
             Please remove your translations. Change only the `en.json` if necessary. 
-            If this pull request is merged into the `main` branch, it can be translated via [localazy](https://localazy.com/p/vocascan).
+            If this pull request is merged into the [`experimental`](https://github.com/vocascan/vocascan-desktop/tree/experimental) branch, it can be translated via [localazy](https://localazy.com/p/vocascan).
 
             Please remove following files from pull request changes.
             ```
