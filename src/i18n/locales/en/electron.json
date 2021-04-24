@@ -4,7 +4,7 @@
       "check": "Checking for updates...",
       "skipCheck": "Skipping update checks...",
       "download": "Downloading update...",
-      "downloadPercentage": "Downloading update... ({percentage]%)"
+      "skipButton": "Skip"
     },
     "start": {
       "starting": "Launching...",
