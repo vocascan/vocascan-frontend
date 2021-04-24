@@ -32,19 +32,19 @@ const PackageOverview = ({ data }) => {
 
   return (
     <div className="package-overview">
-      <h1 className="package-heading">{data?.name}</h1>
-      <p className="package-unresolved">
+      <h1 className="package-inner package-heading">{data?.name}</h1>
+      <p className="package-inner package-unresolved">
         {t("components.packageOverview.unresolved")}{" "}
         {data?.stats?.vocabularies?.unresolved}
       </p>
-      <p className="package-today">
+      <p className="package-inner package-today">
         {t("components.packageOverview.today")} 100
       </p>
-      <p className="package-unactivated">
+      <p className="package-inner package-unactivated">
         {t("components.packageOverview.unactivated")}{" "}
         {data?.stats?.vocabularies?.unactivated}
       </p>
-      <div className="package-btn-wrapper">
+      <div className="package-inner package-btn-wrapper">
         <Button block uppercase onClick={submitLearn}>
           {t("global.learn")}
         </Button>
