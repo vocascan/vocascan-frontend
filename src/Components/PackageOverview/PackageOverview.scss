@@ -22,16 +22,20 @@
     font-size: 15px;
     margin: auto;
     margin-left: 15px;
+
     &.package-heading {
       grid-area: heading;
       font-size: 25px;
     }
+
     &.package-unresolved {
       grid-area: unresolved;
     }
+
     &.package-today {
       grid-area: today;
     }
+
     &.package-unactivated {
       grid-area: unactivated;
     }
