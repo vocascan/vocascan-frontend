@@ -85,7 +85,7 @@ const createWindow = () => {
       contextIsolation: false,
       enableRemoteModule: true,
     },
-    show: true,
+    show: false,
   });
 
   // insert menubar
