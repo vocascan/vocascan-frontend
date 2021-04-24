@@ -8,7 +8,7 @@ export const CustomPackageSelectOption = ({ name, postfix }) => {
   return (
     <span className="custom-option-wrapper">
       {name}
-      <span className="postfix">{postfix}</span>
+      <small className="postfix">{postfix}</small>
     </span>
   );
 };
