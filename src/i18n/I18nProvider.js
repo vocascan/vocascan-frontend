@@ -2,19 +2,20 @@ import i18n from "i18next";
 import React from "react";
 import { initReactI18next, I18nextProvider } from "react-i18next";
 
-import de from "./locales/de.json";
-import en from "./locales/en.json";
+import de from "./locales/de/default.json";
+import en from "./locales/en/default.json";
 
 i18n.use(initReactI18next).init({
   debug: false,
   fallbackLng: ["en"],
   interpolation: { escapeValue: false },
-  lng: "en-EN",
+  lng: "en",
   load: "all",
+  defaultNS: "default",
   react: { useSuspense: true },
   resources: {
-    en: { translation: en },
-    de: { translation: de },
+    de: { default: de },
+    en: { default: en },
   },
 });
 

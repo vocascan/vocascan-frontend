@@ -1,0 +1,11 @@
+{
+  "splash": {
+    "start": {
+      "restarting": "Neustarten...",
+      "starting": "Startet..."
+    },
+    "updates": {
+      "check": "Suche nach Updates..."
+    }
+  }
+}
