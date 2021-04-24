@@ -1,0 +1,26 @@
+@import "../../colors";
+
+.direction-box {
+  max-width: 600px;
+  max-height: 600px;
+  padding: 20px;
+  background: $color-background-inverse;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+
+  .direction-box-heading {
+    color: $color-main-text-inverse;
+  }
+
+  .direction-box-flags {
+    display: flex;
+
+    .flag {
+        width: 100px;
+    }
+
+        
+  }
+}

@@ -1,0 +1,11 @@
+.direction {
+  max-width: 70%;
+  height: 100%;
+  margin: auto;
+
+  .box-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+  }
+}
