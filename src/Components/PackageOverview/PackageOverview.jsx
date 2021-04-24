@@ -10,7 +10,9 @@ const PackageOverview = ({ data }) => {
   const history = useHistory();
   const { t } = useTranslation();
 
-  const submitLearn = useCallback(() => history.push("/direction/"), [history]);
+  const submitLearn = useCallback(() => history.push("learn/direction/"), [
+    history,
+  ]);
 
   return (
     <div className="package-overview">
@@ -32,7 +34,7 @@ const PackageOverview = ({ data }) => {
         </Button>
       </div>
       <div className="package-btn-wrapper">
-        <Button variant={"outline"} uppercase block>
+        <Button variant="outline" uppercase block>
           {t("global.activate")}
         </Button>
       </div>

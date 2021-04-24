@@ -35,11 +35,9 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <div className="package-views">
-        {languagePackages.map((languagePackage, index) => (
-          <PackageOverview key={index} data={languagePackage} />
-        ))}
-      </div>
+      {languagePackages.map((languagePackage, index) => (
+        <PackageOverview key={index} data={languagePackage} />
+      ))}
     </div>
   );
 };
