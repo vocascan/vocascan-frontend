@@ -1,48 +1,48 @@
 {
-    "components": {
-      "groupForm": {
-        "languagePackage": "Paket"
-      }
+  "components": {
+    "groupForm": {
+      "languagePackage": "Paket"
+    }
+  },
+  "global": {
+    "LogIn": "Anmelden",
+    "abort": "Abbrechen",
+    "add": "Hinzufügen",
+    "continue": "Weiter",
+    "delete": "Löschen",
+    "description": "Beschreibung",
+    "email": "E-Mail",
+    "fetchError": "Es ist etwas schief gelaufen. Bitte probiere es später noch einmal.",
+    "foreignWord": "Fremdwort",
+    "group": "Gruppe",
+    "groups": "Gruppen",
+    "library": "Bibliothek",
+    "name": "Name",
+    "noOptionMessage": "Keine Optionen",
+    "none": "Keine",
+    "package": "Paket",
+    "packages": "Pakete",
+    "password": "Passwort",
+    "passwordRepeat": "Passwort wiederholen",
+    "save": "Speichern",
+    "server": "Server",
+    "serverNotResponding": "Der Server antwortet nicht",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "submit": "Absenden",
+    "translation": "Übersetzung",
+    "username": "Benutzername",
+    "vocascan": "Vocascan"
+  },
+  "nav": {
+    "allVocabulary": "Bibliothek"
+  },
+  "screens": {
+    "allGroups": {
+      "groupName": "Gruppe"
     },
-    "global": {
-      "LogIn": "Anmelden",
-      "abort": "Abbrechen",
-      "add": "Hinzufügen",
-      "continue": "Weiter",
-      "delete": "Löschen",
-      "description": "Beschreibung",
-      "email": "E-Mail",
-      "fetchError": "Es ist etwas schief gelaufen. Bitte probiere es später noch einmal.",
-      "foreignWord": "Fremdwort",
-      "group": "Gruppe",
-      "groups": "Gruppen",
-      "library": "Bibliothek",
-      "name": "Name",
-      "noOptionMessage": "Keine Optionen",
-      "none": "Keine",
-      "package": "Paket",
-      "packages": "Pakete",
-      "password": "Passwort",
-      "passwordRepeat": "Passwort wiederholen",
-      "save": "Speichern",
-      "server": "Server",
-      "serverNotResponding": "Der Server antwortet nicht",
-      "signIn": "Anmelden",
-      "signUp": "Registrieren",
-      "submit": "Absenden",
-      "translation": "Übersetzung",
-      "username": "Benutzername",
-      "vocascan": "Vocascan"
-    },
-    "nav": {
-      "allVocabulary": "Bibliothek"
-    },
-    "screens": {
-      "allGroups": {
-        "groupName": "Gruppe"
-      },
-      "allPackages": {
-        "packageName": "Paket"
-      }
+    "allPackages": {
+      "packageName": "Paket"
     }
   }
+}

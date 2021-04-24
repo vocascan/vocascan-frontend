@@ -3,6 +3,8 @@ const { app, BrowserWindow, ipcMain, Notification, Menu } = require("electron");
 const isDev = require("electron-is-dev");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
+const i18n = require("i18next");
+const i18nBackend = require("i18next-node-fs-backend");
 
 const { MENU_TEMPLATE } = require("./utils/menu");
 const { RegisterIpcHandler } = require("./utils/ipc");
@@ -11,6 +13,8 @@ app.allowRendererProcessReuse = true;
 log.transports.file.level = "debug";
 autoUpdater.logger = log;
 autoUpdater.autoDownload = false;
+
+i18n.use(i18nBackend);
 
 const windows = {
   main: null,
@@ -35,6 +39,24 @@ const TIMES = {
 let mainIsReady = false;
 let splashShowEnough = false;
 let updateAvailable = false;
+
+const localize = async () => {
+  await i18n.init({
+    lng: app.getLocale(),
+    debug: false,
+    backend: {
+      loadPath: path.join(
+        __dirname,
+        "../src/i18n/locales/{{lng}}/electron.json"
+      ),
+    },
+    interpolation: {
+      escapeValue: false,
+    },
+    saveMissing: true,
+    fallbackLng: "en",
+  });
+};
 
 const createWindow = () => {
   // Create the main window.
@@ -120,6 +142,17 @@ const createWindow = () => {
     }
   });
 
+  windows.splash.webContents.on("did-finish-load", () => {
+    windows.splash.webContents.send("translations", {
+      check: i18n.t("splash.updates.check"),
+      skipCheck: i18n.t("splash.updates.skipCheck"),
+      download: i18n.t("splash.updates.download"),
+      skipButton: i18n.t("splash.updates.skipButton"),
+      starting: i18n.t("splash.start.starting"),
+      restarting: i18n.t("splash.start.restarting"),
+    });
+  });
+
   windows.main.once("ready-to-show", () => {
     if (!isDev) {
       mainIsReady = true;
@@ -181,7 +214,9 @@ const cancelSkipUpdate = () => {
   }
 };
 
-app.on("ready", () => {
+app.on("ready", async () => {
+  await localize();
+
   createWindow();
 
   if (isDev) {
