@@ -22,6 +22,16 @@
       }
     }
 
+    &.btn-primary-light {
+      background-color: $color-primary-light;
+
+      &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        cursor: pointer;
+      }
+    }
+
     &.btn-red {
       background-color: $color-red;
 
@@ -50,6 +60,17 @@
 
       &:hover {
         background-color: $color-primary;
+        color: $color-white;
+        cursor: pointer;
+      }
+    }
+
+    &.btn-primary-light {
+      color: $color-primary-light;
+      border: 1px solid $color-primary-light;
+
+      &:hover {
+        background-color: $color-primary-light;
         color: $color-white;
         cursor: pointer;
       }
@@ -91,6 +112,16 @@
       }
     }
 
+    &.btn-primary-light {
+      color: $color-primary-light;
+
+      &:hover {
+        background-color: $color-background-muted;
+        color: $color-primary;
+        cursor: pointer;
+      }
+    }
+
     &.btn-red {
       color: $color-red;
 
@@ -121,6 +152,15 @@
 
       &:hover {
         color: $color-primary-light;
+        cursor: pointer;
+      }
+    }
+
+    &.btn-primary-light {
+      color: $color-primary-light;
+
+      &:hover {
+        color: $color-primary;
         cursor: pointer;
       }
     }

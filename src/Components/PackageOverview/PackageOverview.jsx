@@ -50,7 +50,7 @@ const PackageOverview = ({ data }) => {
         </Button>
       </div>
       <div className="package-btn-wrapper">
-        <Button variant="outline" uppercase block>
+        <Button variant="outline" appearance="primary-light" uppercase block>
           {t("global.activate")}
         </Button>
       </div>
