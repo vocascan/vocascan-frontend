@@ -59,8 +59,14 @@
   align-items: center;
 
   .postfix {
-    font-size: 16px;
+    font-size: 20px;
+    display: inline-block;
     padding-left: 5px;
     margin-left: auto;
+
+    .flag {
+      width: 20px;
+      margin: 0 5px;
+    }
   }
 }

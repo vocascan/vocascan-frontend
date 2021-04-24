@@ -8,9 +8,9 @@ import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
+import useCountryFlag from "../../hooks/userCountryFlag.js";
 import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
-import { languages } from "../../utils/constants.js";
 
 import "./GroupForm.scss";
 
@@ -22,6 +22,7 @@ const GroupForm = ({
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
+  const { getCountryFlag } = useCountryFlag();
   const dispatch = useDispatch();
   const active = useSelector((state) => state.form.group.active);
 
@@ -119,7 +120,7 @@ const GroupForm = ({
     setPackageItems(() =>
       languagePackages.map((p) => {
         const langs = p.name.split(" - ").map((e) => {
-          const icon = languages.find((x) => x.name === e);
+          const icon = getCountryFlag(p.name);
           return icon ? icon.icon + e : " " + e;
         });
 
@@ -129,7 +130,7 @@ const GroupForm = ({
         };
       })
     );
-  }, [languagePackages]);
+  }, [getCountryFlag, languagePackages]);
 
   return (
     <div className="group-form">

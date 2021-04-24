@@ -17,14 +17,15 @@ import Table from "../../../Components/Table/Table.jsx";
 import GroupForm from "../../../Forms/GroupForm/GroupForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
+import useCountryFlag from "../../../hooks/userCountryFlag.js";
 import { getGroups, getPackages, deleteGroup } from "../../../utils/api.js";
-import { languages } from "../../../utils/constants.js";
 
 import "./AllGroups.scss";
 
 const AllGroups = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
+  const { getCountryFlag } = useCountryFlag();
   const history = useHistory();
   const { packageId } = useParams();
 
@@ -43,19 +44,19 @@ const AllGroups = () => {
         .then(({ data }) => {
           const currPack = data.find((ele) => ele.id === packageId);
 
-          const foreignIcon = languages.find(
-            (x) => x.name === currPack.foreignWordLanguage
-          ).icon;
-          const translatedIcon = languages.find(
-            (x) => x.name === currPack.translatedWordLanguage
-          ).icon;
-
           setCurrentPackage({
             value: currPack.id,
             label: (
               <CustomPackageSelectOption
                 name={currPack.name}
-                postfix={foreignIcon + " - " + translatedIcon}
+                postfix={
+                  <>
+                    <span>{getCountryFlag(currPack.foreignWordLanguage)}</span>-
+                    <span>
+                      {getCountryFlag(currPack.translatedWordLanguage)}
+                    </span>
+                  </>
+                }
               />
             ),
           });
@@ -65,7 +66,7 @@ const AllGroups = () => {
           setShowGroupModal(true);
         });
     },
-    [packageId]
+    [getCountryFlag, packageId]
   );
 
   const addGroup = useCallback(() => {
@@ -73,19 +74,17 @@ const AllGroups = () => {
       .then(({ data }) => {
         const currPack = data.find((ele) => ele.id === packageId);
 
-        const foreignIcon = languages.find(
-          (x) => x.name === currPack.foreignWordLanguage
-        ).icon;
-        const translatedIcon = languages.find(
-          (x) => x.name === currPack.translatedWordLanguage
-        ).icon;
-
         setCurrentPackage({
           value: currPack.id,
           label: (
             <CustomPackageSelectOption
               name={currPack.name}
-              postfix={foreignIcon + " - " + translatedIcon}
+              postfix={
+                <>
+                  <span>{getCountryFlag(currPack.foreignWordLanguage)}</span>-
+                  <span>{getCountryFlag(currPack.translatedWordLanguage)}</span>
+                </>
+              }
             />
           ),
         });
@@ -94,7 +93,7 @@ const AllGroups = () => {
         setCurrentGroup(null);
         setShowGroupModal(true);
       });
-  }, [packageId]);
+  }, [getCountryFlag, packageId]);
 
   const groupSubmitted = useCallback(() => {
     getGroups(packageId).then((response) => {
