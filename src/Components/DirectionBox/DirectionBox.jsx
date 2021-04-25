@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
 
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
@@ -14,8 +15,14 @@ const DirectionBox = ({
   translatedWordLanguage,
 }) => {
   const { t } = useTranslation();
+  const history = useHistory();
+
+  const submitDirection = () => {
+    console.log(history);
+    history.push(`/learn/query/${direction}`);
+  };
   return (
-    <div className="direction-box">
+    <div className="direction-box" onClick={submitDirection}>
       <div className="flags">
         {direction === "random" ? (
           <>

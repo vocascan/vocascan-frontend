@@ -20,11 +20,16 @@ const PackageOverview = ({ data }) => {
       setLearnedPackage({
         foreignWordLanguage: data.foreignWordLanguage,
         translatedWordLanguage: data.translatedWordLanguage,
+        //using fixed value until server gives us this property
+        languagePackageId: data.id,
+        vocabsToday: 100,
+        staged: false,
       })
     );
-    history.push("learn/direction/");
+    history.push(`learn/direction/`);
   }, [
     data.foreignWordLanguage,
+    data.id,
     data.translatedWordLanguage,
     dispatch,
     history,
