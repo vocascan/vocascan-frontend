@@ -3,14 +3,15 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
-import Select from "../../Components/Form/Select/Select.jsx";
+import Select, {
+  SelectOptionWithFlag,
+} from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
-import { languages } from "../../utils/constants.js";
 
 import "./GroupForm.scss";
 
@@ -118,14 +119,15 @@ const GroupForm = ({
   useEffect(() => {
     setPackageItems(() =>
       languagePackages.map((p) => {
-        const langs = p.name.split(" - ").map((e) => {
-          const icon = languages.find((x) => x.name === e);
-          return icon ? icon.icon + e : " " + e;
-        });
-
         return {
           value: p.id,
-          label: langs.join(" - "),
+          label: (
+            <SelectOptionWithFlag
+              name={p.foreignWordLanguage}
+              foreignLanguage={p.foreignWordLanguage}
+              translatedWordLanguage={p.translatedWordLanguage}
+            />
+          ),
         };
       })
     );

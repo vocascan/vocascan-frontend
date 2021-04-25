@@ -2,7 +2,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "../../Components/Button/Button.jsx";
-import Select from "../../Components/Form/Select/Select.jsx";
+import Select, {
+  SelectOptionWithFlag,
+} from "../../Components/Form/Select/Select.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
@@ -20,12 +22,12 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
     defaultData
       ? {
           value: defaultData.foreignWordLanguage,
-          label:
-            languages.find(
-              (ele) => ele.name === defaultData.foreignWordLanguage
-            ).icon +
-            " " +
-            defaultData.foreignWordLanguage,
+          label: (
+            <SelectOptionWithFlag
+              name={defaultData.foreignWordLanguage}
+              foreignLanguage={defaultData.foreignWordLanguage}
+            />
+          ),
         }
       : ""
   );
@@ -33,12 +35,12 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
     defaultData
       ? {
           value: defaultData.translatedWordLanguage,
-          label:
-            languages.find(
-              (ele) => ele.name === defaultData.translatedWordLanguage
-            ).icon +
-            " " +
-            defaultData.translatedWordLanguage,
+          label: (
+            <SelectOptionWithFlag
+              name={defaultData.translatedWordLanguage}
+              foreignLanguage={defaultData.translatedWordLanguage}
+            />
+          ),
         }
       : ""
   );
@@ -116,7 +118,12 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
   const selectOptions = languages.map((language) => {
     return {
       value: language.name,
-      label: language.icon + " " + language.name,
+      label: (
+        <SelectOptionWithFlag
+          name={language.name}
+          foreignLanguage={language.name}
+        />
+      ),
     };
   });
 

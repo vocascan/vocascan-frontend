@@ -13,14 +13,15 @@ import Table from "../../../Components/Table/Table.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
+import useCountryFlag from "../../../hooks/userCountryFlag.js";
 import { getPackages, deletePackage } from "../../../utils/api.js";
-import { languages } from "../../../utils/constants.js";
 
 import "./AllPackages.scss";
 
 const AllPackages = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
+  const { getCountryFlag } = useCountryFlag();
 
   const [data, setData] = useState([]);
   const [currentPackage, setCurrentPackage] = useState(null);
@@ -87,26 +88,20 @@ const AllPackages = () => {
         Header: t("screens.allPackages.foreignLanguage"),
         accessor: "foreignWordLanguage",
         Cell: ({ row }) => (
-          <span>
-            {languages.find(
-              (ele) => ele.name === row.original.foreignWordLanguage
-            )?.icon +
-              " " +
-              row.original.foreignWordLanguage}
-          </span>
+          <>
+            {getCountryFlag(row.original.foreignWordLanguage)}
+            {row.original.foreignWordLanguage}
+          </>
         ),
       },
       {
         Header: t("screens.allPackages.translatedLanguage"),
         accessor: "translatedWordLanguage",
         Cell: ({ row }) => (
-          <span>
-            {languages.find(
-              (ele) => ele.name === row.original.translatedWordLanguage
-            )?.icon +
-              " " +
-              row.original.translatedWordLanguage}
-          </span>
+          <>
+            {getCountryFlag(row.original.translatedWordLanguage)}
+            {row.original.translatedWordLanguage}
+          </>
         ),
       },
       {
@@ -140,7 +135,7 @@ const AllPackages = () => {
         ),
       },
     ],
-    [editPackage, onDeletePckge, t]
+    [editPackage, getCountryFlag, onDeletePckge, t]
   );
 
   useEffect(() => {
