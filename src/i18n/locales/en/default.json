@@ -33,7 +33,8 @@
     "paginationPage": "Page {{page}} of {{pageLength}}",
     "paginationShow": "Show {{size}}",
     "learn": "Learn",
-    "activate": "Activate"
+    "activate": "Activate",
+    "random": "Random"
   },
   "components": {
     "groupForm": {

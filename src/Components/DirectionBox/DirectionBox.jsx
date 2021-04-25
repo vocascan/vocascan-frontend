@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
@@ -8,14 +8,12 @@ import { languages } from "../../utils/constants.js";
 
 import "./DirectionBox.scss";
 
-const DirectionBox = ({ direction = "default" }) => {
-  const foreignWordLanguage = useSelector(
-    (state) => state.learn.foreignWordLanguage
-  );
-  const translatedWordLanguage = useSelector(
-    (state) => state.learn.translatedWordLanguage
-  );
-
+const DirectionBox = ({
+  direction = "default",
+  foreignWordLanguage,
+  translatedWordLanguage,
+}) => {
+  const { t } = useTranslation();
   return (
     <div className="direction-box">
       <div className="flags">
@@ -30,7 +28,11 @@ const DirectionBox = ({ direction = "default" }) => {
         {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
       </div>
       <div className="languages">
-        {foreignWordLanguage} - {translatedWordLanguage}{" "}
+        {direction === "random"
+          ? t("global.random")
+          : direction === "backwards"
+          ? `${translatedWordLanguage} - ${foreignWordLanguage}`
+          : `${foreignWordLanguage} - ${translatedWordLanguage}`}
       </div>
     </div>
   );
