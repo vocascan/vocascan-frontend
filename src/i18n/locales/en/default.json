@@ -34,7 +34,9 @@
     "paginationShow": "Show {{size}}",
     "learn": "Learn",
     "activate": "Activate",
-    "random": "Random"
+    "random": "Random",
+    "wrong": "Wrong",
+    "correct": "Correct"
   },
   "components": {
     "groupForm": {
