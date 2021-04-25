@@ -17,15 +17,25 @@ const DirectionBox = ({
   return (
     <div className="direction-box">
       <div className="flags">
-        {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
         {direction === "random" ? (
-          <SyncAltIcon className="direction-arrow" />
+          <>
+            {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
+            <SyncAltIcon className="direction-arrow" />
+            {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
+          </>
         ) : direction === "backwards" ? (
-          <ArrowRightAltIcon className="direction-arrow invert" />
+          <>
+            {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
+            <ArrowRightAltIcon className="direction-arrow" />
+            {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
+          </>
         ) : (
-          <ArrowRightAltIcon className="direction-arrow" />
+          <>
+            {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
+            <ArrowRightAltIcon className="direction-arrow" />
+            {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
+          </>
         )}
-        {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
       </div>
       <div className="languages">
         {direction === "random"
