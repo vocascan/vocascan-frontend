@@ -27,7 +27,8 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "[skip ci] updated translations via Localazy"
-          file_pattern: src/i18n/**/*.json
+          file_pattern: src/i18n/locales/**/*.json
+          branch: experimental
 
       - name: get version
         id: prepare
