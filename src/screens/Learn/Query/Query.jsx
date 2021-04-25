@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 
 import Button from "../../../Components/Button/Button.jsx";
 
@@ -9,9 +10,32 @@ import { getQueryVocabulary } from "../../../utils/api.js";
 
 import "./Query.scss";
 
+const RenderForeignWord = ({ currVocab }) => {
+  return (
+    <div className="foreign-word-wrapper">
+      <h1>{currVocab.name}</h1>
+    </div>
+  );
+};
+
+const RenderTranslatedWord = ({ currVocab }) => {
+  return (
+    <div className="translated-word-wrapper">
+      <h1 className="">{currVocab.name}</h1>
+      <div>
+        <p className="my-20">{currVocab.description}</p>
+        <div className="my-20 translations">
+          {currVocab.Translations.map((el) => el.name).join(", ")}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Query = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
+  const { direction } = useParams();
 
   const languagePackageId = useSelector(
     (state) => state.learn.languagePackageId
@@ -22,6 +46,8 @@ const Query = () => {
   const [vocabs, setVocabs] = useState([]);
   const [currVocab, setCurrVocab] = useState(null);
   const [flip, setFlip] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [currDirection, setCurrDirection] = useState(direction);
 
   const getVocabulary = useCallback(() => {
     getQueryVocabulary(languagePackageId, staged, limit)
@@ -44,6 +70,16 @@ const Query = () => {
   }, []);
 
   useEffect(() => {
+    if (direction === "random") {
+      setCurrDirection(
+        Math.floor(Math.random() * 2) % 2 ? "default" : "backwards"
+      );
+    }
+
+    setLoaded(true);
+  }, [direction]);
+
+  useEffect(() => {
     if (!vocabs) {
       return;
     }
@@ -56,6 +92,10 @@ const Query = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <div className="query-wrapper">
       <div className="progress">Imagin here is an awesome progress bar</div>
@@ -64,16 +104,22 @@ const Query = () => {
           <div className="card">
             <div className={`card-inner ${flip ? "flipped" : ""}`}>
               <div className="card-front">
-                <h1>{currVocab.name}</h1>
+                <div className="card-front-inner">
+                  {currDirection === "default" ? (
+                    <RenderForeignWord currVocab={currVocab} />
+                  ) : (
+                    <RenderTranslatedWord currVocab={currVocab} />
+                  )}
+                </div>
               </div>
               <div className="card-back">
-                <div>
-                  <h1 className="my-50">{currVocab.name}</h1>
-                  <p className="my-50">{currVocab.description}</p>
-                  <div className="my-50 translations">
-                    {currVocab.Translations.map((el) => el.name).join(", ")}
-                  </div>
-                  <div className="my-50 continue">
+                <div className="card-back-inner">
+                  {currDirection === "default" ? (
+                    <RenderTranslatedWord currVocab={currVocab} />
+                  ) : (
+                    <RenderForeignWord currVocab={currVocab} />
+                  )}
+                  <div className="continue">
                     <Button
                       className="card-button"
                       appearance="red"

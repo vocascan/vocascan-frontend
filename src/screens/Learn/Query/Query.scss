@@ -3,7 +3,7 @@
 .query-wrapper {
   display: grid;
   height: 100%;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 15% 70% 15%;
   grid-template-areas:
     "progress"
     "content"
@@ -34,8 +34,9 @@
         position: relative;
         width: 50%;
         min-width: 450px;
-        height: 80%;
-        min-height: 300px;
+        max-width: 600px;
+        height: 70%;
+        min-height: 400px;
         margin: auto;
         text-align: center;
         transition: transform 0.8s;
@@ -56,29 +57,50 @@
         height: 100%;
         backface-visibility: hidden;
         border-radius: 10px;
+        box-shadow: 1px 3px 5px $color-box-shadow;
       }
 
       .card-front {
-        color: $color-main-text;
+        color: $color-main-text-inverse;
+        background-color: $color-background-inverse;
+
+        .card-front-inner {
+          padding: 20px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
       }
 
       .card-back {
         transform: rotateY(180deg);
+        color: $color-main-text-inverse;
+        background-color: $color-primary-dark;
+
+        .card-back-inner {
+          padding: 20px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
       }
 
-      .my-50 {
-        margin: 50px 0;
+      .my-20 {
+        margin: 20px 0;
       }
 
       .translations {
         border: 1px solid $color-primary;
         border-radius: 10px;
         padding: 10px;
+        font-size: 24px;
       }
 
       .continue {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
       }
     }
   }
@@ -92,6 +114,22 @@
   }
 
   .card-button {
-    min-width: 200px;
+    min-width: 180px;
+    margin: 0 10px;
+  }
+
+  .foreign-word-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .translated-word-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
