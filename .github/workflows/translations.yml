@@ -2,7 +2,7 @@ name: translations
 on:
   push:
     branches:
-      - 'main'
+      - 'experimental'
   schedule:
     - cron: '0 12 * * 0'
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+          ref: experimental
 
       - name: download
         uses: localazy/download@v1
@@ -26,21 +26,23 @@ jobs:
       - name: push
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Updated translations via Localazy
-          file_pattern: src/i18n/locales/*.json
+          commit_message: "[skip ci] updated translations via Localazy"
+          file_pattern: src/i18n/locales/**/*.json
+          branch: experimental
 
       - name: get version
         id: prepare
         run: |
           mv package.json package.json.bak
-          npm i --no-save git-describe semver
+          npm i --no-save --no-package-look semver
           mv package.json.bak package.json
           version=$(node -e "
-            const { gitDescribeSync } = require('git-describe');
-            const gitInfo = gitDescribeSync();
+            const Semver = require('semver');
+            const package = require('./package.json');
+            const semver = Semver.parse(package.version);
             let version = 0;
-            if (gitInfo.semver) {
-              version = 100000000 * gitInfo.semver.major + 10000 * gitInfo.semver.minor + gitInfo.semver.patch;
+            if (semver) {
+              version = 100000000 * semver.major + 10000 * semver.minor + semver.patch;
             }
             console.log(version.toString(10));
           ")
