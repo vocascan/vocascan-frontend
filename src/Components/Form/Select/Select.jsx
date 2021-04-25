@@ -4,11 +4,27 @@ import ReactSelect, { components } from "react-select";
 
 import "./Select.scss";
 
-export const CustomPackageSelectOption = ({ name, postfix }) => {
+import useCountryFlag from "../../../hooks/userCountryFlag";
+
+export const SelectOptionWithFlag = ({
+  name,
+  foreignLanguage,
+  translatedLanguage,
+}) => {
+  const { getCountryFlag } = useCountryFlag();
+
   return (
     <span className="custom-option-wrapper">
       {name}
-      <small className="postfix">{postfix}</small>
+      <small className="postfix">
+        {foreignLanguage && <span>{getCountryFlag(foreignLanguage)}</span>}
+        {translatedLanguage && (
+          <>
+            {"-"}
+            <span>{getCountryFlag(translatedLanguage)}</span>
+          </>
+        )}
+      </small>
     </span>
   );
 };

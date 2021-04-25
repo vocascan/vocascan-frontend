@@ -11,13 +11,12 @@ import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import Button from "../../../Components/Button/Button.jsx";
 import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
-import { CustomPackageSelectOption } from "../../../Components/Form/Select/Select.jsx";
+import { SelectOptionWithFlag } from "../../../Components/Form/Select/Select.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import GroupForm from "../../../Forms/GroupForm/GroupForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import useCountryFlag from "../../../hooks/userCountryFlag.js";
 import { getGroups, getPackages, deleteGroup } from "../../../utils/api.js";
 
 import "./AllGroups.scss";
@@ -25,7 +24,6 @@ import "./AllGroups.scss";
 const AllGroups = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const { getCountryFlag } = useCountryFlag();
   const history = useHistory();
   const { packageId } = useParams();
 
@@ -47,16 +45,10 @@ const AllGroups = () => {
           setCurrentPackage({
             value: currPack.id,
             label: (
-              <CustomPackageSelectOption
+              <SelectOptionWithFlag
                 name={currPack.name}
-                postfix={
-                  <>
-                    <span>{getCountryFlag(currPack.foreignWordLanguage)}</span>-
-                    <span>
-                      {getCountryFlag(currPack.translatedWordLanguage)}
-                    </span>
-                  </>
-                }
+                foreignLanguage={currPack.foreignWordLanguage}
+                translatedLanguage={currPack.translatedWordLanguage}
               />
             ),
           });
@@ -66,7 +58,7 @@ const AllGroups = () => {
           setShowGroupModal(true);
         });
     },
-    [getCountryFlag, packageId]
+    [packageId]
   );
 
   const addGroup = useCallback(() => {
@@ -77,14 +69,10 @@ const AllGroups = () => {
         setCurrentPackage({
           value: currPack.id,
           label: (
-            <CustomPackageSelectOption
+            <SelectOptionWithFlag
               name={currPack.name}
-              postfix={
-                <>
-                  <span>{getCountryFlag(currPack.foreignWordLanguage)}</span>-
-                  <span>{getCountryFlag(currPack.translatedWordLanguage)}</span>
-                </>
-              }
+              foreignLanguage={currPack.foreignWordLanguage}
+              translatedLanguage={currPack.translatedWordLanguage}
             />
           ),
         });
@@ -93,7 +81,7 @@ const AllGroups = () => {
         setCurrentGroup(null);
         setShowGroupModal(true);
       });
-  }, [getCountryFlag, packageId]);
+  }, [packageId]);
 
   const groupSubmitted = useCallback(() => {
     getGroups(packageId).then((response) => {

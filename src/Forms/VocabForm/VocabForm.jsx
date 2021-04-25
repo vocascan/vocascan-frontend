@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../Components/Button/Button.jsx";
 import ArrayTextInput from "../../Components/Form/ArrayTextInput/ArrayTextInput.jsx";
 import Select, {
-  CustomPackageSelectOption,
+  SelectOptionWithFlag,
 } from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
@@ -14,7 +14,6 @@ import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
-import useCountryFlag from "../../hooks/userCountryFlag.js";
 import { setVocabActive, setVocabActivate } from "../../redux/Actions/form.js";
 import {
   getPackages,
@@ -32,7 +31,6 @@ const VocabForm = ({
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const { getCountryFlag } = useCountryFlag();
   const dispatch = useDispatch();
 
   const active = useSelector((state) => state.form.vocab.active);
@@ -118,21 +116,17 @@ const VocabForm = ({
       setSelectedPackage({
         value: newPackage.id,
         label: (
-          <CustomPackageSelectOption
+          <SelectOptionWithFlag
             name={newPackage.name}
-            postfix={
-              <>
-                <span>{getCountryFlag(newPackage.foreignWordLanguage)}</span>-
-                <span>{getCountryFlag(newPackage.translatedWordLanguage)}</span>
-              </>
-            }
+            foreignLanguage={newPackage.foreignWordLanguage}
+            translatedLanguage={newPackage.translatedWordLanguage}
           />
         ),
       });
       closePackageModal();
       fetchPackages();
     },
-    [closePackageModal, fetchPackages, getCountryFlag]
+    [closePackageModal, fetchPackages]
   );
 
   const groupAdded = useCallback(
@@ -226,22 +220,16 @@ const VocabForm = ({
         return {
           value: packageId,
           label: (
-            <CustomPackageSelectOption
+            <SelectOptionWithFlag
               name={newPackage.name}
-              postfix={
-                <>
-                  <span>{getCountryFlag(newPackage.foreignWordLanguage)}</span>-
-                  <span>
-                    {getCountryFlag(newPackage.translatedWordLanguage)}
-                  </span>
-                </>
-              }
+              foreignLanguage={newPackage.foreignWordLanguage}
+              translatedLanguage={newPackage.translatedWordLanguage}
             />
           ),
         };
       });
     }
-  }, [packages, packageId, getCountryFlag]);
+  }, [packages, packageId]);
 
   useEffect(() => {
     if (groupId && groups.length) {
@@ -290,20 +278,16 @@ const VocabForm = ({
         return {
           value: p.id,
           label: (
-            <CustomPackageSelectOption
+            <SelectOptionWithFlag
               name={p.name}
-              postfix={
-                <>
-                  <span>{getCountryFlag(p.foreignWordLanguage)}</span>-
-                  <span>{getCountryFlag(p.translatedWordLanguage)}</span>
-                </>
-              }
+              foreignLanguage={p.foreignWordLanguage}
+              translatedLanguage={p.translatedWordLanguage}
             />
           ),
         };
       })
     );
-  }, [getCountryFlag, packages]);
+  }, [packages]);
 
   useEffect(() => {
     setGroupsItems(() =>

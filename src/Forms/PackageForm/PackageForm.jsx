@@ -2,11 +2,12 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "../../Components/Button/Button.jsx";
-import Select from "../../Components/Form/Select/Select.jsx";
+import Select, {
+  SelectOptionWithFlag,
+} from "../../Components/Form/Select/Select.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
-import useCountryFlag from "../../hooks/userCountryFlag.js";
 import { createPackage, modifyPackage } from "../../utils/api.js";
 import { languages } from "../../utils/constants.js";
 
@@ -15,7 +16,6 @@ import "./PackageForm.scss";
 const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const { getCountryFlag } = useCountryFlag();
 
   const [name, setName] = useState(defaultData ? defaultData.name : "");
   const [foreignLanguage, setForeignLanguage] = useState(
@@ -23,10 +23,10 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
       ? {
           value: defaultData.foreignWordLanguage,
           label: (
-            <span className="language-select-option">
-              {defaultData.foreignWordLanguage}
-              {getCountryFlag(defaultData.foreignWordLanguage)}
-            </span>
+            <SelectOptionWithFlag
+              name={defaultData.foreignWordLanguage}
+              foreignLanguage={defaultData.foreignWordLanguage}
+            />
           ),
         }
       : ""
@@ -36,10 +36,10 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
       ? {
           value: defaultData.translatedWordLanguage,
           label: (
-            <span className="language-select-option">
-              {defaultData.translatedWordLanguage}
-              {getCountryFlag(defaultData.translatedWordLanguage)}
-            </span>
+            <SelectOptionWithFlag
+              name={defaultData.translatedWordLanguage}
+              foreignLanguage={defaultData.translatedWordLanguage}
+            />
           ),
         }
       : ""
@@ -119,10 +119,10 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
     return {
       value: language.name,
       label: (
-        <span className="language-select-option">
-          {language.name}
-          <span>{getCountryFlag(language.name)}</span>
-        </span>
+        <SelectOptionWithFlag
+          name={language.name}
+          foreignLanguage={language.name}
+        />
       ),
     };
   });
