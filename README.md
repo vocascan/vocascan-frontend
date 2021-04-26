@@ -1,14 +1,13 @@
 # Vocascan
 ![Github license](https://img.shields.io/github/license/noctera/Vocascan?style=flat-square)
+![Github Open Issues](https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat-square)
+![Github Stars](https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat-square)
+![Github forks](https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat-square)
+![Github downloads](https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat-square)
+[![Localazy](https://connect.localazy.com/status/vocascan?content=progress&style=flat-square&logo=ffffff)](https://localazy.com/p/vocascan)
 
-![Github Open Issues](https://img.shields.io/github/issues/noctera/Vocascan?style=flat-square)
-![Github Stars](https://img.shields.io/github/stars/noctera/Vocascan?style=flat-square)
-![Github forks](https://img.shields.io/github/forks/noctera/Vocascan?style=flat-square)
-![Github downloads](https://img.shields.io/github/downloads/noctera/Vocascan/total?label=Downloads)
-
-
-
-![Vocascan cover](https://github.com/vocascan/vocascan-desktop/blob/main/src/images/vocascan-github-cover.png)
+![Vocascan cover](./src/images/logo/vocascan-github-cover.png)
 
 ## Table of Contents
 
