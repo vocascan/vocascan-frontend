@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: experimental
+          token: ${{ secrets.VOCASCAN_BOT_TOKEN }}
 
       - name: download
         uses: localazy/download@v1
@@ -27,6 +28,9 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "[skip ci] updated translations via Localazy"
+          commit_user_name: VocascanBot
+          commit_user_email: vocascan@gmail.com
+          commit_author: VocascanBot <vocascan@gmail.com>
           file_pattern: src/i18n/locales/**/*.json
           branch: experimental
 

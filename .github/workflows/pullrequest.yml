@@ -31,7 +31,7 @@ jobs:
         if: steps.changes.outputs.translations == 'true'
         uses: unsplash/comment-on-pr@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.VOCASCAN_BOT_TOKEN }}
         with:
           msg: |
             Thank you for your pull request.
