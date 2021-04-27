@@ -15,25 +15,28 @@ const PackageOverview = ({ data }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const submitLearn = useCallback(() => {
-    dispatch(
-      setLearnedPackage({
-        foreignWordLanguage: data.foreignWordLanguage,
-        translatedWordLanguage: data.translatedWordLanguage,
-        //using fixed value until server gives us this property
-        languagePackageId: data.id,
-        vocabsToday: 100,
-        staged: false,
-      })
-    );
-    history.push(`learn/direction/`);
-  }, [
-    data.foreignWordLanguage,
-    data.id,
-    data.translatedWordLanguage,
-    dispatch,
-    history,
-  ]);
+  const submitLearn = useCallback(
+    (staged) => {
+      dispatch(
+        setLearnedPackage({
+          foreignWordLanguage: data.foreignWordLanguage,
+          translatedWordLanguage: data.translatedWordLanguage,
+          //using fixed value until server gives us this property
+          languagePackageId: data.id,
+          vocabsToday: 100,
+          staged,
+        })
+      );
+      history.push(`learn/direction/`);
+    },
+    [
+      data.foreignWordLanguage,
+      data.id,
+      data.translatedWordLanguage,
+      dispatch,
+      history,
+    ]
+  );
 
   return (
     <div className="package-overview">
@@ -50,12 +53,18 @@ const PackageOverview = ({ data }) => {
         {data?.stats?.vocabularies?.unactivated}
       </p>
       <div className="package-inner package-btn-wrapper">
-        <Button block uppercase onClick={submitLearn}>
+        <Button block uppercase onClick={() => submitLearn(false)}>
           {t("global.learn")}
         </Button>
       </div>
       <div className="package-btn-wrapper">
-        <Button variant="outline" appearance="primary-light" uppercase block>
+        <Button
+          variant="outline"
+          appearance="primary-light"
+          uppercase
+          block
+          onClick={() => submitLearn(true)}
+        >
           {t("global.activate")}
         </Button>
       </div>

@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 import Button from "../../../Components/Button/Button.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { getQueryVocabulary } from "../../../utils/api.js";
+import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 
 import "./Query.scss";
 
@@ -64,6 +64,29 @@ const Query = () => {
         showSnack("error", "Internal Server Error");
       });
   }, [languagePackageId, limit, showSnack, staged]);
+
+  const sendVocabCheck = useCallback(
+    (vocabularyCardId, answer, progress) => {
+      checkQuery(vocabularyCardId, answer, progress)
+        .then((response) => {
+          console.log(response.data);
+          vocabs.shift();
+          setCurrVocab(vocabs[0]);
+        })
+        .catch((event) => {
+          if (
+            event.response?.status === 401 ||
+            event.response?.status === 404
+          ) {
+            showSnack("error", "Error fetching stats");
+            return;
+          }
+
+          showSnack("error", "Internal Server Error");
+        });
+    },
+    [showSnack, vocabs]
+  );
 
   const onCheck = useCallback(() => {
     setFlip((prev) => !prev);
@@ -123,14 +146,20 @@ const Query = () => {
                     <Button
                       className="card-button"
                       appearance="red"
-                      onClick={onCheck}
+                      onClick={() => {
+                        onCheck();
+                        sendVocabCheck(currVocab.id, false, true);
+                      }}
                     >
                       {t("global.wrong")}
                     </Button>
                     <Button
                       className="card-button"
                       appearance="green"
-                      onClick={onCheck}
+                      onClick={() => {
+                        onCheck();
+                        sendVocabCheck(currVocab.id, true, true);
+                      }}
                     >
                       {t("global.correct")}
                     </Button>

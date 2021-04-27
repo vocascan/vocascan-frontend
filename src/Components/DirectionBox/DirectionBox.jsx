@@ -18,7 +18,6 @@ const DirectionBox = ({
   const history = useHistory();
 
   const submitDirection = () => {
-    console.log(history);
     history.push(`/learn/query/${direction}`);
   };
   return (
