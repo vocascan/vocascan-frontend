@@ -70,7 +70,7 @@ const Query = () => {
       checkQuery(vocabularyCardId, answer, progress)
         .then((response) => {
           console.log(response.data);
-          vocabs.shift();
+          answer ? vocabs.shift() : vocabs.push(vocabs.shift());
           setCurrVocab(vocabs[0]);
         })
         .catch((event) => {
