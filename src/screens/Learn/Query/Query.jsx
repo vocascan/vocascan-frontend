@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 
 import Button from "../../../Components/Button/Button.jsx";
+import ProgressBar from "../../../Components/Charts/ProgressBar/ProgressBar.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
 import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
@@ -121,7 +122,9 @@ const Query = () => {
 
   return (
     <div className="query-wrapper">
-      <div className="progress">Imagin here is an awesome progress bar</div>
+      <div className="progress">
+        <ProgressBar value={20} bottomText={`20 / 100`} />
+      </div>
       <div className="content">
         {currVocab && (
           <div className="card">
