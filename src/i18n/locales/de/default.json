@@ -1,7 +1,36 @@
 {
   "components": {
     "groupForm": {
-      "languagePackage": "Paket"
+      "activeLabel": "Aktiv",
+      "languagePackage": "Paket",
+      "modifyGroupFailMessage": "Gruppe konnte nicht gespeichert werden",
+      "modifyGroupSuccessMessage": "Gruppe gespeichert!",
+      "savGroupFailMessage": "Gruppe konnte nicht hinzugefügt werden",
+      "saveGroupSuccessMessage": "Neue Gruppe hinzugefügt"
+    },
+    "packageForm": {
+      "correctTranslationsGoal": "Richtige Übersetzungen um Vokabelkartenpaar zu bestehen",
+      "foreignLanguage": "Fremdsprache",
+      "modifyPackageFailedMessage": "Paket konnte nicht gespeichert werden",
+      "modifyPackageSuccessMessage": "Paket wurde gespeichert",
+      "savePackageFailMessage": "Paket konnte nicht hinzugefügt werden",
+      "savePackageSuccessMessage": "Neues Paket hinzugefügt",
+      "translatedLanguage": "Übersetzte Sprache",
+      "vocabsPerDay": "Vokabeln pro Tag"
+    },
+    "vocabForm": {
+      "activateLabel": "Aktivieren",
+      "activateTooltip": "Entscheidet, ob die Vokabel separat aktiviert werden muss, um sie in der nächsten Abfrage verwenden zu können",
+      "activeLabel": "Aktiv",
+      "activeTooltip": "Entscheidet ob die Vokabel in der Abfrage geprüft wird",
+      "addTranslation": "Übersetzung hinzufügen",
+      "modifyErrorMessage": "Vokabel konnte nicht gespeichert werden",
+      "modifySuccessMessage": "Vokabel gespeichert",
+      "noGroupsMessage": "Keine Gruppen gefunden",
+      "noPackagesMessage": "Keine Pakete gefunden",
+      "saveErrorMessage": "Neue Vokabel konnte nicht hinzugefügt werden",
+      "saveGroupSuccessMessage": "Neue Gruppe hinzugefügt",
+      "saveSuccessMessage": "Neue Vokabel hinzugefügt"
     }
   },
   "global": {
@@ -22,6 +51,8 @@
     "none": "Keine",
     "package": "Paket",
     "packages": "Pakete",
+    "paginationPage": "Seite {{page}} von {{pageLength}}",
+    "paginationShow": "Zeige {{size}}",
     "password": "Passwort",
     "passwordRepeat": "Passwort wiederholen",
     "save": "Speichern",
@@ -30,19 +61,142 @@
     "signIn": "Anmelden",
     "signUp": "Registrieren",
     "submit": "Absenden",
+    "successMessage": "Erfolgreich!",
     "translation": "Übersetzung",
     "username": "Benutzername",
+    "vocabs": "Vokabeln",
     "vocascan": "Vocascan"
   },
   "nav": {
-    "allVocabulary": "Bibliothek"
+    "allVocabulary": "Bibliothek",
+    "groupLearning": "Gruppen Lernen",
+    "learn": "Lernen",
+    "logout": "Abmelden",
+    "newVocab": "Neue Vokabel",
+    "profile": "Profil",
+    "progress": "Fortschritt",
+    "settings": "Einstellungen"
   },
   "screens": {
+    "addVocab": {
+      "title": "Vokabel hinzufügen"
+    },
     "allGroups": {
-      "groupName": "Gruppe"
+      "active": "Aktiv",
+      "addGroup": "Gruppe hinzufügen",
+      "deleteDescription": "Sind Sie sicher, dass Sie die Gruppe {{name}} löschen möchten?",
+      "deleteFailMessage": "Gruppe konnte nicht gelöscht werden",
+      "deleteSuccessMessage": "Gruppe gelöscht",
+      "deleteTitle": "Gruppe löschen",
+      "editGroup": "Gruppe bearbeiten",
+      "groupName": "Gruppe",
+      "title": "Alle Gruppen"
     },
     "allPackages": {
-      "packageName": "Paket"
+      "addPackage": "Paket hinzufügen",
+      "deleteDescription": "Möchten Sie das Paket {{name}} wirklich löschen?",
+      "deleteFailMessage": "Paket konnte nicht gelöscht werden",
+      "deleteSuccessMessage": "Paket wurde gelöscht",
+      "deleteTitle": "Paket löschen",
+      "editPackage": "Bearbeite Paket",
+      "foreignLanguage": "Fremdsprache",
+      "packageName": "Paket",
+      "rightWords": "Richtige Wörter",
+      "title": "Alle Pakete",
+      "translatedLanguage": "Übersetzte Sprache",
+      "vocabsPerDay": "Vokabeln/Tag"
+    },
+    "allVocabs": {
+      "addVocab": "Vokabeln hinzufügen",
+      "deleteDescription": "Möchtest du die Vokabel {{name}} wirklich löschen?",
+      "deleteFailMessage": "Vokabel konnte nicht gelöscht werden",
+      "deleteSuccessMessage": "Vokabel gelöscht",
+      "deleteTitle": "Vokabel löschen",
+      "editVocab": "Vokabel bearbeiten",
+      "title": "Alle Vokablen",
+      "translations": "Übersetzungen",
+      "vocabel": "Vokabel"
+    },
+    "firstStartup": {
+      "savePackageSuccessMessage": "Neues Paket hinzugefügt",
+      "title": "Erstelle dein erstes Vokabelpaket"
+    },
+    "login": {
+      "dontHaveAccount": "Du hast kein Account?",
+      "title": "Anmelden",
+      "wrongCredentials": "Deine E-Mail oder dein Passwort ist falsch"
+    },
+    "profile": {
+      "accountSettings": {
+        "delete": {
+          "description": "Sobald Du dein Konto gelöscht hast, ist es für immer weg",
+          "title": "Account löschen"
+        },
+        "email": {
+          "description": "Achten darauf, eine gültige E-Mail zu verwenden",
+          "title": "E-Mail-Adresse ändern"
+        },
+        "password": {
+          "description": "Ändere dein altes Passwort, wenn du es vergessen hast",
+          "title": "Passwort ändern"
+        },
+        "title": "Accounteinstellungen"
+      },
+      "modals": {
+        "changeEmail": {
+          "heading": "E-Mail-Adresse ändern"
+        },
+        "changePassword": {
+          "heading": "Passwort ändern"
+        },
+        "deleteAccount": {
+          "heading": "Account löschen",
+          "input": "Gebe Deinen Benutzernamen ein, um den Löschvorgang zu bestätigen"
+        }
+      },
+      "stats": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv",
+        "stats": "Statistiken",
+        "total": "Gesamt"
+      }
+    },
+    "register": {
+      "alreadyHaveAccount": "Du hast bereits ein Konto?",
+      "emailInUse": "Die E-Mail wird bereits verwendet",
+      "passwordsDontMatch": "Die Passwörter stimmen nicht überein",
+      "title": "Registrieren"
+    },
+    "selectionScreen": {
+      "heading": "Wählen Deine Option",
+      "title": "Anmelden",
+      "vocascanCloud": {
+        "button": "Jetzt kostenlos starten",
+        "contra": "Ihre Daten werden auf den Servern von vocascan gespeichert",
+        "heading": "Vocascan cloud",
+        "pro": [
+          "Keine Notwendigkeit eines Servers",
+          "jedes Gerät synchronisieren"
+        ]
+      },
+      "vocascanServer": {
+        "button": "Jetzt kostenlos starten",
+        "contra": "Sie benötigen einen eigenen Server",
+        "heading": "Vocascan server",
+        "pro": [
+          "Synchronisiere jedes Gerät",
+          "Verwende Deinen eigenen Server",
+          "Volle Kontrolle über die Einstellungen"
+        ]
+      }
+    },
+    "settings": {
+      "menu": {
+        "label": "Menu Stil",
+        "optionLeft": "Standard",
+        "optionRight": "ausgefallen"
+      },
+      "title": "Einstellungen"
     }
   }
 }
