@@ -24,8 +24,8 @@ export const deleteUser = () => api.delete("/user");
 
 // Language package
 export const createPackage = (data) => api.post("/languagePackage", data);
-export const getPackages = (groups = false) =>
-  api.get(`/languagePackage?groups=${groups}`);
+export const getPackages = (groups = false, stats = false) =>
+  api.get(`/languagePackage?groups=${groups}&stats=${stats}`);
 export const modifyPackage = (data) =>
   api.put(`/languagePackage/${data.id}`, data);
 export const deletePackage = (languagePackageId) =>

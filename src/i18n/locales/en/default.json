@@ -31,7 +31,10 @@
     "successMessage": "Success",
     "fetchError": "Something went wrong, please try again later",
     "paginationPage": "Page {{page}} of {{pageLength}}",
-    "paginationShow": "Show {{size}}"
+    "paginationShow": "Show {{size}}",
+    "learn": "Learn",
+    "activate": "Activate",
+    "random": "Random"
   },
   "components": {
     "groupForm": {
@@ -65,6 +68,11 @@
       "activeTooltip": "Decides whether vocabulary is included in the query",
       "activateLabel": "Activate",
       "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query"
+    },
+    "packageOverview": {
+      "unresolved": "Total to learn:",
+      "unactivated": "Not activated:",
+      "today": "Today:"
     }
   },
   "screens": {
@@ -106,6 +114,9 @@
     },
     "addVocab": {
       "title": "Add vocabulary"
+    },
+    "direction": {
+      "title": "Please choose your direction"
     },
     "profile": {
       "stats": {

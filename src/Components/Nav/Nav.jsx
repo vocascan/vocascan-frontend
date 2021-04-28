@@ -49,7 +49,7 @@ const Nav = () => {
           name={t("nav.learn")}
           design={menuStyle}
           icon={<LocalLibraryIcon />}
-          link="/"
+          link="/learn"
           exact
         />
         <NavButton
