@@ -5,7 +5,10 @@
       "starting": "Startet..."
     },
     "updates": {
-      "check": "Suche nach Updates..."
+      "check": "Suche nach Updates...",
+      "download": "Update wird heruntergeladen…",
+      "skipButton": "Überspringen",
+      "skipCheck": "Updateüberprüfung überspringen..."
     }
   }
 }

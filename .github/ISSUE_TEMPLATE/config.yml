@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: GitHub Discussions
+    url: https://github.com/vocascan/vocascan-desktop/discussions
+    about: Please ask and answer questions here.
+  - name: Discord community server
+    url: https://discord.gg/Q3Qp72sKaQ
+    about: If you have discord, you can also ask questions here.
