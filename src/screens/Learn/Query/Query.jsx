@@ -65,6 +65,10 @@ const Query = () => {
       });
   }, [languagePackageId, limit, showSnack, staged]);
 
+  const onCheck = useCallback(() => {
+    setFlip((prev) => !prev);
+  }, []);
+
   const sendVocabCheck = useCallback(
     (vocabularyCardId, answer, progress) => {
       checkQuery(vocabularyCardId, answer, progress)
@@ -87,10 +91,6 @@ const Query = () => {
     },
     [showSnack, vocabs]
   );
-
-  const onCheck = useCallback(() => {
-    setFlip((prev) => !prev);
-  }, []);
 
   useEffect(() => {
     if (direction === "random") {
@@ -126,7 +126,7 @@ const Query = () => {
         {currVocab && (
           <div className="card">
             <div className={`card-inner ${flip ? "flipped" : ""}`}>
-              <div className="card-front">
+              <div className="card-front" onClick={onCheck}>
                 <div className="card-front-inner">
                   {currDirection === "default" ? (
                     <RenderForeignWord currVocab={currVocab} />
@@ -135,7 +135,7 @@ const Query = () => {
                   )}
                 </div>
               </div>
-              <div className="card-back">
+              <div className="card-back" onClick={onCheck}>
                 <div className="card-back-inner">
                   {currDirection === "default" ? (
                     <RenderTranslatedWord currVocab={currVocab} />
@@ -147,7 +147,6 @@ const Query = () => {
                       className="card-button"
                       appearance="red"
                       onClick={() => {
-                        onCheck();
                         sendVocabCheck(currVocab.id, false, true);
                       }}
                     >
@@ -157,7 +156,6 @@ const Query = () => {
                       className="card-button"
                       appearance="green"
                       onClick={() => {
-                        onCheck();
                         sendVocabCheck(currVocab.id, true, true);
                       }}
                     >
@@ -169,11 +167,6 @@ const Query = () => {
             </div>
           </div>
         )}
-      </div>
-      <div className="footer">
-        <Button className="card-button" onClick={onCheck}>
-          {flip ? "Back" : "Check"}
-        </Button>
       </div>
     </div>
   );
