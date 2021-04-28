@@ -8,7 +8,7 @@ const ProgressBar = ({
   min = 0,
   max = 100,
   round = true,
-  bottomText = null,
+  bottomText = false,
 }) => {
   return (
     <div className="progress-bar">
@@ -26,7 +26,7 @@ const ProgressBar = ({
       </div>
       {bottomText && (
         <div className="bottom-text">
-          <span>{bottomText}</span>
+          <span>{`${value} / ${max}`}</span>
         </div>
       )}
     </div>

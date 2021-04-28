@@ -123,7 +123,7 @@ const Query = () => {
   return (
     <div className="query-wrapper">
       <div className="progress">
-        <ProgressBar value={20} bottomText={`20 / 100`} />
+        <ProgressBar value={20} bottomText={true} />
       </div>
       <div className="content">
         {currVocab && (
