@@ -15,7 +15,9 @@ const ProgressBar = ({
       <div
         className="wrapper"
         style={{
-          width: `${round ? (value % max).toFixed(0) : value % max}%`,
+          width: `${
+            round ? ((value / max) * 100).toFixed(0) : (value / max) * 100
+          }%`,
         }}
       >
         {showPercentage && (
