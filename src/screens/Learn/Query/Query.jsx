@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 
 import Button from "../../../Components/Button/Button.jsx";
 
@@ -34,6 +35,7 @@ const RenderTranslatedWord = ({ currVocab }) => {
 
 const Query = () => {
   const { t } = useTranslation();
+  const history = useHistory();
   const { showSnack } = useSnack();
   const { direction } = useParams();
 
@@ -75,7 +77,12 @@ const Query = () => {
         .then((response) => {
           console.log(response.data);
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
-          setCurrVocab(vocabs[0]);
+          console.log(history)
+
+          if(vocabs.length === 0) {
+            history.push(`end`);
+          }
+
         })
         .catch((event) => {
           if (
