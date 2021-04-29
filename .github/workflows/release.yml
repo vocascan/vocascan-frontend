@@ -32,6 +32,6 @@ jobs:
         uses: samuelmeuli/action-electron-builder@v1
         with:
           build_script_name: react-build
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.VOCASCAN_BOT_TOKEN }}
           args: "-c.extraMetadata.commit='${{ github.sha }}' -c.extraMetadata.date='${{ steps.date.outputs.date }}'"
           release: true

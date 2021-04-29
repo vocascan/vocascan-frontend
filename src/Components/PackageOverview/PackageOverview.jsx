@@ -23,7 +23,7 @@ const PackageOverview = ({ data }) => {
           translatedWordLanguage: data.translatedWordLanguage,
           //using fixed value until server gives us this property
           languagePackageId: data.id,
-          vocabsToday: 100,
+          vocabsToday: data.stats.vocabularies.learnedToday.dueToday,
           staged,
         })
       );
@@ -32,6 +32,7 @@ const PackageOverview = ({ data }) => {
     [
       data.foreignWordLanguage,
       data.id,
+      data.stats.vocabularies.learnedToday.dueToday,
       data.translatedWordLanguage,
       dispatch,
       history,
@@ -46,7 +47,8 @@ const PackageOverview = ({ data }) => {
         {data?.stats?.vocabularies?.unresolved}
       </p>
       <p className="package-inner package-today">
-        {t("components.packageOverview.today")} 100
+        {t("components.packageOverview.today")}{" "}
+        {data?.stats?.vocabularies?.learnedToday?.dueToday}
       </p>
       <p className="package-inner package-unactivated">
         {t("components.packageOverview.unactivated")}{" "}

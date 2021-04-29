@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report to help us improve
 title: ''
-labels: bug
+labels: kind/bug
 assignees: noctera
 
 ---
@@ -23,12 +23,20 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - npm version:
- - node version:
- - electron verison:
- - electron-forge version:
+**Please complete the following information:**
+<!-- 1. navigate to help -> about -->
+<!-- 2. press copy to copy the full version info to your clipboard -->
+<!-- 3. paste version in here -->
+```
+Version:
+Commit:
+Date:
+Electron:
+Chrome:
+Node.js:
+V8:
+OS:
+```
 
 **Additional context**
 Add any other context about the problem here.
