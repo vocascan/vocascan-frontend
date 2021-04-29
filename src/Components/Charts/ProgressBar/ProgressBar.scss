@@ -4,11 +4,13 @@
   position: relative;
   height: 20px;
   width: 100%;
+  max-width: 500px;
   background-color: $color-background-muted;
   margin: 50px 0;
 
   .wrapper {
     height: 100%;
+    max-width: 500px;
     background-color: $color-green;
     transition: width 1s ease-in-out;
     display: flex;
