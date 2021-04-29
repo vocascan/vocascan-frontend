@@ -55,7 +55,12 @@ const PackageOverview = ({ data }) => {
         {data?.stats?.vocabularies?.unactivated}
       </p>
       <div className="package-inner package-btn-wrapper">
-        <Button block uppercase onClick={() => submitLearn(false)}>
+        <Button
+          block
+          uppercase
+          disabled={!data.stats.vocabularies.learnedToday.dueToday}
+          onClick={() => submitLearn(false)}
+        >
           {t("global.learn")}
         </Button>
       </div>
@@ -65,6 +70,7 @@ const PackageOverview = ({ data }) => {
           appearance="primary-light"
           uppercase
           block
+          disabled={!data?.stats?.vocabularies?.unactivated}
           onClick={() => submitLearn(true)}
         >
           {t("global.activate")}
