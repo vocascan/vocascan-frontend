@@ -45,7 +45,9 @@ const Query = () => {
   const limit = useSelector((state) => state.learn.vocabsToday);
 
   const [vocabs, setVocabs] = useState([]);
+  const [vocabSize, setVocabSize] = useState(0);
   const [currVocab, setCurrVocab] = useState(null);
+  const [currRightVocabs, setCurrRightVocabs] = useState(0);
   const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);
@@ -55,6 +57,7 @@ const Query = () => {
       .then((response) => {
         //store stats
         setVocabs(response.data);
+        setVocabSize(response.data.length);
       })
       .catch((event) => {
         if (event.response?.status === 401 || event.response?.status === 404) {
@@ -74,7 +77,7 @@ const Query = () => {
     (vocabularyCardId, answer, progress) => {
       checkQuery(vocabularyCardId, answer, progress)
         .then((response) => {
-          console.log(response.data);
+          setCurrRightVocabs(response.data.queryProgress.correct);
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
           setCurrVocab(vocabs[0]);
         })
@@ -123,7 +126,11 @@ const Query = () => {
   return (
     <div className="query-wrapper">
       <div className="progress">
-        <ProgressBar value={20} bottomText={true} />
+        <ProgressBar
+          value={currRightVocabs}
+          max={vocabSize}
+          bottomText={true}
+        />
       </div>
       <div className="content">
         {currVocab && (
