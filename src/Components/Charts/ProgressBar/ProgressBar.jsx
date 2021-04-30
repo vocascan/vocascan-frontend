@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./ProgressBar.scss";
+
+const calcProgress = (value, max, round) => {
+  if (value > max) {
+    return 100;
+  }
+
+  if (round) {
+    return ((value / max) * 100).toFixed(0);
+  }
+
+  return (value / max) * 100;
+};
 
 const ProgressBar = ({
   showPercentage = false,
@@ -10,21 +22,21 @@ const ProgressBar = ({
   round = true,
   bottomText = false,
 }) => {
+  const [progress, setProgress] = useState(calcProgress(value, max, round));
+
+  useEffect(() => {
+    setProgress(calcProgress(value, max, round));
+  }, [value, max, round]);
+
   return (
     <div className="progress-bar">
       <div
         className="wrapper"
         style={{
-          width: `${
-            round ? ((value / max) * 100).toFixed(0) : (value / max) * 100
-          }%`,
+          width: `${progress}%`,
         }}
       >
-        {showPercentage && (
-          <span className="percentage">{`${
-            round ? value.toFixed(0) : value
-          }%`}</span>
-        )}
+        {showPercentage && <span className="percentage">{`${progress}%`}</span>}
       </div>
       {bottomText && (
         <div className="bottom-text">
