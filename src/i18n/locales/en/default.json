@@ -208,5 +208,14 @@
     "settings": "Settings",
     "profile": "Profile",
     "logout": "Logout"
+  },
+  "languages": {
+    "German": "German",
+    "English": "English",
+    "Spanisch": "Spanisch",
+    "Portuguese": "Portuguese",
+    "Turkish": "Turkish",
+    "Russian": "Russian",
+    "French": "French"
   }
 }
