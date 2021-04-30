@@ -120,7 +120,7 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
       value: language.name,
       label: (
         <SelectOptionWithFlag
-          name={language.name}
+          name={t("languages." + language.name)}
           foreignLanguage={language.name}
         />
       ),
