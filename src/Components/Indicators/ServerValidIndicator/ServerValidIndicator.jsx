@@ -12,7 +12,7 @@ import { minServerVersion } from "../../../utils/constants.js";
 
 import "./ServerValidIndicator.scss";
 
-const ServerValidIndicator = () => {
+const ServerValidIndicator = ({ setValid }) => {
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const debouncedServerAddress = useDebounce(serverAddress, 500);
 
@@ -52,6 +52,14 @@ const ServerValidIndicator = () => {
       cancelToken.cancel();
     };
   }, [debouncedServerAddress]);
+
+  useEffect(() => {
+    setValid(
+      isValidServer === true &&
+        isValidVersion === true &&
+        isServerResponding === true
+    );
+  }, [setValid, isValidServer, isValidVersion, isServerResponding]);
 
   return (
     <div>
