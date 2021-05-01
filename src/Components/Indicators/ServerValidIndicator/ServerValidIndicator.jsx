@@ -45,7 +45,7 @@ const ServerValidIndicator = ({ setValid }) => {
         }
       })
       .finally(() => {
-        setIsLoading(false);
+        setTimeout(() => setIsLoading(false), 500);
       });
 
     return () => {
@@ -61,10 +61,12 @@ const ServerValidIndicator = ({ setValid }) => {
     );
   }, [setValid, isValidServer, isValidVersion, isServerResponding]);
 
-  return (
-    <div>
-      {isLoading && <LoadingIndicator position="center" />}
+  if (isLoading) {
+    return <LoadingIndicator position="center" />;
+  }
 
+  return (
+    <div className="server-valid-indicator">
       {isValidServer === true &&
         isValidVersion === true &&
         isServerResponding === true && (
