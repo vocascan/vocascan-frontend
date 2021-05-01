@@ -200,7 +200,9 @@
         "label": "Menu style",
         "optionLeft": "Default",
         "optionRight": "Fancy"
-      }
+      },
+      "desktopVersion": "Desktop version",
+      "serverVersion": "Server version"
     }
   },
   "nav": {
