@@ -77,8 +77,10 @@ const Query = () => {
       checkQuery(vocabularyCardId, answer, progress)
         .then((response) => {
           // if staged, increment the counter on client because of missing progress on server side for staged queries
-          staged
+          staged && answer
             ? setCurrRightVocabs((prev) => prev + 1)
+            : staged
+            ? setCurrRightVocabs((prev) => prev)
             : setCurrRightVocabs(response.data.queryProgress.correct);
           //if answer is wrong put vocabs card to the end of the query
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
