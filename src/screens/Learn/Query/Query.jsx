@@ -22,7 +22,6 @@ const RenderForeignWord = ({ currVocab }) => {
 const RenderTranslatedWord = ({ currVocab }) => {
   return (
     <div className="translated-word-wrapper">
-      <h1 className="">{currVocab.name}</h1>
       <div>
         <p className="my-20">{currVocab.description}</p>
         <div className="my-20 translations">
