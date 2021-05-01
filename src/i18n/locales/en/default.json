@@ -73,6 +73,12 @@
       "unresolved": "Total to learn:",
       "unactivated": "Not activated:",
       "today": "Today:"
+    },
+    "validServerIndicator": {
+      "validServer": "✓ valid server (v{{version}})",
+      "serverNotVocascanServer": "✗ server isn't a vocascan server",
+      "versionToOld": "✗ server version v{{version}} is to old. Min required is v{{minVersion}}",
+      "serverNotResponding": "✗ server is not responding"
     }
   },
   "screens": {
@@ -206,5 +212,12 @@
     "settings": "Settings",
     "profile": "Profile",
     "logout": "Logout"
+  },
+  "modal": {
+    "serverNotSupported": {
+      "title": "Server not supported",
+      "serverNotVocascanServer": "This server does not look like a vocascan server.",
+      "versionToOld": "The vocascan server has the version v{{version}} but this is no longer supported by the client, because at least v{{minVersion}} is required. Please contact the server administrator to update the server version."
+    }
   }
 }

@@ -71,3 +71,6 @@ export const checkQuery = (vocabularyId, answer = false) =>
 
 // Stats
 export const getStats = () => api.get("/user/stats");
+
+// Info
+export const getInfo = (cancelToken) => api.get("/info", { cancelToken });

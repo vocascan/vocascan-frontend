@@ -7,6 +7,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Button from "../../Components/Button/Button.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
+import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 
 import { setServerUrl, signIn } from "../../redux/Actions/login.js";
@@ -134,6 +135,7 @@ const Login = ({ image }) => {
                 value={serverAddress}
               />
             )}
+            <ServerValidIndicator />
             {serverError && (
               <p className="form-error">{t("global.serverNotResponding")}</p>
             )}

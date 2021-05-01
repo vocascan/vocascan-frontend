@@ -7,7 +7,7 @@
   "semi": true,
   "useTabs": false,
   "importOrder": [
-    "^(react|uniqid|i18next|redux|axios|clsx|@testing-library)(.*)$",
+    "^(react|uniqid|i18next|redux|axios|clsx|semver|@testing-library)(.*)$",
     "^@material-ui/core(.*)$",
     "^@material-ui/icons(.*)$",
     "^(.*).jsx$",
