@@ -79,7 +79,11 @@ const Query = () => {
     (vocabularyCardId, answer, progress) => {
       checkQuery(vocabularyCardId, answer, progress)
         .then((response) => {
-          setCurrRightVocabs(response.data.queryProgress.correct);
+          // if staged, increment the counter on client because of missing progress on server side for staged queries
+          staged
+            ? setCurrRightVocabs((prev) => prev + 1)
+            : setCurrRightVocabs(response.data.queryProgress.correct);
+          //if answer is wrong put vocabs card to the end of the query
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
           console.log(history)
 
@@ -100,7 +104,7 @@ const Query = () => {
           showSnack("error", "Internal Server Error");
         });
     },
-    [showSnack, vocabs]
+    [showSnack, staged, vocabs]
   );
 
   useEffect(() => {
