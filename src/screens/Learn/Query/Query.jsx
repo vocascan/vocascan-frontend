@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { useHistory } from "react-router-dom";
 
 import Button from "../../../Components/Button/Button.jsx";
 import ProgressBar from "../../../Components/Charts/ProgressBar/ProgressBar.jsx";
@@ -36,7 +35,6 @@ const RenderTranslatedWord = ({ currVocab }) => {
 
 const Query = () => {
   const { t } = useTranslation();
-  const history = useHistory();
   const { showSnack } = useSnack();
   const { direction } = useParams();
 
@@ -85,12 +83,7 @@ const Query = () => {
             : setCurrRightVocabs(response.data.queryProgress.correct);
           //if answer is wrong put vocabs card to the end of the query
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
-          console.log(history)
-
-          if(vocabs.length === 0) {
-            history.push(`end`);
-          }
-
+          setCurrVocab(vocabs[0]);
         })
         .catch((event) => {
           if (
