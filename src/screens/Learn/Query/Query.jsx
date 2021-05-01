@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 
 import Button from "../../../Components/Button/Button.jsx";
 import ProgressBar from "../../../Components/Charts/ProgressBar/ProgressBar.jsx";
@@ -36,6 +37,7 @@ const Query = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
   const { direction } = useParams();
+  const history = useHistory();
 
   const languagePackageId = useSelector(
     (state) => state.learn.languagePackageId
@@ -83,6 +85,10 @@ const Query = () => {
           //if answer is wrong put vocabs card to the end of the query
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
           setCurrVocab(vocabs[0]);
+
+          if (vocabs.length === 0) {
+            history.push("/learn/end/");
+          }
         })
         .catch((event) => {
           if (
@@ -96,7 +102,7 @@ const Query = () => {
           showSnack("error", "Internal Server Error");
         });
     },
-    [showSnack, staged, vocabs]
+    [history, showSnack, staged, vocabs]
   );
 
   useEffect(() => {
