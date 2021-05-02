@@ -1,5 +1,5 @@
 import { CancelToken, Cancel } from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { gte } from "semver";
@@ -21,6 +21,8 @@ const ServerValidIndicator = ({ setValid }) => {
   const [isValidVersion, setIsValidVersion] = useState(null);
   const [isServerResponding, setIsServerResponding] = useState(null);
   const [serverVersion, setServerVersion] = useState(null);
+
+  const timer = useRef(null);
 
   const { t } = useTranslation();
 
@@ -45,7 +47,7 @@ const ServerValidIndicator = ({ setValid }) => {
         }
       })
       .finally(() => {
-        setTimeout(() => setIsLoading(false), 500);
+        timer.current = setTimeout(() => setIsLoading(false), 500);
       });
 
     return () => {
@@ -60,6 +62,12 @@ const ServerValidIndicator = ({ setValid }) => {
         isServerResponding === true
     );
   }, [setValid, isValidServer, isValidVersion, isServerResponding]);
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timer.current);
+    };
+  }, []);
 
   if (isLoading) {
     return <LoadingIndicator position="center" />;

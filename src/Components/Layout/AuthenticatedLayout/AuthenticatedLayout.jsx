@@ -47,18 +47,20 @@ const AuthenticatedLayout = ({ children }) => {
         title={t("modal.serverNotSupported.title")}
         size="small"
       >
-        {!isValidServer && (
-          <p>{t("modal.serverNotSupported.serverNotVocascanServer")}</p>
-        )}
+        <div className="server-error-modal-inner">
+          {!isValidServer && (
+            <p>{t("modal.serverNotSupported.serverNotVocascanServer")}</p>
+          )}
 
-        {!isValidVersion && (
-          <p>
-            {t("modal.serverNotSupported.versionToOld", {
-              version: serverVersion,
-              minVersion: minServerVersion,
-            })}
-          </p>
-        )}
+          {!isValidVersion && (
+            <p>
+              {t("modal.serverNotSupported.versionToOld", {
+                version: serverVersion,
+                minVersion: minServerVersion,
+              })}
+            </p>
+          )}
+        </div>
 
         <Button onClick={handleLogout}>{t("nav.logout")}</Button>
       </Modal>

@@ -200,9 +200,10 @@ const Register = ({ image }) => {
                 value={serverAddressInput}
               />
             )}
-            <ServerValidIndicator setValid={setIsServerValid} />
-            {serverError && (
+            {serverError ? (
               <p className="form-error">{t("global.serverNotResponding")}</p>
+            ) : (
+              <ServerValidIndicator setValid={setIsServerValid} />
             )}
           </div>
           <div className="register-form-submit">
