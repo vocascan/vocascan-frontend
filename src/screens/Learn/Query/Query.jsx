@@ -46,7 +46,9 @@ const Query = () => {
   const [vocabs, setVocabs] = useState([]);
   const [vocabSize, setVocabSize] = useState(0);
   const [currVocab, setCurrVocab] = useState(null);
-  const [currRightVocabs, setCurrRightVocabs] = useState(0);
+  const [actualProgress, setActualProgress] = useState(0);
+  const [correctVocabs, setCorrectVocabs] = useState(0);
+  const [wrongVocabs, setWrongVocabs] = useState(0);
   const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);
@@ -78,7 +80,10 @@ const Query = () => {
         .then((response) => {
           // if staged, increment the counter on client because of missing progress on server side for staged queries
           if (answer) {
-            setCurrRightVocabs((prev) => prev + 1);
+            setCorrectVocabs((prev) => prev + 1);
+            setActualProgress((prev) => prev + 1);
+          } else {
+            setWrongVocabs((prev) => prev + 1);
           }
           //if answer is wrong put vocabs card to the end of the query
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
@@ -129,11 +134,7 @@ const Query = () => {
   return (
     <div className="query-wrapper">
       <div className="progress">
-        <ProgressBar
-          value={currRightVocabs}
-          max={vocabSize}
-          bottomText={true}
-        />
+        <ProgressBar value={actualProgress} max={vocabSize} bottomText={true} />
       </div>
       <div className="content">
         {currVocab && (
