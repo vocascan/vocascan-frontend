@@ -70,8 +70,10 @@
   }
 
   .text-input-error {
+    position: absolute;
     text-align: left;
     font-size: 11px;
     color: $color-red;
+    bottom: -13px;
   }
 }
