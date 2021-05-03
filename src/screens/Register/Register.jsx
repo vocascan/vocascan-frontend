@@ -7,6 +7,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Button from "../../Components/Button/Button.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
+import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 
 import { setServerUrl, register } from "../../redux/Actions/login.js";
@@ -17,17 +18,19 @@ import "./Register.scss";
 const Register = ({ image }) => {
   const { t } = useTranslation();
 
+  const serverAddress = useSelector((state) => state.login.serverAddress);
+  const selfHosted = useSelector((state) => state.login.selfHosted);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
+  const [serverAddressInput, setServerAddressInput] = useState(serverAddress);
   const [isSamePassword, setIsSamePassword] = useState(true);
   const [emailIsUsed, setEmailIsUsed] = useState(false);
   const [serverError, setServerError] = useState(false);
+  const [isServerValid, setIsServerValid] = useState(false);
   const [canSubmit, setCanSubmit] = useState(false);
-
-  const serverAddress = useSelector((state) => state.login.serverAddress);
-  const selfHosted = useSelector((state) => state.login.selfHosted);
 
   const dispatch = useDispatch();
 
@@ -95,8 +98,26 @@ const Register = ({ image }) => {
       return;
     }
 
-    setCanSubmit(!(!username || !email || !password || !passwordRepeat));
-  }, [username, email, password, passwordRepeat, selfHosted, serverAddress]);
+    setCanSubmit(
+      !(!username || !email || !password || !passwordRepeat || !isServerValid)
+    );
+  }, [
+    username,
+    email,
+    password,
+    passwordRepeat,
+    selfHosted,
+    serverAddress,
+    isServerValid,
+  ]);
+
+  useEffect(() => {
+    try {
+      const { origin } = new URL(serverAddressInput);
+
+      dispatch(setServerUrl({ serverAddress: origin }));
+    } catch (err) {}
+  }, [dispatch, serverAddressInput]);
 
   return (
     <UnauthenticatedLayout>
@@ -174,13 +195,15 @@ const Register = ({ image }) => {
                 placeholder={t("global.server")}
                 onChange={(value) => {
                   setServerError(false);
-                  dispatch(setServerUrl({ serverAddress: value }));
+                  setServerAddressInput(value);
                 }}
-                value={serverAddress}
+                value={serverAddressInput}
               />
             )}
-            {serverError && (
+            {serverError ? (
               <p className="form-error">{t("global.serverNotResponding")}</p>
+            ) : (
+              <ServerValidIndicator setValid={setIsServerValid} />
             )}
           </div>
           <div className="register-form-submit">
