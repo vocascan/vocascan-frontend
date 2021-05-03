@@ -1,4 +1,4 @@
-import { SET_LEARNED_PACKAGE } from "./index.js";
+import { SET_LEARNED_PACKAGE, SET_ENDSCREEN_STATS } from "./index.js";
 
 export const setLearnedPackage = ({
   foreignWordLanguage,
@@ -15,6 +15,16 @@ export const setLearnedPackage = ({
       languagePackageId,
       vocabsToday,
       staged,
+    },
+  };
+};
+
+export const setEndScreenStats = ({ correct, wrong }) => {
+  return {
+    type: SET_ENDSCREEN_STATS,
+    payload: {
+      correct,
+      wrong,
     },
   };
 };

@@ -1,4 +1,4 @@
-import { SET_LEARNED_PACKAGE } from "../Actions/index.js";
+import { SET_LEARNED_PACKAGE, SET_ENDSCREEN_STATS } from "../Actions/index.js";
 
 const initialState = {
   foreignWordLanguage: "",
@@ -6,6 +6,8 @@ const initialState = {
   languagePackageId: "",
   vocabsToday: 0,
   staged: false,
+  correct: 0,
+  wrong: 0,
 };
 
 const learnReducer = (state = initialState, action) => {
@@ -18,6 +20,13 @@ const learnReducer = (state = initialState, action) => {
         languagePackageId: action.payload.languagePackageId,
         vocabsToday: action.payload.vocabsToday,
         staged: action.payload.staged,
+      };
+
+    case SET_ENDSCREEN_STATS:
+      return {
+        ...state,
+        correct: action.payload.correct,
+        wrong: action.payload.wrong,
       };
 
     default:

@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 
@@ -8,6 +8,7 @@ import Button from "../../../Components/Button/Button.jsx";
 import ProgressBar from "../../../Components/Charts/ProgressBar/ProgressBar.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
+import { setEndScreenStats } from "../../../redux/Actions/learn.js";
 import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 
 import "./Query.scss";
@@ -37,6 +38,7 @@ const Query = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
   const { direction } = useParams();
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const languagePackageId = useSelector(
@@ -48,7 +50,9 @@ const Query = () => {
   const [vocabs, setVocabs] = useState([]);
   const [vocabSize, setVocabSize] = useState(0);
   const [currVocab, setCurrVocab] = useState(null);
-  const [currRightVocabs, setCurrRightVocabs] = useState(0);
+  const [actualProgress, setActualProgress] = useState(0);
+  const [correctVocabs, setCorrectVocabs] = useState(0);
+  const [wrongVocabs, setWrongVocabs] = useState(0);
   const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);
@@ -79,14 +83,24 @@ const Query = () => {
       checkQuery(vocabularyCardId, answer, progress)
         .then((response) => {
           // if staged, increment the counter on client because of missing progress on server side for staged queries
-          staged
-            ? setCurrRightVocabs((prev) => prev + 1)
-            : setCurrRightVocabs(response.data.queryProgress.correct);
+          if (answer) {
+            setCorrectVocabs((correctVocabs) => correctVocabs + 1);
+            setActualProgress((actualProgress) => actualProgress + 1);
+          } else {
+            setWrongVocabs(wrongVocabs + 1);
+          }
           //if answer is wrong put vocabs card to the end of the query
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
           setCurrVocab(vocabs[0]);
 
           if (vocabs.length === 0) {
+            console.log(correctVocabs);
+            dispatch(
+              setEndScreenStats({
+                correct: correctVocabs,
+                wrong: wrongVocabs,
+              })
+            );
             history.push("/learn/end/");
           }
         })
@@ -102,7 +116,7 @@ const Query = () => {
           showSnack("error", "Internal Server Error");
         });
     },
-    [history, showSnack, staged, vocabs]
+    [correctVocabs, dispatch, history, showSnack, vocabs, wrongVocabs]
   );
 
   useEffect(() => {
@@ -135,11 +149,7 @@ const Query = () => {
   return (
     <div className="query-wrapper">
       <div className="progress">
-        <ProgressBar
-          value={currRightVocabs}
-          max={vocabSize}
-          bottomText={true}
-        />
+        <ProgressBar value={actualProgress} max={vocabSize} bottomText={true} />
       </div>
       <div className="content">
         {currVocab && (
