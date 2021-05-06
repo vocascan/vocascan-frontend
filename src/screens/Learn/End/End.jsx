@@ -5,14 +5,12 @@ import { useHistory } from "react-router-dom";
 import Button from "../../../Components/Button/Button.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 
-import useSnack from "../../../hooks/useSnack.js";
 import { clearQuery } from "../../../redux/Actions/query.js";
 
 const End = () => {
   const correctVocabs = useSelector((state) => state.query.correct);
   const wrongVocabs = useSelector((state) => state.query.wrong);
   const percentage = (correctVocabs / (correctVocabs + wrongVocabs)) * 100;
-  const { showSnack } = useSnack();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -52,7 +50,7 @@ const End = () => {
         wrong: wrongVocabs || "-",
       },
     ],
-    []
+    [correctVocabs, wrongVocabs]
   );
   return (
     <div className="end-screen">
