@@ -49,7 +49,9 @@ const App = () => {
           dispatch(signOut());
         });
     }
-  });
+    // try login only once on render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!isLoggedIn) {
     return (
