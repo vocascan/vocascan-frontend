@@ -1,4 +1,8 @@
-import { SET_LEARNED_PACKAGE, SET_ENDSCREEN_STATS } from "./index.js";
+import {
+  SET_LEARNED_PACKAGE,
+  SET_QUERY_CORRECT,
+  SET_QUERY_WRONG,
+} from "./index.js";
 
 export const setLearnedPackage = ({
   foreignWordLanguage,
@@ -19,12 +23,16 @@ export const setLearnedPackage = ({
   };
 };
 
-export const setEndScreenStats = ({ correct, wrong }) => {
+export const setQueryCorrect = () => {
   return {
-    type: SET_ENDSCREEN_STATS,
-    payload: {
-      correct,
-      wrong,
-    },
+    type: SET_QUERY_CORRECT,
+    payload: {},
+  };
+};
+
+export const setQueryWrong = () => {
+  return {
+    type: SET_QUERY_WRONG,
+    payload: {},
   };
 };

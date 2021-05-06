@@ -8,7 +8,10 @@ import Button from "../../../Components/Button/Button.jsx";
 import ProgressBar from "../../../Components/Charts/ProgressBar/ProgressBar.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { setEndScreenStats } from "../../../redux/Actions/learn.js";
+import {
+  setQueryCorrect,
+  setQueryWrong,
+} from "../../../redux/Actions/learn.js";
 import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 
 import "./Query.scss";
@@ -51,8 +54,8 @@ const Query = () => {
   const [vocabSize, setVocabSize] = useState(0);
   const [currVocab, setCurrVocab] = useState(null);
   const [actualProgress, setActualProgress] = useState(0);
-  const [correctVocabs, setCorrectVocabs] = useState(0);
-  const [wrongVocabs, setWrongVocabs] = useState(0);
+  const correctVocabs = useSelector((state) => state.learn.correct);
+  const wrongVocabs = useSelector((state) => state.learn.wrong);
   const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);
@@ -80,6 +83,7 @@ const Query = () => {
 
   const sendVocabCheck = useCallback(
     (vocabularyCardId, answer, progress) => {
+      // send result to server
       checkQuery(vocabularyCardId, answer, progress).catch((event) => {
         if (event.response?.status === 401 || event.response?.status === 404) {
           showSnack("error", "Error fetching stats");
@@ -90,32 +94,27 @@ const Query = () => {
       });
 
       let _actualProgress = actualProgress;
-      let _correctVocabs = correctVocabs;
-      let _wrongVocabs = wrongVocabs;
-
-      if (answer && actualProgress < vocabSize) {
-        _correctVocabs++;
+      //if answer is right and wrong vocabs haven't been repeated yet
+      if (answer && wrongVocabs + correctVocabs < vocabSize) {
+        dispatch(setQueryCorrect());
         _actualProgress++;
-      } else if (answer && actualProgress > vocabSize) {
-        _actualProgress++;
-      } else if (!answer && actualProgress < vocabSize) {
-        _wrongVocabs++;
       }
+      // if wrong vocabs get repeated, stop increment wrong or correct. Only increment counter for progress bar
+      else if (answer) {
+        _actualProgress++;
+      }
+      // if anser is wrong an wrong vocabs haven't been repeated yet, increment wrong counter
+      else if (!answer && wrongVocabs + correctVocabs < vocabSize) {
+        dispatch(setQueryWrong());
+      }
+
       //if answer is wrong put vocabs card to the end of the query
       answer ? vocabs.shift() : vocabs.push(vocabs.shift());
       setCurrVocab(vocabs[0]);
 
       setActualProgress(_actualProgress);
-      setCorrectVocabs(_correctVocabs);
-      setWrongVocabs(_wrongVocabs);
 
       if (vocabs.length === 0) {
-        dispatch(
-          setEndScreenStats({
-            correct: _correctVocabs,
-            wrong: _wrongVocabs,
-          })
-        );
         history.push("/learn/end/");
       }
     },

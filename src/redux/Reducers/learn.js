@@ -1,4 +1,8 @@
-import { SET_LEARNED_PACKAGE, SET_ENDSCREEN_STATS } from "../Actions/index.js";
+import {
+  SET_LEARNED_PACKAGE,
+  SET_QUERY_CORRECT,
+  SET_QUERY_WRONG,
+} from "../Actions/index.js";
 
 const initialState = {
   foreignWordLanguage: "",
@@ -22,11 +26,16 @@ const learnReducer = (state = initialState, action) => {
         staged: action.payload.staged,
       };
 
-    case SET_ENDSCREEN_STATS:
+    case SET_QUERY_CORRECT:
       return {
         ...state,
-        correct: action.payload.correct,
-        wrong: action.payload.wrong,
+        correct: state.correct + 1,
+      };
+
+    case SET_QUERY_WRONG:
+      return {
+        ...state,
+        wrong: state.wrong + 1,
       };
 
     default:
