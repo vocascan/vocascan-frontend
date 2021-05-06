@@ -80,43 +80,47 @@ const Query = () => {
 
   const sendVocabCheck = useCallback(
     (vocabularyCardId, answer, progress) => {
-      checkQuery(vocabularyCardId, answer, progress)
-        .then((response) => {
-          // if staged, increment the counter on client because of missing progress on server side for staged queries
-          if (answer) {
-            setCorrectVocabs((correctVocabs) => correctVocabs + 1);
-            setActualProgress((actualProgress) => actualProgress + 1);
-          } else {
-            setWrongVocabs(wrongVocabs + 1);
-          }
-          //if answer is wrong put vocabs card to the end of the query
-          answer ? vocabs.shift() : vocabs.push(vocabs.shift());
-          setCurrVocab(vocabs[0]);
+      checkQuery(vocabularyCardId, answer, progress).catch((event) => {
+        if (event.response?.status === 401 || event.response?.status === 404) {
+          showSnack("error", "Error fetching stats");
+          return;
+        }
 
-          if (vocabs.length === 0) {
-            console.log(correctVocabs);
-            dispatch(
-              setEndScreenStats({
-                correct: correctVocabs,
-                wrong: wrongVocabs,
-              })
-            );
-            history.push("/learn/end/");
-          }
-        })
-        .catch((event) => {
-          if (
-            event.response?.status === 401 ||
-            event.response?.status === 404
-          ) {
-            showSnack("error", "Error fetching stats");
-            return;
-          }
+        showSnack("error", "Internal Server Error");
+      });
 
-          showSnack("error", "Internal Server Error");
-        });
+      if (answer && actualProgress < vocabSize) {
+        setCorrectVocabs((correctVocabs) => correctVocabs + 1);
+        setActualProgress((actualProgress) => actualProgress + 1);
+      } else if (!answer && actualProgress < vocabSize) {
+        setWrongVocabs((wrongVocabs) => wrongVocabs + 1);
+        setActualProgress((actualProgress) => actualProgress + 1);
+      }
+      //if answer is wrong put vocabs card to the end of the query
+      answer ? vocabs.shift() : vocabs.push(vocabs.shift());
+      setCurrVocab(vocabs[0]);
+
+      if (vocabs.length === 0) {
+        console.log(correctVocabs);
+        dispatch(
+          setEndScreenStats({
+            correct: correctVocabs,
+            wrong: wrongVocabs,
+          })
+        );
+        history.push("/learn/end/");
+      }
     },
-    [correctVocabs, dispatch, history, showSnack, vocabs, wrongVocabs]
+    [
+      actualProgress,
+      correctVocabs,
+      dispatch,
+      history,
+      showSnack,
+      vocabSize,
+      vocabs,
+      wrongVocabs,
+    ]
   );
 
   useEffect(() => {
