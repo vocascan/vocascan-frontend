@@ -11,7 +11,7 @@ import useSnack from "../../../hooks/useSnack.js";
 import {
   setQueryCorrect,
   setQueryWrong,
-} from "../../../redux/Actions/learn.js";
+} from "../../../redux/Actions/query.js";
 import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 
 import "./Query.scss";
@@ -45,17 +45,17 @@ const Query = () => {
   const history = useHistory();
 
   const languagePackageId = useSelector(
-    (state) => state.learn.languagePackageId
+    (state) => state.query.languagePackageId
   );
-  const staged = useSelector((state) => state.learn.staged);
-  const limit = useSelector((state) => state.learn.vocabsToday);
+  const staged = useSelector((state) => state.query.staged);
+  const limit = useSelector((state) => state.query.vocabsToday);
 
   const [vocabs, setVocabs] = useState([]);
   const [vocabSize, setVocabSize] = useState(0);
   const [currVocab, setCurrVocab] = useState(null);
   const [actualProgress, setActualProgress] = useState(0);
-  const correctVocabs = useSelector((state) => state.learn.correct);
-  const wrongVocabs = useSelector((state) => state.learn.wrong);
+  const correctVocabs = useSelector((state) => state.query.correct);
+  const wrongVocabs = useSelector((state) => state.query.wrong);
   const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);

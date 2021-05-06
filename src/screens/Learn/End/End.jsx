@@ -6,11 +6,11 @@ import Button from "../../../Components/Button/Button.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { clearQuery } from "../../../redux/Actions/learn.js";
+import { clearQuery } from "../../../redux/Actions/query.js";
 
 const End = () => {
-  const correctVocabs = useSelector((state) => state.learn.correct);
-  const wrongVocabs = useSelector((state) => state.learn.wrong);
+  const correctVocabs = useSelector((state) => state.query.correct);
+  const wrongVocabs = useSelector((state) => state.query.wrong);
   const percentage = (correctVocabs / (correctVocabs + wrongVocabs)) * 100;
   const { showSnack } = useSnack();
   const dispatch = useDispatch();

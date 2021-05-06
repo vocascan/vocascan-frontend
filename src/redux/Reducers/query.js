@@ -15,7 +15,7 @@ const initialState = {
   wrong: 0,
 };
 
-const learnReducer = (state = initialState, action) => {
+const queryReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LEARNED_PACKAGE:
       return {
@@ -41,7 +41,7 @@ const learnReducer = (state = initialState, action) => {
 
     case CLEAR_QUERY:
       return {
-        initialState,
+        ...initialState,
       };
 
     default:
@@ -49,4 +49,4 @@ const learnReducer = (state = initialState, action) => {
   }
 };
 
-export default learnReducer;
+export default queryReducer;
