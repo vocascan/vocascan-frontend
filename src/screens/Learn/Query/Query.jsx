@@ -96,9 +96,10 @@ const Query = () => {
       if (answer && actualProgress < vocabSize) {
         _correctVocabs++;
         _actualProgress++;
+      } else if (answer && actualProgress > vocabSize) {
+        _actualProgress++;
       } else if (!answer && actualProgress < vocabSize) {
         _wrongVocabs++;
-        _actualProgress++;
       }
       //if answer is wrong put vocabs card to the end of the query
       answer ? vocabs.shift() : vocabs.push(vocabs.shift());
