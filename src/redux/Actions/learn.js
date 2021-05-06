@@ -2,6 +2,7 @@ import {
   SET_LEARNED_PACKAGE,
   SET_QUERY_CORRECT,
   SET_QUERY_WRONG,
+  CLEAR_QUERY,
 } from "./index.js";
 
 export const setLearnedPackage = ({
@@ -33,6 +34,13 @@ export const setQueryCorrect = () => {
 export const setQueryWrong = () => {
   return {
     type: SET_QUERY_WRONG,
+    payload: {},
+  };
+};
+
+export const clearQuery = () => {
+  return {
+    type: CLEAR_QUERY,
     payload: {},
   };
 };

@@ -2,6 +2,7 @@ import {
   SET_LEARNED_PACKAGE,
   SET_QUERY_CORRECT,
   SET_QUERY_WRONG,
+  CLEAR_QUERY,
 } from "../Actions/index.js";
 
 const initialState = {
@@ -36,6 +37,11 @@ const learnReducer = (state = initialState, action) => {
       return {
         ...state,
         wrong: state.wrong + 1,
+      };
+
+    case CLEAR_QUERY:
+      return {
+        initialState,
       };
 
     default:
