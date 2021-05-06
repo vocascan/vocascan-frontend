@@ -89,23 +89,30 @@ const Query = () => {
         showSnack("error", "Internal Server Error");
       });
 
+      let _actualProgress = actualProgress;
+      let _correctVocabs = correctVocabs;
+      let _wrongVocabs = wrongVocabs;
+
       if (answer && actualProgress < vocabSize) {
-        setCorrectVocabs((correctVocabs) => correctVocabs + 1);
-        setActualProgress((actualProgress) => actualProgress + 1);
+        _correctVocabs++;
+        _actualProgress++;
       } else if (!answer && actualProgress < vocabSize) {
-        setWrongVocabs((wrongVocabs) => wrongVocabs + 1);
-        setActualProgress((actualProgress) => actualProgress + 1);
+        _wrongVocabs++;
+        _actualProgress++;
       }
       //if answer is wrong put vocabs card to the end of the query
       answer ? vocabs.shift() : vocabs.push(vocabs.shift());
       setCurrVocab(vocabs[0]);
 
+      setActualProgress(_actualProgress);
+      setCorrectVocabs(_correctVocabs);
+      setWrongVocabs(_wrongVocabs);
+
       if (vocabs.length === 0) {
-        console.log(correctVocabs);
         dispatch(
           setEndScreenStats({
-            correct: correctVocabs,
-            wrong: wrongVocabs,
+            correct: _correctVocabs,
+            wrong: _wrongVocabs,
           })
         );
         history.push("/learn/end/");
