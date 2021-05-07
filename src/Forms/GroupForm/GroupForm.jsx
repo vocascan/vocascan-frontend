@@ -31,6 +31,9 @@ const GroupForm = ({
   );
 
   const [name, setName] = useState(defaultData ? defaultData.name : "");
+  const [description, setDescription] = useState(
+    defaultData ? defaultData.description : ""
+  );
   const [languagePackage, setLanguagePackage] = useState(selectedPackage);
   const [canSubmit, setCanSubmit] = useState(false);
   const [languagePackages, setLanguagePackages] = useState([]);
@@ -49,6 +52,7 @@ const GroupForm = ({
   const submitHandler = useCallback(async () => {
     const newGroup = {
       name,
+      description,
       active: localActive,
     };
 
@@ -89,9 +93,10 @@ const GroupForm = ({
       });
   }, [
     defaultData?.id,
+    description,
     dispatch,
-    languagePackage?.id,
-    languagePackage?.value,
+    languagePackage.id,
+    languagePackage.value,
     localActive,
     name,
     onSubmitCallback,
@@ -158,6 +163,14 @@ const GroupForm = ({
             setName(value);
           }}
           value={name}
+        />
+        <TextInput
+          required
+          placeholder={t("global.description")}
+          onChange={(value) => {
+            setDescription(value);
+          }}
+          value={description}
         />
         <Switch
           appearance="on-off"
