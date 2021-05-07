@@ -25,7 +25,7 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
           label: (
             <SelectOptionWithFlag
               name={defaultData.foreignWordLanguage}
-              foreignLanguage={defaultData.foreignWordLanguage}
+              foreignLanguageCode={defaultData.foreignWordLanguage}
             />
           ),
         }
@@ -38,7 +38,7 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
           label: (
             <SelectOptionWithFlag
               name={defaultData.translatedWordLanguage}
-              foreignLanguage={defaultData.translatedWordLanguage}
+              foreignLanguageCode={defaultData.translatedWordLanguage}
             />
           ),
         }
@@ -121,7 +121,7 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
       label: (
         <SelectOptionWithFlag
           name={language.name}
-          foreignLanguage={language.name}
+          foreignLanguageCode={language.countryCode}
         />
       ),
     };
