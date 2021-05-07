@@ -15,7 +15,6 @@ const LanguageSelector = () => {
   return (
     <div>
       <Select
-        required
         label={t("components.languageSelector.label")}
         value={
           [languages.find(({ code }) => code === language)].map(

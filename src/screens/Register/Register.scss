@@ -1,7 +1,7 @@
 @import "../../colors";
 
 .register-form {
-  max-height: 550px;
+  max-height: 650px;
   max-width: 450px;
 
   margin: auto;
@@ -14,7 +14,7 @@
 
   padding: 40px 100px;
   background: $color-white;
-  box-shadow: -1px 3px 5px#b4bed6;
+  box-shadow: -1px 3px 5px $color-main-text;
 
   .back-icon {
     color: $color-primary;
@@ -45,7 +45,7 @@
 
   .register-form-input {
     width: 100%;
-    min-width: 200px;
+    min-width: 250px;
     margin: 30px auto;
     display: flex;
     flex-direction: column;
@@ -60,8 +60,14 @@
   }
 
   .register-form-submit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     .register-form-submit-register {
       display: flex;
+      flex-direction: row;
+      justify-content: center;
       font-size: 14px;
       margin-top: 12px;
 
