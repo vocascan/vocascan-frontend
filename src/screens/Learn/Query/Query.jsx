@@ -47,8 +47,6 @@ const Query = () => {
   const [vocabSize, setVocabSize] = useState(0);
   const [currVocab, setCurrVocab] = useState(null);
   const [actualProgress, setActualProgress] = useState(0);
-  const [correctVocabs, setCorrectVocabs] = useState(0);
-  const [wrongVocabs, setWrongVocabs] = useState(0);
   const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);
