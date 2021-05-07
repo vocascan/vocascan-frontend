@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -7,12 +8,34 @@ import Table from "../../../Components/Table/Table.jsx";
 
 import { clearQuery } from "../../../redux/Actions/query.js";
 
+import "./End.scss";
+
 const End = () => {
   const correctVocabs = useSelector((state) => state.query.correct);
   const wrongVocabs = useSelector((state) => state.query.wrong);
-  const percentage = (correctVocabs / (correctVocabs + wrongVocabs)) * 100;
+  const [percentage] = useState(
+    (correctVocabs / (correctVocabs + wrongVocabs)) * 100
+  );
+  const [congratulation, setCongratulations] = useState();
   const dispatch = useDispatch();
   const history = useHistory();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    //get size of congratulation array and calculate the message with the given percentage
+    const sizeCount = t("screens.endScreen.congratulations", {
+      returnObjects: true,
+    }).length;
+    let tempVar = 0;
+    const steps = 100 / sizeCount;
+
+    for (let i = 0; i < sizeCount; ++i) {
+      if (percentage >= tempVar && percentage <= tempVar + steps) {
+        setCongratulations(t(`screens.endScreen.congratulations.${i}`));
+      }
+      tempVar += steps;
+    }
+  }, [percentage, t]);
 
   const submitEndQuery = () => {
     dispatch(clearQuery());
@@ -54,12 +77,10 @@ const End = () => {
   );
   return (
     <div className="end-screen">
-      {percentage > 50 ? (
-        <h1>Glückwunsch</h1>
-      ) : (
-        <h1>Schade, beim nächsten Mal wird es bestimmt besser</h1>
-      )}
-      <p>{`Du hast ${percentage}% der Vokabeln richtig gehabt`}</p>
+      <h1>{congratulation}</h1>
+      <p className="percentage-text">{`Du hast ${percentage.toFixed(
+        0
+      )}% der Vokabeln richtig gehabt`}</p>
       <Table columns={columns} data={data} pagination={false} />
       <Button block uppercase onClick={submitEndQuery}>
         Zurück zum Dashboard

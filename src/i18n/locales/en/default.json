@@ -127,6 +127,9 @@
     "direction": {
       "title": "Please choose your direction"
     },
+    "endScreen": {
+      "congratulations": ["It will be better next time", "Practice more", "Congratulation"]
+    },
     "profile": {
       "stats": {
         "stats": "Stats",
