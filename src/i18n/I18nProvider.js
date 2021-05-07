@@ -1,6 +1,7 @@
 import i18n from "i18next";
-import React from "react";
+import React, { useEffect } from "react";
 import { initReactI18next, I18nextProvider } from "react-i18next";
+import { useSelector } from "react-redux";
 
 import de from "./locales/de/default.json";
 import en from "./locales/en/default.json";
@@ -20,7 +21,18 @@ i18n.use(initReactI18next).init({
 });
 
 function I18nProvider({ children }) {
+  const language = useSelector((state) => state.setting.language);
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
+
   return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 }
 
 export default I18nProvider;
+
+export const languages = [
+  { code: "en", name: "English" },
+  { code: "de", name: "Deutsch" },
+];
