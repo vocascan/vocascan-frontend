@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ReactSelect, { components } from "react-select";
 
-import "./Select.scss";
+import useCountryFlag from "../../../hooks/useCountryFlag.js";
 
-import useCountryFlag from "../../../hooks/useCountryFlag";
+import "./Select.scss";
 
 export const SelectOptionWithFlag = ({
   name,

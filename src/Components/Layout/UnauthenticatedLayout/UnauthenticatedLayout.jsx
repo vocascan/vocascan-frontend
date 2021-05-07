@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import "./UnauthenticatedLayout.scss";
+import Button from "../../Button/Button.jsx";
+import LanguageSelector from "../../LanguageSelector/LanguageSelector.jsx";
+import Modal from "../../Modal/Modal.jsx";
 
-import useCountryFlag from "../../../hooks/useCountryFlag";
-import Button from "../../Button/Button";
-import LanguageSelector from "../../LanguageSelector/LanguageSelector";
-import Modal from "../../Modal/Modal";
+import useCountryFlag from "../../../hooks/useCountryFlag.js";
+
+import "./UnauthenticatedLayout.scss";
 
 const UnauthenticatedLayout = ({ children }) => {
   const { t } = useTranslation();
