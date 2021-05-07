@@ -166,7 +166,7 @@ const GroupForm = ({
         />
         <TextInput
           required
-          placeholder={t("global.description")}
+          placeholder={t("screens.allGroups.groupDescription")}
           onChange={(value) => {
             setDescription(value);
           }}
