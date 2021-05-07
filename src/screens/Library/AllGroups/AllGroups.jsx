@@ -127,6 +127,11 @@ const AllGroups = () => {
         ),
       },
       {
+        Header: t("screens.allGroups.groupDescription"),
+        accessor: "description",
+        Cell: ({ row }) => <>{row.original.description}</>,
+      },
+      {
         Header: t("screens.allGroups.active"),
         accessor: "active",
         Cell: ({ row }) => (
