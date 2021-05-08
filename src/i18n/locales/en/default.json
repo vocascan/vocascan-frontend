@@ -128,7 +128,8 @@
       "title": "Please choose your direction"
     },
     "endScreen": {
-      "congratulations": ["It will be better next time", "Practice more", "Congratulation"]
+      "congratulations": ["It will be better next time", "Practice more", "Congratulation"],
+      "percentageText": "you solved {{percentage}}% of the vocabulary correctly"
     },
     "profile": {
       "stats": {

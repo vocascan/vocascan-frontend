@@ -78,9 +78,11 @@ const End = () => {
   return (
     <div className="end-screen">
       <h1>{congratulation}</h1>
-      <p className="percentage-text">{`Du hast ${percentage.toFixed(
-        0
-      )}% der Vokabeln richtig gehabt`}</p>
+      <p className="percentage-text">
+        {t("screens.endScreen.percentageText", {
+          percentage: percentage,
+        })}
+      </p>
       <Table columns={columns} data={data} pagination={false} />
       <Button block uppercase onClick={submitEndQuery}>
         Zurück zum Dashboard
