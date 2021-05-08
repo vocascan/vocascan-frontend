@@ -129,7 +129,8 @@
     },
     "endScreen": {
       "congratulations": ["It will be better next time", "Practice more", "Congratulation"],
-      "percentageText": "you solved {{percentage}}% of the vocabulary correctly"
+      "percentageText": "you solved {{percentage}}% of the vocabulary correctly",
+      "dashboard": "Back to the dashboard"
     },
     "profile": {
       "stats": {
