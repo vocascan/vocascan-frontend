@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 import AddIcon from "@material-ui/icons/Add";
 import BarChartIcon from "@material-ui/icons/BarChart";
-import GroupIcon from "@material-ui/icons/Group";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import SettingsIcon from "@material-ui/icons/Settings";
