@@ -71,10 +71,10 @@ const Nav = () => {
           link="/progress"
         />
         <NavButton
-          name={t("nav.groupLearning")}
+          name={t("nav.custom")}
           design={menuStyle}
           icon={<GroupIcon />}
-          link="/groupLearning"
+          link="/custom"
         />
       </ul>
 
