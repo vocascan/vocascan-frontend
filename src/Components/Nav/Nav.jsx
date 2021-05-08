@@ -9,6 +9,7 @@ import GroupIcon from "@material-ui/icons/Group";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import SettingsIcon from "@material-ui/icons/Settings";
+import StyleIcon from "@material-ui/icons/Style";
 
 import NavButton from "./NavButton.jsx";
 
@@ -73,7 +74,7 @@ const Nav = () => {
         <NavButton
           name={t("nav.custom")}
           design={menuStyle}
-          icon={<GroupIcon />}
+          icon={<StyleIcon />}
           link="/custom"
         />
       </ul>
