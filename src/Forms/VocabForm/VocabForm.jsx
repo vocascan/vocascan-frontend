@@ -118,8 +118,8 @@ const VocabForm = ({
         label: (
           <SelectOptionWithFlag
             name={newPackage.name}
-            foreignLanguage={newPackage.foreignWordLanguage}
-            translatedLanguage={newPackage.translatedWordLanguage}
+            foreignLanguageCode={newPackage.foreignWordLanguage}
+            translatedLanguageCode={newPackage.translatedWordLanguage}
           />
         ),
       });
@@ -222,8 +222,8 @@ const VocabForm = ({
           label: (
             <SelectOptionWithFlag
               name={newPackage.name}
-              foreignLanguage={newPackage.foreignWordLanguage}
-              translatedLanguage={newPackage.translatedWordLanguage}
+              foreignLanguageCode={newPackage.foreignWordLanguage}
+              translatedLanguageCode={newPackage.translatedWordLanguage}
             />
           ),
         };
@@ -280,8 +280,8 @@ const VocabForm = ({
           label: (
             <SelectOptionWithFlag
               name={p.name}
-              foreignLanguage={p.foreignWordLanguage}
-              translatedLanguage={p.translatedWordLanguage}
+              foreignLanguageCode={p.foreignWordLanguage}
+              translatedLanguageCode={p.translatedWordLanguage}
             />
           ),
         };

@@ -18,6 +18,17 @@
       "translatedLanguage": "Übersetzte Sprache",
       "vocabsPerDay": "Vokabeln pro Tag"
     },
+    "packageOverview": {
+      "today": "Heute:",
+      "unactivated": "Nicht aktiviert:",
+      "unresolved": "Insgesamt zu lernen:"
+    },
+    "validServerIndicator": {
+      "serverNotResponding": "✗ Server antwortet nicht.",
+      "serverNotVocascanServer": "✗ Server ist kein Vocascan Server",
+      "validServer": "✓ gültiger Server (v{{version}})",
+      "versionToOld": "✗ Serverversion v{{version}} ist zu alt. Mindestens erforderlich ist v{{minVersion}}"
+    },
     "vocabForm": {
       "activateLabel": "Aktivieren",
       "activateTooltip": "Entscheidet, ob die Vokabel separat aktiviert werden muss, um sie in der nächsten Abfrage verwenden zu können",
@@ -36,6 +47,7 @@
   "global": {
     "LogIn": "Anmelden",
     "abort": "Abbrechen",
+    "activate": "Aktivieren",
     "add": "Hinzufügen",
     "continue": "Weiter",
     "delete": "Löschen",
@@ -45,6 +57,7 @@
     "foreignWord": "Fremdwort",
     "group": "Gruppe",
     "groups": "Gruppen",
+    "learn": "Lernen",
     "library": "Bibliothek",
     "name": "Name",
     "noOptionMessage": "Keine Optionen",
@@ -55,6 +68,7 @@
     "paginationShow": "Zeige {{size}}",
     "password": "Passwort",
     "passwordRepeat": "Passwort wiederholen",
+    "random": "Zufällig",
     "save": "Speichern",
     "server": "Server",
     "serverNotResponding": "Der Server antwortet nicht",
@@ -66,6 +80,13 @@
     "username": "Benutzername",
     "vocabs": "Vokabeln",
     "vocascan": "Vocascan"
+  },
+  "modal": {
+    "serverNotSupported": {
+      "serverNotVocascanServer": "Dieser Server sieht nicht wie ein Vocascan Server aus.",
+      "title": "Server wird nicht unterstützt",
+      "versionToOld": "Der vocascan Server hat die Version v{{version}}, diese wird jedoch vom Client nicht mehr unterstützt, da mindestens v{{minVersion}} erforderlich ist. Bitte wenden Sie sich an den Serveradministrator, um die Serverversion zu aktualisieren."
+    }
   },
   "nav": {
     "allVocabulary": "Bibliothek",
@@ -116,6 +137,9 @@
       "title": "Alle Vokablen",
       "translations": "Übersetzungen",
       "vocabel": "Vokabel"
+    },
+    "direction": {
+      "title": "Bitte wähle deine Richtung"
     },
     "firstStartup": {
       "savePackageSuccessMessage": "Neues Paket hinzugefügt",
@@ -191,11 +215,13 @@
       }
     },
     "settings": {
+      "desktopVersion": "Desktopversion",
       "menu": {
         "label": "Menu Stil",
         "optionLeft": "Standard",
         "optionRight": "ausgefallen"
       },
+      "serverVersion": "Serverversion",
       "title": "Einstellungen"
     }
   }

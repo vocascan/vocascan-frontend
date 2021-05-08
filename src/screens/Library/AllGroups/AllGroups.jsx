@@ -47,8 +47,8 @@ const AllGroups = () => {
             label: (
               <SelectOptionWithFlag
                 name={currPack.name}
-                foreignLanguage={currPack.foreignWordLanguage}
-                translatedLanguage={currPack.translatedWordLanguage}
+                foreignLanguageCode={currPack.foreignWordLanguage}
+                translatedLanguageCode={currPack.translatedWordLanguage}
               />
             ),
           });
@@ -71,8 +71,8 @@ const AllGroups = () => {
           label: (
             <SelectOptionWithFlag
               name={currPack.name}
-              foreignLanguage={currPack.foreignWordLanguage}
-              translatedLanguage={currPack.translatedWordLanguage}
+              foreignLanguageCode={currPack.foreignWordLanguage}
+              translatedLanguageCode={currPack.translatedWordLanguage}
             />
           ),
         });
