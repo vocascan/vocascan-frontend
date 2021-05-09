@@ -5,10 +5,10 @@ import { useSelector } from "react-redux";
 
 import AddIcon from "@material-ui/icons/Add";
 import BarChartIcon from "@material-ui/icons/BarChart";
-import GroupIcon from "@material-ui/icons/Group";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import SettingsIcon from "@material-ui/icons/Settings";
+import StyleIcon from "@material-ui/icons/Style";
 
 import NavButton from "./NavButton.jsx";
 
@@ -71,10 +71,10 @@ const Nav = () => {
           link="/progress"
         />
         <NavButton
-          name={t("nav.groupLearning")}
+          name={t("nav.custom")}
           design={menuStyle}
-          icon={<GroupIcon />}
-          link="/groupLearning"
+          icon={<StyleIcon />}
+          link="/custom"
         />
       </ul>
 

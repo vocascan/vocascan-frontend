@@ -6,11 +6,13 @@ import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/Authent
 import Snackbar from "./Components/Snackbar/Snackbar.jsx";
 import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
+import Custom from "./screens/Custom/Custom.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
 import Learn from "./screens/Learn/Learn.jsx";
 import Library from "./screens/Library/Library.jsx";
 import Login from "./screens/Login/Login.jsx";
 import Profile from "./screens/Profile/Profile.jsx";
+import Progress from "./screens/Progress/Progress.jsx";
 import Register from "./screens/Register/Register.jsx";
 import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
 import Settings from "./screens/Settings/Settings.jsx";
@@ -76,6 +78,8 @@ const App = () => {
             <Route path="/addVocab" component={AddVocab} />
             <Route path="/learn" component={Learn} />
             <Route path="/library" component={Library} />
+            <Route path="/progress" component={Progress} />
+            <Route path="/custom" component={Custom} />
             <Route path="/settings" component={Settings} />
             <Route path="/profile" component={Profile} />
             <Snackbar />
