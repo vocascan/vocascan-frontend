@@ -12,10 +12,12 @@ const Textarea = ({
   value = "",
   autoFocus = false,
   rows = 5,
+  maxlength,
   ...props
 }) => {
   const [flow, setFlow] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [indicator, setIndicator] = useState(false);
 
   const handleFocus = useCallback(() => {
     setFocused(true);
@@ -38,6 +40,10 @@ const Textarea = ({
     setFlow(!!value || focused);
   }, [value, focused]);
 
+  useEffect(() => {
+    setIndicator(maxlength - value.length);
+  }, [maxlength, value]);
+
   return (
     <div className="text-area-wrapper">
       <span
@@ -54,8 +60,12 @@ const Textarea = ({
         onFocus={handleFocus}
         autoFocus={autoFocus}
         rows={rows}
+        maxlength={maxlength}
         {...props}
       />
+      {!error && maxlength && (
+        <p className="text-area-indicator">{indicator}</p>
+      )}
       {error && errorText && <p className="text-area-error">{errorText}</p>}
     </div>
   );

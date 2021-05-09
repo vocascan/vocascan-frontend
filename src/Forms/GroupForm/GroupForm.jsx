@@ -172,7 +172,7 @@ const GroupForm = ({
           }}
           value={description}
           rows={5}
-          maxlength={100}
+          maxlength={250}
         />
         <Switch
           appearance="on-off"
