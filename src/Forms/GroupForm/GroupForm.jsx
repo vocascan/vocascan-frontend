@@ -13,6 +13,7 @@ import Textarea from "../../Components/Form/Textarea/Textarea.jsx";
 import useSnack from "../../hooks/useSnack.js";
 import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
+import { maxTextareaLength } from "../../utils/constants.js";
 
 import "./GroupForm.scss";
 
@@ -172,7 +173,7 @@ const GroupForm = ({
           }}
           value={description}
           rows={5}
-          maxlength={250}
+          maxlength={maxTextareaLength}
         />
         <Switch
           appearance="on-off"
