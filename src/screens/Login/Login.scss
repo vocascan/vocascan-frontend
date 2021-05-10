@@ -45,15 +45,16 @@
 
   .form-input {
     width: 100%;
-    min-width: 200px;
+    min-width: 250px;
     margin: 30px auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
     .form-error {
-      text-align: left;
-      padding-top: 10px;
+      text-align: right;
+      margin-top: -3px;
+      height: 27px;
       font-size: 11px;
       color: $color-red;
     }

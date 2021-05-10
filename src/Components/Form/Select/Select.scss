@@ -140,3 +140,12 @@
     color: $color-white;
   }
 }
+
+.custom-option-wrapper {
+  .postfix {
+    .flag {
+      width: 25px;
+      border-radius: 5px;
+    }
+  }
+}

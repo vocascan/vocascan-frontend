@@ -1,12 +1,14 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import Switch from "../../Components/Form/Switch/Switch.jsx";
+import LanguageSelector from "../../Components/LanguageSelector/LanguageSelector.jsx";
 
 import { setMenuStyle } from "../../redux/Actions/setting.js";
+import { getInfo } from "../../utils/api.js";
 
-import { version } from "../../../package.json";
+import { version as desktopVersion } from "../../../package.json";
 
 import "./Settings.scss";
 
@@ -16,11 +18,21 @@ const Settings = () => {
   const dispatch = useDispatch();
   const menuStyle = useSelector((state) => state.setting.menuStyle);
 
+  const [serverInfo, setServerInfo] = useState(null);
+
   const onChangeMenu = useCallback(() => {
     dispatch(
       setMenuStyle({ menuStyle: menuStyle === "default" ? "fancy" : "default" })
     );
   }, [dispatch, menuStyle]);
+
+  useEffect(() => {
+    getInfo()
+      .then((res) => {
+        setServerInfo(res?.data);
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <div className="settings-wrapper">
@@ -33,7 +45,18 @@ const Settings = () => {
         onChange={onChangeMenu}
         checked={menuStyle !== "default"}
       />
-      <h3>v{version}</h3>
+
+      <LanguageSelector />
+
+      <h3>
+        {t("screens.settings.desktopVersion")} v{desktopVersion}
+      </h3>
+      {serverInfo && (
+        <h3>
+          {t("screens.settings.serverVersion")} v{serverInfo.version}
+          {serverInfo.commitRef ? ` (${serverInfo.commitRef})` : ""}
+        </h3>
+      )}
     </div>
   );
 };

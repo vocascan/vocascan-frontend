@@ -2,13 +2,31 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ReactSelect, { components } from "react-select";
 
+import useCountryFlag from "../../../hooks/useCountryFlag.js";
+
 import "./Select.scss";
 
-export const CustomPackageSelectOption = ({ name, postfix }) => {
+export const SelectOptionWithFlag = ({
+  name,
+  foreignLanguageCode = null,
+  translatedLanguageCode = null,
+}) => {
+  const { getCountryFlagByCode } = useCountryFlag();
+
   return (
     <span className="custom-option-wrapper">
       {name}
-      <small className="postfix">{postfix}</small>
+      <small className="postfix">
+        {foreignLanguageCode && (
+          <span>{getCountryFlagByCode(foreignLanguageCode)}</span>
+        )}
+        {translatedLanguageCode && (
+          <>
+            {"-"}
+            <span>{getCountryFlagByCode(translatedLanguageCode)}</span>
+          </>
+        )}
+      </small>
     </span>
   );
 };

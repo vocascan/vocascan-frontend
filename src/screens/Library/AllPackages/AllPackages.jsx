@@ -12,15 +12,16 @@ import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
+import useCountryFlag from "../../../hooks/useCountryFlag.js";
 import useSnack from "../../../hooks/useSnack.js";
 import { getPackages, deletePackage } from "../../../utils/api.js";
-import { languages } from "../../../utils/constants.js";
 
 import "./AllPackages.scss";
 
 const AllPackages = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
+  const { getCountryFlagByLanguage } = useCountryFlag();
 
   const [data, setData] = useState([]);
   const [currentPackage, setCurrentPackage] = useState(null);
@@ -87,26 +88,20 @@ const AllPackages = () => {
         Header: t("screens.allPackages.foreignLanguage"),
         accessor: "foreignWordLanguage",
         Cell: ({ row }) => (
-          <span>
-            {languages.find(
-              (ele) => ele.name === row.original.foreignWordLanguage
-            )?.icon +
-              " " +
-              row.original.foreignWordLanguage}
-          </span>
+          <>
+            {getCountryFlagByLanguage(row.original.foreignWordLanguage)}
+            {row.original.foreignWordLanguage}
+          </>
         ),
       },
       {
         Header: t("screens.allPackages.translatedLanguage"),
         accessor: "translatedWordLanguage",
         Cell: ({ row }) => (
-          <span>
-            {languages.find(
-              (ele) => ele.name === row.original.translatedWordLanguage
-            )?.icon +
-              " " +
-              row.original.translatedWordLanguage}
-          </span>
+          <>
+            {getCountryFlagByLanguage(row.original.translatedWordLanguage)}
+            {row.original.translatedWordLanguage}
+          </>
         ),
       },
       {
@@ -140,7 +135,7 @@ const AllPackages = () => {
         ),
       },
     ],
-    [editPackage, onDeletePckge, t]
+    [editPackage, getCountryFlagByLanguage, onDeletePckge, t]
   );
 
   useEffect(() => {

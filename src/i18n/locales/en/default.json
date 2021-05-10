@@ -5,6 +5,7 @@
     "continue": "Continue",
     "submit": "Submit",
     "abort": "Abort",
+    "close": "Close",
     "delete": "Delete",
     "save": "Save",
     "vocascan": "Vocascan",
@@ -31,7 +32,10 @@
     "successMessage": "Success",
     "fetchError": "Something went wrong, please try again later",
     "paginationPage": "Page {{page}} of {{pageLength}}",
-    "paginationShow": "Show {{size}}"
+    "paginationShow": "Show {{size}}",
+    "learn": "Learn",
+    "activate": "Activate",
+    "random": "Random"
   },
   "components": {
     "groupForm": {
@@ -65,6 +69,20 @@
       "activeTooltip": "Decides whether vocabulary is included in the query",
       "activateLabel": "Activate",
       "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query"
+    },
+    "packageOverview": {
+      "unresolved": "Total to learn:",
+      "unactivated": "Not activated:",
+      "today": "Today:"
+    },
+    "validServerIndicator": {
+      "validServer": "✓ valid server (v{{version}})",
+      "serverNotVocascanServer": "✗ server isn't a vocascan server",
+      "versionToOld": "✗ server version v{{version}} is to old. Min required is v{{minVersion}}",
+      "serverNotResponding": "✗ server is not responding"
+    },
+    "languageSelector": {
+      "label": "Language"
     }
   },
   "screens": {
@@ -107,6 +125,9 @@
     "addVocab": {
       "title": "Add vocabulary"
     },
+    "direction": {
+      "title": "Please choose your direction"
+    },
     "profile": {
       "stats": {
         "stats": "Stats",
@@ -148,7 +169,10 @@
       "vocascanCloud": {
         "heading": "Vocascan cloud",
         "pro": ["No need of a server", "sync every device"],
-        "contra": ["Your data is stored on vocascan servers"],
+        "contra": [
+          "Your data is stored on vocascan servers",
+          "Not available for now"
+        ],
         "button": "Start for free"
       },
       "vocascanServer": {
@@ -158,7 +182,10 @@
           "Use your own Server",
           "Full control over the settings"
         ],
-        "contra": ["You need a own server"],
+        "contra": [
+          "You need a own server",
+          "You need some time to setup a server"
+        ],
         "button": "Start for free"
       }
     },
@@ -183,7 +210,9 @@
         "label": "Menu style",
         "optionLeft": "Default",
         "optionRight": "Fancy"
-      }
+      },
+      "desktopVersion": "Desktop version",
+      "serverVersion": "Server version"
     }
   },
   "nav": {
@@ -191,9 +220,19 @@
     "learn": "Learn",
     "progress": "Progress",
     "allVocabulary": "Library",
-    "groupLearning": "Group learning",
+    "custom": "Custom",
     "settings": "Settings",
     "profile": "Profile",
     "logout": "Logout"
+  },
+  "modal": {
+    "serverNotSupported": {
+      "title": "Server not supported",
+      "serverNotVocascanServer": "This server does not look like a vocascan server.",
+      "versionToOld": "The vocascan server has the version v{{version}} but this is no longer supported by the client, because at least v{{minVersion}} is required. Please contact the server administrator to update the server version."
+    },
+    "selectLanguage": {
+      "title": "Select app language"
+    }
   }
 }

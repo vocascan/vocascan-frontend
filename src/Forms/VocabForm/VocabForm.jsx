@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../Components/Button/Button.jsx";
 import ArrayTextInput from "../../Components/Form/ArrayTextInput/ArrayTextInput.jsx";
 import Select, {
-  CustomPackageSelectOption,
+  SelectOptionWithFlag,
 } from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
@@ -20,7 +20,7 @@ import {
   createVocabulary,
   modifyVocabulary,
 } from "../../utils/api.js";
-import { languages, maxTranslations } from "../../utils/constants.js";
+import { maxTranslations } from "../../utils/constants.js";
 
 const VocabForm = ({
   defaultData = null,
@@ -113,7 +113,16 @@ const VocabForm = ({
 
   const packageAdded = useCallback(
     (newPackage) => {
-      setSelectedPackage({ value: newPackage.id, label: newPackage.name });
+      setSelectedPackage({
+        value: newPackage.id,
+        label: (
+          <SelectOptionWithFlag
+            name={newPackage.name}
+            foreignLanguageCode={newPackage.foreignWordLanguage}
+            translatedLanguageCode={newPackage.translatedWordLanguage}
+          />
+        ),
+      });
       closePackageModal();
       fetchPackages();
     },
@@ -206,9 +215,17 @@ const VocabForm = ({
   useEffect(() => {
     if (packageId && packages.length) {
       setSelectedPackage(() => {
+        const newPackage = packages.find((elem) => elem.id === packageId);
+
         return {
           value: packageId,
-          label: packages.find((elem) => elem.id === packageId).name,
+          label: (
+            <SelectOptionWithFlag
+              name={newPackage.name}
+              foreignLanguageCode={newPackage.foreignWordLanguage}
+              translatedLanguageCode={newPackage.translatedWordLanguage}
+            />
+          ),
         };
       });
     }
@@ -258,19 +275,13 @@ const VocabForm = ({
   useEffect(() => {
     setPackageItems(() =>
       packages.map((p) => {
-        const foreignIcon = languages.find(
-          (x) => x.name === p.foreignWordLanguage
-        ).icon;
-        const translatedIcon = languages.find(
-          (x) => x.name === p.translatedWordLanguage
-        ).icon;
-
         return {
           value: p.id,
           label: (
-            <CustomPackageSelectOption
+            <SelectOptionWithFlag
               name={p.name}
-              postfix={foreignIcon + " - " + translatedIcon}
+              foreignLanguageCode={p.foreignWordLanguage}
+              translatedLanguageCode={p.translatedWordLanguage}
             />
           ),
         };

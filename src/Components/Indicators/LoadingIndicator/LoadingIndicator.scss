@@ -1,0 +1,35 @@
+@import "../../../colors";
+
+.loading-indicator {
+  display: flex;
+  width: 100%;
+
+  .circle {
+    border: 2px solid $color-primary-light;
+    border-top: 2px solid $color-primary-dark;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1.5s ease-in-out infinite;
+
+    &.large {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  &.center {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -11,14 +11,13 @@ import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import Button from "../../../Components/Button/Button.jsx";
 import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
-import { CustomPackageSelectOption } from "../../../Components/Form/Select/Select.jsx";
+import { SelectOptionWithFlag } from "../../../Components/Form/Select/Select.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import GroupForm from "../../../Forms/GroupForm/GroupForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
 import { getGroups, getPackages, deleteGroup } from "../../../utils/api.js";
-import { languages } from "../../../utils/constants.js";
 
 import "./AllGroups.scss";
 
@@ -43,19 +42,13 @@ const AllGroups = () => {
         .then(({ data }) => {
           const currPack = data.find((ele) => ele.id === packageId);
 
-          const foreignIcon = languages.find(
-            (x) => x.name === currPack.foreignWordLanguage
-          ).icon;
-          const translatedIcon = languages.find(
-            (x) => x.name === currPack.translatedWordLanguage
-          ).icon;
-
           setCurrentPackage({
             value: currPack.id,
             label: (
-              <CustomPackageSelectOption
+              <SelectOptionWithFlag
                 name={currPack.name}
-                postfix={foreignIcon + " - " + translatedIcon}
+                foreignLanguageCode={currPack.foreignWordLanguage}
+                translatedLanguageCode={currPack.translatedWordLanguage}
               />
             ),
           });
@@ -73,19 +66,13 @@ const AllGroups = () => {
       .then(({ data }) => {
         const currPack = data.find((ele) => ele.id === packageId);
 
-        const foreignIcon = languages.find(
-          (x) => x.name === currPack.foreignWordLanguage
-        ).icon;
-        const translatedIcon = languages.find(
-          (x) => x.name === currPack.translatedWordLanguage
-        ).icon;
-
         setCurrentPackage({
           value: currPack.id,
           label: (
-            <CustomPackageSelectOption
+            <SelectOptionWithFlag
               name={currPack.name}
-              postfix={foreignIcon + " - " + translatedIcon}
+              foreignLanguageCode={currPack.foreignWordLanguage}
+              translatedLanguageCode={currPack.translatedWordLanguage}
             />
           ),
         });
