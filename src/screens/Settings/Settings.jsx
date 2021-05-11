@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import Switch from "../../Components/Form/Switch/Switch.jsx";
+import LanguageSelector from "../../Components/LanguageSelector/LanguageSelector.jsx";
 
 import { setMenuStyle } from "../../redux/Actions/setting.js";
 import { getInfo } from "../../utils/api.js";
@@ -44,6 +45,9 @@ const Settings = () => {
         onChange={onChangeMenu}
         checked={menuStyle !== "default"}
       />
+
+      <LanguageSelector />
+
       <h3>
         {t("screens.settings.desktopVersion")} v{desktopVersion}
       </h3>

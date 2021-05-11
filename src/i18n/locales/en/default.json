@@ -5,6 +5,7 @@
     "continue": "Continue",
     "submit": "Submit",
     "abort": "Abort",
+    "close": "Close",
     "delete": "Delete",
     "save": "Save",
     "vocascan": "Vocascan",
@@ -81,6 +82,9 @@
       "serverNotVocascanServer": "✗ server isn't a vocascan server",
       "versionToOld": "✗ server version v{{version}} is to old. Min required is v{{minVersion}}",
       "serverNotResponding": "✗ server is not responding"
+    },
+    "languageSelector": {
+      "label": "Language"
     }
   },
   "screens": {
@@ -173,7 +177,10 @@
       "vocascanCloud": {
         "heading": "Vocascan cloud",
         "pro": ["No need of a server", "sync every device"],
-        "contra": ["Your data is stored on vocascan servers"],
+        "contra": [
+          "Your data is stored on vocascan servers",
+          "Not available for now"
+        ],
         "button": "Start for free"
       },
       "vocascanServer": {
@@ -183,7 +190,10 @@
           "Use your own Server",
           "Full control over the settings"
         ],
-        "contra": ["You need a own server"],
+        "contra": [
+          "You need a own server",
+          "You need some time to setup a server"
+        ],
         "button": "Start for free"
       }
     },
@@ -218,7 +228,7 @@
     "learn": "Learn",
     "progress": "Progress",
     "allVocabulary": "Library",
-    "groupLearning": "Group learning",
+    "custom": "Custom",
     "settings": "Settings",
     "profile": "Profile",
     "logout": "Logout"
@@ -237,6 +247,9 @@
       "title": "Server not supported",
       "serverNotVocascanServer": "This server does not look like a vocascan server.",
       "versionToOld": "The vocascan server has the version v{{version}} but this is no longer supported by the client, because at least v{{minVersion}} is required. Please contact the server administrator to update the server version."
+    },
+    "selectLanguage": {
+      "title": "Select app language"
     }
   }
 }

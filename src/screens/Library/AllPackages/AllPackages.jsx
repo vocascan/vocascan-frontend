@@ -12,8 +12,8 @@ import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
+import useCountryFlag from "../../../hooks/useCountryFlag.js";
 import useSnack from "../../../hooks/useSnack.js";
-import useCountryFlag from "../../../hooks/userCountryFlag.js";
 import { getPackages, deletePackage } from "../../../utils/api.js";
 
 import "./AllPackages.scss";
@@ -21,7 +21,7 @@ import "./AllPackages.scss";
 const AllPackages = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const { getCountryFlag } = useCountryFlag();
+  const { getCountryFlagByLanguage } = useCountryFlag();
 
   const [data, setData] = useState([]);
   const [currentPackage, setCurrentPackage] = useState(null);
@@ -89,7 +89,7 @@ const AllPackages = () => {
         accessor: "foreignWordLanguage",
         Cell: ({ row }) => (
           <>
-            {getCountryFlag(row.original.foreignWordLanguage)}
+            {getCountryFlagByLanguage(row.original.foreignWordLanguage)}
             {row.original.foreignWordLanguage}
           </>
         ),
@@ -99,7 +99,7 @@ const AllPackages = () => {
         accessor: "translatedWordLanguage",
         Cell: ({ row }) => (
           <>
-            {getCountryFlag(row.original.translatedWordLanguage)}
+            {getCountryFlagByLanguage(row.original.translatedWordLanguage)}
             {row.original.translatedWordLanguage}
           </>
         ),
@@ -135,7 +135,7 @@ const AllPackages = () => {
         ),
       },
     ],
-    [editPackage, getCountryFlag, onDeletePckge, t]
+    [editPackage, getCountryFlagByLanguage, onDeletePckge, t]
   );
 
   useEffect(() => {

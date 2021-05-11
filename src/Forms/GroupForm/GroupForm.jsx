@@ -129,8 +129,8 @@ const GroupForm = ({
           label: (
             <SelectOptionWithFlag
               name={p.foreignWordLanguage}
-              foreignLanguage={p.foreignWordLanguage}
-              translatedWordLanguage={p.translatedWordLanguage}
+              foreignLanguageCode={p.foreignWordLanguage}
+              translatedLanguageCode={p.translatedWordLanguage}
             />
           ),
         };

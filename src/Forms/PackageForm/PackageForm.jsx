@@ -25,7 +25,7 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
           label: (
             <SelectOptionWithFlag
               name={defaultData.foreignWordLanguage}
-              foreignLanguage={defaultData.foreignWordLanguage}
+              foreignLanguageCode={defaultData.foreignWordLanguage}
             />
           ),
         }
@@ -38,7 +38,7 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
           label: (
             <SelectOptionWithFlag
               name={defaultData.translatedWordLanguage}
-              foreignLanguage={defaultData.translatedWordLanguage}
+              foreignLanguageCode={defaultData.translatedWordLanguage}
             />
           ),
         }
@@ -98,10 +98,7 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
         if (error?.response?.status === 401) {
           console.log("jwt expired");
         }
-        showSnack(
-          "success",
-          t("components.packageForm.savePackageFailMessage")
-        );
+        showSnack("error", t("components.packageForm.savePackageFailMessage"));
       });
   }, [
     defaultData?.id,
@@ -120,8 +117,8 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
       value: language.name,
       label: (
         <SelectOptionWithFlag
-          name={t(`languages.${language.name}`)}
-          foreignLanguage={language.name}
+          name={language.name}
+          foreignLanguageCode={language.countryCode}
         />
       ),
     };

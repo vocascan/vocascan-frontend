@@ -99,3 +99,6 @@ dev-app-update.yml
 
 # localazy
 localazy.keys.json
+
+# jetbrains
+.idea/

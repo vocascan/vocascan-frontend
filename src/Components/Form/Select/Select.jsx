@@ -2,26 +2,28 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ReactSelect, { components } from "react-select";
 
-import "./Select.scss";
+import useCountryFlag from "../../../hooks/useCountryFlag.js";
 
-import useCountryFlag from "../../../hooks/userCountryFlag";
+import "./Select.scss";
 
 export const SelectOptionWithFlag = ({
   name,
-  foreignLanguage,
-  translatedLanguage,
+  foreignLanguageCode = null,
+  translatedLanguageCode = null,
 }) => {
-  const { getCountryFlag } = useCountryFlag();
+  const { getCountryFlagByCode } = useCountryFlag();
 
   return (
     <span className="custom-option-wrapper">
       {name}
       <small className="postfix">
-        {foreignLanguage && <span>{getCountryFlag(foreignLanguage)}</span>}
-        {translatedLanguage && (
+        {foreignLanguageCode && (
+          <span>{getCountryFlagByCode(foreignLanguageCode)}</span>
+        )}
+        {translatedLanguageCode && (
           <>
             {"-"}
-            <span>{getCountryFlag(translatedLanguage)}</span>
+            <span>{getCountryFlagByCode(translatedLanguageCode)}</span>
           </>
         )}
       </small>
