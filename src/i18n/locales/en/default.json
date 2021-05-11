@@ -35,7 +35,9 @@
     "paginationShow": "Show {{size}}",
     "learn": "Learn",
     "activate": "Activate",
-    "random": "Random"
+    "random": "Random",
+    "wrong": "Wrong",
+    "correct": "Correct"
   },
   "components": {
     "groupForm": {
@@ -224,6 +226,15 @@
     "settings": "Settings",
     "profile": "Profile",
     "logout": "Logout"
+  },
+  "languages": {
+    "German": "German",
+    "English": "English",
+    "Spanish": "Spanish",
+    "Portuguese": "Portuguese",
+    "Turkish": "Turkish",
+    "Russian": "Russian",
+    "French": "French"
   },
   "modal": {
     "serverNotSupported": {

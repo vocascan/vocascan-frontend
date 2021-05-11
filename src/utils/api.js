@@ -66,8 +66,10 @@ export const getQueryVocabulary = (
   api.get(
     `/languagePackage/${languagePackageId}/query?staged=${staged}&limit=${limit}`
   );
-export const checkQuery = (vocabularyId, answer = false) =>
-  api.patch(`/vocabulary/${vocabularyId}?answer=${answer}`);
+export const checkQuery = (vocabularyId, answer = false, progress = false) =>
+  api.patch(
+    `/vocabulary/${vocabularyId}?answer=${answer}&progress=${progress}`
+  );
 
 // Stats
 export const getStats = () => api.get("/user/stats");
