@@ -10,8 +10,9 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 
+import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, register } from "../../redux/Actions/login.js";
-import { register as registerAPI } from "../../utils/api.js";
+import { register as registerAPI, getLanguages } from "../../utils/api.js";
 
 import "./Register.scss";
 
@@ -20,6 +21,7 @@ const Register = ({ image }) => {
 
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const selfHosted = useSelector((state) => state.login.selfHosted);
+  const languages = useSelector((state) => state.language.languages);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -50,6 +52,20 @@ const Register = ({ image }) => {
       return true;
     }
   }, [password, passwordRepeat]);
+
+  //fetch languages
+  const fetchLanguages = useCallback(() => {
+    // when array is empty no languages were stored. Then add them to the store
+    if (languages.length === 0) {
+      getLanguages().then((res) => {
+        dispatch(
+          setLanguages({
+            languages: res.data,
+          })
+        );
+      });
+    }
+  }, [dispatch, languages.length]);
 
   //make api call to register user
   const submitRegisterPerson = useCallback(
@@ -87,8 +103,19 @@ const Register = ({ image }) => {
 
           setServerError(true);
         });
+
+      //fetch languages from server
+      fetchLanguages();
     },
-    [canSubmit, checkPassword, dispatch, email, password, username]
+    [
+      canSubmit,
+      checkPassword,
+      dispatch,
+      email,
+      fetchLanguages,
+      password,
+      username,
+    ]
   );
 
   useEffect(() => {

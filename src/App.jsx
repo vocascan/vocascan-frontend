@@ -17,8 +17,9 @@ import Register from "./screens/Register/Register.jsx";
 import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
 import Settings from "./screens/Settings/Settings.jsx";
 
+import { setLanguages } from "./redux/Actions/language.js";
 import { signIn, signOut } from "./redux/Actions/login.js";
-import { getProfile } from "./utils/api.js";
+import { getLanguages, getProfile } from "./utils/api.js";
 
 import Image from "./images/logo/color-round.svg";
 
@@ -29,6 +30,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const languages = useSelector((state) => state.language.languages);
   const user = useSelector((state) => state.login.user);
 
   const shouldLogin = !!user.token && !isLoggedIn;
@@ -50,7 +52,18 @@ const App = () => {
           console.log(err);
           dispatch(signOut());
         });
+      // when array is empty no languages were stored. Then add them to the store
+      if (languages.length === 0) {
+        getLanguages().then((res) => {
+          dispatch(
+            setLanguages({
+              languages: res.data,
+            })
+          );
+        });
+      }
     }
+
     // try login only once on render
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -10,8 +10,9 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 
+import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, signIn } from "../../redux/Actions/login.js";
-import { login } from "../../utils/api.js";
+import { login, getLanguages } from "../../utils/api.js";
 
 import "./Login.scss";
 
@@ -20,6 +21,7 @@ const Login = ({ image }) => {
 
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const selfHosted = useSelector((state) => state.login.selfHosted);
+  const languages = useSelector((state) => state.language.languages);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,6 +38,20 @@ const Login = ({ image }) => {
   const handleClickRegister = useCallback(() => {
     history.push("/register");
   }, [history]);
+
+  //fetch languages
+  const fetchLanguages = useCallback(() => {
+    // when array is empty no languages were stored. Then add them to the store
+    if (languages.length === 0) {
+      getLanguages().then((res) => {
+        dispatch(
+          setLanguages({
+            languages: res.data,
+          })
+        );
+      });
+    }
+  }, [dispatch, languages.length]);
 
   //make api call to login
   const submitLogin = useCallback(
@@ -74,8 +90,11 @@ const Login = ({ image }) => {
 
           setServerError(true);
         });
+
+      //fetch languages from server
+      fetchLanguages();
     },
-    [canSubmit, dispatch, email, password]
+    [canSubmit, dispatch, email, fetchLanguages, password]
   );
 
   useEffect(() => {

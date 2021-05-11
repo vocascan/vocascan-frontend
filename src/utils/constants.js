@@ -1,14 +1,17 @@
 import ReactCountryFlag from "react-country-flag";
 
-export const languages = [
-  { name: "German", countryCode: "DE" },
-  { name: "English", countryCode: "GB" },
-  { name: "Spanisch", countryCode: "ES" },
-  { name: "Portuguese", countryCode: "PT" },
-  { name: "Turkish", countryCode: "TR" },
-  { name: "Russian", countryCode: "RU" },
-  { name: "French", countryCode: "FR" },
-].map((language) => ({
+import store from "../redux/Store/index";
+
+function getLanguages() {
+  // grab current state
+  const state = store.getState();
+
+  // get the JWT token out of it
+  // (obviously depends on how your store is structured)
+  return state.language.languages;
+}
+
+export const languages = getLanguages().map((language) => ({
   ...language,
   icon: (
     <ReactCountryFlag
@@ -17,7 +20,7 @@ export const languages = [
         width: null,
         height: null,
       }}
-      countryCode={language.countryCode}
+      countryCode={language.code}
       svg
     />
   ),
