@@ -94,6 +94,7 @@ const Query = () => {
       });
 
       let _actualProgress = actualProgress;
+
       //if answer is right and wrong vocabs haven't been repeated yet
       if (answer && wrongVocabs + correctVocabs < vocabSize) {
         dispatch(setQueryCorrect());
@@ -103,26 +104,27 @@ const Query = () => {
       else if (answer) {
         _actualProgress++;
       }
-      // if anser is wrong an wrong vocabs haven't been repeated yet, increment wrong counter
+      // if answer is wrong an wrong vocabs haven't been repeated yet, increment wrong counter
       else if (!answer && wrongVocabs + correctVocabs < vocabSize) {
         dispatch(setQueryWrong());
       }
 
-      //if answer is wrong put vocabs card to the end of the query
-      answer ? vocabs.shift() : vocabs.push(vocabs.shift());
+      // if answer is correct shift the first card out of the array
+      if (answer) {
+        setVocabs(vocabs.slice(1));
+      }
+      // if answer is wrong put vocabs card to the end of the query
+      else {
+        setVocabs([...vocabs.slice(1), vocabs[0]]);
+      }
       setCurrVocab(vocabs[0]);
 
       setActualProgress(_actualProgress);
-
-      if (vocabs.length === 0) {
-        history.push("/learn/end/");
-      }
     },
     [
       actualProgress,
       correctVocabs,
       dispatch,
-      history,
       showSnack,
       vocabSize,
       vocabs,
@@ -147,6 +149,12 @@ const Query = () => {
 
     setCurrVocab(vocabs[0]);
   }, [vocabs]);
+
+  useEffect(() => {
+    if (actualProgress > 0 && vocabs.length === 0) {
+      history.push("/learn/end/");
+    }
+  }, [actualProgress, vocabs, history]);
 
   useEffect(() => {
     getVocabulary();
