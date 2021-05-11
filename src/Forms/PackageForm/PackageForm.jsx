@@ -98,10 +98,7 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
         if (error?.response?.status === 401) {
           console.log("jwt expired");
         }
-        showSnack(
-          "success",
-          t("components.packageForm.savePackageFailMessage")
-        );
+        showSnack("error", t("components.packageForm.savePackageFailMessage"));
       });
   }, [
     defaultData?.id,
