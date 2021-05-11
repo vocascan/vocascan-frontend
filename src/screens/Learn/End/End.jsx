@@ -7,6 +7,7 @@ import Button from "../../../Components/Button/Button.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 
 import { clearQuery } from "../../../redux/Actions/query.js";
+import { scaleValue } from "../../../utils/index.js";
 
 import "./End.scss";
 
@@ -23,18 +24,13 @@ const End = () => {
 
   useEffect(() => {
     //get size of congratulation array and calculate the message with the given percentage
-    const sizeCount = t("screens.endScreen.congratulations", {
+    const translations = t("screens.endScreen.congratulations", {
       returnObjects: true,
-    }).length;
-    let tempVar = 0;
-    const steps = 100 / sizeCount;
+    });
 
-    for (let i = 0; i < sizeCount; ++i) {
-      if (percentage >= tempVar && percentage <= tempVar + steps) {
-        setCongratulations(t(`screens.endScreen.congratulations.${i}`));
-      }
-      tempVar += steps;
-    }
+    setCongratulations(
+      translations[scaleValue(percentage, [0, 100], [0, translations.length])]
+    );
   }, [percentage, t]);
 
   const submitEndQuery = () => {
