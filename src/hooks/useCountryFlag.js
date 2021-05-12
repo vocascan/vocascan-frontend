@@ -1,17 +1,20 @@
 import { useCallback } from "react";
 
-import { languages } from "../utils/constants.js";
+//import { languages } from "../utils/constants.js";
+import useCreateCountryFlags from "./useCreateCountryFlags.js";
 
 const useCountryFlag = () => {
-  const getCountryFlagByCode = useCallback((countryCode) => {
-    let origCode = countryCode;
+  const { createCountryFlags } = useCreateCountryFlags();
+  const languages = createCountryFlags();
+  const getCountryFlagByCode = useCallback((code) => {
+    let origCode = code;
 
-    if (countryCode === "en") {
+    if (code === "en") {
       origCode = "gb";
     }
 
     const toFindLanguage = languages.find(
-      (x) => x.countryCode.toLowerCase() === origCode.toLowerCase()
+      (x) => x.code.toLowerCase() === origCode.toLowerCase()
     );
 
     if (!toFindLanguage?.icon) {
