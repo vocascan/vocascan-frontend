@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 
-import { languages } from "../../utils/constants.js";
+import useCreateCountryFlags from "../../hooks/useCreateCountryFlags.js";
 
 import "./DirectionBox.scss";
 
@@ -16,6 +16,9 @@ const DirectionBox = ({
 }) => {
   const { t } = useTranslation();
   const history = useHistory();
+
+  const { createCountryFlags } = useCreateCountryFlags();
+  const languages = createCountryFlags();
 
   const submitDirection = () => {
     history.push(`/learn/query/${direction}`);
