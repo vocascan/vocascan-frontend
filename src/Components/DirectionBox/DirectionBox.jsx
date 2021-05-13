@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 
-import useCreateCountryFlags from "../../hooks/useCreateCountryFlags.js";
+import Flag from "../Flag/Flag.jsx";
 
 import "./DirectionBox.scss";
 
@@ -17,34 +17,21 @@ const DirectionBox = ({
   const { t } = useTranslation();
   const history = useHistory();
 
-  const { createCountryFlags } = useCreateCountryFlags();
-  const languages = createCountryFlags();
-
   const submitDirection = () => {
     history.push(`/learn/query/${direction}`);
   };
   return (
     <div className="direction-box" onClick={submitDirection}>
       <div className="flags">
+        <Flag languageCode={foreignWordLanguage} />
         {direction === "random" ? (
-          <>
-            {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
-            <SyncAltIcon className="direction-arrow" />
-            {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
-          </>
+          <SyncAltIcon className="direction-arrow" />
         ) : direction === "backwards" ? (
-          <>
-            {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
-            <ArrowRightAltIcon className="direction-arrow" />
-            {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
-          </>
+          <ArrowRightAltIcon className="direction-arrow" />
         ) : (
-          <>
-            {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
-            <ArrowRightAltIcon className="direction-arrow" />
-            {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
-          </>
+          <ArrowRightAltIcon className="direction-arrow" />
         )}
+        <Flag languageCode={translatedWordLanguage} />
       </div>
       <div className="languages">
         {direction === "random"
