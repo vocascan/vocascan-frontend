@@ -15,20 +15,29 @@ const PackageOverview = ({ data }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const submitLearn = useCallback(() => {
-    dispatch(
-      setLearnedPackage({
-        foreignWordLanguage: data.foreignWordLanguage,
-        translatedWordLanguage: data.translatedWordLanguage,
-      })
-    );
-    history.push("learn/direction/");
-  }, [
-    data.foreignWordLanguage,
-    data.translatedWordLanguage,
-    dispatch,
-    history,
-  ]);
+  const submitLearn = useCallback(
+    (staged) => {
+      dispatch(
+        setLearnedPackage({
+          foreignWordLanguage: data.foreignWordLanguage,
+          translatedWordLanguage: data.translatedWordLanguage,
+          //using fixed value until server gives us this property
+          languagePackageId: data.id,
+          vocabsToday: data.stats.vocabularies.learnedToday.dueToday,
+          staged,
+        })
+      );
+      history.push(`learn/direction/`);
+    },
+    [
+      data.foreignWordLanguage,
+      data.id,
+      data.stats.vocabularies.learnedToday.dueToday,
+      data.translatedWordLanguage,
+      dispatch,
+      history,
+    ]
+  );
 
   return (
     <div className="package-overview">
@@ -38,19 +47,32 @@ const PackageOverview = ({ data }) => {
         {data?.stats?.vocabularies?.unresolved}
       </p>
       <p className="package-inner package-today">
-        {t("components.packageOverview.today")} 100
+        {t("components.packageOverview.today")}{" "}
+        {data?.stats?.vocabularies?.learnedToday?.dueToday}
       </p>
       <p className="package-inner package-unactivated">
         {t("components.packageOverview.unactivated")}{" "}
         {data?.stats?.vocabularies?.unactivated}
       </p>
       <div className="package-inner package-btn-wrapper">
-        <Button block uppercase onClick={submitLearn}>
+        <Button
+          block
+          uppercase
+          disabled={!data.stats.vocabularies.learnedToday.dueToday}
+          onClick={() => submitLearn(false)}
+        >
           {t("global.learn")}
         </Button>
       </div>
       <div className="package-btn-wrapper">
-        <Button variant="outline" appearance="primary-light" uppercase block>
+        <Button
+          variant="outline"
+          appearance="primary-light"
+          uppercase
+          block
+          disabled={!data?.stats?.vocabularies?.unactivated}
+          onClick={() => submitLearn(true)}
+        >
           {t("global.activate")}
         </Button>
       </div>
