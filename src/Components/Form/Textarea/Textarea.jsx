@@ -64,7 +64,7 @@ const Textarea = ({
         {...props}
       />
       {!error && maxlength && (
-        <p className="text-area-indicator">{indicator}</p>
+        <p className="text-area-indicator">{`${indicator}/${maxlength}`}</p>
       )}
       {error && errorText && <p className="text-area-error">{errorText}</p>}
     </div>
