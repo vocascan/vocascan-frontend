@@ -92,7 +92,10 @@ const Register = ({ image }) => {
               email,
               token: response.data.token,
             })
-          );
+          ).then(() => {
+            //fetch languages from server
+            fetchLanguages();
+          });
         })
         .catch((error) => {
           if (error.response?.status === 409) {
@@ -103,9 +106,6 @@ const Register = ({ image }) => {
 
           setServerError(true);
         });
-
-      //fetch languages from server
-      fetchLanguages();
     },
     [
       canSubmit,

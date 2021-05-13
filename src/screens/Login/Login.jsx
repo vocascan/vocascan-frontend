@@ -76,7 +76,10 @@ const Login = ({ image }) => {
               email,
               token: response.data.token,
             })
-          );
+          ).then(() => {
+            //fetch languages from server
+            fetchLanguages();
+          });
         })
         .catch((event) => {
           if (
@@ -90,9 +93,6 @@ const Login = ({ image }) => {
 
           setServerError(true);
         });
-
-      //fetch languages from server
-      fetchLanguages();
     },
     [canSubmit, dispatch, email, fetchLanguages, password]
   );
