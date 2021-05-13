@@ -31,4 +31,4 @@ export const defaultLimit = 100;
 
 export const minServerVersion = "0.1.0";
 
-export const maxTextareaLength = 250;
+export const maxTextareaLength = 255;
