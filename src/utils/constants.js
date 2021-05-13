@@ -1,13 +1,13 @@
 import ReactCountryFlag from "react-country-flag";
 
 export const languages = [
-  { name: "Deutsch", countryCode: "DE" },
-  { name: "Englisch", countryCode: "GB" },
+  { name: "German", countryCode: "DE" },
+  { name: "English", countryCode: "GB" },
   { name: "Spanisch", countryCode: "ES" },
-  { name: "Portugisisch", countryCode: "PT" },
-  { name: "Türkisch", countryCode: "TR" },
-  { name: "Russisch", countryCode: "RU" },
-  { name: "Französisch", countryCode: "FR" },
+  { name: "Portuguese", countryCode: "PT" },
+  { name: "Turkish", countryCode: "TR" },
+  { name: "Russian", countryCode: "RU" },
+  { name: "French", countryCode: "FR" },
 ].map((language) => ({
   ...language,
   icon: (
