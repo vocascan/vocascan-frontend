@@ -45,15 +45,15 @@ const End = () => {
         accessor: "query", // accessor is the "key" in the data
       },
       {
-        Header: "Gesamt",
+        Header: t("global.total"),
         accessor: "total",
       },
       {
-        Header: "Richtig",
+        Header: t("global.correct"),
         accessor: "correct",
       },
       {
-        Header: "Falsch",
+        Header: t("global.wrong"),
         accessor: "wrong",
       },
     ],
@@ -63,13 +63,13 @@ const End = () => {
   const data = useMemo(
     () => [
       {
-        query: "Query",
+        query: t("global.query"),
         total: correctVocabs + wrongVocabs,
         correct: correctVocabs,
         wrong: wrongVocabs,
       },
     ],
-    [correctVocabs, wrongVocabs]
+    [correctVocabs, t, wrongVocabs]
   );
   return (
     <div className="end-screen">

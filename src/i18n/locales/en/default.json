@@ -37,7 +37,9 @@
     "activate": "Activate",
     "random": "Random",
     "wrong": "Wrong",
-    "correct": "Correct"
+    "correct": "Correct",
+    "total": "Total",
+    "query": "Query"
   },
   "components": {
     "groupForm": {
