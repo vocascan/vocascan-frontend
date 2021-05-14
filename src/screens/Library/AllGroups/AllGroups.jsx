@@ -14,6 +14,7 @@ import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
 import { SelectOptionWithFlag } from "../../../Components/Form/Select/Select.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
+import Tooltip from "../../../Components/Tooltip/Tooltip.jsx";
 import GroupForm from "../../../Forms/GroupForm/GroupForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
@@ -125,6 +126,22 @@ const AllGroups = () => {
             {row.original.name}
           </Link>
         ),
+        headerClassName: "w-25",
+      },
+      {
+        Header: t("screens.allGroups.groupDescription"),
+        accessor: "description",
+        Cell: ({ row }) => (
+          <p
+            className="group-description-cell"
+            data-tip={row.original.description}
+            data-for={`description-tooltip-${row.original.id}`}
+          >
+            {row.original.description}
+            <Tooltip id={`description-tooltip-${row.original.id}`} />
+          </p>
+        ),
+        headerClassName: "w-50",
       },
       {
         Header: t("screens.allGroups.active"),
