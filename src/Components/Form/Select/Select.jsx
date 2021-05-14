@@ -15,10 +15,12 @@ export const SelectOptionWithFlag = ({
     <span className="custom-option-wrapper">
       {name}
       <small className="postfix">
-        {foreignLanguageCode && <Flag languageCode={foreignLanguageCode} />}
+        {foreignLanguageCode && (
+          <Flag languageCode={foreignLanguageCode} border />
+        )}
         {foreignLanguageCode && translatedLanguageCode && "-"}
         {translatedLanguageCode && (
-          <Flag languageCode={translatedLanguageCode} />
+          <Flag languageCode={translatedLanguageCode} border />
         )}
       </small>
     </span>

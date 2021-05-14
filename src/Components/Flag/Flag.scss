@@ -6,6 +6,10 @@
   height: 32px;
   border-radius: 5px;
 
+  &.bordered {
+    border: 1px solid #aaa;
+  }
+
   &.flag-unknown {
     background-position: 0 0;
   }

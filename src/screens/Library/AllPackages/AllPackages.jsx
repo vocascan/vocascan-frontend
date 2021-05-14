@@ -88,7 +88,7 @@ const AllPackages = () => {
         accessor: "foreignWordLanguage",
         Cell: ({ row }) => (
           <div className="flag-cell-wrapper">
-            <Flag languageCode={row.original.foreignWordLanguage} />
+            <Flag languageCode={row.original.foreignWordLanguage} border />
             {row.original.foreignWordLanguage}
           </div>
         ),
@@ -98,7 +98,7 @@ const AllPackages = () => {
         accessor: "translatedWordLanguage",
         Cell: ({ row }) => (
           <div className="flag-cell-wrapper">
-            <Flag languageCode={row.original.translatedWordLanguage} />
+            <Flag languageCode={row.original.translatedWordLanguage} border />
             {row.original.translatedWordLanguage}
           </div>
         ),
