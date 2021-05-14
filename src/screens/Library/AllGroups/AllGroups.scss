@@ -34,4 +34,28 @@
       }
     }
   }
+
+  .group-description-cell {
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 250px;
+
+    @media screen and (min-width: 768px) {
+      max-width: 300px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      max-width: 450px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      max-width: 600px;
+    }
+
+    @media screen and (min-width: 1536px) {
+      max-width: 1000px;
+    }
+  }
 }

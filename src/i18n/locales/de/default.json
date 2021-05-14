@@ -54,6 +54,7 @@
     "add": "Hinzufügen",
     "close": "Schließen",
     "continue": "Weiter",
+    "correct": "Richtig",
     "delete": "Löschen",
     "description": "Beschreibung",
     "email": "E-Mail",
@@ -83,7 +84,17 @@
     "translation": "Übersetzung",
     "username": "Benutzername",
     "vocabs": "Vokabeln",
-    "vocascan": "Vocascan"
+    "vocascan": "Vocascan",
+    "wrong": "Falsch"
+  },
+  "languages": {
+    "English": "Englisch",
+    "French": "Französisch",
+    "German": "Deutsch",
+    "Portuguese": "Portugiesisch",
+    "Russian": "Russisch",
+    "Spanish": "Spanisch",
+    "Turkish": "Türkisch"
   },
   "modal": {
     "selectLanguage": {
@@ -203,7 +214,10 @@
       "title": "Anmelden",
       "vocascanCloud": {
         "button": "Jetzt kostenlos starten",
-        "contra": "Ihre Daten werden auf den Servern von vocascan gespeichert",
+        "contra": [
+          "Ihre Daten werden auf den Servern von vocascan gespeichert",
+          "Momentan nicht verfügbar"
+        ],
         "heading": "Vocascan cloud",
         "pro": [
           "Keine Notwendigkeit eines Servers",
@@ -212,7 +226,10 @@
       },
       "vocascanServer": {
         "button": "Jetzt kostenlos starten",
-        "contra": "Sie benötigen einen eigenen Server",
+        "contra": [
+          "Du brauchst einen eigenen Server",
+          "Du brauchst etwas Zeit, um einen Server einzurichten"
+        ],
         "heading": "Vocascan server",
         "pro": [
           "Synchronisiere jedes Gerät",
@@ -226,7 +243,7 @@
       "menu": {
         "label": "Menu Stil",
         "optionLeft": "Standard",
-        "optionRight": "ausgefallen"
+        "optionRight": "Fancy"
       },
       "serverVersion": "Serverversion",
       "title": "Einstellungen"

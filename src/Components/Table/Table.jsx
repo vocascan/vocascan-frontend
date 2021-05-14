@@ -106,7 +106,7 @@ const Table = ({
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className="th"
+                  className={`th ${column.headerClassName}`}
                 >
                   <span className="header-text">
                     {column.render("Header")}

@@ -8,10 +8,12 @@ import Select, {
 } from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
+import Textarea from "../../Components/Form/Textarea/Textarea.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
+import { maxTextareaLength } from "../../utils/constants.js";
 
 import "./GroupForm.scss";
 
@@ -164,13 +166,14 @@ const GroupForm = ({
           }}
           value={name}
         />
-        <TextInput
-          required
+        <Textarea
           placeholder={t("screens.allGroups.groupDescription")}
           onChange={(value) => {
             setDescription(value);
           }}
           value={description}
+          rows={5}
+          maxlength={maxTextareaLength}
         />
         <Switch
           appearance="on-off"
