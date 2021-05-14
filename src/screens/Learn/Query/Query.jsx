@@ -11,6 +11,7 @@ import useSnack from "../../../hooks/useSnack.js";
 import {
   setQueryCorrect,
   setQueryWrong,
+  setActualProgress,
 } from "../../../redux/Actions/query.js";
 import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 
@@ -53,9 +54,9 @@ const Query = () => {
   const [vocabs, setVocabs] = useState([]);
   const [vocabSize, setVocabSize] = useState(0);
   const [currVocab, setCurrVocab] = useState(null);
-  const [actualProgress, setActualProgress] = useState(0);
   const correctVocabs = useSelector((state) => state.query.correct);
   const wrongVocabs = useSelector((state) => state.query.wrong);
+  const actualProgress = useSelector((state) => state.query.actualProgress);
   const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);
@@ -93,16 +94,14 @@ const Query = () => {
         showSnack("error", "Internal Server Error");
       });
 
-      let _actualProgress = actualProgress;
-
       //if answer is right and wrong vocabs haven't been repeated yet
       if (answer && wrongVocabs + correctVocabs < vocabSize) {
         dispatch(setQueryCorrect());
-        _actualProgress++;
+        dispatch(setActualProgress());
       }
       // if wrong vocabs get repeated, stop increment wrong or correct. Only increment counter for progress bar
       else if (answer) {
-        _actualProgress++;
+        dispatch(setActualProgress());
       }
       // if answer is wrong an wrong vocabs haven't been repeated yet, increment wrong counter
       else if (!answer && wrongVocabs + correctVocabs < vocabSize) {
@@ -118,18 +117,8 @@ const Query = () => {
         setVocabs([...vocabs.slice(1), vocabs[0]]);
       }
       setCurrVocab(vocabs[0]);
-
-      setActualProgress(_actualProgress);
     },
-    [
-      actualProgress,
-      correctVocabs,
-      dispatch,
-      showSnack,
-      vocabSize,
-      vocabs,
-      wrongVocabs,
-    ]
+    [correctVocabs, dispatch, showSnack, vocabSize, vocabs, wrongVocabs]
   );
 
   useEffect(() => {

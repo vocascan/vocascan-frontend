@@ -3,6 +3,7 @@ import {
   SET_QUERY_CORRECT,
   SET_QUERY_WRONG,
   CLEAR_QUERY,
+  SET_ACTUAL_PROGRESS,
 } from "../Actions/index.js";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   staged: false,
   correct: 0,
   wrong: 0,
+  actualProgress: 0,
 };
 
 const queryReducer = (state = initialState, action) => {
@@ -37,6 +39,11 @@ const queryReducer = (state = initialState, action) => {
       return {
         ...state,
         wrong: state.wrong + 1,
+      };
+    case SET_ACTUAL_PROGRESS:
+      return {
+        ...state,
+        actualProgress: state.actualProgress + 1,
       };
 
     case CLEAR_QUERY:

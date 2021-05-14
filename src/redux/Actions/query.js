@@ -3,6 +3,7 @@ import {
   SET_QUERY_CORRECT,
   SET_QUERY_WRONG,
   CLEAR_QUERY,
+  SET_ACTUAL_PROGRESS,
 } from "./index.js";
 
 export const setLearnedPackage = ({
@@ -34,6 +35,13 @@ export const setQueryCorrect = () => {
 export const setQueryWrong = () => {
   return {
     type: SET_QUERY_WRONG,
+    payload: {},
+  };
+};
+
+export const setActualProgress = () => {
+  return {
+    type: SET_ACTUAL_PROGRESS,
     payload: {},
   };
 };
