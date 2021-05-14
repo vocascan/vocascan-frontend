@@ -5,7 +5,7 @@ import { scaleValue } from "../../utils/index.js";
 
 import "./Congratulation.scss";
 
-const Congratulation = (percentage) => {
+const Congratulation = ({ percentage }) => {
   const { t } = useTranslation();
   const [congratulation, setCongratulations] = useState();
 
@@ -14,9 +14,10 @@ const Congratulation = (percentage) => {
     const translations = t("screens.endScreen.congratulations", {
       returnObjects: true,
     });
-
     setCongratulations(
-      translations[scaleValue(percentage, [0, 100], [0, translations.length])]
+      translations[
+        scaleValue(percentage, [0, 100], [1, translations.length - 1])
+      ]
     );
   }, [percentage, t]);
   return <p className="congratulation">{congratulation}</p>;
