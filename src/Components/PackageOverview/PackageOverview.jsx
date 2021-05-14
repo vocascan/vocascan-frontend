@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 
 import Button from "../Button/Button.jsx";
 
-import "../../redux/Actions/query.js";
 import { setLearnedPackage } from "../../redux/Actions/query.js";
 
 import "./PackageOverview.scss";
