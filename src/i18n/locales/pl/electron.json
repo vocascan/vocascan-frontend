@@ -1,0 +1,13 @@
+{
+  "splash": {
+    "start": {
+      "starting": "Uruchamianie..."
+    },
+    "updates": {
+      "check": "Sprawdzanie aktualizacji…",
+      "download": "Pobieranie aktualizacji…",
+      "skipButton": "Pomiń",
+      "skipCheck": "Pomijanie aktualizacji..."
+    }
+  }
+}
