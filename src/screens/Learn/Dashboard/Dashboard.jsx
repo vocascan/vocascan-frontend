@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import PackageOverview from "../../../Components/PackageOverview/PackageOverview.jsx";
 
@@ -9,6 +10,7 @@ import "./Dashboard.scss";
 
 const Dashboard = () => {
   const { showSnack } = useSnack();
+  const { t } = useTranslation();
 
   const [languagePackages, setLanguagePackages] = useState([]);
 
@@ -33,13 +35,22 @@ const Dashboard = () => {
       });
   }, [showSnack]);
 
-  return (
-    <div className="dashboard">
-      {languagePackages.map((languagePackage, index) => (
-        <PackageOverview key={index} data={languagePackage} />
-      ))}
-    </div>
-  );
+  //if language package array is empty, show empty screen
+  if (languagePackages.length === 0) {
+    return (
+      <div className="dashboard empty">
+        <h1>{t("screens.dashboard.empty")}</h1>
+      </div>
+    );
+  } else {
+    return (
+      <div className="dashboard">
+        {languagePackages.map((languagePackage, index) => (
+          <PackageOverview key={index} data={languagePackage} />
+        ))}
+      </div>
+    );
+  }
 };
 
 export default Dashboard;
