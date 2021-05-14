@@ -1,12 +1,11 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import Button from "../../../Components/Button/Button.jsx";
+import Congratulation from "../../../Components/Congratulation/Congratulation.jsx";
 import Table from "../../../Components/Table/Table.jsx";
-
-import { scaleValue } from "../../../utils/index.js";
 
 import "./End.scss";
 
@@ -16,20 +15,8 @@ const End = () => {
   const [percentage] = useState(
     ((correctVocabs / (correctVocabs + wrongVocabs)) * 100).toFixed(0)
   );
-  const [congratulation, setCongratulations] = useState();
   const history = useHistory();
   const { t } = useTranslation();
-
-  useEffect(() => {
-    //get size of congratulation array and calculate the message with the given percentage
-    const translations = t("screens.endScreen.congratulations", {
-      returnObjects: true,
-    });
-
-    setCongratulations(
-      translations[scaleValue(percentage, [0, 100], [0, translations.length])]
-    );
-  }, [percentage, t]);
 
   const submitEndQuery = () => {
     history.push(`/learn/`);
@@ -54,7 +41,7 @@ const End = () => {
         accessor: "wrong",
       },
     ],
-    []
+    [t]
   );
 
   const data = useMemo(
@@ -71,7 +58,7 @@ const End = () => {
   return (
     <div className="end-screen">
       <div>
-        <h1>{congratulation}</h1>
+        <Congratulation percentage={percentage} />
         <p className="percentage-text">
           {t("screens.endScreen.percentageText", {
             percentage: percentage,
