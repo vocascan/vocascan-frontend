@@ -92,10 +92,9 @@ const Register = ({ image }) => {
               email,
               token: response.data.token,
             })
-          ).then(() => {
-            //fetch languages from server
-            fetchLanguages();
-          });
+          );
+          //fetch languages from server
+          fetchLanguages();
         })
         .catch((error) => {
           if (error.response?.status === 409) {

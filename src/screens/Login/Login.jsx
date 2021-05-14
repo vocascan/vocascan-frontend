@@ -76,10 +76,9 @@ const Login = ({ image }) => {
               email,
               token: response.data.token,
             })
-          ).then(() => {
-            //fetch languages from server
-            fetchLanguages();
-          });
+          );
+          //fetch languages from server
+          fetchLanguages();
         })
         .catch((event) => {
           if (
