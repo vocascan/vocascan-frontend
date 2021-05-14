@@ -105,6 +105,7 @@
     "allGroups": {
       "title": "All groups",
       "groupName": "Group",
+      "groupDescription": "Description",
       "active": "Active",
       "deleteTitle": "Delete Group",
       "deleteDescription": "Are you sure you want to delete the group {{name}}?",

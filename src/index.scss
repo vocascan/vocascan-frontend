@@ -29,3 +29,21 @@
     font-weight: bold !important;
   }
 }
+
+.w {
+  &-25 {
+    width: 25%;
+  }
+
+  &-50 {
+    width: 50%;
+  }
+
+  &-75 {
+    width: 75%;
+  }
+
+  &-100 {
+    width: 100%;
+  }
+}

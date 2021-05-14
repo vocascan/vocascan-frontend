@@ -1,6 +1,12 @@
 @import "../../colors";
 
 .tooltip {
+  max-width: 30%;
+  word-wrap: normal;
+  white-space: break-spaces;
+  text-align: left;
+  overflow-wrap: break-word;
+
   &.tooltip-default {
     background-color: $color-background-inverse !important;
     color: $color-main-text-inverse !important;

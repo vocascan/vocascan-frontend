@@ -8,10 +8,12 @@ import Select, {
 } from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
+import Textarea from "../../Components/Form/Textarea/Textarea.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
+import { maxTextareaLength } from "../../utils/constants.js";
 
 import "./GroupForm.scss";
 
@@ -31,6 +33,9 @@ const GroupForm = ({
   );
 
   const [name, setName] = useState(defaultData ? defaultData.name : "");
+  const [description, setDescription] = useState(
+    defaultData ? defaultData.description : ""
+  );
   const [languagePackage, setLanguagePackage] = useState(selectedPackage);
   const [canSubmit, setCanSubmit] = useState(false);
   const [languagePackages, setLanguagePackages] = useState([]);
@@ -49,6 +54,7 @@ const GroupForm = ({
   const submitHandler = useCallback(async () => {
     const newGroup = {
       name,
+      description,
       active: localActive,
     };
 
@@ -89,9 +95,10 @@ const GroupForm = ({
       });
   }, [
     defaultData?.id,
+    description,
     dispatch,
-    languagePackage?.id,
-    languagePackage?.value,
+    languagePackage.id,
+    languagePackage.value,
     localActive,
     name,
     onSubmitCallback,
@@ -158,6 +165,15 @@ const GroupForm = ({
             setName(value);
           }}
           value={name}
+        />
+        <Textarea
+          placeholder={t("screens.allGroups.groupDescription")}
+          onChange={(value) => {
+            setDescription(value);
+          }}
+          value={description}
+          rows={5}
+          maxlength={maxTextareaLength}
         />
         <Switch
           appearance="on-off"
