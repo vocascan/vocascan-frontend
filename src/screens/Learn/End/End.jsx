@@ -1,12 +1,11 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import Button from "../../../Components/Button/Button.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 
-import { clearQuery } from "../../../redux/Actions/query.js";
 import { scaleValue } from "../../../utils/index.js";
 
 import "./End.scss";
@@ -18,7 +17,6 @@ const End = () => {
     ((correctVocabs / (correctVocabs + wrongVocabs)) * 100).toFixed(0)
   );
   const [congratulation, setCongratulations] = useState();
-  const dispatch = useDispatch();
   const history = useHistory();
   const { t } = useTranslation();
 
@@ -34,7 +32,6 @@ const End = () => {
   }, [percentage, t]);
 
   const submitEndQuery = () => {
-    dispatch(clearQuery());
     history.push(`/learn/`);
   };
 
