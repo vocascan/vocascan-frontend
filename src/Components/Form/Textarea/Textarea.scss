@@ -15,7 +15,6 @@
     border: unset;
     padding: 0;
     border-bottom: solid 1px $color-alternative;
-    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) calc(100% - 2px), $color-primary 2px);
     background-position: -9999px 0;
     background-size: 100% 100%;
