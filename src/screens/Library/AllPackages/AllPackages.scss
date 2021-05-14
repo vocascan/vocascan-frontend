@@ -28,9 +28,13 @@
     }
   }
 
+  .flag-cell-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
   .flag {
-    transform: scale(0.5);
-    margin-right: 5px;
+    transform: scale(0.7);
     border-radius: 5px;
   }
 }

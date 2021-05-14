@@ -87,20 +87,20 @@ const AllPackages = () => {
         Header: t("screens.allPackages.foreignLanguage"),
         accessor: "foreignWordLanguage",
         Cell: ({ row }) => (
-          <>
+          <div className="flag-cell-wrapper">
             <Flag languageCode={row.original.foreignWordLanguage} />
             {row.original.foreignWordLanguage}
-          </>
+          </div>
         ),
       },
       {
         Header: t("screens.allPackages.translatedLanguage"),
         accessor: "translatedWordLanguage",
         Cell: ({ row }) => (
-          <>
+          <div className="flag-cell-wrapper">
             <Flag languageCode={row.original.translatedWordLanguage} />
             {row.original.translatedWordLanguage}
-          </>
+          </div>
         ),
       },
       {
