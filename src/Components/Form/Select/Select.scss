@@ -157,13 +157,13 @@
 
   .postfix {
     font-size: 20px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding-left: 5px;
     margin-left: auto;
 
     .flag {
       transform: scale(0.5);
-      border-radius: 5px;
     }
   }
 }
