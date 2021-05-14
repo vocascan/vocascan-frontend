@@ -137,7 +137,7 @@
       "title": "Please choose your direction"
     },
     "endScreen": {
-      "congratulations": ["It will be better next time", "Practice more", "Congratulation"],
+      "congratulations": ["You have to practice that again", "It will be better next time", "Stay tuned", "Congratulation", "You are amazing"],
       "percentageText": "you solved {{percentage}}% of the vocabulary correctly",
       "dashboard": "Back to the dashboard"
     },
