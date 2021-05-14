@@ -15,7 +15,7 @@ const End = () => {
   const correctVocabs = useSelector((state) => state.query.correct);
   const wrongVocabs = useSelector((state) => state.query.wrong);
   const [percentage] = useState(
-    (correctVocabs / (correctVocabs + wrongVocabs)) * 100
+    ((correctVocabs / (correctVocabs + wrongVocabs)) * 100).toFixed(0)
   );
   const [congratulation, setCongratulations] = useState();
   const dispatch = useDispatch();
@@ -64,9 +64,9 @@ const End = () => {
     () => [
       {
         query: "Query",
-        total: correctVocabs + wrongVocabs || "-",
-        correct: correctVocabs || "-",
-        wrong: wrongVocabs || "-",
+        total: correctVocabs + wrongVocabs,
+        correct: correctVocabs,
+        wrong: wrongVocabs,
       },
     ],
     [correctVocabs, wrongVocabs]

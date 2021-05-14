@@ -128,6 +128,9 @@
     "addVocab": {
       "title": "Add vocabulary"
     },
+    "dashboard": {
+      "empty": "No packages were found"
+    },
     "direction": {
       "title": "Please choose your direction"
     },
