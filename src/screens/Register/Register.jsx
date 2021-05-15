@@ -57,7 +57,7 @@ const Register = ({ image }) => {
   const fetchLanguages = useCallback(() => {
     // when array is empty no languages were stored. Then add them to the store
     if (languages.length === 0) {
-      getLanguages().then((res) => {
+      getLanguages({ nativeNames: true }).then((res) => {
         dispatch(
           setLanguages({
             languages: res.data,

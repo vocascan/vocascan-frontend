@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
@@ -10,6 +10,7 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 import { createPackage, modifyPackage } from "../../utils/api.js";
+import { findLanguageByCode, getLanguageString } from "../../utils/index.js";
 
 import "./PackageForm.scss";
 
@@ -27,7 +28,9 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
           code: defaultData.code,
           label: (
             <SelectOptionWithFlag
-              name={defaultData.foreignWordLanguage}
+              name={getLanguageString(
+                findLanguageByCode(defaultData.foreignWordLanguage, languages)
+              )}
               foreignLanguageCode={defaultData.foreignWordLanguage}
             />
           ),
@@ -41,7 +44,12 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
           code: defaultData.code,
           label: (
             <SelectOptionWithFlag
-              name={defaultData.translatedWordLanguage}
+              name={getLanguageString(
+                findLanguageByCode(
+                  defaultData.translatedWordLanguage,
+                  languages
+                )
+              )}
               foreignLanguageCode={defaultData.translatedWordLanguage}
             />
           ),
@@ -116,18 +124,20 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
     vocabsPerDay,
   ]);
 
-  const selectOptions = languages.map((language) => {
-    return {
-      value: language.name,
-      code: language.code,
-      label: (
-        <SelectOptionWithFlag
-          name={language.name}
-          foreignLanguageCode={language.code}
-        />
-      ),
-    };
-  });
+  const selectOptions = useMemo(
+    () =>
+      languages.map((language) => ({
+        value: getLanguageString(language),
+        code: language.code,
+        label: (
+          <SelectOptionWithFlag
+            name={getLanguageString(language)}
+            foreignLanguageCode={language.code}
+          />
+        ),
+      })),
+    [languages]
+  );
 
   useEffect(() => {
     setCanSubmit(

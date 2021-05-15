@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
@@ -15,6 +16,7 @@ import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
 import { getPackages, deletePackage } from "../../../utils/api.js";
+import { findLanguageByCode, getLanguageString } from "../../../utils/index.js";
 
 import "./AllPackages.scss";
 
@@ -29,6 +31,8 @@ const AllPackages = () => {
     showDeleteConfirmationModal,
     setShowDeleteConfirmationModal,
   ] = useState(false);
+
+  const languages = useSelector((state) => state.language.languages);
 
   const editPackage = useCallback((pack) => {
     setCurrentPackage(pack);
@@ -89,7 +93,9 @@ const AllPackages = () => {
         Cell: ({ row }) => (
           <div className="flag-cell-wrapper">
             <Flag languageCode={row.original.foreignWordLanguage} border />
-            {row.original.foreignWordLanguage}
+            {getLanguageString(
+              findLanguageByCode(row.original.foreignWordLanguage, languages)
+            )}
           </div>
         ),
       },
@@ -99,7 +105,9 @@ const AllPackages = () => {
         Cell: ({ row }) => (
           <div className="flag-cell-wrapper">
             <Flag languageCode={row.original.translatedWordLanguage} border />
-            {row.original.translatedWordLanguage}
+            {getLanguageString(
+              findLanguageByCode(row.original.translatedWordLanguage, languages)
+            )}
           </div>
         ),
       },
@@ -134,7 +142,7 @@ const AllPackages = () => {
         ),
       },
     ],
-    [editPackage, onDeletePckge, t]
+    [editPackage, onDeletePckge, t, languages]
   );
 
   useEffect(() => {
