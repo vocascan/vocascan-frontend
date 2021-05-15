@@ -10,14 +10,16 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import StatsTable from "../../Components/StatsTable/StatsTable.jsx";
 
+import useSnack from "../../hooks/useSnack.js";
 import { signOut } from "../../redux/Actions/login.js";
-import { deleteUser } from "../../utils/api.js";
+import { deleteUser, changePassword } from "../../utils/api.js";
 
 import "./Profile.scss";
 
 const Profile = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { showSnack } = useSnack();
 
   const username = useSelector((state) => state.login.user.username);
 
@@ -27,6 +29,14 @@ const Profile = () => {
 
   const [deleteConfirmation, setDeleteConfirmation] = useState("");
   const [canSubmitDelete, setCanSubmitDelete] = useState(false);
+
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [repeatedNewPassword, setRepeatedNewPassword] = useState("");
+  const [canSubmitPasswordChange, setCanSubmitPasswordChange] = useState(false);
+
+  const [oldPasswordError, setOldPasswordError] = useState(false);
+  const [newPasswordError, setNewPasswordError] = useState(false);
 
   const openPasswordModal = useCallback(() => {
     setShowPasswordModal(true);
@@ -53,6 +63,23 @@ const Profile = () => {
     setShowDeleteAccountModal(false);
   }, []);
 
+  const onPasswordChange = useCallback(() => {
+    changePassword({ newPassword, oldPassword })
+      .then((response) => {
+        if (response.status === 204) {
+          closePasswordModal();
+        }
+      })
+      .catch((event) => {
+        if (event.response?.status === 401 || event.response?.status === 404) {
+          setOldPasswordError(true);
+          return;
+        }
+
+        showSnack("error", t("global.fetchError"));
+      });
+  }, [closePasswordModal, newPassword, oldPassword, showSnack, t]);
+
   const onDelete = useCallback(() => {
     deleteUser()
       .then((response) => {
@@ -62,6 +89,16 @@ const Profile = () => {
         console.log(e);
       });
   }, [dispatch]);
+
+  useEffect(() => {
+    setCanSubmitPasswordChange(
+      newPassword === repeatedNewPassword &&
+        newPassword !== "" &&
+        repeatedNewPassword !== "" &&
+        oldPassword !== ""
+    );
+    setNewPasswordError(newPassword !== repeatedNewPassword);
+  }, [newPassword, oldPassword, repeatedNewPassword]);
 
   useEffect(() => {
     setCanSubmitDelete(deleteConfirmation === username);
@@ -124,15 +161,46 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <Modal
-        title={t("screens.profile.modals.changePassword.heading")}
-        open={showPasswordModal}
+
+      <ConfirmDialog
+        title={t("modal.changePassword.heading")}
+        onSubmit={onPasswordChange}
         onClose={closePasswordModal}
+        show={showPasswordModal}
+        canSubmit={canSubmitPasswordChange}
+        showAbortButton={false}
       >
-        <h1 style={{ margin: "auto" }}>Hello World</h1>
-      </Modal>
+        <TextInput
+          required
+          placeholder={t("modal.changePassword.oldPassword")}
+          onChange={(value) => {
+            setOldPassword(value);
+          }}
+          value={oldPassword}
+          error={oldPasswordError}
+          errorText={t("modal.changePassword.oldPasswordError")}
+        />
+        <TextInput
+          required
+          placeholder={t("modal.changePassword.newPassword")}
+          onChange={(value) => {
+            setNewPassword(value);
+          }}
+          value={newPassword}
+        />
+        <TextInput
+          required
+          placeholder={t("modal.changePassword.repeatNewPassword")}
+          onChange={(value) => {
+            setRepeatedNewPassword(value);
+          }}
+          value={repeatedNewPassword}
+          error={newPasswordError}
+          errorText={t("modal.changePassword.newPasswordError")}
+        />
+      </ConfirmDialog>
       <Modal
-        title={t("screens.profile.modals.changeEmail.heading")}
+        title={t("modal.changeEmail.heading")}
         open={showEmailModal}
         onClose={closeEmailModal}
       >
@@ -140,7 +208,7 @@ const Profile = () => {
       </Modal>
 
       <ConfirmDialog
-        title={t("screens.profile.modals.deleteAccount.heading")}
+        title={t("modal.deleteAccount.heading")}
         onSubmit={onDelete}
         onClose={closeDeleteAccountModal}
         show={showDeleteAccountModal}
@@ -149,7 +217,7 @@ const Profile = () => {
       >
         <TextInput
           required
-          placeholder={t("screens.profile.modals.deleteAccount.input")}
+          placeholder={t("modal.deleteAccount.input")}
           onChange={(value) => {
             setDeleteConfirmation(value);
           }}
