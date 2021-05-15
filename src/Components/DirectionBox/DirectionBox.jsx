@@ -1,11 +1,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 
 import Flag from "../Flag/Flag.jsx";
+
+import { findLanguageByCode } from "../../utils/index.js";
 
 import "./DirectionBox.scss";
 
@@ -17,6 +20,8 @@ const DirectionBox = ({
   const { t } = useTranslation();
   const history = useHistory();
 
+  const languages = useSelector((state) => state.language.languages);
+
   const submitDirection = () => {
     history.push(`/learn/query/${direction}`);
   };
@@ -27,7 +32,7 @@ const DirectionBox = ({
         {direction === "random" ? (
           <SyncAltIcon className="direction-arrow" />
         ) : direction === "backwards" ? (
-          <ArrowRightAltIcon className="direction-arrow" />
+          <ArrowRightAltIcon className="direction-arrow invert" />
         ) : (
           <ArrowRightAltIcon className="direction-arrow" />
         )}
@@ -37,8 +42,12 @@ const DirectionBox = ({
         {direction === "random"
           ? t("global.random")
           : direction === "backwards"
-          ? `${translatedWordLanguage} - ${foreignWordLanguage}`
-          : `${foreignWordLanguage} - ${translatedWordLanguage}`}
+          ? `${findLanguageByCode(translatedWordLanguage, languages).name} - ${
+              findLanguageByCode(foreignWordLanguage, languages).name
+            }`
+          : `${findLanguageByCode(foreignWordLanguage, languages).name} - ${
+              findLanguageByCode(translatedWordLanguage, languages).name
+            }`}
       </div>
     </div>
   );
