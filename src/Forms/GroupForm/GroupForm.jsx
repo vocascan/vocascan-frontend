@@ -173,7 +173,7 @@ const GroupForm = ({
           }}
           value={description}
           rows={5}
-          maxlength={maxTextareaLength}
+          maxLength={maxTextareaLength}
         />
         <Switch
           appearance="on-off"

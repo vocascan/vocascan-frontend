@@ -41,7 +41,9 @@
       border-radius: 0;
       border-bottom: 1px solid $color-alternative;
       transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary 4%);
+      background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0) 96%,
+      $color-primary 4%);
       background-position: -9999px 0;
       background-size: 100% 100%;
       background-repeat: no-repeat;
@@ -50,7 +52,9 @@
         box-shadow: none;
         border-bottom: 1px solid $color-primary;
         background-position: 0 0;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary 4%);
+        background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0) 96%,
+        $color-primary 4%);
       }
 
       &:hover {
@@ -142,10 +146,20 @@
 }
 
 .custom-option-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
   .postfix {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    margin-left: auto;
+
     .flag {
-      width: 25px;
-      border-radius: 5px;
+      margin: 50px;
     }
   }
 }

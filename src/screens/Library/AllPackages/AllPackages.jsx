@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
@@ -8,20 +9,20 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
 import Button from "../../../Components/Button/Button.jsx";
 import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import Flag from "../../../Components/Flag/Flag.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
-import useCountryFlag from "../../../hooks/useCountryFlag.js";
 import useSnack from "../../../hooks/useSnack.js";
 import { getPackages, deletePackage } from "../../../utils/api.js";
+import { findLanguageByCode, getLanguageString } from "../../../utils/index.js";
 
 import "./AllPackages.scss";
 
 const AllPackages = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const { getCountryFlagByLanguage } = useCountryFlag();
 
   const [data, setData] = useState([]);
   const [currentPackage, setCurrentPackage] = useState(null);
@@ -30,6 +31,8 @@ const AllPackages = () => {
     showDeleteConfirmationModal,
     setShowDeleteConfirmationModal,
   ] = useState(false);
+
+  const languages = useSelector((state) => state.language.languages);
 
   const editPackage = useCallback((pack) => {
     setCurrentPackage(pack);
@@ -88,20 +91,24 @@ const AllPackages = () => {
         Header: t("screens.allPackages.foreignLanguage"),
         accessor: "foreignWordLanguage",
         Cell: ({ row }) => (
-          <>
-            {getCountryFlagByLanguage(row.original.foreignWordLanguage)}
-            {row.original.foreignWordLanguage}
-          </>
+          <div className="flag-cell-wrapper">
+            <Flag languageCode={row.original.foreignWordLanguage} border />
+            {getLanguageString(
+              findLanguageByCode(row.original.foreignWordLanguage, languages)
+            )}
+          </div>
         ),
       },
       {
         Header: t("screens.allPackages.translatedLanguage"),
         accessor: "translatedWordLanguage",
         Cell: ({ row }) => (
-          <>
-            {getCountryFlagByLanguage(row.original.translatedWordLanguage)}
-            {row.original.translatedWordLanguage}
-          </>
+          <div className="flag-cell-wrapper">
+            <Flag languageCode={row.original.translatedWordLanguage} border />
+            {getLanguageString(
+              findLanguageByCode(row.original.translatedWordLanguage, languages)
+            )}
+          </div>
         ),
       },
       {
@@ -135,7 +142,7 @@ const AllPackages = () => {
         ),
       },
     ],
-    [editPackage, getCountryFlagByLanguage, onDeletePckge, t]
+    [editPackage, onDeletePckge, t, languages]
   );
 
   useEffect(() => {
