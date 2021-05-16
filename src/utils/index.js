@@ -23,3 +23,21 @@ export const scaleValue = (value, from, to) => {
   var capped = Math.min(from[1], Math.max(from[0], value)) - from[0];
   return ~~(capped * scale + to[0]);
 };
+/**
+ * Format a language object
+ * @param {Object} language Language object
+ * @returns {String} Language string
+ */
+export const getLanguageString = (language, nativeNames = true) =>
+  nativeNames
+    ? `${language?.nativeNames?.[0]} (${language?.name})`
+    : `${language?.name}`;
+
+/**
+ *
+ * @param {String} language language code
+ * @param {Array} languages Array of all languages from server
+ * @returns {Object} language object
+ */
+export const findLanguageByCode = (language, languages) =>
+  languages.find((lang) => language === lang.code);

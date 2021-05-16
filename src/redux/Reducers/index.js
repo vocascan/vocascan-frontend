@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 
 import formReducer from "./form.js";
+import languageReducer from "./language.js";
 import loginReducer from "./login.js";
 import queryReducer from "./query.js";
 import settingReducer from "./setting.js";
@@ -12,6 +13,7 @@ const allReducers = combineReducers({
   form: formReducer,
   table: tableReducer,
   query: queryReducer,
+  language: languageReducer,
 });
 
 export default allReducers;

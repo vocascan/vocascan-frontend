@@ -12,7 +12,7 @@ const Textarea = ({
   value = "",
   autoFocus = false,
   rows = 5,
-  maxlength,
+  maxLength,
   ...props
 }) => {
   const [flow, setFlow] = useState(false);
@@ -41,8 +41,8 @@ const Textarea = ({
   }, [value, focused]);
 
   useEffect(() => {
-    setIndicator(maxlength - value.length);
-  }, [maxlength, value]);
+    setIndicator(maxLength - value.length);
+  }, [maxLength, value]);
 
   return (
     <div className="text-area-wrapper">
@@ -60,11 +60,11 @@ const Textarea = ({
         onFocus={handleFocus}
         autoFocus={autoFocus}
         rows={rows}
-        maxlength={maxlength}
+        maxLength={maxLength}
         {...props}
       />
-      {!error && maxlength && (
-        <p className="text-area-indicator">{`${indicator}/${maxlength}`}</p>
+      {!error && maxLength && (
+        <p className="text-area-indicator">{`${indicator}/${maxLength}`}</p>
       )}
       {error && errorText && <p className="text-area-error">{errorText}</p>}
     </div>

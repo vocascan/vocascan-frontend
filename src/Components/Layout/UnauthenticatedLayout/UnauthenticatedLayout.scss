@@ -1,4 +1,4 @@
-.unauthenicated-container {
+.unauthenticated-container {
   background-image: linear-gradient(to top right, #2e5695, #f7d0fb);
   display: flex;
   height: 100vh;
@@ -12,7 +12,6 @@
     right: 10px;
 
     .flag {
-      width: 40px;
       border-radius: 10px;
       transition: all 0.2s ease-in-out;
 

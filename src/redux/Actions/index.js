@@ -6,6 +6,7 @@ export const SET_SELF_HOSTED = "SET_SELF_HOSTED";
 
 export const SET_MENU_STYLE = "SET_MENU_STYLE";
 export const SET_LANGUAGE = "SET_LANGUAGE";
+export const SET_LANGUAGES = "SET_LANGUAGES";
 
 export const SET_VOCAB_ACTIVE = "SET_VOCAB_ACTIVE";
 export const SET_VOCAB_ACTIVATE = "SET_VOCAB_ACTIVATE";
