@@ -240,7 +240,8 @@
       "newPassword": "New password",
       "repeatNewPassword": "Repeat new password",
       "oldPasswordError": "Old password is invalid",
-      "newPasswordError": "New passwords do not match"
+      "newPasswordError": "New passwords do not match",
+      "change": "Change"
     },
     "changeEmail": {
       "heading": "Change email"

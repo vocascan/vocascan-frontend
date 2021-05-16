@@ -169,6 +169,7 @@ const Profile = () => {
         show={showPasswordModal}
         canSubmit={canSubmitPasswordChange}
         showAbortButton={false}
+        submitText={t("modal.changePassword.change")}
       >
         <TextInput
           required
