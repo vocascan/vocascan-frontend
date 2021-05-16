@@ -1,0 +1,20 @@
+@import "../../colors";
+
+.indicator {
+    width: 70px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .indicator-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        background: $color-grey;
+
+        &.active {
+            background: $color-primary;
+        }
+    }
+}

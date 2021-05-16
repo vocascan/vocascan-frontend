@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
+import Indicator from "../../Components/Indicator/Indicator.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 
@@ -12,7 +13,7 @@ import "./FirstStartup.scss";
 const FirstStartup = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const isFirstLogin = useSelector((state) => state.login.firstLogin);
+  const isFirstLogin = true; //useSelector((state) => state.login.firstLogin);
   const [show, setShow] = useState(isFirstLogin);
 
   const packageAdded = useCallback(() => {
@@ -31,6 +32,7 @@ const FirstStartup = () => {
       onClose={() => setShow(false)}
     >
       <PackageForm onSubmitCallback={packageAdded} />
+      <Indicator activeState={1} max={5} />
     </Modal>
   );
 };
