@@ -8,7 +8,7 @@ import SyncAltIcon from "@material-ui/icons/SyncAlt";
 
 import Flag from "../Flag/Flag.jsx";
 
-import { findLanguageByCode } from "../../utils/index.js";
+import { findLanguageByCode, getLanguageString } from "../../utils/index.js";
 
 import "./DirectionBox.scss";
 
@@ -25,6 +25,7 @@ const DirectionBox = ({
   const submitDirection = () => {
     history.push(`/learn/query/${direction}`);
   };
+
   return (
     <div className="direction-box" onClick={submitDirection}>
       <div className="flags">
@@ -42,12 +43,20 @@ const DirectionBox = ({
         {direction === "random"
           ? t("global.random")
           : direction === "backwards"
-          ? `${findLanguageByCode(translatedWordLanguage, languages).name} - ${
-              findLanguageByCode(foreignWordLanguage, languages).name
-            }`
-          : `${findLanguageByCode(foreignWordLanguage, languages).name} - ${
-              findLanguageByCode(translatedWordLanguage, languages).name
-            }`}
+          ? `${getLanguageString(
+              findLanguageByCode(translatedWordLanguage, languages),
+              false
+            )} - ${getLanguageString(
+              findLanguageByCode(foreignWordLanguage, languages),
+              false
+            )}`
+          : `${getLanguageString(
+              findLanguageByCode(foreignWordLanguage, languages),
+              false
+            )} - ${getLanguageString(
+              findLanguageByCode(translatedWordLanguage, languages),
+              false
+            )}`}
       </div>
     </div>
   );

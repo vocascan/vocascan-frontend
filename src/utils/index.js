@@ -6,8 +6,10 @@ export const nodeRequire = eval("require"); // eslint-disable-line no-eval
  * @param {Object} language Language object
  * @returns {String} Language string
  */
-export const getLanguageString = (language) =>
-  `${language?.nativeNames?.[0]} (${language?.name})`;
+export const getLanguageString = (language, nativeNames = true) =>
+  nativeNames
+    ? `${language?.nativeNames?.[0]} (${language?.name})`
+    : `${language?.name}`;
 
 /**
  *
