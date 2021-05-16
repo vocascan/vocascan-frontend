@@ -16,11 +16,11 @@ export const SelectOptionWithFlag = ({
       {name}
       <small className="postfix">
         {foreignLanguageCode && (
-          <Flag languageCode={foreignLanguageCode} size="small" />
+          <Flag languageCode={foreignLanguageCode} size="small" border />
         )}
         {foreignLanguageCode && translatedLanguageCode && "-"}
         {translatedLanguageCode && (
-          <Flag languageCode={translatedLanguageCode} size="small" />
+          <Flag languageCode={translatedLanguageCode} size="small" border />
         )}
       </small>
     </span>

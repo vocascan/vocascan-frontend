@@ -7,7 +7,7 @@
   border-radius: 30px;
 
   &.bordered {
-    border: 1px solid #aaa;
+    box-shadow: 0 0 0 2px #aaa;
   }
 
   &.small {
