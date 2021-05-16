@@ -1,11 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 
-import Button from "../../../Components/Button/Button.jsx";
 import ProgressBar from "../../../Components/Charts/ProgressBar/ProgressBar.jsx";
+import VocabCard from "../../../Components/VocabCard/VocabCard.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
 import {
@@ -17,29 +16,7 @@ import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 
 import "./Query.scss";
 
-const RenderForeignWord = ({ currVocab }) => {
-  return (
-    <div className="foreign-word-wrapper">
-      <h1>{currVocab.name}</h1>
-    </div>
-  );
-};
-
-const RenderTranslatedWord = ({ currVocab }) => {
-  return (
-    <div className="translated-word-wrapper">
-      <div>
-        <p className="my-20">{currVocab.description}</p>
-        <div className="my-20 translations">
-          {currVocab.Translations.map((el) => el.name).join(", ")}
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const Query = () => {
-  const { t } = useTranslation();
   const { showSnack } = useSnack();
   const { direction } = useParams();
   const dispatch = useDispatch();
@@ -161,48 +138,13 @@ const Query = () => {
       </div>
       <div className="content">
         {currVocab && (
-          <div className="card">
-            <div className={`card-inner ${flip ? "flipped" : ""}`}>
-              <div className="card-front" onClick={onCheck}>
-                <div className="card-front-inner">
-                  {currDirection === "default" ? (
-                    <RenderForeignWord currVocab={currVocab} />
-                  ) : (
-                    <RenderTranslatedWord currVocab={currVocab} />
-                  )}
-                </div>
-              </div>
-              <div className="card-back" onClick={onCheck}>
-                <div className="card-back-inner">
-                  {currDirection === "default" ? (
-                    <RenderTranslatedWord currVocab={currVocab} />
-                  ) : (
-                    <RenderForeignWord currVocab={currVocab} />
-                  )}
-                  <div className="continue">
-                    <Button
-                      className="card-button"
-                      appearance="red"
-                      onClick={() => {
-                        sendVocabCheck(currVocab.id, false, true);
-                      }}
-                    >
-                      {t("global.wrong")}
-                    </Button>
-                    <Button
-                      className="card-button"
-                      appearance="green"
-                      onClick={() => {
-                        sendVocabCheck(currVocab.id, true, true);
-                      }}
-                    >
-                      {t("global.correct")}
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VocabCard
+            currVocab={currVocab}
+            sendVocabCheck={sendVocabCheck}
+            onCheck={onCheck}
+            currDirection={currDirection}
+            flip={flip}
+          />
         )}
       </div>
     </div>
