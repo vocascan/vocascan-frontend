@@ -20,7 +20,7 @@ const UnauthenticatedLayout = ({ children }) => {
         onClick={() => setShowLanguageModal(true)}
         className="language-selector-wrapper"
       >
-        <Flag languageCode={language} />
+        <Flag languageCode={language} size="medium" />
       </div>
       {children}
       <Modal

@@ -29,7 +29,7 @@ const DirectionBox = ({
   return (
     <div className="direction-box" onClick={submitDirection}>
       <div className="flags">
-        <Flag languageCode={foreignWordLanguage} />
+        <Flag languageCode={foreignWordLanguage} size="large" />
         {direction === "random" ? (
           <SyncAltIcon className="direction-arrow" />
         ) : direction === "backwards" ? (
@@ -37,25 +37,21 @@ const DirectionBox = ({
         ) : (
           <ArrowRightAltIcon className="direction-arrow" />
         )}
-        <Flag languageCode={translatedWordLanguage} />
+        <Flag languageCode={translatedWordLanguage} size="large" />
       </div>
       <div className="languages">
         {direction === "random"
           ? t("global.random")
           : direction === "backwards"
           ? `${getLanguageString(
-              findLanguageByCode(translatedWordLanguage, languages),
-              false
+              findLanguageByCode(translatedWordLanguage, languages)
             )} - ${getLanguageString(
-              findLanguageByCode(foreignWordLanguage, languages),
-              false
+              findLanguageByCode(foreignWordLanguage, languages)
             )}`
           : `${getLanguageString(
-              findLanguageByCode(foreignWordLanguage, languages),
-              false
+              findLanguageByCode(foreignWordLanguage, languages)
             )} - ${getLanguageString(
-              findLanguageByCode(translatedWordLanguage, languages),
-              false
+              findLanguageByCode(translatedWordLanguage, languages)
             )}`}
       </div>
     </div>

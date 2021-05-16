@@ -4,7 +4,7 @@ import { countryFlags, languageCountryMap } from "./language-country-map.js";
 
 import "./Flag.scss";
 
-const Flag = ({ languageCode, border = false }) => {
+const Flag = ({ languageCode, border = false, size = "small" }) => {
   let code = null;
 
   if (countryFlags.includes(languageCode)) {
@@ -15,7 +15,9 @@ const Flag = ({ languageCode, border = false }) => {
 
   return (
     <span
-      className={`flag flag-${code || "unknown"} ${border ? "bordered" : ""}`}
+      className={`flag flag-${code || "unknown"} ${
+        border ? "bordered" : ""
+      } ${size}`}
     />
   );
 };
