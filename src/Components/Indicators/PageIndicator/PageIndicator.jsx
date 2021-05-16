@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./Indicator.scss";
+import "./PageIndicator.scss";
 
-const Indicator = ({ max, activeState }) => {
+const PageIndicator = ({ max, activeState }) => {
   let dots = [];
   //render indicator dots
   for (let i = 0; i < max; ++i) {
@@ -17,4 +17,4 @@ const Indicator = ({ max, activeState }) => {
   return <div className="indicator">{dots}</div>;
 };
 
-export default Indicator;
+export default PageIndicator;

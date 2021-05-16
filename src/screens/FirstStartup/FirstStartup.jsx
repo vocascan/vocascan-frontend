@@ -2,9 +2,11 @@ import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import Indicator from "../../Components/Indicator/Indicator.jsx";
+import Indicator from "../../Components/Indicators/PageIndicator/PageIndicator.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
+import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
+import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 
@@ -15,6 +17,10 @@ const FirstStartup = () => {
   const { showSnack } = useSnack();
   const isFirstLogin = true; //useSelector((state) => state.login.firstLogin);
   const [show, setShow] = useState(isFirstLogin);
+
+  const [index, setIndex] = useState(1);
+
+  const pages = [<PackageForm />, <GroupForm />, <VocabForm />];
 
   const packageAdded = useCallback(() => {
     setShow(false);
@@ -31,8 +37,8 @@ const FirstStartup = () => {
       open={show}
       onClose={() => setShow(false)}
     >
-      <PackageForm onSubmitCallback={packageAdded} />
-      <Indicator activeState={1} max={5} />
+      {pages[index]}
+      <Indicator activeState={index} max={pages.length} />
     </Modal>
   );
 };
