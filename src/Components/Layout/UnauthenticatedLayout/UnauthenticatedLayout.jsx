@@ -3,26 +3,24 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 import Button from "../../Button/Button.jsx";
+import Flag from "../../Flag/Flag.jsx";
 import LanguageSelector from "../../LanguageSelector/LanguageSelector.jsx";
 import Modal from "../../Modal/Modal.jsx";
-
-import useCountryFlag from "../../../hooks/useCountryFlag.js";
 
 import "./UnauthenticatedLayout.scss";
 
 const UnauthenticatedLayout = ({ children }) => {
   const { t } = useTranslation();
   const language = useSelector((state) => state.setting.language);
-  const { getCountryFlagByCode } = useCountryFlag();
   const [showLanguageModal, setShowLanguageModal] = useState(false);
 
   return (
-    <div className={`unauthenicated-container`}>
+    <div className={`unauthenticated-container`}>
       <div
         onClick={() => setShowLanguageModal(true)}
         className="language-selector-wrapper"
       >
-        {getCountryFlagByCode(language)}
+        <Flag languageCode={language} size="medium" />
       </div>
       {children}
       <Modal

@@ -74,5 +74,16 @@ export const checkQuery = (vocabularyId, answer = false, progress = false) =>
 // Stats
 export const getStats = () => api.get("/user/stats");
 
+// Languages
+export const getLanguages = ({
+  code = true,
+  name = true,
+  nativeNames = false,
+  rtl = false,
+}) =>
+  api.get(
+    `/language?code=${code}&name=${name}&nativeNames=${nativeNames}&rtl=${rtl}`
+  );
+
 // Info
 export const getInfo = (cancelToken) => api.get("/info", { cancelToken });
