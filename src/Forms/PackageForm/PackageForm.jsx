@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
 import Select, {
@@ -9,7 +10,7 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 import { createPackage, modifyPackage } from "../../utils/api.js";
-import { languages } from "../../utils/constants.js";
+import { findLanguageByCode, getLanguageString } from "../../utils/index.js";
 
 import "./PackageForm.scss";
 
@@ -17,14 +18,19 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
+  const languages = useSelector((state) => state.language.languages);
+
   const [name, setName] = useState(defaultData ? defaultData.name : "");
   const [foreignLanguage, setForeignLanguage] = useState(
     defaultData
       ? {
           value: defaultData.foreignWordLanguage,
+          code: defaultData.code,
           label: (
             <SelectOptionWithFlag
-              name={defaultData.foreignWordLanguage}
+              name={getLanguageString(
+                findLanguageByCode(defaultData.foreignWordLanguage, languages)
+              )}
               foreignLanguageCode={defaultData.foreignWordLanguage}
             />
           ),
@@ -35,9 +41,15 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
     defaultData
       ? {
           value: defaultData.translatedWordLanguage,
+          code: defaultData.code,
           label: (
             <SelectOptionWithFlag
-              name={defaultData.translatedWordLanguage}
+              name={getLanguageString(
+                findLanguageByCode(
+                  defaultData.translatedWordLanguage,
+                  languages
+                )
+              )}
               foreignLanguageCode={defaultData.translatedWordLanguage}
             />
           ),
@@ -56,8 +68,8 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
   const submitHandler = useCallback(async () => {
     const packageToSave = {
       name: name,
-      foreignWordLanguage: foreignLanguage.value,
-      translatedWordLanguage: translatedLanguage.value,
+      foreignWordLanguage: foreignLanguage.code,
+      translatedWordLanguage: translatedLanguage.code,
       vocabsPerDay: vocabsPerDay,
       rightWords: rightTranslations,
     };
@@ -102,27 +114,30 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
       });
   }, [
     defaultData?.id,
-    foreignLanguage.value,
+    foreignLanguage.code,
     name,
     onSubmitCallback,
     rightTranslations,
     showSnack,
     t,
-    translatedLanguage.value,
+    translatedLanguage.code,
     vocabsPerDay,
   ]);
 
-  const selectOptions = languages.map((language) => {
-    return {
-      value: language.name,
-      label: (
-        <SelectOptionWithFlag
-          name={language.name}
-          foreignLanguageCode={language.countryCode}
-        />
-      ),
-    };
-  });
+  const selectOptions = useMemo(
+    () =>
+      languages.map((language) => ({
+        value: getLanguageString(language),
+        code: language.code,
+        label: (
+          <SelectOptionWithFlag
+            name={getLanguageString(language)}
+            foreignLanguageCode={language.code}
+          />
+        ),
+      })),
+    [languages]
+  );
 
   useEffect(() => {
     setCanSubmit(

@@ -1,11 +1,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
 
-import { languages } from "../../utils/constants.js";
+import Flag from "../Flag/Flag.jsx";
+
+import { findLanguageByCode, getLanguageString } from "../../utils/index.js";
 
 import "./DirectionBox.scss";
 
@@ -17,29 +20,32 @@ const DirectionBox = ({
   const { t } = useTranslation();
   const history = useHistory();
 
+  const languages = useSelector((state) => state.language.languages);
+
   const submitDirection = () => {
     history.push(`/learn/query/${direction}`);
   };
+
   return (
     <div className="direction-box" onClick={submitDirection}>
       <div className="flags">
         {direction === "random" ? (
           <>
-            {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
+            <Flag languageCode={foreignWordLanguage} size="large" />
             <SyncAltIcon className="direction-arrow" />
-            {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
+            <Flag languageCode={translatedWordLanguage} size="large" />
           </>
         ) : direction === "backwards" ? (
           <>
-            {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
+            <Flag languageCode={translatedWordLanguage} size="large" />
             <ArrowRightAltIcon className="direction-arrow" />
-            {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
+            <Flag languageCode={foreignWordLanguage} size="large" />
           </>
         ) : (
           <>
-            {languages.find((ele) => ele.name === foreignWordLanguage)?.icon}
+            <Flag languageCode={foreignWordLanguage} size="large" />
             <ArrowRightAltIcon className="direction-arrow" />
-            {languages.find((ele) => ele.name === translatedWordLanguage)?.icon}
+            <Flag languageCode={translatedWordLanguage} size="large" />
           </>
         )}
       </div>
@@ -47,8 +53,16 @@ const DirectionBox = ({
         {direction === "random"
           ? t("global.random")
           : direction === "backwards"
-          ? `${translatedWordLanguage} - ${foreignWordLanguage}`
-          : `${foreignWordLanguage} - ${translatedWordLanguage}`}
+          ? `${getLanguageString(
+              findLanguageByCode(translatedWordLanguage, languages)
+            )} - ${getLanguageString(
+              findLanguageByCode(foreignWordLanguage, languages)
+            )}`
+          : `${getLanguageString(
+              findLanguageByCode(foreignWordLanguage, languages)
+            )} - ${getLanguageString(
+              findLanguageByCode(translatedWordLanguage, languages)
+            )}`}
       </div>
     </div>
   );
