@@ -29,15 +29,25 @@ const DirectionBox = ({
   return (
     <div className="direction-box" onClick={submitDirection}>
       <div className="flags">
-        <Flag languageCode={foreignWordLanguage} size="large" />
         {direction === "random" ? (
-          <SyncAltIcon className="direction-arrow" />
+          <>
+            <Flag languageCode={foreignWordLanguage} size="large" />
+            <SyncAltIcon className="direction-arrow" />
+            <Flag languageCode={translatedWordLanguage} size="large" />
+          </>
         ) : direction === "backwards" ? (
-          <ArrowRightAltIcon className="direction-arrow invert" />
+          <>
+            <Flag languageCode={translatedWordLanguage} size="large" />
+            <ArrowRightAltIcon className="direction-arrow" />
+            <Flag languageCode={foreignWordLanguage} size="large" />
+          </>
         ) : (
-          <ArrowRightAltIcon className="direction-arrow" />
+          <>
+            <Flag languageCode={foreignWordLanguage} size="large" />
+            <ArrowRightAltIcon className="direction-arrow" />
+            <Flag languageCode={translatedWordLanguage} size="large" />
+          </>
         )}
-        <Flag languageCode={translatedWordLanguage} size="large" />
       </div>
       <div className="languages">
         {direction === "random"
