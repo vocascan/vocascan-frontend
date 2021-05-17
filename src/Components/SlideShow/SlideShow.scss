@@ -1,0 +1,19 @@
+.slideshow {
+    .slideshow-bar {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+
+        .bar-property {
+
+            &.invisible {
+                pointer-events: none;
+                visibility: hidden;
+            }
+            &.indicator {
+                margin: auto 0;
+            }
+        }
+    }
+}
