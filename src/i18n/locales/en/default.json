@@ -194,7 +194,9 @@
     },
     "firstStartup": {
       "title": "Create your first vocabulary package",
-      "savePackageSuccessMessage": "New package added"
+      "savePackageSuccessMessage": "New package added",
+      "saveGroupSuccessMessage": "New group added",
+      "saveVocabSuccessMessage": "New vocab added"
     },
     "login": {
       "title": "Login",

@@ -1,9 +1,10 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import Indicator from "../../Components/Indicators/PageIndicator/PageIndicator.jsx";
+import { SelectOptionWithFlag } from "../../Components/Form/Select/Select.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
+import SlideShow from "../../Components/SlideShow/SlideShow.jsx";
 import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
@@ -18,14 +19,48 @@ const FirstStartup = () => {
   const isFirstLogin = true; //useSelector((state) => state.login.firstLogin);
   const [show, setShow] = useState(isFirstLogin);
 
-  const [index, setIndex] = useState(1);
+  const [selectedPackage, setSelectedPackage] = useState(null);
 
-  const pages = [<PackageForm />, <GroupForm />, <VocabForm />];
+  const [selectedGroup, setSelectedGroup] = useState(null);
 
-  const packageAdded = useCallback(() => {
+  const packageAdded = useCallback(
+    (newPackage) => {
+      setSelectedPackage({
+        value: newPackage.id,
+        label: (
+          <SelectOptionWithFlag
+            name={newPackage.name}
+            foreignLanguageCode={newPackage.foreignWordLanguage}
+            translatedLanguageCode={newPackage.translatedWordLanguage}
+          />
+        ),
+      });
+      showSnack("success", t("screens.firstStartup.savePackageSuccessMessage"));
+    },
+    [showSnack, t]
+  );
+
+  const groupAdded = useCallback((newGroup) => {
+    setSelectedGroup({ value: newGroup.id, label: newGroup.name });
+    showSnack("success", t("screens.firstStartup.saveGroupSuccessMessage"));
+  }, []);
+
+  const vocabAdded = useCallback(() => {
+    showSnack("success", t("screens.firstStartup.saveVocabSuccessMessage"));
+  }, [showSnack, t]);
+
+  const onEnd = useCallback(() => {
     setShow(false);
-    showSnack("success", t("screens.firstStartup.savePackageSuccessMessage"));
-  }, [t, showSnack]);
+  }, []);
+
+  const pages = [
+    <PackageForm onSubmitCallback={packageAdded} />,
+    <GroupForm
+      selectedPackage={selectedPackage}
+      onSubmitCallback={groupAdded}
+    />,
+    <VocabForm onSubmitCallback={vocabAdded} />,
+  ];
 
   if (!isFirstLogin) {
     return null;
@@ -37,8 +72,7 @@ const FirstStartup = () => {
       open={show}
       onClose={() => setShow(false)}
     >
-      {pages[index]}
-      <Indicator activeState={index} max={pages.length} />
+      <SlideShow pages={pages} onEnd={onEnd} />
     </Modal>
   );
 };
