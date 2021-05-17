@@ -11,9 +11,9 @@ import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 
-import "./FirstStartup.scss";
+import "./Guide.scss";
 
-const FirstStartup = () => {
+const Guide = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
   const isFirstLogin = true; //useSelector((state) => state.login.firstLogin);
@@ -77,4 +77,4 @@ const FirstStartup = () => {
   );
 };
 
-export default FirstStartup;
+export default Guide;
