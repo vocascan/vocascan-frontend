@@ -17,10 +17,15 @@ const SlideShow = ({ pages, onEnd }) => {
 
   return (
     <div className="slideshow">
-      {pages[index]}
+      <div className="slideshow-content">{pages[index]}</div>
       <div className="slideshow-bar">
         <div className={`bar-property ${index === 0 ? "invisible" : ""}`}>
-          <Button block uppercase onClick={() => setIndex(index - 1)}>
+          <Button
+            block
+            uppercase
+            variant={"outline"}
+            onClick={() => setIndex(index - 1)}
+          >
             Continue
           </Button>
         </div>

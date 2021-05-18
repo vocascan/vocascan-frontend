@@ -192,6 +192,9 @@
         "button": "Start for free"
       }
     },
+    "guide": {
+      "title": "Guide"
+    },
     "firstStartup": {
       "title": "Create your first vocabulary package",
       "savePackageSuccessMessage": "New package added",

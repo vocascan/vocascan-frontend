@@ -8,6 +8,8 @@ import SlideShow from "../../Components/SlideShow/SlideShow.jsx";
 import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
+import PackageDescription from "./Pages/PackageDescription.jsx";
+import Start from "./Pages/Start.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 
@@ -53,7 +55,9 @@ const Guide = () => {
     setShow(false);
   }, []);
 
-  const pages = [
+  const guidePages = [
+    <Start />,
+    <PackageDescription />,
     <PackageForm onSubmitCallback={packageAdded} />,
     <GroupForm
       selectedPackage={selectedPackage}
@@ -68,11 +72,12 @@ const Guide = () => {
 
   return (
     <Modal
-      title={t("screens.firstStartup.title")}
+      title={t("screens.guide.title")}
       open={show}
+      size={"large"}
       onClose={() => setShow(false)}
     >
-      <SlideShow pages={pages} onEnd={onEnd} />
+      <SlideShow pages={guidePages} onEnd={onEnd} />
     </Modal>
   );
 };
