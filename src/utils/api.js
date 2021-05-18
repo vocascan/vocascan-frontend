@@ -17,7 +17,7 @@ export function setTokenHeader(token) {
 // Auth
 export const login = (data) => api.post("/user/login", data);
 export const register = (data) => api.post("/user/register", data);
-export const changePassword = (data) => api.post("/user/password/reset", data);
+export const changePassword = (data) => api.patch("/user/reset-password", data);
 
 // User
 export const getProfile = () => api.get("/user");
