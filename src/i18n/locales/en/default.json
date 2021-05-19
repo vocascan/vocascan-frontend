@@ -193,7 +193,24 @@
       }
     },
     "guide": {
-      "title": "Guide"
+      "title": "Guide",
+      "start": {
+        "slogan": "A highly configurable vocabulary trainer"
+      },
+      "packageDescription": {
+        "bulletPoints": ["The main piece of this trainer are packages, where you can store all your vocabs from a language.", "Packages can be created over package select box or in the library over the + icon, as you can see on the left images", "That said we will create your first vocabulary package"]
+      },
+      "groupDescription": {
+        "bulletPoints": ["Every package is divided in groups, where you can store your vocabs more organized.", "Groups can be created over a group selection box or the library like the packages.", "Every group has a active trigger where you can decide whether the included vocabs get queried or not.", "Next we will create a group."]
+      },
+      "vocabDescription": {
+        "heading": "Now we come to the most important part of Vocascan - the vocab cards -",
+        "bulletPoints": ["You can create vocab cards while deciding which package and group they belong to.", "Every vocab has a specific active toggle also where you can decide over the query status more precisely.", "The 'Activate' toggle will decide if you have to active your vocabs first before the first query or if you directly start learning with them.", "In the next step we will create a vocab card"]
+      },
+      "end": {
+        "heading": "Now you are set up",
+        "description": "Have fun trying out Vocascan"
+      }
     },
     "firstStartup": {
       "title": "Create your first vocabulary package",

@@ -1,0 +1,15 @@
+.end {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    .end-heading {
+        margin: auto;
+        text-transform: uppercase;
+
+        h1 {
+            margin-bottom: 10px;
+        }
+    }
+}

@@ -8,8 +8,11 @@ import SlideShow from "../../Components/SlideShow/SlideShow.jsx";
 import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
-import PackageDescription from "./Pages/PackageDescription.jsx";
-import Start from "./Pages/Start.jsx";
+import End from "./Pages/End/End.jsx";
+import GroupDescription from "./Pages/GroupDescription/GroupDescription.jsx";
+import PackageDescription from "./Pages/PackageDescription/PackageDescription.jsx";
+import Start from "./Pages/Start/Start.jsx";
+import VocabDescription from "./Pages/VocabDescription/VocabDescription.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 
@@ -59,11 +62,14 @@ const Guide = () => {
     <Start />,
     <PackageDescription />,
     <PackageForm onSubmitCallback={packageAdded} />,
+    <GroupDescription />,
     <GroupForm
       selectedPackage={selectedPackage}
       onSubmitCallback={groupAdded}
     />,
+    <VocabDescription />,
     <VocabForm onSubmitCallback={vocabAdded} />,
+    <End />,
   ];
 
   if (!isFirstLogin) {
@@ -71,12 +77,7 @@ const Guide = () => {
   }
 
   return (
-    <Modal
-      title={t("screens.guide.title")}
-      open={show}
-      size={"large"}
-      onClose={() => setShow(false)}
-    >
+    <Modal open={show} onClose={() => setShow(false)}>
       <SlideShow pages={guidePages} onEnd={onEnd} />
     </Modal>
   );
