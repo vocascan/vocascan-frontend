@@ -1,10 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import "./PackageDescription.scss";
+import image1 from "./addPackage1.png";
+import image2 from "./addPackage2.png";
 
-import image1 from "./addPackage1.PNG";
-import image2 from "./addPackage2.PNG";
+import "./PackageDescription.scss";
 
 const PackageDescription = () => {
   const { t } = useTranslation();

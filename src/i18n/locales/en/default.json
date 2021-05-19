@@ -37,7 +37,9 @@
     "activate": "Activate",
     "random": "Random",
     "wrong": "Wrong",
-    "correct": "Correct"
+    "correct": "Correct",
+    "finish": "Finish",
+    "back": "Back"
   },
   "components": {
     "groupForm": {
@@ -201,7 +203,7 @@
         "bulletPoints": ["The main piece of this trainer are packages, where you can store all your vocabs from a language.", "Packages can be created over package select box or in the library over the + icon, as you can see on the left images", "That said we will create your first vocabulary package"]
       },
       "groupDescription": {
-        "bulletPoints": ["Every package is divided in groups, where you can store your vocabs more organized.", "Groups can be created over a group selection box or the library like the packages.", "Every group has a active trigger where you can decide whether the included vocabs get queried or not.", "Next we will create a group."]
+        "bulletPoints": ["Every package is divided into groups, where you can store your vocabs more organized.", "Groups can be created over a group selection box or the library like the packages.", "Every group has a active trigger where you can decide whether the included vocabs get queried or not.", "Next we will create a group."]
       },
       "vocabDescription": {
         "heading": "Now we come to the most important part of Vocascan - the vocab cards -",
