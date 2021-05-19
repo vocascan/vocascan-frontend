@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import Button from "../../Components/Button/Button.jsx";
 import Indicator from "../../Components/Indicators/PageIndicator/PageIndicator.jsx";
@@ -6,6 +7,7 @@ import Indicator from "../../Components/Indicators/PageIndicator/PageIndicator.j
 import "./SlideShow.scss";
 
 const SlideShow = ({ pages, onEnd }) => {
+  const { t } = useTranslation();
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -26,7 +28,7 @@ const SlideShow = ({ pages, onEnd }) => {
             variant={"outline"}
             onClick={() => setIndex(index - 1)}
           >
-            Continue
+            {t("global.back")}
           </Button>
         </div>
         <div className="bar-property indicator">
@@ -34,7 +36,9 @@ const SlideShow = ({ pages, onEnd }) => {
         </div>
         <div className="bar-property">
           <Button block uppercase onClick={() => setIndex(index + 1)}>
-            Continue
+            {index === pages.length - 1
+              ? t("global.finish")
+              : t("global.continue")}
           </Button>
         </div>
       </div>
