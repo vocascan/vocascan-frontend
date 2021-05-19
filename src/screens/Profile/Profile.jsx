@@ -173,6 +173,7 @@ const Profile = () => {
       >
         <TextInput
           required
+          type="password"
           placeholder={t("modal.changePassword.oldPassword")}
           onChange={(value) => {
             setOldPassword(value);
@@ -183,6 +184,7 @@ const Profile = () => {
         />
         <TextInput
           required
+          type="password"
           placeholder={t("modal.changePassword.newPassword")}
           onChange={(value) => {
             setNewPassword(value);
@@ -191,6 +193,7 @@ const Profile = () => {
         />
         <TextInput
           required
+          type="password"
           placeholder={t("modal.changePassword.repeatNewPassword")}
           onChange={(value) => {
             setRepeatedNewPassword(value);
