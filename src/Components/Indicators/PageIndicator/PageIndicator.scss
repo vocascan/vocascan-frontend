@@ -1,7 +1,7 @@
 @import "../../../colors";
 
 .indicator {
-    width: 100px;
+    width: auto;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -11,6 +11,7 @@
         height: 10px;
         border-radius: 100%;
         background: $color-grey;
+        margin: 0 3px;
 
         &.active {
             background: $color-primary;
