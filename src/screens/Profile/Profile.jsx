@@ -44,6 +44,9 @@ const Profile = () => {
 
   const closePasswordModal = useCallback(() => {
     setShowPasswordModal(false);
+    setOldPassword("");
+    setNewPassword("");
+    setRepeatedNewPassword("");
   }, []);
 
   const openEmailModal = useCallback(() => {
