@@ -13,7 +13,17 @@ const PackageDescription = () => {
         <img src={image2} alt="" />
       </div>
       <div className="description">
-        <h1>Description</h1>
+        <ul>
+          <li>
+            The main piece of this trainer are packages, where you can store all
+            your vocabs from a language
+          </li>
+          <li>
+            Packages can be created over package select box or in the library
+            over the + icon, as you can see on the left images
+          </li>
+          <li>In the next step we will create your first package</li>
+        </ul>
       </div>
     </div>
   );
