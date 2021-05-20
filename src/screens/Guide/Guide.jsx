@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
@@ -8,7 +8,6 @@ import SlideShow from "../../Components/SlideShow/SlideShow.jsx";
 import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
 import VocabForm from "../../Forms/VocabForm/VocabForm.jsx";
-import GuideContext from "../../context/GuideContext.jsx";
 import End from "./Pages/End/End.jsx";
 import GroupDescription from "./Pages/GroupDescription/GroupDescription.jsx";
 import PackageDescription from "./Pages/PackageDescription/PackageDescription.jsx";
@@ -22,10 +21,10 @@ import "./Guide.scss";
 const Guide = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const { setCanContinue } = useContext(GuideContext);
   const isFirstLogin = true; //useSelector((state) => state.login.firstLogin);
   const [show, setShow] = useState(isFirstLogin);
 
+  const [canContinue, setCanContinue] = useState(true);
   const [selectedPackage, setSelectedPackage] = useState(null);
 
   const [selectedGroup, setSelectedGroup] = useState(null);
@@ -94,14 +93,14 @@ const Guide = () => {
   }, []);
 
   const guidePages = [
-    <Start />,
-    <PackageDescription />,
+    <Start setCanContinue={setCanContinue} />,
+    <PackageDescription setCanContinue={setCanContinue} />,
     <PackageForm
       onSubmitCallback={packageAdded}
       onLoad={onLoadPackageForm}
       canSave={!hasPackage}
     />,
-    <GroupDescription />,
+    <GroupDescription setCanContinue={setCanContinue} />,
     <GroupForm
       fixedPackage
       selectedPackage={selectedPackage}
@@ -109,7 +108,7 @@ const Guide = () => {
       onLoad={onLoadGroupForm}
       canSave={!hasGroup}
     />,
-    <VocabDescription />,
+    <VocabDescription setCanContinue={setCanContinue} />,
     <VocabForm
       onSubmitCallback={vocabAdded}
       packageId={selectedPackage?.value}
@@ -117,7 +116,7 @@ const Guide = () => {
       onLoad={onLoadVocabForm}
       canSave={!hasVocab}
     />,
-    <End />,
+    <End setCanContinue={setCanContinue} />,
   ];
 
   if (!isFirstLogin) {
@@ -131,7 +130,7 @@ const Guide = () => {
       renderClose={false}
       closeOnEscape={false}
     >
-      <SlideShow pages={guidePages} onEnd={onEnd} />
+      <SlideShow pages={guidePages} onEnd={onEnd} canContinue={canContinue} />
     </Modal>
   );
 };

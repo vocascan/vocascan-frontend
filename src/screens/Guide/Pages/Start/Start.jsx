@@ -1,13 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import "./Start.scss";
 
-import GuideContext from "../../../../context/GuideContext";
-
-const Start = () => {
+const Start = ({ setCanContinue }) => {
   const { t } = useTranslation();
-  const { setCanContinue } = useContext(GuideContext);
 
   useEffect(() => {
     setCanContinue(true);

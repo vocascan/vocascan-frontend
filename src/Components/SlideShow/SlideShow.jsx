@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "../../Components/Button/Button.jsx";
 import Indicator from "../../Components/Indicators/PageIndicator/PageIndicator.jsx";
-import GuideContext from "../../context/GuideContext.jsx";
 
 import "./SlideShow.scss";
 
-const SlideShow = ({ pages, onEnd }) => {
+const SlideShow = ({ pages, onEnd, canContinue }) => {
   const { t } = useTranslation();
-  const { canContinue } = useContext(GuideContext);
 
   const [index, setIndex] = useState(0);
 
