@@ -24,6 +24,7 @@ const PackageDescription = () => {
             <li key={index}>{bulletPoint}</li>
           ))}
         </ul>
+        <p>{t("screens.guide.packageDescription.endText")}</p>
       </div>
     </div>
   );

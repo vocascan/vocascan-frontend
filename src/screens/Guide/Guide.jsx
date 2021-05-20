@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
@@ -45,10 +45,13 @@ const Guide = () => {
     [showSnack, t]
   );
 
-  const groupAdded = useCallback((newGroup) => {
-    setSelectedGroup({ value: newGroup.id, label: newGroup.name });
-    showSnack("success", t("screens.firstStartup.saveGroupSuccessMessage"));
-  }, []);
+  const groupAdded = useCallback(
+    (newGroup) => {
+      setSelectedGroup({ value: newGroup.id, label: newGroup.name });
+      showSnack("success", t("screens.firstStartup.saveGroupSuccessMessage"));
+    },
+    [showSnack, t]
+  );
 
   const vocabAdded = useCallback(() => {
     showSnack("success", t("screens.firstStartup.saveVocabSuccessMessage"));
@@ -64,6 +67,7 @@ const Guide = () => {
     <PackageForm onSubmitCallback={packageAdded} />,
     <GroupDescription />,
     <GroupForm
+      fixedPackage
       selectedPackage={selectedPackage}
       onSubmitCallback={groupAdded}
     />,

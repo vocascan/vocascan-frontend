@@ -7,5 +7,14 @@
     .images {
         display: flex;
         flex-direction: column;
+        width: 30%;
+    }
+    .description {
+        padding-left: 20px;
+        ul {
+            li{
+                text-align: left;
+            }
+        }
     }
 }

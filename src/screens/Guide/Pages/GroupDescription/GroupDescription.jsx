@@ -24,6 +24,7 @@ const GroupDescription = () => {
             <li key={index}>{bulletPoint}</li>
           ))}
         </ul>
+        <p>{t("screens.guide.groupDescription.endText")}</p>
       </div>
     </div>
   );

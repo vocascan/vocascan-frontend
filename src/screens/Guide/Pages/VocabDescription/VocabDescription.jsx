@@ -22,6 +22,7 @@ const VocabDescription = () => {
             <li key={index}>{bulletPoint}</li>
           ))}
         </ul>
+        <p>{t("screens.guide.vocabDescription.endText")}</p>
       </div>
     </div>
   );
