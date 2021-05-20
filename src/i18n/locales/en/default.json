@@ -152,18 +152,6 @@
           "title": "Delete account",
           "description": "Once you deleted your account it is gone forever"
         }
-      },
-      "modals": {
-        "changePassword": {
-          "heading": "Change Password"
-        },
-        "changeEmail": {
-          "heading": "Change Email"
-        },
-        "deleteAccount": {
-          "heading": "Delete Account",
-          "input": "Type in your username to confirm deletion"
-        }
       }
     },
     "selectionScreen": {
@@ -245,6 +233,22 @@
     },
     "selectLanguage": {
       "title": "Select app language"
+    },
+    "changePassword": {
+      "heading": "Change password",
+      "oldPassword": "Old password",
+      "newPassword": "New password",
+      "repeatNewPassword": "Repeat new password",
+      "oldPasswordError": "Old password is invalid",
+      "newPasswordError": "New passwords do not match",
+      "change": "Change"
+    },
+    "changeEmail": {
+      "heading": "Change email"
+    },
+    "deleteAccount": {
+      "heading": "Delete account",
+      "input": "Type in your username to confirm deletion"
     }
   }
 }
