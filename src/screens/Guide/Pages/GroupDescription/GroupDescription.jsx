@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import image1 from "./addGroup1.png";
@@ -6,11 +6,19 @@ import image2 from "./addGroup2.png";
 
 import "./GroupDescription.scss";
 
+import GuideContext from "../../../../context/GuideContext";
+
 const GroupDescription = () => {
   const { t } = useTranslation();
+  const { setCanContinue } = useContext(GuideContext);
+
   const bulletPoints = t("screens.guide.groupDescription.bulletPoints", {
     returnObjects: true,
   });
+
+  useEffect(() => {
+    setCanContinue(true);
+  }, [setCanContinue]);
 
   return (
     <div className="groupDescription">

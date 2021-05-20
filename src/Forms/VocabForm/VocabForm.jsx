@@ -28,6 +28,8 @@ const VocabForm = ({
   title = null,
   packageId = null,
   groupId = null,
+  onLoad = null,
+  canSave = true,
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
@@ -300,6 +302,10 @@ const VocabForm = ({
     );
   }, [groups]);
 
+  useEffect(() => {
+    onLoad && onLoad();
+  }, [onLoad]);
+
   return (
     <>
       {title && <h1 className="heading">{title}</h1>}
@@ -394,7 +400,8 @@ const VocabForm = ({
               foreignWord &&
               translations?.length &&
               selectedGroup &&
-              selectedPackage
+              selectedPackage &&
+              canSave
             )
           }
         >

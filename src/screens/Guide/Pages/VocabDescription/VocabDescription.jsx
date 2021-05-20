@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import image1 from "./addVocab.png";
 
 import "./VocabDescription.scss";
 
+import GuideContext from "../../../../context/GuideContext";
+
 const VocabDescription = () => {
   const { t } = useTranslation();
+  const { setCanContinue } = useContext(GuideContext);
+
   const bulletPoints = t("screens.guide.vocabDescription.bulletPoints", {
     returnObjects: true,
   });
+
+  useEffect(() => {
+    setCanContinue(true);
+  }, [setCanContinue]);
+
   return (
     <div className="vocabDescription">
       <div className="images">

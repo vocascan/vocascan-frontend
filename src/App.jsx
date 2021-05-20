@@ -4,6 +4,7 @@ import { Route, HashRouter, Redirect } from "react-router-dom";
 
 import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
 import Snackbar from "./Components/Snackbar/Snackbar.jsx";
+import { GuideProvider } from "./context/GuideContext.jsx";
 import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import Custom from "./screens/Custom/Custom.jsx";
@@ -84,7 +85,9 @@ const App = () => {
       <HashRouter>
         <SnackbarProvider>
           <AuthenticatedLayout>
-            <Guide />
+            <GuideProvider>
+              <Guide />
+            </GuideProvider>
             <Route path="/">
               <Redirect to="learn" />
             </Route>

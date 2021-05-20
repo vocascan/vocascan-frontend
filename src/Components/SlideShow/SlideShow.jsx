@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "../../Components/Button/Button.jsx";
 import Indicator from "../../Components/Indicators/PageIndicator/PageIndicator.jsx";
+import GuideContext from "../../context/GuideContext.jsx";
 
 import "./SlideShow.scss";
 
 const SlideShow = ({ pages, onEnd }) => {
   const { t } = useTranslation();
+  const { canContinue } = useContext(GuideContext);
+
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -35,7 +38,12 @@ const SlideShow = ({ pages, onEnd }) => {
           <Indicator activeState={index} max={pages.length} />
         </div>
         <div className="bar-property">
-          <Button block uppercase onClick={() => setIndex(index + 1)}>
+          <Button
+            block
+            uppercase
+            onClick={() => setIndex(index + 1)}
+            disabled={!canContinue}
+          >
             {index === pages.length - 1
               ? t("global.finish")
               : t("global.continue")}

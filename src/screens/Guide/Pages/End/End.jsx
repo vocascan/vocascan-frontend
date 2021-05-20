@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import "./End.scss";
 
+import GuideContext from "../../../../context/GuideContext";
+
 const End = () => {
   const { t } = useTranslation();
+  const { setCanContinue } = useContext(GuideContext);
+
+  useEffect(() => {
+    setCanContinue(true);
+  }, [setCanContinue]);
 
   return (
     <div className={"end"}>

@@ -12,6 +12,7 @@ const Modal = ({
   size = "", // small, large, ""
   open = false,
   renderClose = true,
+  closeOnEscape = true,
   closeOnClickOutside = false,
   children,
 }) => {
@@ -20,7 +21,7 @@ const Modal = ({
   const escapeListener = useCallback(
     (e) => {
       if (e.key === "Escape") {
-        onClose?.();
+        closeOnEscape && onClose?.();
       }
     },
     // Modal specific dependency

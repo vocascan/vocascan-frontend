@@ -22,6 +22,8 @@ const GroupForm = ({
   defaultData = null,
   selectedPackage = null,
   onSubmitCallback = null,
+  onLoad = null,
+  canSave = true,
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
@@ -111,8 +113,8 @@ const GroupForm = ({
   }, []);
 
   useEffect(() => {
-    setCanSubmit(!(!name || !languagePackage));
-  }, [languagePackage, name]);
+    setCanSubmit(!(!name || !languagePackage || !canSave));
+  }, [languagePackage, name, canSave]);
 
   useEffect(() => {
     if (fixedPackage) {
@@ -139,6 +141,10 @@ const GroupForm = ({
       })
     );
   }, [languagePackages]);
+
+  useEffect(() => {
+    onLoad && onLoad();
+  }, [onLoad]);
 
   return (
     <div className="group-form">
