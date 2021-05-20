@@ -16,6 +16,7 @@ const VocabDescription = () => {
         <img src={image1} alt="" />
       </div>
       <div className="description">
+        <h1>{t("global.vocabs")}</h1>
         <p>{t("screens.guide.vocabDescription.heading")}</p>
         <ul>
           {bulletPoints.map((bulletPoint, index) => (
