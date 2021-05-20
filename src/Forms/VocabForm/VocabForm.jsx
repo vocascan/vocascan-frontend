@@ -308,7 +308,9 @@ const VocabForm = ({
         <div className="select-wrapper">
           <Select
             required
-            creatable
+            {...(groupId && packageId
+              ? { createtable: "false" }
+              : { createtable: "true" })}
             disabled={packageId}
             createText={"Create new Package"}
             onCreate={openPackageModal}
@@ -325,7 +327,9 @@ const VocabForm = ({
         <div className="select-wrapper">
           <Select
             required
-            creatable
+            {...(groupId && packageId
+              ? { createtable: "false" }
+              : { createtable: "true" })}
             createText={"Create new Group"}
             onCreate={openGroupModal}
             disabled={!selectedPackage || groupId}

@@ -56,7 +56,7 @@ const Select = ({
   label = "",
   value,
   disabled = false,
-  creatable = false,
+  createtable = false,
   onCreate = () => null,
   createText = "Create",
   ...props
@@ -109,7 +109,7 @@ const Select = ({
         noOptionsMessage={() =>
           noOptionsMessage ? noOptionsMessage : t("global.noOptionMessage")
         }
-        createOption={creatable}
+        createOption={createtable}
         onCreate={onCreate}
         createText={createText}
         styles={{
