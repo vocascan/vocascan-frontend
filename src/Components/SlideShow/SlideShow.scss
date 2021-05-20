@@ -1,32 +1,32 @@
 .slideshow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .slideshow-content {
     width: 100%;
-    height: 100%;
+    height: 90%;
+    margin-bottom: 40px;
+  }
+
+  .slideshow-bar {
+    height: 10%;
+    max-height: 50px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    flex-direction: row;
 
-    .slideshow-content {
-        width: 100%;
-        height: 90%;
-        margin-bottom: 40px;
+    .bar-property {
+      &.invisible {
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      &.indicator {
+        margin: auto 0;
+      }
     }
-
-    .slideshow-bar {
-        height: 10%;
-        max-height: 50px;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-
-        .bar-property {
-
-            &.invisible {
-                pointer-events: none;
-                visibility: hidden;
-            }
-            &.indicator {
-                margin: auto 0;
-            }
-        }
-    }
+  }
 }
