@@ -72,7 +72,11 @@ const Guide = () => {
       onSubmitCallback={groupAdded}
     />,
     <VocabDescription />,
-    <VocabForm onSubmitCallback={vocabAdded} />,
+    <VocabForm
+      onSubmitCallback={vocabAdded}
+      packageId={selectedPackage?.value}
+      groupId={selectedGroup?.value}
+    />,
     <End />,
   ];
 
