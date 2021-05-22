@@ -28,7 +28,7 @@ const PackageOverview = ({ data }) => {
           staged,
         })
       );
-      history.push(`learn/direction/`);
+      history.push("/learn/direction/");
     },
     [
       data.foreignWordLanguage,
