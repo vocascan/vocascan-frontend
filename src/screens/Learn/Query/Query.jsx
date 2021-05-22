@@ -88,6 +88,12 @@ const Query = () => {
           //if answer is wrong put vocabs card to the end of the query
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
           setCurrVocab(vocabs[0]);
+
+          if(direction === "random") {
+            setCurrDirection(
+              Math.floor(Math.random() * 2) % 2 ? "default" : "backwards"
+            );
+          }
         })
         .catch((event) => {
           if (
