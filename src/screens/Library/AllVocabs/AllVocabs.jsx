@@ -29,10 +29,8 @@ const AllVocabs = () => {
   const [data, setData] = useState([]);
   const [currentVocab, setCurrentVocab] = useState(null);
   const [showVocabModal, setShowVocabModal] = useState(false);
-  const [
-    showDeleteConfirmationModal,
-    setShowDeleteConfirmationModal,
-  ] = useState(false);
+  const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
+    useState(false);
 
   const fetchVocabs = useCallback(() => {
     getGroupVocabulary(groupId).then((response) => {

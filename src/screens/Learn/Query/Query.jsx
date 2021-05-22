@@ -89,7 +89,7 @@ const Query = () => {
           answer ? vocabs.shift() : vocabs.push(vocabs.shift());
           setCurrVocab(vocabs[0]);
 
-          if(direction === "random") {
+          if (direction === "random") {
             setCurrDirection(
               Math.floor(Math.random() * 2) % 2 ? "default" : "backwards"
             );
@@ -107,7 +107,7 @@ const Query = () => {
           showSnack("error", "Internal Server Error");
         });
     },
-    [showSnack, vocabs]
+    [showSnack, vocabs, direction]
   );
 
   useEffect(() => {
