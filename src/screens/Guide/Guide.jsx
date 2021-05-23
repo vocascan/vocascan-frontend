@@ -21,7 +21,7 @@ import "./Guide.scss";
 const Guide = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const isFirstLogin = true; //useSelector((state) => state.login.firstLogin);
+  const isFirstLogin = useSelector((state) => state.login.firstLogin);
   const [show, setShow] = useState(isFirstLogin);
 
   const [canContinue, setCanContinue] = useState(true);

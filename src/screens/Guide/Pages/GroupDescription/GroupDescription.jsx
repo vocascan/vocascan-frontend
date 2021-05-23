@@ -18,7 +18,7 @@ const GroupDescription = ({ setCanContinue }) => {
   }, [setCanContinue]);
 
   return (
-    <div className="groupDescription">
+    <div className="group-description">
       <div className="images">
         <img src={image1} alt="" />
         <img src={image2} alt="" />

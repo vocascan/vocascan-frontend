@@ -17,7 +17,7 @@ const VocabDescription = ({ setCanContinue }) => {
   }, [setCanContinue]);
 
   return (
-    <div className="vocabDescription">
+    <div className="vocab-description">
       <div className="images">
         <img src={image1} alt="" />
       </div>

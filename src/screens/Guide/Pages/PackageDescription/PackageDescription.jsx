@@ -18,7 +18,7 @@ const PackageDescription = ({ setCanContinue }) => {
   }, [setCanContinue]);
 
   return (
-    <div className="packageDescription">
+    <div className="package-description">
       <div className="images">
         <img src={image1} alt="" />
         <img src={image2} alt="" />
