@@ -65,6 +65,7 @@ const TextInput = ({
       />
       {type === "password" && showTogglePassword && (
         <span
+          className="show-password"
           onClick={() =>
             setTypeState(typeState === "text" ? "password" : "text")
           }
