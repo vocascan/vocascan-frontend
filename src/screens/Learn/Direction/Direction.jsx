@@ -10,10 +10,10 @@ const Direction = () => {
   const { t } = useTranslation();
 
   const foreignWordLanguage = useSelector(
-    (state) => state.learn.foreignWordLanguage
+    (state) => state.query.foreignWordLanguage
   );
   const translatedWordLanguage = useSelector(
-    (state) => state.learn.translatedWordLanguage
+    (state) => state.query.translatedWordLanguage
   );
   return (
     <div className="direction">

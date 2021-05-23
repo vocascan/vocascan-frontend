@@ -38,6 +38,9 @@
     "random": "Random",
     "wrong": "Wrong",
     "correct": "Correct",
+    "total": "Total",
+    "query": "Query",
+    "correct": "Correct",
     "finish": "Finish",
     "back": "Back"
   },
@@ -130,8 +133,16 @@
     "addVocab": {
       "title": "Add vocabulary"
     },
+    "dashboard": {
+      "empty": "No packages were found"
+    },
     "direction": {
       "title": "Please choose your direction"
+    },
+    "endScreen": {
+      "congratulations": ["You have to practice that again", "It will be better next time", "Stay tuned", "Congratulation", "You are amazing"],
+      "percentageText": "you solved {{percentage}}% of the vocabulary correctly",
+      "dashboard": "Back to the dashboard"
     },
     "profile": {
       "stats": {
