@@ -71,6 +71,12 @@ const Query = () => {
         showSnack("error", "Internal Server Error");
       });
 
+      if (direction === "random") {
+        setCurrDirection(
+          Math.floor(Math.random() * 2) % 2 ? "default" : "backwards"
+        );
+      }
+
       //if answer is right and wrong vocabs haven't been repeated yet
       if (answer && wrongVocabs + correctVocabs < vocabSize) {
         dispatch(setQueryCorrect());
@@ -95,7 +101,15 @@ const Query = () => {
       }
       setCurrVocab(vocabs[0]);
     },
-    [correctVocabs, dispatch, showSnack, vocabSize, vocabs, wrongVocabs]
+    [
+      correctVocabs,
+      dispatch,
+      showSnack,
+      vocabSize,
+      vocabs,
+      wrongVocabs,
+      direction,
+    ]
   );
 
   useEffect(() => {
