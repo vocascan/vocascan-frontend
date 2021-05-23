@@ -79,7 +79,10 @@ const AllVocabs = () => {
 
   const vocabSubmitted = useCallback(() => {
     fetchVocabs();
-  }, [fetchVocabs]);
+    if (currentVocab) {
+      setShowVocabModal(false);
+    }
+  }, [currentVocab, fetchVocabs]);
 
   const columns = useMemo(
     () => [
