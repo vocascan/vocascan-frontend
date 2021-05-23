@@ -73,6 +73,7 @@
     "paginationShow": "Zeige {{size}}",
     "password": "Passwort",
     "passwordRepeat": "Passwort wiederholen",
+    "query": "Abfrage",
     "random": "Zufällig",
     "save": "Speichern",
     "server": "Server",
@@ -81,6 +82,7 @@
     "signUp": "Registrieren",
     "submit": "Absenden",
     "successMessage": "Erfolgreich!",
+    "total": "Gesamt",
     "translation": "Übersetzung",
     "username": "Benutzername",
     "vocabs": "Vokabeln",
@@ -97,6 +99,22 @@
     "Turkish": "Türkisch"
   },
   "modal": {
+    "changeEmail": {
+      "heading": "Email ändern"
+    },
+    "changePassword": {
+      "change": "Ändern",
+      "heading": "Passwort ändern",
+      "newPassword": "Neues Passwort",
+      "newPasswordError": "Neue Passwörter stimmen nicht überein",
+      "oldPassword": "Altes Passwort",
+      "oldPasswordError": "Altes Passwort stimmt nicht",
+      "repeatNewPassword": "Wiederhole neues Passwort"
+    },
+    "deleteAccount": {
+      "heading": "Account löschen",
+      "input": "Gebe deinen Benutzernamen ein, um deinen Account zu löschen"
+    },
     "selectLanguage": {
       "title": "App-Sprache auswählen"
     },
@@ -157,8 +175,22 @@
       "translations": "Übersetzungen",
       "vocabel": "Vokabel"
     },
+    "dashboard": {
+      "empty": "Es wurden keine Pakete gefunden"
+    },
     "direction": {
       "title": "Bitte wähle deine Richtung"
+    },
+    "endScreen": {
+      "congratulations": [
+        "Das musst du noch besser üben",
+        "Nächstes mal wird es bestimmt besser",
+        "Bleib dran",
+        "Glückwunsch",
+        "Du bist großartig"
+      ],
+      "dashboard": "Zurück zum Dashboard",
+      "percentageText": "Du hast {{percentage}}% der Vokabeln richtig gelöst"
     },
     "firstStartup": {
       "savePackageSuccessMessage": "Neues Paket hinzugefügt",
