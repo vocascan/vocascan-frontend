@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Route, HashRouter, Redirect } from "react-router-dom";
+import { Route, HashRouter, Redirect, Switch } from "react-router-dom";
 
+import LoadingIndicator from "./Components/Indicators/LoadingIndicator/LoadingIndicator.jsx";
 import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
+import CleanLayout from "./Components/Layout/CleanLayout/CleanLayout.jsx";
 import Snackbar from "./Components/Snackbar/Snackbar.jsx";
 import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
@@ -68,15 +70,28 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (shouldLogin) {
+    return (
+      <CleanLayout>
+        <LoadingIndicator size="large" position="center" />
+      </CleanLayout>
+    );
+  }
+
   if (!isLoggedIn) {
     return (
       <HashRouter>
-        <Route path="/">
-          <Redirect to="/plans" />
-        </Route>
-        <Route path="/plans" component={SelectionScreen} />
-        <Route path="/login" component={() => <Login image={Image} />} />
-        <Route path="/register" component={() => <Register image={Image} />} />
+        <Switch>
+          <Route path="/plans" component={SelectionScreen} />
+          <Route path="/login" component={() => <Login image={Image} />} />
+          <Route
+            path="/register"
+            component={() => <Register image={Image} />}
+          />
+          <Route path="/">
+            <Redirect to="/plans" />
+          </Route>
+        </Switch>
       </HashRouter>
     );
   } else {
@@ -85,16 +100,18 @@ const App = () => {
         <SnackbarProvider>
           <AuthenticatedLayout>
             <Guide />
-            <Route path="/">
-              <Redirect to="learn" />
-            </Route>
-            <Route path="/addVocab" component={AddVocab} />
-            <Route path="/learn" component={Learn} />
-            <Route path="/library" component={Library} />
-            <Route path="/progress" component={Progress} />
-            <Route path="/custom" component={Custom} />
-            <Route path="/settings" component={Settings} />
-            <Route path="/profile" component={Profile} />
+            <Switch>
+              <Route path="/addVocab" component={AddVocab} />
+              <Route path="/learn" component={Learn} />
+              <Route path="/library" component={Library} />
+              <Route path="/progress" component={Progress} />
+              <Route path="/custom" component={Custom} />
+              <Route path="/settings" component={Settings} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/">
+                <Redirect to="learn" />
+              </Route>
+            </Switch>
             <Snackbar />
           </AuthenticatedLayout>
         </SnackbarProvider>

@@ -185,18 +185,6 @@
         },
         "title": "Accounteinstellungen"
       },
-      "modals": {
-        "changeEmail": {
-          "heading": "E-Mail-Adresse ändern"
-        },
-        "changePassword": {
-          "heading": "Passwort ändern"
-        },
-        "deleteAccount": {
-          "heading": "Account löschen",
-          "input": "Gebe Deinen Benutzernamen ein, um den Löschvorgang zu bestätigen"
-        }
-      },
       "stats": {
         "active": "Aktiv",
         "inactive": "Inaktiv",
