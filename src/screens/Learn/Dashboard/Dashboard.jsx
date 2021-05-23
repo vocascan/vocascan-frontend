@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import LoadingIndicator from "../../../Components/Indicators/LoadingIndicator/LoadingIndicator.jsx";
 import PackageOverview from "../../../Components/PackageOverview/PackageOverview.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
@@ -13,6 +14,7 @@ const Dashboard = () => {
   const { t } = useTranslation();
 
   const [languagePackages, setLanguagePackages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getLanguagePackages();
@@ -20,12 +22,16 @@ const Dashboard = () => {
   }, []);
 
   const getLanguagePackages = useCallback(() => {
+    setIsLoading(true);
     getPackages(false, true)
       .then((response) => {
         //store stats
         setLanguagePackages(response.data);
+        setIsLoading(false);
       })
       .catch((event) => {
+        setIsLoading(false);
+
         if (event.response?.status === 401 || event.response?.status === 404) {
           showSnack("error", "Error fetching stats");
           return;
@@ -35,8 +41,15 @@ const Dashboard = () => {
       });
   }, [showSnack]);
 
+  if (isLoading) {
+    return (
+      <div className="dashboard empty">
+        <LoadingIndicator size="large" position="center" />
+      </div>
+    );
+  }
   //if language package array is empty, show empty screen
-  if (languagePackages.length === 0) {
+  else if (languagePackages.length === 0) {
     return (
       <div className="dashboard empty">
         <h1>{t("screens.dashboard.empty")}</h1>
