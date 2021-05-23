@@ -76,4 +76,16 @@
     color: $color-red;
     bottom: -13px;
   }
+
+  .show-password {
+    position: absolute;
+    color: $color-primary-light;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-primary;
+      transition: color 0.2s ease-in-out;
+    }
+  }
 }

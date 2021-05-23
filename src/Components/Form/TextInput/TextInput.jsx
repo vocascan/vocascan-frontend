@@ -1,5 +1,8 @@
 import React, { useState, useCallback, useEffect } from "react";
 
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+
 import "./TextInput.scss";
 
 const TextInput = ({
@@ -11,8 +14,10 @@ const TextInput = ({
   required = false,
   value = "",
   autoFocus = false,
+  showTogglePassword = true,
   ...props
 }) => {
+  const [typeState, setTypeState] = useState(type);
   const [flow, setFlow] = useState(false);
   const [focused, setFocused] = useState(false);
 
@@ -37,6 +42,10 @@ const TextInput = ({
     setFlow(!!value || focused);
   }, [value, focused]);
 
+  useEffect(() => {
+    setTypeState(type);
+  }, [type]);
+
   return (
     <div className="text-input-wrapper">
       <span
@@ -44,7 +53,7 @@ const TextInput = ({
       >{`${placeholder}${required ? " *" : ""}`}</span>
       <input
         className={`text-input ${error && "input-error"}`}
-        type={type}
+        type={typeState}
         placeholder=""
         onChange={(e) => onChange(e.target.value)}
         required={required}
@@ -54,6 +63,16 @@ const TextInput = ({
         autoFocus={autoFocus}
         {...props}
       />
+      {type === "password" && showTogglePassword && (
+        <span
+          className="show-password"
+          onClick={() =>
+            setTypeState(typeState === "text" ? "password" : "text")
+          }
+        >
+          {typeState === "text" ? <VisibilityIcon /> : <VisibilityOffIcon />}
+        </span>
+      )}
       {error && errorText && <p className="text-input-error">{errorText}</p>}
     </div>
   );
