@@ -5,8 +5,8 @@ import { useHistory } from "react-router-dom";
 
 import Button from "../Button/Button.jsx";
 
-import "../../redux/Actions/learn.js";
-import { setLearnedPackage } from "../../redux/Actions/learn.js";
+import { clearQuery } from "../../redux/Actions/query.js";
+import { setLearnedPackage } from "../../redux/Actions/query.js";
 
 import "./PackageOverview.scss";
 
@@ -17,6 +17,7 @@ const PackageOverview = ({ data }) => {
 
   const submitLearn = useCallback(
     (staged) => {
+      dispatch(clearQuery());
       dispatch(
         setLearnedPackage({
           foreignWordLanguage: data.foreignWordLanguage,
@@ -27,7 +28,7 @@ const PackageOverview = ({ data }) => {
           staged,
         })
       );
-      history.push(`learn/direction/`);
+      history.push("/learn/direction/");
     },
     [
       data.foreignWordLanguage,
