@@ -1,0 +1,43 @@
+.card {
+  width: 150px;
+  height: 190px;
+  margin: 10px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+
+  img {
+    width: 150px;
+  }
+
+  .backdrop {
+    transition: border-radius 0.125s ease-in-out, top 0.125s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 150px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.9;
+
+    .description {
+      display: none;
+      color: #888;
+      margin-top: 5px;
+    }
+  }
+
+  &:hover .backdrop {
+    border-radius: 8px;
+    top: 0;
+
+    .description {
+      display: block;
+    }
+  }
+}
