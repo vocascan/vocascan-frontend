@@ -14,8 +14,7 @@
     transition: border-radius 0.125s ease-in-out, top 0.125s ease-in-out;
     position: absolute;
     bottom: 0;
-    right: 0;
-    left: 0;
+    width: 100%;
     top: 150px;
     background-color: #000;
     color: #fff;
@@ -23,7 +22,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    opacity: 0.9;
 
     .description {
       display: none;
@@ -33,8 +31,9 @@
   }
 
   &:hover .backdrop {
-    border-radius: 8px;
     top: 0;
+
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 100%);
 
     .description {
       display: block;
