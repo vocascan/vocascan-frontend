@@ -29,6 +29,7 @@ const Register = ({ image }) => {
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const [serverAddressInput, setServerAddressInput] = useState(serverAddress);
   const [isSamePassword, setIsSamePassword] = useState(true);
+  const [usernameIsUsed, setUsernameIsUsed] = useState(false);
   const [emailIsUsed, setEmailIsUsed] = useState(false);
   const [serverError, setServerError] = useState(false);
   const [isServerValid, setIsServerValid] = useState(false);
@@ -99,7 +100,13 @@ const Register = ({ image }) => {
         .catch((error) => {
           if (error.response?.status === 409) {
             setServerError(false);
-            setEmailIsUsed(true);
+            error.response.data.fields.forEach((elem) => {
+              if (elem.field === "username") {
+                setUsernameIsUsed(true);
+              } else if (elem.field === "email") {
+                setEmailIsUsed(true);
+              }
+            });
             return;
           }
 
@@ -170,11 +177,14 @@ const Register = ({ image }) => {
               placeholder={t("global.username")}
               autoComplete="current-password"
               onChange={(value) => {
+                setUsernameIsUsed(false);
                 setEmailIsUsed(false);
                 setServerError(false);
                 setUsername(value);
               }}
               value={username}
+              error={usernameIsUsed}
+              errorText={t("screens.register.usernameInUse")}
             />
             <TextInput
               required
