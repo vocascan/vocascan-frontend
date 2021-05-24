@@ -100,13 +100,12 @@ const Register = ({ image }) => {
         .catch((error) => {
           if (error.response?.status === 409) {
             setServerError(false);
-            error.response.data.fields.map((elem) => {
+            error.response.data.fields.forEach((elem) => {
               if (elem.field === "username") {
                 setUsernameIsUsed(true);
               } else if (elem.field === "email") {
                 setEmailIsUsed(true);
               }
-              return;
             });
             return;
           }
