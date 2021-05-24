@@ -39,7 +39,8 @@
     "wrong": "Wrong",
     "correct": "Correct",
     "total": "Total",
-    "query": "Query"
+    "query": "Query",
+    "comingSoon": "Coming soon..."
   },
   "components": {
     "groupForm": {
@@ -67,7 +68,7 @@
       "saveSuccessMessage": "New vocabulary added",
       "saveErrorMessage": "New vocabulary could not be added",
       "modifySuccessMessage": "Vocabulary saved",
-      "modifyErrorMessage": "Cocabulary could not be saved",
+      "modifyErrorMessage": "Vocabulary could not be saved",
       "saveGroupSuccessMessage": "New group added",
       "activeLabel": "Active",
       "activeTooltip": "Decides whether vocabulary is included in the query",
@@ -137,7 +138,13 @@
       "title": "Please choose your direction"
     },
     "endScreen": {
-      "congratulations": ["You have to practice that again", "It will be better next time", "Stay tuned", "Congratulation", "You are amazing"],
+      "congratulations": [
+        "You have to practice that again",
+        "It will be better next time",
+        "Stay tuned",
+        "Congratulation",
+        "You are amazing"
+      ],
       "percentageText": "you solved {{percentage}}% of the vocabulary correctly",
       "dashboard": "Back to the dashboard"
     },
@@ -214,6 +221,12 @@
       },
       "desktopVersion": "Desktop version",
       "serverVersion": "Server version"
+    },
+    "progress": {
+      "title": "Progress"
+    },
+    "custom": {
+      "title": "Custom learning"
     }
   },
   "nav": {
