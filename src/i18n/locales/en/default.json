@@ -227,6 +227,9 @@
     },
     "custom": {
       "title": "Custom learning"
+    },
+    "about": {
+      "title": "About vocascan"
     }
   },
   "nav": {
@@ -236,6 +239,7 @@
     "allVocabulary": "Library",
     "custom": "Custom",
     "settings": "Settings",
+    "about": "About",
     "profile": "Profile",
     "logout": "Logout"
   },
