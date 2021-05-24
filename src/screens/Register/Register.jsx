@@ -100,16 +100,21 @@ const Register = ({ image }) => {
         .catch((error) => {
           if (error.response?.status === 409) {
             setServerError(false);
-            error.response.data.fields.forEach((elem) => {
-              if (elem.field === "username") {
-                setUsernameIsUsed(true);
-              } else if (elem.field === "email") {
-                setEmailIsUsed(true);
-              }
-            });
+            if (
+              error.response.data.fields.find((elem) => {
+                return elem.field === "username";
+              })
+            ) {
+              setUsernameIsUsed(true);
+            } else if (
+              error.response.data.fields.find((elem) => {
+                return elem.field === "email";
+              })
+            ) {
+              setEmailIsUsed(true);
+            }
             return;
           }
-
           setServerError(true);
         });
     },
