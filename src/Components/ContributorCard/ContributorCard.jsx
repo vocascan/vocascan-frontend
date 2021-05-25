@@ -11,7 +11,7 @@ const Card = ({ name, url, imageUrl, description }) => {
     >
       <div className="card outline">
         <div className="backdrop">
-          <div>{name}</div>
+          <div className="name">{name}</div>
           <div className="description">{description}</div>
         </div>
         <img

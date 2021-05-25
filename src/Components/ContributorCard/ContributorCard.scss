@@ -26,9 +26,14 @@
     align-items: center;
     flex-direction: column;
 
+    .name {
+      font-size: 14px;
+    }
+
     .description {
       display: none;
       color: #bbb;
+      font-size: 12px;
       margin-top: 5px;
     }
   }
