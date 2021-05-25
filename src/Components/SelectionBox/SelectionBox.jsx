@@ -22,6 +22,7 @@ const SelectionBox = ({
   heading,
   image,
   buttonText,
+  important = false,
 }) => {
   const history = useHistory();
 
@@ -33,7 +34,11 @@ const SelectionBox = ({
   return (
     <div className="select-box">
       <div className="select-box-header">
-        <div className="select-box-header-heading">
+        <div
+          className={`select-box-header-heading ${
+            important ? "important" : ""
+          }`}
+        >
           <h1 className="select-box-header-heading-text">{heading}</h1>
         </div>
         <div className="select-box-header-logo">
@@ -55,7 +60,11 @@ const SelectionBox = ({
         </ul>
       </div>
       <div className="select-box-footer">
-        <Button block appearance="red" onClick={handleClick}>
+        <Button
+          block
+          appearance={`${important ? "red" : "dark"}`}
+          onClick={handleClick}
+        >
           {buttonText}
         </Button>
       </div>

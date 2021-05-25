@@ -17,12 +17,16 @@
     flex-direction: column;
 
     .select-box-header-heading {
-      background: $color-red;
+      background: $color-background-inverse;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       padding: 20px;
       display: flex;
       justify-content: center;
+
+      &.important {
+        background: $color-red;
+      }
 
       .select-box-header-heading-text {
         color: $color-white;

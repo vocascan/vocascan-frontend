@@ -2,6 +2,8 @@ import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
+import StorageIcon from "@material-ui/icons/Storage";
+
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
 
@@ -26,14 +28,6 @@ const SelectionScreen = () => {
   return (
     <UnauthenticatedLayout>
       <div className="select-srn-wrapper">
-        <div className="select-srn-header-wrapper">
-          <h1 className="select-srn-title">
-            {t("screens.selectionScreen.title")}
-          </h1>
-          <h1 className="select-srn-heading">
-            {t("screens.selectionScreen.heading")}
-          </h1>
-        </div>
         <div className="boxes">
           <SelectionBox
             heading={t("screens.selectionScreen.vocascanCloud.heading")}
@@ -45,6 +39,7 @@ const SelectionScreen = () => {
             })}
             buttonText={t("screens.selectionScreen.vocascanCloud.button")}
             image={Image}
+            important
             onSubmit={() => handleSubmit(false)}
           />
           <SelectionBox
