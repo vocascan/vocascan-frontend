@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./Card.scss";
+import "./ContributorCard.scss";
 
-const Card = ({ name, url, imageUrl = null, date }) => {
+const Card = ({ name, url, imageUrl, description }) => {
   return (
     <a
       href={url ? url : `https://github.com/${name}`}
@@ -12,7 +12,7 @@ const Card = ({ name, url, imageUrl = null, date }) => {
       <div className="card outline">
         <div className="backdrop">
           <div>{name}</div>
-          <div className="description">{date}</div>
+          <div className="description">{description}</div>
         </div>
         <img
           src={imageUrl ? imageUrl : `https://github.com/${name}.png`}

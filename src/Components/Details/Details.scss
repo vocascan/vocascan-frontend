@@ -1,0 +1,50 @@
+@import "../../colors";
+
+.Collapsible {
+  width: 1000px;
+  margin-bottom: 30px;
+
+  .Collapsible__trigger {
+    display: block;
+    border-bottom: 2px solid $color-background-inverse;
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 6px;
+
+    &::before {
+      position: absolute;
+      left: 0px;
+      bottom: 11px;
+      content: " ";
+      width: 7px;
+      height: 7px;
+      transition: all 0.125s ease-in-out;
+      transform: rotate(-45deg);
+      border-style: solid;
+      border-width: 0 2px 2px 0;
+      border-color: $color-background-inverse;
+    }
+
+    &.is-open {
+      &::before {
+        transform: rotate(45deg);
+      }
+    }
+
+    .trigger-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .summary {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .Collapsible__contentInner {
+    display: flex;
+    margin-top: 10px;
+  }
+}

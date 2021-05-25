@@ -4,12 +4,10 @@
   grid-area: main;
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
+  margin-top: 40px;
 
-  .card-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .wrapper {
+    margin-top: 40px;
   }
 }

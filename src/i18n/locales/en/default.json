@@ -277,5 +277,11 @@
       "heading": "Delete account",
       "input": "Type in your username to confirm deletion"
     }
+  },
+  "contributors": {
+    "desktop": "Desktop contributors",
+    "server": "Server contributors",
+    "translator": "Translators",
+    "miscellaneous": "Miscellaneous contributors"
   }
 }
