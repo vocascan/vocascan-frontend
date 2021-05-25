@@ -1,9 +1,11 @@
 @import "../../colors";
 
+/* stylelint-disable-next-line */
 .Collapsible {
   width: 1000px;
   margin-bottom: 30px;
 
+  /* stylelint-disable-next-line */
   .Collapsible__trigger {
     display: block;
     border-bottom: 2px solid $color-background-inverse;
@@ -13,7 +15,7 @@
 
     &::before {
       position: absolute;
-      left: 0px;
+      left: 0;
       bottom: 11px;
       content: " ";
       width: 7px;
@@ -43,6 +45,7 @@
     }
   }
 
+  /* stylelint-disable-next-line */
   .Collapsible__contentInner {
     display: flex;
     margin-top: 10px;
