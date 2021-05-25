@@ -2,8 +2,6 @@ import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-import StorageIcon from "@material-ui/icons/Storage";
-
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
 
