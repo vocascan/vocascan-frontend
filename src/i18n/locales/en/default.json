@@ -208,6 +208,7 @@
     },
     "register": {
       "title": "Register",
+      "usernameInUse": "The username is already used",
       "emailInUse": "The email is already used",
       "passwordsDontMatch": "The passwords are not the same",
       "alreadyHaveAccount": "Already have an account?"
