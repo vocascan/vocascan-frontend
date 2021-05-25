@@ -9,7 +9,7 @@ const AddVocab = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="add-vocab-form">
+    <div>
       <VocabForm title={t("screens.addVocab.title")} />
     </div>
   );

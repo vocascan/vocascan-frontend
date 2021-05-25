@@ -22,6 +22,8 @@ import {
 } from "../../utils/api.js";
 import { maxTranslations } from "../../utils/constants.js";
 
+import "./VocabForm.scss";
+
 const VocabForm = ({
   defaultData = null,
   onSubmitCallback = null,
@@ -307,7 +309,7 @@ const VocabForm = ({
   }, [onLoad]);
 
   return (
-    <>
+    <div className="vocab-form">
       {title && <h1 className="heading">{title}</h1>}
 
       <div className="dropdowns">
@@ -422,7 +424,7 @@ const VocabForm = ({
           onSubmitCallback={groupAdded}
         />
       </Modal>
-    </>
+    </div>
   );
 };
 

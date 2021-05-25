@@ -104,6 +104,7 @@ const Guide = () => {
     />,
     <GroupDescription setCanContinue={setCanContinue} />,
     <GroupForm
+      max-width={"600px"}
       fixedPackage
       selectedPackage={selectedPackage}
       onSubmitCallback={groupAdded}
