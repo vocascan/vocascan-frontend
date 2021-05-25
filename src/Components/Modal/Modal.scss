@@ -36,6 +36,11 @@
       height: 80vh;
     }
 
+    &.maxed {
+      width: 100%;
+      height: 100vh;
+    }
+
     .close {
       color: $color-primary;
       position: absolute;

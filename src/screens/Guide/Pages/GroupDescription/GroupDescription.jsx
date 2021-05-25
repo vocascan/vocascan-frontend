@@ -24,13 +24,15 @@ const GroupDescription = ({ setCanContinue }) => {
         <img src={image2} alt="" />
       </div>
       <div className="description">
-        <h1>{t("global.groups")}</h1>
+        <h1 className="heading">{t("global.groups")}</h1>
         <ul>
           {bulletPoints.map((bulletPoint, index) => (
             <li key={index}>{bulletPoint}</li>
           ))}
         </ul>
-        <p>{t("screens.guide.groupDescription.endText")}</p>
+        <p className="end-text">
+          {t("screens.guide.groupDescription.endText")}
+        </p>
       </div>
     </div>
   );

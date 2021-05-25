@@ -90,6 +90,8 @@ const Guide = () => {
 
   const onEnd = useCallback(() => {
     setShow(false);
+    //reload windows in order to show up created package
+    window.location.reload();
   }, []);
 
   const guidePages = [
@@ -129,6 +131,7 @@ const Guide = () => {
       onClose={() => setShow(false)}
       renderClose={false}
       closeOnEscape={false}
+      size="large"
     >
       <SlideShow pages={guidePages} onEnd={onEnd} canContinue={canContinue} />
     </Modal>

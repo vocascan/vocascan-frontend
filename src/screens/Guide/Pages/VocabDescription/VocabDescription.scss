@@ -11,12 +11,28 @@
   }
 
   .description {
-    padding-left: 20px;
+    margin: 10% 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .heading {
+      font-size: 25px;
+      font-weight: bold;
+    }
 
     ul {
+      padding: 0 5%;
+
       li {
+        font-size: 20px;
         text-align: left;
+        margin: 10px 100px;
       }
+    }
+
+    .end-text {
+      font-size: 20px;
     }
   }
 }

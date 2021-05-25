@@ -32,10 +32,8 @@ const AllGroups = () => {
   const [currentPackage, setCurrentPackage] = useState(null);
   const [currentGroup, setCurrentGroup] = useState(null);
   const [showGroupModal, setShowGroupModal] = useState(false);
-  const [
-    showDeleteConfirmationModal,
-    setShowDeleteConfirmationModal,
-  ] = useState(false);
+  const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
+    useState(false);
 
   const editGroup = useCallback(
     (grp) => {

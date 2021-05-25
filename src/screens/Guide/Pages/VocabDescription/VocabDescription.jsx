@@ -22,14 +22,16 @@ const VocabDescription = ({ setCanContinue }) => {
         <img src={image1} alt="" />
       </div>
       <div className="description">
-        <h1>{t("global.vocabs")}</h1>
+        <h1 className="heading">{t("global.vocabs")}</h1>
         <p>{t("screens.guide.vocabDescription.heading")}</p>
         <ul>
           {bulletPoints.map((bulletPoint, index) => (
             <li key={index}>{bulletPoint}</li>
           ))}
         </ul>
-        <p>{t("screens.guide.vocabDescription.endText")}</p>
+        <p className="end-text">
+          {t("screens.guide.vocabDescription.endText")}
+        </p>
       </div>
     </div>
   );

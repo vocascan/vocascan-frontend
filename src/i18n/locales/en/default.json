@@ -224,7 +224,7 @@
         "bulletPoints": [
           "You can create vocab cards while deciding which package and group they belong to.",
           "Every vocab has a specific active toggle also where you can decide over the query status more precisely.",
-          "The 'Activate' toggle will decide if you have to active your vocabs first before the first query or if you directly start learning with them."
+          "The 'Activate' toggle will decide if you have to activate your vocabs first before the first query or if you directly start learning with them."
         ],
         "endText": "In the next step we will create a vocab card"
       },

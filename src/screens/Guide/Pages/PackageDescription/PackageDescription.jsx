@@ -24,13 +24,15 @@ const PackageDescription = ({ setCanContinue }) => {
         <img src={image2} alt="" />
       </div>
       <div className="description">
-        <h1>{t("global.packages")}</h1>
+        <h1 className="heading">{t("global.packages")}</h1>
         <ul>
           {bulletPoints.map((bulletPoint, index) => (
             <li key={index}>{bulletPoint}</li>
           ))}
         </ul>
-        <p>{t("screens.guide.packageDescription.endText")}</p>
+        <p className="end-text">
+          {t("screens.guide.packageDescription.endText")}
+        </p>
       </div>
     </div>
   );

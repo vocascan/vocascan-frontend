@@ -9,7 +9,7 @@ import "./Modal.scss";
 const Modal = ({
   title,
   onClose,
-  size = "", // small, large, ""
+  size = "", // small, large, maxed, ""
   open = false,
   renderClose = true,
   closeOnEscape = true,
