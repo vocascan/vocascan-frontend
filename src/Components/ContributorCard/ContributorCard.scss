@@ -2,15 +2,15 @@
 
 .card {
   display: inline-block;
-  width: 150px;
-  height: 190px;
-  margin: 10px;
+  width: 130px;
+  height: 170px;
+  margin: 8px;
   position: relative;
   border-radius: 8px;
   overflow: hidden;
 
   img {
-    width: 150px;
+    width: 130px;
   }
 
   .backdrop {
@@ -18,7 +18,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    top: 150px;
+    top: 130px;
     background-color: $color-background-inverse;
     color: #fff;
     display: flex;

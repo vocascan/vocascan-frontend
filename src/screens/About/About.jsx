@@ -13,26 +13,25 @@ const About = () => {
 
   return (
     <div className="about">
-      <div>
+      <div className="wrapper">
         <h1>{t("screens.about.title")}</h1>
-        <div className="wrapper">
-          {Object.entries(contributors).map(([key, value], i) => (
-            <Details
-              summary={t(`contributors.${key}`)}
-              count={value.length}
-              open={i === 0}
-              key={i}
-            >
-              {value.map((contributor, j) => (
-                <Card
-                  name={contributor.name}
-                  description={contributor.description}
-                  key={j}
-                />
-              ))}
-            </Details>
-          ))}
-        </div>
+
+        {Object.entries(contributors).map(([key, value], i) => (
+          <Details
+            summary={t(`contributors.${key}`)}
+            count={value.length}
+            open={i === 0}
+            key={i}
+          >
+            {value.map((contributor, j) => (
+              <Card
+                name={contributor.name}
+                description={contributor.description}
+                key={j}
+              />
+            ))}
+          </Details>
+        ))}
       </div>
     </div>
   );

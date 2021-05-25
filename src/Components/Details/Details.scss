@@ -2,7 +2,6 @@
 
 /* stylelint-disable-next-line */
 .Collapsible {
-  width: 1000px;
   margin-bottom: 30px;
 
   /* stylelint-disable-next-line */
@@ -49,6 +48,7 @@
   /* stylelint-disable-next-line */
   .Collapsible__contentInner {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 10px;
   }
 }
