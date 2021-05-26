@@ -53,6 +53,7 @@
     "activate": "Aktivieren",
     "add": "Hinzufügen",
     "close": "Schließen",
+    "comingSoon": "Bald verfügbar",
     "continue": "Weiter",
     "correct": "Richtig",
     "delete": "Löschen",
@@ -175,6 +176,9 @@
       "translations": "Übersetzungen",
       "vocabel": "Vokabel"
     },
+    "custom": {
+      "title": "Benutzerdefiniertes Lernen"
+    },
     "dashboard": {
       "empty": "Es wurden keine Pakete gefunden"
     },
@@ -224,11 +228,15 @@
         "total": "Gesamt"
       }
     },
+    "progress": {
+      "title": "Fortschritt"
+    },
     "register": {
       "alreadyHaveAccount": "Du hast bereits ein Konto?",
       "emailInUse": "Die E-Mail wird bereits verwendet",
       "passwordsDontMatch": "Die Passwörter stimmen nicht überein",
-      "title": "Registrieren"
+      "title": "Registrieren",
+      "usernameInUse": "Der Benutzername ist schon vergeben"
     },
     "selectionScreen": {
       "heading": "Wählen Deine Option",
