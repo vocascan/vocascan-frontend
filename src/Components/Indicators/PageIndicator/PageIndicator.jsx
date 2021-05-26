@@ -3,16 +3,12 @@ import React from "react";
 import "./PageIndicator.scss";
 
 const PageIndicator = ({ max, activeState }) => {
-  let dots = [];
-  //render indicator dots
-  for (let i = 0; i < max; ++i) {
-    dots.push(
-      <div
-        key={i}
-        className={`indicator-dot ${i === activeState ? "active" : ""}`}
-      ></div>
-    );
-  }
+  const dots = [...Array(max)].map((_, i) => (
+    <div
+      key={i}
+      className={`indicator-dot ${i === activeState ? "active" : ""}`}
+    />
+  ));
 
   return <div className="indicator">{dots}</div>;
 };

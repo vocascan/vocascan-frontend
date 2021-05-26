@@ -11,8 +11,8 @@ const Start = ({ setCanContinue }) => {
   }, [setCanContinue]);
 
   return (
-    <div className={"start"}>
-      <div className={"start-heading"}>
+    <div className="start">
+      <div className="start-heading">
         <h1>Vocascan</h1>
         <p>{t("screens.guide.start.slogan")}</p>
       </div>

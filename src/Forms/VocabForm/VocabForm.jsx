@@ -316,7 +316,7 @@ const VocabForm = ({
         <div className="select-wrapper">
           <Select
             required
-            createtable
+            creatable
             disabled={packageId}
             createText={"Create new Package"}
             onCreate={openPackageModal}
@@ -333,7 +333,7 @@ const VocabForm = ({
         <div className="select-wrapper">
           <Select
             required
-            createtable
+            creatable
             createText={"Create new Group"}
             onCreate={openGroupModal}
             disabled={!selectedPackage || groupId}
