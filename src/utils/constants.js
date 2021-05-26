@@ -27,3 +27,7 @@ export const contributors = {
   ],
   miscellaneous: [{ name: "rgabisch", description: "Logo" }],
 };
+
+export const additionalDependencies = {
+  "flag-icon-css": "Flags are copied from this great package",
+};

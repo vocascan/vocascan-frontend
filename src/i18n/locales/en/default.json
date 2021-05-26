@@ -280,9 +280,10 @@
     }
   },
   "contributors": {
-    "desktop": "Desktop contributors",
-    "server": "Server contributors",
+    "desktop": "Vocascan desktop contributors",
+    "server": "Vocascan server contributors",
     "translator": "Translators",
-    "miscellaneous": "Miscellaneous contributors"
+    "miscellaneous": "Miscellaneous contributors",
+    "dependencies": "External dependencies"
   }
 }

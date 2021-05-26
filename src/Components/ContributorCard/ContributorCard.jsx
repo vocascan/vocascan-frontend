@@ -7,7 +7,7 @@ const Card = ({ name, url, imageUrl, description }) => {
     <a
       href={url ? url : `https://github.com/${name}`}
       target="_blank"
-      rel="noreferrer"
+      rel="noreferrer noopener"
     >
       <div className="card outline">
         <div className="backdrop">
