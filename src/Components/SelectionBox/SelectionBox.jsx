@@ -22,6 +22,7 @@ const SelectionBox = ({
   heading,
   image,
   buttonText,
+  disabled = false,
   important = false,
 }) => {
   const history = useHistory();
@@ -64,6 +65,7 @@ const SelectionBox = ({
           block
           appearance={`${important ? "red" : "dark"}`}
           onClick={handleClick}
+          disabled={disabled}
         >
           {buttonText}
         </Button>

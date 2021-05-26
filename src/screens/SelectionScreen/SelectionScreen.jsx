@@ -39,6 +39,7 @@ const SelectionScreen = () => {
             image={Image}
             important
             onSubmit={() => handleSubmit(false)}
+            disabled
           />
           <SelectionBox
             heading={t("screens.selectionScreen.vocascanServer.heading")}
