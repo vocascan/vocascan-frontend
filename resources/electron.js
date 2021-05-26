@@ -20,6 +20,7 @@ app.allowRendererProcessReuse = true;
 log.transports.file.level = "debug";
 autoUpdater.logger = log;
 autoUpdater.autoDownload = false;
+autoUpdater.allowDowngrade = true; // just in case we want to revert a build
 
 i18n.use(i18nBackend);
 
