@@ -37,7 +37,7 @@ const Settings = () => {
       .then((res) => {
         setServerInfo(res?.data);
       })
-      .catch(() => { });
+      .catch(() => {});
   }, []);
 
   return (
