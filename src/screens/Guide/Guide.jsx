@@ -80,14 +80,12 @@ const Guide = () => {
   }, [hasPackage, setCanContinue]);
 
   const onLoadGroupForm = useCallback(() => {
-    console.log(hasGroup);
     if (!hasGroup) {
       setCanContinue(false);
     }
   }, [hasGroup, setCanContinue]);
 
   const onLoadVocabForm = useCallback(() => {
-    console.log(hasVocab);
     if (!hasVocab) {
       setCanContinue(false);
     }
