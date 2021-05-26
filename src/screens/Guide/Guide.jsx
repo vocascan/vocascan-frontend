@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
@@ -22,8 +22,8 @@ import "./Guide.scss";
 const Guide = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const isFirstLogin = true; //useSelector((state) => state.login.firstLogin);
-  const [show, setShow] = useState(isFirstLogin);
+  const isFirstLogin = useSelector((state) => state.login.firstLogin);
+  const [show, setShow] = useState(false);
 
   const [canContinue, setCanContinue] = useState(true);
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -33,6 +33,10 @@ const Guide = () => {
   const [hasPackage, setHasPackage] = useState(false);
   const [hasGroup, setHasGroup] = useState(false);
   const [hasVocab, setHasVocab] = useState(false);
+
+  useEffect(() => {
+    setShow(isFirstLogin);
+  }, [isFirstLogin]);
 
   const packageAdded = useCallback(
     (newPackage) => {

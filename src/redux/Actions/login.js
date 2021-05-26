@@ -4,6 +4,7 @@ import {
   SIGN_OUT,
   SET_SELF_HOSTED,
   SET_SERVER_URL,
+  OPEN_GUIDE,
 } from "./index.js";
 
 export const register = ({ username, email, token }) => {
@@ -49,6 +50,13 @@ export const setSelfHosted = ({ selfHosted }) => {
 export const signOut = () => {
   return {
     type: SIGN_OUT,
+    payload: {},
+  };
+};
+
+export const openGuide = () => {
+  return {
+    type: OPEN_GUIDE,
     payload: {},
   };
 };
