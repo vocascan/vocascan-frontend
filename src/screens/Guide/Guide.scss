@@ -1,35 +1,5 @@
-.guide-invisible {
-  display: none;
-}
-
-.guide-visible {
-  width: 100%;
-  height: 100vh;
-  background: hsl(0, 0%, 0%, 0.4);
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-
-  .guide-inner {
-    min-width: 450px;
-    max-width: 550px;
-    min-height: 450px;
-    max-height: 550px;
-    width: 60%;
-    height: 60%;
-    margin: auto;
-    background: #fff;
-    z-index: 11;
-    padding: 40px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 5px;
-
-    .guide-inner-heading {
-      font-size: 25px;
-      margin: 20px 0 0;
-    }
-  }
+.skip-button {
+  position:absolute;
+   right: 20px;
+   top: 20px;
 }

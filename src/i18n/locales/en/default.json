@@ -42,7 +42,8 @@
     "query": "Query",
     "finish": "Finish",
     "back": "Back",
-    "comingSoon": "Coming soon..."
+    "comingSoon": "Coming soon...",
+    "skip": "Skip"
   },
   "components": {
     "groupForm": {
@@ -178,7 +179,10 @@
       "heading": "Select your option",
       "vocascanCloud": {
         "heading": "Vocascan cloud",
-        "pro": ["No need of a server", "sync every device"],
+        "pro": [
+          "No need of a server",
+          "sync every device"
+        ],
         "contra": [
           "Your data is stored on vocascan servers",
           "Not available for now"

@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
+import Button from "../../Components/Button/Button.jsx";
 import { SelectOptionWithFlag } from "../../Components/Form/Select/Select.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import SlideShow from "../../Components/SlideShow/SlideShow.jsx";
@@ -21,7 +22,7 @@ import "./Guide.scss";
 const Guide = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
-  const isFirstLogin = useSelector((state) => state.login.firstLogin);
+  const isFirstLogin = true; //useSelector((state) => state.login.firstLogin);
   const [show, setShow] = useState(isFirstLogin);
 
   const [canContinue, setCanContinue] = useState(true);
@@ -133,6 +134,17 @@ const Guide = () => {
       closeOnEscape={false}
       size="large"
     >
+      <div className="skip-button">
+        <Button
+          block
+          uppercase
+          variant={"outline"}
+          onClick={() => setShow(false)}
+        >
+          {t("global.skip")}
+        </Button>
+      </div>
+
       <SlideShow pages={guidePages} onEnd={onEnd} canContinue={canContinue} />
     </Modal>
   );
