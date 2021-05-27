@@ -105,12 +105,13 @@ const Guide = () => {
 
   const vocabAdded = useCallback(
     (newVocab) => {
+      console.log(newVocab);
       setFallbackVocab({
-        name: newVocab?.name,
-        Translations: newVocab?.translations,
-        description: newVocab?.description,
-        active: newVocab?.active,
-        activate: newVocab?.activate,
+        name: newVocab.name,
+        Translations: newVocab.translations,
+        description: newVocab.description,
+        active: newVocab.active,
+        activate: newVocab.activate,
       });
       setHasVocab(true);
       showSnack("success", t("screens.firstStartup.saveVocabSuccessMessage"));
@@ -163,6 +164,7 @@ const Guide = () => {
       groupId={selectedGroup?.value}
       onLoad={onLoadVocabForm}
       canSave={!hasVocab}
+      clearOnSubmit={false}
     />,
     <End setCanContinue={setCanContinue} />,
   ];

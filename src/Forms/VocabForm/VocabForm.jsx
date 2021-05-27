@@ -32,6 +32,7 @@ const VocabForm = ({
   groupId = null,
   onLoad = null,
   canSave = true,
+  clearOnSubmit = true,
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
@@ -179,11 +180,13 @@ const VocabForm = ({
       localActivate
     )
       .then((response) => {
-        onClear();
+        if (clearOnSubmit) {
+          onClear();
+        }
         dispatch(setVocabActive({ active: localActive }));
         dispatch(setVocabActivate({ activate: localActivate }));
         showSnack("success", t("components.vocabForm.saveSuccessMessage"));
-        onSubmitCallback && onSubmitCallback(response);
+        onSubmitCallback && onSubmitCallback(response.data);
       })
       .catch((e) => {
         showSnack("error", t("components.vocabForm.saveErrorMessage"));
@@ -201,6 +204,7 @@ const VocabForm = ({
     showSnack,
     t,
     onSubmitCallback,
+    clearOnSubmit,
     dispatch,
   ]);
 
