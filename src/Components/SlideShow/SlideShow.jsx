@@ -33,7 +33,7 @@ const SlideShow = ({ pages, onEnd, canContinue }) => {
           </Button>
         </div>
         <div className="bar-property indicator">
-          <Indicator activeState={index} max={pages.length} />
+          <Indicator pageNumber={index} max={pages.length} />
         </div>
         <div className="bar-property">
           <Button
