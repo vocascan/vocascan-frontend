@@ -144,7 +144,8 @@ const GroupForm = ({
 
   useEffect(() => {
     onLoad && onLoad();
-  }, [onLoad]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="group-form">
