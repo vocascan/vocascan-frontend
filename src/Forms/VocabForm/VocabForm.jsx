@@ -183,7 +183,7 @@ const VocabForm = ({
         dispatch(setVocabActive({ active: localActive }));
         dispatch(setVocabActivate({ activate: localActivate }));
         showSnack("success", t("components.vocabForm.saveSuccessMessage"));
-        onSubmitCallback && onSubmitCallback();
+        onSubmitCallback && onSubmitCallback(response);
       })
       .catch((e) => {
         showSnack("error", t("components.vocabForm.saveErrorMessage"));

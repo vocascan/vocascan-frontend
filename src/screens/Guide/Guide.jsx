@@ -30,8 +30,12 @@ const Guide = () => {
 
   const [canContinue, setCanContinue] = useState(true);
   const [selectedPackage, setSelectedPackage] = useState(null);
+  const [fallbackPackage, setFallbackPackage] = useState(null);
 
   const [selectedGroup, setSelectedGroup] = useState(null);
+  const [fallbackGroup, setFallbackGroup] = useState(null);
+
+  const [fallbackVocab, setFallbackVocab] = useState(null);
 
   const [hasPackage, setHasPackage] = useState(false);
   const [hasGroup, setHasGroup] = useState(false);
@@ -41,12 +45,32 @@ const Guide = () => {
     setShow(isFirstLogin);
   }, [isFirstLogin]);
 
-  const skipGuide = useCallback(() => {
+  const onEnd = useCallback(() => {
+    setCanContinue(false);
+    setSelectedPackage(null);
+    setFallbackPackage(null);
+    setSelectedGroup(null);
+    setFallbackGroup(null);
+    setFallbackVocab(null);
+    setHasPackage(false);
+    setHasGroup(false);
+    setHasVocab(false);
     dispatch(closeGuide());
+
+    //reload windows in order to show up created package
+    window.location.reload();
   }, [dispatch]);
 
   const packageAdded = useCallback(
     (newPackage) => {
+      setFallbackPackage({
+        name: newPackage.name,
+        code: newPackage.code,
+        foreignWordLanguage: newPackage.foreignWordLanguage,
+        translatedWordLanguage: newPackage.translatedWordLanguage,
+        vocabsPerDay: newPackage.vocabsPerDay,
+        rightWords: newPackage.rightWords,
+      });
       setSelectedPackage({
         value: newPackage.id,
         label: (
@@ -66,6 +90,11 @@ const Guide = () => {
 
   const groupAdded = useCallback(
     (newGroup) => {
+      setFallbackGroup({
+        name: newGroup.name,
+        description: newGroup.description,
+        active: newGroup.active,
+      });
       setSelectedGroup({ value: newGroup.id, label: newGroup.name });
       showSnack("success", t("screens.firstStartup.saveGroupSuccessMessage"));
       setCanContinue(true);
@@ -74,11 +103,21 @@ const Guide = () => {
     [setCanContinue, showSnack, t]
   );
 
-  const vocabAdded = useCallback(() => {
-    setHasVocab(true);
-    showSnack("success", t("screens.firstStartup.saveVocabSuccessMessage"));
-    setCanContinue(true);
-  }, [setCanContinue, showSnack, t]);
+  const vocabAdded = useCallback(
+    (newVocab) => {
+      setFallbackVocab({
+        name: newVocab?.name,
+        Translations: newVocab?.translations,
+        description: newVocab?.description,
+        active: newVocab?.active,
+        activate: newVocab?.activate,
+      });
+      setHasVocab(true);
+      showSnack("success", t("screens.firstStartup.saveVocabSuccessMessage"));
+      setCanContinue(true);
+    },
+    [setCanContinue, showSnack, t]
+  );
 
   const onLoadPackageForm = useCallback(() => {
     if (!hasPackage) {
@@ -98,23 +137,19 @@ const Guide = () => {
     }
   }, [hasVocab, setCanContinue]);
 
-  const onEnd = useCallback(() => {
-    setShow(false);
-    //reload windows in order to show up created package
-    window.location.reload();
-  }, []);
-
   const guidePages = [
     <Start setCanContinue={setCanContinue} />,
     <PackageDescription setCanContinue={setCanContinue} />,
     <PackageForm
       onSubmitCallback={packageAdded}
+      defaultData={fallbackPackage}
       onLoad={onLoadPackageForm}
       canSave={!hasPackage}
     />,
     <GroupDescription setCanContinue={setCanContinue} />,
     <GroupForm
       fixedPackage
+      defaultData={fallbackGroup}
       selectedPackage={selectedPackage}
       onSubmitCallback={groupAdded}
       onLoad={onLoadGroupForm}
@@ -123,6 +158,7 @@ const Guide = () => {
     <VocabDescription setCanContinue={setCanContinue} />,
     <VocabForm
       onSubmitCallback={vocabAdded}
+      defaultData={fallbackVocab}
       packageId={selectedPackage?.value}
       groupId={selectedGroup?.value}
       onLoad={onLoadVocabForm}
@@ -144,7 +180,7 @@ const Guide = () => {
       size="large"
     >
       <div className="skip-button">
-        <Button block uppercase variant={"outline"} onClick={() => skipGuide()}>
+        <Button block uppercase variant={"outline"} onClick={() => onEnd()}>
           {t("global.skip")}
         </Button>
       </div>
