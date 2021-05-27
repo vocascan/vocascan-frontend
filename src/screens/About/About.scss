@@ -1,0 +1,34 @@
+@import "../../colors";
+
+.about {
+  width: 100%;
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  .wrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .dependency-card {
+      background-color: $color-background-inverse;
+      color: #fff;
+      padding: 10px;
+      margin: 6px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.125s ease-in-out;
+
+      &:hover {
+        background-color: #{$color-background-inverse + "99"};
+      }
+    }
+  }
+}

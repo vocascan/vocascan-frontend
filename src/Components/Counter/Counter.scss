@@ -1,0 +1,26 @@
+@import "../../colors";
+
+.counter {
+  display: inline-block;
+  color: #fff;
+  min-width: 7px;
+  height: 18px;
+  padding: 0 6px;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 9px;
+
+  &.primary {
+    background-color: $color-primary;
+  }
+
+  &.primary-dark {
+    background-color: $color-primary-dark;
+  }
+
+  &.background-inverse {
+    background-color: $color-background-inverse;
+  }
+}

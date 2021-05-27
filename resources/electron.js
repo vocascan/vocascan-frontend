@@ -1,5 +1,12 @@
 const path = require("path");
-const { app, BrowserWindow, ipcMain, Notification, Menu } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  Notification,
+  Menu,
+  shell,
+} = require("electron");
 const isDev = require("electron-is-dev");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
@@ -129,6 +136,12 @@ const createWindow = () => {
   // clear memory
   windows.main.on("closed", () => (windows.main = null));
   windows.splash.on("closed", () => (windows.splash = null));
+
+  // open links in default browser
+  windows.main.webContents.on("new-window", (e, url) => {
+    e.preventDefault();
+    shell.openExternal(url);
+  });
 
   windows.splash.once("ready-to-show", () => {
     if (!isDev) {

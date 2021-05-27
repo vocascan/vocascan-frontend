@@ -1,0 +1,50 @@
+@import "../../colors";
+
+.card {
+  display: inline-block;
+  width: 130px;
+  height: 170px;
+  margin: 8px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+
+  img {
+    width: 130px;
+  }
+
+  .backdrop {
+    transition: border-radius 0.125s ease-in-out, top 0.125s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    top: 130px;
+    background-color: $color-background-inverse;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .name {
+      font-size: 14px;
+    }
+
+    .description {
+      display: none;
+      color: #bbb;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+
+  &:hover .backdrop {
+    top: 0;
+
+    background: linear-gradient(180deg, #{$color-background-inverse+"90"} 0%, $color-background-inverse 75%, $color-background-inverse 100%);
+
+    .description {
+      display: block;
+    }
+  }
+}

@@ -274,6 +274,9 @@
     },
     "custom": {
       "title": "Custom learning"
+    },
+    "about": {
+      "title": "About vocascan"
     }
   },
   "nav": {
@@ -283,6 +286,7 @@
     "allVocabulary": "Library",
     "custom": "Custom",
     "settings": "Settings",
+    "about": "About",
     "profile": "Profile",
     "logout": "Logout"
   },
@@ -320,5 +324,12 @@
       "heading": "Delete account",
       "input": "Type in your username to confirm deletion"
     }
+  },
+  "contributors": {
+    "desktop": "Vocascan desktop contributors",
+    "server": "Vocascan server contributors",
+    "translator": "Translators",
+    "miscellaneous": "Miscellaneous contributors",
+    "dependencies": "External dependencies"
   }
 }
