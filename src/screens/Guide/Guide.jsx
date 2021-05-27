@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
 import { SelectOptionWithFlag } from "../../Components/Form/Select/Select.jsx";
@@ -16,12 +16,15 @@ import Start from "./Pages/Start/Start.jsx";
 import VocabDescription from "./Pages/VocabDescription/VocabDescription.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
+import { closeGuide } from "../../redux/Actions/login.js";
 
 import "./Guide.scss";
 
 const Guide = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const { showSnack } = useSnack();
+
   const isFirstLogin = useSelector((state) => state.login.firstLogin);
   const [show, setShow] = useState(false);
 
@@ -37,6 +40,10 @@ const Guide = () => {
   useEffect(() => {
     setShow(isFirstLogin);
   }, [isFirstLogin]);
+
+  const skipGuide = useCallback(() => {
+    dispatch(closeGuide());
+  }, [dispatch]);
 
   const packageAdded = useCallback(
     (newPackage) => {
@@ -137,12 +144,7 @@ const Guide = () => {
       size="large"
     >
       <div className="skip-button">
-        <Button
-          block
-          uppercase
-          variant={"outline"}
-          onClick={() => setShow(false)}
-        >
+        <Button block uppercase variant={"outline"} onClick={() => skipGuide()}>
           {t("global.skip")}
         </Button>
       </div>
