@@ -7,6 +7,7 @@ import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/Authent
 import CleanLayout from "./Components/Layout/CleanLayout/CleanLayout.jsx";
 import Snackbar from "./Components/Snackbar/Snackbar.jsx";
 import { SnackbarProvider } from "./context/SnackbarContext.jsx";
+import About from "./screens/About/About.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import Custom from "./screens/Custom/Custom.jsx";
 import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
@@ -108,6 +109,7 @@ const App = () => {
               <Route path="/custom" component={Custom} />
               <Route path="/settings" component={Settings} />
               <Route path="/profile" component={Profile} />
+              <Route path="/about" component={About} />
               <Route path="/">
                 <Redirect to="learn" />
               </Route>

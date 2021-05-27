@@ -50,6 +50,11 @@ const TopNav = () => {
                   {t("nav.settings")}
                 </NavLink>
               </li>
+              <li className="menu-list-item">
+                <NavLink to="/about" className="menu-list-item-btn">
+                  {t("nav.about")}
+                </NavLink>
+              </li>
               <li className="menu-list-item" onClick={handleLogout}>
                 <Button className="menu-list-item-btn">
                   {t("nav.logout")}

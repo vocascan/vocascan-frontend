@@ -27,10 +27,8 @@ const AllPackages = () => {
   const [data, setData] = useState([]);
   const [currentPackage, setCurrentPackage] = useState(null);
   const [showPackageModal, setShowPackageModal] = useState(false);
-  const [
-    showDeleteConfirmationModal,
-    setShowDeleteConfirmationModal,
-  ] = useState(false);
+  const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
+    useState(false);
 
   const languages = useSelector((state) => state.language.languages);
 
