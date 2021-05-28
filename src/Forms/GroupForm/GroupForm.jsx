@@ -22,6 +22,8 @@ const GroupForm = ({
   defaultData = null,
   selectedPackage = null,
   onSubmitCallback = null,
+  onLoad = null,
+  canSave = true,
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
@@ -97,8 +99,8 @@ const GroupForm = ({
     defaultData?.id,
     description,
     dispatch,
-    languagePackage.id,
-    languagePackage.value,
+    languagePackage?.id,
+    languagePackage?.value,
     localActive,
     name,
     onSubmitCallback,
@@ -111,8 +113,8 @@ const GroupForm = ({
   }, []);
 
   useEffect(() => {
-    setCanSubmit(!(!name || !languagePackage));
-  }, [languagePackage, name]);
+    setCanSubmit(!(!name || !languagePackage || !canSave));
+  }, [languagePackage, name, canSave]);
 
   useEffect(() => {
     if (fixedPackage) {
@@ -130,7 +132,7 @@ const GroupForm = ({
           value: p.id,
           label: (
             <SelectOptionWithFlag
-              name={p.foreignWordLanguage}
+              name={p.name}
               foreignLanguageCode={p.foreignWordLanguage}
               translatedLanguageCode={p.translatedWordLanguage}
             />
@@ -139,6 +141,11 @@ const GroupForm = ({
       })
     );
   }, [languagePackages]);
+
+  useEffect(() => {
+    onLoad && onLoad();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="group-form">

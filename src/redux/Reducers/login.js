@@ -8,6 +8,8 @@ import {
   SIGN_OUT,
   SET_SERVER_URL,
   SET_SELF_HOSTED,
+  OPEN_GUIDE,
+  CLOSE_GUIDE,
 } from "../Actions/index.js";
 
 const defaultState = {
@@ -97,6 +99,18 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         selfHosted: action.payload.selfHosted,
+      };
+
+    case OPEN_GUIDE:
+      return {
+        ...state,
+        firstLogin: true,
+      };
+
+    case CLOSE_GUIDE:
+      return {
+        ...state,
+        firstLogin: false,
       };
 
     default:

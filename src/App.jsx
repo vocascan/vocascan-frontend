@@ -10,7 +10,7 @@ import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import About from "./screens/About/About.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import Custom from "./screens/Custom/Custom.jsx";
-import FirstStartup from "./screens/FirstStartup/FirstStartup.jsx";
+import Guide from "./screens/Guide/Guide.jsx";
 import Learn from "./screens/Learn/Learn.jsx";
 import Library from "./screens/Library/Library.jsx";
 import Login from "./screens/Login/Login.jsx";
@@ -100,7 +100,7 @@ const App = () => {
       <HashRouter>
         <SnackbarProvider>
           <AuthenticatedLayout>
-            <FirstStartup />
+            <Guide />
             <Switch>
               <Route path="/addVocab" component={AddVocab} />
               <Route path="/learn" component={Learn} />

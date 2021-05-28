@@ -26,14 +26,6 @@ const SelectionScreen = () => {
   return (
     <UnauthenticatedLayout>
       <div className="select-srn-wrapper">
-        <div className="select-srn-header-wrapper">
-          <h1 className="select-srn-title">
-            {t("screens.selectionScreen.title")}
-          </h1>
-          <h1 className="select-srn-heading">
-            {t("screens.selectionScreen.heading")}
-          </h1>
-        </div>
         <div className="boxes">
           <SelectionBox
             heading={t("screens.selectionScreen.vocascanCloud.heading")}
@@ -45,7 +37,9 @@ const SelectionScreen = () => {
             })}
             buttonText={t("screens.selectionScreen.vocascanCloud.button")}
             image={Image}
+            important
             onSubmit={() => handleSubmit(false)}
+            disabled
           />
           <SelectionBox
             heading={t("screens.selectionScreen.vocascanServer.heading")}

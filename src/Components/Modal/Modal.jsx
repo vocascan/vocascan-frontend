@@ -9,9 +9,10 @@ import "./Modal.scss";
 const Modal = ({
   title,
   onClose,
-  size = "", // small, large, ""
+  size = "", // small, large, maxed, ""
   open = false,
   renderClose = true,
+  closeOnEscape = true,
   closeOnClickOutside = false,
   children,
 }) => {
@@ -20,7 +21,7 @@ const Modal = ({
   const escapeListener = useCallback(
     (e) => {
       if (e.key === "Escape") {
-        onClose?.();
+        closeOnEscape && onClose?.();
       }
     },
     // Modal specific dependency

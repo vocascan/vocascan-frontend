@@ -49,6 +49,15 @@
         cursor: pointer;
       }
     }
+
+    &.btn-dark {
+      background-color: $color-background-inverse;
+
+      &:hover {
+        background-color: $color-alternative;
+        cursor: pointer;
+      }
+    }
   }
 
   &.btn-outline {

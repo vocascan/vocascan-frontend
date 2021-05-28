@@ -14,7 +14,12 @@ import { findLanguageByCode, getLanguageString } from "../../utils/index.js";
 
 import "./PackageForm.scss";
 
-const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
+const PackageForm = ({
+  defaultData = null,
+  onSubmitCallback = null,
+  onLoad = null,
+  canSave = true,
+}) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
@@ -146,7 +151,8 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
         !foreignLanguage ||
         !translatedLanguage ||
         !vocabsPerDay ||
-        !rightTranslations
+        !rightTranslations ||
+        !canSave
       )
     );
   }, [
@@ -155,7 +161,12 @@ const PackageForm = ({ defaultData = null, onSubmitCallback = null }) => {
     rightTranslations,
     translatedLanguage,
     vocabsPerDay,
+    canSave,
   ]);
+
+  useEffect(() => {
+    onLoad && onLoad();
+  }, [onLoad]);
 
   return (
     <div className="language-package-form">

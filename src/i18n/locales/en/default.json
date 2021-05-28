@@ -40,7 +40,10 @@
     "correct": "Correct",
     "total": "Total",
     "query": "Query",
-    "comingSoon": "Coming soon..."
+    "finish": "Finish",
+    "back": "Back",
+    "comingSoon": "Coming soon...",
+    "skip": "Skip"
   },
   "components": {
     "groupForm": {
@@ -176,7 +179,10 @@
       "heading": "Select your option",
       "vocascanCloud": {
         "heading": "Vocascan cloud",
-        "pro": ["No need of a server", "sync every device"],
+        "pro": [
+          "No need of a server",
+          "sync every device"
+        ],
         "contra": [
           "Your data is stored on vocascan servers",
           "Not available for now"
@@ -197,9 +203,45 @@
         "button": "Start for free"
       }
     },
+    "guide": {
+      "title": "Guide",
+      "start": {
+        "slogan": "A highly configurable vocabulary trainer"
+      },
+      "packageDescription": {
+        "bulletPoints": [
+          "The main piece of this trainer are packages, where you can store all your vocabs from a language.",
+          "Packages can be created over package select box or in the library over the + icon, as you can see on the left images"
+        ],
+        "endText": "That said we will create your first vocabulary package."
+      },
+      "groupDescription": {
+        "bulletPoints": [
+          "Every package is divided into groups, where you can store your vocabs more organized.",
+          "Groups can be created over a group selection box or the library like the packages.",
+          "Every group has a active trigger where you can decide whether the included vocabs get queried or not."
+        ],
+        "endText": "Next we will create a group."
+      },
+      "vocabDescription": {
+        "heading": "Now we come to the most important part of Vocascan - the vocab cards -",
+        "bulletPoints": [
+          "You can create vocab cards while deciding which package and group they belong to.",
+          "Every vocab has a specific active toggle also where you can decide over the query status more precisely.",
+          "The 'Activate' toggle will decide if you have to activate your vocabs first before the first query or if you directly start learning with them."
+        ],
+        "endText": "In the next step we will create a vocab card"
+      },
+      "end": {
+        "heading": "Now you are set up",
+        "description": "Have fun trying out Vocascan"
+      }
+    },
     "firstStartup": {
       "title": "Create your first vocabulary package",
-      "savePackageSuccessMessage": "New package added"
+      "savePackageSuccessMessage": "New package added",
+      "saveGroupSuccessMessage": "New group added",
+      "saveVocabSuccessMessage": "New vocab added"
     },
     "login": {
       "title": "Login",
@@ -219,6 +261,10 @@
         "label": "Menu style",
         "optionLeft": "Default",
         "optionRight": "Fancy"
+      },
+      "guide": {
+        "title": "Forgot how to use Vocascan? Just reopen the guide",
+        "button": "Reopen Guide"
       },
       "desktopVersion": "Desktop version",
       "serverVersion": "Server version"

@@ -22,12 +22,17 @@ import {
 } from "../../utils/api.js";
 import { maxTranslations } from "../../utils/constants.js";
 
+import "./VocabForm.scss";
+
 const VocabForm = ({
   defaultData = null,
   onSubmitCallback = null,
   title = null,
   packageId = null,
   groupId = null,
+  onLoad = null,
+  canSave = true,
+  clearOnSubmit = true,
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
@@ -175,11 +180,13 @@ const VocabForm = ({
       localActivate
     )
       .then((response) => {
-        onClear();
+        if (clearOnSubmit) {
+          onClear();
+        }
         dispatch(setVocabActive({ active: localActive }));
         dispatch(setVocabActivate({ activate: localActivate }));
         showSnack("success", t("components.vocabForm.saveSuccessMessage"));
-        onSubmitCallback && onSubmitCallback();
+        onSubmitCallback && onSubmitCallback(response.data);
       })
       .catch((e) => {
         showSnack("error", t("components.vocabForm.saveErrorMessage"));
@@ -197,6 +204,7 @@ const VocabForm = ({
     showSnack,
     t,
     onSubmitCallback,
+    clearOnSubmit,
     dispatch,
   ]);
 
@@ -300,8 +308,12 @@ const VocabForm = ({
     );
   }, [groups]);
 
+  useEffect(() => {
+    onLoad && onLoad();
+  }, [onLoad]);
+
   return (
-    <>
+    <div className="vocab-form">
       {title && <h1 className="heading">{title}</h1>}
 
       <div className="dropdowns">
@@ -394,7 +406,8 @@ const VocabForm = ({
               foreignWord &&
               translations?.length &&
               selectedGroup &&
-              selectedPackage
+              selectedPackage &&
+              canSave
             )
           }
         >
@@ -415,7 +428,7 @@ const VocabForm = ({
           onSubmitCallback={groupAdded}
         />
       </Modal>
-    </>
+    </div>
   );
 };
 
