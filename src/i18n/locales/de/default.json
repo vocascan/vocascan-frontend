@@ -36,7 +36,7 @@
       "activateLabel": "Aktivieren",
       "activateTooltip": "Entscheidet, ob die Vokabel separat aktiviert werden muss, um sie in der nächsten Abfrage verwenden zu können",
       "activeLabel": "Aktiv",
-      "activeTooltip": "Entscheidet ob die Vokabel in der Abfrage geprüft wird",
+      "activeTooltip": "Entscheidet, ob die Vokabel in der Abfrage geprüft wird",
       "addTranslation": "Übersetzung hinzufügen",
       "modifyErrorMessage": "Vokabel konnte nicht gespeichert werden",
       "modifySuccessMessage": "Vokabel gespeichert",
@@ -124,7 +124,7 @@
     },
     "deleteAccount": {
       "heading": "Account löschen",
-      "input": "Gebe deinen Benutzernamen ein, um deinen Account zu löschen"
+      "input": "Gebe Deinen Benutzernamen ein, um Deinen Account zu löschen"
     },
     "selectLanguage": {
       "title": "App-Sprache auswählen"
@@ -181,7 +181,7 @@
     },
     "allVocabs": {
       "addVocab": "Vokabeln hinzufügen",
-      "deleteDescription": "Möchtest du die Vokabel {{name}} wirklich löschen?",
+      "deleteDescription": "Möchtest Du die Vokabel {{name}} wirklich löschen?",
       "deleteFailMessage": "Vokabel konnte nicht gelöscht werden",
       "deleteSuccessMessage": "Vokabel gelöscht",
       "deleteTitle": "Vokabel löschen",
@@ -197,11 +197,11 @@
       "empty": "Es wurden keine Pakete gefunden"
     },
     "direction": {
-      "title": "Bitte wähle deine Richtung"
+      "title": "Bitte wähle Deine Richtung"
     },
     "endScreen": {
       "congratulations": [
-        "Das musst du noch besser üben",
+        "Das musst Du noch besser üben",
         "Nächstes mal wird es bestimmt besser",
         "Bleib dran",
         "Glückwunsch",
@@ -214,27 +214,27 @@
       "saveGroupSuccessMessage": "Neue Gruppe hinzugefügt",
       "savePackageSuccessMessage": "Neues Paket hinzugefügt",
       "saveVocabSuccessMessage": "Neue Vokabel hinzugefügt",
-      "title": "Erstelle dein erstes Vokabelpaket"
+      "title": "Erstelle Dein erstes Vokabelpaket"
     },
     "guide": {
       "end": {
         "description": "Viel Spaß beim Ausprobieren von Vocascan",
-        "heading": "Jetzt bist du bereit"
+        "heading": "Jetzt bist Du bereit"
       },
       "groupDescription": {
         "bulletPoints": [
-          "Jedes Paket ist nochmal in Gruppen unterteilt, wodurch du deine Vokabeln noch organisierter speichern kannst.",
+          "Jedes Paket ist nochmal in Gruppen unterteilt, wodurch Du Deine Vokabeln noch organisierter speichern kannst.",
           "Gruppen können, wie die Pakete, über die Gruppenauwahl-Box oder die Bibliothek erstellt werden.",
-          "Jede Gruppe hat einen \"Aktiv\"-Schalter, mit dem du entscheiden kannst ob darin enthaltene Vokabeln abgefragt werden oder nicht."
+          "Jede Gruppe hat einen \"Aktiv\"-Schalter, mit dem Du entscheiden kannst, ob darin enthaltene Vokabeln abgefragt werden oder nicht."
         ],
         "endText": "Als nächstes werden wir eine Gruppe erstellen."
       },
       "packageDescription": {
         "bulletPoints": [
-          "Das Herzstück des Trainers sind Pakete, in denen du alle Vokabeln einer Sprache speichern kannst.",
-          "Pakete können über die Paketauswahl-Box oder über die Bibliothek durch das + Icon erstellt werden, wie du auf den Bildern links sehen kannst."
+          "Das Herzstück des Trainers sind Pakete, in denen Du alle Vokabeln einer Sprache speichern kannst.",
+          "Pakete können über die Paketauswahl-Box oder über die Bibliothek durch das + Icon erstellt werden, wie Du auf den Bildern links sehen kannst."
         ],
-        "endText": "Nachdem das geklärt ist, werden wir dein erstes Vokabelpaket erstellen."
+        "endText": "Nachdem das geklärt ist, werden wir Dein erstes Vokabelpaket erstellen."
       },
       "start": {
         "slogan": "Ein hoch konfigurierbarer Vokabeltrainer"
@@ -242,31 +242,31 @@
       "title": "Anleitung",
       "vocabDescription": {
         "bulletPoints": [
-          "Du kannst Vokabeln erstellen, während du entscheidest zu welchem Paket und welcher Gruppe sie gehören.",
-          "Jede Vokabelkarte hat auch einen \"Aktiv\"-Schalter, mit dem du genauer über den Abfragestatus bestimmen kannst.",
-          "Der \"Aktivieren\"-Schalter entscheidet, ob du du die Vokabeln vor der ersten Abfrage erst aktivieren musst, oder direkt anfangen kannst mit ihnen zu lernen."
+          "Du kannst Vokabeln erstellen, während Du entscheidest zu welchem Paket und welcher Gruppe sie gehören sollen.",
+          "Jede Vokabelkarte hat auch einen \"Aktiv\"-Schalter, mit dem Du genauer über den Abfragestatus bestimmen kannst.",
+          "Der \"Aktivieren\"-Schalter entscheidet, ob Du du die Vokabeln vor der ersten Abfrage erst aktivieren musst, oder direkt anfangen kannst mit ihnen zu lernen."
         ],
-        "endText": "Im nächsten Schritt erstellen wir eine Vokabelkarte",
+        "endText": "Im nächsten Schritt erstellen wir eine Vokabelkarte.",
         "heading": "Nun kommen wir zum wichtigsten Teil von Vocascan - Die Vokabelkarten - "
       }
     },
     "login": {
       "dontHaveAccount": "Du hast kein Account?",
       "title": "Anmelden",
-      "wrongCredentials": "Deine E-Mail oder dein Passwort ist falsch"
+      "wrongCredentials": "Deine E-Mail oder Dein Passwort ist falsch"
     },
     "profile": {
       "accountSettings": {
         "delete": {
-          "description": "Sobald Du dein Konto gelöscht hast, ist es für immer weg",
+          "description": "Sobald du Dein Konto gelöscht hast, ist es für immer weg",
           "title": "Account löschen"
         },
         "email": {
-          "description": "Achten darauf, eine gültige E-Mail zu verwenden",
+          "description": "Achte darauf, eine gültige E-Mail zu verwenden",
           "title": "E-Mail-Adresse ändern"
         },
         "password": {
-          "description": "Ändere dein altes Passwort, wenn du es vergessen hast",
+          "description": "Ändere Dein altes Passwort, wenn Du es vergessen hast",
           "title": "Passwort ändern"
         },
         "title": "Accounteinstellungen"
@@ -289,18 +289,18 @@
       "usernameInUse": "Der Benutzername ist schon vergeben"
     },
     "selectionScreen": {
-      "heading": "Wählen Deine Option",
+      "heading": "Wähle Deine Option",
       "title": "Anmelden",
       "vocascanCloud": {
         "button": "Jetzt kostenlos starten",
         "contra": [
-          "Ihre Daten werden auf den Servern von vocascan gespeichert",
+          "Ihre Daten werden auf den Servern von Vocascan gespeichert",
           "Momentan nicht verfügbar"
         ],
         "heading": "Vocascan cloud",
         "pro": [
           "Keine Notwendigkeit eines Servers",
-          "jedes Gerät synchronisieren"
+          "Synchronisiere jedes Gerät"
         ]
       },
       "vocascanServer": {
@@ -321,7 +321,7 @@
       "desktopVersion": "Desktopversion",
       "guide": {
         "button": "Anleitung erneut öffnen",
-        "title": "Haben sie vergessen, wie man Vocascan benutzt? Öffne einfach die Anleitung"
+        "title": "Hast Du vergessen, wie man Vocascan benutzt? Öffne einfach die Anleitung"
       },
       "menu": {
         "label": "Menu Stil",
