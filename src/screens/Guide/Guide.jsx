@@ -58,7 +58,7 @@ const Guide = () => {
     dispatch(closeGuide());
 
     //reload windows in order to show up created package
-    window.location.reload();
+    window.location.href = "/";
   }, [dispatch]);
 
   const packageAdded = useCallback(
@@ -105,7 +105,6 @@ const Guide = () => {
 
   const vocabAdded = useCallback(
     (newVocab) => {
-      console.log(newVocab);
       setFallbackVocab({
         name: newVocab.name,
         Translations: newVocab.translations,
