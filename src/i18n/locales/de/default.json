@@ -59,6 +59,7 @@
     "abort": "Abbrechen",
     "activate": "Aktivieren",
     "add": "Hinzufügen",
+    "back": "Zurück",
     "close": "Schließen",
     "comingSoon": "Bald verfügbar",
     "continue": "Weiter",
@@ -67,6 +68,7 @@
     "description": "Beschreibung",
     "email": "E-Mail",
     "fetchError": "Es ist etwas schief gelaufen. Bitte probiere es später noch einmal.",
+    "finish": "Beenden",
     "foreignWord": "Fremdwort",
     "group": "Gruppe",
     "groups": "Gruppen",
@@ -88,6 +90,7 @@
     "serverNotResponding": "Der Server antwortet nicht",
     "signIn": "Anmelden",
     "signUp": "Registrieren",
+    "skip": "Überspringen",
     "submit": "Absenden",
     "successMessage": "Erfolgreich!",
     "total": "Gesamt",
@@ -208,8 +211,44 @@
       "percentageText": "Du hast {{percentage}}% der Vokabeln richtig gelöst"
     },
     "firstStartup": {
+      "saveGroupSuccessMessage": "Neue Gruppe hinzugefügt",
       "savePackageSuccessMessage": "Neues Paket hinzugefügt",
+      "saveVocabSuccessMessage": "Neue Vokabel hinzugefügt",
       "title": "Erstelle dein erstes Vokabelpaket"
+    },
+    "guide": {
+      "end": {
+        "description": "Viel Spaß beim Ausprobieren von Vocascan",
+        "heading": "Jetzt bist du bereit"
+      },
+      "groupDescription": {
+        "bulletPoints": [
+          "Jedes Paket ist nochmal in Gruppen unterteilt, wodurch du deine Vokabeln noch organisierter speichern kannst.",
+          "Gruppen können, wie die Pakete, über die Gruppenauwahl-Box oder die Bibliothek erstellt werden.",
+          "Jede Gruppe hat einen \"Aktiv\"-Schalter, mit dem du entscheiden kannst ob darin enthaltene Vokabeln abgefragt werden oder nicht."
+        ],
+        "endText": "Als nächstes werden wir eine Gruppe erstellen."
+      },
+      "packageDescription": {
+        "bulletPoints": [
+          "Das Herzstück des Trainers sind Pakete, in denen du alle Vokabeln einer Sprache speichern kannst.",
+          "Pakete können über die Paketauswahl-Box oder über die Bibliothek durch das + Icon erstellt werden, wie du auf den Bildern links sehen kannst."
+        ],
+        "endText": "Nachdem das geklärt ist, werden wir dein erstes Vokabelpaket erstellen."
+      },
+      "start": {
+        "slogan": "Ein hoch konfigurierbarer Vokabeltrainer"
+      },
+      "title": "Anleitung",
+      "vocabDescription": {
+        "bulletPoints": [
+          "Du kannst Vokabeln erstellen, während du entscheidest zu welchem Paket und welcher Gruppe sie gehören.",
+          "Jede Vokabelkarte hat auch einen \"Aktiv\"-Schalter, mit dem du genauer über den Abfragestatus bestimmen kannst.",
+          "Der \"Aktivieren\"-Schalter entscheidet, ob du du die Vokabeln vor der ersten Abfrage erst aktivieren musst, oder direkt anfangen kannst mit ihnen zu lernen."
+        ],
+        "endText": "Im nächsten Schritt erstellen wir eine Vokabelkarte",
+        "heading": "Nun kommen wir zum wichtigsten Teil von Vocascan - Die Vokabelkarten - "
+      }
     },
     "login": {
       "dontHaveAccount": "Du hast kein Account?",
@@ -280,6 +319,10 @@
     },
     "settings": {
       "desktopVersion": "Desktopversion",
+      "guide": {
+        "button": "Anleitung erneut öffnen",
+        "title": "Haben sie vergessen, wie man Vocascan benutzt? Öffne einfach die Anleitung"
+      },
       "menu": {
         "label": "Menu Stil",
         "optionLeft": "Standard",
