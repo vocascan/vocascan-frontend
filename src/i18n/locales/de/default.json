@@ -47,6 +47,13 @@
       "saveSuccessMessage": "Neue Vokabel hinzugefügt"
     }
   },
+  "contributors": {
+    "dependencies": "Externe Abhängigkeiten",
+    "desktop": "Vocascan Desktop Mitwirkende",
+    "miscellaneous": "Verschiedene Mitwirkende",
+    "server": "Vocascan Server Mitwirkende",
+    "translator": "Übersetzer"
+  },
   "global": {
     "LogIn": "Anmelden",
     "abort": "Abbrechen",
@@ -126,6 +133,7 @@
     }
   },
   "nav": {
+    "about": "Über",
     "allVocabulary": "Bibliothek",
     "custom": "Individuell",
     "learn": "Lernen",
@@ -136,6 +144,9 @@
     "settings": "Einstellungen"
   },
   "screens": {
+    "about": {
+      "title": "Über Vocascan"
+    },
     "addVocab": {
       "title": "Vokabel hinzufügen"
     },
