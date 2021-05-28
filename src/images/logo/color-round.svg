@@ -1,39 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="256mm" height="256mm" version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="256mm" height="256mm" version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
-  <linearGradient id="linearGradient1538" x1="3809.4" x2="3912.7" y1="1076.6" y2="953.85" gradientTransform="translate(-3742.9 -854.89)" gradientUnits="userSpaceOnUse">
+  <linearGradient id="linearGradient1862" x1="3809.4" x2="3912.7" y1="1076.6" y2="953.85" gradientTransform="matrix(10.328 0 0 10.328 -37991 -7163.8)" gradientUnits="userSpaceOnUse">
    <stop stop-color="#245595" offset="0"/>
    <stop stop-color="#c8008a" stop-opacity="0" offset="1"/>
   </linearGradient>
-  <clipPath id="clip0-6-3-3-44-4-5">
-   <rect width="265" height="265" fill="#fff"/>
-  </clipPath>
  </defs>
- <metadata>
-  <rdf:RDF>
-   <cc:Work rdf:about="">
-    <dc:format>image/svg+xml</dc:format>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:title/>
-   </cc:Work>
-  </rdf:RDF>
- </metadata>
- <g transform="matrix(1.9661 0 0 1.9661 -83.246 -196.75)">
-  <circle cx="107.44" cy="165.17" r="62.921" fill="#fff" stroke="#fffffd" stroke-linejoin="round" stroke-width="4.3622" style="paint-order:fill markers stroke"/>
-  <circle cx="107.44" cy="165.17" r="62.921" fill="url(#linearGradient1538)" stroke="#fffffd" stroke-linejoin="round" stroke-width="4.3622" style="paint-order:fill markers stroke"/>
-  <g transform="matrix(.24004 0 0 .24004 75.638 133.37)" clip-path="url(#clip0-6-3-3-44-4-5)" fill="#fff5ff">
-   <rect width="80" height="25"/>
-   <rect transform="rotate(90,25,0)" x="25" width="80" height="25"/>
-   <rect transform="rotate(90,265,0)" x="265" width="80" height="25"/>
-   <rect transform="rotate(180,265,25)" x="265" y="25" width="80" height="25"/>
-   <rect transform="rotate(-90,0,265)" y="265" width="80" height="25"/>
-   <rect y="240" width="80" height="25"/>
-   <rect transform="rotate(180,265,265)" x="265" y="265" width="80" height="25"/>
-   <rect transform="rotate(-90,240,265)" x="240" y="265" width="80" height="25"/>
-   <rect x="122" y="171" width="20" height="20"/>
-   <rect x="25" y="102" width="215" height="25"/>
-   <path d="m177.03 80-17.32 30h28.867l17.321-30zm-56.927 98.602 25.173-43.602h28.868l-32.391 56.102z" clip-rule="evenodd" fill-rule="evenodd"/>
-   <path d="m64.586 80 15.517 30h28.146l-15.518-30zm57.414 111-28.966-56h28.146l23.024 44.514z" clip-rule="evenodd" fill-rule="evenodd"/>
+ <g transform="matrix(.19036 0 0 .19036 -210.12 -513.83)">
+  <circle cx="1776.2" cy="3370.6" r="649.86" fill="#fff"/>
+  <circle cx="1776.2" cy="3371.6" r="649.86" fill="url(#linearGradient1862)" stroke="#fffffd" stroke-linejoin="round" stroke-width="45.054" style="paint-order:fill markers stroke"/>
+  <g transform="matrix(.80298 0 0 .80298 -2117.9 -21.203)" fill="#fff">
+   <g transform="translate(.4346 -9.1546)">
+    <path d="m4639.1 4062.6h87.148l35.714 67.676h174.1l35.714-67.676h87.148l-34.608 67.676h157.06v79.135h-664.73v-79.135h157.06z"/>
+    <path d="m4726.4 4233.1h88.367l34.292 65.946 34.292-65.946h88.367l-89.908 172.9h-65.501z"/>
+   </g>
+   <path d="m5181.4 4387.5h77.644v247.98h-248.15v-77.644l170.51-0.2575z"/>
+   <path d="m5182.3 4062.9h77.644v-247.98h-248.15v77.645l170.51 0.2562v170.07"/>
+   <path d="m4687.2 3814.9v77.646l-170.51 0.2553v170.07h-77.644l0.016-247.98h248.14"/>
+   <path d="m4439 4387.5h77.646l-0.035 170.07h169.76l-0.082 77.902h-247.28z"/>
   </g>
  </g>
 </svg>

@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="256mm" height="256mm" version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <metadata>
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g transform="matrix(.66395 0 0 .6638 94.994 37.164)">
-    <path d="m-10.843 90.009 13.835 26.748h25.096l-13.836-26.748zm51.191 98.969-25.826-49.93h25.096l20.528 39.689z" clip-rule="evenodd" fill="#fff" fill-rule="evenodd" stroke-width=".89161" />
-    <rect x="-136.41" y="-49.297" width="372.23" height="372.23" ry="35.777" fill="none" stroke-width="0" style="paint-order:fill markers stroke" />
-    <path d="m199.16-49.322c-30.349 0.2263-60.721-0.1006-91.079 0-71.101 0.1307-142.21-0.2817-213.3 0.3017-17.278 1.7894-31.479 18.218-31.226 35.191 0.3772 26.862-0.05 53.751 0.05 80.623-0.05 73.948-0.05 147.9 0.2012 221.85-0.166 19.774 19.484 36.445 38.9 34.203 100.3 0 200.61 0.27659 300.91-0.12581 18.019-1.2547 32.925-18.319 32.257-36.289-0.14499-74.512 0.06-149.04-0.05-223.55-0.12002-27.134 0.09-54.288-0.30102-81.409-1.608-13.594-12.314-25.236-24.865-29.226-3.69-1.2065-7.604-1.7628-11.484-1.5792z" fill="none" stroke="#fffffd" stroke-width="13.229" />
-    <g fill="#fff" stroke-width=".89161">
-      <rect x="-68.429" y="18.68" width="71.329" height="22.29" />
-      <rect transform="rotate(90)" x="18.68" y="46.139" width="71.329" height="22.29" />
-      <rect transform="rotate(90)" x="18.68" y="-167.85" width="71.329" height="22.29" />
-      <rect transform="scale(-1)" x="-167.85" y="-40.971" width="71.329" height="22.29" />
-      <rect transform="rotate(-90)" x="-254.96" y="-68.429" width="71.329" height="22.29" />
-      <rect x="-68.429" y="232.67" width="71.329" height="22.29" />
-      <rect transform="scale(-1)" x="-167.85" y="-254.96" width="71.329" height="22.29" />
-      <rect transform="rotate(-90)" x="-254.96" y="145.56" width="71.329" height="22.29" />
-      <rect x="40.348" y="171.15" width="17.832" height="17.832" />
-      <rect x="-46.139" y="109.62" width="191.7" height="22.29" />
-      <path d="m89.411 90.009-15.443 26.748h25.738l15.444-26.748zm-50.757 87.914 22.444-38.876h25.739l-28.88 50.021z" clip-rule="evenodd" fill-rule="evenodd" />
-    </g>
+<svg width="256mm" height="256mm" version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(.1941 0 0 .1941 363.51 -1163.8)" fill="#fff">
+  <path d="m-1728 5996c-80.234 0-144.83 64.592-144.83 144.83v1029.3c0 80.234 64.592 144.83 144.83 144.83h1029.3c80.234 0 144.83-64.592 144.83-144.83v-1029.3c0-80.234-64.592-144.83-144.83-144.83zm0.1355 52.756h1029c51.082 0 92.205 41.123 92.205 92.205v1029c0 51.082-41.124 92.205-92.205 92.205h-1029c-51.082 0-92.206-41.124-92.206-92.205v-1029c0-51.082 41.124-92.205 92.206-92.205z"/>
+  <g transform="translate(-6062.9 2430.2)">
+   <g transform="translate(.4346 -9.1546)">
+    <path d="m4639.1 4062.6h87.148l35.714 67.676h174.1l35.714-67.676h87.148l-34.608 67.676h157.06v79.135h-664.73v-79.135h157.06z"/>
+    <path d="m4726.4 4233.1h88.367l34.292 65.946 34.292-65.946h88.367l-89.908 172.9h-65.501z"/>
+   </g>
+   <path d="m5181.4 4387.5h77.644v247.98h-248.15v-77.644l170.51-0.2575z"/>
+   <path d="m5182.3 4062.9h77.644v-247.98h-248.15v77.645l170.51 0.2562v170.07"/>
+   <path d="m4687.2 3814.9v77.646l-170.51 0.2553v170.07h-77.644l0.016-247.98h248.14"/>
+   <path d="m4439 4387.5h77.646l-0.035 170.07h169.76l-0.082 77.902h-247.28z"/>
   </g>
+ </g>
 </svg>
