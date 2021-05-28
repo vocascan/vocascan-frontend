@@ -25,7 +25,10 @@ export const contributors = {
     { name: "retfloww", description: "Polski" },
     { name: "FlorianJSa", description: "Deutsch" },
   ],
-  miscellaneous: [{ name: "rgabisch", description: "Logo" }],
+  miscellaneous: [
+    { name: "rgabisch", description: "Logo" },
+    { name: "DevMimas", description: "Management, Docs" },
+  ],
 };
 
 export const additionalDependencies = {
