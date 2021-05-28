@@ -7,7 +7,8 @@ import SelectionBox from "../../Components/SelectionBox/SelectionBox.jsx";
 
 import { setSelfHosted } from "../../redux/Actions/login.js";
 
-import Image from "../../images/logo/vocascan-server-logo-small.png";
+import vocascanRound from "../../images/logo/color-round.svg";
+import vocascanCloud from "../../images/logo/vocascan-cloud.svg";
 
 import "./SelectionScreen.scss";
 
@@ -36,7 +37,7 @@ const SelectionScreen = () => {
               returnObjects: true,
             })}
             buttonText={t("screens.selectionScreen.vocascanCloud.button")}
-            image={Image}
+            image={vocascanCloud}
             important
             onSubmit={() => handleSubmit(false)}
             disabled
@@ -50,7 +51,7 @@ const SelectionScreen = () => {
               returnObjects: true,
             })}
             buttonText={t("screens.selectionScreen.vocascanServer.button")}
-            image={Image}
+            image={vocascanRound}
             onSubmit={() => handleSubmit(true)}
           />
         </div>
