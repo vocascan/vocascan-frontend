@@ -27,7 +27,7 @@
       "unresolved": "Razem do nauki:"
     },
     "validServerIndicator": {
-      "serverNotResponding": "✗ serwer nie odpowiada",
+      "serverNotResponding": "✗ Serwer nie odpowiada",
       "serverNotVocascanServer": "✗ serwer nie jest serwerem vocascan",
       "validServer": "✓ prawidłowy serwer (v {{version}})",
       "versionToOld": "✗ wersja serwera v {{version}} jest nieaktualna. Wymagane jest min v {{minVersion}}"
@@ -39,12 +39,18 @@
       "activeTooltip": "Decyduje czy słownictwo jest zawarte w query",
       "addTranslation": "Dodaj tłumaczenie",
       "modifyErrorMessage": "Nie powiodło sie zapisać słownictwa",
+      "modifySuccessMessage": "Słownictwo zapisane",
       "noGroupsMessage": "Nie znaleziono grup",
       "noPackagesMessage": "Nie znaleziono pakietów",
       "saveErrorMessage": "Nie powiodło sie dodać nowego słownictwa",
       "saveGroupSuccessMessage": "Dodano nową grupę",
       "saveSuccessMessage": "Słownictwo dodane"
     }
+  },
+  "contributors": {
+    "desktop": "Współautorzy Vocascan desktop",
+    "miscellaneous": "Inni współautorzy",
+    "server": "Współautorzy serwerów Vocascan"
   },
   "global": {
     "LogIn": "Login",
@@ -87,6 +93,7 @@
     "wrong": "Niepoprawne"
   },
   "languages": {
+    "English": "Angielski",
     "French": "Francuski",
     "German": "Niemiecki",
     "Portuguese": "Portugalski",
@@ -95,6 +102,9 @@
     "Turkish": "Turecki"
   },
   "modal": {
+    "changePassword": {
+      "oldPasswordError": "Stare hasło jest nieprawidłowe"
+    },
     "selectLanguage": {
       "title": "Wybierz język aplikacji."
     },
@@ -115,6 +125,9 @@
     "settings": "Ustawienia"
   },
   "screens": {
+    "about": {
+      "title": "O vocascan"
+    },
     "addVocab": {
       "title": "Dodaj słownictwo"
     },
@@ -151,10 +164,21 @@
       "deleteTitle": "Usuń słownictwo",
       "editVocab": "Edytuj słownictwo",
       "title": "Wszystkie słownictwa",
-      "translations": "Tłumaczenia"
+      "translations": "Tłumaczenia",
+      "vocabel": "Słowo"
+    },
+    "custom": {
+      "title": "Nauka niestandardowa"
+    },
+    "dashboard": {
+      "empty": "Nie znaleziono pakietów"
     },
     "direction": {
       "title": "Proszę wybrać kierunek tłumaczenia"
+    },
+    "endScreen": {
+      "dashboard": "Powrót do panelu",
+      "percentageText": "rozwiązałeś poprawnie {{percentage}}% słownictwa"
     },
     "firstStartup": {
       "savePackageSuccessMessage": "Dodano nowy pakiet",
@@ -192,7 +216,8 @@
       "alreadyHaveAccount": "Posiadasz już konto?",
       "emailInUse": "E-mail jest już używany",
       "passwordsDontMatch": "Hasła nie są identyczne",
-      "title": "Zarejestruj"
+      "title": "Zarejestruj",
+      "usernameInUse": "Nazwa użytkownika jest już używana"
     },
     "selectionScreen": {
       "heading": "Wybierz opcję",

@@ -1,6 +1,7 @@
 {
   "splash": {
     "start": {
+      "restarting": "Restartowanie…",
       "starting": "Uruchamianie..."
     },
     "updates": {
