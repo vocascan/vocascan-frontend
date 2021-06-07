@@ -196,7 +196,7 @@ const GroupForm = ({
         />
       </div>
 
-      <Button disabled={!canSubmit} onClick={submitHandler}>
+      <Button disabled={!canSubmit} type="submit">
         {t("global.submit")}
       </Button>
     </form>
