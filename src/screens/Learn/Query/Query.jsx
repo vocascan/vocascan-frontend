@@ -34,7 +34,6 @@ const Query = () => {
   const correctVocabs = useSelector((state) => state.query.correct);
   const wrongVocabs = useSelector((state) => state.query.wrong);
   const actualProgress = useSelector((state) => state.query.actualProgress);
-  const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);
   const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -55,10 +54,6 @@ const Query = () => {
         showSnack("error", "Internal Server Error");
       });
   }, [languagePackageId, limit, showSnack, staged]);
-
-  const onCheck = useCallback(() => {
-    setFlip((prev) => !prev);
-  }, []);
 
   const sendVocabCheck = useCallback(
     (vocabularyCardId, answer, progress) => {
@@ -160,11 +155,10 @@ const Query = () => {
         {currVocab && (
           <VocabCard
             currVocab={currVocab}
-            sendVocabCheck={sendVocabCheck}
-            onCheck={onCheck}
+            onCorrect={() => sendVocabCheck(currVocab.id, true, true)}
+            onWrong={() => sendVocabCheck(currVocab.id, false, true)}
             disabled={buttonDisabled}
             currDirection={currDirection}
-            flip={flip}
           />
         )}
       </div>

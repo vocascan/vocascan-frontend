@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "../Button/Button.jsx";
@@ -26,18 +26,26 @@ const RenderTranslatedWord = ({ currVocab }) => {
 
 const VocabCard = ({
   currVocab,
-  sendVocabCheck,
-  onCheck,
+  onCorrect = () => null,
+  onWrong = () => null,
+  onFlip = () => null,
   currDirection = "default",
-  flip = false,
   disabled = false,
 }) => {
   const { t } = useTranslation();
+  const [flip, setFlip] = useState(false);
+
+  const onFlipHandler = useCallback(() => {
+    setFlip((prev) => {
+      onFlip(!prev);
+      return !prev;
+    });
+  }, [onFlip]);
 
   return (
     <div className="vocab-card">
       <div className={`card-inner ${flip ? "flipped" : ""}`}>
-        <div className="card-front" onClick={onCheck}>
+        <div className="card-front" onClick={onFlipHandler}>
           <div className="card-front-inner">
             {currDirection === "default" ? (
               <RenderForeignWord currVocab={currVocab} />
@@ -46,7 +54,7 @@ const VocabCard = ({
             )}
           </div>
         </div>
-        <div className="card-back" onClick={onCheck}>
+        <div className="card-back" onClick={onFlipHandler}>
           <div className="card-back-inner">
             {currDirection === "default" ? (
               <RenderTranslatedWord currVocab={currVocab} />
@@ -58,9 +66,7 @@ const VocabCard = ({
                 className="card-button"
                 appearance="red"
                 disabled={disabled}
-                onClick={() => {
-                  sendVocabCheck(currVocab.id, false, true);
-                }}
+                onClick={onWrong}
               >
                 {t("global.wrong")}
               </Button>
@@ -68,9 +74,7 @@ const VocabCard = ({
                 className="card-button"
                 appearance="green"
                 disabled={disabled}
-                onClick={() => {
-                  sendVocabCheck(currVocab.id, true, true);
-                }}
+                onClick={onCorrect}
               >
                 {t("global.correct")}
               </Button>
