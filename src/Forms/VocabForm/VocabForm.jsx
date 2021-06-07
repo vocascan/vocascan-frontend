@@ -369,13 +369,15 @@ const VocabForm = ({
           maxLength={maxTextfieldLength}
         />
         <ArrayTextInput
-          required
           max={maxTranslations}
           data={translations}
           placeholder={t("global.translation")}
           onChange={setTranslations}
           addText={t("components.vocabForm.addTranslation")}
-          maxLength={maxTextfieldLength}
+          inputProps={{
+            maxLength: maxTextfieldLength,
+            required: true,
+          }}
         />
         <Textarea
           tabIndex={1}

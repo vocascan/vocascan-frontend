@@ -16,7 +16,7 @@ const ArrayTextInput = ({
   placeholder = null,
   addText = null,
   required = false,
-  maxLength = null,
+  inputProps,
 }) => {
   const [arrayData, setArrayData] = useState(() => {
     if (!data || !data.length) {
@@ -75,7 +75,6 @@ const ArrayTextInput = ({
         return (
           <div key={elem.id} className="array-input-wrapper">
             <TextInput
-              required={required}
               placeholder={`${key + 1}. ${placeholder ? placeholder : ""}`}
               tabIndex={1}
               onChange={(value) => {
@@ -91,7 +90,7 @@ const ArrayTextInput = ({
                 });
               }}
               value={elem.value}
-              maxLength={maxLength}
+              {...inputProps}
             />
             <Button
               tabIndex={-1}
