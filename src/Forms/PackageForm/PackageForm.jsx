@@ -10,6 +10,11 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 import { createPackage, modifyPackage } from "../../utils/api.js";
+import {
+  maxNameLength,
+  rightVocabs,
+  numberField,
+} from "../../utils/constants.js";
 import { findLanguageByCode, getLanguageString } from "../../utils/index.js";
 
 import "./PackageForm.scss";
@@ -71,6 +76,10 @@ const PackageForm = ({
 
   //make api call to add vocab package
   const submitHandler = useCallback(async () => {
+    if (!canSubmit) {
+      return;
+    }
+
     const packageToSave = {
       name: name,
       foreignWordLanguage: foreignLanguage.code,
@@ -118,6 +127,7 @@ const PackageForm = ({
         showSnack("error", t("components.packageForm.savePackageFailMessage"));
       });
   }, [
+    canSubmit,
     defaultData?.id,
     foreignLanguage.code,
     name,
@@ -169,7 +179,7 @@ const PackageForm = ({
   }, [onLoad]);
 
   return (
-    <div className="language-package-form">
+    <form className="language-package-form" onSubmit={submitHandler}>
       <div className="form-wrapper">
         <TextInput
           required
@@ -178,6 +188,7 @@ const PackageForm = ({
             setName(value);
           }}
           value={name}
+          maxLength={maxNameLength}
         />
 
         <div className="dropdown">
@@ -213,6 +224,8 @@ const PackageForm = ({
           }}
           value={vocabsPerDay}
           type="number"
+          max={numberField[1]}
+          min={numberField[0]}
         />
 
         <TextInput
@@ -223,13 +236,15 @@ const PackageForm = ({
           }}
           value={rightTranslations}
           type="number"
+          max={rightVocabs[1]}
+          min={rightVocabs[0]}
         />
       </div>
 
-      <Button disabled={!canSubmit} onClick={submitHandler}>
+      <Button disabled={!canSubmit} type="submit">
         {t("global.submit")}
       </Button>
-    </div>
+    </form>
   );
 };
 

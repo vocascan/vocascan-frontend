@@ -13,6 +13,7 @@ import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout
 import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, signIn } from "../../redux/Actions/login.js";
 import { login, getLanguages } from "../../utils/api.js";
+import { maxTextfieldLength } from "../../utils/constants.js";
 
 import "./Login.scss";
 
@@ -138,6 +139,7 @@ const Login = ({ image }) => {
                 setEmail(value);
               }}
               value={email}
+              maxLength={maxTextfieldLength}
             />
             <TextInput
               required
@@ -151,6 +153,7 @@ const Login = ({ image }) => {
               value={password}
               error={error}
               errorText={t("screens.login.wrongCredentials")}
+              maxLength={maxTextfieldLength}
             />
             {selfHosted && (
               <TextInput
@@ -161,6 +164,7 @@ const Login = ({ image }) => {
                   setServerAddressInput(value);
                 }}
                 value={serverAddressInput}
+                maxLength={maxTextfieldLength}
               />
             )}
             {serverError ? (

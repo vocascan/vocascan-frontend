@@ -34,9 +34,9 @@ const Query = () => {
   const correctVocabs = useSelector((state) => state.query.correct);
   const wrongVocabs = useSelector((state) => state.query.wrong);
   const actualProgress = useSelector((state) => state.query.actualProgress);
-  const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const getVocabulary = useCallback(() => {
     getQueryVocabulary(languagePackageId, staged, limit)
@@ -55,10 +55,6 @@ const Query = () => {
       });
   }, [languagePackageId, limit, showSnack, staged]);
 
-  const onCheck = useCallback(() => {
-    setFlip((prev) => !prev);
-  }, []);
-
   const sendVocabCheck = useCallback(
     (vocabularyCardId, answer, progress) => {
       // send result to server
@@ -70,6 +66,9 @@ const Query = () => {
 
         showSnack("error", "Internal Server Error");
       });
+
+      setButtonDisabled(true);
+      setTimeout(() => setButtonDisabled(false), 260);
 
       if (direction === "random") {
         setCurrDirection(
@@ -95,11 +94,10 @@ const Query = () => {
       if (answer) {
         setVocabs(vocabs.slice(1));
       }
-      // if answer is wrong put vocabs card to the end of the query
+      // if answer is wrong put vocab card to the end of the query
       else {
         setVocabs([...vocabs.slice(1), vocabs[0]]);
       }
-      setCurrVocab(vocabs[0]);
     },
     [
       correctVocabs,
@@ -126,8 +124,11 @@ const Query = () => {
     if (!vocabs) {
       return;
     }
+    let timer1 = setTimeout(() => setCurrVocab(vocabs[0]), 260);
 
-    setCurrVocab(vocabs[0]);
+    return () => {
+      clearTimeout(timer1);
+    };
   }, [vocabs]);
 
   useEffect(() => {
@@ -154,10 +155,10 @@ const Query = () => {
         {currVocab && (
           <VocabCard
             currVocab={currVocab}
-            sendVocabCheck={sendVocabCheck}
-            onCheck={onCheck}
+            onCorrect={() => sendVocabCheck(currVocab.id, true, true)}
+            onWrong={() => sendVocabCheck(currVocab.id, false, true)}
+            disabled={buttonDisabled}
             currDirection={currDirection}
-            flip={flip}
           />
         )}
       </div>

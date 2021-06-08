@@ -13,7 +13,7 @@ import Textarea from "../../Components/Form/Textarea/Textarea.jsx";
 import useSnack from "../../hooks/useSnack.js";
 import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
-import { maxTextareaLength } from "../../utils/constants.js";
+import { maxTextareaLength, maxNameLength } from "../../utils/constants.js";
 
 import "./GroupForm.scss";
 
@@ -54,6 +54,10 @@ const GroupForm = ({
   }, [showSnack, t]);
 
   const submitHandler = useCallback(async () => {
+    if (!canSubmit) {
+      return;
+    }
+
     const newGroup = {
       name,
       description,
@@ -96,6 +100,7 @@ const GroupForm = ({
         }
       });
   }, [
+    canSubmit,
     defaultData?.id,
     description,
     dispatch,
@@ -148,7 +153,7 @@ const GroupForm = ({
   }, []);
 
   return (
-    <div className="group-form">
+    <form className="group-form" onSubmit={submitHandler}>
       <div className="form-wrapper">
         <div className="dropdown">
           <div className="select-wrapper">
@@ -172,6 +177,7 @@ const GroupForm = ({
             setName(value);
           }}
           value={name}
+          maxLength={maxNameLength}
         />
         <Textarea
           placeholder={t("screens.allGroups.groupDescription")}
@@ -190,10 +196,10 @@ const GroupForm = ({
         />
       </div>
 
-      <Button disabled={!canSubmit} onClick={submitHandler}>
+      <Button disabled={!canSubmit} type="submit">
         {t("global.submit")}
       </Button>
-    </div>
+    </form>
   );
 };
 

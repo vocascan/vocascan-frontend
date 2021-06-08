@@ -15,11 +15,16 @@ const TextInput = ({
   value = "",
   autoFocus = false,
   showTogglePassword = true,
+  maxLength = null,
+  minLength = null,
+  max = null,
+  min = null,
   ...props
 }) => {
   const [typeState, setTypeState] = useState(type);
   const [flow, setFlow] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [indicator, setIndicator] = useState(false);
 
   const handleFocus = useCallback(() => {
     setFocused(true);
@@ -31,12 +36,27 @@ const TextInput = ({
     setFlow(!!value);
   }, [value]);
 
+  const onInputChange = useCallback(
+    (input) => {
+      if (type === "number" && input > max) {
+        return onChange(max);
+      }
+
+      return onChange(input);
+    },
+    [max, onChange, type]
+  );
+
   useEffect(() => {
     setFlow(!!value || autoFocus);
     setFocused(autoFocus);
     // only trigger once the component renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setIndicator(maxLength - value.length);
+  }, [maxLength, type, value]);
 
   useEffect(() => {
     setFlow(!!value || focused);
@@ -55,12 +75,16 @@ const TextInput = ({
         className={`text-input ${error && "input-error"}`}
         type={typeState}
         placeholder=""
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onInputChange(e.target.value)}
         required={required}
         value={value}
         onBlur={onBlur}
         onFocus={handleFocus}
         autoFocus={autoFocus}
+        maxLength={maxLength}
+        minLength={minLength}
+        max={max}
+        min={min}
         {...props}
       />
       {type === "password" && showTogglePassword && (
@@ -73,6 +97,12 @@ const TextInput = ({
           {typeState === "text" ? <VisibilityIcon /> : <VisibilityOffIcon />}
         </span>
       )}
+      {!error &&
+        typeState !== "number" &&
+        maxLength &&
+        (indicator / maxLength) * 100 <= 30 && (
+          <p className="text-input-indicator">{`${indicator}/${maxLength}`}</p>
+        )}
       {error && errorText && <p className="text-input-error">{errorText}</p>}
     </div>
   );

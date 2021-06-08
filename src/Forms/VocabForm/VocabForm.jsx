@@ -9,6 +9,7 @@ import Select, {
 } from "../../Components/Form/Select/Select.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
+import Textarea from "../../Components/Form/Textarea/Textarea.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import GroupForm from "../../Forms/GroupForm/GroupForm.jsx";
 import PackageForm from "../../Forms/PackageForm/PackageForm.jsx";
@@ -20,6 +21,10 @@ import {
   createVocabulary,
   modifyVocabulary,
 } from "../../utils/api.js";
+import {
+  maxTextareaLength,
+  maxTextfieldLength,
+} from "../../utils/constants.js";
 import { maxTranslations } from "../../utils/constants.js";
 
 import "./VocabForm.scss";
@@ -192,13 +197,13 @@ const VocabForm = ({
         showSnack("error", t("components.vocabForm.saveErrorMessage"));
       });
   }, [
-    translations,
     foreignWord,
+    translations,
+    selectedGroup,
+    selectedPackage,
     localActive,
     description,
     defaultData?.id,
-    selectedPackage?.value,
-    selectedGroup?.value,
     localActivate,
     onClear,
     showSnack,
@@ -361,22 +366,28 @@ const VocabForm = ({
             setForeignWord(value);
           }}
           value={foreignWord}
+          maxLength={maxTextfieldLength}
         />
         <ArrayTextInput
-          required
           max={maxTranslations}
           data={translations}
           placeholder={t("global.translation")}
           onChange={setTranslations}
           addText={t("components.vocabForm.addTranslation")}
+          inputProps={{
+            maxLength: maxTextfieldLength,
+            required: true,
+          }}
         />
-        <TextInput
+        <Textarea
           tabIndex={1}
           placeholder={t("global.description")}
           onChange={(value) => {
             setDescription(value);
           }}
           value={description}
+          rows={5}
+          maxLength={maxTextareaLength}
         />
         <Switch
           appearance="on-off"
