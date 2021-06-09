@@ -28,6 +28,18 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 
+      - name: Install Snapcraft
+        uses: samuelmeuli/action-snapcraft@v1
+        if: startsWith(matrix.os, 'ubuntu')
+        with:
+          # Log in to Snap Store
+          snapcraft_token: ${{ secrets.snapcraft_token }}
+
+      - name: Install RPM
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          sudo apt install rpm
+
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:

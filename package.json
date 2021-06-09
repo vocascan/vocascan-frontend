@@ -18,8 +18,12 @@
       "icon": "src/images/logo/vocascan-round-linux.png",
       "target": [
         "deb",
-        "AppImage"
-      ]
+        "AppImage",
+        "snap",
+        "tar.gz",
+        "rpm"
+      ],
+      "category": "Education"
     },
     "mac": {
       "icon": "src/images/logo/vocascan-round-mac.png",
