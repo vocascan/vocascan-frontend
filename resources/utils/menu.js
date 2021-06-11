@@ -1,5 +1,10 @@
 const { shell, ipcMain } = require("electron");
-const { ORGANIZATION_URL, DISCUSSION_URL, ISSUES_URL } = require("./constants");
+const {
+  DOCUMENTATION_URL,
+  ORGANIZATION_URL,
+  DISCUSSION_URL,
+  ISSUES_URL,
+} = require("./constants");
 
 const SEPARATOR = { type: "separator" };
 
@@ -38,6 +43,7 @@ const MENU_TEMPLATE = [
   {
     label: "Help",
     submenu: [
+      LINK_ENTRY("Documentation", DOCUMENTATION_URL),
       LINK_ENTRY("Learn More", ORGANIZATION_URL),
       LINK_ENTRY("Community Discussions", DISCUSSION_URL),
       LINK_ENTRY("Search Issues", ISSUES_URL),
