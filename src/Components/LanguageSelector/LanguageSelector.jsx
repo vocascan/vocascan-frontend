@@ -28,6 +28,8 @@ const LanguageSelector = () => {
         onChange={({ value }) => {
           dispatch(setLanguage({ language: value }));
         }}
+        menuPortalTarget={document.body}
+        styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
       />
     </div>
   );
