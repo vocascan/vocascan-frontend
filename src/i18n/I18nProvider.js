@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import de from "./locales/de/default.json";
 import en from "./locales/en/default.json";
 import pl from "./locales/pl/default.json";
+import ru from "./locales/ru/default.json";
 
 i18n.use(initReactI18next).init({
   debug: false,
@@ -19,6 +20,7 @@ i18n.use(initReactI18next).init({
     de: { default: de },
     en: { default: en },
     pl: { default: pl },
+    ru: { default: ru },
   },
 });
 
@@ -36,6 +38,7 @@ export default I18nProvider;
 
 export const languages = [
   { code: "en", name: "English" },
-  { code: "de", name: "Deutsch" },
-  { code: "pl", name: "Polski" },
+  { code: "de", name: "Deutsch (German)" },
+  { code: "pl", name: "Polski (Polish)" },
+  { code: "ru", name: "Pусский (Russian)" },
 ];
