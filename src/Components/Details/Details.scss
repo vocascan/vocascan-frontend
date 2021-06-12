@@ -1,0 +1,55 @@
+@import "../../colors";
+
+/* stylelint-disable-next-line */
+.Collapsible {
+  margin-bottom: 30px;
+
+  /* stylelint-disable-next-line */
+  .Collapsible__trigger {
+    display: block;
+    border-bottom: 2px solid $color-background-inverse;
+    position: relative;
+    padding: 5px 0 5px 20px;
+    user-select: none;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      bottom: 11px;
+      content: " ";
+      width: 7px;
+      height: 7px;
+      transition: all 0.125s ease-in-out;
+      transform: rotate(-45deg);
+      border-style: solid;
+      border-width: 0 2px 2px 0;
+      border-color: $color-background-inverse;
+    }
+
+    &.is-open {
+      &::before {
+        transform: rotate(45deg);
+      }
+    }
+
+    .trigger-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .summary {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  /* stylelint-disable-next-line */
+  .Collapsible__contentInner {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+}

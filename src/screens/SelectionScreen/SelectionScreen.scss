@@ -1,0 +1,24 @@
+.select-srn-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+
+  .select-srn-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 20px auto;
+  }
+
+  .boxes {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+  }
+
+  .select-srn-title,
+  .select-srn-heading {
+    text-transform: uppercase;
+  }
+}

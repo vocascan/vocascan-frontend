@@ -1,90 +1,93 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import NavButton from './NavButton.jsx';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-//import './Nav.scss';
+import { useSelector } from "react-redux";
 
-const useStyles = makeStyles((theme) => ({
-    nav: {
-        width: "200px",
-        height: "100vh",
-        background: theme.palette.secondaryColour.main,
-        gridColumnStart:1,
-        gridColumnEnd:1,
-        gridRowStart:1,
-        gridRowEnd:2,
-        zIndex: 4,
-        display: "grid",
-        gridTemplateColumns: "100%",
-        gridTemplateRows: "40px auto 40px",
+import AddIcon from "@material-ui/icons/Add";
+import BarChartIcon from "@material-ui/icons/BarChart";
+import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
+import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
+import SettingsIcon from "@material-ui/icons/Settings";
+import StyleIcon from "@material-ui/icons/Style";
 
-    },
-    title: {
-        float: "left",
-        gridColumn: 1,
-        gridRow: 1,
-        textAlign: "center",
-    },
-    text: {
-        color: theme.palette.font.light,
-        textTransform: "uppercase",
-        fontSize: "17px",
-        margin: "auto",
-    },
-    buttonList: {
-        gridColumn: 1,
-        gridRow: 2,
-        marginTop: "40px"
-    },
-    settings: {
-        backgroundColor: theme.palette.third.main,
-        border: "none",
-        outline: "none",
-        width: "100%",
-        height: "100%",
-        bottom: 0,
-        left: 0,
-        gridColumn: 1,
-        gridRow: 3,
-    },
-    settingsText: {
-        color: theme.palette.font.middle,
-        textTransform: "uppercase",
-        fontSize: "17px",
-        margin: 0,
+import NavButton from "./NavButton.jsx";
+
+import "./Nav.scss";
+
+const Nav = () => {
+  const { t } = useTranslation();
+  const menuStyle = useSelector((state) => state.setting.menuStyle);
+  const [initialStyle, setInitialStyle] = useState(menuStyle);
+  const [loading, setLoading] = useState(false);
+
+  const navLayoutClasses = clsx(
+    "nav",
+    `nav-${menuStyle}`,
+    loading && "nav-loading"
+  );
+
+  useEffect(() => {
+    if (menuStyle === initialStyle) {
+      return;
     }
 
-}));
+    setLoading(true);
+    setInitialStyle(menuStyle);
+    let timer = setTimeout(() => setLoading(false), 400);
 
+    return () => {
+      clearTimeout(timer);
+    };
+    // initialStyle counts only for initial render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [menuStyle]);
 
+  return (
+    <div className={navLayoutClasses}>
+      <ul className="button-list">
+        <NavButton
+          name={t("nav.learn")}
+          design={menuStyle}
+          icon={<LocalLibraryIcon />}
+          link="/learn"
+          exact
+        />
+        <NavButton
+          name={t("nav.newVocab")}
+          design={menuStyle}
+          icon={<AddIcon />}
+          link="/addVocab"
+        />
+        <NavButton
+          name={t("nav.allVocabulary")}
+          design={menuStyle}
+          icon={<LibraryBooksIcon />}
+          link="/library"
+        />
+        <NavButton
+          name={t("nav.progress")}
+          design={menuStyle}
+          icon={<BarChartIcon />}
+          link="/progress"
+        />
+        <NavButton
+          name={t("nav.custom")}
+          design={menuStyle}
+          icon={<StyleIcon />}
+          link="/custom"
+        />
+      </ul>
 
-function Nav() {
-    const { t, i18n } = useTranslation();
-    const classes = useStyles();
-    return (
-        <Box className={classes.nav}>
-            <Box className={classes.title}>
-                <h1 className={classes.text}>Vocascan</h1>
-            </Box>
-            <ul className={classes.buttonList}>
-                <NavButton name={t("navNewVocab")} link="/addVocab" />
-                <NavButton name={t("navLearn")} link="#" />
-                <NavButton name={t("navProgress")} link="#" />
-                <NavButton name={t("navAllVocabulary")} link="#" />
-                <NavButton name={t("navGroupLearning")} link="#" />
+      <div>
+        <NavButton
+          name={t("nav.settings")}
+          design={menuStyle}
+          icon={<SettingsIcon />}
+          link="/settings"
+        />
+      </div>
+    </div>
+  );
+};
 
-            </ul>
-
-            <Link to="#" style={{ outline: 0 }}>
-                <Button className={classes.settings}>
-                    <h5 className={classes.settingsText}>{t("navSettings")}</h5>
-                </Button>
-            </Link>
-        </Box>
-    )
-}
-
-export default Nav
+export default Nav;

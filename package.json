@@ -1,45 +1,58 @@
 {
   "name": "vocascan-desktop",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "description": "a highly configurable vocabulary trainer",
-  "author": "noctera",
+  "description": "A highly configurable vocabulary trainer",
+  "author": "vocascan <vocascan@gmail.com>",
   "build": {
-    "appId": "com.vocascan-desktop",
+    "appId": "com.vocascan",
+    "productName": "Vocascan",
+    "asar": true,
+    "win": {
+      "icon": "src/images/logo/vocascan-round-win.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "icon": "src/images/logo/vocascan-round-linux.png",
+      "target": [
+        "deb",
+        "AppImage",
+        "snap",
+        "tar.gz",
+        "rpm"
+      ],
+      "category": "Education"
+    },
+    "mac": {
+      "icon": "src/images/logo/vocascan-round-mac.png",
+      "category": "public.app-category.education",
+      "target": [
+        "dmg"
+      ]
+    },
+    "directories": {
+      "output": "./builds"
+    },
     "files": [
-      "public/**/*",
-      "src/**/*",
       "build/**/*",
-      "node_modules/**/*",
+      "resources/**/*",
+      "src/images/**/*",
+      "src/i18n/**/*.json",
       "package.json"
-    ]
+    ],
+    "extraMetadata": {
+      "main": "resources/electron.js"
+    },
+    "extends": null
   },
-  "main": "public/electron.js",
+  "main": "resources/electron.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vocascan/vocascan-desktop.git"
+  },
   "homepage": "./",
-  "dependencies": {
-    "@material-ui/core": "^4.11.2",
-    "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.21.1",
-    "concurrently": "^6.0.0",
-    "cross-env": "^7.0.3",
-    "electron-is-dev": "^2.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.3",
-    "wait-on": "^5.2.1",
-    "web-vitals": "^1.1.0",
-    "react-i18next": "^11.8.5",
-    "i18next": "^19.8.4",
-    "redux": "^4.0.5",
-    "react-redux": "^7.2.2",
-    "electron-squirrel-startup": "^1.0.0",
-    "sass": "^1.29.0",
-    "sass-loader": "^10.1.0",
-    "react-router-dom": "^5.2.0"
-  },
   "scripts": {
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
@@ -50,14 +63,12 @@
     "build": "npm run react-build && npm run electron-build",
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
     "test": "npm run lint",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "lint": "npm run lint:js && npm run lint:style",
+    "lint:fix": "npm run lint:js:fix && npm run lint:style:fix",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint . --fix",
+    "lint:style": "stylelint \"src/**/*.scss\"",
+    "lint:style:fix": "stylelint --fix \"src/**/*.scss\""
   },
   "browserslist": {
     "production": [
@@ -71,10 +82,50 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "clsx": "^1.1.1",
+    "concurrently": "^6.0.0",
+    "cross-env": "^7.0.3",
+    "electron-is-dev": "^2.0.0",
+    "electron-log": "^4.3.2",
+    "electron-updater": "^4.3.8",
+    "i18next": "^19.8.4",
+    "i18next-node-fs-backend": "^2.1.3",
+    "react": "^17.0.1",
+    "react-collapsible": "^2.8.3",
+    "react-dom": "^17.0.1",
+    "react-i18next": "^11.8.5",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-select": "^4.3.0",
+    "react-table": "^7.6.3",
+    "react-tooltip": "^4.2.17",
+    "redux": "^4.0.5",
+    "redux-localstore": "^1.0.0",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "semver": "^6.3.0",
+    "uniqid": "^5.3.0",
+    "wait-on": "^5.2.1",
+    "web-vitals": "^1.1.0"
+  },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^2.0.1",
     "electron": "^12.0.1",
     "electron-builder": "^22.10.5",
     "electron-devtools-installer": "^3.1.1",
-    "eslint": "^7.22.0"
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1",
+    "stylelint": "^13.12.0",
+    "stylelint-config-sass-guidelines": "^8.0.0"
   }
 }

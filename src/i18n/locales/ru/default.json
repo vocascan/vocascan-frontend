@@ -1,0 +1,252 @@
+{
+  "components": {
+    "groupForm": {
+      "languagePackage": "Посылка.",
+      "modifyGroupFailMessage": "Не удалось сохранить Группу",
+      "modifyGroupSuccessMessage": "Группа сохранена",
+      "savGroupFailMessage": "Не удалось добавить группу",
+      "saveGroupSuccessMessage": "Добавлена новая группа"
+    },
+    "languageSelector": {
+      "label": "Язык"
+    },
+    "packageForm": {
+      "foreignLanguage": "Иностранный язык",
+      "translatedLanguage": "Переведенный язык"
+    },
+    "packageOverview": {
+      "today": "Сегодня:",
+      "unactivated": "Не активировано:"
+    },
+    "validServerIndicator": {
+      "serverNotResponding": "✗сервер не отвечает",
+      "serverNotVocascanServer": "✗ сервер не является сервером vocascan",
+      "validServer": "✓ действительный сервер (v{{version}})",
+      "versionToOld": "✗ версия сервера v{{version}} устарела. Минимальное требуемое - v{{minVersion}}"
+    },
+    "vocabForm": {
+      "activateLabel": "Активировать",
+      "addTranslation": "Добавить перевод",
+      "noGroupsMessage": "Группы не найдены",
+      "saveGroupSuccessMessage": "Добавлена новая группа"
+    }
+  },
+  "contributors": {
+    "dependencies": "Внешние зависимости",
+    "translator": "Переводчики"
+  },
+  "global": {
+    "LogIn": "Войти",
+    "abort": "Прервать",
+    "activate": "Активировать",
+    "add": "Добавить",
+    "back": "Назад",
+    "close": "Закрыть",
+    "comingSoon": "Скоро появится...",
+    "continue": "Продолжить",
+    "correct": "Правильно",
+    "delete": "Удалить",
+    "description": "Описание",
+    "email": "Почта",
+    "fetchError": "Что-то пошло не так. Пожалуйста, попробуйте позже",
+    "finish": "Готово",
+    "foreignWord": "Иностранное слово",
+    "group": "Группа",
+    "groups": "Группы",
+    "learn": "Учиться",
+    "library": "Библиотека",
+    "name": "Имя",
+    "noOptionMessage": "Нет опций",
+    "none": "Нет",
+    "package": "Посылка.",
+    "packages": "Пакеты",
+    "paginationPage": "Страница {{page}} из {{pageLength}}",
+    "paginationShow": "Показать {{size}}",
+    "password": "Пароль",
+    "passwordRepeat": "Повторите пароль",
+    "query": "Запрос",
+    "random": "Случайный",
+    "save": "Сохранить",
+    "server": "Сервер",
+    "serverNotResponding": "Сервер не отвечает",
+    "signIn": "Войти",
+    "signUp": "Регистрация",
+    "skip": "Пропустить",
+    "submit": "Отправить",
+    "successMessage": "Успешно",
+    "total": "Всего",
+    "translation": "Перевод",
+    "username": "Логин",
+    "vocascan": "Vocascan",
+    "wrong": "Неправильно"
+  },
+  "languages": {
+    "English": "Английский",
+    "French": "Французский",
+    "German": "Немецкий",
+    "Portuguese": "Португальский",
+    "Russian": "Русский",
+    "Spanish": "Испанский",
+    "Turkish": "Турецкий"
+  },
+  "modal": {
+    "changeEmail": {
+      "heading": "Изменить адрес почты"
+    },
+    "changePassword": {
+      "change": "Изменить",
+      "heading": "Сменить пароль",
+      "newPassword": "Новый пароль",
+      "newPasswordError": "Новые пароли не совпадают",
+      "oldPassword": "Старый пароль",
+      "oldPasswordError": "Старый пароль недействителен",
+      "repeatNewPassword": "Повторите новый пароль"
+    },
+    "deleteAccount": {
+      "heading": "Удалить аккаунт",
+      "input": "Введите логин, чтобы подтвердить удаление"
+    },
+    "selectLanguage": {
+      "title": "Выберите язык приложения"
+    },
+    "serverNotSupported": {
+      "serverNotVocascanServer": "Этот сервер не похож на сервер vocascan",
+      "title": "Сервер не поддерживается",
+      "versionToOld": "Сервер vocascan имеет версию v {{version}}, но она больше не поддерживается клиентом, требуется версия v {{minVersion}}. Обратитесь к администратору сервера для обновления версии сервера."
+    }
+  },
+  "nav": {
+    "about": "Около",
+    "allVocabulary": "Библиотека",
+    "custom": "Пользовательский",
+    "learn": "Учиться",
+    "logout": "Выйти",
+    "profile": "Профиль",
+    "progress": "Прогресс",
+    "settings": "Настройки"
+  },
+  "screens": {
+    "about": {
+      "title": "О vocascan"
+    },
+    "allGroups": {
+      "addGroup": "Добавить группу",
+      "deleteDescription": "Вы действительно хотите удалить группу {{name}}?",
+      "deleteFailMessage": "Группа не может быть удалена",
+      "deleteSuccessMessage": "Группа удалена",
+      "deleteTitle": "Удалить группу",
+      "editGroup": "Редактировать группу",
+      "groupDescription": "Описание",
+      "groupName": "Группа",
+      "title": "Все группы"
+    },
+    "allPackages": {
+      "deleteTitle": "Удалить пакет",
+      "foreignLanguage": "Иностранный язык",
+      "packageName": "Посылка.",
+      "translatedLanguage": "Переведенный язык"
+    },
+    "allVocabs": {
+      "translations": "Переводы"
+    },
+    "direction": {
+      "title": "Пожалуйста, выберите направление"
+    },
+    "endScreen": {
+      "congratulations": [
+        "Тебе нужно повторить это",
+        "В следующий раз будет лучше",
+        "Оставайся вовлечённым",
+        "Поздравляю!",
+        "Ты потрясающий"
+      ],
+      "dashboard": "Назад к дашборду"
+    },
+    "firstStartup": {
+      "saveGroupSuccessMessage": "Добавлена новая группа"
+    },
+    "guide": {
+      "end": {
+        "description": "Развлекайся, пробуя Vocascan",
+        "heading": "Теперь ты готов"
+      },
+      "groupDescription": {
+        "endText": "Далее мы создадим группу."
+      },
+      "title": "Руководство"
+    },
+    "login": {
+      "dontHaveAccount": "Нет учетной записи?",
+      "title": "Логин",
+      "wrongCredentials": "Ваш адрес почты или пароль не подходят"
+    },
+    "profile": {
+      "accountSettings": {
+        "delete": {
+          "description": "Как только вы удалите свой аккаунт, он пропадёт навсегда",
+          "title": "Удалить аккаунт"
+        },
+        "email": {
+          "description": "Будьте уверены, что используете действительный адрес почты",
+          "title": "Изменить адрес эл. почты"
+        },
+        "password": {
+          "description": "Измените старый пароль, если вы его забыли",
+          "title": "Изменить пароль"
+        },
+        "title": "Настройки учетной записи"
+      },
+      "stats": {
+        "inactive": "Неактивно",
+        "stats": "Статистика",
+        "total": "Всего"
+      }
+    },
+    "progress": {
+      "title": "Прогресс"
+    },
+    "register": {
+      "alreadyHaveAccount": "Уже есть учетная запись?",
+      "emailInUse": "Адрес почты уже используется",
+      "passwordsDontMatch": "Пароли не совпадают",
+      "title": "Зарегистрироваться",
+      "usernameInUse": "Логин уже занят"
+    },
+    "selectionScreen": {
+      "heading": "Выберите свой вариант",
+      "title": "Логин",
+      "vocascanCloud": {
+        "button": "Начни бесплатно",
+        "contra": [
+          "Ваши данные хранятся на серверах Vocascan",
+          "На данный момент недоступно"
+        ],
+        "heading": "Vocascan облако",
+        "pro": [
+          "Сервер не нужен",
+          "синхронизировать все устройства"
+        ]
+      },
+      "vocascanServer": {
+        "button": "Начни бесплатно",
+        "contra": [
+          "Вам необходим собственный сервер",
+          "Вам нужно некоторое время, чтобы настроить сервер"
+        ],
+        "heading": "Vocascan сервер"
+      }
+    },
+    "settings": {
+      "desktopVersion": "Версия для компьютера",
+      "guide": {
+        "button": "Повторно открыть инструкцию"
+      },
+      "menu": {
+        "label": "Стиль меню",
+        "optionLeft": "По умолчанию"
+      },
+      "serverVersion": "Версия сервера",
+      "title": "Настройки"
+    }
+  }
+}

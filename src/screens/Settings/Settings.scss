@@ -1,0 +1,24 @@
+@import "../../colors";
+
+.settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  grid-area: main;
+  padding: 50px;
+  max-width: 600px;
+  justify-content: center;
+  margin: 0 auto;
+
+  .heading {
+    margin-bottom: 20px;
+  }
+
+  .settings-guide {
+    margin: 40px auto;
+    width: 50%;
+
+    h3 {
+      margin-bottom: 5px;
+    }
+  }
+}

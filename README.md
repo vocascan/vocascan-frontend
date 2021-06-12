@@ -84,6 +84,6 @@ For questions or ideas please use [Discussions](https://github.com/vocascan/voca
 
 ## Contributors
 
-[<img src="https://avatars3.githubusercontent.com/u/54618409?s=400&v=4" width="50" />](https://github.com/noctera)
-[<img src="https://avatars3.githubusercontent.com/u/60048565?s=400&v=4" width="50" />](https://github.com/luwol03)
-[<img src="https://avatars3.githubusercontent.com/u/16488024?s=400&v=4" width="50" />](https://github.com/zikowang)
+[<img src="https://github.com/noctera.png" width="50" />](https://github.com/noctera)
+[<img src="https://github.com/luwol03.png" width="50" />](https://github.com/luwol03)
+[<img src="https://github.com/zikowang.png" width="50" />](https://github.com/zikowang)

@@ -1,0 +1,14 @@
+{
+  "splash": {
+    "start": {
+      "restarting": "Neustarten...",
+      "starting": "Startet..."
+    },
+    "updates": {
+      "check": "Suche nach Updates...",
+      "download": "Update wird heruntergeladen…",
+      "skipButton": "Überspringen",
+      "skipCheck": "Updateüberprüfung überspringen..."
+    }
+  }
+}

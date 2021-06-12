@@ -1,0 +1,24 @@
+.direction {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-areas:
+    "title"
+    "boxes"
+    "footer";
+
+  .box-title {
+    grid-area: title;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    margin: 50px 0;
+  }
+
+  .box-wrapper {
+    grid-area: boxes;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+  }
+}

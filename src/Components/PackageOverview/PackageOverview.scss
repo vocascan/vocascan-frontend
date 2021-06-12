@@ -1,0 +1,52 @@
+@import "../../colors";
+
+.package-overview {
+  display: grid;
+  width: 100%;
+  height: 120px;
+  grid-template-columns: 46% 27% 27%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "heading today learnbtn"
+    "unresolved unactivated activatebtn";
+  margin: 0;
+  padding: 10px 15px;
+  overflow-x: hidden;
+  background-color: $color-background-inverse;
+  margin-bottom: 40px;
+  border-radius: 15px;
+
+  .package-inner {
+    color: $color-main-text-inverse;
+    font-size: 15px;
+    margin: auto;
+    margin-left: 15px;
+
+    &.package-heading {
+      width: 85%;
+      grid-area: heading;
+      text-align: left;
+      font-size: 25px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &.package-unresolved {
+      grid-area: unresolved;
+    }
+
+    &.package-today {
+      grid-area: today;
+    }
+
+    &.package-unactivated {
+      grid-area: unactivated;
+    }
+  }
+
+  .package-btn-wrapper {
+    width: 90%;
+    margin: auto;
+  }
+}

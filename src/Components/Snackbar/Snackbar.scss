@@ -1,0 +1,43 @@
+@import "../../colors";
+
+.snackbar {
+  position: absolute;
+  bottom: 15px;
+  opacity: 0;
+  visibility: hidden;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 300px;
+  z-index: 10000;
+  transition: all 0.4s ease-in;
+
+  &.snackbar-success {
+    background-color: $color-green-light;
+    color: $color-green-dark;
+  }
+
+  &.snackbar-error {
+    background-color: $color-red-light;
+    color: $color-red-dark;
+  }
+
+  &.snackbar-info {
+    background-color: $color-primary-light;
+    color: $color-primary-dark;
+  }
+
+  .snackbar-text {
+    font-weight: 400;
+  }
+
+  &.show {
+    user-select: none;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.4s ease-in;
+  }
+}

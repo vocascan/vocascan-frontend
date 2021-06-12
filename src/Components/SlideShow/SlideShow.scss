@@ -1,0 +1,36 @@
+.slideshow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .slideshow-content {
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .slideshow-bar {
+    height: 10%;
+    max-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .bar-property {
+      &.invisible {
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      &.indicator {
+        margin: auto 0;
+      }
+    }
+  }
+}

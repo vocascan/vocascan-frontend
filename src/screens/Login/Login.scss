@@ -1,0 +1,84 @@
+@import "../../colors";
+
+.login-form {
+  max-width: 450px;
+  max-height: 550px;
+
+  margin: auto;
+  border-radius: 10px;
+
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
+  padding: 40px 100px;
+  background: $color-white;
+  box-shadow: -1px 3px 5px $color-main-text;
+
+  .back-icon {
+    color: $color-primary;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    &:hover {
+      color: $color-primary-dark;
+      cursor: pointer;
+    }
+  }
+
+  .header {
+    width: 100%;
+    height: 33%;
+
+    .header-logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .login-form-header-heading {
+      text-transform: uppercase;
+    }
+  }
+
+  .form-input {
+    width: 100%;
+    min-width: 250px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .form-error {
+      text-align: right;
+      margin-top: -3px;
+      height: 27px;
+      font-size: 11px;
+      color: $color-red;
+    }
+  }
+
+  .login-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0;
+
+    .submit-register {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      font-size: 14px;
+      margin-top: 12px;
+
+      .submit-register-link {
+        color: $color-primary;
+
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+}
