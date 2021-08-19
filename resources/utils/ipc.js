@@ -29,7 +29,6 @@ const RegisterIpcHandler = () => {
     dialog
       .showSaveDialog({
         title: "Select where you want to save the file",
-        buttonLabel: "Save",
         defaultPath: `./${arg.title}`,
         // Restricting the user to only json Files.
         filters: [
@@ -48,6 +47,25 @@ const RegisterIpcHandler = () => {
           });
           event.sender.send("save-file-reply");
         }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  ipcMain.on("open-file", (event, arg) => {
+    dialog
+      .showOpenDialog({
+        filters: [
+          {
+            name: "JSON file",
+            extensions: ["json"],
+          },
+        ],
+        properties: ["openFile"],
+      })
+      .then((file) => {
+        event.reply("open-file-reply", file);
       })
       .catch((err) => {
         console.log(err);

@@ -12,6 +12,7 @@ import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
 import Flag from "../../../Components/Flag/Flag.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
+import ImportPreviewForm from "../../../Forms/ImportPreviewForm/ImportPreviewForm.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
@@ -25,6 +26,8 @@ import { nodeRequire } from "../../../utils/index.js";
 
 import "./AllPackages.scss";
 
+const fs = window.require("fs");
+
 const { ipcRenderer } = nodeRequire("electron");
 
 const AllPackages = () => {
@@ -32,12 +35,15 @@ const AllPackages = () => {
   const { showSnack } = useSnack();
 
   const [data, setData] = useState([]);
+  const [importedData, setImportedData] = useState([]);
   const [currentPackage, setCurrentPackage] = useState(null);
   const [showPackageModal, setShowPackageModal] = useState(false);
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
     useState(false);
   const [showExportConfirmationModal, setShowExportConfirmationModal] =
     useState(false);
+
+  const [showImportModal, setShowImportModal] = useState(false);
 
   const languages = useSelector((state) => state.language.languages);
 
@@ -106,6 +112,26 @@ const AllPackages = () => {
         });
     }
   }, [currentPackage, showSnack, t]);
+
+  const submitImport = useCallback(() => {
+    ipcRenderer.send("open-file", {});
+    ipcRenderer.on("open-file-reply", (event, result) => {
+      //read in file and parse json
+      fs.readFile(result.filePaths[0], "utf8", function (err, data) {
+        try {
+          data = JSON.parse(data);
+          setImportedData(data);
+        } catch (e) {
+          // Catch error in case file doesn't exist or isn't valid JSON
+        }
+      });
+      setShowImportModal(true);
+      showSnack("success", t("screens.allPackages.exportSuccessMessage"));
+    });
+    return () => {
+      ipcRenderer.removeListener("open-file-reply");
+    };
+  }, [showSnack, t]);
 
   const columns = useMemo(
     () => [
@@ -199,6 +225,9 @@ const AllPackages = () => {
           <Button className="add" variant="transparent">
             <AddCircleOutlinedIcon onClick={addPackage} />
           </Button>
+          <Button className="add" variant="transparent" onClick={submitImport}>
+            Import
+          </Button>
         </div>
         <div>
           <Table columns={columns} data={data} />
@@ -218,6 +247,14 @@ const AllPackages = () => {
           defaultData={currentPackage}
           onSubmitCallback={packageSubmitted}
         />
+      </Modal>
+
+      <Modal
+        title={"Import"}
+        open={showImportModal}
+        onClose={() => setShowImportModal(false)}
+      >
+        <ImportPreviewForm data={importedData} />
       </Modal>
 
       <ConfirmDialog

@@ -80,6 +80,11 @@ export const exportGroup = (groupId) => api.get(`/export/group/${groupId}`);
 export const exportPackage = (languagePackageId) =>
   api.get(`/export/languagePackage/${languagePackageId}`);
 
+// Import
+export const importLanguagePackage = (data) =>
+  api.post(`/import/languagePackage`, data);
+export const importGroup = (data) => api.post(`/import/group`, data);
+
 // Languages
 export const getLanguages = ({
   code = true,
