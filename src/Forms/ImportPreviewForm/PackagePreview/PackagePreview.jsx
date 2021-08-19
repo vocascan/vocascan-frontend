@@ -15,7 +15,7 @@ const PackagePreview = ({ data }) => {
   const [languagePackage, setLanguagePackage] = useState(data);
 
   const submitImport = () => {
-    importLanguagePackage(languagePackage)
+    importLanguagePackage(languagePackage, true, false)
       .then((response) => {
         showSnack("success", t("screens.allPackages.exportSuccessMessage"));
       })

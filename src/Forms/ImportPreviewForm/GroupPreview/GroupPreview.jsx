@@ -60,7 +60,7 @@ const GroupPreview = ({ data }) => {
   );
 
   const submitImport = () => {
-    importGroup(group)
+    importGroup(group, selectedPackage.value, true, false)
       .then((response) => {
         showSnack("success", t("screens.allPackages.exportSuccessMessage"));
       })
@@ -104,10 +104,6 @@ const GroupPreview = ({ data }) => {
           options={packageItems}
           onChange={(v) => {
             setSelectedPackage(v);
-            setGroup((prevState) => ({
-              ...prevState,
-              languagePackageId: selectedPackage?.id,
-            }));
           }}
           value={selectedPackage}
           noOptionsMessage={t("components.vocabForm.noPackagesMessage")}

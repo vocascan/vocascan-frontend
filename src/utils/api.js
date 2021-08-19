@@ -3,15 +3,15 @@ import axios from "axios";
 import { defaultLimit, vocascanServer } from "./constants.js";
 
 const api = axios.create({
-  baseURL: vocascanServer,
+    baseURL: vocascanServer,
 });
 
 export function setBaseUrl(url) {
-  api.defaults.baseURL = `${url}/api`;
+    api.defaults.baseURL = `${url}/api`;
 }
 
 export function setTokenHeader(token) {
-  api.defaults.headers.common.Authorization = `Bearer ${token}`;
+    api.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
 // Auth
@@ -26,51 +26,51 @@ export const deleteUser = () => api.delete("/user");
 // Language package
 export const createPackage = (data) => api.post("/languagePackage", data);
 export const getPackages = (groups = false, stats = false) =>
-  api.get(`/languagePackage?groups=${groups}&stats=${stats}`);
+    api.get(`/languagePackage?groups=${groups}&stats=${stats}`);
 export const modifyPackage = (data) =>
-  api.put(`/languagePackage/${data.id}`, data);
+    api.put(`/languagePackage/${data.id}`, data);
 export const deletePackage = (languagePackageId) =>
-  api.delete(`/languagePackage/${languagePackageId}`);
+    api.delete(`/languagePackage/${languagePackageId}`);
 
 // Language package group
 export const createGroup = (languagePackageId, data) =>
-  api.post(`/languagePackage/${languagePackageId}/group`, data);
+    api.post(`/languagePackage/${languagePackageId}/group`, data);
 export const getGroups = (languagePackageId) =>
-  api.get(`/languagePackage/${languagePackageId}/group`);
+    api.get(`/languagePackage/${languagePackageId}/group`);
 export const modifyGroup = (data) => api.put(`/group/${data.id}`, data);
 export const deleteGroup = (groupId) => api.delete(`/group/${groupId}`);
 
 // Vocabulary
 export const createVocabulary = (
-  languagePackageId,
-  groupId,
-  data,
-  activate = false
-) =>
-  api.post(
-    `/languagePackage/${languagePackageId}/group/${groupId}/vocabulary?activate=${activate}`,
-    data
-  );
+        languagePackageId,
+        groupId,
+        data,
+        activate = false
+    ) =>
+    api.post(
+        `/languagePackage/${languagePackageId}/group/${groupId}/vocabulary?activate=${activate}`,
+        data
+    );
 export const getGroupVocabulary = (groupId) =>
-  api.get(`/group/${groupId}/vocabulary`);
+    api.get(`/group/${groupId}/vocabulary`);
 export const modifyVocabulary = (data) =>
-  api.put(`/vocabulary/${data.id}`, data);
+    api.put(`/vocabulary/${data.id}`, data);
 export const deleteVocabulary = (vocabularyId) =>
-  api.delete(`/vocabulary/${vocabularyId}`);
+    api.delete(`/vocabulary/${vocabularyId}`);
 
 // Query Vocabulary
 export const getQueryVocabulary = (
-  languagePackageId,
-  staged = false,
-  limit = defaultLimit
-) =>
-  api.get(
-    `/languagePackage/${languagePackageId}/query?staged=${staged}&limit=${limit}`
-  );
+        languagePackageId,
+        staged = false,
+        limit = defaultLimit
+    ) =>
+    api.get(
+        `/languagePackage/${languagePackageId}/query?staged=${staged}&limit=${limit}`
+    );
 export const checkQuery = (vocabularyId, answer = false, progress = false) =>
-  api.patch(
-    `/vocabulary/${vocabularyId}?answer=${answer}&progress=${progress}`
-  );
+    api.patch(
+        `/vocabulary/${vocabularyId}?answer=${answer}&progress=${progress}`
+    );
 
 // Stats
 export const getStats = () => api.get("/user/stats");
@@ -78,23 +78,23 @@ export const getStats = () => api.get("/user/stats");
 // Export
 export const exportGroup = (groupId) => api.get(`/export/group/${groupId}`);
 export const exportPackage = (languagePackageId) =>
-  api.get(`/export/languagePackage/${languagePackageId}`);
+    api.get(`/export/languagePackage/${languagePackageId}`);
 
 // Import
-export const importLanguagePackage = (data) =>
-  api.post(`/import/languagePackage`, data);
-export const importGroup = (data) => api.post(`/import/group`, data);
+export const importLanguagePackage = (data, active, activate) =>
+    api.post(`/import/languagePackage?active=${active}&activate${activate}`, data);
+export const importGroup = (data, languagePackageId, active, activate) => api.post(`/import/group?languagePackageId=${languagePackageId}&active=${active}&activate=${activate}`, data);
 
 // Languages
 export const getLanguages = ({
-  code = true,
-  name = true,
-  nativeNames = false,
-  rtl = false,
-}) =>
-  api.get(
-    `/language?code=${code}&name=${name}&nativeNames=${nativeNames}&rtl=${rtl}`
-  );
+        code = true,
+        name = true,
+        nativeNames = false,
+        rtl = false,
+    }) =>
+    api.get(
+        `/language?code=${code}&name=${name}&nativeNames=${nativeNames}&rtl=${rtl}`
+    );
 
 // Info
 export const getInfo = (cancelToken) => api.get("/info", { cancelToken });
