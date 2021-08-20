@@ -47,12 +47,6 @@ const GroupPreview = ({ importedData }) => {
   }, [showSnack, t]);
 
   useEffect(() => {
-    return () => {
-      setImportedGroup(importedData);
-    };
-  }, [importedData, importedGroup]);
-
-  useEffect(() => {
     fetchPackages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -196,9 +190,11 @@ const GroupPreview = ({ importedData }) => {
           open={false}
           key={1}
         >
-          {importedGroup?.VocabularyCards.map((vocab, i) => (
-            <Table pagination={false} columns={columns} data={vocab} />
-          ))}
+          <Table
+            pagination={false}
+            columns={columns}
+            data={importedGroup.VocabularyCards}
+          />
         </Details>
 
         <Button block uppercase onClick={submitImport}>

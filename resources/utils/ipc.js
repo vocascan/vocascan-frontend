@@ -25,8 +25,8 @@ const RegisterIpcHandler = () => {
     }
   });
 
-  ipcMain.on("save-file", (event, arg) => {
-    dialog
+  ipcMain.handle("save-file", async (event, arg) => {
+    await dialog
       .showSaveDialog({
         title: "Select where you want to save the file",
         defaultPath: `./${arg.title}`,
@@ -45,7 +45,6 @@ const RegisterIpcHandler = () => {
           fs.writeFile(file.filePath.toString(), arg.text, function (err) {
             if (err) throw err;
           });
-          event.sender.send("save-file-reply");
         }
       })
       .catch((err) => {
@@ -53,23 +52,31 @@ const RegisterIpcHandler = () => {
       });
   });
 
-  ipcMain.on("open-file", (event, arg) => {
-    dialog
-      .showOpenDialog({
-        filters: [
-          {
-            name: "JSON file",
-            extensions: ["json"],
-          },
-        ],
-        properties: ["openFile"],
-      })
-      .then((file) => {
-        event.reply("open-file-reply", file);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  ipcMain.handle("open-file", async (event, arg) => {
+    return new Promise((resolve, reject) => {
+      dialog
+        .showOpenDialog({
+          filters: [
+            {
+              name: "JSON file",
+              extensions: ["json"],
+            },
+          ],
+          properties: ["openFile"],
+        })
+        .then((file) => {
+          fs.readFile(file.filePaths[0], "utf8", function (err, data) {
+            try {
+              resolve(JSON.parse(data));
+            } catch (e) {
+              // Catch error in case file doesn't exist or isn't valid JSON
+            }
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
   });
 };
 

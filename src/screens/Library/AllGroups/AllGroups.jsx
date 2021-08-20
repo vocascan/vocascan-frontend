@@ -127,21 +127,18 @@ const AllGroups = () => {
   }, [currentGroup, packageId, showSnack, t]);
 
   const submitExportGroup = useCallback(() => {
-    console.log("exported");
     if (currentGroup) {
       exportGroup(currentGroup.id)
         .then((response) => {
-          ipcRenderer.send("save-file", {
-            title: response.data.name,
-            text: JSON.stringify(response.data),
-          });
-          ipcRenderer.on("save-file-reply", (event, result) => {
-            setShowExportConfirmationModal(false);
-            showSnack("success", t("screens.allGroups.exportFailMessage"));
-          });
-          return () => {
-            ipcRenderer.removeListener("save-file-reply");
-          };
+          ipcRenderer
+            .invoke("save-file", {
+              title: response.data.name,
+              text: JSON.stringify(response.data),
+            })
+            .then((result) => {
+              setShowExportConfirmationModal(false);
+              showSnack("success", t("screens.allGroups.exportFailMessage"));
+            });
         })
         .catch((e) => {
           showSnack("error", t("screens.allGroups.exportFailMessage"));

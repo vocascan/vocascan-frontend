@@ -26,8 +26,6 @@ import { nodeRequire } from "../../../utils/index.js";
 
 import "./AllPackages.scss";
 
-const fs = window.require("fs");
-
 const { ipcRenderer } = nodeRequire("electron");
 
 const AllPackages = () => {
@@ -95,17 +93,18 @@ const AllPackages = () => {
     if (currentPackage) {
       exportPackage(currentPackage.id)
         .then((response) => {
-          ipcRenderer.send("save-file", {
-            title: response.data.name,
-            text: JSON.stringify(response.data),
-          });
-          ipcRenderer.on("save-file-reply", (event, result) => {
-            setShowExportConfirmationModal(false);
-            showSnack("success", t("screens.allPackages.exportSuccessMessage"));
-          });
-          return () => {
-            ipcRenderer.removeListener("save-file-reply");
-          };
+          ipcRenderer
+            .invoke("save-file", {
+              title: response.data.name,
+              text: JSON.stringify(response.data),
+            })
+            .then(() => {
+              setShowExportConfirmationModal(false);
+              showSnack(
+                "success",
+                t("screens.allPackages.exportSuccessMessage")
+              );
+            });
         })
         .catch((e) => {
           showSnack("error", t("screens.allPackages.exportFailMessage"));
@@ -114,22 +113,11 @@ const AllPackages = () => {
   }, [currentPackage, showSnack, t]);
 
   const submitImport = useCallback(() => {
-    ipcRenderer.send("open-file", {});
-    ipcRenderer.on("open-file-reply", (event, result) => {
-      //read in file and parse json
-      fs.readFile(result.filePaths[0], "utf8", function (err, data) {
-        try {
-          setImportedData(JSON.parse(data));
-        } catch (e) {
-          // Catch error in case file doesn't exist or isn't valid JSON
-        }
-      });
+    ipcRenderer.invoke("open-file", {}).then((result) => {
+      setImportedData(result);
       setShowImportModal(true);
       showSnack("success", t("screens.allPackages.exportSuccessMessage"));
     });
-    return () => {
-      ipcRenderer.removeListener("open-file-reply");
-    };
   }, [showSnack, t]);
 
   const columns = useMemo(

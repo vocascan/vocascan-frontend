@@ -9,9 +9,9 @@ const ImportPreviewForm = ({ importedData }) => {
   return (
     <div className="import-preview">
       {importedData.foreignWordLanguage ? (
-        <GroupPreview importedData={importedData} />
-      ) : (
         <PackagePreview importedData={importedData} />
+      ) : (
+        <GroupPreview importedData={importedData} />
       )}
     </div>
   );
