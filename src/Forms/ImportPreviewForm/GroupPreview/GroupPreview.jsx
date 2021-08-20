@@ -1,12 +1,16 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+
 import Button from "../../../Components/Button/Button.jsx";
+import Details from "../../../Components/Details/Details.jsx";
 import Select, {
   SelectOptionWithFlag,
 } from "../../../Components/Form/Select/Select.jsx";
 import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
+import Table from "../../../Components/Table/Table.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
@@ -18,7 +22,7 @@ const GroupPreview = ({ importedData }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
-  const [group, setGroup] = useState(importedData);
+  const [importedGroup, setImportedGroup] = useState(importedData);
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState({});
@@ -42,6 +46,17 @@ const GroupPreview = ({ importedData }) => {
       });
   }, [showSnack, t]);
 
+  useEffect(() => {
+    return () => {
+      setImportedGroup(importedData);
+    };
+  }, [importedData, importedGroup]);
+
+  useEffect(() => {
+    fetchPackages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const packageAdded = useCallback(
     (newPackage) => {
       setSelectedPackage({
@@ -61,7 +76,7 @@ const GroupPreview = ({ importedData }) => {
   );
 
   const submitImport = () => {
-    importGroup(group, selectedPackage.value, true, false)
+    importGroup(importedGroup, selectedPackage.value, true, false)
       .then((response) => {
         showSnack("success", t("screens.allPackages.exportSuccessMessage"));
       })
@@ -87,14 +102,47 @@ const GroupPreview = ({ importedData }) => {
     );
   }, [packages]);
 
-  useEffect(() => {
-    setGroup(importedData);
-  }, [importedData]);
-
-  useEffect(() => {
-    fetchPackages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const columns = useMemo(
+    () => [
+      {
+        Header: t("screens.allVocabs.vocabel"),
+        accessor: "name",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            <p>{row.original.name}</p>
+          </div>
+        ),
+      },
+      {
+        Header: t("screens.allVocabs.description"),
+        accessor: "description",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            <p>{row.original.description}</p>
+          </div>
+        ),
+      },
+      {
+        Header: t("screens.allVocabs.translations"),
+        accessor: "translations",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            <p>{row.original.Translations.map((el) => el.name).join(", ")}</p>
+          </div>
+        ),
+      },
+      {
+        Header: t("screens.allGroups.active"),
+        accessor: "active",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            {<CheckCircleIcon className="text-success" />}
+          </div>
+        ),
+      },
+    ],
+    [t]
+  );
 
   return (
     <>
@@ -118,12 +166,12 @@ const GroupPreview = ({ importedData }) => {
           required
           placeholder={"Name"}
           onChange={(value) => {
-            setGroup((prevState) => ({
+            setImportedGroup((prevState) => ({
               ...prevState,
               name: value,
             }));
           }}
-          value={group.name}
+          value={importedGroup.name}
           max={255}
           min={1}
         />
@@ -132,15 +180,26 @@ const GroupPreview = ({ importedData }) => {
           required
           placeholder={"Description"}
           onChange={(value) => {
-            setGroup((prevState) => ({
+            setImportedGroup((prevState) => ({
               ...prevState,
               description: value,
             }));
           }}
-          value={group.description}
+          value={importedGroup.description}
           max={255}
           min={1}
         />
+
+        <Details
+          summary={"Vocabs"}
+          count={importedGroup?.VocabularyCards.length}
+          open={false}
+          key={1}
+        >
+          {importedGroup?.VocabularyCards.map((vocab, i) => (
+            <Table pagination={false} columns={columns} data={vocab} />
+          ))}
+        </Details>
 
         <Button block uppercase onClick={submitImport}>
           {t("global.signIn")}

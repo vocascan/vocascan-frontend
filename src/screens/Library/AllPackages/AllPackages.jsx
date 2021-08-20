@@ -119,8 +119,7 @@ const AllPackages = () => {
       //read in file and parse json
       fs.readFile(result.filePaths[0], "utf8", function (err, data) {
         try {
-          data = JSON.parse(data);
-          setImportedData(data);
+          setImportedData(JSON.parse(data));
         } catch (e) {
           // Catch error in case file doesn't exist or isn't valid JSON
         }

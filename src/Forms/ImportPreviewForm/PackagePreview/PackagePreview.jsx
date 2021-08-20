@@ -2,12 +2,15 @@ import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+
 import Button from "../../../Components/Button/Button.jsx";
-//import Details from "../../../Components/Details/Details.jsx";
+import Details from "../../../Components/Details/Details.jsx";
 import Select, {
   SelectOptionWithFlag,
 } from "../../../Components/Form/Select/Select.jsx";
 import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
+import Table from "../../../Components/Table/Table.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
 import { importLanguagePackage } from "../../../utils/api.js";
@@ -46,6 +49,48 @@ const PackagePreview = ({ importedData }) => {
         ),
       })),
     [languages]
+  );
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: t("screens.allVocabs.vocabel"),
+        accessor: "name",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            <p>{row.original.name}</p>
+          </div>
+        ),
+      },
+      {
+        Header: t("screens.allVocabs.description"),
+        accessor: "description",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            <p>{row.original.description}</p>
+          </div>
+        ),
+      },
+      {
+        Header: t("screens.allVocabs.translations"),
+        accessor: "translations",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            <p>{row.original.Translations.map((el) => el.name).join(", ")}</p>
+          </div>
+        ),
+      },
+      {
+        Header: t("screens.allGroups.active"),
+        accessor: "active",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            {<CheckCircleIcon className="text-success" />}
+          </div>
+        ),
+      },
+    ],
+    [t]
   );
 
   return (
@@ -149,6 +194,28 @@ const PackagePreview = ({ importedData }) => {
         max={10}
         min={1}
       />
+      <Details
+        summary={"Groups"}
+        count={languagePackage.Groups.length}
+        open={false}
+        key={1}
+      >
+        {languagePackage?.Groups.map((group, i) => (
+          <Details
+            summary={group.name}
+            count={group.length}
+            open={i === 0}
+            key={i}
+          >
+            <Table
+              pagination={false}
+              columns={columns}
+              data={group.VocabularyCards}
+            />
+          </Details>
+        ))}
+      </Details>
+
       {/*{Object.entries(languagePackage.Groups).map(([key, value], i) => (
         <Details
           summary={value.name}

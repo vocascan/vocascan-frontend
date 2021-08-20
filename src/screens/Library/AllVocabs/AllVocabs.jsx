@@ -98,6 +98,15 @@ const AllVocabs = () => {
         ),
       },
       {
+        Header: t("screens.allVocabs.description"),
+        accessor: "description",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            <p>{row.original.description}</p>
+          </div>
+        ),
+      },
+      {
         Header: t("screens.allVocabs.translations"),
         accessor: "translations",
       },
