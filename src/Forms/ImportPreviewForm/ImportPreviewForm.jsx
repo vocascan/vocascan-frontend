@@ -5,13 +5,13 @@ import PackagePreview from "./PackagePreview/PackagePreview.jsx";
 
 import "./ImportPreviewForm.scss";
 
-const ImportPreviewForm = ({ data }) => {
+const ImportPreviewForm = ({ importedData }) => {
   return (
     <div className="import-preview">
-      {data.foreignWordLanguage ? (
-        <PackagePreview data={data} />
+      {importedData.foreignWordLanguage ? (
+        <PackagePreview importedData={importedData} />
       ) : (
-        <GroupPreview data={data} />
+        <GroupPreview importedData={importedData} />
       )}
     </div>
   );

@@ -254,7 +254,7 @@ const AllPackages = () => {
         open={showImportModal}
         onClose={() => setShowImportModal(false)}
       >
-        <ImportPreviewForm data={importedData} />
+        <ImportPreviewForm importedData={importedData} />
       </Modal>
 
       <ConfirmDialog

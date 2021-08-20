@@ -5,6 +5,7 @@ import Button from "../../../Components/Button/Button.jsx";
 import Select, {
   SelectOptionWithFlag,
 } from "../../../Components/Form/Select/Select.jsx";
+import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
@@ -13,11 +14,11 @@ import { getPackages, importGroup } from "../../../utils/api.js";
 
 import "./GroupPreview.scss";
 
-const GroupPreview = ({ data }) => {
+const GroupPreview = ({ importedData }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
-  const [group, setGroup] = useState(data);
+  const [group, setGroup] = useState(importedData);
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState({});
@@ -87,6 +88,10 @@ const GroupPreview = ({ data }) => {
   }, [packages]);
 
   useEffect(() => {
+    setGroup(importedData);
+  }, [importedData]);
+
+  useEffect(() => {
     fetchPackages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -108,8 +113,34 @@ const GroupPreview = ({ data }) => {
           value={selectedPackage}
           noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
         />
-        <p>{data.name}</p>
-        <p>{data.foreignWordLanguage}</p>
+        <TextInput
+          autoFocus
+          required
+          placeholder={"Name"}
+          onChange={(value) => {
+            setGroup((prevState) => ({
+              ...prevState,
+              name: value,
+            }));
+          }}
+          value={group.name}
+          max={255}
+          min={1}
+        />
+        <TextInput
+          autoFocus
+          required
+          placeholder={"Description"}
+          onChange={(value) => {
+            setGroup((prevState) => ({
+              ...prevState,
+              description: value,
+            }));
+          }}
+          value={group.description}
+          max={255}
+          min={1}
+        />
 
         <Button block uppercase onClick={submitImport}>
           {t("global.signIn")}
