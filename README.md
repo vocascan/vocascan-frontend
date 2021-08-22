@@ -6,6 +6,7 @@
 ![Github downloads](https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat-square)
 [![Localazy](https://connect.localazy.com/status/vocascan?content=progress&style=flat-square&logo=ffffff)](https://localazy.com/p/vocascan)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bbee2cb0e916ace66d5e/maintainability)](https://codeclimate.com/github/vocascan/vocascan-desktop/maintainability)
 
 ![Vocascan cover](./src/images/logo/vocascan-github-cover.png)
 
