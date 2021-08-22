@@ -16,6 +16,7 @@ import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import Tooltip from "../../../Components/Tooltip/Tooltip.jsx";
 import GroupForm from "../../../Forms/GroupForm/GroupForm.jsx";
+import ImportPreviewForm from "../../../Forms/ImportPreviewForm/ImportPreviewForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
 import {
@@ -37,6 +38,7 @@ const AllGroups = () => {
   const { packageId } = useParams();
 
   const [data, setData] = useState([]);
+  const [importedData, setImportedData] = useState(null);
   const [currentPackage, setCurrentPackage] = useState(null);
   const [currentGroup, setCurrentGroup] = useState(null);
   const [showGroupModal, setShowGroupModal] = useState(false);
@@ -44,6 +46,7 @@ const AllGroups = () => {
     useState(false);
   const [showExportConfirmationModal, setShowExportConfirmationModal] =
     useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
 
   const openExportGroup = useCallback((pack) => {
     setCurrentGroup(pack);
@@ -146,6 +149,17 @@ const AllGroups = () => {
     }
   }, [currentGroup, showSnack, t]);
 
+  const submitImport = useCallback(() => {
+    try {
+      ipcRenderer.invoke("open-file", {}).then((result) => {
+        setImportedData(result);
+        setShowImportModal(true);
+      });
+    } catch {
+      showSnack("error", t("global.fileImportError"));
+    }
+  }, [showSnack, t]);
+
   const columns = useMemo(
     () => [
       {
@@ -240,6 +254,9 @@ const AllGroups = () => {
           <Button className="add" variant="transparent">
             <AddCircleOutlinedIcon onClick={addGroup} />
           </Button>
+          <Button className="import" block uppercase onClick={submitImport}>
+            Import
+          </Button>
         </div>
         <div>
           <Table columns={columns} data={data} />
@@ -261,6 +278,15 @@ const AllGroups = () => {
           selectedPackage={currentPackage}
           onSubmitCallback={groupSubmitted}
         />
+      </Modal>
+
+      <Modal
+        title={t("components.globa.import")}
+        size={"large"}
+        open={showImportModal}
+        onClose={() => setShowImportModal(false)}
+      >
+        <ImportPreviewForm importedData={importedData} />
       </Modal>
 
       <ConfirmDialog

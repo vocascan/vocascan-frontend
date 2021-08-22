@@ -16,7 +16,7 @@ import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 import useSnack from "../../../hooks/useSnack.js";
 import { getPackages, importGroup } from "../../../utils/api.js";
 
-import "./GroupPreview.scss";
+//import "./GroupPreview.scss";
 
 const GroupPreview = ({ importedData }) => {
   const { t } = useTranslation();
@@ -99,7 +99,7 @@ const GroupPreview = ({ importedData }) => {
   const columns = useMemo(
     () => [
       {
-        Header: t("screens.allVocabs.vocabel"),
+        Header: t("screens.allVocabs.vocabulary"),
         accessor: "name",
         Cell: ({ row }) => (
           <div style={{ textAlign: "left" }}>
@@ -141,68 +141,76 @@ const GroupPreview = ({ importedData }) => {
   return (
     <>
       <div className="group-preview">
-        <Select
-          required
-          creatable
-          createText={t("components.vocabForm.packageCreateText")}
-          onCreate={openPackageModal}
-          tabIndex={-1}
-          label={t("global.package")}
-          options={packageItems}
-          onChange={(v) => {
-            setSelectedPackage(v);
-          }}
-          value={selectedPackage}
-          noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
-        />
-        <TextInput
-          autoFocus
-          required
-          placeholder={"Name"}
-          onChange={(value) => {
-            setImportedGroup((prevState) => ({
-              ...prevState,
-              name: value,
-            }));
-          }}
-          value={importedGroup.name}
-          max={255}
-          min={1}
-        />
-        <TextInput
-          autoFocus
-          required
-          placeholder={"Description"}
-          onChange={(value) => {
-            setImportedGroup((prevState) => ({
-              ...prevState,
-              description: value,
-            }));
-          }}
-          value={importedGroup.description}
-          max={255}
-          min={1}
-        />
-
-        <Details
-          summary={"Vocabs"}
-          count={importedGroup?.VocabularyCards.length}
-          open={false}
-          key={1}
-        >
-          <Table
-            pagination={false}
-            columns={columns}
-            data={importedGroup.VocabularyCards}
+        <div className="update-fields">
+          <Select
+            required
+            creatable
+            createText={t("components.vocabForm.packageCreateText")}
+            onCreate={openPackageModal}
+            tabIndex={-1}
+            label={t("global.package")}
+            options={packageItems}
+            onChange={(v) => {
+              setSelectedPackage(v);
+            }}
+            value={selectedPackage}
+            noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
           />
-        </Details>
+          <TextInput
+            autoFocus
+            required
+            placeholder={t("global.name")}
+            onChange={(value) => {
+              setImportedGroup((prevState) => ({
+                ...prevState,
+                name: value,
+              }));
+            }}
+            value={importedGroup.name}
+            max={255}
+            min={1}
+          />
+          <TextInput
+            autoFocus
+            required
+            placeholder={t("global.description")}
+            onChange={(value) => {
+              setImportedGroup((prevState) => ({
+                ...prevState,
+                description: value,
+              }));
+            }}
+            value={importedGroup.description}
+            max={255}
+            min={1}
+          />
 
-        <Button block uppercase onClick={submitImport}>
-          {t("global.signIn")}
-        </Button>
+          <Details
+            summary={t("global.vocabs")}
+            count={importedGroup?.VocabularyCards.length}
+            open={false}
+            key={1}
+          >
+            <Table
+              pagination={false}
+              columns={columns}
+              data={importedGroup.VocabularyCards}
+            />
+          </Details>
+        </div>
+        <div className="submit-btn">
+          <Button
+            block
+            uppercase
+            onClick={submitImport}
+            disabled={!importedData}
+          >
+            {t("global.import")}
+          </Button>
+        </div>
       </div>
       <Modal
-        title={"Add Package"}
+        title={t("screens.allPackages.addPackage")}
         open={showAddPackage}
         onClose={closePackageModal}
       >

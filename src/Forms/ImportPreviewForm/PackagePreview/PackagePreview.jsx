@@ -54,21 +54,17 @@ const PackagePreview = ({ importedData }) => {
   const columns = useMemo(
     () => [
       {
-        Header: t("screens.allVocabs.vocabel"),
+        Header: t("screens.allVocabs.vocabulary"),
         accessor: "name",
         Cell: ({ row }) => (
-          <div style={{ textAlign: "left" }}>
-            <p>{row.original.name}</p>
-          </div>
+          <div style={{ textAlign: "left" }}>{row.original.name}</div>
         ),
       },
       {
         Header: t("screens.allVocabs.description"),
         accessor: "description",
         Cell: ({ row }) => (
-          <div style={{ textAlign: "left" }}>
-            <p>{row.original.description}</p>
-          </div>
+          <div style={{ textAlign: "left" }}>{row.original.description}</div>
         ),
       },
       {
@@ -76,7 +72,7 @@ const PackagePreview = ({ importedData }) => {
         accessor: "translations",
         Cell: ({ row }) => (
           <div style={{ textAlign: "left" }}>
-            <p>{row.original.Translations.map((el) => el.name).join(", ")}</p>
+            {row.original.Translations.map((el) => el.name).join(", ")}
           </div>
         ),
       },
@@ -95,140 +91,134 @@ const PackagePreview = ({ importedData }) => {
 
   return (
     <div className="package-preview">
-      <TextInput
-        autoFocus
-        required
-        placeholder={"Name"}
-        onChange={(value) => {
-          setLanguagePackage((prevState) => ({
-            ...prevState,
-            name: value,
-          }));
-        }}
-        value={languagePackage.name}
-        maxLength={255}
-      />
-      <div className="dropdown">
-        <div className="select-wrapper">
-          <Select
-            required
-            label={t("components.packageForm.foreignLanguage")}
-            options={selectOptions}
-            onChange={(value) => {
-              setLanguagePackage((prevState) => ({
-                ...prevState,
-                foreignWordLanguage: value.code,
-              }));
-            }}
-            value={{
-              value: languagePackage.foreignWordLanguage,
-              code: languagePackage.foreignWordLanguage,
-              label: (
-                <SelectOptionWithFlag
-                  name={getLanguageString(
-                    findLanguageByCode(
-                      languagePackage.foreignWordLanguage,
-                      languages
-                    )
-                  )}
-                  foreignLanguageCode={languagePackage.foreignWordLanguage}
-                />
-              ),
-            }}
-          />
-        </div>
-        <div className="select-wrapper">
-          <Select
-            required
-            label={t("components.packageForm.translatedLanguage")}
-            options={selectOptions}
-            onChange={(value) => {
-              setLanguagePackage((prevState) => ({
-                ...prevState,
-                translatedWordLanguage: value.code,
-              }));
-            }}
-            value={{
-              value: languagePackage.translatedWordLanguage,
-              code: languagePackage.translatedWordLanguage,
-              label: (
-                <SelectOptionWithFlag
-                  name={getLanguageString(
-                    findLanguageByCode(
-                      languagePackage.translatedWordLanguage,
-                      languages
-                    )
-                  )}
-                  foreignLanguageCode={languagePackage.translatedWordLanguage}
-                />
-              ),
-            }}
-          />
-        </div>
-      </div>
-      <TextInput
-        autoFocus
-        required
-        placeholder={"Vocabs Per Day"}
-        onChange={(value) => {
-          setLanguagePackage((prevState) => ({
-            ...prevState,
-            vocabsPerDay: value,
-          }));
-        }}
-        value={languagePackage.vocabsPerDay}
-        max={255}
-        min={0}
-      />
-      <TextInput
-        autoFocus
-        required
-        placeholder={"Right words"}
-        onChange={(value) => {
-          setLanguagePackage((prevState) => ({
-            ...prevState,
-            rightWords: value,
-          }));
-        }}
-        value={languagePackage.rightWords}
-        max={10}
-        min={1}
-      />
-      <Details
-        summary={"Groups"}
-        count={languagePackage.Groups.length}
-        open={false}
-        key={1}
-      >
-        {languagePackage?.Groups.map((group, i) => (
-          <Details
-            summary={group.name}
-            count={group.length}
-            open={i === 0}
-            key={i}
-          >
-            <Table
-              pagination={false}
-              columns={columns}
-              data={group.VocabularyCards}
+      <div className="update-fields">
+        <TextInput
+          autoFocus
+          required
+          placeholder={t("global.name")}
+          onChange={(value) => {
+            setLanguagePackage((prevState) => ({
+              ...prevState,
+              name: value,
+            }));
+          }}
+          value={languagePackage.name}
+          maxLength={255}
+        />
+        <div className="dropdown">
+          <div className="select-wrapper">
+            <Select
+              required
+              label={t("components.packageForm.foreignLanguage")}
+              options={selectOptions}
+              onChange={(value) => {
+                setLanguagePackage((prevState) => ({
+                  ...prevState,
+                  foreignWordLanguage: value.code,
+                }));
+              }}
+              value={{
+                value: languagePackage.foreignWordLanguage,
+                code: languagePackage.foreignWordLanguage,
+                label: (
+                  <SelectOptionWithFlag
+                    name={getLanguageString(
+                      findLanguageByCode(
+                        languagePackage.foreignWordLanguage,
+                        languages
+                      )
+                    )}
+                    foreignLanguageCode={languagePackage.foreignWordLanguage}
+                  />
+                ),
+              }}
             />
-          </Details>
-        ))}
-      </Details>
-
-      {/*{Object.entries(languagePackage.Groups).map(([key, value], i) => (
+          </div>
+          <div className="select-wrapper">
+            <Select
+              required
+              label={t("components.packageForm.translatedLanguage")}
+              options={selectOptions}
+              onChange={(value) => {
+                setLanguagePackage((prevState) => ({
+                  ...prevState,
+                  translatedWordLanguage: value.code,
+                }));
+              }}
+              value={{
+                value: languagePackage.translatedWordLanguage,
+                code: languagePackage.translatedWordLanguage,
+                label: (
+                  <SelectOptionWithFlag
+                    name={getLanguageString(
+                      findLanguageByCode(
+                        languagePackage.translatedWordLanguage,
+                        languages
+                      )
+                    )}
+                    foreignLanguageCode={languagePackage.translatedWordLanguage}
+                  />
+                ),
+              }}
+            />
+          </div>
+        </div>
+        <TextInput
+          autoFocus
+          required
+          placeholder={t("global.vocabsPerDay")}
+          onChange={(value) => {
+            setLanguagePackage((prevState) => ({
+              ...prevState,
+              vocabsPerDay: value,
+            }));
+          }}
+          value={languagePackage.vocabsPerDay}
+          max={255}
+          min={0}
+        />
+        <TextInput
+          autoFocus
+          required
+          placeholder={t("global.rightWords")}
+          onChange={(value) => {
+            setLanguagePackage((prevState) => ({
+              ...prevState,
+              rightWords: value,
+            }));
+          }}
+          value={languagePackage.rightWords}
+          max={10}
+          min={1}
+        />
         <Details
-          summary={value.name}
-          count={value.length}
-          open={i === 0}
-          key={i}
+          summary={t("global.groups")}
+          count={languagePackage.Groups.length}
+          open={false}
+          key={1}
         >
-          {value.map((contributor, j) => console.log("hello"))}
+          {languagePackage?.Groups.map((group, i) => (
+            <Details
+              className="group-preview"
+              summary={group.name}
+              count={group.length}
+              open={i === 0}
+              key={i}
+            >
+              <Table
+                pagination={false}
+                columns={columns}
+                data={group.VocabularyCards}
+              />
+            </Details>
+          ))}
         </Details>
-      ))}*/}
-      <Button block uppercase onClick={submitImport}>
-        {t("global.signIn")}
-      </Button>
+      </div>
+      <div className="submit-btn">
+        <Button block uppercase onClick={submitImport} disabled={!importedData}>
+          {t("global.import")}
+        </Button>
+      </div>
     </div>
   );
 };

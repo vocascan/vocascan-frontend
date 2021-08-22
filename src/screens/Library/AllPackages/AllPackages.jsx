@@ -33,7 +33,7 @@ const AllPackages = () => {
   const { showSnack } = useSnack();
 
   const [data, setData] = useState([]);
-  const [importedData, setImportedData] = useState([]);
+  const [importedData, setImportedData] = useState(null);
   const [currentPackage, setCurrentPackage] = useState(null);
   const [showPackageModal, setShowPackageModal] = useState(false);
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
@@ -113,11 +113,14 @@ const AllPackages = () => {
   }, [currentPackage, showSnack, t]);
 
   const submitImport = useCallback(() => {
-    ipcRenderer.invoke("open-file", {}).then((result) => {
-      setImportedData(result);
-      setShowImportModal(true);
-      showSnack("success", t("screens.allPackages.exportSuccessMessage"));
-    });
+    try {
+      ipcRenderer.invoke("open-file", {}).then((result) => {
+        setImportedData(result);
+        setShowImportModal(true);
+      });
+    } catch {
+      showSnack("error", t("global.fileImportError"));
+    }
   }, [showSnack, t]);
 
   const columns = useMemo(
@@ -212,7 +215,7 @@ const AllPackages = () => {
           <Button className="add" variant="transparent">
             <AddCircleOutlinedIcon onClick={addPackage} />
           </Button>
-          <Button className="add" variant="transparent" onClick={submitImport}>
+          <Button className="import" block uppercase onClick={submitImport}>
             Import
           </Button>
         </div>
@@ -237,7 +240,8 @@ const AllPackages = () => {
       </Modal>
 
       <Modal
-        title={"Import"}
+        title={t("components.globa.import")}
+        size={"large"}
         open={showImportModal}
         onClose={() => setShowImportModal(false)}
       >
