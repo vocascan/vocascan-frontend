@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
@@ -176,9 +178,10 @@ const AllPackages = () => {
           <div className="action-col">
             <Button
               appearance="primary"
+              variant="link"
               onClick={() => openExportPackage(row.original)}
             >
-              Export
+              <ArrowDownwardIcon />
             </Button>
             <Button
               appearance="primary"
@@ -215,8 +218,12 @@ const AllPackages = () => {
           <Button className="add" variant="transparent">
             <AddCircleOutlinedIcon onClick={addPackage} />
           </Button>
-          <Button className="import" block uppercase onClick={submitImport}>
-            Import
+          <Button
+            className="import"
+            variant="transparent"
+            onClick={submitImport}
+          >
+            <ArrowUpwardIcon onClick={() => submitImport} />
           </Button>
         </div>
         <div>

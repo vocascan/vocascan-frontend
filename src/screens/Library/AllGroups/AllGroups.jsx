@@ -4,6 +4,8 @@ import { Link, useParams, useHistory } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
@@ -212,9 +214,10 @@ const AllGroups = () => {
           <div className="action-col">
             <Button
               appearance="primary"
+              variant="link"
               onClick={() => openExportGroup(row.original)}
             >
-              Export
+              <ArrowDownwardIcon />
             </Button>
             <Button variant="link" onClick={() => editGroup(row.original)}>
               <EditOutlinedIcon />
@@ -254,8 +257,12 @@ const AllGroups = () => {
           <Button className="add" variant="transparent">
             <AddCircleOutlinedIcon onClick={addGroup} />
           </Button>
-          <Button className="import" block uppercase onClick={submitImport}>
-            Import
+          <Button
+            className="import"
+            variant="transparent"
+            onClick={submitImport}
+          >
+            <ArrowUpwardIcon onClick={() => submitImport} />
           </Button>
         </div>
         <div>

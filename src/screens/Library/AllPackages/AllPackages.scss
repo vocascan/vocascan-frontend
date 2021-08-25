@@ -29,8 +29,10 @@
 
     .import {
       position: absolute;
-      left: 0;
-      width: 100px;
+      right: 40px;
+      align-self: center;
+      padding: 5px;
+      border-radius: 100%;
     }
   }
 
