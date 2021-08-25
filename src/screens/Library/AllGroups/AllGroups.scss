@@ -1,6 +1,10 @@
 @import "../../../colors";
 
 .all-groups-wrapper {
+  .action-col-btn {
+    margin-right: 8px;
+  }
+
   .header-wrapper {
     position: relative;
     display: flex;

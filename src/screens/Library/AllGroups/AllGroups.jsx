@@ -215,16 +215,22 @@ const AllGroups = () => {
             <Button
               appearance="primary"
               variant="link"
+              className="action-col-btn"
               onClick={() => openExportGroup(row.original)}
             >
               <ArrowDownwardIcon />
             </Button>
-            <Button variant="link" onClick={() => editGroup(row.original)}>
+            <Button
+              variant="link"
+              className="action-col-btn"
+              onClick={() => editGroup(row.original)}
+            >
               <EditOutlinedIcon />
             </Button>
             <Button
               appearance="red"
               variant="link"
+              className="action-col-btn"
               onClick={() => onDeleteGroup(row.original)}
             >
               <DeleteOutlineIcon />

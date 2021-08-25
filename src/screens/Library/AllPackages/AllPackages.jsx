@@ -179,6 +179,7 @@ const AllPackages = () => {
             <Button
               appearance="primary"
               variant="link"
+              className="action-col-btn"
               onClick={() => openExportPackage(row.original)}
             >
               <ArrowDownwardIcon />
@@ -186,6 +187,7 @@ const AllPackages = () => {
             <Button
               appearance="primary"
               variant="link"
+              className="action-col-btn"
               onClick={() => editPackage(row.original)}
             >
               <EditOutlinedIcon />
@@ -193,6 +195,7 @@ const AllPackages = () => {
             <Button
               appearance="red"
               variant="link"
+              className="action-col-btn"
               onClick={() => onDeletePckge(row.original)}
             >
               <DeleteOutlineIcon />
