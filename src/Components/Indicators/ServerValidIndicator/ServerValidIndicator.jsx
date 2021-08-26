@@ -12,13 +12,14 @@ import { minServerVersion } from "../../../utils/constants.js";
 
 import "./ServerValidIndicator.scss";
 
-const ServerValidIndicator = ({ setValid }) => {
+const ServerValidIndicator = ({ setValid, setLocked = null }) => {
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const debouncedServerAddress = useDebounce(serverAddress, 500);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isValidServer, setIsValidServer] = useState(null);
   const [isValidVersion, setIsValidVersion] = useState(null);
+  const [isLockValid, setIsLockValid] = useState(false);
   const [isServerResponding, setIsServerResponding] = useState(null);
   const [serverVersion, setServerVersion] = useState(null);
 
@@ -31,12 +32,14 @@ const ServerValidIndicator = ({ setValid }) => {
     setIsValidServer(null);
     setIsValidVersion(null);
     setServerVersion(null);
+    setIsLockValid(null);
 
     const cancelToken = CancelToken.source();
 
     getInfo(cancelToken.token)
       .then((res) => {
         setIsValidServer(res?.data?.identifier === "vocascan-server");
+        setIsLockValid(res?.data?.locked);
         setIsValidVersion(gte(res?.data?.version, minServerVersion));
         setServerVersion(res?.data?.version);
         setIsServerResponding(true);
@@ -61,7 +64,18 @@ const ServerValidIndicator = ({ setValid }) => {
         isValidVersion === true &&
         isServerResponding === true
     );
-  }, [setValid, isValidServer, isValidVersion, isServerResponding]);
+    // make this query, because Login Page is not sending a setLocked param
+    if (setLocked) {
+      setLocked(isLockValid);
+    }
+  }, [
+    setValid,
+    isValidServer,
+    isValidVersion,
+    isServerResponding,
+    setLocked,
+    isLockValid,
+  ]);
 
   useEffect(() => {
     return () => {
@@ -80,7 +94,7 @@ const ServerValidIndicator = ({ setValid }) => {
         isServerResponding === true && (
           <p className="success">
             {t("components.validServerIndicator.validServer", {
-              version: serverVersion,
+              version: `${serverVersion} ${isLockValid ? "locked" : ""}`,
             })}
           </p>
         )}

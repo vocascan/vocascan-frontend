@@ -1,4 +1,4 @@
-export const vocascanServer = "https://vocascan.com"; // TODO: add domain later
+export const vocascanServer = "https://test-server.vocascan.com";
 
 export const maxTranslations = 10;
 

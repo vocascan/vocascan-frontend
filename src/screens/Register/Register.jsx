@@ -12,7 +12,11 @@ import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout
 
 import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, register } from "../../redux/Actions/login.js";
-import { register as registerAPI, getLanguages } from "../../utils/api.js";
+import {
+  register as registerAPI,
+  getLanguages,
+  checkInviteCode,
+} from "../../utils/api.js";
 import {
   maxTextfieldLength,
   maxUsernameLength,
@@ -31,13 +35,17 @@ const Register = ({ image }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
+  const [inviteCode, setInviteCode] = useState("");
   const [serverAddressInput, setServerAddressInput] = useState(serverAddress);
   const [isSamePassword, setIsSamePassword] = useState(true);
   const [usernameIsUsed, setUsernameIsUsed] = useState(false);
   const [emailIsUsed, setEmailIsUsed] = useState(false);
   const [serverError, setServerError] = useState(false);
   const [isServerValid, setIsServerValid] = useState(false);
+  const [isServerLocked, setIsServerLocked] = useState(false);
   const [canSubmit, setCanSubmit] = useState(false);
+  const [isInviteCodeValid, setIsInviteCodeValid] = useState(true);
+  const [inviteCodeError, setInviteCodeError] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -85,11 +93,14 @@ const Register = ({ image }) => {
         return;
       }
 
-      registerAPI({
-        username,
-        email,
-        password,
-      })
+      registerAPI(
+        {
+          username,
+          email,
+          password,
+        },
+        isServerLocked ? inviteCode : null
+      )
         .then((response) => {
           dispatch(
             register({
@@ -128,6 +139,8 @@ const Register = ({ image }) => {
       dispatch,
       email,
       fetchLanguages,
+      inviteCode,
+      isServerLocked,
       password,
       username,
     ]
@@ -160,6 +173,18 @@ const Register = ({ image }) => {
       dispatch(setServerUrl({ serverAddress: origin }));
     } catch (err) {}
   }, [dispatch, serverAddressInput]);
+
+  useEffect(() => {
+    setIsInviteCodeValid(false);
+
+    checkInviteCode(inviteCode)
+      .then((res) => {
+        setIsInviteCodeValid(res.data);
+      })
+      .catch((err) => {
+        setInviteCodeError(err.response.data);
+      });
+  }, [inviteCode]);
 
   return (
     <UnauthenticatedLayout>
@@ -240,6 +265,29 @@ const Register = ({ image }) => {
               maxLength={maxTextfieldLength}
               minLength={8}
             />
+            {isServerLocked && (
+              <TextInput
+                required
+                type="text"
+                placeholder={t("global.inviteCode")}
+                onChange={(value) => {
+                  setInviteCode(value);
+                }}
+                value={inviteCode}
+                error={!isInviteCodeValid}
+                errorText={
+                  inviteCodeError?.fields[0]?.field === "notExisting"
+                    ? "Invite code does not exist"
+                    : inviteCodeError?.fields[0]?.field === "used"
+                    ? "No invites left"
+                    : inviteCodeError?.fields[0]?.field === "expired"
+                    ? "Code is expired"
+                    : "Error checking your invite code"
+                }
+                maxLength={maxTextfieldLength}
+                minLength={255}
+              />
+            )}
             {selfHosted && (
               <TextInput
                 required
@@ -255,7 +303,10 @@ const Register = ({ image }) => {
             {serverError ? (
               <p className="form-error">{t("global.serverNotResponding")}</p>
             ) : (
-              <ServerValidIndicator setValid={setIsServerValid} />
+              <ServerValidIndicator
+                setValid={setIsServerValid}
+                setLocked={setIsServerLocked}
+              />
             )}
           </div>
           <div className="register-form-submit">
@@ -267,6 +318,7 @@ const Register = ({ image }) => {
             >
               {t("global.signUp")}
             </Button>
+            <p>{isServerLocked}</p>
             <div className="register-form-submit-register">
               {t("screens.register.alreadyHaveAccount")}{" "}
               <div
