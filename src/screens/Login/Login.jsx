@@ -76,6 +76,7 @@ const Login = ({ image }) => {
               username: response.data.user.username,
               email,
               token: response.data.token,
+              isAdmin: response.data.user.isAdmin,
             })
           );
           //fetch languages from server

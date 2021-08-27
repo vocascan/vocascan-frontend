@@ -289,7 +289,8 @@
         "settings": "Settings",
         "about": "About",
         "profile": "Profile",
-        "logout": "Logout"
+        "logout": "Logout",
+        "admin": "Admin"
     },
     "languages": {
         "German": "German",

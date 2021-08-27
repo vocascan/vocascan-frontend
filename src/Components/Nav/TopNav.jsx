@@ -25,6 +25,7 @@ const TopNav = () => {
 
   const username = useSelector((state) => state.login.user.username);
   const email = useSelector((state) => state.login.user.email);
+  const isAdmin = useSelector((state) => state.login.user.isAdmin);
 
   return (
     <div className="top-nav">
@@ -50,6 +51,13 @@ const TopNav = () => {
                   {t("nav.settings")}
                 </NavLink>
               </li>
+              {isAdmin && (
+                <li className="menu-list-item">
+                  <NavLink to="/admin" className="menu-list-item-btn">
+                    {t("nav.admin")}
+                  </NavLink>
+                </li>
+              )}
               <li className="menu-list-item">
                 <NavLink to="/about" className="menu-list-item-btn">
                   {t("nav.about")}
