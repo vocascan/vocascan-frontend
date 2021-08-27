@@ -111,7 +111,7 @@ const App = () => {
               <Route path="/settings" component={Settings} />
               <Route path="/profile" component={Profile} />
               <Route path="/about" component={About} />
-              {user.isAdmin && (<Route path="/admin" component={Admin} />)}
+              {user.isAdmin && <Route path="/admin" component={Admin} />}
               <Route path="/">
                 <Redirect to="learn" />
               </Route>

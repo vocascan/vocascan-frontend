@@ -95,3 +95,4 @@ export const checkInviteCode = (inviteCode) =>
   api.get(`/inviteCode/${inviteCode}`);
 
 // Admin
+export const getInviteCodes = () => api.get(`/inviteCode`);
