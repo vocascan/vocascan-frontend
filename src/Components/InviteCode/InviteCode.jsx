@@ -23,7 +23,7 @@ const InviteCode = ({ data }) => {
           {data.expirationDate ? (
             <CountdownTimer callQueuedTime={data.expirationDate} />
           ) : (
-            "Never"
+            <span className="expiration-code-never">Never</span>
           )}
         </p>
       </div>

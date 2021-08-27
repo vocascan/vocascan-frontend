@@ -1,34 +1,33 @@
 @import "../../colors";
-
 .invite-code {
-  width: 100%;
-  height: 100px;
-  max-height: 100px;
-  max-width: 300px;
-  padding: 20px;
-  background: $color-background-inverse;
-  border-radius: 15px;
-  margin: auto;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-
-  hr {
-    border: 1px solid #bbb;
-  ;
-  }
-
-  .heading {
-    p {
-      color: $color-main-text-inverse;
+    width: 100%;
+    height: 100px;
+    max-height: 100px;
+    max-width: 300px;
+    padding: 20px;
+    background: $color-background-inverse;
+    border-radius: 15px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    hr {
+        border: 1px solid #bbb;
+        ;
     }
-  }
-
-  .information {
-    p {
-      color: #bbb;
-      font-size: 15px;
-      margin-top: 5px;
+    .heading {
+        p {
+            color: $color-main-text-inverse;
+        }
     }
-  }
+    .information {
+        p {
+            color: #bbb;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+        .expiration-code-never {
+            color: $color-green;
+        }
+    }
 }

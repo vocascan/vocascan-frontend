@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
-const renderer = ({ hours, minutes, seconds, completed }) => {
+import "./CountdownTimer.scss"
+
+const renderer = ({ days, hours, minutes, seconds, completed }) => {
+
   if (completed) {
     // Render a completed state
-    return <p>Expired</p>;
+    return <span className="countdown-timer-expired">Expired</span>;
   } else {
     // Render a countdown
     return (
-      <span>
-        {hours}:{minutes}:{seconds}
+      <span className="countdown-timer-running">
+        {("00" + days).substr(-2)}:{("00" + hours).substr(-2)}:
+        {("00" + minutes).substr(-2)}:{("00" + seconds).substr(-2)}
       </span>
     );
   }
