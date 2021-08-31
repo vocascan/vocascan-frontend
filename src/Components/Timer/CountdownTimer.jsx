@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
-import "./CountdownTimer.scss"
+import "./CountdownTimer.scss";
 
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
-
   if (completed) {
     // Render a completed state
     return <span className="countdown-timer-expired">Expired</span>;
