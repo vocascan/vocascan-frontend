@@ -49,6 +49,7 @@ const App = () => {
               username: res.data.username,
               email: user.email,
               token: user.token,
+              isAdmin: user.isAdmin,
             })
           );
         })

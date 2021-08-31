@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+//import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 
@@ -13,13 +14,16 @@ import InviteCodeForm from "../../Forms/InviteCodeForm/InviteCodeForm";
 import { getInviteCodes } from "../../utils/api";
 
 const Admin = () => {
-  const { t } = useTranslation();
+  //const { t } = useTranslation();
+  const history = useHistory();
   const [inviteCodes, setInviteCodes] = useState([]);
   const [showInviteCodeModal, setShowInviteCodeModal] = useState(false);
 
   const inviteCodeSubmitted = useCallback(() => {
     setShowInviteCodeModal(false);
-  }, []);
+    //reload windows in order to show new invite code
+    history.go(0);
+  }, [history]);
 
   useEffect(() => {
     getInviteCodes()
@@ -39,8 +43,8 @@ const Admin = () => {
           <AddCircleOutlinedIcon onClick={() => setShowInviteCodeModal(true)} />
         </Button>
         <div className="invite-code-field">
-          {inviteCodes.map((inviteCode) => (
-            <InviteCode data={inviteCode} />
+          {inviteCodes.map((inviteCode, index) => (
+            <InviteCode key={index} data={inviteCode} />
           ))}
         </div>
       </div>
