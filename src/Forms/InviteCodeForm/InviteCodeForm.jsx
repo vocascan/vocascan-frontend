@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo } from "react";
+import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "../../Components/Button/Button.jsx";
@@ -7,11 +7,7 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 import { createInviteCode } from "../../utils/api.js";
-import {
-  maxNameLength,
-  rightVocabs,
-  numberField,
-} from "../../utils/constants.js";
+import { numberField } from "../../utils/constants.js";
 
 import "./InviteCodeForm.scss";
 
@@ -22,25 +18,27 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
   const [maxUses, setMaxUses] = useState(null);
   const [expirationDate, setExpirationDate] = useState(null);
   const timeSpans = [
-      {
-          value: "never",
-          label: "never",
-      },
-      {
-        value: new Date().setDate(new Date().getDate() + 1),
-        label: "1 Day",
+    {
+      value: -1,
+      label: "never",
     },
     {
-      value: new Date().setDate(new Date().getDate() + 7),
+      value: 1,
+      label: "1 Day",
+    },
+    {
+      value: 7,
       label: "7 Days",
-  },
+    },
   ];
 
   //make api call to add vocab package
   const submitHandler = useCallback(async () => {
-      console.log(maxUses);
-    createInviteCode(maxUses, expirationDate)
+    let tempDate = new Date();
+    tempDate.setDate(tempDate.getDate() + expirationDate.value);
+    createInviteCode(maxUses, tempDate)
       .then(({ data }) => {
+        onSubmitCallback();
         showSnack("success", "Created invite code");
       })
       .catch((error) => {
@@ -48,8 +46,7 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
       });
 
     return;
-  }, [expirationDate, maxUses, showSnack]);
-
+  }, [expirationDate.value, maxUses, onSubmitCallback, showSnack]);
 
   return (
     <form className="invite-code-form" onSubmit={submitHandler}>

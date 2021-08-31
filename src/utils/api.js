@@ -96,3 +96,11 @@ export const checkInviteCode = (inviteCode) =>
 
 // Admin
 export const getInviteCodes = () => api.get(`/inviteCode`);
+
+export const createInviteCode = (maxUses, expirationDate) =>
+  api.post(`/inviteCode`, null, {
+    params: {
+      maxUses: maxUses ? maxUses : null,
+      expirationDate: expirationDate.toISOString(),
+    },
+  });
