@@ -31,7 +31,15 @@
       margin-top: 5px;
     }
 
-    .expiration-code-never {
+    .uses-valid {
+      color: $color-green;
+    }
+
+    .uses-invalid {
+      color: $color-red;
+    }
+
+    .expiration-code-valid {
       color: $color-green;
     }
   }
