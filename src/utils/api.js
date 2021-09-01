@@ -104,3 +104,6 @@ export const createInviteCode = (maxUses, expirationDate) =>
       expirationDate: expirationDate.toISOString(),
     },
   });
+
+export const deleteInviteCode = (inviteCode) =>
+  api.delete(`/inviteCode/${inviteCode}`);

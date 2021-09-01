@@ -5,13 +5,27 @@
   height: 100px;
   max-height: 100px;
   max-width: 300px;
-  padding: 20px;
+  padding: 40px;
   background: $color-background-inverse;
   border-radius: 15px;
   margin: auto;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  position: relative;
+
+  .delete-btn-show {
+    position: absolute;
+    right: 0;
+    top: 0;
+    align-self: center;
+    padding: 5px;
+    border-radius: 100%;
+  }
+
+  .delete-btn-hide {
+    display: none;
+  }
 
   hr {
     border: 1px solid #bbb;
