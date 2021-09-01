@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-//import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
@@ -14,8 +14,8 @@ import InviteCodeForm from "../../Forms/InviteCodeForm/InviteCodeForm";
 import { getInviteCodes } from "../../utils/api";
 
 const Admin = () => {
-  //const { t } = useTranslation();
   const history = useHistory();
+  const { t } = useTranslation();
   const [inviteCodes, setInviteCodes] = useState([]);
   const [showInviteCodeModal, setShowInviteCodeModal] = useState(false);
 
@@ -38,7 +38,7 @@ const Admin = () => {
   return (
     <>
       <div className="admin">
-        <h1>Admin Page</h1>
+        <h1>{t("screens.admin.title")}</h1>
         <Button className="add" variant="transparent">
           <AddCircleOutlinedIcon onClick={() => setShowInviteCodeModal(true)} />
         </Button>
@@ -49,7 +49,7 @@ const Admin = () => {
         </div>
       </div>
       <Modal
-        title={"Create invite code"}
+        title={t("modal.createInviteCode.heading")}
         open={showInviteCodeModal}
         onClose={() => setShowInviteCodeModal(false)}
       >

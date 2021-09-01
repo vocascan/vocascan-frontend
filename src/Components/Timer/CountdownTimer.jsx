@@ -1,12 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Countdown from "react-countdown";
+import { useTranslation } from "react-i18next";
 
 import "./CountdownTimer.scss";
+
+const Expired = () => {
+  const { t } = useTranslation();
+  return (
+    <span className="countdown-timer-expired">
+      {t("components.inviteCode.expired")}
+    </span>
+  );
+};
 
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
   if (completed) {
     // Render a completed state
-    return <span className="countdown-timer-expired">Expired</span>;
+    return <Expired />;
   } else {
     // Render a countdown
     return (

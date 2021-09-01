@@ -44,7 +44,8 @@
         "back": "Back",
         "comingSoon": "Coming soon...",
         "skip": "Skip",
-        "inviteCode": "Invite code"
+        "inviteCode": "Invite code",
+        "create": "Create"
     },
     "components": {
         "groupForm": {
@@ -92,9 +93,22 @@
         },
         "languageSelector": {
             "label": "Language"
+        },
+        "inviteCode": {
+            "never": "Never",
+            "uses": "Uses: ",
+            "expirationDate": "Expiration Date: ",
+            "maxUses": "Max uses",
+            "expirationDateNormal": "Expiration date",
+            "inviteCodeSuccessMessage": "Created invite code",
+            "inviteCodeErrorMessage": "Error creating invite code",
+            "expired": "Expired"
         }
     },
     "screens": {
+        "admin": {
+            "title": "Admin"
+        },
         "allPackages": {
             "title": "All packages",
             "packageName": "Package",
@@ -325,6 +339,9 @@
         "deleteAccount": {
             "heading": "Delete account",
             "input": "Type in your username to confirm deletion"
+        },
+        "createInviteCode": {
+            "heading": "Create invite code"
         }
     },
     "contributors": {

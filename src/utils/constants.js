@@ -40,3 +40,41 @@ export const contributors = {
 export const additionalDependencies = {
   "flag-icon-css": "Flags are copied from this great package",
 };
+
+export const timeSpans = [
+  {
+    value: 30,
+    format: "m",
+    label: "30 Minutes",
+  },
+  {
+    value: 1,
+    format: "h",
+    label: "1 Hour",
+  },
+  {
+    value: 6,
+    format: "h",
+    label: "6 Hours",
+  },
+  {
+    value: 12,
+    format: "h",
+    label: "12 Hours",
+  },
+  {
+    value: 1,
+    format: "d",
+    label: "1 Day",
+  },
+  {
+    value: 7,
+    format: "d",
+    label: "7 Days",
+  },
+  {
+    value: -1,
+    format: "d",
+    label: "never",
+  },
+];

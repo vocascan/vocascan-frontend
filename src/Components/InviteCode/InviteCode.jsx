@@ -16,14 +16,21 @@ const InviteCode = ({ data }) => {
       <hr />
       <div className="information">
         <p>
-          Uses: {data.used} / {data.maxUses ? data.maxUses : "∞"}
+          {t("components.inviteCode.uses")}
+          <span
+            className={
+              data.used === data.maxUses ? "uses-invalid" : "uses-valid"
+            }
+          >{`${data.used} /  ${data.maxUses ? data.maxUses : "∞"}`}</span>
         </p>
         <p>
-          Expiration Date:{" "}
+          {t("components.inviteCode.expirationDate")}
           {data.expirationDate ? (
             <CountdownTimer callQueuedTime={data.expirationDate} />
           ) : (
-            <span className="expiration-code-never">Never</span>
+            <span className="expiration-code-valid">
+              {t("components.inviteCode.never")}
+            </span>
           )}
         </p>
       </div>
