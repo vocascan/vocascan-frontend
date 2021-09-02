@@ -48,9 +48,9 @@ const InviteCode = ({ data }) => {
           {t("components.inviteCode.uses")}
           <span
             className={
-              data.used === data.maxUses ? "uses-invalid" : "uses-valid"
+              data.uses === data.maxUses ? "uses-invalid" : "uses-valid"
             }
-          >{`${data.used} /  ${data.maxUses ? data.maxUses : "∞"}`}</span>
+          >{`${data.uses} /  ${data.maxUses ? data.maxUses : "∞"}`}</span>
         </p>
         <p>
           {t("components.inviteCode.expirationDate")}
