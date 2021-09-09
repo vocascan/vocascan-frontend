@@ -294,7 +294,7 @@ const AllGroups = () => {
       </Modal>
 
       <Modal
-        title={t("components.globa.import")}
+        title={t("global.import")}
         size={"large"}
         open={showImportModal}
         onClose={() => setShowImportModal(false)}

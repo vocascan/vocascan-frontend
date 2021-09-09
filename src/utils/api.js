@@ -85,7 +85,7 @@ export const exportPackage = (languagePackageId, queryStatus) =>
 // Import
 export const importLanguagePackage = (data, active, activate, queryStatus) =>
   api.post(
-    `/languagePackage/import?active=${active}&activate${activate}&queryStatus=${queryStatus}`,
+    `/languagePackage/import?active=${active}&activate=${activate}&queryStatus=${queryStatus}`,
     data
   );
 export const importGroup = (data, languagePackageId, active, activate) =>
