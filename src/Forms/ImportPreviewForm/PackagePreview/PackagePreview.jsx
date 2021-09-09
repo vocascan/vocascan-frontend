@@ -9,6 +9,7 @@ import Details from "../../../Components/Details/Details.jsx";
 import Select, {
   SelectOptionWithFlag,
 } from "../../../Components/Form/Select/Select.jsx";
+import Switch from "../../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 
@@ -25,9 +26,17 @@ const PackagePreview = ({ importedData }) => {
   const languages = useSelector((state) => state.language.languages);
 
   const [languagePackage, setLanguagePackage] = useState(importedData);
+  const [importQueryStatus, setImportQueryStatus] = useState(false);
+  const [activateVocabs, setActivateVocabs] = useState(false);
+  const [vocabsActive, setVocabsActive] = useState(true);
 
   const submitImport = () => {
-    importLanguagePackage(languagePackage, true, false)
+    importLanguagePackage(
+      languagePackage,
+      true,
+      activateVocabs,
+      importQueryStatus
+    )
       .then((response) => {
         showSnack("success", t("screens.allPackages.exportSuccessMessage"));
       })
@@ -191,6 +200,27 @@ const PackagePreview = ({ importedData }) => {
           max={10}
           min={1}
         />
+        <Switch
+          switcher
+          optionRight={t("components.packagePreviewForm.vocabsActive")}
+          onChange={() => setVocabsActive((prevCheck) => !prevCheck)}
+          checked={vocabsActive}
+        />
+        <Switch
+          switcher
+          optionRight={t("components.packagePreviewForm.activateVocabs")}
+          onChange={() => setActivateVocabs((prevCheck) => !prevCheck)}
+          checked={activateVocabs}
+          disabled={importQueryStatus}
+        />
+        {importedData.Drawers && (
+          <Switch
+            switcher
+            optionRight={t("components.packagePreviewForm.importQueryStatus")}
+            onChange={() => setImportQueryStatus((prevCheck) => !prevCheck)}
+            checked={importQueryStatus}
+          />
+        )}
         <Details
           summary={t("global.groups")}
           count={languagePackage.Groups.length}

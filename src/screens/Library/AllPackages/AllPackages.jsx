@@ -12,6 +12,7 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import Button from "../../../Components/Button/Button.jsx";
 import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
 import Flag from "../../../Components/Flag/Flag.jsx";
+import Switch from "../../../Components/Form/Switch/Switch.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import ImportPreviewForm from "../../../Forms/ImportPreviewForm/ImportPreviewForm.jsx";
@@ -41,6 +42,8 @@ const AllPackages = () => {
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
     useState(false);
   const [showExportConfirmationModal, setShowExportConfirmationModal] =
+    useState(false);
+  const [exportPackageQueryStatus, setExportPackageQueryStatus] =
     useState(false);
 
   const [showImportModal, setShowImportModal] = useState(false);
@@ -93,7 +96,7 @@ const AllPackages = () => {
 
   const submitExportPackage = useCallback(() => {
     if (currentPackage) {
-      exportPackage(currentPackage.id)
+      exportPackage(currentPackage.id, exportPackageQueryStatus)
         .then((response) => {
           ipcRenderer
             .invoke("save-file", {
@@ -112,7 +115,7 @@ const AllPackages = () => {
           showSnack("error", t("screens.allPackages.exportFailMessage"));
         });
     }
-  }, [currentPackage, showSnack, t]);
+  }, [currentPackage, exportPackageQueryStatus, showSnack, t]);
 
   const submitImport = useCallback(() => {
     try {
@@ -250,7 +253,7 @@ const AllPackages = () => {
       </Modal>
 
       <Modal
-        title={t("components.globa.import")}
+        title={t("global.import")}
         size={"large"}
         open={showImportModal}
         onClose={() => setShowImportModal(false)}
@@ -260,14 +263,23 @@ const AllPackages = () => {
 
       <ConfirmDialog
         title={"Export package"}
-        description={t("screens.allPackages.deleteDescription", {
+        description={t("screens.allPackages.exportDescription", {
           name: currentPackage?.name,
         })}
         submitText={"Export"}
         onSubmit={submitExportPackage}
         onClose={() => setShowExportConfirmationModal(false)}
         show={showExportConfirmationModal}
-      />
+      >
+        <Switch
+          switcher
+          optionRight={t("screens.allPackages.exportQueryStatus")}
+          onChange={() =>
+            setExportPackageQueryStatus((prevCheck) => !prevCheck)
+          }
+          checked={exportPackageQueryStatus}
+        />
+      </ConfirmDialog>
 
       {currentPackage && (
         <ConfirmDialog
