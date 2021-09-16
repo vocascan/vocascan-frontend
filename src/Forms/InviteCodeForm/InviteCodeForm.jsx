@@ -39,7 +39,7 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
       default:
         return;
     }
-    createInviteCode(maxUses, tempDate)
+    createInviteCode({ maxUses, expirationDate: tempDate.toISOString() })
       .then(({ data }) => {
         onSubmitCallback();
         showSnack(
@@ -79,7 +79,6 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
           label={t("components.inviteCode.expirationDateNormal")}
           options={timeSpans}
           onChange={(value) => {
-            console.log(value);
             setExpirationDate(value);
           }}
           value={expirationDate}
