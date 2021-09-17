@@ -131,6 +131,11 @@ const AllGroups = () => {
     }
   }, [currentGroup, packageId, showSnack, t]);
 
+  const groupImported = useCallback(() => {
+    setShowImportModal(false);
+    history.go(0);
+  }, [history]);
+
   const submitExportGroup = useCallback(() => {
     if (currentGroup) {
       exportGroup(currentGroup.id)
@@ -299,7 +304,10 @@ const AllGroups = () => {
         open={showImportModal}
         onClose={() => setShowImportModal(false)}
       >
-        <ImportPreviewForm importedData={importedData} />
+        <ImportPreviewForm
+          onSubmitCallback={groupImported}
+          importedData={importedData}
+        />
       </Modal>
 
       <ConfirmDialog

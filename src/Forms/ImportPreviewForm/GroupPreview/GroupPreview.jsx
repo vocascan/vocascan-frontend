@@ -15,17 +15,18 @@ import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
 import { getPackages, importGroup } from "../../../utils/api.js";
+import { delay } from "../../../utils/index.js";
 
 //import "./GroupPreview.scss";
 
-const GroupPreview = ({ importedData }) => {
+const GroupPreview = ({ onSubmitCallback, importedData }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
   const [importedGroup, setImportedGroup] = useState(importedData);
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
-  const [selectedPackage, setSelectedPackage] = useState({});
+  const [selectedPackage, setSelectedPackage] = useState(null);
   const [showAddPackage, setShowAddPackage] = useState(false);
 
   const openPackageModal = useCallback(() => {
@@ -71,11 +72,13 @@ const GroupPreview = ({ importedData }) => {
 
   const submitImport = () => {
     importGroup(importedGroup, selectedPackage.value, true, false)
-      .then((response) => {
-        showSnack("success", t("screens.allPackages.exportSuccessMessage"));
+      .then(async (response) => {
+        showSnack("success", t("screens.allGroups.importSuccessMessage"));
+        await delay(1000);
+        onSubmitCallback && onSubmitCallback();
       })
       .catch((e) => {
-        showSnack("error", t("screens.allPackages.exportFailMessage"));
+        showSnack("error", t("screens.allGroups.importFailMessage"));
       });
   };
 
@@ -203,7 +206,7 @@ const GroupPreview = ({ importedData }) => {
             block
             uppercase
             onClick={submitImport}
-            disabled={!importedData}
+            disabled={!importedData || !selectedPackage}
           >
             {t("global.import")}
           </Button>

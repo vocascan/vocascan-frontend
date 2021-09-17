@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
@@ -33,6 +34,7 @@ const { ipcRenderer } = nodeRequire("electron");
 
 const AllPackages = () => {
   const { t } = useTranslation();
+  const history = useHistory();
   const { showSnack } = useSnack();
 
   const [data, setData] = useState([]);
@@ -76,6 +78,11 @@ const AllPackages = () => {
     setCurrentPackage(grp);
     setShowDeleteConfirmationModal(true);
   }, []);
+
+  const packageImported = useCallback(() => {
+    setShowImportModal(false);
+    history.go(0);
+  }, [history]);
 
   const deletePckge = useCallback(() => {
     if (currentPackage) {
@@ -258,7 +265,10 @@ const AllPackages = () => {
         open={showImportModal}
         onClose={() => setShowImportModal(false)}
       >
-        <ImportPreviewForm importedData={importedData} />
+        <ImportPreviewForm
+          onSubmitCallback={packageImported}
+          importedData={importedData}
+        />
       </Modal>
 
       <ConfirmDialog

@@ -15,11 +15,15 @@ import Table from "../../../Components/Table/Table.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
 import { importLanguagePackage } from "../../../utils/api.js";
-import { findLanguageByCode, getLanguageString } from "../../../utils/index.js";
+import {
+  delay,
+  findLanguageByCode,
+  getLanguageString,
+} from "../../../utils/index.js";
 
 import "./PackagePreview.scss";
 
-const PackagePreview = ({ importedData }) => {
+const PackagePreview = ({ onSubmitCallback, importedData }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
@@ -37,8 +41,10 @@ const PackagePreview = ({ importedData }) => {
       activateVocabs,
       importQueryStatus
     )
-      .then((response) => {
+      .then(async (response) => {
         showSnack("success", t("screens.allPackages.exportSuccessMessage"));
+        await delay(1000);
+        onSubmitCallback && onSubmitCallback();
       })
       .catch((e) => {
         showSnack("error", t("screens.allPackages.exportFailMessage"));
