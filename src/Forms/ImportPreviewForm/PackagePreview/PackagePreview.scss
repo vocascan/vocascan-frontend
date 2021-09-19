@@ -9,6 +9,7 @@
 
   .update-fields {
     height: 80%;
+    width: 100%;
     overflow-y: auto;
 
     .dropdown {
@@ -16,18 +17,11 @@
       display: flex;
       justify-content: space-between;
       z-index: 4;
-      margin: 0 -10px;
 
       .select-wrapper {
+        width: 49%;
         display: flex;
-        width: 100%;
-        margin: 0 10px;
       }
-    }
-
-    .group-preview {
-      width: 100%;
-      margin-left: 50px;
     }
   }
 

@@ -8,13 +8,21 @@
   align-items: center;
 
   .update-fields {
-    height: 80%;
-    overflow-y: auto;
-  }
+    width: 100%;
 
-  .submit-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
+    .customizables {
+      margin-bottom: 20px;
+
+      .update-fields {
+        height: 80%;
+        overflow-y: auto;
+      }
+    }
+
+    .submit-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
   }
 }

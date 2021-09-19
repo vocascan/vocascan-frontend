@@ -235,7 +235,6 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
         >
           {languagePackage?.Groups.map((group, i) => (
             <Details
-              className="group-preview"
               summary={group.name}
               count={group.length}
               open={i === 0}

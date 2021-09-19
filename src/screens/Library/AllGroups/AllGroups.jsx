@@ -248,10 +248,25 @@ const AllGroups = () => {
   );
 
   useEffect(() => {
+    //set default package in order to render default package in import form
+    getPackages().then(({ data }) => {
+      const currPack = data.find((ele) => ele.id === packageId);
+
+      setCurrentPackage({
+        value: currPack.id,
+        label: (
+          <SelectOptionWithFlag
+            name={currPack.name}
+            foreignLanguageCode={currPack.foreignWordLanguage}
+            translatedLanguageCode={currPack.translatedWordLanguage}
+          />
+        ),
+      });
+    });
     getGroups(packageId).then((response) => {
       setData(response.data);
     });
-  }, [packageId]);
+  }, [currentPackage, packageId]);
 
   return (
     <>
@@ -306,6 +321,7 @@ const AllGroups = () => {
       >
         <ImportPreviewForm
           onSubmitCallback={groupImported}
+          defaultPackage={currentPackage}
           importedData={importedData}
         />
       </Modal>

@@ -19,6 +19,7 @@ const ImportPreviewForm = ({
         />
       ) : (
         <GroupPreview
+          defaultPackage={defaultPackage}
           onSubmitCallback={onSubmitCallback}
           importedData={importedData}
         />

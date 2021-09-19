@@ -17,16 +17,16 @@ import useSnack from "../../../hooks/useSnack.js";
 import { getPackages, importGroup } from "../../../utils/api.js";
 import { delay } from "../../../utils/index.js";
 
-//import "./GroupPreview.scss";
+import "./GroupPreview.scss";
 
-const GroupPreview = ({ onSubmitCallback, importedData }) => {
+const GroupPreview = ({ defaultPackage, onSubmitCallback, importedData }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
   const [importedGroup, setImportedGroup] = useState(importedData);
   const [packages, setPackages] = useState([]);
   const [packageItems, setPackageItems] = useState([]);
-  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState(defaultPackage);
   const [showAddPackage, setShowAddPackage] = useState(false);
 
   const openPackageModal = useCallback(() => {
@@ -105,18 +105,14 @@ const GroupPreview = ({ onSubmitCallback, importedData }) => {
         Header: t("screens.allVocabs.vocabulary"),
         accessor: "name",
         Cell: ({ row }) => (
-          <div style={{ textAlign: "left" }}>
-            <p>{row.original.name}</p>
-          </div>
+          <div style={{ textAlign: "left" }}>{row.original.name}</div>
         ),
       },
       {
         Header: t("screens.allVocabs.description"),
         accessor: "description",
         Cell: ({ row }) => (
-          <div style={{ textAlign: "left" }}>
-            <p>{row.original.description}</p>
-          </div>
+          <div style={{ textAlign: "left" }}>{row.original.description}</div>
         ),
       },
       {
@@ -124,7 +120,7 @@ const GroupPreview = ({ onSubmitCallback, importedData }) => {
         accessor: "translations",
         Cell: ({ row }) => (
           <div style={{ textAlign: "left" }}>
-            <p>{row.original.Translations.map((el) => el.name).join(", ")}</p>
+            {row.original.Translations.map((el) => el.name).join(", ")}
           </div>
         ),
       },
@@ -145,48 +141,50 @@ const GroupPreview = ({ onSubmitCallback, importedData }) => {
     <>
       <div className="group-preview">
         <div className="update-fields">
-          <Select
-            required
-            creatable
-            createText={t("components.vocabForm.packageCreateText")}
-            onCreate={openPackageModal}
-            tabIndex={-1}
-            label={t("global.package")}
-            options={packageItems}
-            onChange={(v) => {
-              setSelectedPackage(v);
-            }}
-            value={selectedPackage}
-            noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
-          />
-          <TextInput
-            autoFocus
-            required
-            placeholder={t("global.name")}
-            onChange={(value) => {
-              setImportedGroup((prevState) => ({
-                ...prevState,
-                name: value,
-              }));
-            }}
-            value={importedGroup.name}
-            max={255}
-            min={1}
-          />
-          <TextInput
-            autoFocus
-            required
-            placeholder={t("global.description")}
-            onChange={(value) => {
-              setImportedGroup((prevState) => ({
-                ...prevState,
-                description: value,
-              }));
-            }}
-            value={importedGroup.description}
-            max={255}
-            min={1}
-          />
+          <div className="customizables">
+            <Select
+              required
+              creatable
+              createText={t("components.vocabForm.packageCreateText")}
+              onCreate={openPackageModal}
+              tabIndex={-1}
+              label={t("global.package")}
+              options={packageItems}
+              onChange={(v) => {
+                setSelectedPackage(v);
+              }}
+              value={selectedPackage}
+              noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
+            />
+            <TextInput
+              autoFocus
+              required
+              placeholder={t("global.name")}
+              onChange={(value) => {
+                setImportedGroup((prevState) => ({
+                  ...prevState,
+                  name: value,
+                }));
+              }}
+              value={importedGroup.name}
+              max={255}
+              min={1}
+            />
+            <TextInput
+              autoFocus
+              required
+              placeholder={t("global.description")}
+              onChange={(value) => {
+                setImportedGroup((prevState) => ({
+                  ...prevState,
+                  description: value,
+                }));
+              }}
+              value={importedGroup.description}
+              max={255}
+              min={1}
+            />
+          </div>
 
           <Details
             summary={t("global.vocabs")}
