@@ -159,6 +159,10 @@ const AllGroups = () => {
   const submitImport = useCallback(() => {
     try {
       ipcRenderer.invoke("open-file", {}).then((result) => {
+        if (!result.name || !result.description || !result.VocabularyCards) {
+          showSnack("error", t("global.fileImportError"));
+          return;
+        }
         setImportedData(result);
         setShowImportModal(true);
       });
@@ -266,7 +270,7 @@ const AllGroups = () => {
     getGroups(packageId).then((response) => {
       setData(response.data);
     });
-  }, [currentPackage, packageId]);
+  }, [packageId]);
 
   return (
     <>

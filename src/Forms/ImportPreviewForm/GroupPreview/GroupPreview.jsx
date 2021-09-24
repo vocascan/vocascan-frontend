@@ -8,13 +8,14 @@ import Details from "../../../Components/Details/Details.jsx";
 import Select, {
   SelectOptionWithFlag,
 } from "../../../Components/Form/Select/Select.jsx";
+import Switch from "../../../Components/Form/Switch/Switch.jsx";
 import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { getPackages, importGroup } from "../../../utils/api.js";
+import { getPackages, importVocabs } from "../../../utils/api.js";
 import { delay } from "../../../utils/index.js";
 
 import "./GroupPreview.scss";
@@ -28,6 +29,8 @@ const GroupPreview = ({ defaultPackage, onSubmitCallback, importedData }) => {
   const [packageItems, setPackageItems] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(defaultPackage);
   const [showAddPackage, setShowAddPackage] = useState(false);
+  const [activateVocabs, setActivateVocabs] = useState(false);
+  const [vocabsActive, setVocabsActive] = useState(true);
 
   const openPackageModal = useCallback(() => {
     setShowAddPackage(true);
@@ -71,7 +74,12 @@ const GroupPreview = ({ defaultPackage, onSubmitCallback, importedData }) => {
   );
 
   const submitImport = () => {
-    importGroup(importedGroup, selectedPackage.value, true, false)
+    importVocabs({
+      data: importedGroup,
+      languagePackageId: selectedPackage.value,
+      active: true,
+      activate: false,
+    })
       .then(async (response) => {
         showSnack("success", t("screens.allGroups.importSuccessMessage"));
         await delay(1000);
@@ -183,6 +191,18 @@ const GroupPreview = ({ defaultPackage, onSubmitCallback, importedData }) => {
               value={importedGroup.description}
               max={255}
               min={1}
+            />
+            <Switch
+              switcher
+              optionRight={t("components.importPreviewForm.vocabsActive")}
+              onChange={() => setVocabsActive((prevCheck) => !prevCheck)}
+              checked={vocabsActive}
+            />
+            <Switch
+              switcher
+              optionRight={t("components.importPreviewForm.activateVocabs")}
+              onChange={() => setActivateVocabs((prevCheck) => !prevCheck)}
+              checked={activateVocabs}
             />
           </div>
 

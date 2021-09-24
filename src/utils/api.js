@@ -83,14 +83,19 @@ export const exportPackage = (languagePackageId, queryStatus) =>
   );
 
 // Import
-export const importLanguagePackage = (data, active, activate, queryStatus) =>
+export const importVocabs = ({
+  data,
+  active,
+  activate,
+  queryStatus = null,
+  languagePackageId = null,
+}) =>
   api.post(
-    `/languagePackage/import?active=${active}&activate=${activate}&queryStatus=${queryStatus}`,
-    data
-  );
-export const importGroup = (data, languagePackageId, active, activate) =>
-  api.post(
-    `/group/import?languagePackageId=${languagePackageId}&active=${active}&activate=${activate}`,
+    `/import?${
+      languagePackageId ? `languagePackageId=${languagePackageId}` : ""
+    }&${
+      queryStatus ? `queryStatus=${queryStatus}` : ""
+    }&active=${active}&activate=${activate}`,
     data
   );
 

@@ -14,7 +14,7 @@ import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { importLanguagePackage } from "../../../utils/api.js";
+import { importVocabs } from "../../../utils/api.js";
 import {
   delay,
   findLanguageByCode,
@@ -35,19 +35,19 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
   const [vocabsActive, setVocabsActive] = useState(true);
 
   const submitImport = () => {
-    importLanguagePackage(
-      languagePackage,
-      true,
-      activateVocabs,
-      importQueryStatus
-    )
+    importVocabs({
+      data: languagePackage,
+      active: vocabsActive,
+      activate: activateVocabs,
+      queryStatus: importQueryStatus,
+    })
       .then(async (response) => {
-        showSnack("success", t("screens.allPackages.exportSuccessMessage"));
+        showSnack("success", t("screens.allPackages.importSuccessMessage"));
         await delay(1000);
         onSubmitCallback && onSubmitCallback();
       })
       .catch((e) => {
-        showSnack("error", t("screens.allPackages.exportFailMessage"));
+        showSnack("error", t("screens.allPackages.importFailMessage"));
       });
   };
 
@@ -208,13 +208,13 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
         />
         <Switch
           switcher
-          optionRight={t("components.packagePreviewForm.vocabsActive")}
+          optionRight={t("components.importPreviewForm.vocabsActive")}
           onChange={() => setVocabsActive((prevCheck) => !prevCheck)}
           checked={vocabsActive}
         />
         <Switch
           switcher
-          optionRight={t("components.packagePreviewForm.activateVocabs")}
+          optionRight={t("components.importPreviewForm.activateVocabs")}
           onChange={() => setActivateVocabs((prevCheck) => !prevCheck)}
           checked={activateVocabs}
           disabled={importQueryStatus}
@@ -222,7 +222,7 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
         {importedData.Drawers && (
           <Switch
             switcher
-            optionRight={t("components.packagePreviewForm.importQueryStatus")}
+            optionRight={t("components.importPreviewForm.importQueryStatus")}
             onChange={() => setImportQueryStatus((prevCheck) => !prevCheck)}
             checked={importQueryStatus}
           />
