@@ -3,21 +3,21 @@ import axios from "axios";
 import { defaultLimit, vocascanServer } from "./constants.js";
 
 const api = axios.create({
-    baseURL: vocascanServer,
+  baseURL: vocascanServer,
 });
 
 export function setBaseUrl(url) {
-    api.defaults.baseURL = `${url}/api`;
+  api.defaults.baseURL = `${url}/api`;
 }
 
 export function setTokenHeader(token) {
-    api.defaults.headers.common.Authorization = `Bearer ${token}`;
+  api.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
 // Auth
 export const login = (data) => api.post("/user/login", data);
 export const register = (data, code = null) =>
-    api.post(`/user/register${code ? `?inviteCode=${code}` : ""}`, data);
+  api.post(`/user/register${code ? `?inviteCode=${code}` : ""}`, data);
 export const changePassword = (data) => api.patch("/user/reset-password", data);
 
 // User

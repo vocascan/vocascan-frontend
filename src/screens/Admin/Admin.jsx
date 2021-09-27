@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
@@ -18,6 +19,9 @@ const Admin = () => {
   const { t } = useTranslation();
   const [inviteCodes, setInviteCodes] = useState([]);
   const [showInviteCodeModal, setShowInviteCodeModal] = useState(false);
+  const serverRegistrationLocked = useSelector(
+    (state) => state.setting.serverRegistrationLocked
+  );
 
   const inviteCodeSubmitted = useCallback(() => {
     setShowInviteCodeModal(false);
@@ -39,22 +43,30 @@ const Admin = () => {
     <>
       <div className="admin">
         <h1>{t("screens.admin.title")}</h1>
-        <Button className="add" variant="transparent">
-          <AddCircleOutlinedIcon onClick={() => setShowInviteCodeModal(true)} />
-        </Button>
-        <div className="invite-code-field">
-          {inviteCodes.map((inviteCode, index) => (
-            <InviteCode key={index} data={inviteCode} />
-          ))}
-        </div>
+        {serverRegistrationLocked && (
+          <div>
+            <Button className="add" variant="transparent">
+              <AddCircleOutlinedIcon
+                onClick={() => setShowInviteCodeModal(true)}
+              />
+            </Button>
+            <div className="invite-code-field">
+              {inviteCodes.map((inviteCode, index) => (
+                <InviteCode key={index} data={inviteCode} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
-      <Modal
-        title={t("modal.createInviteCode.heading")}
-        open={showInviteCodeModal}
-        onClose={() => setShowInviteCodeModal(false)}
-      >
-        <InviteCodeForm onSubmitCallback={inviteCodeSubmitted} />
-      </Modal>
+      {serverRegistrationLocked && (
+        <Modal
+          title={t("modal.createInviteCode.heading")}
+          open={showInviteCodeModal}
+          onClose={() => setShowInviteCodeModal(false)}
+        >
+          <InviteCodeForm onSubmitCallback={inviteCodeSubmitted} />
+        </Modal>
+      )}
     </>
   );
 };

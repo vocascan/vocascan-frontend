@@ -1,12 +1,13 @@
 import { CancelToken, Cancel } from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { gte } from "semver";
 
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator.jsx";
 
 import useDebounce from "../../../hooks/useDebounce.js";
+import { setServerRegistrationLocked } from "../../../redux/Actions/setting.js";
 import { getInfo } from "../../../utils/api.js";
 import { minServerVersion } from "../../../utils/constants.js";
 
@@ -15,6 +16,7 @@ import "./ServerValidIndicator.scss";
 const ServerValidIndicator = ({ setValid, setLocked = null }) => {
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const debouncedServerAddress = useDebounce(serverAddress, 500);
+  const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isValidServer, setIsValidServer] = useState(null);
@@ -43,6 +45,11 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
         setIsValidVersion(gte(res?.data?.version, minServerVersion));
         setServerVersion(res?.data?.version);
         setIsServerResponding(true);
+        dispatch(
+          setServerRegistrationLocked({
+            serverRegistrationLocked: res.data.locked,
+          })
+        );
       })
       .catch((err) => {
         if (!(err instanceof Cancel)) {
@@ -56,7 +63,7 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
     return () => {
       cancelToken.cancel();
     };
-  }, [debouncedServerAddress]);
+  }, [debouncedServerAddress, dispatch]);
 
   useEffect(() => {
     setValid(
