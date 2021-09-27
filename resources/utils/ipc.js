@@ -24,7 +24,9 @@ const RegisterIpcHandler = () => {
       clipboard.writeText(versionString);
     }
   });
+};
 
+const FileMenuIpcHandler = () => {
   ipcMain.handle("save-file", async (event, arg) => {
     await dialog
       .showSaveDialog({
@@ -82,4 +84,5 @@ const RegisterIpcHandler = () => {
 
 module.exports = {
   RegisterIpcHandler,
+  FileMenuIpcHandler,
 };

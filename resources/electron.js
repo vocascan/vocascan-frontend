@@ -15,7 +15,7 @@ const i18n = require("i18next");
 const i18nBackend = require("i18next-node-fs-backend");
 
 const { MENU_TEMPLATE } = require("./utils/menu");
-const { RegisterIpcHandler } = require("./utils/ipc");
+const { RegisterIpcHandler, FileMenuIpcHandler } = require("./utils/ipc");
 
 app.allowRendererProcessReuse = true;
 log.transports.file.level = "debug";
@@ -106,6 +106,8 @@ const createWindow = () => {
 
   // register ipc handler
   RegisterIpcHandler();
+
+  FileMenuIpcHandler();
 
   windows.splash.loadURL(
     `file://${path.join(__dirname, "../resources/splash/splash-screen.html")}`
