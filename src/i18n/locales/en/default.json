@@ -102,7 +102,8 @@
             "expirationDateNormal": "Expiration date",
             "inviteCodeSuccessMessage": "Created invite code",
             "inviteCodeErrorMessage": "Error creating invite code",
-            "expired": "Expired"
+            "expired": "Expired",
+            "copyToClip": "Invite code copied to clipboard"
         }
     },
     "screens": {

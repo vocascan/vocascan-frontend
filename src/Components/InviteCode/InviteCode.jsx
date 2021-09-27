@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 
@@ -7,24 +7,43 @@ import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import Button from "../../Components/Button/Button.jsx";
 import CountdownTimer from "../Timer/CountdownTimer.jsx";
 
+import useSnack from "../../hooks/useSnack.js";
 import { deleteInviteCode } from "../../utils/api.js";
+import { nodeRequire } from "../../utils/index.js";
 
 import "./InviteCode.scss";
+
+const { ipcRenderer } = nodeRequire("electron");
 
 const InviteCode = ({ data }) => {
   const { t } = useTranslation();
   const history = useHistory();
+  const { showSnack } = useSnack();
+
   const [showDeleteButton, setShowDeleteButton] = useState(false);
 
-  const submitDeletion = (inviteCode) => {
-    deleteInviteCode(inviteCode)
-      .then((res) => {
-        history.go(0);
-      })
-      .catch((err) => {
-        console.log("Error");
+  const submitDeletion = useCallback(
+    (inviteCode) => {
+      deleteInviteCode(inviteCode)
+        .then((res) => {
+          history.go(0);
+        })
+        .catch((err) => {
+          console.log("Error");
+        });
+    },
+    [history]
+  );
+
+  const copyToClip = useCallback(() => {
+    try {
+      ipcRenderer.invoke("copy-to-clip", { text: data.code }).then((result) => {
+        showSnack("success", t("components.inviteCode.copyToClip"));
       });
-  };
+    } catch {
+      showSnack("error", t("global.fileImportError"));
+    }
+  }, [data.code, showSnack, t]);
 
   return (
     <div
@@ -40,7 +59,7 @@ const InviteCode = ({ data }) => {
         <RemoveCircleOutlineIcon onClick={() => submitDeletion(data.code)} />
       </Button>
       <div className="heading">
-        <p>{data.code}</p>
+        <p onClick={copyToClip}>{data.code}</p>
       </div>
       <hr />
       <div className="information">

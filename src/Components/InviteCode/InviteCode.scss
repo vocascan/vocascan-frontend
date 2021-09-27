@@ -1,60 +1,52 @@
 @import "../../colors";
-
 .invite-code {
-  width: 100%;
-  height: 100px;
-  max-height: 100px;
-  max-width: 300px;
-  padding: 40px;
-  background: $color-background-inverse;
-  border-radius: 15px;
-  margin: auto;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  position: relative;
-
-  .delete-btn-show {
-    position: absolute;
-    right: 0;
-    top: 0;
-    align-self: center;
-    padding: 5px;
-    border-radius: 100%;
-  }
-
-  .delete-btn-hide {
-    display: none;
-  }
-
-  hr {
-    border: 1px solid #bbb;
-  ;
-  }
-
-  .heading {
-    p {
-      color: $color-main-text-inverse;
+    width: 100%;
+    height: 100px;
+    max-height: 100px;
+    max-width: 300px;
+    padding: 40px;
+    background: $color-background-inverse;
+    border-radius: 15px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    position: relative;
+    .delete-btn-show {
+        position: absolute;
+        right: 0;
+        top: 0;
+        align-self: center;
+        padding: 5px;
+        border-radius: 100%;
     }
-  }
-
-  .information {
-    p {
-      color: #bbb;
-      font-size: 15px;
-      margin-top: 5px;
+    .delete-btn-hide {
+        display: none;
     }
-
-    .uses-valid {
-      color: $color-green;
+    hr {
+        border: 1px solid #bbb;
+        ;
     }
-
-    .uses-invalid {
-      color: $color-red;
+    .heading {
+        p {
+            color: $color-main-text-inverse;
+            cursor: pointer;
+        }
     }
-
-    .expiration-code-valid {
-      color: $color-green;
+    .information {
+        p {
+            color: #bbb;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+        .uses-valid {
+            color: $color-green;
+        }
+        .uses-invalid {
+            color: $color-red;
+        }
+        .expiration-code-valid {
+            color: $color-green;
+        }
     }
-  }
 }
