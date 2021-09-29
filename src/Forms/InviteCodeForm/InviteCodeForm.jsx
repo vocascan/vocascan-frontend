@@ -74,18 +74,21 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
           max={numberField[1]}
           min={numberField[0]}
         />
-        <Select
-          required
-          label={t("components.inviteCode.expirationDateNormal")}
-          options={timeSpans}
-          onChange={(value) => {
-            setExpirationDate(value);
-          }}
-          value={expirationDate}
-        />
+        <div className="select-wrapper">
+          <Select
+            required
+            label={t("components.inviteCode.expirationDateNormal")}
+            options={timeSpans}
+            onChange={(value) => {
+              setExpirationDate(value);
+            }}
+            value={expirationDate}
+          />
+        </div>
+        <Button className="submit-btn" type="submit">
+          {t("global.create")}
+        </Button>
       </div>
-
-      <Button type="submit">{t("global.create")}</Button>
     </form>
   );
 };

@@ -8,11 +8,9 @@
   align-items: center;
 
   .invite-code-field {
-    width: 90%;
+    width: 80%;
     display: grid;
-    grid-template-columns: auto auto auto;
-    column-gap: 20px;
-    row-gap: 20px;
-    align-items: center;
+    grid-template-columns: repeat(3, 33%);
+    gap: 40px;
   }
 }

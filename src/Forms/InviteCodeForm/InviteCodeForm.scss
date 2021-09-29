@@ -9,10 +9,17 @@
   .form-wrapper {
     width: 50%;
     height: 50%;
-    max-height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+
+    .select-wrapper {
+      width: 100%;
+      height: auto;
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+    }
   }
 }

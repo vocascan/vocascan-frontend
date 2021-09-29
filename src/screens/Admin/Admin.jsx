@@ -42,10 +42,9 @@ const Admin = () => {
   return (
     <>
       <div className="admin">
-        <h1>{t("screens.admin.title")}</h1>
         {serverRegistrationLocked && (
-          <div>
-            <Button className="add" variant="transparent">
+          <>
+            <Button className="add-btn" variant="transparent">
               <AddCircleOutlinedIcon
                 onClick={() => setShowInviteCodeModal(true)}
               />
@@ -55,7 +54,7 @@ const Admin = () => {
                 <InviteCode key={index} data={inviteCode} />
               ))}
             </div>
-          </div>
+          </>
         )}
       </div>
       {serverRegistrationLocked && (
