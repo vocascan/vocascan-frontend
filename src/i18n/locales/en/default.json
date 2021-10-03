@@ -47,8 +47,8 @@
         "import": "Import",
         "vocabsPerDay": "Vocabs per day",
         "rightWords": "Right words",
-        "fileImportError": "Error importing your file"
-
+        "fileImportError": "Error importing your file",
+        "export": "Export"
     },
     "components": {
         "groupForm": {
@@ -103,6 +103,10 @@
         },
         "languageSelector": {
             "label": "Language"
+        },
+        "importExport": {
+            "exportPackage": "Export package",
+            "exportGroup": "Export group"
         }
     },
     "screens": {

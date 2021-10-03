@@ -283,11 +283,11 @@ const AllPackages = () => {
       </Modal>
 
       <ConfirmDialog
-        title={"Export package"}
+        title={t("components.importExport.exportPackage")}
         description={t("screens.allPackages.exportDescription", {
           name: currentPackage?.name,
         })}
-        submitText={"Export"}
+        submitText={t("global.export")}
         onSubmit={submitExportPackage}
         onClose={() => setShowExportConfirmationModal(false)}
         show={showExportConfirmationModal}

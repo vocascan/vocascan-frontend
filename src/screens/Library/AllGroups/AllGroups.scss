@@ -52,7 +52,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    max-width: 250px;
     @media screen and (min-width: 768px) {
       max-width: 300px;
     }

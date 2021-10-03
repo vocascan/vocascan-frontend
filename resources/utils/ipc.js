@@ -24,9 +24,7 @@ const RegisterIpcHandler = () => {
       clipboard.writeText(versionString);
     }
   });
-};
 
-const FileMenuIpcHandler = () => {
   ipcMain.handle("save-file", async (event, arg) => {
     await dialog
       .showSaveDialog({
@@ -44,7 +42,7 @@ const FileMenuIpcHandler = () => {
       .then((file) => {
         if (!file.canceled) {
           // Creating and Writing to the json file
-          fs.writeFile(file.filePath.toString(), arg.text, function (err) {
+          fs.writeFile(file.filePath.toString(), arg.text, (err) => {
             if (err) throw err;
           });
         }
@@ -67,7 +65,7 @@ const FileMenuIpcHandler = () => {
           properties: ["openFile"],
         })
         .then((file) => {
-          fs.readFile(file.filePaths[0], "utf8", function (err, data) {
+          fs.readFile(file.filePaths[0], "utf8", (err, data) => {
             try {
               resolve(JSON.parse(data));
             } catch (e) {
@@ -84,5 +82,4 @@ const FileMenuIpcHandler = () => {
 
 module.exports = {
   RegisterIpcHandler,
-  FileMenuIpcHandler,
 };

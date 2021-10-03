@@ -147,7 +147,7 @@ const AllGroups = () => {
             })
             .then((result) => {
               setShowExportConfirmationModal(false);
-              showSnack("success", t("screens.allGroups.exportFailMessage"));
+              showSnack("success", t("screens.allGroups.exportSuccessMessage"));
             });
         })
         .catch((e) => {
@@ -331,11 +331,11 @@ const AllGroups = () => {
       </Modal>
 
       <ConfirmDialog
-        title={"Export group"}
+        title={t("components.importExport.exportGroup")}
         description={t("screens.allPackages.deleteDescription", {
           name: currentPackage?.name,
         })}
-        submitText={"Export"}
+        submitText={t("global.export")}
         onSubmit={submitExportGroup}
         onClose={() => setShowExportConfirmationModal(false)}
         show={showExportConfirmationModal}

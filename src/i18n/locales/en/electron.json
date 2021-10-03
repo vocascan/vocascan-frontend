@@ -1,14 +1,19 @@
 {
-  "splash": {
-    "updates": {
-      "check": "Checking for updates...",
-      "skipCheck": "Skipping update checks...",
-      "download": "Downloading update...",
-      "skipButton": "Skip"
+    "splash": {
+        "updates": {
+            "check": "Checking for updates...",
+            "skipCheck": "Skipping update checks...",
+            "download": "Downloading update...",
+            "skipButton": "Skip"
+        },
+        "start": {
+            "starting": "Launching...",
+            "restarting": "Restarting..."
+        }
     },
-    "start": {
-      "starting": "Launching...",
-      "restarting": "Restarting..."
+    "ipc": {
+        "fileHandling": {
+            "saveFile": "Select where you want to save the file"
+        }
     }
-  }
 }
