@@ -71,10 +71,12 @@ const ArrayTextInput = ({
 
   useEffect(() => {
     const listener = (event) => {
+      // keycode 40 stands for "arrow down"
       if (event.keyCode === 40) {
         event.preventDefault();
         addArrayData();
       }
+      // keycode 38 stands for "arrow up"
       if (event.keyCode === 38) {
         event.preventDefault();
         if (arrayData.length === 1) {
