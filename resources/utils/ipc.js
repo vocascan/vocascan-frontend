@@ -28,7 +28,7 @@ const RegisterIpcHandler = () => {
   ipcMain.handle("save-file", async (event, arg) => {
     await dialog
       .showSaveDialog({
-        title: "Select where you want to save the file",
+        title: arg.head,
         defaultPath: `./${arg.title}`,
         // Restricting the user to only json Files.
         filters: [
@@ -48,7 +48,7 @@ const RegisterIpcHandler = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        throw err;
       });
   });
 
@@ -70,11 +70,12 @@ const RegisterIpcHandler = () => {
               resolve(JSON.parse(data));
             } catch (e) {
               // Catch error in case file doesn't exist or isn't valid JSON
+              reject(e);
             }
           });
         })
         .catch((err) => {
-          console.log(err);
+          throw err;
         });
     });
   });

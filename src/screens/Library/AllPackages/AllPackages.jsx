@@ -107,6 +107,7 @@ const AllPackages = () => {
         .then((response) => {
           ipcRenderer
             .invoke("save-file", {
+              head: t("components.importExport.saveFileHead"),
               title: response.data.name,
               text: JSON.stringify(response.data),
             })

@@ -106,7 +106,8 @@
         },
         "importExport": {
             "exportPackage": "Export package",
-            "exportGroup": "Export group"
+            "exportGroup": "Export group",
+            "saveFileHead": "Select where you want to save the file"
         }
     },
     "screens": {
