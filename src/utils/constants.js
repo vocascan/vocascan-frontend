@@ -73,7 +73,7 @@ export const timeSpans = [
     label: "7 Days",
   },
   {
-    value: -1,
+    value: null,
     format: "d",
     label: "never",
   },

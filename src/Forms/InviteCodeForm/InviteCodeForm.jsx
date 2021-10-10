@@ -26,20 +26,27 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
   //make api call to add vocab package
   const submitHandler = useCallback(async () => {
     let tempDate = new Date();
-    switch (expirationDate.format) {
-      case "m":
-        tempDate.setMinutes(tempDate.getMinutes() + expirationDate.value);
-        break;
-      case "h":
-        tempDate.setHours(tempDate.getHours() + expirationDate.value);
-        break;
-      case "d":
-        tempDate.setDate(tempDate.getDate() + expirationDate.value);
-        break;
-      default:
-        return;
+    if (expirationDate.value) {
+      switch (expirationDate.format) {
+        case "m":
+          tempDate.setMinutes(tempDate.getMinutes() + expirationDate.value);
+          break;
+        case "h":
+          tempDate.setHours(tempDate.getHours() + expirationDate.value);
+          break;
+        case "d":
+          tempDate.setDate(tempDate.getDate() + expirationDate.value);
+          break;
+        default:
+          return;
+      }
     }
-    createInviteCode({ maxUses, expirationDate: tempDate.toISOString() })
+
+    createInviteCode({
+      maxUses,
+      //when
+      expirationDate: expirationDate.value ? tempDate.toISOString() : null,
+    })
       .then(({ data }) => {
         onSubmitCallback();
         showSnack(
