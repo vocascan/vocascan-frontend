@@ -39,7 +39,6 @@ export const getLanguageString = (language, nativeNames = true) =>
  * @param {Array} languages Array of all languages from server
  * @returns {Object} language object
  */
-
 export const findLanguageByCode = (language, languages) =>
   languages.find((lang) => language === lang.code);
 
