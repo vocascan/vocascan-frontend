@@ -11,7 +11,9 @@
   grid-area: topnav;
   grid-template-columns: 200px auto;
   grid-template-rows: 50px;
-  grid-template-areas: "topnav topnav" "sidenav main";
+  grid-template-areas:
+    "topnav topnav"
+    "sidenav main";
 
   .nav-wrapper {
     display: flex;
