@@ -1,14 +1,14 @@
 {
-    "splash": {
-        "updates": {
-            "check": "Checking for updates...",
-            "skipCheck": "Skipping update checks...",
-            "download": "Downloading update...",
-            "skipButton": "Skip"
-        },
-        "start": {
-            "starting": "Launching...",
-            "restarting": "Restarting..."
-        }
+  "splash": {
+    "updates": {
+      "check": "Checking for updates...",
+      "skipCheck": "Skipping update checks...",
+      "download": "Downloading update...",
+      "skipButton": "Skip"
+    },
+    "start": {
+      "starting": "Launching...",
+      "restarting": "Restarting..."
     }
+  }
 }

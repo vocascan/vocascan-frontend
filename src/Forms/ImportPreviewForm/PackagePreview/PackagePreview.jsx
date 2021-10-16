@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import Button from "../../../Components/Button/Button.jsx";
 import Details from "../../../Components/Details/Details.jsx";
@@ -96,12 +97,16 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
         accessor: "active",
         Cell: ({ row }) => (
           <div style={{ textAlign: "left" }}>
-            {<CheckCircleIcon className="text-success" />}
+            {vocabsActive ? (
+              <CheckCircleIcon className="text-success" />
+            ) : (
+              <RemoveCircleIcon className="text-error" />
+            )}
           </div>
         ),
       },
     ],
-    [t]
+    [t, vocabsActive]
   );
 
   return (
@@ -234,18 +239,20 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
           key={1}
         >
           {languagePackage?.Groups.map((group, i) => (
-            <Details
-              summary={group.name}
-              count={group.length}
-              open={i === 0}
-              key={i}
-            >
-              <Table
-                pagination={false}
-                columns={columns}
-                data={group.VocabularyCards}
-              />
-            </Details>
+            <div className="group-detail">
+              <Details
+                summary={group.name}
+                count={group.length}
+                open={i === 0}
+                key={i}
+              >
+                <Table
+                  pagination={false}
+                  columns={columns}
+                  data={group.VocabularyCards}
+                />
+              </Details>
+            </div>
           ))}
         </Details>
       </div>

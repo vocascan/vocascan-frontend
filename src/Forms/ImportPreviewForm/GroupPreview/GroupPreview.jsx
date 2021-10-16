@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import Button from "../../../Components/Button/Button.jsx";
 import Details from "../../../Components/Details/Details.jsx";
@@ -20,7 +21,11 @@ import { delay } from "../../../utils/index.js";
 
 import "./GroupPreview.scss";
 
-const GroupPreview = ({ defaultPackage, onSubmitCallback, importedData }) => {
+const GroupPreview = ({
+  defaultPackage = null,
+  onSubmitCallback,
+  importedData,
+}) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
@@ -137,12 +142,16 @@ const GroupPreview = ({ defaultPackage, onSubmitCallback, importedData }) => {
         accessor: "active",
         Cell: ({ row }) => (
           <div style={{ textAlign: "left" }}>
-            {<CheckCircleIcon className="text-success" />}
+            {vocabsActive ? (
+              <CheckCircleIcon className="text-success" />
+            ) : (
+              <RemoveCircleIcon className="text-error" />
+            )}
           </div>
         ),
       },
     ],
-    [t]
+    [t, vocabsActive]
   );
 
   return (
