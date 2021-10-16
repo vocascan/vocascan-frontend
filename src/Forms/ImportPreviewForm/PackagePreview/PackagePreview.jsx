@@ -239,7 +239,7 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
           key={1}
         >
           {languagePackage?.Groups.map((group, i) => (
-            <div className="group-detail">
+            <div className="group-detail" key={i}>
               <Details
                 summary={group.name}
                 count={group.length}
