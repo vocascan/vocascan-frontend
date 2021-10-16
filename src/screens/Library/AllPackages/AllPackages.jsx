@@ -129,12 +129,8 @@ const AllPackages = () => {
     try {
       ipcRenderer.invoke("open-file", {}).then((result) => {
         if (
-          !result.name ||
-          !result.foreignWordLanguage ||
-          !result.translatedWordLanguage ||
-          !result.vocabsPerDay ||
-          !result.rightWords ||
-          !result.Groups
+          result.type !== "vocascan/package" &&
+          result.type !== "vocascan/group"
         ) {
           showSnack("error", t("global.fileImportError"));
           return;

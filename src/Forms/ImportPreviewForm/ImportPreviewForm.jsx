@@ -12,7 +12,7 @@ const ImportPreviewForm = ({
 }) => {
   return (
     <div className="import-preview">
-      {importedData.foreignWordLanguage ? (
+      {importedData.type === "vocascan/package" ? (
         <PackagePreview
           onSubmitCallback={onSubmitCallback}
           importedData={importedData}

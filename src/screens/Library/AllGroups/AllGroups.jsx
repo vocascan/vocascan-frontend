@@ -159,7 +159,10 @@ const AllGroups = () => {
   const submitImport = useCallback(() => {
     try {
       ipcRenderer.invoke("open-file", {}).then((result) => {
-        if (!result.name || !result.description || !result.VocabularyCards) {
+        if (
+          result.type !== "vocascan/package" &&
+          result.type !== "vocascan/group"
+        ) {
           showSnack("error", t("global.fileImportError"));
           return;
         }
