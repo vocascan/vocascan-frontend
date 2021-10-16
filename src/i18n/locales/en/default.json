@@ -70,9 +70,9 @@
             "modifyPackageFailedMessage": "Could not save package"
         },
         "importPreviewForm": {
-            "vocabsActive": "vocabs are put in daily query",
-            "activateVocabs": "activate vocabs",
-            "importQueryStatus": "import vocabs with actual query status"
+            "vocabsActive": " Put vocabs in daily query",
+            "activateVocabs": "Activate vocabs",
+            "importQueryStatus": "Import vocabs with actual query status"
         },
         "vocabForm": {
             "noPackagesMessage": "No packages found",

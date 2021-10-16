@@ -10,10 +10,5 @@
             "starting": "Launching...",
             "restarting": "Restarting..."
         }
-    },
-    "ipc": {
-        "fileHandling": {
-            "saveFile": "Select where you want to save the file"
-        }
     }
 }
