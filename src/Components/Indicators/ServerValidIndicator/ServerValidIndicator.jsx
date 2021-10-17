@@ -1,13 +1,14 @@
 import { CancelToken, Cancel } from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { gte } from "semver";
+
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator.jsx";
 
 import useDebounce from "../../../hooks/useDebounce.js";
-import { setServerRegistrationLocked } from "../../../redux/Actions/setting.js";
 import { getInfo } from "../../../utils/api.js";
 import { minServerVersion } from "../../../utils/constants.js";
 
@@ -16,12 +17,11 @@ import "./ServerValidIndicator.scss";
 const ServerValidIndicator = ({ setValid, setLocked = null }) => {
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const debouncedServerAddress = useDebounce(serverAddress, 500);
-  const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isValidServer, setIsValidServer] = useState(null);
   const [isValidVersion, setIsValidVersion] = useState(null);
-  const [isLockValid, setIsLockValid] = useState(false);
+  const [isLocked, setIsLocked] = useState(false);
   const [isServerResponding, setIsServerResponding] = useState(null);
   const [serverVersion, setServerVersion] = useState(null);
 
@@ -34,22 +34,17 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
     setIsValidServer(null);
     setIsValidVersion(null);
     setServerVersion(null);
-    setIsLockValid(null);
+    setIsLocked(null);
 
     const cancelToken = CancelToken.source();
 
     getInfo(cancelToken.token)
       .then((res) => {
         setIsValidServer(res?.data?.identifier === "vocascan-server");
-        setIsLockValid(res?.data?.locked);
+        setIsLocked(res?.data?.locked);
         setIsValidVersion(gte(res?.data?.version, minServerVersion));
         setServerVersion(res?.data?.version);
         setIsServerResponding(true);
-        dispatch(
-          setServerRegistrationLocked({
-            serverRegistrationLocked: res.data.locked,
-          })
-        );
       })
       .catch((err) => {
         if (!(err instanceof Cancel)) {
@@ -63,7 +58,7 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
     return () => {
       cancelToken.cancel();
     };
-  }, [debouncedServerAddress, dispatch]);
+  }, [debouncedServerAddress]);
 
   useEffect(() => {
     setValid(
@@ -73,7 +68,7 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
     );
     // make this query, because Login Page is not sending a setLocked param
     if (setLocked) {
-      setLocked(isLockValid);
+      setLocked(isLocked);
     }
   }, [
     setValid,
@@ -81,7 +76,7 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
     isValidVersion,
     isServerResponding,
     setLocked,
-    isLockValid,
+    isLocked,
   ]);
 
   useEffect(() => {
@@ -101,8 +96,10 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
         isServerResponding === true && (
           <p className="success">
             {t("components.validServerIndicator.validServer", {
-              version: `${serverVersion} ${isLockValid ? "locked" : ""}`,
+              version: serverVersion,
             })}
+
+            {isLocked && <LockOutlinedIcon fontSize="small" />}
           </p>
         )}
 

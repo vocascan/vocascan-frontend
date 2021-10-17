@@ -20,7 +20,7 @@ const Admin = () => {
   const [inviteCodes, setInviteCodes] = useState([]);
   const [showInviteCodeModal, setShowInviteCodeModal] = useState(false);
   const serverRegistrationLocked = useSelector(
-    (state) => state.setting.serverRegistrationLocked
+    (state) => state.login.serverInfo?.locked || false
   );
 
   const inviteCodeSubmitted = useCallback(() => {
@@ -43,18 +43,27 @@ const Admin = () => {
     <>
       <div className="admin">
         {serverRegistrationLocked && (
-          <>
-            <Button className="add-btn" variant="transparent">
-              <AddCircleOutlinedIcon
-                onClick={() => setShowInviteCodeModal(true)}
-              />
-            </Button>
-            <div className="invite-code-field">
-              {inviteCodes.map((inviteCode, index) => (
-                <InviteCode key={index} data={inviteCode} />
+          <div className="invite-codes">
+            <div className="invite-code-controls">
+              <Button className="add-btn" variant="transparent">
+                <AddCircleOutlinedIcon
+                  onClick={() => setShowInviteCodeModal(true)}
+                />
+              </Button>
+            </div>
+
+            <div className="invite-code-container">
+              {inviteCodes.map((inviteCode) => (
+                <InviteCode key={inviteCode.code} data={inviteCode} />
               ))}
             </div>
-          </>
+          </div>
+        )}
+
+        {!serverRegistrationLocked && (
+          <div className="center-wrapper">
+            <h2>{t("screens.admin.nothingToDo")}</h2>
+          </div>
         )}
       </div>
       {serverRegistrationLocked && (

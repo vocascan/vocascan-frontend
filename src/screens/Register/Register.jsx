@@ -148,7 +148,10 @@ const Register = ({ image }) => {
   );
 
   useEffect(() => {
-    if (selfHosted && !serverAddress) {
+    if (
+      (selfHosted && !serverAddress) ||
+      (isServerLocked && (!inviteCode || !isInviteCodeValid))
+    ) {
       setCanSubmit(false);
 
       return;
@@ -165,6 +168,9 @@ const Register = ({ image }) => {
     selfHosted,
     serverAddress,
     isServerValid,
+    isServerLocked,
+    inviteCode,
+    isInviteCodeValid,
   ]);
 
   useEffect(() => {
@@ -176,6 +182,11 @@ const Register = ({ image }) => {
   }, [dispatch, serverAddressInput]);
 
   useEffect(() => {
+    if (inviteCode === "") {
+      setIsInviteCodeValid(true);
+      setInviteCodeError(null);
+      return;
+    }
     setIsInviteCodeValid(false);
 
     checkInviteCode(inviteCode)
@@ -319,7 +330,7 @@ const Register = ({ image }) => {
             >
               {t("global.signUp")}
             </Button>
-            <p>{isServerLocked}</p>
+
             <div className="register-form-submit-register">
               {t("screens.register.alreadyHaveAccount")}{" "}
               <div

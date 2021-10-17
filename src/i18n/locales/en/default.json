@@ -125,7 +125,8 @@
   },
   "screens": {
     "admin": {
-      "title": "Admin"
+      "title": "Admin",
+      "nothingToDo": "There is currently nothing that can be done on the admin panel."
     },
     "allPackages": {
       "title": "All packages",

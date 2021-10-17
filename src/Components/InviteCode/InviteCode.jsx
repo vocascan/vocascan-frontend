@@ -1,10 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 
-import Button from "../../Components/Button/Button.jsx";
 import CountdownTimer from "../Timer/CountdownTimer.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
@@ -19,8 +18,6 @@ const InviteCode = ({ data }) => {
   const { t } = useTranslation();
   const history = useHistory();
   const { showSnack } = useSnack();
-
-  const [showDeleteButton, setShowDeleteButton] = useState(false);
 
   const submitDeletion = useCallback(
     (inviteCode) => {
@@ -46,20 +43,12 @@ const InviteCode = ({ data }) => {
   }, [data.code, showSnack, t]);
 
   return (
-    <div
-      className="invite-code"
-      onMouseEnter={() => setShowDeleteButton(true)}
-      onMouseLeave={() => setShowDeleteButton(false)}
-    >
-      <Button
-        appearance={"red"}
-        className={showDeleteButton ? "delete-btn-show" : "delete-btn-hide"}
-        variant="transparent"
-      >
+    <div className="invite-code">
+      <div className="delete-btn">
         <RemoveCircleOutlineIcon onClick={() => submitDeletion(data.code)} />
-      </Button>
-      <div className="heading">
-        <p onClick={copyToClip}>{data.code}</p>
+      </div>
+      <div className="heading" onClick={copyToClip}>
+        <p>{data.code}</p>
       </div>
       <hr />
       <div className="information">

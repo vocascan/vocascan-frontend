@@ -1,8 +1,4 @@
-import {
-  SET_MENU_STYLE,
-  SET_LANGUAGE,
-  SET_SERVER_REGISTRATION_LOCKED,
-} from "./index.js";
+import { SET_MENU_STYLE, SET_LANGUAGE } from "./index.js";
 
 export const setMenuStyle = ({ menuStyle }) => {
   return {
@@ -18,15 +14,6 @@ export const setLanguage = ({ language }) => {
     type: SET_LANGUAGE,
     payload: {
       language,
-    },
-  };
-};
-
-export const setServerRegistrationLocked = ({ serverRegistrationLocked }) => {
-  return {
-    type: SET_SERVER_REGISTRATION_LOCKED,
-    payload: {
-      serverRegistrationLocked,
     },
   };
 };

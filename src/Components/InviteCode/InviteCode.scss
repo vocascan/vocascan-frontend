@@ -12,14 +12,20 @@
   justify-content: space-around;
   flex-direction: column;
   position: relative;
+  margin: 5px;
 
-  .delete-btn-show {
+  .delete-btn {
     position: absolute;
-    right: 0;
-    top: 0;
-    align-self: center;
-    padding: 5px;
-    border-radius: 100%;
+    right: 10px;
+    top: 10px;
+    color: $color-red;
+    opacity: 0;
+    transition: 100ms ease-in-out opacity;
+    cursor: pointer;
+  }
+
+  &:hover > .delete-btn {
+    opacity: 1;
   }
 
   .delete-btn-hide {

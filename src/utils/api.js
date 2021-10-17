@@ -120,8 +120,6 @@ export const checkInviteCode = (inviteCode) =>
 
 // Admin
 export const getInviteCodes = () => api.get(`/inviteCode`);
-
 export const createInviteCode = (data) => api.post(`/inviteCode`, data);
-
 export const deleteInviteCode = (inviteCode) =>
   api.delete(`/inviteCode/${inviteCode}`);
