@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,7 +8,6 @@ import LanguageSelector from "../../Components/LanguageSelector/LanguageSelector
 
 import { openGuide } from "../../redux/Actions/login.js";
 import { setMenuStyle } from "../../redux/Actions/setting.js";
-import { getInfo } from "../../utils/api.js";
 
 import { version as desktopVersion } from "../../../package.json";
 
@@ -19,8 +18,7 @@ const Settings = () => {
 
   const dispatch = useDispatch();
   const menuStyle = useSelector((state) => state.setting.menuStyle);
-
-  const [serverInfo, setServerInfo] = useState(null);
+  const serverInfo = useSelector((state) => state.login.serverInfo);
 
   const onChangeMenu = useCallback(() => {
     dispatch(
@@ -31,14 +29,6 @@ const Settings = () => {
   const reopenGuide = useCallback(() => {
     dispatch(openGuide());
   }, [dispatch]);
-
-  useEffect(() => {
-    getInfo()
-      .then((res) => {
-        setServerInfo(res?.data);
-      })
-      .catch(() => {});
-  }, []);
 
   return (
     <div className="settings-wrapper">

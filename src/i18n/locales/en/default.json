@@ -44,6 +44,11 @@
     "back": "Back",
     "comingSoon": "Coming soon...",
     "skip": "Skip",
+    "import": "Import",
+    "vocabsPerDay": "Vocabs per day",
+    "rightWords": "Right words",
+    "fileImportError": "Error importing your file",
+    "export": "Export",
     "inviteCode": "Invite code",
     "create": "Create"
   },
@@ -66,6 +71,11 @@
       "modifyPackageSuccessMessage": "Package saved",
       "modifyPackageFailedMessage": "Could not save package"
     },
+    "importPreviewForm": {
+      "vocabsActive": " Put vocabs in daily query",
+      "activateVocabs": "Activate vocabs",
+      "importQueryStatus": "Import vocabs with actual query status"
+    },
     "vocabForm": {
       "noPackagesMessage": "No packages found",
       "noGroupsMessage": "No groups found",
@@ -78,7 +88,9 @@
       "activeLabel": "Active",
       "activeTooltip": "Decides whether vocabulary is included in the query",
       "activateLabel": "Activate",
-      "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query"
+      "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query",
+      "packageCreateText": "Create new package",
+      "groupCreateText": "Create new group"
     },
     "packageOverview": {
       "unresolved": "Total to learn:",
@@ -93,6 +105,11 @@
     },
     "languageSelector": {
       "label": "Language"
+    },
+    "importExport": {
+      "exportPackage": "Export package",
+      "exportGroup": "Export group",
+      "saveFileHead": "Select where you want to save the file"
     },
     "inviteCode": {
       "never": "Never",
@@ -121,8 +138,15 @@
       "deleteDescription": "Are you sure you want to delete the package {{name}}?",
       "deleteSuccessMessage": "Package deleted",
       "deleteFailMessage": "Package could not be deleted",
+      "exportSuccessMessage": "Exported package successfully",
+      "exportFailMessage": "Error exporting package",
+      "importSuccessMessage": "Imported package successfully",
+      "importFailMessage": "Error importing package",
+      "importWrongTypeFailMessage": "Only packages can be imported in the package section.",
       "editPackage": "Edit Package",
-      "addPackage": "Add Package"
+      "addPackage": "Add Package",
+      "exportQueryStatus": "Export actual query status",
+      "exportDescription": "Do you want to export this language package?"
     },
     "allGroups": {
       "title": "All groups",
@@ -133,12 +157,18 @@
       "deleteDescription": "Are you sure you want to delete the group {{name}}?",
       "deleteSuccessMessage": "Group deleted",
       "deleteFailMessage": "Group could not be deleted",
+      "exportSuccessMessage": "Exported group successfully",
+      "exportFailMessage": "Error exporting group",
+      "importSuccessMessage": "Imported group successfully",
+      "importFailMessage": "Error importing group",
+      "importWrongTypeFailMessage": "Only groups can be imported into a package.",
       "editGroup": "Edit Group",
       "addGroup": "Add Group"
     },
     "allVocabs": {
       "title": "All vocabulary",
-      "vocabel": "Vocabel",
+      "vocabulary": "vocabulary",
+      "description": "Description",
       "translations": "Translations",
       "deleteTitle": "Delete Vocabulary",
       "deleteDescription": "Are you sure you want to delete the vocabulary {{name}}?",

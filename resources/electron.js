@@ -8,6 +8,7 @@ const {
   shell,
   clipboard,
 } = require("electron");
+
 const isDev = require("electron-is-dev");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");

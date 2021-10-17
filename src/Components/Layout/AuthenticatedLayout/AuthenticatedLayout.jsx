@@ -9,7 +9,10 @@ import Modal from "../../Modal/Modal.jsx";
 import Nav from "../../Nav/Nav.jsx";
 import TopNav from "../../Nav/TopNav.jsx";
 
-import { signOut } from "../../../redux/Actions/login.js";
+import {
+  setServerInfo as setServerInfoDispatch,
+  signOut,
+} from "../../../redux/Actions/login.js";
 import { getInfo } from "../../../utils/api.js";
 import { minServerVersion } from "../../../utils/constants.js";
 
@@ -18,7 +21,7 @@ import "./AuthenticatedLayout.scss";
 const AuthenticatedLayout = ({ children }) => {
   const [isValidServer, setIsValidServer] = useState(null);
   const [isValidVersion, setIsValidVersion] = useState(null);
-  const [serverVersion, setServerVersion] = useState(null);
+  const [serverInfo, setServerInfo] = useState(null);
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -32,10 +35,15 @@ const AuthenticatedLayout = ({ children }) => {
       .then((res) => {
         setIsValidServer(res?.data?.identifier === "vocascan-server");
         setIsValidVersion(gte(res?.data?.version, minServerVersion));
-        setServerVersion(res?.data?.version);
+        setServerInfo(res?.data);
       })
       .catch(() => null);
   }, []);
+
+  // second useEffect is used to prevent multiple requests to the server if dispatch changes and effect fires
+  useEffect(() => {
+    dispatch(setServerInfoDispatch({ serverInfo }));
+  }, [dispatch, serverInfo]);
 
   return (
     <div className="root">
@@ -55,7 +63,7 @@ const AuthenticatedLayout = ({ children }) => {
           {!isValidVersion && (
             <p>
               {t("modal.serverNotSupported.versionToOld", {
-                version: serverVersion,
+                version: serverInfo?.version,
                 minVersion: minServerVersion,
               })}
             </p>

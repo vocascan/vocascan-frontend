@@ -1,13 +1,13 @@
 @import "../../colors";
 
-/* stylelint-disable-next-line */
+/* stylelint-disable selector-class-pattern */
+
 .Collapsible {
   margin-bottom: 30px;
 
-  /* stylelint-disable-next-line */
   .Collapsible__trigger {
     display: block;
-    border-bottom: 2px solid $color-background-inverse;
+    border-bottom: 1px solid $color-background-inverse;
     position: relative;
     padding: 5px 0 5px 20px;
     user-select: none;
@@ -18,8 +18,8 @@
       left: 0;
       bottom: 11px;
       content: " ";
-      width: 7px;
-      height: 7px;
+      width: 5px;
+      height: 5px;
       transition: all 0.125s ease-in-out;
       transform: rotate(-45deg);
       border-style: solid;
@@ -46,10 +46,11 @@
     }
   }
 
-  /* stylelint-disable-next-line */
   .Collapsible__contentInner {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
   }
 }
+
+/* stylelint-enable selector-class-pattern */

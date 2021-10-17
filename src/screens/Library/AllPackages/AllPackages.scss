@@ -1,6 +1,10 @@
 @import "../../../colors";
 
 .all-packages-wrapper {
+  .action-col-btn {
+    margin-right: 8px;
+  }
+
   .header-wrapper {
     position: relative;
     display: flex;
@@ -22,6 +26,14 @@
     .add {
       position: absolute;
       right: 0;
+      align-self: center;
+      padding: 5px;
+      border-radius: 100%;
+    }
+
+    .import {
+      position: absolute;
+      right: 40px;
       align-self: center;
       padding: 5px;
       border-radius: 100%;
