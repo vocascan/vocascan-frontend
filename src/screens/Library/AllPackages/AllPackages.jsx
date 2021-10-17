@@ -19,6 +19,7 @@ import Table from "../../../Components/Table/Table.jsx";
 import ImportPreviewForm from "../../../Forms/ImportPreviewForm/ImportPreviewForm.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
+import useFeature, { FEATURES } from "../../../hooks/useFeature.js";
 import useSnack from "../../../hooks/useSnack.js";
 import {
   getPackages,
@@ -51,6 +52,8 @@ const AllPackages = () => {
   const [showImportModal, setShowImportModal] = useState(false);
 
   const languages = useSelector((state) => state.language.languages);
+
+  const { isSupported } = useFeature(FEATURES.IMPORT_EXPORT);
 
   const editPackage = useCallback((pack) => {
     setCurrentPackage(pack);
@@ -199,6 +202,7 @@ const AllPackages = () => {
               variant="link"
               className="action-col-btn"
               onClick={() => openExportPackage(row.original)}
+              disabled={!isSupported}
             >
               <ArrowDownwardIcon />
             </Button>
@@ -222,7 +226,7 @@ const AllPackages = () => {
         ),
       },
     ],
-    [t, languages, openExportPackage, editPackage, onDeletePckge]
+    [t, languages, isSupported, openExportPackage, editPackage, onDeletePckge]
   );
 
   useEffect(() => {
@@ -243,6 +247,7 @@ const AllPackages = () => {
             className="import"
             variant="transparent"
             onClick={submitImport}
+            disabled={!isSupported}
           >
             <ArrowUpwardIcon onClick={() => submitImport} />
           </Button>

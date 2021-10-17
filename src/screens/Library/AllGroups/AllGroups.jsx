@@ -20,6 +20,7 @@ import Tooltip from "../../../Components/Tooltip/Tooltip.jsx";
 import GroupForm from "../../../Forms/GroupForm/GroupForm.jsx";
 import ImportPreviewForm from "../../../Forms/ImportPreviewForm/ImportPreviewForm.jsx";
 
+import useFeature, { FEATURES } from "../../../hooks/useFeature.js";
 import useSnack from "../../../hooks/useSnack.js";
 import {
   getGroups,
@@ -49,6 +50,8 @@ const AllGroups = () => {
   const [showExportConfirmationModal, setShowExportConfirmationModal] =
     useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
+
+  const { isSupported } = useFeature(FEATURES.IMPORT_EXPORT);
 
   const openExportGroup = useCallback((pack) => {
     setCurrentGroup(pack);
@@ -229,6 +232,7 @@ const AllGroups = () => {
               variant="link"
               className="action-col-btn"
               onClick={() => openExportGroup(row.original)}
+              disabled={!isSupported}
             >
               <ArrowDownwardIcon />
             </Button>
@@ -251,7 +255,7 @@ const AllGroups = () => {
         ),
       },
     ],
-    [editGroup, onDeleteGroup, openExportGroup, packageId, t]
+    [editGroup, isSupported, onDeleteGroup, openExportGroup, packageId, t]
   );
 
   useEffect(() => {
@@ -294,6 +298,7 @@ const AllGroups = () => {
             className="import"
             variant="transparent"
             onClick={submitImport}
+            disabled={!isSupported}
           >
             <ArrowUpwardIcon onClick={() => submitImport} />
           </Button>
