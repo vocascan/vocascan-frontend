@@ -10,6 +10,7 @@ import {
   SET_SELF_HOSTED,
   OPEN_GUIDE,
   CLOSE_GUIDE,
+  SET_SERVER_INFO,
 } from "../Actions/index.js";
 
 const defaultState = {
@@ -20,6 +21,7 @@ const defaultState = {
   },
   selfHosted: false,
   serverAddress: "",
+  serverInfo: null,
   isLoggedIn: false,
   firstLogin: false,
 };
@@ -28,6 +30,7 @@ const initialState = {
   ...defineState(defaultState)("login"),
   isLoggedIn: false,
   firstLogin: false,
+  serverInfo: null,
 };
 
 if (initialState.selfHosted) {
@@ -77,6 +80,7 @@ const loginReducer = (state = initialState, action) => {
           email: "",
           token: "",
         },
+        serverInfo: null,
         isLoggedIn: false,
         firstLogin: false,
       };
@@ -99,6 +103,12 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         selfHosted: action.payload.selfHosted,
+      };
+
+    case SET_SERVER_INFO:
+      return {
+        ...state,
+        serverInfo: action.payload.serverInfo,
       };
 
     case OPEN_GUIDE:

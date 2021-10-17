@@ -6,6 +6,7 @@ import {
   SET_SERVER_URL,
   OPEN_GUIDE,
   CLOSE_GUIDE,
+  SET_SERVER_INFO,
 } from "./index.js";
 
 export const register = ({ username, email, token }) => {
@@ -44,6 +45,15 @@ export const setSelfHosted = ({ selfHosted }) => {
     type: SET_SELF_HOSTED,
     payload: {
       selfHosted,
+    },
+  };
+};
+
+export const setServerInfo = ({ serverInfo }) => {
+  return {
+    type: SET_SERVER_INFO,
+    payload: {
+      serverInfo,
     },
   };
 };

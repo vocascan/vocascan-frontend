@@ -85,7 +85,7 @@ const AllVocabs = () => {
   const columns = useMemo(
     () => [
       {
-        Header: t("screens.allVocabs.vocabel"),
+        Header: t("screens.allVocabs.vocabulary"),
         accessor: "name",
         Cell: ({ row }) => (
           <Button
@@ -95,6 +95,15 @@ const AllVocabs = () => {
           >
             {row.original.name}
           </Button>
+        ),
+      },
+      {
+        Header: t("screens.allVocabs.description"),
+        accessor: "description",
+        Cell: ({ row }) => (
+          <div style={{ textAlign: "left" }}>
+            <p>{row.original.description}</p>
+          </div>
         ),
       },
       {

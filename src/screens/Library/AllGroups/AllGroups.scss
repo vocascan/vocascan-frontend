@@ -1,6 +1,10 @@
 @import "../../../colors";
 
 .all-groups-wrapper {
+  .action-col-btn {
+    margin-right: 8px;
+  }
+
   .header-wrapper {
     position: relative;
     display: flex;
@@ -33,6 +37,14 @@
         color: $color-primary-dark;
       }
     }
+
+    .import {
+      position: absolute;
+      right: 40px;
+      align-self: center;
+      padding: 5px;
+      border-radius: 100%;
+    }
   }
 
   .group-description-cell {
@@ -40,7 +52,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    max-width: 250px;
 
     @media screen and (min-width: 768px) {
       max-width: 300px;

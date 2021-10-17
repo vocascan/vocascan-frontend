@@ -41,3 +41,10 @@ export const getLanguageString = (language, nativeNames = true) =>
  */
 export const findLanguageByCode = (language, languages) =>
   languages.find((lang) => language === lang.code);
+
+/**
+ *
+ * @param {Integer} ms milliseconds to wait
+ * @returns {Promise} Promise object
+ */
+export const delay = (ms) => new Promise((res) => setTimeout(res, ms));
