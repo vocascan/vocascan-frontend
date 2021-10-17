@@ -162,13 +162,18 @@ const AllGroups = () => {
   const submitImport = useCallback(() => {
     try {
       ipcRenderer.invoke("open-file", {}).then((result) => {
-        if (
-          result.type !== "vocascan/package" &&
-          result.type !== "vocascan/group"
-        ) {
+        const type = result.type.match(/vocascan\/(\w*)/);
+
+        if (!type) {
           showSnack("error", t("global.fileImportError"));
           return;
         }
+
+        if (type[1] !== "group") {
+          showSnack("error", t("screens.allGroups.importWrongTypeFailMessage"));
+          return;
+        }
+
         setImportedData(result);
         setShowImportModal(true);
       });

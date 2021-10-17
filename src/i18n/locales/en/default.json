@@ -126,6 +126,7 @@
       "exportFailMessage": "Error exporting package",
       "importSuccessMessage": "Imported package successfully",
       "importFailMessage": "Error importing package",
+      "importWrongTypeFailMessage": "Only packages can be imported in the package section.",
       "editPackage": "Edit Package",
       "addPackage": "Add Package",
       "exportQueryStatus": "Export actual query status",
@@ -144,6 +145,7 @@
       "exportFailMessage": "Error exporting group",
       "importSuccessMessage": "Imported group successfully",
       "importFailMessage": "Error importing group",
+      "importWrongTypeFailMessage": "Only groups can be imported into a package.",
       "editGroup": "Edit Group",
       "addGroup": "Add Group"
     },
