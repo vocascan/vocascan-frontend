@@ -32,10 +32,37 @@ const Admin = () => {
   useEffect(() => {
     getInviteCodes()
       .then((res) => {
-        setInviteCodes(res.data);
+        const today = Date.now();
+
+        const sortedInviteCodes = res.data
+          .sort((a, b) => {
+            const aLeft = (a.maxUses || Infinity) - a.uses;
+            const bLeft = (b.maxUses || Infinity) - b.uses;
+            const aDate = new Date(a.expirationDate).getTime() || Infinity;
+            const bDate = new Date(b.expirationDate).getTime() || Infinity;
+            const dateDiff = bDate - aDate;
+
+            if (
+              (aDate <= today && bDate <= today) ||
+              (aLeft <= 0 && bLeft <= 0)
+            )
+              return 0; // date or uses of both invites are expired
+
+            if (aLeft <= 0 && bLeft > 0) return -1; // uses of invite a are expired
+            if (bLeft <= 0 && aLeft > 0) return 1; // uses of invite b are expired
+
+            if (aDate <= today && bDate > today) return -1; // date of invite a is expired
+            if (bDate <= today && aDate > today) return 1; // date of invite b is expired
+
+            if (dateDiff !== 0) return dateDiff; // sort by dateDiff if not zero
+
+            return aLeft - bLeft; // sort by uses if dates are equal
+          })
+          .reverse(); // reverse the list, so that the expired are at the bottom
+        setInviteCodes(sortedInviteCodes);
       })
       .catch((err) => {
-        console.log("Error");
+        console.log(err);
       });
   }, []);
 
