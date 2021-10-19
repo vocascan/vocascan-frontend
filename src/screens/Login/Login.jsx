@@ -110,11 +110,15 @@ const Login = ({ image }) => {
 
   useEffect(() => {
     try {
+      if (!selfHosted) {
+        return;
+      }
+
       const { origin } = new URL(serverAddressInput);
 
       dispatch(setServerUrl({ serverAddress: origin }));
     } catch (err) {}
-  }, [dispatch, serverAddressInput]);
+  }, [dispatch, selfHosted, serverAddressInput]);
 
   return (
     <UnauthenticatedLayout>
