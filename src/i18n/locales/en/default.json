@@ -120,7 +120,8 @@
       "inviteCodeSuccessMessage": "Created invite code",
       "inviteCodeErrorMessage": "Error creating invite code",
       "expired": "Expired",
-      "copyToClip": "Invite code copied to clipboard"
+      "copyToClip": "Invite code copied to clipboard",
+      "copyToClipFailed": "Copy invite code to clipboard failed"
     }
   },
   "screens": {

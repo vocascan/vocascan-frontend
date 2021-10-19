@@ -48,7 +48,7 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
       expirationDate: expirationDate.value ? tempDate.toISOString() : null,
     })
       .then(({ data }) => {
-        onSubmitCallback();
+        onSubmitCallback(data);
         showSnack(
           "success",
           t("components.inviteCode.inviteCodeSuccessMessage")
