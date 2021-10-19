@@ -6,7 +6,6 @@ const {
   Notification,
   Menu,
   shell,
-  clipboard,
 } = require("electron");
 
 const isDev = require("electron-is-dev");
@@ -282,10 +281,6 @@ ipcMain.on("start-update", () => {
 
 ipcMain.on("skip-check", () => {
   skipUpdateCheck();
-});
-
-ipcMain.handle("copy-to-clip", async (event, arg) => {
-  clipboard.writeText(arg.text);
 });
 
 autoUpdater.on("checking-for-update", () => {

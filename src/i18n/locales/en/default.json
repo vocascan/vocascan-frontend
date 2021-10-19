@@ -103,6 +103,13 @@
       "versionToOld": "✗ server version v{{version}} is to old. Min required is v{{minVersion}}",
       "serverNotResponding": "✗ server is not responding"
     },
+    "inviteCodeValidIndicator": {
+      "valid": "✓ valid invite code",
+      "notExisting": "✗ invite code does not exists",
+      "used": "✗ no invites left",
+      "expired": "✗ invite code is expired",
+      "error": "✗ error checking invite code"
+    },
     "languageSelector": {
       "label": "Language"
     },
@@ -296,7 +303,9 @@
     "register": {
       "title": "Register",
       "usernameInUse": "The username is already used",
+      "usernameNotValid": "The username should be 2-72 characters long",
       "emailInUse": "The email is already used",
+      "emailNotValid": "Not a valid email address",
       "passwordsDontMatch": "The passwords are not the same",
       "alreadyHaveAccount": "Already have an account?"
     },

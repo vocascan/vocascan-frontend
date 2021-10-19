@@ -115,8 +115,8 @@ export const getLanguages = ({
 export const getInfo = (cancelToken) => api.get("/info", { cancelToken });
 
 // inviteCode
-export const checkInviteCode = (inviteCode) =>
-  api.get(`/inviteCode/${inviteCode}`);
+export const checkInviteCode = (inviteCode, cancelToken) =>
+  api.get(`/inviteCode/${inviteCode}`, { cancelToken });
 
 // Admin
 export const getInviteCodes = () => api.get(`/inviteCode`);

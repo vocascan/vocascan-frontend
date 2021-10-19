@@ -7,16 +7,13 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Button from "../../Components/Button/Button.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
+import InviteCodeValidIndicator from "../../Components/Indicators/InviteCodeValidIndicator/InviteCodeValidIndicator.jsx";
 import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 
 import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, register } from "../../redux/Actions/login.js";
-import {
-  register as registerAPI,
-  getLanguages,
-  checkInviteCode,
-} from "../../utils/api.js";
+import { register as registerAPI, getLanguages } from "../../utils/api.js";
 import {
   maxTextfieldLength,
   maxUsernameLength,
@@ -44,8 +41,9 @@ const Register = ({ image }) => {
   const [isServerValid, setIsServerValid] = useState(false);
   const [isServerLocked, setIsServerLocked] = useState(false);
   const [canSubmit, setCanSubmit] = useState(false);
-  const [isInviteCodeValid, setIsInviteCodeValid] = useState(true);
-  const [inviteCodeError, setInviteCodeError] = useState(null);
+  const [isInviteCodeValid, setIsInviteCodeValid] = useState(false);
+  const [isUsernameValid, setIsUsernameValid] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -54,17 +52,6 @@ const Register = ({ image }) => {
   const handleClickLogin = useCallback(() => {
     history.push("/login");
   }, [history]);
-
-  // check if typed in passwords are the same
-  const checkPassword = useCallback(() => {
-    if (password !== passwordRepeat) {
-      setIsSamePassword(false);
-      return false;
-    } else {
-      setIsSamePassword(true);
-      return true;
-    }
-  }, [password, passwordRepeat]);
 
   //fetch languages
   const fetchLanguages = useCallback(() => {
@@ -86,10 +73,6 @@ const Register = ({ image }) => {
       e.preventDefault();
 
       if (!canSubmit) {
-        return;
-      }
-
-      if (!checkPassword()) {
         return;
       }
 
@@ -136,7 +119,6 @@ const Register = ({ image }) => {
     },
     [
       canSubmit,
-      checkPassword,
       dispatch,
       email,
       fetchLanguages,
@@ -148,17 +130,44 @@ const Register = ({ image }) => {
   );
 
   useEffect(() => {
+    setIsSamePassword(password === passwordRepeat);
+  }, [password, passwordRepeat]);
+
+  useEffect(() => {
+    if (username === "") {
+      return setIsUsernameValid(true);
+    }
+
+    setIsUsernameValid(username.length >= 2 && username.length <= 72);
+  }, [username]);
+
+  useEffect(() => {
+    if (email === "") {
+      return setIsEmailValid(true);
+    }
+
+    setIsEmailValid(email.match(/^\S+@\S+\.\S+$/));
+  }, [email]);
+
+  useEffect(() => {
     if (
       (selfHosted && !serverAddress) ||
       (isServerLocked && (!inviteCode || !isInviteCodeValid))
     ) {
-      setCanSubmit(false);
-
-      return;
+      return setCanSubmit(false);
     }
 
     setCanSubmit(
-      !(!username || !email || !password || !passwordRepeat || !isServerValid)
+      !(
+        !username ||
+        !email ||
+        !password ||
+        !passwordRepeat ||
+        !isServerValid ||
+        !isSamePassword ||
+        !isEmailValid ||
+        !isUsernameValid
+      )
     );
   }, [
     username,
@@ -171,6 +180,9 @@ const Register = ({ image }) => {
     isServerLocked,
     inviteCode,
     isInviteCodeValid,
+    isSamePassword,
+    isEmailValid,
+    isUsernameValid,
   ]);
 
   useEffect(() => {
@@ -180,23 +192,6 @@ const Register = ({ image }) => {
       dispatch(setServerUrl({ serverAddress: origin }));
     } catch (err) {}
   }, [dispatch, serverAddressInput]);
-
-  useEffect(() => {
-    if (inviteCode === "") {
-      setIsInviteCodeValid(true);
-      setInviteCodeError(null);
-      return;
-    }
-    setIsInviteCodeValid(false);
-
-    checkInviteCode(inviteCode)
-      .then((res) => {
-        setIsInviteCodeValid(res.data);
-      })
-      .catch((err) => {
-        setInviteCodeError(err.response.data);
-      });
-  }, [inviteCode]);
 
   return (
     <UnauthenticatedLayout>
@@ -229,8 +224,12 @@ const Register = ({ image }) => {
                 setUsername(value);
               }}
               value={username}
-              error={usernameIsUsed}
-              errorText={t("screens.register.usernameInUse")}
+              error={usernameIsUsed || !isUsernameValid}
+              errorText={
+                isUsernameValid
+                  ? t("screens.register.usernameInUse")
+                  : t("screens.register.usernameNotValid")
+              }
               maxLength={maxUsernameLength}
             />
             <TextInput
@@ -243,8 +242,12 @@ const Register = ({ image }) => {
                 setEmail(value);
               }}
               value={email}
-              error={emailIsUsed}
-              errorText={t("screens.register.emailInUse")}
+              error={emailIsUsed || !isEmailValid}
+              errorText={
+                isEmailValid
+                  ? t("screens.register.emailInUse")
+                  : t("screens.register.emailNotValid")
+              }
               maxLength={maxTextfieldLength}
             />
             <TextInput
@@ -257,7 +260,9 @@ const Register = ({ image }) => {
                 setPassword(value);
               }}
               value={password}
-              error={!isSamePassword}
+              error={
+                !isSamePassword && password !== "" && passwordRepeat !== ""
+              }
               errorText={t("screens.register.passwordsDontMatch")}
               maxLength={maxTextfieldLength}
               minLength={8}
@@ -272,33 +277,32 @@ const Register = ({ image }) => {
                 setPasswordRepeat(value);
               }}
               value={passwordRepeat}
-              error={!isSamePassword}
+              error={
+                !isSamePassword && password !== "" && passwordRepeat !== ""
+              }
               errorText={t("screens.register.passwordsDontMatch")}
               maxLength={maxTextfieldLength}
               minLength={8}
             />
             {isServerLocked && (
-              <TextInput
-                required
-                type="text"
-                placeholder={t("global.inviteCode")}
-                onChange={(value) => {
-                  setInviteCode(value);
-                }}
-                value={inviteCode}
-                error={!isInviteCodeValid}
-                errorText={
-                  inviteCodeError?.fields[0]?.field === "notExisting"
-                    ? "Invite code does not exist"
-                    : inviteCodeError?.fields[0]?.field === "used"
-                    ? "No invites left"
-                    : inviteCodeError?.fields[0]?.field === "expired"
-                    ? "Code is expired"
-                    : "Error checking your invite code"
-                }
-                maxLength={maxTextfieldLength}
-                minLength={255}
-              />
+              <>
+                <TextInput
+                  required
+                  type="text"
+                  placeholder={t("global.inviteCode")}
+                  onChange={(value) => {
+                    setInviteCode(value);
+                  }}
+                  value={inviteCode}
+                  maxLength={8}
+                  minLength={8}
+                  showLengthIndicator={false}
+                />
+                <InviteCodeValidIndicator
+                  inviteCode={inviteCode}
+                  setValid={setIsInviteCodeValid}
+                />
+              </>
             )}
             {selfHosted && (
               <TextInput

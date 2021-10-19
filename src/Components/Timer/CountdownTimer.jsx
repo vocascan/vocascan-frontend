@@ -27,6 +27,7 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
     );
   }
 };
+
 const CountdownTimer = ({ callQueuedTime }) => {
   return <Countdown date={callQueuedTime} renderer={renderer} />;
 };

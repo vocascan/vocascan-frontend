@@ -35,6 +35,14 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
     setIsValidVersion(null);
     setServerVersion(null);
     setIsLocked(null);
+  }, [serverAddress]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setIsValidServer(null);
+    setIsValidVersion(null);
+    setServerVersion(null);
+    setIsLocked(null);
 
     const cancelToken = CancelToken.source();
 
@@ -57,6 +65,7 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
 
     return () => {
       cancelToken.cancel();
+      setIsLoading(false);
     };
   }, [debouncedServerAddress]);
 
@@ -66,10 +75,6 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
         isValidVersion === true &&
         isServerResponding === true
     );
-    // make this query, because Login Page is not sending a setLocked param
-    if (setLocked) {
-      setLocked(isLocked);
-    }
   }, [
     setValid,
     isValidServer,
@@ -78,6 +83,10 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
     setLocked,
     isLocked,
   ]);
+
+  useEffect(() => {
+    setLocked?.(isLocked);
+  }, [isLocked, setLocked]);
 
   useEffect(() => {
     return () => {
