@@ -90,6 +90,7 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
               setExpirationDate(value);
             }}
             value={expirationDate}
+            menuPosition="fixed"
           />
         </div>
         <Button className="submit-btn" type="submit">

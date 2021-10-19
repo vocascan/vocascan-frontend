@@ -118,6 +118,7 @@ const Admin = () => {
         title={t("modal.createInviteCode.heading")}
         open={showInviteCodeModal}
         onClose={() => setShowInviteCodeModal(false)}
+        size="small"
       >
         <InviteCodeForm onSubmitCallback={inviteCodeSubmitted} />
       </Modal>
