@@ -93,6 +93,8 @@ const Admin = () => {
       <div className="invite-codes">
         <div className="invite-codes-wrapper">
           <div className="invite-code-controls">
+            <h2>{t("screens.admin.title")}</h2>
+
             <Button className="add-btn" variant="transparent">
               <AddCircleOutlinedIcon
                 onClick={() => setShowInviteCodeModal(true)}

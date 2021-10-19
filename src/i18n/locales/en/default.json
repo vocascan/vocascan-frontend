@@ -126,7 +126,7 @@
   },
   "screens": {
     "admin": {
-      "title": "Admin",
+      "title": "Invite Codes",
       "nothingToDo": "There is currently nothing that can be done on the admin panel."
     },
     "allPackages": {
