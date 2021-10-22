@@ -16,7 +16,8 @@ export function setTokenHeader(token) {
 
 // Auth
 export const login = (data) => api.post("/user/login", data);
-export const register = (data) => api.post("/user/register", data);
+export const register = (data, code = null) =>
+  api.post(`/user/register${code ? `?inviteCode=${code}` : ""}`, data);
 export const changePassword = (data) => api.patch("/user/reset-password", data);
 
 // User
@@ -112,3 +113,13 @@ export const getLanguages = ({
 
 // Info
 export const getInfo = (cancelToken) => api.get("/info", { cancelToken });
+
+// inviteCode
+export const checkInviteCode = (inviteCode, cancelToken) =>
+  api.get(`/inviteCode/${inviteCode}`, { cancelToken });
+
+// Admin
+export const getInviteCodes = () => api.get(`/inviteCode`);
+export const createInviteCode = (data) => api.post(`/inviteCode`, data);
+export const deleteInviteCode = (inviteCode) =>
+  api.delete(`/inviteCode/${inviteCode}`);

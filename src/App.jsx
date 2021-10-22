@@ -9,6 +9,7 @@ import Snackbar from "./Components/Snackbar/Snackbar.jsx";
 import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import About from "./screens/About/About.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
+import Admin from "./screens/Admin/Admin.jsx";
 import Custom from "./screens/Custom/Custom.jsx";
 import Guide from "./screens/Guide/Guide.jsx";
 import Learn from "./screens/Learn/Learn.jsx";
@@ -48,6 +49,7 @@ const App = () => {
               username: res.data.username,
               email: user.email,
               token: user.token,
+              isAdmin: user.isAdmin,
             })
           );
         })
@@ -110,6 +112,7 @@ const App = () => {
               <Route path="/settings" component={Settings} />
               <Route path="/profile" component={Profile} />
               <Route path="/about" component={About} />
+              {user.isAdmin && <Route path="/admin" component={Admin} />}
               <Route path="/">
                 <Redirect to="learn" />
               </Route>

@@ -48,7 +48,9 @@
     "vocabsPerDay": "Vocabs per day",
     "rightWords": "Right words",
     "fileImportError": "Error importing your file",
-    "export": "Export"
+    "export": "Export",
+    "inviteCode": "Invite code",
+    "create": "Create"
   },
   "components": {
     "groupForm": {
@@ -101,6 +103,13 @@
       "versionToOld": "✗ server version v{{version}} is to old. Min required is v{{minVersion}}",
       "serverNotResponding": "✗ server is not responding"
     },
+    "inviteCodeValidIndicator": {
+      "valid": "✓ valid invite code",
+      "notExisting": "✗ invite code does not exists",
+      "used": "✗ no invites left",
+      "expired": "✗ invite code is expired",
+      "error": "✗ error checking invite code"
+    },
     "languageSelector": {
       "label": "Language"
     },
@@ -108,9 +117,25 @@
       "exportPackage": "Export package",
       "exportGroup": "Export group",
       "saveFileHead": "Select where you want to save the file"
+    },
+    "inviteCode": {
+      "never": "Never",
+      "uses": "Uses: ",
+      "expirationDate": "Expiration Date: ",
+      "maxUses": "Max uses",
+      "expirationDateNormal": "Expiration date",
+      "inviteCodeSuccessMessage": "Created invite code",
+      "inviteCodeErrorMessage": "Error creating invite code",
+      "expired": "Expired",
+      "copyToClip": "Invite code copied to clipboard",
+      "copyToClipFailed": "Copy invite code to clipboard failed"
     }
   },
   "screens": {
+    "admin": {
+      "title": "Invite Codes",
+      "nothingToDo": "There is currently nothing that can be done on the admin panel."
+    },
     "allPackages": {
       "title": "All packages",
       "packageName": "Package",
@@ -278,7 +303,9 @@
     "register": {
       "title": "Register",
       "usernameInUse": "The username is already used",
+      "usernameNotValid": "The username should be 2-72 characters long",
       "emailInUse": "The email is already used",
+      "emailNotValid": "Not a valid email address",
       "passwordsDontMatch": "The passwords are not the same",
       "alreadyHaveAccount": "Already have an account?"
     },
@@ -315,7 +342,8 @@
     "settings": "Settings",
     "about": "About",
     "profile": "Profile",
-    "logout": "Logout"
+    "logout": "Logout",
+    "admin": "Admin"
   },
   "languages": {
     "German": "German",
@@ -325,6 +353,22 @@
     "Turkish": "Turkish",
     "Russian": "Russian",
     "French": "French"
+  },
+  "units": {
+    "time": {
+      "seconds_one": "{{count}} second",
+      "seconds_other": "{{count}} seconds",
+      "minutes_one": "{{count}} minute",
+      "minutes_other": "{{count}} minutes",
+      "hours_one": "{{count}} hour",
+      "hours_other": "{{count}} hours",
+      "days_one": "{{count}} day",
+      "days_other": "{{count}} days",
+      "weeks_one": "{{count}} week",
+      "weeks_other": "{{count}} weeks",
+      "years_one": "{{count}} year",
+      "years_other": "{{count}} years"
+    }
   },
   "modal": {
     "serverNotSupported": {
@@ -350,6 +394,9 @@
     "deleteAccount": {
       "heading": "Delete account",
       "input": "Type in your username to confirm deletion"
+    },
+    "createInviteCode": {
+      "heading": "Create invite code"
     }
   },
   "contributors": {

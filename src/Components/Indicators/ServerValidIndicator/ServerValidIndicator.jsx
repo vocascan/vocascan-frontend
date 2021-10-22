@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { gte } from "semver";
 
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator.jsx";
 
 import useDebounce from "../../../hooks/useDebounce.js";
@@ -12,13 +14,14 @@ import { minServerVersion } from "../../../utils/constants.js";
 
 import "./ServerValidIndicator.scss";
 
-const ServerValidIndicator = ({ setValid }) => {
+const ServerValidIndicator = ({ setValid, setLocked = null }) => {
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const debouncedServerAddress = useDebounce(serverAddress, 500);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isValidServer, setIsValidServer] = useState(null);
   const [isValidVersion, setIsValidVersion] = useState(null);
+  const [isLocked, setIsLocked] = useState(false);
   const [isServerResponding, setIsServerResponding] = useState(null);
   const [serverVersion, setServerVersion] = useState(null);
 
@@ -31,12 +34,22 @@ const ServerValidIndicator = ({ setValid }) => {
     setIsValidServer(null);
     setIsValidVersion(null);
     setServerVersion(null);
+    setIsLocked(null);
+  }, [serverAddress]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setIsValidServer(null);
+    setIsValidVersion(null);
+    setServerVersion(null);
+    setIsLocked(null);
 
     const cancelToken = CancelToken.source();
 
     getInfo(cancelToken.token)
       .then((res) => {
         setIsValidServer(res?.data?.identifier === "vocascan-server");
+        setIsLocked(res?.data?.locked);
         setIsValidVersion(gte(res?.data?.version, minServerVersion));
         setServerVersion(res?.data?.version);
         setIsServerResponding(true);
@@ -52,6 +65,7 @@ const ServerValidIndicator = ({ setValid }) => {
 
     return () => {
       cancelToken.cancel();
+      setIsLoading(false);
     };
   }, [debouncedServerAddress]);
 
@@ -61,7 +75,18 @@ const ServerValidIndicator = ({ setValid }) => {
         isValidVersion === true &&
         isServerResponding === true
     );
-  }, [setValid, isValidServer, isValidVersion, isServerResponding]);
+  }, [
+    setValid,
+    isValidServer,
+    isValidVersion,
+    isServerResponding,
+    setLocked,
+    isLocked,
+  ]);
+
+  useEffect(() => {
+    setLocked?.(isLocked);
+  }, [isLocked, setLocked]);
 
   useEffect(() => {
     return () => {
@@ -82,6 +107,8 @@ const ServerValidIndicator = ({ setValid }) => {
             {t("components.validServerIndicator.validServer", {
               version: serverVersion,
             })}
+
+            {isLocked && <LockOutlinedIcon fontSize="small" />}
           </p>
         )}
 

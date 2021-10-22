@@ -1,4 +1,4 @@
-export const vocascanServer = "https://vocascan.com"; // TODO: add domain later
+export const vocascanServer = "https://web.vocascan.com";
 
 export const maxTranslations = 10;
 
@@ -40,3 +40,13 @@ export const contributors = {
 export const additionalDependencies = {
   "flag-icon-css": "Flags are copied from this great package",
 };
+
+export const inviteTimeSpans = [
+  1 * 1 * 30 * 60, // 30 minutes
+  1 * 1 * 60 * 60, // 60 minutes
+  1 * 6 * 60 * 60, // 6 hours
+  1 * 12 * 60 * 60, // 12 hours
+  1 * 24 * 60 * 60, // 1 day
+  7 * 24 * 60 * 60, // 7 days
+  null, // infinity
+];

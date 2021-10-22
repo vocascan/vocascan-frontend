@@ -14,5 +14,12 @@
     height: 29px;
     text-align: right;
     color: $color-green-dark;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    svg {
+      margin-left: 5px;
+    }
   }
 }

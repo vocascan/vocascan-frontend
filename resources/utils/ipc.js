@@ -79,6 +79,10 @@ const RegisterIpcHandler = () => {
         });
     });
   });
+
+  ipcMain.handle("copy-to-clip", async (event, arg) => {
+    clipboard.writeText(arg.text);
+  });
 };
 
 module.exports = {

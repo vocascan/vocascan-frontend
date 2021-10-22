@@ -19,6 +19,7 @@ const TextInput = ({
   minLength = null,
   max = null,
   min = null,
+  showLengthIndicator = true,
   ...props
 }) => {
   const [typeState, setTypeState] = useState(type);
@@ -99,6 +100,7 @@ const TextInput = ({
       )}
       {!error &&
         typeState !== "number" &&
+        showLengthIndicator &&
         maxLength &&
         (indicator / maxLength) * 100 <= 30 && (
           <p className="text-input-indicator">{`${indicator}/${maxLength}`}</p>
