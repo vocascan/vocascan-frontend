@@ -354,6 +354,22 @@
     "Russian": "Russian",
     "French": "French"
   },
+  "units": {
+    "time": {
+      "seconds_one": "{{count}} second",
+      "seconds_other": "{{count}} seconds",
+      "minutes_one": "{{count}} minute",
+      "minutes_other": "{{count}} minutes",
+      "hours_one": "{{count}} hour",
+      "hours_other": "{{count}} hours",
+      "days_one": "{{count}} day",
+      "days_other": "{{count}} days",
+      "weeks_one": "{{count}} week",
+      "weeks_other": "{{count}} weeks",
+      "years_one": "{{count}} year",
+      "years_other": "{{count}} years"
+    }
+  },
   "modal": {
     "serverNotSupported": {
       "title": "Server not supported",

@@ -1,51 +1,51 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button from "../../Components/Button/Button.jsx";
 import Select from "../../Components/Form/Select/Select.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 
+import useHumanizer from "../../hooks/useHumanizer.js";
 import useSnack from "../../hooks/useSnack.js";
 import { createInviteCode } from "../../utils/api.js";
 import { numberField } from "../../utils/constants.js";
-import { timeSpans } from "../../utils/constants.js";
+import { inviteTimeSpans } from "../../utils/constants.js";
 
 import "./InviteCodeForm.scss";
 
 const InviteCodeForm = ({ onSubmitCallback = null }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
+  const { durationHumanizer } = useHumanizer(t);
+
+  const timeSpans = useMemo(
+    () =>
+      inviteTimeSpans.map((duration) => ({
+        value: duration,
+        label: duration
+          ? durationHumanizer({ duration })
+          : t("components.inviteCode.never"),
+      })),
+    [durationHumanizer, t]
+  );
 
   const [maxUses, setMaxUses] = useState(null);
   const [expirationDate, setExpirationDate] = useState(
-    timeSpans.find(
-      (timeSpan) => timeSpan.value === 1 && timeSpan.format === "d"
-    )
+    timeSpans.find(({ value }) => value === 1 * 24 * 60 * 60)
   );
 
-  //make api call to add vocab package
+  // make api call to add vocab package
   const submitHandler = useCallback(async () => {
-    let tempDate = new Date();
+    let tempDate = null;
     if (expirationDate.value) {
-      switch (expirationDate.format) {
-        case "m":
-          tempDate.setMinutes(tempDate.getMinutes() + expirationDate.value);
-          break;
-        case "h":
-          tempDate.setHours(tempDate.getHours() + expirationDate.value);
-          break;
-        case "d":
-          tempDate.setDate(tempDate.getDate() + expirationDate.value);
-          break;
-        default:
-          return;
-      }
+      tempDate = new Date();
+      tempDate.setSeconds(tempDate.getSeconds() + expirationDate.value);
+      tempDate.setMilliseconds(0);
     }
 
     createInviteCode({
       maxUses,
-      //when
-      expirationDate: expirationDate.value ? tempDate.toISOString() : null,
+      expirationDate: tempDate?.toISOString() || null,
     })
       .then(({ data }) => {
         onSubmitCallback(data);
@@ -59,14 +59,7 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
       });
 
     return;
-  }, [
-    expirationDate?.format,
-    expirationDate?.value,
-    maxUses,
-    onSubmitCallback,
-    showSnack,
-    t,
-  ]);
+  }, [expirationDate.value, maxUses, onSubmitCallback, showSnack, t]);
 
   return (
     <form className="invite-code-form" onSubmit={submitHandler}>

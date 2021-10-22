@@ -41,40 +41,12 @@ export const additionalDependencies = {
   "flag-icon-css": "Flags are copied from this great package",
 };
 
-export const timeSpans = [
-  {
-    value: 30,
-    format: "m",
-    label: "30 Minutes",
-  },
-  {
-    value: 1,
-    format: "h",
-    label: "1 Hour",
-  },
-  {
-    value: 6,
-    format: "h",
-    label: "6 Hours",
-  },
-  {
-    value: 12,
-    format: "h",
-    label: "12 Hours",
-  },
-  {
-    value: 1,
-    format: "d",
-    label: "1 Day",
-  },
-  {
-    value: 7,
-    format: "d",
-    label: "7 Days",
-  },
-  {
-    value: null,
-    format: "d",
-    label: "never",
-  },
+export const inviteTimeSpans = [
+  1 * 1 * 30 * 60, // 30 minutes
+  1 * 1 * 60 * 60, // 60 minutes
+  1 * 6 * 60 * 60, // 6 hours
+  1 * 12 * 60 * 60, // 12 hours
+  1 * 24 * 60 * 60, // 1 day
+  7 * 24 * 60 * 60, // 7 days
+  null, // infinity
 ];
