@@ -61,7 +61,11 @@ const TopNav = () => {
               </li>
               {isAdmin && (
                 <li className="menu-list-item">
-                  <NavLink to="/admin" className="menu-list-item-btn">
+                  <NavLink
+                    tabIndex={-1}
+                    to="/admin"
+                    className="menu-list-item-btn"
+                  >
                     {t("nav.admin")}
                   </NavLink>
                 </li>
