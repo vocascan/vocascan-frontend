@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import Button from "@material-ui/core/Button";
-
 import PersonIcon from "@material-ui/icons/Person";
 
 import UpdateAvailable from "./UpdateAvailable.jsx";
@@ -80,9 +78,9 @@ const TopNav = () => {
                 </NavLink>
               </li>
               <li className="menu-list-item" onClick={handleLogout}>
-                <Button tabIndex={-1} className="menu-list-item-btn">
+                <NavLink tabIndex={-1} to="/" className="menu-list-item-btn">
                   {t("nav.logout")}
-                </Button>
+                </NavLink>
               </li>
             </ul>
           </div>
