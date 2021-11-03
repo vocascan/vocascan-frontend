@@ -9,8 +9,8 @@
       "saveGroupSuccessMessage": "Neue Gruppe hinzugefügt"
     },
     "importExport": {
-      "exportGroup": "Exportiere Gruppe",
-      "exportPackage": "Exportiere Paket",
+      "exportGroup": "Gruppe exportieren",
+      "exportPackage": "Paket exportieren",
       "saveFileHead": "Wähle aus, wo du deine Datei speichern möchtest"
     },
     "importPreviewForm": {
