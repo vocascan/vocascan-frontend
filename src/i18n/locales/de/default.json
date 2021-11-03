@@ -8,6 +8,35 @@
       "savGroupFailMessage": "Gruppe konnte nicht hinzugefügt werden",
       "saveGroupSuccessMessage": "Neue Gruppe hinzugefügt"
     },
+    "importExport": {
+      "exportGroup": "Gruppe exportieren",
+      "exportPackage": "Paket exportieren",
+      "saveFileHead": "Wähle aus, wo du deine Datei speichern möchtest"
+    },
+    "importPreviewForm": {
+      "activateVocabs": "Aktiviere Vokabeln",
+      "importQueryStatus": "Importiere Vokabeln mit dem bisherigen Abfrage Fortschritt",
+      "vocabsActive": "Nehme Vokabeln in die tägliche Abfrage auf"
+    },
+    "inviteCode": {
+      "copyToClip": "Einladungscode wurde in die Zwischenablage kopiert",
+      "copyToClipFailed": "Fehler beim Kopieren des Einladungscodes in die Zwischenablage",
+      "expirationDate": "Ablaufdatum:",
+      "expirationDateNormal": "Ablaufdatum",
+      "expired": "Abgelaufen",
+      "inviteCodeErrorMessage": "Fehler beim Erstellen eines Einladungcodes",
+      "inviteCodeSuccessMessage": "Einladungscode erstellt",
+      "maxUses": "Maximale Verwendungen",
+      "never": "Nie",
+      "uses": "Verwendungen:"
+    },
+    "inviteCodeValidIndicator": {
+      "error": "✗ Fehler beim Überprüfen des Einladungscodes",
+      "expired": "✗Einladungscode ist abgelaufen",
+      "notExisting": "✗Einladungscode existiert nicht",
+      "used": "✗keine Einladungen mehr übrig",
+      "valid": "✓ gültiger Einladungscode"
+    },
     "languageSelector": {
       "label": "Sprache"
     },
@@ -38,10 +67,12 @@
       "activeLabel": "Aktiv",
       "activeTooltip": "Entscheidet, ob die Vokabel in der Abfrage geprüft wird",
       "addTranslation": "Übersetzung hinzufügen",
+      "groupCreateText": "Erstelle eine neue Gruppe",
       "modifyErrorMessage": "Vokabel konnte nicht gespeichert werden",
       "modifySuccessMessage": "Vokabel gespeichert",
       "noGroupsMessage": "Keine Gruppen gefunden",
       "noPackagesMessage": "Keine Pakete gefunden",
+      "packageCreateText": "Erstelle ein neues Paket",
       "saveErrorMessage": "Neue Vokabel konnte nicht hinzugefügt werden",
       "saveGroupSuccessMessage": "Neue Gruppe hinzugefügt",
       "saveSuccessMessage": "Neue Vokabel hinzugefügt"
@@ -64,14 +95,19 @@
     "comingSoon": "Bald verfügbar",
     "continue": "Weiter",
     "correct": "Richtig",
+    "create": "Erstellen",
     "delete": "Löschen",
     "description": "Beschreibung",
     "email": "E-Mail",
+    "export": "Exportieren",
     "fetchError": "Es ist etwas schief gelaufen. Bitte probiere es später noch einmal.",
+    "fileImportError": "Fehler beim Importieren deiner Datei",
     "finish": "Beenden",
     "foreignWord": "Fremdwort",
     "group": "Gruppe",
     "groups": "Gruppen",
+    "import": "Importieren",
+    "inviteCode": "Einladungscode",
     "learn": "Lernen",
     "library": "Bibliothek",
     "name": "Name",
@@ -85,6 +121,7 @@
     "passwordRepeat": "Passwort wiederholen",
     "query": "Abfrage",
     "random": "Zufällig",
+    "rightWords": "Richtige Wörter",
     "save": "Speichern",
     "server": "Server",
     "serverNotResponding": "Der Server antwortet nicht",
@@ -97,6 +134,7 @@
     "translation": "Übersetzung",
     "username": "Benutzername",
     "vocabs": "Vokabeln",
+    "vocabsPerDay": "Vokabeln pro Tag",
     "vocascan": "Vocascan",
     "wrong": "Falsch"
   },
@@ -122,6 +160,9 @@
       "oldPasswordError": "Altes Passwort stimmt nicht",
       "repeatNewPassword": "Wiederhole neues Passwort"
     },
+    "createInviteCode": {
+      "heading": "Erstelle Einladungscode"
+    },
     "deleteAccount": {
       "heading": "Account löschen",
       "input": "Gebe Deinen Benutzernamen ein, um Deinen Account zu löschen"
@@ -137,6 +178,7 @@
   },
   "nav": {
     "about": "Über",
+    "admin": "Admin",
     "allVocabulary": "Bibliothek",
     "custom": "Individuell",
     "learn": "Lernen",
@@ -153,6 +195,10 @@
     "addVocab": {
       "title": "Vokabel hinzufügen"
     },
+    "admin": {
+      "nothingToDo": "Aktuell gibt es nichts, was im Admin-Panel gemacht werden kann.",
+      "title": "Einladungscodes"
+    },
     "allGroups": {
       "active": "Aktiv",
       "addGroup": "Gruppe hinzufügen",
@@ -161,8 +207,13 @@
       "deleteSuccessMessage": "Gruppe gelöscht",
       "deleteTitle": "Gruppe löschen",
       "editGroup": "Gruppe bearbeiten",
+      "exportFailMessage": "Fehler beim Exportieren der Gruppe",
+      "exportSuccessMessage": "Gruppe erfolgreich exportiert",
       "groupDescription": "Beschreibung",
       "groupName": "Gruppe",
+      "importFailMessage": "Fehler beim importieren der Gruppe",
+      "importSuccessMessage": "Gruppe erfolgreich importiert",
+      "importWrongTypeFailMessage": "Es können nur Gruppen in ein Paket importiert werden.",
       "title": "Alle Gruppen"
     },
     "allPackages": {
@@ -172,7 +223,14 @@
       "deleteSuccessMessage": "Paket wurde gelöscht",
       "deleteTitle": "Paket löschen",
       "editPackage": "Bearbeite Paket",
+      "exportDescription": "Willst du dieses Paket exportieren?",
+      "exportFailMessage": "Fehler beim Exportieren des Paketes",
+      "exportQueryStatus": "Exportiere aktuellen Abfrage Fortschritt",
+      "exportSuccessMessage": "Paket erfolgreich exportiert",
       "foreignLanguage": "Fremdsprache",
+      "importFailMessage": "Fehler beim Importieren des Paketes",
+      "importSuccessMessage": "Paket erfolgreich importiert",
+      "importWrongTypeFailMessage": "Im Paketbereich können nur Pakete importiert werden.",
       "packageName": "Paket",
       "rightWords": "Richtige Wörter",
       "title": "Alle Pakete",
@@ -185,9 +243,11 @@
       "deleteFailMessage": "Vokabel konnte nicht gelöscht werden",
       "deleteSuccessMessage": "Vokabel gelöscht",
       "deleteTitle": "Vokabel löschen",
+      "description": "Beschreibung",
       "editVocab": "Vokabel bearbeiten",
       "title": "Alle Vokablen",
-      "translations": "Übersetzungen"
+      "translations": "Übersetzungen",
+      "vocabulary": "Vokabeln"
     },
     "custom": {
       "title": "Benutzerdefiniertes Lernen"
@@ -283,9 +343,11 @@
     "register": {
       "alreadyHaveAccount": "Du hast bereits ein Konto?",
       "emailInUse": "Die E-Mail wird bereits verwendet",
+      "emailNotValid": "Keine gültige E-Mail Adresse",
       "passwordsDontMatch": "Die Passwörter stimmen nicht überein",
       "title": "Registrieren",
-      "usernameInUse": "Der Benutzername ist schon vergeben"
+      "usernameInUse": "Der Benutzername ist schon vergeben",
+      "usernameNotValid": "Der Benutzername sollte 2-72 Zeichen lang sein"
     },
     "selectionScreen": {
       "heading": "Wähle Deine Option",
@@ -329,6 +391,22 @@
       },
       "serverVersion": "Serverversion",
       "title": "Einstellungen"
+    }
+  },
+  "units": {
+    "time": {
+      "days_one": "{{count}} Tag",
+      "days_other": "{{count}} Tage",
+      "hours_one": "{{count}} Stunde",
+      "hours_other": "{{count}} Stunden",
+      "minutes_one": "{{count}} Minute",
+      "minutes_other": "{{count}} Minuten",
+      "seconds_one": "{{count}} Sekunde",
+      "seconds_other": "{{count}} Sekunden",
+      "weeks_one": "{{count}} Woche",
+      "weeks_other": "{{count}} Wochen",
+      "years_one": "{{count}} Jahr",
+      "years_other": "{{count}} Jahre"
     }
   }
 }
