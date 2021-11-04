@@ -3,6 +3,14 @@
 This changelog goes through all the changes that have been made in each release on the
 [vocascan-desktop](https://github.com/vocascan/vocascan-desktop).
 
+## [v1.1.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.1.0) - xxxx.xx.xx
+
+- Features
+  - Import/Export function (#75)
+  - Invite codes (#77)
+- Bugfixes
+  - Language selector options visibility (#73)
+
 ## [v1.0.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.0.0) - 2021.06.13
 
 Finally the time has come. The first release of Vocascan is ready. Vocascan is a server-client vocabulary trainer that
