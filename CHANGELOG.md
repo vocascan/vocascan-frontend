@@ -5,6 +5,11 @@ This changelog goes through all the changes that have been made in each release 
 
 ## [v1.1.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.1.0) - xxxx.xx.xx
 
+After some time, a new version of Vocascan is coming, with import/export features to share your vocabulary packages. The
+invitation codes will help you to keep your server all to yourself and your friends. In addition, we have tweaked the
+handling a bit and improved the workflow when creating vocabularies. Feel the magic of the arrow keys yourself while
+creating vocabularies.
+
 - Features
   - Import/Export function (#75)
   - Invite codes (#77)
