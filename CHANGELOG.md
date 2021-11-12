@@ -8,8 +8,16 @@ This changelog goes through all the changes that have been made in each release 
 - Features
   - Import/Export function (#75)
   - Invite codes (#77)
+  - Show current language on card side while query
+  - Shortcuts for "add vocab" page. (UX improvements)
 - Bugfixes
   - Language selector options visibility (#73)
+  - Min and max lengths for input fields
+  - Fixed form submit bug for add-vocab screen
+  - Fixed different animation for logout button
+  - Improved delay on vocab card flip
+  - The description is now only on the translated side of the card
+  - Added translations for "Add"-Button to the select component
 
 ## [v1.0.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.0.0) - 2021.06.13
 
