@@ -13,16 +13,17 @@ creating vocabularies.
 - Features
   - Import/Export function (#75)
   - Invite codes (#77)
-  - Show current language on card side while query
-  - Shortcuts for "add vocab" page. (UX improvements)
+  - Show current language on card side while query (#76)
+  - Shortcuts for "add vocab" page. (#76)
 - Bugfixes
+  - mac copy/paste shortcuts (#76)
   - Language selector options visibility (#73)
-  - Min and max lengths for input fields
-  - Fixed form submit bug for add-vocab screen
-  - Fixed different animation for logout button
-  - Improved delay on vocab card flip
-  - The description is now only on the translated side of the card
-  - Added translations for "Add"-Button to the select component
+  - Min and max lengths for input fields (#76)
+  - Fixed form submit bug for add-vocab screen (#76)
+  - Fixed different animation for logout button (#76)
+  - Improved delay on vocab card flip (#76)
+  - The description is now only on the translated side of the card (#76)
+  - Added translations for "Add"-Button to the select component (#76)
 
 ## [v1.0.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.0.0) - 2021.06.13
 
