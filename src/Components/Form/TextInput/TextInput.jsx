@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { useState, useCallback, useEffect } from "react";
 
 import VisibilityIcon from "@material-ui/icons/Visibility";
@@ -21,6 +22,7 @@ const TextInput = ({
   max = null,
   min = null,
   showLengthIndicator = true,
+  className,
   ...props
 }) => {
   const [typeState, setTypeState] = useState(type);
@@ -74,7 +76,7 @@ const TextInput = ({
         className={`text-input-label${flow ? " flow" : ""}`}
       >{`${placeholder}${required ? " *" : ""}`}</span>
       <input
-        className={`text-input ${error && "input-error"}`}
+        className={clsx("text-input", error && "input-error", className)}
         type={typeState}
         ref={inputRef}
         placeholder=""

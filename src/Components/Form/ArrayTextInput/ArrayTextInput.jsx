@@ -71,12 +71,19 @@ const ArrayTextInput = ({
 
   useEffect(() => {
     const listener = (event) => {
-      // keycode 40 stands for "arrow down"
+      if (
+        !event.ctrlKey ||
+        !event.target.classList.contains("array-input-text")
+      ) {
+        return;
+      }
+
+      // arrow down
       if (event.keyCode === 40) {
         event.preventDefault();
         addArrayData();
       }
-      // keycode 38 stands for "arrow up"
+      // arrow up
       if (event.keyCode === 38) {
         event.preventDefault();
         if (arrayData.length === 1) {
@@ -87,6 +94,7 @@ const ArrayTextInput = ({
         );
       }
     };
+
     document.addEventListener("keydown", listener);
     return () => {
       document.removeEventListener("keydown", listener);
@@ -99,6 +107,7 @@ const ArrayTextInput = ({
         return (
           <div key={elem.id} className="array-input-wrapper">
             <TextInput
+              className="array-input-text"
               placeholder={`${key + 1}. ${placeholder ? placeholder : ""}`}
               tabIndex={1}
               onChange={(value) => {
