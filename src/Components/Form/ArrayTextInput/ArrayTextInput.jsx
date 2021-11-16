@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useCallback, useState, useRef } from "react";
 import uniqid from "uniqid";
 
 import AddCircleIcon from "@material-ui/icons/AddCircle";
@@ -18,6 +18,12 @@ const ArrayTextInput = ({
   required = false,
   inputProps,
 }) => {
+  const lastInputRef = useRef(null);
+
+  const focusLastItem = useCallback(() => {
+    setImmediate(() => lastInputRef.current.focus());
+  }, []);
+
   const [arrayData, setArrayData] = useState(() => {
     if (!data || !data.length) {
       return [
@@ -48,11 +54,17 @@ const ArrayTextInput = ({
         value: "",
       },
     ]);
-  }, [arrayData, max]);
 
-  const removeArrayData = useCallback((key) => {
-    setArrayData((trans) => trans.filter((elem) => elem.id !== key));
-  }, []);
+    focusLastItem();
+  }, [arrayData.length, focusLastItem, max]);
+
+  const removeArrayData = useCallback(
+    (key) => {
+      setArrayData((trans) => trans.filter((elem) => elem.id !== key));
+      focusLastItem();
+    },
+    [focusLastItem]
+  );
 
   useEffect(() => {
     onChange(arrayData.map((elem) => elem.value));
@@ -83,6 +95,7 @@ const ArrayTextInput = ({
         event.preventDefault();
         addArrayData();
       }
+
       // arrow up
       if (event.keyCode === 38) {
         event.preventDefault();
@@ -92,6 +105,7 @@ const ArrayTextInput = ({
         setArrayData((lastItems) =>
           lastItems.filter((item, i) => i !== arrayData.length - 1)
         );
+        focusLastItem();
       }
     };
 
@@ -99,7 +113,7 @@ const ArrayTextInput = ({
     return () => {
       document.removeEventListener("keydown", listener);
     };
-  }, [addArrayData, arrayData.length, removeArrayData]);
+  }, [addArrayData, arrayData.length, focusLastItem, removeArrayData]);
 
   return (
     <>
@@ -123,6 +137,7 @@ const ArrayTextInput = ({
                 });
               }}
               value={elem.value}
+              inputRef={key === arrayData.length - 1 ? lastInputRef : null}
               {...inputProps}
             />
             <Button
