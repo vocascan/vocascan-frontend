@@ -7,8 +7,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -17,7 +15,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -41,19 +38,17 @@
 </div>
 
 <div align="center">
-<img src="https://img.shields.io/github/license/noctera/Vocascan?style=flat" />
-<img src="https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat" />
-<img src="https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat" />
-<img src="https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat" />
-<img src="https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat" />
-<img src="https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat" />
-<img src="https://connect.localazy.com/status/vocascan?content=progress&style=flat&logo=ffffff)](https://localazy.com/p/vocascan" />
+<a href="https://github.com/vocascan/vocascan-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/noctera/Vocascan?style=flat" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/issues"><img src="https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/stargazers"><img src="https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/network/members"><img src="https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/releases"><img src="https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/actions"><img src="https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat" /></a>
+<a href="https://localazy.com/p/vocascan"><img src="https://connect.localazy.com/status/vocascan?content=progress&style=flat&logo=ffffff)](https://localazy.com/p/vocascan" /></a>
 </div>
 
-
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 Digitalization is creating a huge change in the world. We no longer only have the chance to communicate with our fellow human beings in the vicinity, but to interact quickly and easily around the entire globe. Language is our most important medium, which helps us to interact with the other person. A common language helps to make life easier and to break barriers. That's why we founded Vocascan, a server-client based open-source vocabulary trainer. We believe that everyone should have the chance to learn another language for free and in their own way. Based on the ever-proven principle of flashcards, we have developed a highly configurable trainer that has many settings to adapt it to your learning methods and strategies.
@@ -63,7 +58,6 @@ Digitalization is creating a huge change in the world. We no longer only have th
 - 📚 **Learn your vocabs** very easily
 - ☁️ **Synchronized** with any device
 - 👪 **Share** vocabs with your friends
-
 
 ### Built With
 
@@ -76,10 +70,10 @@ Digitalization is creating a huge change in the world. We no longer only have th
 <a href="https://prettier.io/" title="Prettier"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/prettier.svg" alt="Prettier" width="32px" height="32px"></a>
 <a href="https://stylelint.io/" title="Stylelint"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/stylelint.svg" alt="Stylelint" width="32px" height="32px"></a>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
+
 To use Vocascan Desktop you currently need a running Vocascan server. To learn more about this visit the [documentation](https://docs.vocascan.com/#/vocascan-server/installation/installation).
 
 Now let's move on to the installation of the desktop app itself.
@@ -87,14 +81,12 @@ Currently, depending on the operating system, there are several ways to install 
 
 1. [Installer](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_1-installer)
 2. [Snap Store](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_2-snap-store) (Linux)
-3. [Self-build](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_3-build-vocascan-yourself) it yourself
+3. [Self-build](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_3-build-vocascan-yourself)
 
 If any questions have come up, it's best to check out our [FAQ](https://docs.vocascan.com/#/general/faq). If they are still not answered, feel free to contact a maintainer. Check the [contact](#contact) section for more information
 
-
-
-
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 <img src="src/images/preview/dashboard.png" alt="Logo" width="600">
@@ -111,9 +103,8 @@ If any questions have come up, it's best to check out our [FAQ](https://docs.voc
 
 _For a better guide to the functions, please refer to the [Documentation](https://docs.vocascan.com/#/vocascan-desktop/intro)._
 
-
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
 - [ ] Darkmode
@@ -121,28 +112,22 @@ _For a better guide to the functions, please refer to the [Documentation](https:
 
 See the [project board](https://github.com/vocascan/vocascan-desktop/projects/1) for a full list of proposed features (and known issues).
 
-
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 For a more detailed instruction about contributing visit our [contribution docs](https://docs.vocascan.com/#/vocascan-desktop/contribute).
 
-
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the Apache 2 License. See `LICENSE` for more information.
 
-
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Vocascan - [@vocascan](https://twitter.com/vocascan) - vocascan@gmail.com
