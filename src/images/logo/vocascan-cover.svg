@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1703.231mm"
+   height="851.61548mm"
+   viewBox="0 0 1703.231 851.61548"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="vocascan-cover.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1285"
+       id="linearGradient1193"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(10.328172,0,0,10.328172,-37990.73,-7163.7971)"
+       x1="3809.3765"
+       y1="1076.5522"
+       x2="3912.6709"
+       y2="953.84906" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1285">
+      <stop
+         style="stop-color:#245595;stop-opacity:1"
+         offset="0"
+         id="stop1281" />
+      <stop
+         style="stop-color:#c8008a;stop-opacity:0"
+         offset="1"
+         id="stop1283" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.04375"
+     inkscape:cx="975.99766"
+     inkscape:cy="3054.1099"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="mm"
+     showborder="false"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="1294"
+     inkscape:window-height="1040"
+     inkscape:window-x="26"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(665.65112,407.66492)">
+    <rect
+       style="fill:#2e2f46;fill-opacity:1;stroke-width:5.02983"
+       id="rect971-4"
+       width="1703.231"
+       height="851.61548"
+       x="-665.65112"
+       y="-407.66492"
+       ry="0"
+       inkscape:export-filename="/home/julian/Files/Bilder/Grafikdesign/Vocascan-cover.png"
+       inkscape:export-xdpi="96.099998"
+       inkscape:export-ydpi="96.099998" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:177.419px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.33065"
+       x="-236.91336"
+       y="331.51062"
+       id="text999-4"
+       inkscape:export-filename="/home/julian/Files/Bilder/Grafikdesign/Vocascan-cover.png"
+       inkscape:export-xdpi="96.099998"
+       inkscape:export-ydpi="96.099998"><tspan
+         sodipodi:role="line"
+         id="tspan997-4"
+         x="-236.91336"
+         y="331.51062"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:177.419px;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1;stroke-width:1.33065">VOCASCAN</tspan></text>
+    <g
+       id="g2186-9"
+       inkscape:export-filename="C:\Users\Julian\Desktop\new-vocascan-icons\vocascan-round-linux.png"
+       inkscape:export-xdpi="19.341221"
+       inkscape:export-ydpi="19.341221"
+       transform="matrix(0.30473661,0,0,0.30473661,-355.3029,-1083.5684)">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.504369"
+         id="path2173-1"
+         cx="1776.1804"
+         cy="3370.5808"
+         r="649.86023" />
+      <circle
+         style="fill:url(#linearGradient1193);fill-opacity:1;stroke:#fffffd;stroke-width:45.0536;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         id="circle2300-5-7-1"
+         inkscape:export-filename="C:\Users\Julian\Desktop\vocascan-round-256px.png"
+         inkscape:export-xdpi="45.626549"
+         inkscape:export-ydpi="45.626549"
+         cy="3371.5779"
+         cx="1776.1804"
+         r="649.86102" />
+      <g
+         id="g2134-7-66"
+         transform="matrix(0.80298473,0,0,0.80298473,-2117.8688,-21.202637)"
+         style="fill:#ffffff;fill-opacity:1">
+        <g
+           id="g2124-4-5"
+           transform="translate(0.4346,-9.1545957)"
+           style="fill:#ffffff;fill-opacity:1">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 4639.1239,4062.5744 h 87.1477 l 35.7143,67.6756 h 174.0963 l 35.7143,-67.6756 h 87.1479 l -34.6083,67.6756 h 157.0638 v 79.1348 H 4516.6684 V 4130.25 h 157.0638 z"
+             id="path2076-9-17" />
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 4726.3753,4233.1245 h 88.3671 l 34.2916,65.9464 34.2919,-65.9464 h 88.3668 l -89.9083,172.901 h -65.5008 z"
+             id="path2078-0-3" />
+        </g>
+        <g
+           id="g2120-9-3"
+           style="fill:#ffffff;fill-opacity:1">
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 5181.3999,4387.5025 h 77.6441 v 247.976 h -248.153 v -77.644 l 170.5089,-0.2575 z"
+             id="path2106-9-8" />
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 5182.2693,4062.9204 h 77.6439 v -247.9759 h -248.1527 v 77.6448 l 170.5089,0.2562 v 170.0749"
+             id="path2108-7-1" />
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 4687.177,3814.9445 v 77.6457 l -170.5086,0.2553 v 170.0749 h -77.6441 l 0.016,-247.9759 h 248.1363"
+             id="path2110-9-8" />
+          <path
+             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 4439.0243,4387.5025 h 77.6457 l -0.035,170.0745 h 169.755 l -0.082,77.9015 h -247.2835 z"
+             id="path2112-7-8" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -17,21 +17,13 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-![Github license](https://img.shields.io/github/license/noctera/Vocascan?style=flat-square)
-![Github Open Issues](https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat-square)
-![Github Stars](https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat-square)
-![Github forks](https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat-square)
-![Github downloads](https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat-square)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat-square)
-[![Localazy](https://connect.localazy.com/status/vocascan?content=progress&style=flat-square&logo=ffffff)](https://localazy.com/p/vocascan)
-
 
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="src/images/logo/color-round.svg" alt="Logo" width="80" height="80">
+    <img src="src/images/logo/vocascan-cover.svg" alt="Logo" width="400">
   </a>
 
   <h3 align="center">Vocascan</h3>
@@ -39,44 +31,24 @@
   <p align="center">
     A highly configurable vocab trainer
     <br />
-    <a href="https://docs.vocascan.com"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
     <a href="https://github.com/vocascan/vocascan-desktop/issues/new">Report Bug</a>
     ·
     <a href="https://github.com/vocascan/vocascan-desktop/discussions">Request Feature</a>
     ·
+    <a href="https://docs.vocascan.com">Docs</a>
+    ·
     <a href="https://discord.vocascan.com">Discord</a>
   </p>
 </div>
 
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+![Github license](https://img.shields.io/github/license/noctera/Vocascan?style=flat)
+![Github Open Issues](https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat)
+![Github Stars](https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat)
+![Github forks](https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat)
+![Github downloads](https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat)
+[![Localazy](https://connect.localazy.com/status/vocascan?content=progress&style=flat&logo=ffffff)](https://localazy.com/p/vocascan)
 
 
 
@@ -85,24 +57,23 @@
 
 Digitalization is creating a huge change in the world. We no longer only have the chance to communicate with our fellow human beings in the vicinity, but to interact quickly and easily around the entire globe. Language is our most important medium, which helps us to interact with the other person. A common language helps to make life easier and to break barriers. That's why we founded Vocascan, a server-client based open-source vocabulary trainer. We believe that everyone should have the chance to learn another language for free and in their own way. Based on the ever-proven principle of flashcards, we have developed a highly configurable trainer that has many settings to adapt it to your learning methods and strategies.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+### Core Features
 
+- **Learn your vocabs** very easily
+- **Synchronized** with any device
+- **Share** vocabs with your friends
 
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+<a href="https://github.com/facebook/react" title="React"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/react.svg" alt="React" width="32px" height="32px"></a>
+<a href="https://www.electronjs.org/" title="Electron"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/electron.svg" alt="Electron" width="32px" height="32px"></a>
+<a href="https://material-ui.com/" title="Material-UI"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/material-ui.svg" alt="Material-UI" width="32px" height="32px"></a>
+<a href="https://redux.js.org/" title="Redux"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/redux.svg" alt="Redux" width="32px" height="32px"></a>
+<a href="https://sass-lang.com/" title="Sass"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/sass.svg" alt="Sass" width="32px" height="32px"></a>
+<a href="https://eslint.org/" title="ESLint"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/eslint.svg" alt="ESLint" width="32px" height="32px"></a>
+<a href="https://prettier.io/" title="Prettier"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/prettier.svg" alt="Prettier" width="32px" height="32px"></a>
+<a href="https://stylelint.io/" title="Stylelint"><img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/stylelint.svg" alt="Stylelint" width="32px" height="32px"></a>
 
 
 
@@ -117,22 +88,28 @@ Currently, depending on the operating system, there are several ways to install 
 2. via [snapstore](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_2-snap-store) (Linux)
 3. [build](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_3-build-vocascan-yourself) it yourself
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+<img src="src/images/preview/dashboard.png" alt="Logo" width="600">
+</br>
+</br>
+<details>
+  <summary>More Images</summary>
+  <img src="src/images/preview/add-vocab-screen.png" alt="Logo" width="600">
+  <img src="src/images/preview/language-selection.png" alt="Logo" width="600">
+  <img src="src/images/preview/query-card-front.png" alt="Logo" width="600">
+  <img src="src/images/preview/query-card-back.png" alt="Logo" width="600">
+</details>
 
-| Dashboard | Add vocabs | Select query direction | Query1 | Query2 |
-|-----------|------------|------------------------|--------|--------|
-|    <img src="src/images/preview/dashboard.png" alt="Logo" width="400">       |   <img src="src/images/preview/dashboard.png" alt="Logo" width="400">           |          <img src="src/images/preview/dashboard.png" alt="Logo" width="400">              |    <img src="src/images/preview/dashboard.png" alt="Logo" width="400">     |    <img src="src/images/preview/dashboard.png" alt="Logo" width="400">     |
+</br>
+</br>
 
+_For better instructions, please refer to the [Documentation](https://example.com)_
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -144,7 +121,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 See the [project board](https://github.com/vocascan/vocascan-desktop/projects/1) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -158,16 +134,14 @@ Don't forget to give the project a star! Thanks again!
 
 For a more detailed instructions about contributing visit our [contribution docs](https://docs.vocascan.com/#/vocascan-desktop/contribute).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the Apache 2 License. See `LICENSE.txt` for more information.
+Distributed under the Apache 2 License. See `LICENSE` for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -177,41 +151,3 @@ Distributed under the Apache 2 License. See `LICENSE.txt` for more information.
 Your Name - [@vocascan](https://twitter.com/vocascan) - vocascan@gmail.com
 
 Project Link: [https://github.com/vocascan/vocascan-desktop](https://github.com/vocascan/vocascan-desktop)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
