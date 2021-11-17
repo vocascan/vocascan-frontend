@@ -23,10 +23,8 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="src/images/logo/vocascan-cover.svg" alt="Logo" width="400">
+    <img src="src/images/logo/vocascan-cover.svg" alt="Logo" width="100%">
   </a>
-
-  <h3 align="center">Vocascan</h3>
 
   <p align="center">
     A highly configurable vocab trainer
@@ -42,13 +40,16 @@
   </p>
 </div>
 
-![Github license](https://img.shields.io/github/license/noctera/Vocascan?style=flat)
-![Github Open Issues](https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat)
-![Github Stars](https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat)
-![Github forks](https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat)
-![Github downloads](https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat)
-[![Localazy](https://connect.localazy.com/status/vocascan?content=progress&style=flat&logo=ffffff)](https://localazy.com/p/vocascan)
+<div align="center">
+<img src="https://img.shields.io/github/license/noctera/Vocascan?style=flat" />
+<img src="https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat" />
+<img src="https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat" />
+<img src="https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat" />
+<img src="https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat" />
+<img src="https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat" />
+<img src="https://connect.localazy.com/status/vocascan?content=progress&style=flat&logo=ffffff)](https://localazy.com/p/vocascan" />
+</div>
+
 
 
 
@@ -59,9 +60,9 @@ Digitalization is creating a huge change in the world. We no longer only have th
 
 ### Core Features
 
-- **Learn your vocabs** very easily
-- **Synchronized** with any device
-- **Share** vocabs with your friends
+- 📚 **Learn your vocabs** very easily
+- ☁️ **Synchronized** with any device
+- 👪 **Share** vocabs with your friends
 
 
 ### Built With
@@ -79,14 +80,16 @@ Digitalization is creating a huge change in the world. We no longer only have th
 
 <!-- GETTING STARTED -->
 ## Getting Started
-To use Vocascan Desktop you currently need a running Vocascan server. To learn more about this visit the [documentation](https://docs.vocascan.com/#/vocascan-server/installation/installation)
+To use Vocascan Desktop you currently need a running Vocascan server. To learn more about this visit the [documentation](https://docs.vocascan.com/#/vocascan-server/installation/installation).
 
 Now let's move on to the installation of the desktop app itself.
-Currently, depending on the operating system, there are several ways to install it
+Currently, depending on the operating system, there are several ways to install it.
 
 1. via an [installer](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_1-installer)
 2. via [snapstore](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_2-snap-store) (Linux)
 3. [build](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_3-build-vocascan-yourself) it yourself
+
+If any questions have come up, it's best to check out our [FAQ](https://docs.vocascan.com/#/general/faq). If they are still not answered, feel free to contact a maintainer. Check the [contact](#contact) section for more information
 
 
 
@@ -95,7 +98,6 @@ Currently, depending on the operating system, there are several ways to install 
 ## Usage
 
 <img src="src/images/preview/dashboard.png" alt="Logo" width="600">
-</br>
 </br>
 <details>
   <summary>More Images</summary>
@@ -106,10 +108,8 @@ Currently, depending on the operating system, there are several ways to install 
 </details>
 
 </br>
-</br>
 
-_For better instructions, please refer to the [Documentation](https://example.com)_
-
+_For better instructions, please refer to the [Documentation](https://example.com)._
 
 
 
@@ -129,10 +129,7 @@ See the [project board](https://github.com/vocascan/vocascan-desktop/projects/1)
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-For a more detailed instructions about contributing visit our [contribution docs](https://docs.vocascan.com/#/vocascan-desktop/contribute).
+For a more detailed instruction about contributing visit our [contribution docs](https://docs.vocascan.com/#/vocascan-desktop/contribute).
 
 
 
@@ -148,6 +145,6 @@ Distributed under the Apache 2 License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@vocascan](https://twitter.com/vocascan) - vocascan@gmail.com
+Vocascan - [@vocascan](https://twitter.com/vocascan) - vocascan@gmail.com
 
 Project Link: [https://github.com/vocascan/vocascan-desktop](https://github.com/vocascan/vocascan-desktop)
