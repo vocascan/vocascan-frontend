@@ -22,7 +22,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://vocascan.com">
     <img src="src/images/logo/vocascan-cover.svg" alt="Logo" width="100%">
   </a>
 
@@ -109,7 +109,7 @@ If any questions have come up, it's best to check out our [FAQ](https://docs.voc
 
 </br>
 
-_For better instructions, please refer to the [Documentation](https://example.com)._
+_For a better guide to the functions, please refer to the [Documentation](https://docs.vocascan.com/#/vocascan-desktop/intro)._
 
 
 
