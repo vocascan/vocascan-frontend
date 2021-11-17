@@ -85,9 +85,9 @@ To use Vocascan Desktop you currently need a running Vocascan server. To learn m
 Now let's move on to the installation of the desktop app itself.
 Currently, depending on the operating system, there are several ways to install it.
 
-1. via an [installer](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_1-installer)
-2. via [snapstore](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_2-snap-store) (Linux)
-3. [build](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_3-build-vocascan-yourself) it yourself
+1. [Installer](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_1-installer)
+2. [Snap Store](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_2-snap-store) (Linux)
+3. [Self-build](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_3-build-vocascan-yourself) it yourself
 
 If any questions have come up, it's best to check out our [FAQ](https://docs.vocascan.com/#/general/faq). If they are still not answered, feel free to contact a maintainer. Check the [contact](#contact) section for more information
 
