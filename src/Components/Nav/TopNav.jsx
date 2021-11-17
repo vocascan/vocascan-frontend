@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import Button from "@material-ui/core/Button";
-
 import PersonIcon from "@material-ui/icons/Person";
 
 import UpdateAvailable from "./UpdateAvailable.jsx";
@@ -42,31 +40,47 @@ const TopNav = () => {
           <div className="menu">
             <ul className="menu-list">
               <li className="menu-list-item">
-                <NavLink to="/profile" className="menu-list-item-btn">
+                <NavLink
+                  tabIndex={-1}
+                  to="/profile"
+                  className="menu-list-item-btn"
+                >
                   {t("nav.profile")}
                 </NavLink>
               </li>
               <li className="menu-list-item">
-                <NavLink to="/settings" className="menu-list-item-btn">
+                <NavLink
+                  tabIndex={-1}
+                  to="/settings"
+                  className="menu-list-item-btn"
+                >
                   {t("nav.settings")}
                 </NavLink>
               </li>
               {isAdmin && (
                 <li className="menu-list-item">
-                  <NavLink to="/admin" className="menu-list-item-btn">
+                  <NavLink
+                    tabIndex={-1}
+                    to="/admin"
+                    className="menu-list-item-btn"
+                  >
                     {t("nav.admin")}
                   </NavLink>
                 </li>
               )}
               <li className="menu-list-item">
-                <NavLink to="/about" className="menu-list-item-btn">
+                <NavLink
+                  tabIndex={-1}
+                  to="/about"
+                  className="menu-list-item-btn"
+                >
                   {t("nav.about")}
                 </NavLink>
               </li>
               <li className="menu-list-item" onClick={handleLogout}>
-                <Button className="menu-list-item-btn">
+                <NavLink tabIndex={-1} to="/" className="menu-list-item-btn">
                   {t("nav.logout")}
-                </Button>
+                </NavLink>
               </li>
             </ul>
           </div>

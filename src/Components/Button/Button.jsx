@@ -12,6 +12,7 @@ const Button = ({
   onClick = () => null,
   children,
   className = "",
+  ...props
 }) => {
   const classes = clsx(
     "btn",
@@ -24,7 +25,7 @@ const Button = ({
   );
 
   return (
-    <button onClick={onClick} className={classes}>
+    <button onClick={onClick} className={classes} {...props}>
       {children}
     </button>
   );
