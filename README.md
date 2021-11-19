@@ -130,6 +130,6 @@ Distributed under the Apache 2 License. See `LICENSE` for more information.
 
 ## Contact
 
-Vocascan - [@vocascan](https://twitter.com/vocascan) - vocascan@gmail.com
+Vocascan - [@vocascan](https://twitter.com/vocascan) - vocascan@gmail.com - [Discord](http://discord.vocascan.com)
 
 Project Link: [https://github.com/vocascan/vocascan-desktop](https://github.com/vocascan/vocascan-desktop)
