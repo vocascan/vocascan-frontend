@@ -38,13 +38,13 @@
 </div>
 
 <div align="center">
-<a href="https://github.com/vocascan/vocascan-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/noctera/Vocascan?style=flat" /></a>
-<a href="https://github.com/vocascan/vocascan-desktop/issues"><img src="https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat" /></a>
-<a href="https://github.com/vocascan/vocascan-desktop/stargazers"><img src="https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat" /></a>
-<a href="https://github.com/vocascan/vocascan-desktop/network/members"><img src="https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat" /></a>
-<a href="https://github.com/vocascan/vocascan-desktop/releases"><img src="https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat" /></a>
-<a href="https://github.com/vocascan/vocascan-desktop/actions"><img src="https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat" /></a>
-<a href="https://localazy.com/p/vocascan"><img src="https://connect.localazy.com/status/vocascan?content=progress&style=flat&logo=ffffff)](https://localazy.com/p/vocascan" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/noctera/Vocascan?style=flat" alt="shield-license" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/issues"><img src="https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat" alt="shield-issues" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/stargazers"><img src="https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat" alt="shield-stars" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/network/members"><img src="https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat" alt="shield-forks" /></a>
+<a href="https://github.com/vocascan/vocascan-desktop/releases"><img src="https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat" alt="shield-downloads"/></a>
+<a href="https://github.com/vocascan/vocascan-desktop/actions"><img src="https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat" alt="shield-build" /></a>
+<a href="https://localazy.com/p/vocascan"><img src="https://connect.localazy.com/status/vocascan?content=progress&style=flat&logo=ffffff)](https://localazy.com/p/vocascan" alt="shield-localazy"/></a>
 </div>
 
 <!-- ABOUT THE PROJECT -->
@@ -89,14 +89,14 @@ If any questions have come up, it's best to check out our [FAQ](https://docs.voc
 
 ## Usage
 
-<img src="src/images/preview/dashboard.png" alt="Logo" width="600">
+<img src="src/images/preview/dashboard.png" alt="dashboard" width="600">
 </br>
 <details>
   <summary>More Images</summary>
-  <img src="src/images/preview/add-vocab-screen.png" alt="Logo" width="600">
-  <img src="src/images/preview/language-selection.png" alt="Logo" width="600">
-  <img src="src/images/preview/query-card-front.png" alt="Logo" width="600">
-  <img src="src/images/preview/query-card-back.png" alt="Logo" width="600">
+  <img src="src/images/preview/add-vocab-screen.png" alt="add-vocab-screen" width="600">
+  <img src="src/images/preview/language-selection.png" alt="language-selection" width="600">
+  <img src="src/images/preview/query-card-front.png" alt="query-card-front" width="600">
+  <img src="src/images/preview/query-card-back.png" alt="query-card-back" width="600">
 </details>
 
 </br>
