@@ -9,7 +9,6 @@
   height: 100%;
   width: 100%;
   grid-area: topnav;
-
   grid-template-columns: 200px auto;
   grid-template-rows: 50px;
   grid-template-areas:
@@ -50,6 +49,7 @@
       .menu {
         transition: all 0.2s ease-in;
         right: 0;
+        height: auto;
       }
     }
 

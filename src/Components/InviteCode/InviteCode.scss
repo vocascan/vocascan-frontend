@@ -1,0 +1,77 @@
+@import "../../colors";
+
+.invite-code {
+  width: 100%;
+  height: 100%;
+  max-height: 100px;
+  min-height: 130px;
+  background: $color-background-inverse;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  position: relative;
+
+  &.expired {
+    opacity: 0.9;
+  }
+
+  .delete-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: $color-red;
+    opacity: 0;
+    transition: 100ms ease-in-out opacity;
+    cursor: pointer;
+  }
+
+  &:hover > .delete-btn {
+    opacity: 1;
+  }
+
+  .delete-btn-hide {
+    display: none;
+  }
+
+  hr {
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid #bbb;
+  }
+
+  .heading {
+    p {
+      color: $color-main-text-inverse;
+      cursor: pointer;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      transition: 250ms ease-out transform;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .information {
+    p {
+      color: #bbb;
+      font-size: 15px;
+      margin-top: 5px;
+    }
+
+    .uses-valid {
+      color: $color-green;
+    }
+
+    .uses-invalid {
+      color: $color-red;
+    }
+
+    .expiration-code-valid {
+      color: $color-green;
+    }
+  }
+}

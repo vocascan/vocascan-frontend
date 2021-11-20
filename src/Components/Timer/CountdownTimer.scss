@@ -1,0 +1,9 @@
+@import "../../colors";
+
+.countdown-timer-expired {
+  color: $color-red;
+}
+
+.countdown-timer-running {
+  color: $color-green;
+}

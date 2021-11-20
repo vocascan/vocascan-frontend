@@ -6,26 +6,29 @@ import {
   SET_SERVER_URL,
   OPEN_GUIDE,
   CLOSE_GUIDE,
+  SET_SERVER_INFO,
 } from "./index.js";
 
-export const register = ({ username, email, token }) => {
+export const register = ({ username, email, token, isAdmin }) => {
   return {
     type: REGISTER,
     payload: {
       username,
       email,
       token,
+      isAdmin,
     },
   };
 };
 
-export const signIn = ({ username, email, token }) => {
+export const signIn = ({ username, email, token, isAdmin }) => {
   return {
     type: SIGN_IN,
     payload: {
       username,
       email,
       token,
+      isAdmin,
     },
   };
 };
@@ -44,6 +47,15 @@ export const setSelfHosted = ({ selfHosted }) => {
     type: SET_SELF_HOSTED,
     payload: {
       selfHosted,
+    },
+  };
+};
+
+export const setServerInfo = ({ serverInfo }) => {
+  return {
+    type: SET_SERVER_INFO,
+    payload: {
+      serverInfo,
     },
   };
 };

@@ -7,6 +7,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import Button from "../../Components/Button/Button.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
+import InviteCodeValidIndicator from "../../Components/Indicators/InviteCodeValidIndicator/InviteCodeValidIndicator.jsx";
 import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 
@@ -31,13 +32,18 @@ const Register = ({ image }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
+  const [inviteCode, setInviteCode] = useState("");
   const [serverAddressInput, setServerAddressInput] = useState(serverAddress);
   const [isSamePassword, setIsSamePassword] = useState(true);
   const [usernameIsUsed, setUsernameIsUsed] = useState(false);
   const [emailIsUsed, setEmailIsUsed] = useState(false);
   const [serverError, setServerError] = useState(false);
   const [isServerValid, setIsServerValid] = useState(false);
+  const [isServerLocked, setIsServerLocked] = useState(false);
   const [canSubmit, setCanSubmit] = useState(false);
+  const [isInviteCodeValid, setIsInviteCodeValid] = useState(false);
+  const [isUsernameValid, setIsUsernameValid] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -46,17 +52,6 @@ const Register = ({ image }) => {
   const handleClickLogin = useCallback(() => {
     history.push("/login");
   }, [history]);
-
-  // check if typed in passwords are the same
-  const checkPassword = useCallback(() => {
-    if (password !== passwordRepeat) {
-      setIsSamePassword(false);
-      return false;
-    } else {
-      setIsSamePassword(true);
-      return true;
-    }
-  }, [password, passwordRepeat]);
 
   //fetch languages
   const fetchLanguages = useCallback(() => {
@@ -81,21 +76,21 @@ const Register = ({ image }) => {
         return;
       }
 
-      if (!checkPassword()) {
-        return;
-      }
-
-      registerAPI({
-        username,
-        email,
-        password,
-      })
+      registerAPI(
+        {
+          username,
+          email,
+          password,
+        },
+        isServerLocked ? inviteCode : null
+      )
         .then((response) => {
           dispatch(
             register({
               username: response.data.user.username,
               email,
               token: response.data.token,
+              isAdmin: response.data.user.isAdmin,
             })
           );
           //fetch languages from server
@@ -124,24 +119,55 @@ const Register = ({ image }) => {
     },
     [
       canSubmit,
-      checkPassword,
       dispatch,
       email,
       fetchLanguages,
+      inviteCode,
+      isServerLocked,
       password,
       username,
     ]
   );
 
   useEffect(() => {
-    if (selfHosted && !serverAddress) {
-      setCanSubmit(false);
+    setIsSamePassword(password === passwordRepeat);
+  }, [password, passwordRepeat]);
 
-      return;
+  useEffect(() => {
+    if (username === "") {
+      return setIsUsernameValid(true);
+    }
+
+    setIsUsernameValid(username.length >= 2 && username.length <= 72);
+  }, [username]);
+
+  useEffect(() => {
+    if (email === "") {
+      return setIsEmailValid(true);
+    }
+
+    setIsEmailValid(email.match(/^\S+@\S+\.\S+$/));
+  }, [email]);
+
+  useEffect(() => {
+    if (
+      (selfHosted && !serverAddress) ||
+      (isServerLocked && (!inviteCode || !isInviteCodeValid))
+    ) {
+      return setCanSubmit(false);
     }
 
     setCanSubmit(
-      !(!username || !email || !password || !passwordRepeat || !isServerValid)
+      !(
+        !username ||
+        !email ||
+        !password ||
+        !passwordRepeat ||
+        !isServerValid ||
+        !isSamePassword ||
+        !isEmailValid ||
+        !isUsernameValid
+      )
     );
   }, [
     username,
@@ -151,15 +177,25 @@ const Register = ({ image }) => {
     selfHosted,
     serverAddress,
     isServerValid,
+    isServerLocked,
+    inviteCode,
+    isInviteCodeValid,
+    isSamePassword,
+    isEmailValid,
+    isUsernameValid,
   ]);
 
   useEffect(() => {
     try {
+      if (!selfHosted) {
+        return;
+      }
+
       const { origin } = new URL(serverAddressInput);
 
       dispatch(setServerUrl({ serverAddress: origin }));
     } catch (err) {}
-  }, [dispatch, serverAddressInput]);
+  }, [dispatch, selfHosted, serverAddressInput]);
 
   return (
     <UnauthenticatedLayout>
@@ -192,8 +228,12 @@ const Register = ({ image }) => {
                 setUsername(value);
               }}
               value={username}
-              error={usernameIsUsed}
-              errorText={t("screens.register.usernameInUse")}
+              error={usernameIsUsed || !isUsernameValid}
+              errorText={
+                isUsernameValid
+                  ? t("screens.register.usernameInUse")
+                  : t("screens.register.usernameNotValid")
+              }
               maxLength={maxUsernameLength}
             />
             <TextInput
@@ -206,8 +246,12 @@ const Register = ({ image }) => {
                 setEmail(value);
               }}
               value={email}
-              error={emailIsUsed}
-              errorText={t("screens.register.emailInUse")}
+              error={emailIsUsed || !isEmailValid}
+              errorText={
+                isEmailValid
+                  ? t("screens.register.emailInUse")
+                  : t("screens.register.emailNotValid")
+              }
               maxLength={maxTextfieldLength}
             />
             <TextInput
@@ -220,7 +264,9 @@ const Register = ({ image }) => {
                 setPassword(value);
               }}
               value={password}
-              error={!isSamePassword}
+              error={
+                !isSamePassword && password !== "" && passwordRepeat !== ""
+              }
               errorText={t("screens.register.passwordsDontMatch")}
               maxLength={maxTextfieldLength}
               minLength={8}
@@ -235,11 +281,33 @@ const Register = ({ image }) => {
                 setPasswordRepeat(value);
               }}
               value={passwordRepeat}
-              error={!isSamePassword}
+              error={
+                !isSamePassword && password !== "" && passwordRepeat !== ""
+              }
               errorText={t("screens.register.passwordsDontMatch")}
               maxLength={maxTextfieldLength}
               minLength={8}
             />
+            {isServerLocked && (
+              <>
+                <TextInput
+                  required
+                  type="text"
+                  placeholder={t("global.inviteCode")}
+                  onChange={(value) => {
+                    setInviteCode(value);
+                  }}
+                  value={inviteCode}
+                  maxLength={8}
+                  minLength={8}
+                  showLengthIndicator={false}
+                />
+                <InviteCodeValidIndicator
+                  inviteCode={inviteCode}
+                  setValid={setIsInviteCodeValid}
+                />
+              </>
+            )}
             {selfHosted && (
               <TextInput
                 required
@@ -255,7 +323,10 @@ const Register = ({ image }) => {
             {serverError ? (
               <p className="form-error">{t("global.serverNotResponding")}</p>
             ) : (
-              <ServerValidIndicator setValid={setIsServerValid} />
+              <ServerValidIndicator
+                setValid={setIsServerValid}
+                setLocked={setIsServerLocked}
+              />
             )}
           </div>
           <div className="register-form-submit">
@@ -267,6 +338,7 @@ const Register = ({ image }) => {
             >
               {t("global.signUp")}
             </Button>
+
             <div className="register-form-submit-register">
               {t("screens.register.alreadyHaveAccount")}{" "}
               <div

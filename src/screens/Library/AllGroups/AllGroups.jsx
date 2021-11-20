@@ -4,6 +4,8 @@ import { Link, useParams, useHistory } from "react-router-dom";
 
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
@@ -16,11 +18,21 @@ import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import Tooltip from "../../../Components/Tooltip/Tooltip.jsx";
 import GroupForm from "../../../Forms/GroupForm/GroupForm.jsx";
+import ImportPreviewForm from "../../../Forms/ImportPreviewForm/ImportPreviewForm.jsx";
 
+import useFeature, { FEATURES } from "../../../hooks/useFeature.js";
 import useSnack from "../../../hooks/useSnack.js";
-import { getGroups, getPackages, deleteGroup } from "../../../utils/api.js";
+import {
+  getGroups,
+  getPackages,
+  deleteGroup,
+  exportGroup,
+} from "../../../utils/api.js";
+import { nodeRequire } from "../../../utils/index.js";
 
 import "./AllGroups.scss";
+
+const { ipcRenderer } = nodeRequire("electron");
 
 const AllGroups = () => {
   const { t } = useTranslation();
@@ -29,11 +41,22 @@ const AllGroups = () => {
   const { packageId } = useParams();
 
   const [data, setData] = useState([]);
+  const [importedData, setImportedData] = useState(null);
   const [currentPackage, setCurrentPackage] = useState(null);
   const [currentGroup, setCurrentGroup] = useState(null);
   const [showGroupModal, setShowGroupModal] = useState(false);
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
     useState(false);
+  const [showExportConfirmationModal, setShowExportConfirmationModal] =
+    useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
+
+  const { isSupported } = useFeature(FEATURES.IMPORT_EXPORT);
+
+  const openExportGroup = useCallback((pack) => {
+    setCurrentGroup(pack);
+    setShowExportConfirmationModal(true);
+  }, []);
 
   const editGroup = useCallback(
     (grp) => {
@@ -111,6 +134,54 @@ const AllGroups = () => {
     }
   }, [currentGroup, packageId, showSnack, t]);
 
+  const groupImported = useCallback(() => {
+    setShowImportModal(false);
+    history.go(0);
+  }, [history]);
+
+  const submitExportGroup = useCallback(() => {
+    if (currentGroup) {
+      exportGroup(currentGroup.id)
+        .then((response) => {
+          ipcRenderer
+            .invoke("save-file", {
+              title: response.data.name,
+              text: JSON.stringify(response.data),
+            })
+            .then((result) => {
+              setShowExportConfirmationModal(false);
+              showSnack("success", t("screens.allGroups.exportSuccessMessage"));
+            });
+        })
+        .catch((e) => {
+          showSnack("error", t("screens.allGroups.exportFailMessage"));
+        });
+    }
+  }, [currentGroup, showSnack, t]);
+
+  const submitImport = useCallback(() => {
+    try {
+      ipcRenderer.invoke("open-file", {}).then((result) => {
+        const type = result.type.match(/vocascan\/(\w*)/);
+
+        if (!type) {
+          showSnack("error", t("global.fileImportError"));
+          return;
+        }
+
+        if (type[1] !== "group") {
+          showSnack("error", t("screens.allGroups.importWrongTypeFailMessage"));
+          return;
+        }
+
+        setImportedData(result);
+        setShowImportModal(true);
+      });
+    } catch {
+      showSnack("error", t("global.fileImportError"));
+    }
+  }, [showSnack, t]);
+
   const columns = useMemo(
     () => [
       {
@@ -161,12 +232,26 @@ const AllGroups = () => {
         accessor: "action",
         Cell: ({ row }) => (
           <div className="action-col">
-            <Button variant="link" onClick={() => editGroup(row.original)}>
+            <Button
+              appearance="primary"
+              variant="link"
+              className="action-col-btn"
+              onClick={() => openExportGroup(row.original)}
+              disabled={!isSupported}
+            >
+              <ArrowDownwardIcon />
+            </Button>
+            <Button
+              variant="link"
+              className="action-col-btn"
+              onClick={() => editGroup(row.original)}
+            >
               <EditOutlinedIcon />
             </Button>
             <Button
               appearance="red"
               variant="link"
+              className="action-col-btn"
               onClick={() => onDeleteGroup(row.original)}
             >
               <DeleteOutlineIcon />
@@ -175,10 +260,25 @@ const AllGroups = () => {
         ),
       },
     ],
-    [editGroup, onDeleteGroup, packageId, t]
+    [editGroup, isSupported, onDeleteGroup, openExportGroup, packageId, t]
   );
 
   useEffect(() => {
+    //set default package in order to render default package in import form
+    getPackages().then(({ data }) => {
+      const currPack = data.find((ele) => ele.id === packageId);
+
+      setCurrentPackage({
+        value: currPack.id,
+        label: (
+          <SelectOptionWithFlag
+            name={currPack.name}
+            foreignLanguageCode={currPack.foreignWordLanguage}
+            translatedLanguageCode={currPack.translatedWordLanguage}
+          />
+        ),
+      });
+    });
     getGroups(packageId).then((response) => {
       setData(response.data);
     });
@@ -198,6 +298,14 @@ const AllGroups = () => {
           <h2 className="heading">{t("screens.allGroups.title")}</h2>
           <Button className="add" variant="transparent">
             <AddCircleOutlinedIcon onClick={addGroup} />
+          </Button>
+          <Button
+            className="import"
+            variant="transparent"
+            onClick={submitImport}
+            disabled={!isSupported}
+          >
+            <ArrowUpwardIcon onClick={() => submitImport} />
           </Button>
         </div>
         <div>
@@ -221,6 +329,30 @@ const AllGroups = () => {
           onSubmitCallback={groupSubmitted}
         />
       </Modal>
+
+      <Modal
+        title={t("global.import")}
+        size={"large"}
+        open={showImportModal}
+        onClose={() => setShowImportModal(false)}
+      >
+        <ImportPreviewForm
+          onSubmitCallback={groupImported}
+          defaultPackage={currentPackage}
+          importedData={importedData}
+        />
+      </Modal>
+
+      <ConfirmDialog
+        title={t("components.importExport.exportGroup")}
+        description={t("screens.allPackages.deleteDescription", {
+          name: currentPackage?.name,
+        })}
+        submitText={t("global.export")}
+        onSubmit={submitExportGroup}
+        onClose={() => setShowExportConfirmationModal(false)}
+        show={showExportConfirmationModal}
+      />
 
       {currentGroup && (
         <ConfirmDialog

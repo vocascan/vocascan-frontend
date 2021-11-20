@@ -84,8 +84,10 @@
     "serverNotResponding": "Serwer nie odpowiada",
     "signIn": "Zaloguj się",
     "signUp": "Zarejestruj się",
+    "skip": "Pomiń",
     "submit": "Potwierdź",
     "successMessage": "Powodzenie",
+    "total": "Łącznie",
     "translation": "Tłumaczenie",
     "username": "Nazwa użytkownika",
     "vocabs": "Słówka",
@@ -102,8 +104,16 @@
     "Turkish": "Turecki"
   },
   "modal": {
+    "changeEmail": {
+      "heading": "Zmień adres e-mail"
+    },
     "changePassword": {
+      "heading": "Zmień hasło",
       "oldPasswordError": "Stare hasło jest nieprawidłowe"
+    },
+    "deleteAccount": {
+      "heading": "Usuń konto",
+      "input": "Wpisz nazwę użytkownika aby potwierdzić"
     },
     "selectLanguage": {
       "title": "Wybierz język aplikacji."
@@ -139,6 +149,7 @@
       "deleteSuccessMessage": "Usunięto grupę",
       "deleteTitle": "Usuń grupę",
       "editGroup": "Edytuj grupę",
+      "groupDescription": "Opis",
       "groupName": "Grupa",
       "title": "Wszystkie grupy"
     },
@@ -164,8 +175,7 @@
       "deleteTitle": "Usuń słownictwo",
       "editVocab": "Edytuj słownictwo",
       "title": "Wszystkie słownictwa",
-      "translations": "Tłumaczenia",
-      "vocabel": "Słowo"
+      "translations": "Tłumaczenia"
     },
     "custom": {
       "title": "Nauka niestandardowa"
@@ -183,6 +193,28 @@
     "firstStartup": {
       "savePackageSuccessMessage": "Dodano nowy pakiet",
       "title": "Utwórz swój pierwszy pakiet słownictwa"
+    },
+    "guide": {
+      "end": {
+        "description": "Baw się dobrze wypróbowywać Vocascan",
+        "heading": "Teraz jesteś gotowy"
+      },
+      "groupDescription": {
+        "endText": "Następnie stworzymy grupę."
+      },
+      "packageDescription": {
+        "bulletPoints": [
+          "Głównym elementem tego trenera są pakiety, w których można przechowywać wszystkie swoje słowniki z języka.",
+          "Pakiety mogą być tworzone przez dialog wyboru pakietu lub w bibliotece nad ikoną +, jak widać na lewym obrazie"
+        ]
+      },
+      "start": {
+        "slogan": "Wysoko konfigurowalny trener słownictwa"
+      },
+      "vocabDescription": {
+        "endText": "W następnym kroku stworzymy kartę słownictwa",
+        "heading": "Teraz dochodzimy do najważniejszej części Vocascan - karty słownictwa -"
+      }
     },
     "login": {
       "dontHaveAccount": "Nie posiadasz konta?",
@@ -211,6 +243,9 @@
         "stats": "Statystyki",
         "total": "Totalnie"
       }
+    },
+    "progress": {
+      "title": "Postęp"
     },
     "register": {
       "alreadyHaveAccount": "Posiadasz już konto?",

@@ -1,7 +1,8 @@
 {
   "components": {
     "groupForm": {
-      "languagePackage": "Посылка.",
+      "activeLabel": "Активен",
+      "languagePackage": "Комплект",
       "modifyGroupFailMessage": "Не удалось сохранить Группу",
       "modifyGroupSuccessMessage": "Группа сохранена",
       "savGroupFailMessage": "Не удалось добавить группу",
@@ -11,12 +12,19 @@
       "label": "Язык"
     },
     "packageForm": {
+      "correctTranslationsGoal": "Напишите верный перевод, чтобы получить удачные пары в словаре",
       "foreignLanguage": "Иностранный язык",
-      "translatedLanguage": "Переведенный язык"
+      "modifyPackageFailedMessage": "Не удалось сохранить комплект",
+      "modifyPackageSuccessMessage": "Комплект сохранён",
+      "savePackageFailMessage": "Не удалось добавить комплект",
+      "savePackageSuccessMessage": "Добавлен новый комплект",
+      "translatedLanguage": "Переведенный язык",
+      "vocabsPerDay": "Слова в день"
     },
     "packageOverview": {
       "today": "Сегодня:",
-      "unactivated": "Не активировано:"
+      "unactivated": "Не активировано:",
+      "unresolved": "Всего для изучения:"
     },
     "validServerIndicator": {
       "serverNotResponding": "✗сервер не отвечает",
@@ -26,13 +34,23 @@
     },
     "vocabForm": {
       "activateLabel": "Активировать",
+      "activateTooltip": "Решает, нужно ли активировать словарный запас отдельно, чтобы использовать его в запросе",
+      "activeLabel": "Активен",
+      "activeTooltip": "Определяет, включен ли словарный запас в запрос",
       "addTranslation": "Добавить перевод",
+      "modifyErrorMessage": "Невозможно сохранить словарный запас",
+      "modifySuccessMessage": "Словарный запас сохранён",
       "noGroupsMessage": "Группы не найдены",
-      "saveGroupSuccessMessage": "Добавлена новая группа"
+      "noPackagesMessage": "Комплекты не найдены",
+      "saveErrorMessage": "Не удалось добавить новый словарный запас",
+      "saveGroupSuccessMessage": "Добавлена новая группа",
+      "saveSuccessMessage": "Новый словарный запас добавлен"
     }
   },
   "contributors": {
     "dependencies": "Внешние зависимости",
+    "desktop": "Соавторы Vocascan для десктоп приложения",
+    "server": "Соавторы Vocascan для сервера",
     "translator": "Переводчики"
   },
   "global": {
@@ -58,8 +76,8 @@
     "name": "Имя",
     "noOptionMessage": "Нет опций",
     "none": "Нет",
-    "package": "Посылка.",
-    "packages": "Пакеты",
+    "package": "Комплект",
+    "packages": "Комплекты",
     "paginationPage": "Страница {{page}} из {{pageLength}}",
     "paginationShow": "Показать {{size}}",
     "password": "Пароль",
@@ -77,6 +95,7 @@
     "total": "Всего",
     "translation": "Перевод",
     "username": "Логин",
+    "vocabs": "Слова",
     "vocascan": "Vocascan",
     "wrong": "Неправильно"
   },
@@ -121,6 +140,7 @@
     "custom": "Пользовательский",
     "learn": "Учиться",
     "logout": "Выйти",
+    "newVocab": "Новое слово",
     "profile": "Профиль",
     "progress": "Прогресс",
     "settings": "Настройки"
@@ -129,7 +149,11 @@
     "about": {
       "title": "О vocascan"
     },
+    "addVocab": {
+      "title": "Добавить словарный запас"
+    },
     "allGroups": {
+      "active": "Активен",
       "addGroup": "Добавить группу",
       "deleteDescription": "Вы действительно хотите удалить группу {{name}}?",
       "deleteFailMessage": "Группа не может быть удалена",
@@ -141,13 +165,23 @@
       "title": "Все группы"
     },
     "allPackages": {
+      "addPackage": "Добавить Комплект",
+      "deleteDescription": "Вы действительно хотите удалить комплект {{name}}?",
+      "deleteFailMessage": "Комплект не может быть удален",
+      "deleteSuccessMessage": "Комплект удалён",
       "deleteTitle": "Удалить пакет",
+      "editPackage": "Изменить комплект",
       "foreignLanguage": "Иностранный язык",
       "packageName": "Посылка.",
+      "rightWords": "Правильные слова",
+      "title": "Все комплекты",
       "translatedLanguage": "Переведенный язык"
     },
     "allVocabs": {
       "translations": "Переводы"
+    },
+    "custom": {
+      "title": "Индивидуальное обучение"
     },
     "direction": {
       "title": "Пожалуйста, выберите направление"
@@ -163,7 +197,8 @@
       "dashboard": "Назад к дашборду"
     },
     "firstStartup": {
-      "saveGroupSuccessMessage": "Добавлена новая группа"
+      "saveGroupSuccessMessage": "Добавлена новая группа",
+      "savePackageSuccessMessage": "Добавлен новый комплект"
     },
     "guide": {
       "end": {
@@ -171,9 +206,23 @@
         "heading": "Теперь ты готов"
       },
       "groupDescription": {
+        "bulletPoints": [
+          "Каждый комплект разделен на группы, где вы можете хранить свои слова более организованно.",
+          "Группы могут быть созданы в разделе групп или библиотеки, вместе с комплектами.",
+          "Каждая группа имеет активный триггер, где вы можете решить, будут ли включены слова или нет."
+        ],
         "endText": "Далее мы создадим группу."
       },
-      "title": "Руководство"
+      "packageDescription": {
+        "endText": "Теперь, мы создадим ваш первый комплект для словаря."
+      },
+      "start": {
+        "slogan": "Хорошо настраиваемый тренажёр словарного запаса"
+      },
+      "title": "Гайд",
+      "vocabDescription": {
+        "endText": "На следующем шаге мы создадим карточку для словаря"
+      }
     },
     "login": {
       "dontHaveAccount": "Нет учетной записи?",
@@ -197,6 +246,7 @@
         "title": "Настройки учетной записи"
       },
       "stats": {
+        "active": "Активен",
         "inactive": "Неактивно",
         "stats": "Статистика",
         "total": "Всего"
@@ -233,17 +283,24 @@
           "Вам необходим собственный сервер",
           "Вам нужно некоторое время, чтобы настроить сервер"
         ],
-        "heading": "Vocascan сервер"
+        "heading": "Vocascan сервер",
+        "pro": [
+          "синхронизировать каждое устройство",
+          "Использовать собственный Сервер",
+          "Полный контроль над настройками"
+        ]
       }
     },
     "settings": {
       "desktopVersion": "Версия для компьютера",
       "guide": {
-        "button": "Повторно открыть инструкцию"
+        "button": "Повторно открыть инструкцию",
+        "title": "Забыли, как использовать Vocascan? Просто откройте гайд"
       },
       "menu": {
         "label": "Стиль меню",
-        "optionLeft": "По умолчанию"
+        "optionLeft": "По умолчанию",
+        "optionRight": "Роскошный"
       },
       "serverVersion": "Версия сервера",
       "title": "Настройки"

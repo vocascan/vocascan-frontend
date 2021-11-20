@@ -1,0 +1,18 @@
+@import "../../../colors";
+
+.invite-code-valid-indicator {
+  margin-top: -5px;
+  font-size: 11px;
+
+  .valid {
+    height: 29px;
+    text-align: right;
+    color: $color-green-dark;
+  }
+
+  .error {
+    height: 29px;
+    text-align: right;
+    color: $color-red-dark;
+  }
+}
