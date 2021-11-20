@@ -1,6 +1,6 @@
 {
   "name": "vocascan-desktop",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "A highly configurable vocabulary trainer",
   "author": "vocascan <vocascan@gmail.com>",
