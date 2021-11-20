@@ -3,6 +3,28 @@
 This changelog goes through all the changes that have been made in each release on the
 [vocascan-desktop](https://github.com/vocascan/vocascan-desktop).
 
+## [v1.1.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.1.0) - xxxx.xx.xx
+
+After some time, a new version of Vocascan is coming, with import/export features to share your vocabulary packages and
+groups. The invitation codes will help you to keep your server all to yourself and your friends. In addition, we have
+tweaked the handling a bit and improved the workflow when creating vocabularies. Feel the magic of the arrow keys
+yourself while creating vocabularies.
+
+- Features
+  - Import/Export function (#75)
+  - Invite codes (#77)
+  - Show current language on card side while query (#76)
+  - Shortcuts for "add vocab" page. (#76)
+- Bugfixes
+  - mac copy/paste shortcuts (#76)
+  - Language selector options visibility (#73)
+  - Min and max lengths for input fields (#76)
+  - Fixed form submit bug for add-vocab screen (#76)
+  - Fixed different animation for logout button (#76)
+  - Improved delay on vocab card flip (#76)
+  - The description is now only on the translated side of the card (#76)
+  - Added translations for "Add"-Button to the select component (#76)
+
 ## [v1.0.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.0.0) - 2021.06.13
 
 Finally the time has come. The first release of Vocascan is ready. Vocascan is a server-client vocabulary trainer that
