@@ -131,7 +131,7 @@ const AllPackages = () => {
   const submitImport = useCallback(() => {
     try {
       ipcRenderer.invoke("open-file", {}).then((result) => {
-        const type = result.type.match(/vocascan\/(\w*)/);
+        const type = result.type?.match(/vocascan\/(\w*)/);
 
         if (!type) {
           showSnack("error", t("global.fileImportError"));
