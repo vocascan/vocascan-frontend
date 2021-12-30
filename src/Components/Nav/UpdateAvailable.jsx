@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import GetAppIcon from "@material-ui/icons/GetApp";
 
-import { nodeRequire } from "../../utils/index.js";
+import { updateNotifier, startUpdate } from "../../modules/update.js";
 
 import "./UpdateAvailable.scss";
-
-const { ipcRenderer } = nodeRequire("electron");
 
 const UpdateAvailable = () => {
   const [show, setShow] = useState(false);
@@ -17,15 +15,18 @@ const UpdateAvailable = () => {
       setShow(true);
     };
 
-    ipcRenderer.on("update-available", handleUpdateNotification);
+    updateNotifier.on("update-available", handleUpdateNotification);
 
     return () => {
-      ipcRenderer.removeListener("update-available", handleUpdateNotification);
+      updateNotifier.removeListener(
+        "update-available",
+        handleUpdateNotification
+      );
     };
   });
 
   const handleUpdate = () => {
-    ipcRenderer.send("start-update");
+    startUpdate();
   };
 
   if (!show) {

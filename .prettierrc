@@ -7,6 +7,7 @@
   "semi": true,
   "useTabs": false,
   "importOrder": [
+    "^./config.js$",
     "^(react|uniqid|i18next|redux|axios|clsx|semver|@testing-library)(.*)$",
     "^@material-ui/core(.*)$",
     "^@material-ui/icons(.*)$",

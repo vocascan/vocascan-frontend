@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: vocascan/frontend:latest
+    restart: always
+    tty: true
+    environment:
+      VOCASCAN_BASE_URL: "https://web.example.com/"
+      VOCASCAN_USE_SPLIT_SCREEN: "false"
+    ports:
+      - "80:80"
