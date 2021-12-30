@@ -22,17 +22,15 @@ import ImportPreviewForm from "../../../Forms/ImportPreviewForm/ImportPreviewFor
 
 import useFeature, { FEATURES } from "../../../hooks/useFeature.js";
 import useSnack from "../../../hooks/useSnack.js";
+import { openFile, saveFile } from "../../../modules/fileOperations.js";
 import {
   getGroups,
   getPackages,
   deleteGroup,
   exportGroup,
 } from "../../../utils/api.js";
-import { nodeRequire } from "../../../utils/index.js";
 
 import "./AllGroups.scss";
-
-const { ipcRenderer } = nodeRequire("electron");
 
 const AllGroups = () => {
   const { t } = useTranslation();
@@ -143,15 +141,13 @@ const AllGroups = () => {
     if (currentGroup) {
       exportGroup(currentGroup.id)
         .then((response) => {
-          ipcRenderer
-            .invoke("save-file", {
-              title: response.data.name,
-              text: JSON.stringify(response.data),
-            })
-            .then((result) => {
-              setShowExportConfirmationModal(false);
-              showSnack("success", t("screens.allGroups.exportSuccessMessage"));
-            });
+          saveFile({
+            title: response.data.name,
+            text: JSON.stringify(response.data),
+          }).then((result) => {
+            setShowExportConfirmationModal(false);
+            showSnack("success", t("screens.allGroups.exportSuccessMessage"));
+          });
         })
         .catch((e) => {
           showSnack("error", t("screens.allGroups.exportFailMessage"));
@@ -161,8 +157,8 @@ const AllGroups = () => {
 
   const submitImport = useCallback(() => {
     try {
-      ipcRenderer.invoke("open-file", {}).then((result) => {
-        const type = result.type.match(/vocascan\/(\w*)/);
+      openFile().then((result) => {
+        const type = result?.type?.match(/vocascan\/(\w*)/);
 
         if (!type) {
           showSnack("error", t("global.fileImportError"));

@@ -7,11 +7,9 @@ import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import CountdownTimer from "../Timer/CountdownTimer.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
-import { nodeRequire } from "../../utils/index.js";
+import { copyToClip } from "../../modules/clipboard.js";
 
 import "./InviteCode.scss";
-
-const { ipcRenderer } = nodeRequire("electron");
 
 const InviteCode = ({ data, onDelete }) => {
   const { t } = useTranslation();
@@ -27,9 +25,9 @@ const InviteCode = ({ data, onDelete }) => {
     [data]
   );
 
-  const copyToClip = useCallback(() => {
+  const copyToClipCb = useCallback(() => {
     try {
-      ipcRenderer.invoke("copy-to-clip", { text: data.code }).then((result) => {
+      copyToClip({ text: data.code }).then(() => {
         showSnack("success", t("components.inviteCode.copyToClip"));
       });
     } catch {
@@ -47,7 +45,7 @@ const InviteCode = ({ data, onDelete }) => {
         <RemoveCircleOutlineIcon onClick={onDelete} />
       </div>
       <div className="heading">
-        <p onClick={copyToClip}>{data.code}</p>
+        <p onClick={copyToClipCb}>{data.code}</p>
       </div>
       <hr />
       <div className="information">

@@ -21,17 +21,15 @@ import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useFeature, { FEATURES } from "../../../hooks/useFeature.js";
 import useSnack from "../../../hooks/useSnack.js";
+import { openFile, saveFile } from "../../../modules/fileOperations.js";
 import {
   getPackages,
   deletePackage,
   exportPackage,
 } from "../../../utils/api.js";
 import { findLanguageByCode, getLanguageString } from "../../../utils/index.js";
-import { nodeRequire } from "../../../utils/index.js";
 
 import "./AllPackages.scss";
-
-const { ipcRenderer } = nodeRequire("electron");
 
 const AllPackages = () => {
   const { t } = useTranslation();
@@ -108,19 +106,13 @@ const AllPackages = () => {
     if (currentPackage) {
       exportPackage(currentPackage.id, exportPackageQueryStatus)
         .then((response) => {
-          ipcRenderer
-            .invoke("save-file", {
-              head: t("components.importExport.saveFileHead"),
-              title: response.data.name,
-              text: JSON.stringify(response.data),
-            })
-            .then(() => {
-              setShowExportConfirmationModal(false);
-              showSnack(
-                "success",
-                t("screens.allPackages.exportSuccessMessage")
-              );
-            });
+          saveFile({
+            title: response.data.name,
+            text: JSON.stringify(response.data),
+          }).then(() => {
+            setShowExportConfirmationModal(false);
+            showSnack("success", t("screens.allPackages.exportSuccessMessage"));
+          });
         })
         .catch((e) => {
           showSnack("error", t("screens.allPackages.exportFailMessage"));
@@ -130,7 +122,7 @@ const AllPackages = () => {
 
   const submitImport = useCallback(() => {
     try {
-      ipcRenderer.invoke("open-file", {}).then((result) => {
+      openFile().then((result) => {
         const type = result.type?.match(/vocascan\/(\w*)/);
 
         if (!type) {
