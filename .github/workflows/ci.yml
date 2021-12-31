@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
+
+env:
+  DOCKER_PLATFORMS: linux/amd64,linux/arm/v7,linux/arm64/v8 #,linux/s390x,linux/ppc64le
+
+jobs:
+  test:
+    name: 🧪 test
+    if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Lint JS
+        run: npm run lint -- --max-warnings=0
+
+      - name: Lint style
+        if: always()
+        run: npm run lint:style
+
+  docker:
+    name: 🐋 docker
+    needs: test
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/experimental' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Extract version
+        uses: actions/github-script@v5
+        id: version
+        with:
+          script: |
+            const { version } = require('./package.json')
+            const isMain = context.ref === 'refs/heads/main' && !version.includes('rc')
+            const isExperimental = context.ref === 'refs/heads/experimental' && version.includes('rc')
+            const tags = [
+              'type=ref,event=branch',
+              'type=ref,event=pr',
+            ]            
+            if (isMain || isExperimental) {
+              tags.push(`type=semver,pattern={{version}},value=${version}`)
+            }
+            if (isMain) {
+              tags.push(`type=semver,pattern={{major}}.{{minor}},value=${version}`)
+              tags.push(`type=semver,pattern={{major}},value=${version}`)
+            }
+            core.setOutput('tags', tags.join('\n'));
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: |
+            vocascan/frontend
+            ghcr.io/vocascan/frontend
+          tags: ${{ steps.version.outputs.tags }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-buildx-
+
+      - name: Build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: ${{ env.DOCKER_PLATFORMS }}
+          push: false
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: vocascan
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to ghcr
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: vocascan
+          password: ${{ secrets.VOCASCAN_BOT_TOKEN }}
+
+      - name: Push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: ${{ env.DOCKER_PLATFORMS }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
