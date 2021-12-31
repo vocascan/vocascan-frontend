@@ -1,16 +1,12 @@
-import { nodeRequire } from "../utils";
-
 let updateNotifier = null;
 let startUpdate = null;
 const available = window.VOCASCAN_CONFIG.ENV === "electron";
 
 if (available) {
-  const { ipcRenderer } = nodeRequire("electron");
-
-  updateNotifier = ipcRenderer;
+  updateNotifier = window.electron;
 
   startUpdate = () => {
-    ipcRenderer.send("start-update");
+    window.electron.send("start-update");
   };
 }
 

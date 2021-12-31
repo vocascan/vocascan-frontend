@@ -1,12 +1,8 @@
-import { nodeRequire } from "../utils";
-
-let copyToClip = () => new Promise.reject();
+let copyToClip = () => Promise.reject();
 
 if (window.VOCASCAN_CONFIG.ENV === "electron") {
-  const { ipcRenderer } = nodeRequire("electron");
-
   copyToClip = ({ text }) => {
-    return ipcRenderer.invoke("copy-to-clip", { text });
+    return window.electron.invoke("copy-to-clip", { text });
   };
 }
 
