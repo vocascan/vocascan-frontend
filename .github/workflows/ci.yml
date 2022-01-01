@@ -26,7 +26,7 @@ jobs:
         run: npm i
 
       - name: Lint JS
-        run: npm run lint -- --max-warnings=0
+        run: npm run lint:js -- --max-warnings=0
 
       - name: Lint style
         if: always()
