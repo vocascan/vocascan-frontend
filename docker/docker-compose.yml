@@ -7,6 +7,5 @@ services:
     tty: true
     environment:
       VOCASCAN_BASE_URL: "https://web.example.com/"
-      VOCASCAN_USE_SPLIT_SCREEN: "false"
     ports:
       - "80:80"
