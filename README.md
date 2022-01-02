@@ -74,14 +74,14 @@ Digitalization is creating a huge change in the world. We no longer only have th
 
 ## Getting Started
 
-To use Vocascan Desktop you currently need a running Vocascan server. To learn more about this visit the [documentation](https://docs.vocascan.com/#/vocascan-server/installation/installation).
+To use the Vocascan frontend you currently need a running Vocascan server. To learn more about this visit the [documentation](https://docs.vocascan.com/#/vocascan-server/installation/installation).
 
-Now let's move on to the installation of the desktop app itself.
-Currently, depending on the operating system, there are several ways to install it.
+Now let's move on to the set up of the frontend itself.
+Here we have prepared presets and explanations for the various possibilities. Take a look at our docs to set up your frontend perfectly. (links are coming soon)
 
-1. [Installer](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_1-installer)
-2. [Snap Store](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_2-snap-store) (Linux)
-3. [Self-build](https://docs.vocascan.com/#/vocascan-desktop/installation?id=_3-build-vocascan-yourself)
+- Docker
+- Docker with Nginx webserver
+- Build it yourself
 
 If any questions have come up, it's best to check out our [FAQ](https://docs.vocascan.com/#/general/faq). If they are still not answered, feel free to contact a maintainer. Check the [contact](#contact) section for more information
 
