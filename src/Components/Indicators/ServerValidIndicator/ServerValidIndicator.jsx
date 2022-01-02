@@ -14,7 +14,7 @@ import { minServerVersion } from "../../../utils/constants.js";
 
 import "./ServerValidIndicator.scss";
 
-const ServerValidIndicator = ({ setValid, setLocked = null }) => {
+const ServerValidIndicator = ({ setValid, setLocked = null, show = true }) => {
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const debouncedServerAddress = useDebounce(serverAddress, 500);
 
@@ -102,7 +102,8 @@ const ServerValidIndicator = ({ setValid, setLocked = null }) => {
     <div className="server-valid-indicator">
       {isValidServer === true &&
         isValidVersion === true &&
-        isServerResponding === true && (
+        isServerResponding === true &&
+        show && (
           <p className="success">
             {t("components.validServerIndicator.validServer", {
               version: serverVersion,

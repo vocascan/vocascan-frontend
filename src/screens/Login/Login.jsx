@@ -179,7 +179,10 @@ const Login = ({ image }) => {
             {serverError ? (
               <p className="form-error">{t("global.serverNotResponding")}</p>
             ) : (
-              <ServerValidIndicator setValid={setIsServerValid} />
+              <ServerValidIndicator
+                setValid={setIsServerValid}
+                show={!baseURL}
+              />
             )}
           </div>
           <div className="login-footer">

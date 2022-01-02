@@ -330,6 +330,7 @@ const Register = ({ image }) => {
               <ServerValidIndicator
                 setValid={setIsServerValid}
                 setLocked={setIsServerLocked}
+                show={!baseURL}
               />
             )}
           </div>
