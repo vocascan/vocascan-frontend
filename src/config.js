@@ -1,6 +1,8 @@
+import isElectron from "is-electron";
+
 window.VOCASCAN_CONFIG = {
   // inject default config options
-  ENV: "web",
+  ENV: undefined,
   BASE_URL: "",
   SHOW_PLANS: undefined,
 
@@ -16,6 +18,11 @@ window.VOCASCAN_CONFIG = {
   // inject already existing config options
   ...window.VOCASCAN_CONFIG,
 };
+
+// detect env automatically if not set
+if (window.VOCASCAN_CONFIG.ENV === undefined) {
+  window.VOCASCAN_CONFIG.ENV = isElectron() ? "electron" : "web";
+}
 
 // if SHOW_PLANS is not configured but a BASE_URL is configured -> dont show the plans
 if (window.VOCASCAN_CONFIG.SHOW_PLANS === undefined) {
