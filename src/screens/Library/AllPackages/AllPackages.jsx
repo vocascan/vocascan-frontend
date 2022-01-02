@@ -106,16 +106,13 @@ const AllPackages = () => {
     if (currentPackage) {
       exportPackage(currentPackage.id, exportPackageQueryStatus)
         .then((response) =>
-          saveFile({
-            title: response.data.name,
-            text: JSON.stringify(response.data),
-          })
+          saveFile(response.data, response.data.name, "application/json")
         )
         .then(() => {
           setShowExportConfirmationModal(false);
           showSnack("success", t("screens.allPackages.exportSuccessMessage"));
         })
-        .catch(() => {
+        .catch((e) => {
           showSnack("error", t("screens.allPackages.exportFailMessage"));
         });
     }

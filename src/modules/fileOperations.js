@@ -1,14 +1,22 @@
 let openFile = () => Promise.reject();
-let saveFile = () => Promise.reject();
 
 if (window.VOCASCAN_CONFIG.ENV === "electron") {
   openFile = () => {
     return window.electron.invoke("open-file");
   };
-
-  saveFile = ({ title, text }) => {
-    return window.electron.invoke("save-file", { title, text });
-  };
 }
+
+const saveFile = (input, name, type) => {
+  //create temp a tag to download file
+  const element = document.createElement("a");
+  const file = new Blob([JSON.stringify(input)], {
+    type,
+  });
+  element.href = URL.createObjectURL(file);
+  element.href = URL.createObjectURL(file);
+  element.download = `${name}.json`;
+  document.body.appendChild(element); // Required for this to work in FireFox
+  element.click();
+};
 
 export { openFile, saveFile };

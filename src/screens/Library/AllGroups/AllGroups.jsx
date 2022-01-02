@@ -141,10 +141,7 @@ const AllGroups = () => {
     if (currentGroup) {
       exportGroup(currentGroup.id)
         .then((response) =>
-          saveFile({
-            title: response.data.name,
-            text: JSON.stringify(response.data),
-          })
+          saveFile(response.data, response.data.name, "application/json")
         )
         .then(() => {
           setShowExportConfirmationModal(false);
