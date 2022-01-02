@@ -105,24 +105,25 @@ const AllPackages = () => {
   const submitExportPackage = useCallback(() => {
     if (currentPackage) {
       exportPackage(currentPackage.id, exportPackageQueryStatus)
-        .then((response) => {
+        .then((response) =>
           saveFile({
             title: response.data.name,
             text: JSON.stringify(response.data),
-          }).then(() => {
-            setShowExportConfirmationModal(false);
-            showSnack("success", t("screens.allPackages.exportSuccessMessage"));
-          });
+          })
+        )
+        .then(() => {
+          setShowExportConfirmationModal(false);
+          showSnack("success", t("screens.allPackages.exportSuccessMessage"));
         })
-        .catch((e) => {
+        .catch(() => {
           showSnack("error", t("screens.allPackages.exportFailMessage"));
         });
     }
   }, [currentPackage, exportPackageQueryStatus, showSnack, t]);
 
   const submitImport = useCallback(() => {
-    try {
-      openFile().then((result) => {
+    openFile()
+      .then((result) => {
         const type = result.type?.match(/vocascan\/(\w*)/);
 
         if (!type) {
@@ -140,10 +141,10 @@ const AllPackages = () => {
 
         setImportedData(result);
         setShowImportModal(true);
+      })
+      .catch(() => {
+        showSnack("error", t("global.fileImportError"));
       });
-    } catch {
-      showSnack("error", t("global.fileImportError"));
-    }
   }, [showSnack, t]);
 
   const columns = useMemo(

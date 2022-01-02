@@ -140,24 +140,25 @@ const AllGroups = () => {
   const submitExportGroup = useCallback(() => {
     if (currentGroup) {
       exportGroup(currentGroup.id)
-        .then((response) => {
+        .then((response) =>
           saveFile({
             title: response.data.name,
             text: JSON.stringify(response.data),
-          }).then((result) => {
-            setShowExportConfirmationModal(false);
-            showSnack("success", t("screens.allGroups.exportSuccessMessage"));
-          });
+          })
+        )
+        .then(() => {
+          setShowExportConfirmationModal(false);
+          showSnack("success", t("screens.allGroups.exportSuccessMessage"));
         })
-        .catch((e) => {
+        .catch(() => {
           showSnack("error", t("screens.allGroups.exportFailMessage"));
         });
     }
   }, [currentGroup, showSnack, t]);
 
   const submitImport = useCallback(() => {
-    try {
-      openFile().then((result) => {
+    openFile()
+      .then((result) => {
         const type = result?.type?.match(/vocascan\/(\w*)/);
 
         if (!type) {
@@ -172,10 +173,10 @@ const AllGroups = () => {
 
         setImportedData(result);
         setShowImportModal(true);
+      })
+      .catch(() => {
+        showSnack("error", t("global.fileImportError"));
       });
-    } catch {
-      showSnack("error", t("global.fileImportError"));
-    }
   }, [showSnack, t]);
 
   const columns = useMemo(
