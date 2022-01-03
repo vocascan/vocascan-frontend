@@ -6,7 +6,7 @@ if (window.VOCASCAN_CONFIG.ENV === "electron") {
   };
 }
 
-const saveFile = (input, name, type) => {
+const saveFile = ({ input, name, type }) => {
   //create temp a tag to download file
   const element = document.createElement("a");
   const file = new Blob([JSON.stringify(input)], {

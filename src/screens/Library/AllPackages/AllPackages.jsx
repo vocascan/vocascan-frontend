@@ -106,7 +106,11 @@ const AllPackages = () => {
     if (currentPackage) {
       exportPackage(currentPackage.id, exportPackageQueryStatus)
         .then((response) =>
-          saveFile(response.data, response.data.name, "application/json")
+          saveFile({
+            input: response.data,
+            name: response.data.name,
+            type: "application/json",
+          })
         )
         .then(() => {
           setShowExportConfirmationModal(false);
