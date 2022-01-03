@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useRef,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -21,7 +27,7 @@ import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useFeature, { FEATURES } from "../../../hooks/useFeature.js";
 import useSnack from "../../../hooks/useSnack.js";
-import { openFile, saveFile } from "../../../modules/fileOperations.js";
+import { parseFile, saveFile } from "../../../modules/fileOperations.js";
 import {
   getPackages,
   deletePackage,
@@ -35,6 +41,8 @@ const AllPackages = () => {
   const { t } = useTranslation();
   const history = useHistory();
   const { showSnack } = useSnack();
+
+  const inputFile = useRef(null);
 
   const [data, setData] = useState([]);
   const [importedData, setImportedData] = useState(null);
@@ -122,10 +130,16 @@ const AllPackages = () => {
     }
   }, [currentPackage, exportPackageQueryStatus, showSnack, t]);
 
-  const submitImport = useCallback(() => {
-    openFile()
-      .then((result) => {
-        const type = result.type?.match(/vocascan\/(\w*)/);
+  const onOpenFileClick = useCallback(() => {
+    // `current` points to the mounted file input element
+    inputFile.current.click();
+  }, []);
+
+  const submitImport = useCallback(
+    async (event) => {
+      try {
+        const parsedOutput = await parseFile(event);
+        const type = parsedOutput.type?.match(/vocascan\/(\w*)/);
 
         if (!type) {
           showSnack("error", t("global.fileImportError"));
@@ -140,13 +154,14 @@ const AllPackages = () => {
           return;
         }
 
-        setImportedData(result);
+        setImportedData(parsedOutput);
         setShowImportModal(true);
-      })
-      .catch(() => {
+      } catch {
         showSnack("error", t("global.fileImportError"));
-      });
-  }, [showSnack, t]);
+      }
+    },
+    [showSnack, t]
+  );
 
   const columns = useMemo(
     () => [
@@ -248,10 +263,17 @@ const AllPackages = () => {
           <Button
             className="import"
             variant="transparent"
-            onClick={submitImport}
             disabled={!isSupported}
           >
-            <ArrowUpwardIcon onClick={() => submitImport} />
+            <input
+              type="file"
+              id="file"
+              ref={inputFile}
+              onChange={(e) => submitImport(e)}
+              style={{ display: "none" }}
+            />
+
+            <ArrowUpwardIcon onClick={onOpenFileClick} />
           </Button>
         </div>
         <div>

@@ -1,10 +1,13 @@
-let openFile = () => Promise.reject();
-
-if (window.VOCASCAN_CONFIG.ENV === "electron") {
-  openFile = () => {
-    return window.electron.invoke("open-file");
-  };
-}
+const parseFile = async (event) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = (event) => {
+      resolve(JSON.parse(event.target.result));
+    };
+    reader.readAsText(event.target.files[0]);
+  });
+};
 
 const saveFile = ({ input, name, type }) => {
   //create temp a tag to download file
@@ -19,4 +22,4 @@ const saveFile = ({ input, name, type }) => {
   element.click();
 };
 
-export { openFile, saveFile };
+export { parseFile, saveFile };
