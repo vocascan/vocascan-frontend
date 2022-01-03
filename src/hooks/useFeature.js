@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { gte } from "semver";
 
 export const FEATURES = {
-  IMPORT_EXPORT: { minVersion: "1.1.0", env: "electron" },
+  IMPORT_EXPORT: { minVersion: "1.1.0" },
 };
 
 const useFeature = (feature) => {
