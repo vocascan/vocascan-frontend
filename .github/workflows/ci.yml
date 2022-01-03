@@ -21,6 +21,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: "npm"
 
       - name: Install dependencies
         run: npm i
@@ -45,6 +46,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: "npm"
 
       - name: Install dependencies
         run: npm i
@@ -95,18 +97,6 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: ${{ runner.os }}-buildx-
 
-      - name: Build
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./Dockerfile.ci
-          platforms: ${{ env.DOCKER_PLATFORMS }}
-          push: false
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
-
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
@@ -120,7 +110,7 @@ jobs:
           username: vocascan
           password: ${{ secrets.VOCASCAN_BOT_TOKEN }}
 
-      - name: Push
+      - name: Build and Push
         uses: docker/build-push-action@v2
         with:
           context: .
