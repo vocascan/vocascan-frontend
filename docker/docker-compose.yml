@@ -6,6 +6,6 @@ services:
     restart: always
     tty: true
     environment:
-      VOCASCAN_BASE_URL: "https://web.example.com/"
+      VOCASCAN_BASE_URL: "https://mydomain.com"
     ports:
       - "80:80"
