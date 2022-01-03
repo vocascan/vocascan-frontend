@@ -1,10 +1,13 @@
 name: check pull requests
 on:
   pull_request:
+    branches-ignore:
+      - "main"
+      - "experimental"
 
 jobs:
   check:
-    name: check pull request
+    name: 🔍 Check pull request
     runs-on: ubuntu-latest
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'reviewed/skip-check') }}
     steps:
