@@ -1,9 +1,6 @@
 name: check pull requests
 on:
   pull_request:
-    branches-ignore:
-      - "main"
-      - "experimental"
 
 jobs:
   check:
