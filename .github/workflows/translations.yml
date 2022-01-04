@@ -35,7 +35,9 @@ jobs:
           branch: experimental
 
       - name: Install dependency
-        run: npm install --no-package-lock --no-save semver
+        run: |
+          rm package*.json
+          npm install --no-package-lock --no-save semver
 
       - name: Extract version
         uses: actions/github-script@v5
