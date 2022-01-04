@@ -7,6 +7,7 @@ import PersonIcon from "@material-ui/icons/Person";
 
 import UpdateAvailable from "./UpdateAvailable.jsx";
 
+import { available as updateAvailable } from "../../modules/update.js";
 import { signOut } from "../../redux/Actions/login.js";
 
 import LogoRound from "../../images/logo/transparent-round.svg";
@@ -31,9 +32,11 @@ const TopNav = () => {
         <img src={LogoRound} alt="" className="brand" />
       </div>
       <div className="nav-wrapper">
-        <div className="update">
-          <UpdateAvailable />
-        </div>
+        {updateAvailable && (
+          <div className="update">
+            <UpdateAvailable />
+          </div>
+        )}
         <div className="user">
           <PersonIcon className="icon" />
           {username || email}

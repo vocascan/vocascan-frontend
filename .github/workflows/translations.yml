@@ -1,46 +1,44 @@
-name: translations
+name: Translations
 on:
   push:
     branches:
-      - 'experimental'
+      - "experimental"
   schedule:
-    - cron: '0 12 * * 0'
+    - cron: "0 12 * * 0"
   workflow_dispatch:
 
 jobs:
   update-translations:
-    name: update translations
+    name: 📥 Update translations
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: experimental
           token: ${{ secrets.VOCASCAN_BOT_TOKEN }}
 
-      - name: download
+      - name: Download
         uses: localazy/download@v1
         with:
           read_key: ${{ secrets.LOCALAZY_READ_KEY }}
           write_key: ${{ secrets.LOCALAZY_WRITE_KEY }}
 
-      - name: push
+      - name: Push
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "[skip ci] updated translations via Localazy"
           commit_user_name: VocascanBot
           commit_user_email: vocascan@gmail.com
           commit_author: VocascanBot <vocascan@gmail.com>
-          file_pattern: src/i18n/locales/**/*.json
+          file_pattern: src/i18n/locales/**/default.json
           branch: experimental
 
-      - name: get version
+      - name: Extract version
+        uses: actions/github-script@v5
         id: prepare
-        run: |
-          mv package.json package.json.bak
-          npm i --no-save --no-package-look semver
-          mv package.json.bak package.json
-          version=$(node -e "
+        with:
+          script: |
             const Semver = require('semver');
             const package = require('./package.json');
             const semver = Semver.parse(package.version);
@@ -48,11 +46,9 @@ jobs:
             if (semver) {
               version = 100000000 * semver.major + 10000 * semver.minor + semver.patch;
             }
-            console.log(version.toString(10));
-          ")
-          echo ::set-output name=version::${version}
+            core.setOutput("version", version.toString(10));
 
-      - name: upload
+      - name: Upload
         uses: localazy/upload@v1
         with:
           read_key: ${{ secrets.LOCALAZY_READ_KEY }}

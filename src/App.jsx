@@ -38,6 +38,7 @@ const App = () => {
   const user = useSelector((state) => state.login.user);
 
   const shouldLogin = !!user.token && !isLoggedIn;
+  const { SHOW_PLANS: showPlans } = window.VOCASCAN_CONFIG;
 
   // Try login if token is set
   useEffect(() => {
@@ -85,14 +86,14 @@ const App = () => {
     return (
       <HashRouter>
         <Switch>
-          <Route path="/plans" component={SelectionScreen} />
+          {showPlans && <Route path="/plans" component={SelectionScreen} />}
           <Route path="/login" component={() => <Login image={Image} />} />
           <Route
             path="/register"
             component={() => <Register image={Image} />}
           />
           <Route path="/">
-            <Redirect to="/plans" />
+            {showPlans ? <Redirect to="/plans" /> : <Redirect to="/login" />}
           </Route>
         </Switch>
       </HashRouter>

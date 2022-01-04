@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useRef,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -21,22 +27,22 @@ import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useFeature, { FEATURES } from "../../../hooks/useFeature.js";
 import useSnack from "../../../hooks/useSnack.js";
+import { parseFile, saveFile } from "../../../modules/fileOperations.js";
 import {
   getPackages,
   deletePackage,
   exportPackage,
 } from "../../../utils/api.js";
 import { findLanguageByCode, getLanguageString } from "../../../utils/index.js";
-import { nodeRequire } from "../../../utils/index.js";
 
 import "./AllPackages.scss";
-
-const { ipcRenderer } = nodeRequire("electron");
 
 const AllPackages = () => {
   const { t } = useTranslation();
   const history = useHistory();
   const { showSnack } = useSnack();
+
+  const inputFile = useRef(null);
 
   const [data, setData] = useState([]);
   const [importedData, setImportedData] = useState(null);
@@ -107,20 +113,16 @@ const AllPackages = () => {
   const submitExportPackage = useCallback(() => {
     if (currentPackage) {
       exportPackage(currentPackage.id, exportPackageQueryStatus)
-        .then((response) => {
-          ipcRenderer
-            .invoke("save-file", {
-              head: t("components.importExport.saveFileHead"),
-              title: response.data.name,
-              text: JSON.stringify(response.data),
-            })
-            .then(() => {
-              setShowExportConfirmationModal(false);
-              showSnack(
-                "success",
-                t("screens.allPackages.exportSuccessMessage")
-              );
-            });
+        .then((response) =>
+          saveFile({
+            input: response.data,
+            name: response.data.name,
+            type: "application/json",
+          })
+        )
+        .then(() => {
+          setShowExportConfirmationModal(false);
+          showSnack("success", t("screens.allPackages.exportSuccessMessage"));
         })
         .catch((e) => {
           showSnack("error", t("screens.allPackages.exportFailMessage"));
@@ -128,10 +130,16 @@ const AllPackages = () => {
     }
   }, [currentPackage, exportPackageQueryStatus, showSnack, t]);
 
-  const submitImport = useCallback(() => {
-    try {
-      ipcRenderer.invoke("open-file", {}).then((result) => {
-        const type = result.type.match(/vocascan\/(\w*)/);
+  const onOpenFileClick = useCallback(() => {
+    // `current` points to the mounted file input element
+    inputFile.current.click();
+  }, []);
+
+  const submitImport = useCallback(
+    async (event) => {
+      try {
+        const parsedOutput = await parseFile(event);
+        const type = parsedOutput.type?.match(/vocascan\/(\w*)/);
 
         if (!type) {
           showSnack("error", t("global.fileImportError"));
@@ -146,13 +154,14 @@ const AllPackages = () => {
           return;
         }
 
-        setImportedData(result);
+        setImportedData(parsedOutput);
         setShowImportModal(true);
-      });
-    } catch {
-      showSnack("error", t("global.fileImportError"));
-    }
-  }, [showSnack, t]);
+      } catch {
+        showSnack("error", t("global.fileImportError"));
+      }
+    },
+    [showSnack, t]
+  );
 
   const columns = useMemo(
     () => [
@@ -254,10 +263,17 @@ const AllPackages = () => {
           <Button
             className="import"
             variant="transparent"
-            onClick={submitImport}
             disabled={!isSupported}
           >
-            <ArrowUpwardIcon onClick={() => submitImport} />
+            <input
+              type="file"
+              id="file"
+              ref={inputFile}
+              onChange={(e) => submitImport(e)}
+              style={{ display: "none" }}
+            />
+
+            <ArrowUpwardIcon onClick={onOpenFileClick} />
           </Button>
         </div>
         <div>

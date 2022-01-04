@@ -45,6 +45,8 @@ const Register = ({ image }) => {
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
 
+  const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
+
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -200,10 +202,12 @@ const Register = ({ image }) => {
   return (
     <UnauthenticatedLayout>
       <div className="register-form">
-        <ArrowBackIcon
-          className="back-icon"
-          onClick={() => history.push("/plans")}
-        />
+        {showPlans && (
+          <ArrowBackIcon
+            className="back-icon"
+            onClick={() => history.push("/plans")}
+          />
+        )}
         <div className="register-form-header">
           <img
             className="register-form-header-logo"
@@ -308,7 +312,7 @@ const Register = ({ image }) => {
                 />
               </>
             )}
-            {selfHosted && (
+            {selfHosted && !baseURL && (
               <TextInput
                 required
                 placeholder={t("global.server")}
@@ -326,6 +330,7 @@ const Register = ({ image }) => {
               <ServerValidIndicator
                 setValid={setIsServerValid}
                 setLocked={setIsServerLocked}
+                show={!baseURL}
               />
             )}
           </div>

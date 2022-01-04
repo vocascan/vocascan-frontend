@@ -32,6 +32,8 @@ const Login = ({ image }) => {
   const [isServerValid, setIsServerValid] = useState(false);
   const [canSubmit, setCanSubmit] = useState(false);
 
+  const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
+
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -123,10 +125,12 @@ const Login = ({ image }) => {
   return (
     <UnauthenticatedLayout>
       <div className="login-form">
-        <ArrowBackIcon
-          className="back-icon"
-          onClick={() => history.push("/plans")}
-        />
+        {showPlans && (
+          <ArrowBackIcon
+            className="back-icon"
+            onClick={() => history.push("/plans")}
+          />
+        )}
         <div className="header">
           <img className="header-logo" src={image} alt="server-logo" />
           <h1 className="login-form-header-heading">
@@ -160,7 +164,7 @@ const Login = ({ image }) => {
               errorText={t("screens.login.wrongCredentials")}
               maxLength={maxTextfieldLength}
             />
-            {selfHosted && (
+            {selfHosted && !baseURL && (
               <TextInput
                 required
                 placeholder={t("global.server")}
@@ -175,7 +179,10 @@ const Login = ({ image }) => {
             {serverError ? (
               <p className="form-error">{t("global.serverNotResponding")}</p>
             ) : (
-              <ServerValidIndicator setValid={setIsServerValid} />
+              <ServerValidIndicator
+                setValid={setIsServerValid}
+                show={!baseURL}
+              />
             )}
           </div>
           <div className="login-footer">

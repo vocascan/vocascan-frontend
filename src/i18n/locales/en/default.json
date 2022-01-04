@@ -115,8 +115,7 @@
     },
     "importExport": {
       "exportPackage": "Export package",
-      "exportGroup": "Export group",
-      "saveFileHead": "Select where you want to save the file"
+      "exportGroup": "Export group"
     },
     "inviteCode": {
       "never": "Never",

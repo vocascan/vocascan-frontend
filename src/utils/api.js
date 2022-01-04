@@ -2,12 +2,16 @@ import axios from "axios";
 
 import { defaultLimit, vocascanServer } from "./constants.js";
 
+const { BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
+
 const api = axios.create({
-  baseURL: vocascanServer,
+  baseURL: `${baseURL || vocascanServer}/api`,
 });
 
 export function setBaseUrl(url) {
-  api.defaults.baseURL = `${url}/api`;
+  if (!baseURL) {
+    api.defaults.baseURL = `${url}/api`;
+  }
 }
 
 export function setTokenHeader(token) {

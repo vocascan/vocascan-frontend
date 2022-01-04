@@ -4,8 +4,9 @@ on:
 
 jobs:
   check:
-    name: check pull request
+    name: 🔍 Check pull request
     runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'reviewed/skip-check') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -36,8 +37,8 @@ jobs:
         with:
           msg: |
             Thank you for your pull request.
-            Please remove your translations. Change only the `en.json` if necessary. 
-            If this pull request is merged into the [`experimental`](https://github.com/vocascan/vocascan-desktop/tree/experimental) branch, it can be translated via [localazy](https://localazy.com/p/vocascan).
+            Please remove your translations. Change only the `en/default.json` if necessary. 
+            If this pull request is merged into the [`experimental`](https://github.com/vocascan/vocascan-frontend/tree/experimental) branch, it can be translated via [localazy](https://localazy.com/p/vocascan).
 
             Please remove following files from pull request changes.
             ```
