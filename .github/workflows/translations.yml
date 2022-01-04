@@ -34,6 +34,9 @@ jobs:
           file_pattern: src/i18n/locales/**/default.json
           branch: experimental
 
+      - name: Install dependency
+        run: npm install --no-package-lock --no-save semver
+
       - name: Extract version
         uses: actions/github-script@v5
         id: prepare
