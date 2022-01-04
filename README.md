@@ -27,9 +27,9 @@
     A highly configurable vocab trainer
     <br />
     <br />
-    <a href="https://github.com/vocascan/vocascan-desktop/issues/new">Report Bug</a>
+    <a href="https://github.com/vocascan/vocascan-frontend/issues/new">Report Bug</a>
     ·
-    <a href="https://github.com/vocascan/vocascan-desktop/discussions">Request Feature</a>
+    <a href="https://github.com/vocascan/vocascan-frontend/discussions">Request Feature</a>
     ·
     <a href="https://docs.vocascan.com">Docs</a>
     ·
@@ -38,12 +38,12 @@
 </div>
 
 <div align="center">
-<a href="https://github.com/vocascan/vocascan-desktop/blob/main/LICENSE"><img src="https://img.shields.io/github/license/noctera/Vocascan?style=flat" alt="shield-license" /></a>
-<a href="https://github.com/vocascan/vocascan-desktop/issues"><img src="https://img.shields.io/github/issues/vocascan/vocascan-desktop?style=flat" alt="shield-issues" /></a>
-<a href="https://github.com/vocascan/vocascan-desktop/stargazers"><img src="https://img.shields.io/github/stars/vocascan/vocascan-desktop?style=flat" alt="shield-stars" /></a>
-<a href="https://github.com/vocascan/vocascan-desktop/network/members"><img src="https://img.shields.io/github/forks/vocascan/vocascan-desktop?style=flat" alt="shield-forks" /></a>
-<a href="https://github.com/vocascan/vocascan-desktop/releases"><img src="https://img.shields.io/github/downloads/vocascan/vocascan-desktop/total?label=Downloads&style=flat" alt="shield-downloads"/></a>
-<a href="https://github.com/vocascan/vocascan-desktop/actions"><img src="https://img.shields.io/github/workflow/status/vocascan/vocascan-desktop/build%20app?label=Build&style=flat" alt="shield-build" /></a>
+<a href="https://github.com/vocascan/vocascan-frontend/blob/main/LICENSE"><img src="https://img.shields.io/github/license/noctera/Vocascan?style=flat" alt="shield-license" /></a>
+<a href="https://github.com/vocascan/vocascan-frontend/issues"><img src="https://img.shields.io/github/issues/vocascan/vocascan-frontend?style=flat" alt="shield-issues" /></a>
+<a href="https://github.com/vocascan/vocascan-frontend/stargazers"><img src="https://img.shields.io/github/stars/vocascan/vocascan-frontend?style=flat" alt="shield-stars" /></a>
+<a href="https://github.com/vocascan/vocascan-frontend/network/members"><img src="https://img.shields.io/github/forks/vocascan/vocascan-frontend?style=flat" alt="shield-forks" /></a>
+<a href="https://github.com/vocascan/vocascan-frontend/releases"><img src="https://img.shields.io/github/downloads/vocascan/vocascan-frontend/total?label=Downloads&style=flat" alt="shield-downloads"/></a>
+<a href="https://github.com/vocascan/vocascan-frontend/actions"><img src="https://img.shields.io/github/workflow/status/vocascan/vocascan-frontend/build%20app?label=Build&style=flat" alt="shield-build" /></a>
 <a href="https://localazy.com/p/vocascan"><img src="https://connect.localazy.com/status/vocascan?content=progress&style=flat&logo=ffffff)](https://localazy.com/p/vocascan" alt="shield-localazy"/></a>
 </div>
 
@@ -101,7 +101,7 @@ If any questions have come up, it's best to check out our [FAQ](https://docs.voc
 
 </br>
 
-_For a better guide to the functions, please refer to the [Documentation](https://docs.vocascan.com/#/vocascan-desktop/intro)._
+_For a better guide to the functions, please refer to the [Documentation](https://docs.vocascan.com/#/vocascan-frontend/intro)._
 
 <!-- ROADMAP -->
 
@@ -110,7 +110,7 @@ _For a better guide to the functions, please refer to the [Documentation](https:
 - [ ] Theming
 - [x] Outsource Frontend as a website
 
-See the [project board](https://github.com/vocascan/vocascan-desktop/projects/1) for a full list of proposed features (and known issues).
+See the [project board](https://github.com/vocascan/vocascan-frontend/projects/1) for a full list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -118,7 +118,7 @@ See the [project board](https://github.com/vocascan/vocascan-desktop/projects/1)
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-For a more detailed instruction about contributing visit our [contribution docs](https://docs.vocascan.com/#/vocascan-desktop/contribute).
+For a more detailed instruction about contributing visit our [contribution docs](https://docs.vocascan.com/#/vocascan-frontend/contribute).
 
 <!-- LICENSE -->
 
@@ -132,4 +132,4 @@ Distributed under the Apache 2 License. See `LICENSE` for more information.
 
 Vocascan - [@vocascan](https://twitter.com/vocascan) - vocascan@gmail.com - [Discord](http://discord.vocascan.com)
 
-Project Link: [https://github.com/vocascan/vocascan-desktop](https://github.com/vocascan/vocascan-desktop)
+Project Link: [https://github.com/vocascan/vocascan-frontend](https://github.com/vocascan/vocascan-frontend)

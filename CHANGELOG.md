@@ -1,9 +1,9 @@
 # Changelog
 
 This changelog goes through all the changes that have been made in each release on the
-[vocascan-desktop](https://github.com/vocascan/vocascan-desktop).
+[vocascan-frontend](https://github.com/vocascan/vocascan-frontend).
 
-## [v1.1.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.1.0) - 2021.11.20
+## [v1.1.0](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.1.0) - 2021.11.20
 
 After some time, a new version of Vocascan is coming, with import/export features to share your vocabulary packages and
 groups. The invitation codes will help you to keep your server all to yourself and your friends. In addition, we have
@@ -25,7 +25,7 @@ yourself while creating vocabularies.
   - The description is now only on the translated side of the card (#76)
   - Added translations for "Add"-Button to the select component (#76)
 
-## [v1.0.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.0.0) - 2021.06.13
+## [v1.0.0](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.0.0) - 2021.06.13
 
 Finally the time has come. The first release of Vocascan is ready. Vocascan is a server-client vocabulary trainer that
 is intended to give the user many setting options so that he can adapt it to his personal learning strategies and
