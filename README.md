@@ -108,6 +108,7 @@ _For a better guide to the functions, please refer to the [Documentation](https:
 ## Roadmap
 
 - [ ] Theming
+- [x] Outsource Frontend as a website
 
 See the [project board](https://github.com/vocascan/vocascan-desktop/projects/1) for a full list of proposed features (and known issues).
 
