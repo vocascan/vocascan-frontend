@@ -33,10 +33,10 @@ jobs:
         if: always()
         run: npm run lint:style
 
-  docker:
-    name: 🐋 docker
+  build:
+    name: ⚙️ build
     needs: test
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/experimental' || github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/experimental' || github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/precompile-react' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -53,6 +53,26 @@ jobs:
 
       - name: Build frontend
         run: npm run build
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: ./build/*
+          if-no-files-found: error
+
+  docker:
+    name: 🐋 docker
+    needs: build
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/experimental' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: ./build
 
       - name: Extract version
         uses: actions/github-script@v5
