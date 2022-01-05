@@ -54,7 +54,8 @@ jobs:
       - name: Build frontend
         run: npm run build
 
-      - uses: actions/upload-artifact@v2
+      - name: Upload build
+        uses: actions/upload-artifact@v2
         with:
           name: build
           path: ./build/*
@@ -69,7 +70,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: actions/download-artifact@v2
+      - name: Download build
+        uses: actions/download-artifact@v2
         with:
           name: build
           path: ./build
@@ -141,3 +143,27 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+
+  release:
+    name: 📦 release
+    needs: build
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/precompile-react' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: ./build
+
+      - name: Prepare attachments
+        run: |
+          zip -r build build.zip
+          sha256sum -t build.zip > build.zip.sha256
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: build.zip*
+          token: ${{ secrets.VOCASCAN_BOT_TOKEN }}
