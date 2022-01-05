@@ -22,8 +22,13 @@
       align-items: center;
       margin: 5px 0;
 
+      &.hidden {
+        display: none;
+      }
+
       a {
         margin-left: 5px;
+        color: $color-white;
       }
     }
   }

@@ -47,6 +47,8 @@ const Register = ({ image }) => {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [readPrivacy, setReadPrivacy] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const [isPrivacyAvailable, setIsPrivacyAvailable] = useState(false);
+  const [isTermsAvailable, setIsTermsAvailable] = useState(false);
 
   const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
 
@@ -349,7 +351,9 @@ const Register = ({ image }) => {
               />
             )}
 
-            <div className="checkbox-wrapper">
+            <div
+              className={`checkbox-wrapper ${!isPrivacyAvailable && "hidden"}`}
+            >
               <input
                 type="checkbox"
                 name="privacy"
@@ -357,11 +361,18 @@ const Register = ({ image }) => {
               />
               <label for="scales" className="label">
                 I have read the{" "}
-                <LinkCreator path="/privacy-policy">privacy policy</LinkCreator>
+                <LinkCreator
+                  path="/privacy-policy"
+                  setValid={setIsPrivacyAvailable}
+                >
+                  privacy policy
+                </LinkCreator>
               </label>
             </div>
 
-            <div className="checkbox-wrapper">
+            <div
+              className={`checkbox-wrapper ${!isTermsAvailable && "hidden"}`}
+            >
               <input
                 type="checkbox"
                 name="terms"
@@ -369,7 +380,10 @@ const Register = ({ image }) => {
               />
               <label for="scales" className="label">
                 I accept the{" "}
-                <LinkCreator path="/terms-and-conditions">
+                <LinkCreator
+                  path="/terms-and-conditions"
+                  setValid={setIsTermsAvailable}
+                >
                   terms and conditions
                 </LinkCreator>
               </label>

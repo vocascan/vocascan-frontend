@@ -23,6 +23,10 @@ const Nav = () => {
   const [initialStyle, setInitialStyle] = useState(menuStyle);
   const [loading, setLoading] = useState(false);
 
+  const [isPrivacyAvailable, setIsPrivacyAvailable] = useState(false);
+  const [isTermsAvailable, setIsTermsAvailable] = useState(false);
+  const [isLegalNoticeAvailable, setIsLegalNoticeAvailable] = useState(false);
+
   const navLayoutClasses = clsx(
     "nav",
     `nav-${menuStyle}`,
@@ -82,21 +86,30 @@ const Nav = () => {
       </ul>
 
       <div className="nav-legal">
-        <div className="nav-legal-wrapper">
+        <div
+          className={`nav-legal-wrapper ${!isLegalNoticeAvailable && "hidden"}`}
+        >
           <VerifiedUserIcon />
-          <LinkCreator path="/legal-notice" electronFix>
+          <LinkCreator
+            path="/legal-notice"
+            setValid={setIsLegalNoticeAvailable}
+            electronFix
+          >
             {t("global.legalNotice")}
           </LinkCreator>
         </div>
-        <div className="nav-legal-wrapper">
+        <div className={`nav-legal-wrapper ${!isTermsAvailable && "hidden"}`}>
           <PolicyIcon />
-          <LinkCreator path="/terms-and-conditions">
+          <LinkCreator
+            path="/terms-and-conditions"
+            setValid={setIsTermsAvailable}
+          >
             {t("global.termsAndConditions")}
           </LinkCreator>
         </div>
-        <div className="nav-legal-wrapper">
+        <div className={`nav-legal-wrapper ${!isPrivacyAvailable && "hidden"}`}>
           <SecurityIcon />
-          <LinkCreator path="/privacy-policy">
+          <LinkCreator path="/privacy-policy" setValid={setIsPrivacyAvailable}>
             {t("global.privacyPolicy")}
           </LinkCreator>
         </div>
