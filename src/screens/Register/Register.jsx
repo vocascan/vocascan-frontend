@@ -349,25 +349,25 @@ const Register = ({ image }) => {
               />
             )}
 
-            <div>
+            <div className="checkbox-wrapper">
               <input
                 type="checkbox"
                 name="privacy"
                 onChange={handleReadPrivacy}
               />
-              <label for="scales">
+              <label for="scales" className="label">
                 I have read the{" "}
                 <LinkCreator path="/privacy-policy">privacy policy</LinkCreator>
               </label>
             </div>
 
-            <div>
+            <div className="checkbox-wrapper">
               <input
                 type="checkbox"
                 name="terms"
                 onChange={handleAcceptTerms}
               />
-              <label for="scales">
+              <label for="scales" className="label">
                 I accept the{" "}
                 <LinkCreator path="/terms-and-conditions">
                   terms and conditions

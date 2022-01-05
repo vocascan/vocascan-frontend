@@ -57,6 +57,16 @@
       font-size: 11px;
       color: $color-red;
     }
+
+    .checkbox-wrapper {
+      text-align: left;
+      font-size: 14px;
+      margin: 3px 0;
+
+      .label {
+        margin-left: 5px;
+      }
+    }
   }
 
   .register-form-submit {
