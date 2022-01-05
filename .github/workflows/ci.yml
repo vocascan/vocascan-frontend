@@ -158,7 +158,7 @@ jobs:
 
       - name: Prepare attachments
         run: |
-          zip -r build build.zip
+          zip -r build.zip build
           sha256sum -t build.zip > build.zip.sha256
 
       - name: Release
