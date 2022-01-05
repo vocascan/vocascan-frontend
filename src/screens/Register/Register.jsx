@@ -359,7 +359,7 @@ const Register = ({ image }) => {
                 name="privacy"
                 onChange={handleReadPrivacy}
               />
-              <label for="scales" className="label">
+              <label className="label">
                 I have read the{" "}
                 <LinkCreator
                   path="/privacy-policy"
@@ -378,7 +378,7 @@ const Register = ({ image }) => {
                 name="terms"
                 onChange={handleAcceptTerms}
               />
-              <label for="scales" className="label">
+              <label className="label">
                 I accept the{" "}
                 <LinkCreator
                   path="/terms-and-conditions"
