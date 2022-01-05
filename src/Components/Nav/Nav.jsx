@@ -7,9 +7,12 @@ import AddIcon from "@material-ui/icons/Add";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
-import SettingsIcon from "@material-ui/icons/Settings";
+import PolicyIcon from "@material-ui/icons/Policy";
+import SecurityIcon from "@material-ui/icons/Security";
 import StyleIcon from "@material-ui/icons/Style";
+import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 
+import LinkCreator from "../LinkCreator/LinkCreator.jsx";
 import NavButton from "./NavButton.jsx";
 
 import "./Nav.scss";
@@ -78,13 +81,25 @@ const Nav = () => {
         />
       </ul>
 
-      <div>
-        <NavButton
-          name={t("nav.settings")}
-          design={menuStyle}
-          icon={<SettingsIcon />}
-          link="/settings"
-        />
+      <div className="nav-legal">
+        <div className="nav-legal-wrapper">
+          <VerifiedUserIcon />
+          <LinkCreator path="/legal-notice">
+            {t("global.legalNotice")}
+          </LinkCreator>
+        </div>
+        <div className="nav-legal-wrapper">
+          <PolicyIcon />
+          <LinkCreator path="/terms-and-conditions">
+            {t("global.termsAndConditions")}
+          </LinkCreator>
+        </div>
+        <div className="nav-legal-wrapper">
+          <SecurityIcon />
+          <LinkCreator path="/privacy-policy">
+            {t("global.privacyPolicy")}
+          </LinkCreator>
+        </div>
       </div>
     </div>
   );

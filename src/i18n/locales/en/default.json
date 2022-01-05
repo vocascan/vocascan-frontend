@@ -50,7 +50,10 @@
     "fileImportError": "Error importing your file",
     "export": "Export",
     "inviteCode": "Invite code",
-    "create": "Create"
+    "create": "Create",
+    "legalNotice": "Legal Notice",
+    "termsAndConditions": "Terms and Conditions",
+    "privacyPolicy": "Privacy Policy"
   },
   "components": {
     "groupForm": {

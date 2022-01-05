@@ -10,6 +10,7 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import InviteCodeValidIndicator from "../../Components/Indicators/InviteCodeValidIndicator/InviteCodeValidIndicator.jsx";
 import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import LinkCreator from "../../Components/LinkCreator/LinkCreator.jsx";
 
 import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, register } from "../../redux/Actions/login.js";
@@ -44,6 +45,8 @@ const Register = ({ image }) => {
   const [isInviteCodeValid, setIsInviteCodeValid] = useState(false);
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
+  const [readPrivacy, setReadPrivacy] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
 
   const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
 
@@ -54,6 +57,14 @@ const Register = ({ image }) => {
   const handleClickLogin = useCallback(() => {
     history.push("/login");
   }, [history]);
+
+  const handleReadPrivacy = useCallback(() => {
+    setReadPrivacy(!readPrivacy);
+  }, [readPrivacy]);
+
+  const handleAcceptTerms = useCallback(() => {
+    setAcceptTerms(!acceptTerms);
+  }, [acceptTerms]);
 
   //fetch languages
   const fetchLanguages = useCallback(() => {
@@ -168,7 +179,9 @@ const Register = ({ image }) => {
         !isServerValid ||
         !isSamePassword ||
         !isEmailValid ||
-        !isUsernameValid
+        !isUsernameValid ||
+        !readPrivacy ||
+        !acceptTerms
       )
     );
   }, [
@@ -185,6 +198,8 @@ const Register = ({ image }) => {
     isSamePassword,
     isEmailValid,
     isUsernameValid,
+    readPrivacy,
+    acceptTerms,
   ]);
 
   useEffect(() => {
@@ -333,6 +348,32 @@ const Register = ({ image }) => {
                 show={!baseURL}
               />
             )}
+
+            <div>
+              <input
+                type="checkbox"
+                name="privacy"
+                onChange={handleReadPrivacy}
+              />
+              <label for="scales">
+                I have read the{" "}
+                <LinkCreator path="/privacy-policy">privacy policy</LinkCreator>
+              </label>
+            </div>
+
+            <div>
+              <input
+                type="checkbox"
+                name="terms"
+                onChange={handleAcceptTerms}
+              />
+              <label for="scales">
+                I accept the{" "}
+                <LinkCreator path="/terms-and-conditions">
+                  terms and conditions
+                </LinkCreator>
+              </label>
+            </div>
           </div>
           <div className="register-form-submit">
             <Button
