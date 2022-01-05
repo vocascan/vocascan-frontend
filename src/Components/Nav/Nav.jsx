@@ -84,7 +84,7 @@ const Nav = () => {
       <div className="nav-legal">
         <div className="nav-legal-wrapper">
           <VerifiedUserIcon />
-          <LinkCreator path="/legal-notice">
+          <LinkCreator path="/legal-notice" electronFix>
             {t("global.legalNotice")}
           </LinkCreator>
         </div>
