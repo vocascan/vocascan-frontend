@@ -360,12 +360,11 @@ const Register = ({ image }) => {
                 onChange={handleReadPrivacy}
               />
               <label className="label">
-                I have read the{" "}
                 <LinkCreator
                   path="/privacy-policy"
                   setValid={setIsPrivacyAvailable}
                 >
-                  privacy policy
+                  {t("screens.register.readPrivacy")}
                 </LinkCreator>
               </label>
             </div>
@@ -379,12 +378,11 @@ const Register = ({ image }) => {
                 onChange={handleAcceptTerms}
               />
               <label className="label">
-                I accept the{" "}
                 <LinkCreator
                   path="/terms-and-conditions"
                   setValid={setIsTermsAvailable}
                 >
-                  terms and conditions
+                  {t("screens.register.acceptTerms")}
                 </LinkCreator>
               </label>
             </div>

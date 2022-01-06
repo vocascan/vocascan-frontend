@@ -2,4 +2,8 @@
 
 .link-creator {
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

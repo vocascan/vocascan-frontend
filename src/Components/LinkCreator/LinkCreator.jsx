@@ -20,7 +20,7 @@ const LinkCreator = ({ path, setValid, electronFix = false, children }) => {
     setUrl(
       baseURL || selfHosted
         ? electronFix && env === "electron"
-          ? vocascanServer`${path}?lang=` + appLanguage
+          ? vocascanServer + `${path}?lang=` + appLanguage
           : (serverAddress ? serverAddress : baseURL) +
             `${path}?lang=` +
             appLanguage
