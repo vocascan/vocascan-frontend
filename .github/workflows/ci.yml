@@ -36,7 +36,7 @@ jobs:
   build:
     name: ⚙️ build
     needs: test
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/experimental' || github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/precompile-react' }}
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/experimental' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -147,7 +147,7 @@ jobs:
   release:
     name: 📦 release
     needs: build
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/precompile-react' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Download build
