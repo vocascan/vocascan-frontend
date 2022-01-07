@@ -30,9 +30,11 @@ const Register = ({ image }) => {
   const languages = useSelector((state) => state.language.languages);
 
   const privacyText = t("screens.register.readPrivacy");
-  const [privacyTextBefore, privacyTextLink, ...privacyTextAfter] = privacyText.split(/[\[\]]/);
+  const [privacyTextBefore, privacyTextLink, ...privacyTextAfter] =
+    privacyText.split(/[[\]]/);
   const termsText = t("screens.register.acceptTerms");
-  const [termsTextBefore, termsTextLink, ...termsTextAfter] = termsText.split(/[\[\]]/);
+  const [termsTextBefore, termsTextLink, ...termsTextAfter] =
+    termsText.split(/[[\]]/);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -385,7 +387,7 @@ const Register = ({ image }) => {
                 onChange={handleAcceptTerms}
               />
               <label className="label">
-               {termsTextBefore}
+                {termsTextBefore}
                 <LinkCreator
                   path="/terms-and-conditions"
                   setValid={setIsTermsAvailable}
