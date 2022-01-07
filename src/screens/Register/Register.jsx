@@ -54,8 +54,8 @@ const Register = ({ image }) => {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [readPrivacy, setReadPrivacy] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const [isPrivacyAvailable, setIsPrivacyAvailable] = useState(false);
-  const [isTermsAvailable, setIsTermsAvailable] = useState(false);
+  const [isPrivacyAvailable, setIsPrivacyAvailable] = useState(true);
+  const [isTermsAvailable, setIsTermsAvailable] = useState(true);
 
   const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
 
@@ -68,12 +68,12 @@ const Register = ({ image }) => {
   }, [history]);
 
   const handleReadPrivacy = useCallback(() => {
-    setReadPrivacy(!readPrivacy);
-  }, [readPrivacy]);
+    setReadPrivacy((readPrivacy) => !readPrivacy);
+  }, []);
 
   const handleAcceptTerms = useCallback(() => {
-    setAcceptTerms(!acceptTerms);
-  }, [acceptTerms]);
+    setAcceptTerms((acceptTerms) => !acceptTerms);
+  }, []);
 
   //fetch languages
   const fetchLanguages = useCallback(() => {
@@ -358,45 +358,45 @@ const Register = ({ image }) => {
               />
             )}
 
-            <div
-              className={`checkbox-wrapper ${!isPrivacyAvailable && "hidden"}`}
-            >
-              <input
-                type="checkbox"
-                name="privacy"
-                onChange={handleReadPrivacy}
-              />
-              <label className="label">
-                {privacyTextBefore}
-                <LinkCreator
-                  path="/privacy-policy"
-                  setValid={setIsPrivacyAvailable}
-                >
-                  {privacyTextLink}
-                </LinkCreator>
-                {privacyTextAfter && <p>{privacyTextAfter}</p>}
-              </label>
-            </div>
+            {isPrivacyAvailable && (
+              <div className={"checkbox-wrapper"}>
+                <input
+                  type="checkbox"
+                  name="privacy"
+                  onChange={handleReadPrivacy}
+                />
+                <label className="label">
+                  {privacyTextBefore}
+                  <LinkCreator
+                    path="/privacy-policy"
+                    setValid={setIsPrivacyAvailable}
+                  >
+                    {privacyTextLink}
+                  </LinkCreator>
+                  <p>{privacyTextAfter}</p>
+                </label>
+              </div>
+            )}
 
-            <div
-              className={`checkbox-wrapper ${!isTermsAvailable && "hidden"}`}
-            >
-              <input
-                type="checkbox"
-                name="terms"
-                onChange={handleAcceptTerms}
-              />
-              <label className="label">
-                {termsTextBefore}
-                <LinkCreator
-                  path="/terms-and-conditions"
-                  setValid={setIsTermsAvailable}
-                >
-                  {termsTextLink}
-                </LinkCreator>
-                <p>{termsTextAfter}</p>
-              </label>
-            </div>
+            {isTermsAvailable && (
+              <div className={"checkbox-wrapper"}>
+                <input
+                  type="checkbox"
+                  name="terms"
+                  onChange={handleAcceptTerms}
+                />
+                <label className="label">
+                  {termsTextBefore}
+                  <LinkCreator
+                    path="/terms-and-conditions"
+                    setValid={setIsTermsAvailable}
+                  >
+                    {termsTextLink}
+                  </LinkCreator>
+                  <p>{termsTextAfter}</p>
+                </label>
+              </div>
+            )}
           </div>
           <div className="register-form-submit">
             <Button

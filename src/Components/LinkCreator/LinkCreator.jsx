@@ -15,17 +15,17 @@ const LinkCreator = ({ path, setValid, electronFix = false, children }) => {
 
   const { BASE_URL: baseURL, ENV: env } = window.VOCASCAN_CONFIG;
 
-  //initialize url with the needed url for the servers
+  // initialize url with the needed url for the servers
   useEffect(() => {
-    setUrl(
-      baseURL || selfHosted
-        ? electronFix && env === "electron"
-          ? vocascanServer + `${path}?lang=` + appLanguage
-          : (serverAddress ? serverAddress : baseURL) +
-            `${path}?lang=` +
-            appLanguage
-        : vocascanServer + `${path}?lang=` + appLanguage
-    );
+    if (baseURL || selfHosted) {
+      if (electronFix && env === "electron") {
+        setUrl(vocascanServer + `${path}?lang=` + appLanguage);
+      } else {
+        setUrl((serverAddress || baseURL) + `${path}?lang=` + appLanguage);
+      }
+    } else {
+      setUrl(vocascanServer + `${path}?lang=` + appLanguage);
+    }
   }, [appLanguage, baseURL, electronFix, env, path, selfHosted, serverAddress]);
 
   //check if url is available
