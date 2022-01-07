@@ -29,6 +29,11 @@ const Register = ({ image }) => {
   const selfHosted = useSelector((state) => state.login.selfHosted);
   const languages = useSelector((state) => state.language.languages);
 
+  const privacyText = t("screens.register.readPrivacy");
+  const [privacyTextBefore, privacyTextLink, ...privacyTextAfter] = privacyText.split(/[\[\]]/);
+  const termsText = t("screens.register.acceptTerms");
+  const [termsTextBefore, termsTextLink, ...termsTextAfter] = termsText.split(/[\[\]]/);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -360,12 +365,14 @@ const Register = ({ image }) => {
                 onChange={handleReadPrivacy}
               />
               <label className="label">
+                {privacyTextBefore}
                 <LinkCreator
                   path="/privacy-policy"
                   setValid={setIsPrivacyAvailable}
                 >
-                  {t("screens.register.readPrivacy")}
+                  {privacyTextLink}
                 </LinkCreator>
+                {privacyTextAfter && <p>{privacyTextAfter}</p>}
               </label>
             </div>
 
@@ -378,12 +385,14 @@ const Register = ({ image }) => {
                 onChange={handleAcceptTerms}
               />
               <label className="label">
+               {termsTextBefore}
                 <LinkCreator
                   path="/terms-and-conditions"
                   setValid={setIsTermsAvailable}
                 >
-                  {t("screens.register.acceptTerms")}
+                  {termsTextLink}
                 </LinkCreator>
+                <p>{termsTextAfter}</p>
               </label>
             </div>
           </div>

@@ -310,8 +310,8 @@
       "emailNotValid": "Not a valid email address",
       "passwordsDontMatch": "The passwords are not the same",
       "alreadyHaveAccount": "Already have an account?",
-      "readPrivacy": "I have read the Privacy Policy",
-      "acceptTerms": "I accept the Terms and Conditions"
+      "readPrivacy": "I have read the [Privacy Policy]",
+      "acceptTerms": "I accept the [Terms and Conditions]"
     },
     "settings": {
       "title": "Settings",
