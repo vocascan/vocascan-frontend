@@ -9,7 +9,7 @@ const LinkCreator = ({ path, children, electronFix = false }) => {
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const appLanguage = useSelector((state) => state.setting.language);
 
-  const [isValid, setIsValid] = useState(true);
+  const [isValid, setIsValid] = useState(false);
   const [url, setUrl] = useState("");
 
   const { BASE_URL: baseURL, ENV: env } = window.VOCASCAN_CONFIG;
