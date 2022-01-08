@@ -12,7 +12,6 @@
   transition: width 0.2s ease-in;
 
   .nav-legal {
-    opacity: 0;
     color: $color-white;
     margin: 10px auto;
     font-size: 15px;
@@ -21,10 +20,6 @@
       display: flex;
       align-items: center;
       margin: 5px 0;
-
-      &.hidden {
-        display: none;
-      }
 
       a {
         margin-left: 5px;

@@ -54,9 +54,6 @@ const Register = ({ image }) => {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [readPrivacy, setReadPrivacy] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const [isPrivacyAvailable, setIsPrivacyAvailable] = useState(true);
-  const [isTermsAvailable, setIsTermsAvailable] = useState(true);
-
   const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
 
   const dispatch = useDispatch();
@@ -358,45 +355,42 @@ const Register = ({ image }) => {
               />
             )}
 
-            {isPrivacyAvailable && (
-              <div className={"checkbox-wrapper"}>
-                <input
-                  type="checkbox"
-                  name="privacy"
-                  onChange={handleReadPrivacy}
-                />
-                <label className="label">
-                  {privacyTextBefore}
-                  <LinkCreator
-                    path="/privacy-policy"
-                    setValid={setIsPrivacyAvailable}
-                  >
-                    {privacyTextLink}
-                  </LinkCreator>
-                  <p>{privacyTextAfter}</p>
-                </label>
-              </div>
-            )}
-
-            {isTermsAvailable && (
-              <div className={"checkbox-wrapper"}>
-                <input
-                  type="checkbox"
-                  name="terms"
-                  onChange={handleAcceptTerms}
-                />
-                <label className="label">
-                  {termsTextBefore}
-                  <LinkCreator
-                    path="/terms-and-conditions"
-                    setValid={setIsTermsAvailable}
-                  >
-                    {termsTextLink}
-                  </LinkCreator>
-                  <p>{termsTextAfter}</p>
-                </label>
-              </div>
-            )}
+            <LinkCreator path="/terms-and-conditions" shouldBeValid={true}>
+              {({ isValid, url }) => {
+                isValid && (
+                  <div className={"checkbox-wrapper"}>
+                    <input
+                      type="checkbox"
+                      name="privacy"
+                      onChange={handleReadPrivacy}
+                    />
+                    <label className="label">
+                      <p>{privacyTextBefore}</p>
+                      <a href={url}>{privacyTextLink}</a>
+                      <p>{privacyTextAfter}</p>
+                    </label>
+                  </div>
+                );
+              }}
+            </LinkCreator>
+            <LinkCreator path="/terms-and-conditions" shouldBeValid={true}>
+              {({ isValid, url }) => {
+                isValid && (
+                  <div className={"checkbox-wrapper"}>
+                    <input
+                      type="checkbox"
+                      name="terms"
+                      onChange={handleAcceptTerms}
+                    />
+                    <label className="label">
+                      <p>{termsTextBefore}</p>
+                      <a href={url}>{termsTextLink}</a>
+                      <p>{termsTextAfter}</p>
+                    </label>
+                  </div>
+                );
+              }}
+            </LinkCreator>
           </div>
           <div className="register-form-submit">
             <Button

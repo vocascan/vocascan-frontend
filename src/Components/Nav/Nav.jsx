@@ -23,10 +23,6 @@ const Nav = () => {
   const [initialStyle, setInitialStyle] = useState(menuStyle);
   const [loading, setLoading] = useState(false);
 
-  const [isPrivacyAvailable, setIsPrivacyAvailable] = useState(false);
-  const [isTermsAvailable, setIsTermsAvailable] = useState(false);
-  const [isLegalNoticeAvailable, setIsLegalNoticeAvailable] = useState(false);
-
   const navLayoutClasses = clsx(
     "nav",
     `nav-${menuStyle}`,
@@ -86,33 +82,38 @@ const Nav = () => {
       </ul>
 
       <div className="nav-legal">
-        <div
-          className={`nav-legal-wrapper ${!isLegalNoticeAvailable && "hidden"}`}
-        >
-          <VerifiedUserIcon />
-          <LinkCreator
-            path="/legal-notice"
-            setValid={setIsLegalNoticeAvailable}
-            electronFix
-          >
-            {t("global.legalNotice")}
-          </LinkCreator>
-        </div>
-        <div className={`nav-legal-wrapper ${!isTermsAvailable && "hidden"}`}>
-          <PolicyIcon />
-          <LinkCreator
-            path="/terms-and-conditions"
-            setValid={setIsTermsAvailable}
-          >
-            {t("global.termsAndConditions")}
-          </LinkCreator>
-        </div>
-        <div className={`nav-legal-wrapper ${!isPrivacyAvailable && "hidden"}`}>
-          <SecurityIcon />
-          <LinkCreator path="/privacy-policy" setValid={setIsPrivacyAvailable}>
-            {t("global.privacyPolicy")}
-          </LinkCreator>
-        </div>
+        <LinkCreator path="/legal-notice" electronFix shouldBeValid={true}>
+          {({ isValid, url }) => {
+            isValid && (
+              <div className="nav-legal-wrapper">
+                <VerifiedUserIcon />
+                <a href={url}>{t("global.legalNotice")}</a>
+              </div>
+            );
+          }}
+        </LinkCreator>
+
+        <LinkCreator path="/terms-and-conditions" shouldBeValid={true}>
+          {({ isValid, url }) => {
+            isValid && (
+              <div className="nav-legal-wrapper">
+                <PolicyIcon />
+                <a href={url}>{t("global.termsAndConditions")}</a>
+              </div>
+            );
+          }}
+        </LinkCreator>
+
+        <LinkCreator path="/privacy-policy" shouldBeValid={true}>
+          {({ isValid, url }) => {
+            isValid && (
+              <div className="nav-legal-wrapper">
+                <SecurityIcon />
+                <a href={url}>{t("global.privacyPolicy")}</a>
+              </div>
+            );
+          }}
+        </LinkCreator>
       </div>
     </div>
   );

@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { checkUrlAvailable } from "../../utils/api.js";
 import { vocascanServer } from "../../utils/constants.js";
 
-import "./LinkCreator.scss";
-
-const LinkCreator = ({ path, setValid, electronFix = false, children }) => {
+const LinkCreator = ({
+  path,
+  children,
+  electronFix = false,
+  shouldBeValid = true,
+}) => {
   const selfHosted = useSelector((state) => state.login.selfHosted);
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const appLanguage = useSelector((state) => state.setting.language);
 
+  const [isValid, setIsValid] = useState(shouldBeValid);
   const [url, setUrl] = useState("");
 
   const { BASE_URL: baseURL, ENV: env } = window.VOCASCAN_CONFIG;
@@ -32,18 +36,14 @@ const LinkCreator = ({ path, setValid, electronFix = false, children }) => {
   useEffect(() => {
     checkUrlAvailable(url)
       .then((response) => {
-        return setValid(true);
+        return setIsValid(true);
       })
       .catch((error) => {
-        return setValid(false);
+        return setIsValid(false);
       });
-  }, [setValid, url]);
+  }, [url]);
 
-  return (
-    <a className="link-creator" href={url}>
-      {children}
-    </a>
-  );
+  return children({ isValid, url });
 };
 
 export default LinkCreator;
