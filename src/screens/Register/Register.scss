@@ -63,12 +63,17 @@
       font-size: 14px;
       margin: 3px 0;
 
-      &.hidden {
-        display: none;
-      }
-
       .label {
         margin-left: 5px;
+
+        a {
+          color: $color-primary;
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

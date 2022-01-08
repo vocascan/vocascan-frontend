@@ -355,8 +355,8 @@ const Register = ({ image }) => {
               />
             )}
 
-            <LinkCreator path="/terms-and-conditions" shouldBeValid={true}>
-              {({ isValid, url }) => {
+            <LinkCreator path="/privacy-policy">
+              {({ isValid, url }) =>
                 isValid && (
                   <div className={"checkbox-wrapper"}>
                     <input
@@ -365,16 +365,16 @@ const Register = ({ image }) => {
                       onChange={handleReadPrivacy}
                     />
                     <label className="label">
-                      <p>{privacyTextBefore}</p>
+                      {privacyTextBefore}
                       <a href={url}>{privacyTextLink}</a>
-                      <p>{privacyTextAfter}</p>
+                      {privacyTextAfter}
                     </label>
                   </div>
-                );
-              }}
+                )
+              }
             </LinkCreator>
-            <LinkCreator path="/terms-and-conditions" shouldBeValid={true}>
-              {({ isValid, url }) => {
+            <LinkCreator path="/terms-and-conditions">
+              {({ isValid, url }) =>
                 isValid && (
                   <div className={"checkbox-wrapper"}>
                     <input
@@ -383,13 +383,13 @@ const Register = ({ image }) => {
                       onChange={handleAcceptTerms}
                     />
                     <label className="label">
-                      <p>{termsTextBefore}</p>
+                      {termsTextBefore}
                       <a href={url}>{termsTextLink}</a>
-                      <p>{termsTextAfter}</p>
+                      {termsTextAfter}
                     </label>
                   </div>
-                );
-              }}
+                )
+              }
             </LinkCreator>
           </div>
           <div className="register-form-submit">

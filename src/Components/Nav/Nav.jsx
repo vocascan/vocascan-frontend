@@ -82,37 +82,37 @@ const Nav = () => {
       </ul>
 
       <div className="nav-legal">
-        <LinkCreator path="/legal-notice" electronFix shouldBeValid={true}>
-          {({ isValid, url }) => {
+        <LinkCreator path="/legal-notice" electronFix>
+          {({ isValid, url }) =>
             isValid && (
               <div className="nav-legal-wrapper">
                 <VerifiedUserIcon />
                 <a href={url}>{t("global.legalNotice")}</a>
               </div>
-            );
-          }}
+            )
+          }
         </LinkCreator>
 
-        <LinkCreator path="/terms-and-conditions" shouldBeValid={true}>
-          {({ isValid, url }) => {
+        <LinkCreator path="/terms-and-conditions">
+          {({ isValid, url }) =>
             isValid && (
               <div className="nav-legal-wrapper">
                 <PolicyIcon />
                 <a href={url}>{t("global.termsAndConditions")}</a>
               </div>
-            );
-          }}
+            )
+          }
         </LinkCreator>
 
-        <LinkCreator path="/privacy-policy" shouldBeValid={true}>
-          {({ isValid, url }) => {
+        <LinkCreator path="/privacy-policy">
+          {({ isValid, url }) =>
             isValid && (
               <div className="nav-legal-wrapper">
                 <SecurityIcon />
                 <a href={url}>{t("global.privacyPolicy")}</a>
               </div>
-            );
-          }}
+            )
+          }
         </LinkCreator>
       </div>
     </div>

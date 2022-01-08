@@ -4,17 +4,12 @@ import { useSelector } from "react-redux";
 import { checkUrlAvailable } from "../../utils/api.js";
 import { vocascanServer } from "../../utils/constants.js";
 
-const LinkCreator = ({
-  path,
-  children,
-  electronFix = false,
-  shouldBeValid = true,
-}) => {
+const LinkCreator = ({ path, children, electronFix = false }) => {
   const selfHosted = useSelector((state) => state.login.selfHosted);
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const appLanguage = useSelector((state) => state.setting.language);
 
-  const [isValid, setIsValid] = useState(shouldBeValid);
+  const [isValid, setIsValid] = useState(true);
   const [url, setUrl] = useState("");
 
   const { BASE_URL: baseURL, ENV: env } = window.VOCASCAN_CONFIG;
@@ -43,7 +38,7 @@ const LinkCreator = ({
       });
   }, [url]);
 
-  return children({ isValid, url });
+  return children({ isValid, url }) || null;
 };
 
 export default LinkCreator;
