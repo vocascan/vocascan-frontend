@@ -27,7 +27,7 @@ const LinkCreator = ({ path, children, electronFix = false }) => {
     }
   }, [appLanguage, baseURL, electronFix, env, path, selfHosted, serverAddress]);
 
-  //check if url is available
+  // check if url is available
   useEffect(() => {
     checkUrlAvailable(url)
       .then((response) => {
