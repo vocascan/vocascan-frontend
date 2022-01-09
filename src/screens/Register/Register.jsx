@@ -358,7 +358,7 @@ const Register = ({ image }) => {
             <LinkCreator path="/privacy-policy">
               {({ isValid, url }) =>
                 isValid && (
-                  <div className={"checkbox-wrapper"}>
+                  <div className="checkbox-wrapper">
                     <input
                       type="checkbox"
                       name="privacy"
@@ -376,7 +376,7 @@ const Register = ({ image }) => {
             <LinkCreator path="/terms-and-conditions">
               {({ isValid, url }) =>
                 isValid && (
-                  <div className={"checkbox-wrapper"}>
+                  <div className="checkbox-wrapper">
                     <input
                       type="checkbox"
                       name="terms"
