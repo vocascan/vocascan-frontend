@@ -87,7 +87,9 @@ const Nav = () => {
             isValid && (
               <div className="nav-legal-wrapper">
                 <VerifiedUserIcon />
-                <a href={url}>{t("global.legalNotice")}</a>
+                <a target="_blank" href={url} rel="noreferrer">
+                  {t("global.legalNotice")}
+                </a>
               </div>
             )
           }
@@ -98,7 +100,9 @@ const Nav = () => {
             isValid && (
               <div className="nav-legal-wrapper">
                 <PolicyIcon />
-                <a href={url}>{t("global.termsAndConditions")}</a>
+                <a target="_blank" href={url} rel="noreferrer">
+                  {t("global.termsAndConditions")}
+                </a>
               </div>
             )
           }
@@ -109,7 +113,9 @@ const Nav = () => {
             isValid && (
               <div className="nav-legal-wrapper">
                 <SecurityIcon />
-                <a href={url}>{t("global.privacyPolicy")}</a>
+                <a target="_blank" href={url} rel="noreferrer">
+                  {t("global.privacyPolicy")}
+                </a>
               </div>
             )
           }

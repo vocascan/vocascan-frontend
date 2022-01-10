@@ -366,7 +366,9 @@ const Register = ({ image }) => {
                     />
                     <label className="label">
                       {privacyTextBefore}
-                      <a href={url}>{privacyTextLink}</a>
+                      <a target="_blank" href={url} rel="noreferrer">
+                        {privacyTextLink}
+                      </a>
                       {privacyTextAfter}
                     </label>
                   </div>
@@ -384,7 +386,9 @@ const Register = ({ image }) => {
                     />
                     <label className="label">
                       {termsTextBefore}
-                      <a href={url}>{termsTextLink}</a>
+                      <a target="_blank" href={url} rel="noreferrer">
+                        {termsTextLink}
+                      </a>
                       {termsTextAfter}
                     </label>
                   </div>
