@@ -25,10 +25,10 @@ export const register = (data, code = null) =>
 export const changePassword = (data) => api.patch("/user/reset-password", data);
 
 // Legal
-export const checkUrlAvailable = (url) => {
+export const checkUrlAvailable = (url, cancelToken) => {
   const checkApi = axios.create();
 
-  return checkApi.get(url);
+  return checkApi.get(url, { cancelToken });
 };
 
 // User

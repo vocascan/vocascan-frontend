@@ -1,3 +1,4 @@
+import { CancelToken } from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
@@ -29,13 +30,18 @@ const LinkCreator = ({ path, children, electronFix = false }) => {
 
   // check if url is available
   useEffect(() => {
-    checkUrlAvailable(url)
+    const cancelToken = CancelToken.source();
+
+    checkUrlAvailable(url, cancelToken.token)
       .then((response) => {
         return setIsValid(true);
       })
       .catch((error) => {
         return setIsValid(false);
       });
+    return () => {
+      cancelToken.cancel();
+    };
   }, [url]);
 
   return children({ isValid, url }) || null;
