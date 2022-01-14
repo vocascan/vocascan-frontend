@@ -86,6 +86,7 @@ const App = () => {
   if (!isLoggedIn) {
     return (
       <HashRouter>
+        {!showPlans && <CookieConsentBanner />}
         <Switch>
           {showPlans && <Route path="/plans" component={SelectionScreen} />}
           <Route path="/login" component={() => <Login image={Image} />} />
