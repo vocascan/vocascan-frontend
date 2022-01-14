@@ -11,10 +11,34 @@
   justify-content: space-between;
   transition: width 0.2s ease-in;
 
+  .nav-legal {
+    color: $color-white;
+    margin: 10px auto;
+    font-size: 15px;
+    opacity: 0;
+
+    .nav-legal-wrapper {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+
+      a {
+        margin-left: 5px;
+        color: $color-white;
+        text-decoration: none;
+      }
+    }
+  }
+
   &.nav-default {
     &:hover {
       width: 200px;
       transition: width 0.2s ease-in;
+
+      .nav-legal {
+        opacity: 100;
+        transition: all 0.6s ease-in;
+      }
     }
   }
 

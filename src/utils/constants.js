@@ -1,5 +1,11 @@
 export const vocascanServer = "https://web.vocascan.com";
 
+export const pages = {
+  legalNotice: "/p/legal-notice",
+  privacyPolicy: "/p/privacy-policy",
+  termsAndConditions: "/p/terms-and-conditions",
+};
+
 export const maxTranslations = 10;
 
 export const defaultLimit = 100;
