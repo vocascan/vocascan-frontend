@@ -241,10 +241,9 @@
       "heading": "Select your option",
       "vocascanCloud": {
         "heading": "Vocascan cloud",
-        "pro": ["No need of a server", "sync every device"],
+        "pro": ["No need of a server", "sync every device", "Always and everywhere reachable", "Completely free"],
         "contra": [
-          "Your data is stored on vocascan servers",
-          "Not available for now"
+          "Your data is stored on Vocascan servers"
         ],
         "button": "Start for free"
       },
