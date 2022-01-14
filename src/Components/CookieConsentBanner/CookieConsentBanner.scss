@@ -1,5 +1,6 @@
 @import "../../colors";
 
+/* stylelint-disable selector-class-pattern */
 .CookieConsent {
   width: 40%;
   background: $color-background-inverse;
@@ -21,8 +22,8 @@
 
   button {
     background: $color-primary;
-    border: 0px;
-    border-radius: 0px;
+    border: 0;
+    border-radius: 0;
     box-shadow: none;
     color: $color-main-text-inverse;
     cursor: pointer;
@@ -35,3 +36,4 @@
     color: $color-primary;
   }
 }
+/* stylelint-enable selector-class-pattern */
