@@ -12,10 +12,13 @@ import SecurityIcon from "@material-ui/icons/Security";
 import StyleIcon from "@material-ui/icons/Style";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 
-import LinkCreator from "../LinkCreator/LinkCreator.jsx";
 import NavButton from "./NavButton.jsx";
 
+import useLinkCreator from "../../hooks/useLinkCreator.js";
+
 import "./Nav.scss";
+
+import { pages } from "../../utils/constants";
 
 const Nav = () => {
   const { t } = useTranslation();
@@ -28,6 +31,15 @@ const Nav = () => {
     `nav-${menuStyle}`,
     loading && "nav-loading"
   );
+
+  const { isValid: isLegalNoticeValid, url: legalNoticeUrl } = useLinkCreator({
+    path: pages.legalNotice,
+    electronFix: true,
+  });
+  const { isValid: isTermsAndConditionsValid, url: termsAndConditionsUrl } =
+    useLinkCreator({ path: pages.termsAndConditions });
+  const { isValid: isPrivacyPolicyValid, url: privacyPolicyUrl } =
+    useLinkCreator({ path: pages.privacyPolicy });
 
   useEffect(() => {
     if (menuStyle === initialStyle) {
@@ -82,44 +94,32 @@ const Nav = () => {
       </ul>
 
       <div className="nav-legal">
-        <LinkCreator path="/legal-notice" electronFix>
-          {({ isValid, url }) =>
-            isValid && (
-              <div className="nav-legal-wrapper">
-                <VerifiedUserIcon />
-                <a target="_blank" href={url} rel="noreferrer">
-                  {t("global.legalNotice")}
-                </a>
-              </div>
-            )
-          }
-        </LinkCreator>
+        {isLegalNoticeValid && (
+          <div className="nav-legal-wrapper">
+            <VerifiedUserIcon />
+            <a target="_blank" href={legalNoticeUrl} rel="noreferrer">
+              {t("global.legalNotice")}
+            </a>
+          </div>
+        )}
 
-        <LinkCreator path="/terms-and-conditions">
-          {({ isValid, url }) =>
-            isValid && (
-              <div className="nav-legal-wrapper">
-                <PolicyIcon />
-                <a target="_blank" href={url} rel="noreferrer">
-                  {t("global.termsAndConditions")}
-                </a>
-              </div>
-            )
-          }
-        </LinkCreator>
+        {isTermsAndConditionsValid && (
+          <div className="nav-legal-wrapper">
+            <PolicyIcon />
+            <a target="_blank" href={termsAndConditionsUrl} rel="noreferrer">
+              {t("global.termsAndConditions")}
+            </a>
+          </div>
+        )}
 
-        <LinkCreator path="/privacy-policy">
-          {({ isValid, url }) =>
-            isValid && (
-              <div className="nav-legal-wrapper">
-                <SecurityIcon />
-                <a target="_blank" href={url} rel="noreferrer">
-                  {t("global.privacyPolicy")}
-                </a>
-              </div>
-            )
-          }
-        </LinkCreator>
+        {isPrivacyPolicyValid && (
+          <div className="nav-legal-wrapper">
+            <SecurityIcon />
+            <a target="_blank" href={privacyPolicyUrl} rel="noreferrer">
+              {t("global.privacyPolicy")}
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

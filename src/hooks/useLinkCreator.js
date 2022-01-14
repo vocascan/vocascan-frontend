@@ -1,11 +1,11 @@
 import { CancelToken } from "axios";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { checkUrlAvailable } from "../../utils/api.js";
-import { vocascanServer } from "../../utils/constants.js";
+import { checkUrlAvailable } from "../utils/api.js";
+import { vocascanServer } from "../utils/constants.js";
 
-const LinkCreator = ({ path, children, electronFix = false }) => {
+const useLinkCreator = ({ path, electronFix = false }) => {
   const selfHosted = useSelector((state) => state.login.selfHosted);
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const appLanguage = useSelector((state) => state.setting.language);
@@ -34,17 +34,16 @@ const LinkCreator = ({ path, children, electronFix = false }) => {
 
     checkUrlAvailable(url, cancelToken.token)
       .then((response) => {
-        return setIsValid(true);
+        setIsValid(true);
       })
       .catch((error) => {
-        return setIsValid(false);
+        setIsValid(false);
       });
-    return () => {
-      cancelToken.cancel();
-    };
+
+    return () => cancelToken.cancel();
   }, [url]);
 
-  return children({ isValid, url }) || null;
+  return { isValid, url };
 };
 
-export default LinkCreator;
+export default useLinkCreator;

@@ -10,14 +10,15 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import InviteCodeValidIndicator from "../../Components/Indicators/InviteCodeValidIndicator/InviteCodeValidIndicator.jsx";
 import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
-import LinkCreator from "../../Components/LinkCreator/LinkCreator.jsx";
 
+import useLinkCreator from "../../hooks/useLinkCreator.js";
 import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, register } from "../../redux/Actions/login.js";
 import { register as registerAPI, getLanguages } from "../../utils/api.js";
 import {
   maxTextfieldLength,
   maxUsernameLength,
+  pages,
 } from "../../utils/constants.js";
 
 import "./Register.scss";
@@ -55,6 +56,11 @@ const Register = ({ image }) => {
   const [readPrivacy, setReadPrivacy] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
+
+  const { isValid: isPrivacyPolicyValid, url: privacyPolicyUrl } =
+    useLinkCreator({ path: pages.privacyPolicy });
+  const { isValid: isTermsAndConditionsValid, url: termsAndConditionsUrl } =
+    useLinkCreator({ path: pages.termsAndConditions });
 
   const dispatch = useDispatch();
 
@@ -186,8 +192,8 @@ const Register = ({ image }) => {
         !isSamePassword ||
         !isEmailValid ||
         !isUsernameValid ||
-        !readPrivacy ||
-        !acceptTerms
+        (isPrivacyPolicyValid && !readPrivacy) ||
+        (isTermsAndConditionsValid && !acceptTerms)
       )
     );
   }, [
@@ -206,6 +212,8 @@ const Register = ({ image }) => {
     isUsernameValid,
     readPrivacy,
     acceptTerms,
+    isPrivacyPolicyValid,
+    isTermsAndConditionsValid,
   ]);
 
   useEffect(() => {
@@ -355,46 +363,43 @@ const Register = ({ image }) => {
               />
             )}
 
-            <LinkCreator path="/privacy-policy">
-              {({ isValid, url }) =>
-                isValid && (
-                  <div className="checkbox-wrapper">
-                    <input
-                      type="checkbox"
-                      name="privacy"
-                      onChange={handleReadPrivacy}
-                    />
-                    <label className="label">
-                      {privacyTextBefore}
-                      <a target="_blank" href={url} rel="noreferrer">
-                        {privacyTextLink}
-                      </a>
-                      {privacyTextAfter}
-                    </label>
-                  </div>
-                )
-              }
-            </LinkCreator>
-            <LinkCreator path="/terms-and-conditions">
-              {({ isValid, url }) =>
-                isValid && (
-                  <div className="checkbox-wrapper">
-                    <input
-                      type="checkbox"
-                      name="terms"
-                      onChange={handleAcceptTerms}
-                    />
-                    <label className="label">
-                      {termsTextBefore}
-                      <a target="_blank" href={url} rel="noreferrer">
-                        {termsTextLink}
-                      </a>
-                      {termsTextAfter}
-                    </label>
-                  </div>
-                )
-              }
-            </LinkCreator>
+            {isPrivacyPolicyValid && (
+              <div className="checkbox-wrapper">
+                <input
+                  type="checkbox"
+                  name="privacy"
+                  onChange={handleReadPrivacy}
+                />
+                <label className="label">
+                  {privacyTextBefore}
+                  <a target="_blank" href={privacyPolicyUrl} rel="noreferrer">
+                    {privacyTextLink}
+                  </a>
+                  {privacyTextAfter}
+                </label>
+              </div>
+            )}
+
+            {isTermsAndConditionsValid && (
+              <div className="checkbox-wrapper">
+                <input
+                  type="checkbox"
+                  name="terms"
+                  onChange={handleAcceptTerms}
+                />
+                <label className="label">
+                  {termsTextBefore}
+                  <a
+                    target="_blank"
+                    href={termsAndConditionsUrl}
+                    rel="noreferrer"
+                  >
+                    {termsTextLink}
+                  </a>
+                  {termsTextAfter}
+                </label>
+              </div>
+            )}
           </div>
           <div className="register-form-submit">
             <Button
