@@ -36,8 +36,9 @@ jobs:
 
       - name: Install dependency
         run: |
-          rm package*.json
+          mv package.json package.json.bak
           npm install --no-package-lock --no-save semver
+          mv package.json.bak package.json
 
       - name: Extract version
         uses: actions/github-script@v5

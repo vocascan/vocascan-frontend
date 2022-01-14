@@ -1,0 +1,297 @@
+{
+  "components": {
+    "groupForm": {
+      "activeLabel": "Aktywny",
+      "languagePackage": "Pakiet",
+      "modifyGroupFailMessage": "Nie powiodło się zapisać grupy",
+      "modifyGroupSuccessMessage": "Grupa zapisana",
+      "savGroupFailMessage": "Nie powiodło się dodać grupy",
+      "saveGroupSuccessMessage": "Dodano nową grupę"
+    },
+    "languageSelector": {
+      "label": "Język"
+    },
+    "packageForm": {
+      "correctTranslationsGoal": "Poprawne tłumaczenia aby mieć udane pary słownictwa",
+      "foreignLanguage": "Język obcy",
+      "modifyPackageFailedMessage": "Nie powiodło się zapisać pakietu",
+      "modifyPackageSuccessMessage": "Pakiet zapisany",
+      "savePackageFailMessage": "Nie powiodło sié dodać pakietu",
+      "savePackageSuccessMessage": "Dodano nowy pakiet",
+      "translatedLanguage": "Przetłumaczony język",
+      "vocabsPerDay": "Słówka dziennie"
+    },
+    "packageOverview": {
+      "today": "Dzisiaj:",
+      "unactivated": "Nie aktywowano:",
+      "unresolved": "Razem do nauki:"
+    },
+    "validServerIndicator": {
+      "serverNotResponding": "✗ Serwer nie odpowiada",
+      "serverNotVocascanServer": "✗ serwer nie jest serwerem vocascan",
+      "validServer": "✓ prawidłowy serwer (v {{version}})",
+      "versionToOld": "✗ wersja serwera v {{version}} jest nieaktualna. Wymagane jest min v {{minVersion}}"
+    },
+    "vocabForm": {
+      "activateLabel": "Aktywuj",
+      "activateTooltip": "Decyduje czy słownictwo musi być aktywowane oddzielnie aby móc go używać w query",
+      "activeLabel": "Aktywny",
+      "activeTooltip": "Decyduje czy słownictwo jest zawarte w query",
+      "addTranslation": "Dodaj tłumaczenie",
+      "modifyErrorMessage": "Nie powiodło sie zapisać słownictwa",
+      "modifySuccessMessage": "Słownictwo zapisane",
+      "noGroupsMessage": "Nie znaleziono grup",
+      "noPackagesMessage": "Nie znaleziono pakietów",
+      "saveErrorMessage": "Nie powiodło sie dodać nowego słownictwa",
+      "saveGroupSuccessMessage": "Dodano nową grupę",
+      "saveSuccessMessage": "Słownictwo dodane"
+    }
+  },
+  "contributors": {
+    "desktop": "Współautorzy Vocascan desktop",
+    "miscellaneous": "Inni współautorzy",
+    "server": "Współautorzy serwerów Vocascan"
+  },
+  "global": {
+    "LogIn": "Login",
+    "abort": "Anuluj",
+    "activate": "Aktywuj",
+    "add": "Dodaj",
+    "close": "Zamknij",
+    "continue": "Dalej",
+    "correct": "Poprawnie",
+    "delete": "Usuń",
+    "description": "Opis",
+    "email": "Email",
+    "fetchError": "Wystąpił błąd. Spróbuj ponownie później.",
+    "foreignWord": "Wyraz obcy",
+    "group": "Grupa",
+    "groups": "Grupy",
+    "learn": "Ucz się",
+    "library": "Biblioteka",
+    "name": "Imię",
+    "noOptionMessage": "Brak wyboru",
+    "none": "Brak",
+    "package": "Pakiet",
+    "packages": "Pakiety",
+    "paginationPage": "Strona {{page}} z {{pageLength}}",
+    "paginationShow": "Pokaż {{size}}",
+    "password": "Hasło",
+    "passwordRepeat": "Powtórz hasło",
+    "random": "Losowe",
+    "save": "Zapisz",
+    "server": "Serwer",
+    "serverNotResponding": "Serwer nie odpowiada",
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się",
+    "skip": "Pomiń",
+    "submit": "Potwierdź",
+    "successMessage": "Powodzenie",
+    "total": "Łącznie",
+    "translation": "Tłumaczenie",
+    "username": "Nazwa użytkownika",
+    "vocabs": "Słówka",
+    "vocascan": "Vocascan",
+    "wrong": "Niepoprawne"
+  },
+  "languages": {
+    "English": "Angielski",
+    "French": "Francuski",
+    "German": "Niemiecki",
+    "Portuguese": "Portugalski",
+    "Russian": "Rosyjski",
+    "Spanish": "Hiszpański",
+    "Turkish": "Turecki"
+  },
+  "modal": {
+    "changeEmail": {
+      "heading": "Zmień adres e-mail"
+    },
+    "changePassword": {
+      "heading": "Zmień hasło",
+      "oldPasswordError": "Stare hasło jest nieprawidłowe"
+    },
+    "deleteAccount": {
+      "heading": "Usuń konto",
+      "input": "Wpisz nazwę użytkownika aby potwierdzić"
+    },
+    "selectLanguage": {
+      "title": "Wybierz język aplikacji."
+    },
+    "serverNotSupported": {
+      "serverNotVocascanServer": "Ten serwer nie wygląda jak serwer vocascan.",
+      "title": "Serwer nieobsługiwany",
+      "versionToOld": "Serwer vocascan ma wersję v {{version}}, ale nie jest już obsługiwany przez klienta, ponieważ wymagane jest co najmniej v {{minVersion}}. Skontaktuj się z administratorem serwera, aby zaktualizować wersję serwera."
+    }
+  },
+  "nav": {
+    "allVocabulary": "Biblioteka",
+    "custom": "Niestandardowy",
+    "learn": "Ucz się",
+    "logout": "Wyloguj",
+    "newVocab": "Nowy słówek",
+    "profile": "Profil",
+    "progress": "Postęp",
+    "settings": "Ustawienia"
+  },
+  "screens": {
+    "about": {
+      "title": "O vocascan"
+    },
+    "addVocab": {
+      "title": "Dodaj słownictwo"
+    },
+    "allGroups": {
+      "active": "Aktywny",
+      "addGroup": "Dodaj grupę",
+      "deleteDescription": "Czy na pewno usunąć grupę {{name}}?",
+      "deleteFailMessage": "Nie powiodło się usunąć grupy",
+      "deleteSuccessMessage": "Usunięto grupę",
+      "deleteTitle": "Usuń grupę",
+      "editGroup": "Edytuj grupę",
+      "groupDescription": "Opis",
+      "groupName": "Grupa",
+      "title": "Wszystkie grupy"
+    },
+    "allPackages": {
+      "addPackage": "Dodaj pakiet",
+      "deleteDescription": "Czy na pewno usunąć pakiet {{name}}?",
+      "deleteFailMessage": "Nie powiodło się usunąć pakietu",
+      "deleteSuccessMessage": "Pakiet usunięty",
+      "deleteTitle": "Usuń pakiet",
+      "editPackage": "Edytuj pakiet",
+      "foreignLanguage": "Język obcy",
+      "packageName": "Pakiet",
+      "rightWords": "Prawidłowe słowa",
+      "title": "Wszystkie pakiety",
+      "translatedLanguage": "Przetłumaczony język",
+      "vocabsPerDay": "Słownik/dzień"
+    },
+    "allVocabs": {
+      "addVocab": "Dodaj słownictwo",
+      "deleteDescription": "Czy na pewno usunąć słownictwo {{name}}?",
+      "deleteFailMessage": "Nie powiodło się usunąć słownictwo",
+      "deleteSuccessMessage": "Słownictwo usunięte",
+      "deleteTitle": "Usuń słownictwo",
+      "editVocab": "Edytuj słownictwo",
+      "title": "Wszystkie słownictwa",
+      "translations": "Tłumaczenia"
+    },
+    "custom": {
+      "title": "Nauka niestandardowa"
+    },
+    "dashboard": {
+      "empty": "Nie znaleziono pakietów"
+    },
+    "direction": {
+      "title": "Proszę wybrać kierunek tłumaczenia"
+    },
+    "endScreen": {
+      "dashboard": "Powrót do panelu",
+      "percentageText": "rozwiązałeś poprawnie {{percentage}}% słownictwa"
+    },
+    "firstStartup": {
+      "savePackageSuccessMessage": "Dodano nowy pakiet",
+      "title": "Utwórz swój pierwszy pakiet słownictwa"
+    },
+    "guide": {
+      "end": {
+        "description": "Baw się dobrze wypróbowywać Vocascan",
+        "heading": "Teraz jesteś gotowy"
+      },
+      "groupDescription": {
+        "endText": "Następnie stworzymy grupę."
+      },
+      "packageDescription": {
+        "bulletPoints": [
+          "Głównym elementem tego trenera są pakiety, w których można przechowywać wszystkie swoje słowniki z języka.",
+          "Pakiety mogą być tworzone przez dialog wyboru pakietu lub w bibliotece nad ikoną +, jak widać na lewym obrazie"
+        ]
+      },
+      "start": {
+        "slogan": "Wysoko konfigurowalny trener słownictwa"
+      },
+      "vocabDescription": {
+        "endText": "W następnym kroku stworzymy kartę słownictwa",
+        "heading": "Teraz dochodzimy do najważniejszej części Vocascan - karty słownictwa -"
+      }
+    },
+    "login": {
+      "dontHaveAccount": "Nie posiadasz konta?",
+      "title": "Zaloguj się",
+      "wrongCredentials": "Twój e-mail lub hasło jest nieprawidłowe"
+    },
+    "profile": {
+      "accountSettings": {
+        "delete": {
+          "description": "Po usunięciu konta przywrócenie nie będzie możliwe",
+          "title": "Usuń konto"
+        },
+        "email": {
+          "description": "Uważaj aby użyć poprawnego emaila",
+          "title": "Zmień adres email"
+        },
+        "password": {
+          "description": "Zmień obecne hasło jeśli te zapomniałeś",
+          "title": "Zmień hasło"
+        },
+        "title": "Ustawienia konta"
+      },
+      "stats": {
+        "active": "Aktywny",
+        "inactive": "Nieaktywne",
+        "stats": "Statystyki",
+        "total": "Totalnie"
+      }
+    },
+    "progress": {
+      "title": "Postęp"
+    },
+    "register": {
+      "alreadyHaveAccount": "Posiadasz już konto?",
+      "emailInUse": "E-mail jest już używany",
+      "passwordsDontMatch": "Hasła nie są identyczne",
+      "title": "Zarejestruj",
+      "usernameInUse": "Nazwa użytkownika jest już używana"
+    },
+    "selectionScreen": {
+      "heading": "Wybierz opcję",
+      "title": "Zaloguj się",
+      "vocascanCloud": {
+        "button": "Zacznij za darmo",
+        "contra": [
+          "Twoje dane są przechowywane na serwerach vocascan",
+          "Na razie niedostępne"
+        ],
+        "heading": "Vocascan cloud",
+        "pro": [
+          "Nie ma potrzeby korzystania z serwera",
+          "synchronizuj każde urządzenie"
+        ]
+      },
+      "vocascanServer": {
+        "button": "Zacznij za darmo",
+        "contra": [
+          "Potrzebny jest własny serwer",
+          "Potrzebujesz trochę czasu aby skonfigurować serwer"
+        ],
+        "heading": "Serwer Vocascan",
+        "pro": [
+          "synchronizuj każde urządzenie",
+          "Korzystaj z własnego serwera",
+          "Pełna kontrola nad ustawieniami"
+        ]
+      }
+    },
+    "settings": {
+      "desktopVersion": "Wersja desktop",
+      "menu": {
+        "label": "Styl menu",
+        "optionLeft": "Domyślne",
+        "optionRight": "Fancy"
+      },
+      "serverVersion": "Wersja serwera",
+      "title": "Ustawienia"
+    }
+  }
+}
