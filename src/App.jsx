@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, HashRouter, Redirect, Switch } from "react-router-dom";
 
+import CookieConsentBanner from "./Components/CookieConsentBanner/CookieConsentBanner.jsx";
 import LoadingIndicator from "./Components/Indicators/LoadingIndicator/LoadingIndicator.jsx";
 import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
 import CleanLayout from "./Components/Layout/CleanLayout/CleanLayout.jsx";
@@ -104,6 +105,7 @@ const App = () => {
         <SnackbarProvider>
           <AuthenticatedLayout>
             <Guide />
+            <CookieConsentBanner />
             <Switch>
               <Route path="/addVocab" component={AddVocab} />
               <Route path="/learn" component={Learn} />
