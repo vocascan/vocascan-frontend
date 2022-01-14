@@ -34,6 +34,11 @@
 
   .cookie-consent-link {
     color: $color-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 /* stylelint-enable selector-class-pattern */
