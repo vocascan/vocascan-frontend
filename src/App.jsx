@@ -39,7 +39,7 @@ const App = () => {
   const user = useSelector((state) => state.login.user);
 
   const shouldLogin = !!user.token && !isLoggedIn;
-  const { SHOW_PLANS: showPlans } = window.VOCASCAN_CONFIG;
+  const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
 
   // Try login if token is set
   useEffect(() => {
@@ -86,7 +86,7 @@ const App = () => {
   if (!isLoggedIn) {
     return (
       <HashRouter>
-        {!showPlans && <CookieConsentBanner />}
+        {baseURL && <CookieConsentBanner />}
         <Switch>
           {showPlans && <Route path="/plans" component={SelectionScreen} />}
           <Route path="/login" component={() => <Login image={Image} />} />
