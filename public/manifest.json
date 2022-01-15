@@ -3,10 +3,19 @@
   "name": "Vocascan | Web",
   "icons": [
     {
-      "src": "logo.svg",
-      "sizes": "48x48 72x72 96x96 128x128 256x256",
-      "type": "image/svg+xml",
-      "purpose": "any"
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
