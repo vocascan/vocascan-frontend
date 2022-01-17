@@ -108,6 +108,7 @@
     "import": "Importieren",
     "inviteCode": "Einladungscode",
     "learn": "Lernen",
+    "legalNotice": "Impressum",
     "library": "Bibliothek",
     "name": "Name",
     "noOptionMessage": "Keine Optionen",
@@ -118,6 +119,7 @@
     "paginationShow": "Zeige {{size}}",
     "password": "Passwort",
     "passwordRepeat": "Passwort wiederholen",
+    "privacyPolicy": "Datenschutzerklärung",
     "query": "Abfrage",
     "random": "Zufällig",
     "rightWords": "Richtige Wörter",
@@ -129,6 +131,7 @@
     "skip": "Überspringen",
     "submit": "Absenden",
     "successMessage": "Erfolgreich!",
+    "termsAndConditions": "AGBs",
     "total": "Gesamt",
     "translation": "Übersetzung",
     "username": "Benutzername",
@@ -340,10 +343,12 @@
       "title": "Fortschritt"
     },
     "register": {
+      "acceptTerms": "Ich akzeptiere die [AGBs].",
       "alreadyHaveAccount": "Du hast bereits ein Konto?",
       "emailInUse": "Die E-Mail wird bereits verwendet",
       "emailNotValid": "Keine gültige E-Mail Adresse",
       "passwordsDontMatch": "Die Passwörter stimmen nicht überein",
+      "readPrivacy": "Ich habe die [Datenschutzerklärung] gelesen",
       "title": "Registrieren",
       "usernameInUse": "Der Benutzername ist schon vergeben",
       "usernameNotValid": "Der Benutzername sollte 2-72 Zeichen lang sein"
