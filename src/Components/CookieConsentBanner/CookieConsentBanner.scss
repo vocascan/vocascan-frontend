@@ -1,0 +1,44 @@
+@import "../../colors";
+
+/* stylelint-disable selector-class-pattern */
+.CookieConsent {
+  width: 40%;
+  background: $color-background-inverse;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: $color-main-text-inverse;
+  position: absolute;
+  z-index: 999;
+  padding: 15px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  div {
+    margin: auto 0;
+  }
+
+  button {
+    background: $color-primary;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: $color-main-text-inverse;
+    cursor: pointer;
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    margin-left: 15px;
+  }
+
+  .cookie-consent-link {
+    color: $color-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+/* stylelint-enable selector-class-pattern */
