@@ -10,6 +10,10 @@ import I18nProvider from "./i18n/I18nProvider.js";
 import store from "./redux/Store/index.js";
 import reportWebVitals from "./reportWebVitals.js";
 
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/700.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
