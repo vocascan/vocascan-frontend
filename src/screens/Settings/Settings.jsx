@@ -6,10 +6,9 @@ import Button from "../../Components/Button/Button.jsx";
 import Switch from "../../Components/Form/Switch/Switch.jsx";
 import LanguageSelector from "../../Components/LanguageSelector/LanguageSelector.jsx";
 
+import VersionTable from "../../Components/VersionTable/VersionTable.js";
 import { openGuide } from "../../redux/Actions/login.js";
 import { setMenuStyle } from "../../redux/Actions/setting.js";
-
-import { version as desktopVersion } from "../../../package.json";
 
 import "./Settings.scss";
 
@@ -18,7 +17,6 @@ const Settings = () => {
 
   const dispatch = useDispatch();
   const menuStyle = useSelector((state) => state.setting.menuStyle);
-  const serverInfo = useSelector((state) => state.login.serverInfo);
 
   const onChangeMenu = useCallback(() => {
     dispatch(
@@ -51,15 +49,9 @@ const Settings = () => {
         </Button>
       </div>
 
-      <h3>
-        {t("screens.settings.desktopVersion")} v{desktopVersion}
-      </h3>
-      {serverInfo && (
-        <h3>
-          {t("screens.settings.serverVersion")} v{serverInfo.version}
-          {serverInfo.commitRef ? ` (${serverInfo.commitRef})` : ""}
-        </h3>
-      )}
+      <h2>{t("screens.settings.versions")}</h2>
+
+      <VersionTable />
     </div>
   );
 };
