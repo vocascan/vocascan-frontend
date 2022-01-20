@@ -60,7 +60,7 @@ const VersionTable = () => {
               #{value.slice(0, 7)}
             </a>
           ) : (
-            ""
+            "-"
           ),
       },
       {
@@ -78,7 +78,7 @@ const VersionTable = () => {
               #{row.original.runId}-{row.original.runNumber}
             </a>
           ) : (
-            ""
+            "-"
           ),
       },
       {
@@ -88,7 +88,7 @@ const VersionTable = () => {
             ? `${date}\n(${t("global.daysAgo", {
                 count: dayDateDiff(new Date(date), new Date()),
               })})`
-            : "",
+            : "-",
         Cell: ({ value }) => <p className="table-cell">{value}</p>,
       },
       {
@@ -98,7 +98,7 @@ const VersionTable = () => {
             ? Object.entries(extra)
                 .map(([key, value]) => `${key}: ${value}`)
                 .join("\n")
-            : "",
+            : "-",
         Cell: ({ value }) => <p className="table-cell">{value}</p>,
       },
     ],
