@@ -66,10 +66,12 @@ const VersionTable = () => {
       {
         Header: t("components.versionTable.headers.build"),
         accessor: "",
-        Cell: ({ row, value }) =>
+        Cell: ({ row }) =>
           row.original.runId && row.original.runNumber ? (
             <a
-              href={`https://github.com/vocascan/${row.original.component}/actions/runs/${row.original.runId}`}
+              href={`https://github.com/vocascan/${
+                row.original.runRepo || row.original.component
+              }/actions/runs/${row.original.runId}`}
               rel="noreferrer"
               target="_blank"
             >
@@ -114,14 +116,17 @@ const VersionTable = () => {
         ? [
             {
               component: "vocascan-desktop",
-              version: "1.1.0",
-              ...desktopInfo,
+              version: desktopInfo?.version,
+              runRepo: desktopInfo?.runRepo,
+              runId: desktopInfo?.runId,
+              runNumber: desktopInfo?.runNumber,
+              date: desktopInfo?.date,
               extra: {
-                Electron: desktopInfo?.electron,
-                Chrome: desktopInfo?.chrome,
-                "Node.js": desktopInfo?.nodeJS,
-                V8: desktopInfo?.v8,
-                OS: desktopInfo?.os,
+                Electron: desktopInfo?.versions?.electron,
+                Chrome: desktopInfo?.versions?.chrome,
+                "Node.js": desktopInfo?.versions?.nodeJS,
+                V8: desktopInfo?.versions?.v8,
+                OS: desktopInfo?.versions?.os,
               },
             },
           ]
