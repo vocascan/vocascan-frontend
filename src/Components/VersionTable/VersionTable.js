@@ -117,6 +117,7 @@ const VersionTable = () => {
             {
               component: "vocascan-desktop",
               version: desktopInfo?.version,
+              commit: desktopInfo?.commit,
               runRepo: desktopInfo?.runRepo,
               runId: desktopInfo?.runId,
               runNumber: desktopInfo?.runNumber,
