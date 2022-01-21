@@ -72,5 +72,6 @@
     "prettier": "^2.5.1",
     "stylelint": "^14.2.0",
     "stylelint-config-sass-guidelines": "^9.0.1"
-  }
+  },
+  "metadata": {}
 }

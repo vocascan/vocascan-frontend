@@ -51,6 +51,22 @@ jobs:
       - name: Install dependencies
         run: npm i
 
+      - name: Add custom metadata
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const fs = require("fs");
+            const packageJSON = require("./package.json");
+
+            packageJSON.metadata = {
+              commit: context.sha,
+              date: new Date().toISOString(),
+              runId: context.runId,
+              runNumber: context.runNumber,
+            }
+
+            fs.writeFileSync("./package.json", JSON.stringify(packageJSON, null, 2), { encoding: "utf-8" })
+
       - name: Build frontend
         run: npm run build
 
