@@ -18,15 +18,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-}
 
-.nav-button-active {
-  .nav-button {
-    background-color: $color-primary;
-  }
-}
-
-.nav-button-default {
   .button-name {
     position: absolute;
     left: 60px;
@@ -50,43 +42,13 @@
   }
 }
 
-.nav-button-fancy {
-  .button-name {
-    position: absolute;
-    left: -200px;
-    transition: all 0.2s ease-in;
-  }
-
-  .button-icon {
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    transition: all 0.2s ease-in;
-  }
-
-  &:hover {
+.nav-button-active {
+  .nav-button {
     background-color: $color-primary;
-    cursor: pointer;
-    width: 160px;
-    border-top-right-radius: 23px;
-    border-bottom-right-radius: 23px;
-
-    .button-name {
-      font-size: 11px;
-      left: 15px;
-    }
-
-    .button-icon {
-      right: 30px;
-    }
-  }
-
-  &:focus {
-    outline: none;
   }
 }
 
-.nav-default:hover .button-name {
+.nav:hover .button-name {
   opacity: 1;
   visibility: visible;
   transition: all 0.2s ease-in;
