@@ -45,7 +45,7 @@ const VersionTable = () => {
       },
       {
         Header: t("components.versionTable.headers.version"),
-        accessor: ({ version }) => `v${version}`,
+        accessor: ({ version }) => (version ? `v${version}` : "-"),
       },
       {
         Header: t("components.versionTable.headers.commit"),
@@ -134,8 +134,8 @@ const VersionTable = () => {
         : []),
       {
         component: "vocascan-server",
-        version: serverInfo?.version || "",
-        commit: serverInfo?.commitRef || "",
+        version: serverInfo?.version,
+        commit: serverInfo?.commitRef,
       },
     ],
     [desktopInfo, serverInfo]
