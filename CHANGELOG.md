@@ -3,6 +3,16 @@
 This changelog goes through all the changes that have been made in each release on the
 [vocascan-frontend](https://github.com/vocascan/vocascan-frontend).
 
+## [v1.2.0](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.2.0) - 2022.01.22
+
+- Features
+  - Frontend restructure (#81)
+  - Precompile react on releases (#86)
+  - Feat: Legal updates (#85)
+  - Feat: cookie consent (#87)
+  - style: added icon for frontend (#88)
+  - version table in settings page (#89)
+
 ## [v1.1.0](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.1.0) - 2021.11.20
 
 After some time, a new version of Vocascan is coming, with import/export features to share your vocabulary packages and
