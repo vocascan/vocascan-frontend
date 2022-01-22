@@ -7,7 +7,6 @@ export const SET_SERVER_INFO = "SET_SERVER_INFO";
 export const OPEN_GUIDE = "OPEN_GUIDE";
 export const CLOSE_GUIDE = "CLOSE_GUIDE";
 
-export const SET_MENU_STYLE = "SET_MENU_STYLE";
 export const SET_LANGUAGE = "SET_LANGUAGE";
 export const SET_LANGUAGES = "SET_LANGUAGES";
 
