@@ -284,13 +284,6 @@
       }
     },
     "settings": {
-      "desktopVersion": "Wersja desktop",
-      "menu": {
-        "label": "Styl menu",
-        "optionLeft": "Domyślne",
-        "optionRight": "Fancy"
-      },
-      "serverVersion": "Wersja serwera",
       "title": "Ustawienia"
     }
   }

@@ -1,5 +1,10 @@
 {
   "components": {
+    "cookieConsent": {
+      "accept": "Einverstanden",
+      "learnMore": "Mehr erfahren",
+      "text": "Diese Webseite verwendet Cookies, um die Benutzererfahrung zu verbessern"
+    },
     "groupForm": {
       "activeLabel": "Aktiv",
       "languagePackage": "Paket",
@@ -10,8 +15,7 @@
     },
     "importExport": {
       "exportGroup": "Gruppe exportieren",
-      "exportPackage": "Paket exportieren",
-      "saveFileHead": "Wähle aus, wo du deine Datei speichern möchtest"
+      "exportPackage": "Paket exportieren"
     },
     "importPreviewForm": {
       "activateVocabs": "Aktiviere Vokabeln",
@@ -61,6 +65,16 @@
       "validServer": "✓ gültiger Server (v{{version}})",
       "versionToOld": "✗ Serverversion v{{version}} ist zu alt. Mindestens erforderlich ist v{{minVersion}}"
     },
+    "versionTable": {
+      "headers": {
+        "build": "Build",
+        "commit": "Commit",
+        "component": "Komponente",
+        "date": "Datum",
+        "extra": "Extra",
+        "version": "Version"
+      }
+    },
     "vocabForm": {
       "activateLabel": "Aktivieren",
       "activateTooltip": "Entscheidet, ob die Vokabel separat aktiviert werden muss, um sie in der nächsten Abfrage verwenden zu können",
@@ -96,6 +110,8 @@
     "continue": "Weiter",
     "correct": "Richtig",
     "create": "Erstellen",
+    "daysAgo_one": "vor {{count}} Tag",
+    "daysAgo_other": "vor {{count}} Tagen",
     "delete": "Löschen",
     "description": "Beschreibung",
     "email": "E-Mail",
@@ -109,6 +125,7 @@
     "import": "Importieren",
     "inviteCode": "Einladungscode",
     "learn": "Lernen",
+    "legalNotice": "Impressum",
     "library": "Bibliothek",
     "name": "Name",
     "noOptionMessage": "Keine Optionen",
@@ -119,6 +136,7 @@
     "paginationShow": "Zeige {{size}}",
     "password": "Passwort",
     "passwordRepeat": "Passwort wiederholen",
+    "privacyPolicy": "Datenschutzerklärung",
     "query": "Abfrage",
     "random": "Zufällig",
     "rightWords": "Richtige Wörter",
@@ -130,6 +148,7 @@
     "skip": "Überspringen",
     "submit": "Absenden",
     "successMessage": "Erfolgreich!",
+    "termsAndConditions": "AGBs",
     "total": "Gesamt",
     "translation": "Übersetzung",
     "username": "Benutzername",
@@ -341,10 +360,12 @@
       "title": "Fortschritt"
     },
     "register": {
+      "acceptTerms": "Ich akzeptiere die [AGBs].",
       "alreadyHaveAccount": "Du hast bereits ein Konto?",
       "emailInUse": "Die E-Mail wird bereits verwendet",
       "emailNotValid": "Keine gültige E-Mail Adresse",
       "passwordsDontMatch": "Die Passwörter stimmen nicht überein",
+      "readPrivacy": "Ich habe die [Datenschutzerklärung] gelesen",
       "title": "Registrieren",
       "usernameInUse": "Der Benutzername ist schon vergeben",
       "usernameNotValid": "Der Benutzername sollte 2-72 Zeichen lang sein"
@@ -354,14 +375,13 @@
       "title": "Anmelden",
       "vocascanCloud": {
         "button": "Jetzt kostenlos starten",
-        "contra": [
-          "Ihre Daten werden auf den Servern von Vocascan gespeichert",
-          "Momentan nicht verfügbar"
-        ],
+        "contra": "Ihre Daten werden auf den Servern von Vocascan gespeichert",
         "heading": "Vocascan cloud",
         "pro": [
           "Keine Notwendigkeit eines Servers",
-          "Synchronisiere jedes Gerät"
+          "Synchronisiere jedes Gerät",
+          "Immer und überall erreichbar",
+          "Völlig kostenlos"
         ]
       },
       "vocascanServer": {
@@ -379,18 +399,12 @@
       }
     },
     "settings": {
-      "desktopVersion": "Desktopversion",
       "guide": {
         "button": "Anleitung erneut öffnen",
         "title": "Hast Du vergessen, wie man Vocascan benutzt? Öffne einfach die Anleitung"
       },
-      "menu": {
-        "label": "Menu Stil",
-        "optionLeft": "Standard",
-        "optionRight": "Fancy"
-      },
-      "serverVersion": "Serverversion",
-      "title": "Einstellungen"
+      "title": "Einstellungen",
+      "versions": "Versionen"
     }
   },
   "units": {
