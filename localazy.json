@@ -1,12 +1,15 @@
 {
   "upload": {
     "type": "json",
-    "files": "src/i18n/locales/en/*.json",
-    "deprecateMissing": true,
+    "files": "src/i18n/locales/en/default.json",
+    "deprecate": "file",
     "features": ["array", "filter_untranslated", "plural_postfix_us"]
   },
   "download": {
     "metadataFileJson": "src/i18n/locales/locales.json",
-    "files": "src/i18n/locales/${lang}/${file}"
+    "files": {
+      "conditions": ["equals: ${file}, default.json"],
+      "output": "src/i18n/locales/${lang}/default.json"
+    }
   }
 }

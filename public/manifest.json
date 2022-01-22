@@ -1,6 +1,8 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Vocascan",
+  "name": "Vocascan Web",
+  "description": "A highly configurable vocabulary trainer",
+  "categories": ["education"],
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +22,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2a2e36",
+  "background_color": "#2a2e36"
 }

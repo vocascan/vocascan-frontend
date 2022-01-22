@@ -11,12 +11,14 @@ import InviteCodeValidIndicator from "../../Components/Indicators/InviteCodeVali
 import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 
+import useLinkCreator from "../../hooks/useLinkCreator.js";
 import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, register } from "../../redux/Actions/login.js";
 import { register as registerAPI, getLanguages } from "../../utils/api.js";
 import {
   maxTextfieldLength,
   maxUsernameLength,
+  pages,
 } from "../../utils/constants.js";
 
 import "./Register.scss";
@@ -27,6 +29,13 @@ const Register = ({ image }) => {
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const selfHosted = useSelector((state) => state.login.selfHosted);
   const languages = useSelector((state) => state.language.languages);
+
+  const privacyText = t("screens.register.readPrivacy");
+  const [privacyTextBefore, privacyTextLink, ...privacyTextAfter] =
+    privacyText.split(/[[\]]/);
+  const termsText = t("screens.register.acceptTerms");
+  const [termsTextBefore, termsTextLink, ...termsTextAfter] =
+    termsText.split(/[[\]]/);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -44,6 +53,14 @@ const Register = ({ image }) => {
   const [isInviteCodeValid, setIsInviteCodeValid] = useState(false);
   const [isUsernameValid, setIsUsernameValid] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
+  const [readPrivacy, setReadPrivacy] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
+
+  const { isValid: isPrivacyPolicyValid, url: privacyPolicyUrl } =
+    useLinkCreator({ path: pages.privacyPolicy });
+  const { isValid: isTermsAndConditionsValid, url: termsAndConditionsUrl } =
+    useLinkCreator({ path: pages.termsAndConditions });
 
   const dispatch = useDispatch();
 
@@ -52,6 +69,14 @@ const Register = ({ image }) => {
   const handleClickLogin = useCallback(() => {
     history.push("/login");
   }, [history]);
+
+  const handleReadPrivacy = useCallback(() => {
+    setReadPrivacy((readPrivacy) => !readPrivacy);
+  }, []);
+
+  const handleAcceptTerms = useCallback(() => {
+    setAcceptTerms((acceptTerms) => !acceptTerms);
+  }, []);
 
   //fetch languages
   const fetchLanguages = useCallback(() => {
@@ -166,7 +191,9 @@ const Register = ({ image }) => {
         !isServerValid ||
         !isSamePassword ||
         !isEmailValid ||
-        !isUsernameValid
+        !isUsernameValid ||
+        (isPrivacyPolicyValid && !readPrivacy) ||
+        (isTermsAndConditionsValid && !acceptTerms)
       )
     );
   }, [
@@ -183,6 +210,10 @@ const Register = ({ image }) => {
     isSamePassword,
     isEmailValid,
     isUsernameValid,
+    readPrivacy,
+    acceptTerms,
+    isPrivacyPolicyValid,
+    isTermsAndConditionsValid,
   ]);
 
   useEffect(() => {
@@ -200,10 +231,12 @@ const Register = ({ image }) => {
   return (
     <UnauthenticatedLayout>
       <div className="register-form">
-        <ArrowBackIcon
-          className="back-icon"
-          onClick={() => history.push("/plans")}
-        />
+        {showPlans && (
+          <ArrowBackIcon
+            className="back-icon"
+            onClick={() => history.push("/plans")}
+          />
+        )}
         <div className="register-form-header">
           <img
             className="register-form-header-logo"
@@ -308,7 +341,7 @@ const Register = ({ image }) => {
                 />
               </>
             )}
-            {selfHosted && (
+            {selfHosted && !baseURL && (
               <TextInput
                 required
                 placeholder={t("global.server")}
@@ -326,7 +359,46 @@ const Register = ({ image }) => {
               <ServerValidIndicator
                 setValid={setIsServerValid}
                 setLocked={setIsServerLocked}
+                show={!baseURL}
               />
+            )}
+
+            {isPrivacyPolicyValid && (
+              <div className="checkbox-wrapper">
+                <input
+                  type="checkbox"
+                  name="privacy"
+                  onChange={handleReadPrivacy}
+                />
+                <label className="label">
+                  {privacyTextBefore}
+                  <a target="_blank" href={privacyPolicyUrl} rel="noreferrer">
+                    {privacyTextLink}
+                  </a>
+                  {privacyTextAfter}
+                </label>
+              </div>
+            )}
+
+            {isTermsAndConditionsValid && (
+              <div className="checkbox-wrapper">
+                <input
+                  type="checkbox"
+                  name="terms"
+                  onChange={handleAcceptTerms}
+                />
+                <label className="label">
+                  {termsTextBefore}
+                  <a
+                    target="_blank"
+                    href={termsAndConditionsUrl}
+                    rel="noreferrer"
+                  >
+                    {termsTextLink}
+                  </a>
+                  {termsTextAfter}
+                </label>
+              </div>
             )}
           </div>
           <div className="register-form-submit">

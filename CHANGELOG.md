@@ -1,9 +1,24 @@
 # Changelog
 
 This changelog goes through all the changes that have been made in each release on the
-[vocascan-desktop](https://github.com/vocascan/vocascan-desktop).
+[vocascan-frontend](https://github.com/vocascan/vocascan-frontend).
 
-## [v1.1.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.1.0) - 2021.11.20
+## [v1.2.0](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.2.0) - 2022.01.22
+
+This is one of the biggest updates for Vocascan so far. We moved the React app out of the desktop app to split up the desktop app into two different repositories. As a result, the frontend is also accessible from within the browser to make learning on foreign or not supported devices a lot easier. Additionally, there are lots of new features (in conjunction with a Vocascan server) to legally secure your site if you want to make it available to the public.
+
+- Features
+  - Frontend restructure (#81)
+  - Precompile react on releases (#86)
+  - Feat: Legal updates (#85)
+  - Feat: cookie consent (#87)
+  - style: added icon for frontend (#88)
+  - version table in settings page (#89)
+- Bugfixes
+  - removed "fancy" menu option due to new links in nav (#91)
+  - temporarily removed Polish and Russian because they were no longer translated (#92)
+
+## [v1.1.0](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.1.0) - 2021.11.20
 
 After some time, a new version of Vocascan is coming, with import/export features to share your vocabulary packages and
 groups. The invitation codes will help you to keep your server all to yourself and your friends. In addition, we have
@@ -25,7 +40,7 @@ yourself while creating vocabularies.
   - The description is now only on the translated side of the card (#76)
   - Added translations for "Add"-Button to the select component (#76)
 
-## [v1.0.0](https://github.com/vocascan/vocascan-desktop/releases/tag/v1.0.0) - 2021.06.13
+## [v1.0.0](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.0.0) - 2021.06.13
 
 Finally the time has come. The first release of Vocascan is ready. Vocascan is a server-client vocabulary trainer that
 is intended to give the user many setting options so that he can adapt it to his personal learning strategies and

@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: vocascan/frontend:latest
+    restart: always
+    tty: true
+    environment:
+      VOCASCAN_BASE_URL: "https://mydomain.com"
+    ports:
+      - "80:80"

@@ -2,12 +2,16 @@ import axios from "axios";
 
 import { defaultLimit, vocascanServer } from "./constants.js";
 
+const { BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
+
 const api = axios.create({
-  baseURL: vocascanServer,
+  baseURL: `${baseURL || vocascanServer}/api`,
 });
 
 export function setBaseUrl(url) {
-  api.defaults.baseURL = `${url}/api`;
+  if (!baseURL) {
+    api.defaults.baseURL = `${url}/api`;
+  }
 }
 
 export function setTokenHeader(token) {
@@ -19,6 +23,13 @@ export const login = (data) => api.post("/user/login", data);
 export const register = (data, code = null) =>
   api.post(`/user/register${code ? `?inviteCode=${code}` : ""}`, data);
 export const changePassword = (data) => api.patch("/user/reset-password", data);
+
+// Legal
+export const checkUrlAvailable = (url, cancelToken) => {
+  const checkApi = axios.create();
+
+  return checkApi.get(url, { cancelToken });
+};
 
 // User
 export const getProfile = () => api.get("/user");

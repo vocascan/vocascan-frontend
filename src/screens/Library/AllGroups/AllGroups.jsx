@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useRef,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams, useHistory } from "react-router-dom";
 
@@ -22,23 +28,23 @@ import ImportPreviewForm from "../../../Forms/ImportPreviewForm/ImportPreviewFor
 
 import useFeature, { FEATURES } from "../../../hooks/useFeature.js";
 import useSnack from "../../../hooks/useSnack.js";
+import { parseFile, saveFile } from "../../../modules/fileOperations.js";
 import {
   getGroups,
   getPackages,
   deleteGroup,
   exportGroup,
 } from "../../../utils/api.js";
-import { nodeRequire } from "../../../utils/index.js";
 
 import "./AllGroups.scss";
-
-const { ipcRenderer } = nodeRequire("electron");
 
 const AllGroups = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
   const history = useHistory();
   const { packageId } = useParams();
+
+  const inputFile = useRef(null);
 
   const [data, setData] = useState([]);
   const [importedData, setImportedData] = useState(null);
@@ -142,27 +148,33 @@ const AllGroups = () => {
   const submitExportGroup = useCallback(() => {
     if (currentGroup) {
       exportGroup(currentGroup.id)
-        .then((response) => {
-          ipcRenderer
-            .invoke("save-file", {
-              title: response.data.name,
-              text: JSON.stringify(response.data),
-            })
-            .then((result) => {
-              setShowExportConfirmationModal(false);
-              showSnack("success", t("screens.allGroups.exportSuccessMessage"));
-            });
+        .then((response) =>
+          saveFile({
+            input: response.data,
+            name: response.data.name,
+            type: "application/json",
+          })
+        )
+        .then(() => {
+          setShowExportConfirmationModal(false);
+          showSnack("success", t("screens.allGroups.exportSuccessMessage"));
         })
-        .catch((e) => {
+        .catch(() => {
           showSnack("error", t("screens.allGroups.exportFailMessage"));
         });
     }
   }, [currentGroup, showSnack, t]);
 
-  const submitImport = useCallback(() => {
-    try {
-      ipcRenderer.invoke("open-file", {}).then((result) => {
-        const type = result.type.match(/vocascan\/(\w*)/);
+  const onOpenFileClick = useCallback(() => {
+    // `current` points to the mounted file input element
+    inputFile.current.click();
+  }, []);
+
+  const submitImport = useCallback(
+    async (event) => {
+      try {
+        const parsedOutput = await parseFile(event);
+        const type = parsedOutput?.type?.match(/vocascan\/(\w*)/);
 
         if (!type) {
           showSnack("error", t("global.fileImportError"));
@@ -174,13 +186,14 @@ const AllGroups = () => {
           return;
         }
 
-        setImportedData(result);
+        setImportedData(parsedOutput);
         setShowImportModal(true);
-      });
-    } catch {
-      showSnack("error", t("global.fileImportError"));
-    }
-  }, [showSnack, t]);
+      } catch {
+        showSnack("error", t("global.fileImportError"));
+      }
+    },
+    [showSnack, t]
+  );
 
   const columns = useMemo(
     () => [
@@ -302,10 +315,16 @@ const AllGroups = () => {
           <Button
             className="import"
             variant="transparent"
-            onClick={submitImport}
             disabled={!isSupported}
           >
-            <ArrowUpwardIcon onClick={() => submitImport} />
+            <input
+              type="file"
+              id="file"
+              ref={inputFile}
+              onChange={(e) => submitImport(e)}
+              style={{ display: "none" }}
+            />
+            <ArrowUpwardIcon onClick={onOpenFileClick} />
           </Button>
         </div>
         <div>

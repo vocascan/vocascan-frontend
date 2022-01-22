@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, HashRouter, Redirect, Switch } from "react-router-dom";
 
+import CookieConsentBanner from "./Components/CookieConsentBanner/CookieConsentBanner.jsx";
 import LoadingIndicator from "./Components/Indicators/LoadingIndicator/LoadingIndicator.jsx";
 import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
 import CleanLayout from "./Components/Layout/CleanLayout/CleanLayout.jsx";
@@ -38,6 +39,7 @@ const App = () => {
   const user = useSelector((state) => state.login.user);
 
   const shouldLogin = !!user.token && !isLoggedIn;
+  const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
 
   // Try login if token is set
   useEffect(() => {
@@ -84,15 +86,16 @@ const App = () => {
   if (!isLoggedIn) {
     return (
       <HashRouter>
+        {baseURL && <CookieConsentBanner />}
         <Switch>
-          <Route path="/plans" component={SelectionScreen} />
+          {showPlans && <Route path="/plans" component={SelectionScreen} />}
           <Route path="/login" component={() => <Login image={Image} />} />
           <Route
             path="/register"
             component={() => <Register image={Image} />}
           />
           <Route path="/">
-            <Redirect to="/plans" />
+            {showPlans ? <Redirect to="/plans" /> : <Redirect to="/login" />}
           </Route>
         </Switch>
       </HashRouter>
@@ -103,6 +106,7 @@ const App = () => {
         <SnackbarProvider>
           <AuthenticatedLayout>
             <Guide />
+            <CookieConsentBanner />
             <Switch>
               <Route path="/addVocab" component={AddVocab} />
               <Route path="/learn" component={Learn} />

@@ -50,7 +50,12 @@
     "fileImportError": "Error importing your file",
     "export": "Export",
     "inviteCode": "Invite code",
-    "create": "Create"
+    "create": "Create",
+    "legalNotice": "Legal Notice",
+    "termsAndConditions": "Terms and Conditions",
+    "privacyPolicy": "Privacy Policy",
+    "daysAgo_one": "{{count}} day ago",
+    "daysAgo_other": "{{count}} days ago"
   },
   "components": {
     "groupForm": {
@@ -115,8 +120,7 @@
     },
     "importExport": {
       "exportPackage": "Export package",
-      "exportGroup": "Export group",
-      "saveFileHead": "Select where you want to save the file"
+      "exportGroup": "Export group"
     },
     "inviteCode": {
       "never": "Never",
@@ -129,6 +133,21 @@
       "expired": "Expired",
       "copyToClip": "Invite code copied to clipboard",
       "copyToClipFailed": "Copy invite code to clipboard failed"
+    },
+    "cookieConsent": {
+      "text": "This website uses cookies to enhance the user experience.",
+      "learnMore": "Learn more",
+      "accept": "I understand"
+    },
+    "versionTable": {
+      "headers": {
+        "component": "Component",
+        "version": "Version",
+        "commit": "Commit",
+        "build": "Build",
+        "date": "Date",
+        "extra": "Extra"
+      }
     }
   },
   "screens": {
@@ -234,11 +253,13 @@
       "heading": "Select your option",
       "vocascanCloud": {
         "heading": "Vocascan cloud",
-        "pro": ["No need of a server", "sync every device"],
-        "contra": [
-          "Your data is stored on vocascan servers",
-          "Not available for now"
+        "pro": [
+          "No need of a server",
+          "sync every device",
+          "Always and everywhere reachable",
+          "Completely free"
         ],
+        "contra": ["Your data is stored on Vocascan servers"],
         "button": "Start for free"
       },
       "vocascanServer": {
@@ -307,21 +328,17 @@
       "emailInUse": "The email is already used",
       "emailNotValid": "Not a valid email address",
       "passwordsDontMatch": "The passwords are not the same",
-      "alreadyHaveAccount": "Already have an account?"
+      "alreadyHaveAccount": "Already have an account?",
+      "readPrivacy": "I have read the [Privacy Policy]",
+      "acceptTerms": "I accept the [Terms and Conditions]"
     },
     "settings": {
       "title": "Settings",
-      "menu": {
-        "label": "Menu style",
-        "optionLeft": "Default",
-        "optionRight": "Fancy"
-      },
       "guide": {
         "title": "Forgot how to use Vocascan? Just reopen the guide",
         "button": "Reopen Guide"
       },
-      "desktopVersion": "Desktop version",
-      "serverVersion": "Server version"
+      "versions": "Versions"
     },
     "progress": {
       "title": "Progress"
