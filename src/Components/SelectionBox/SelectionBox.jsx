@@ -52,10 +52,10 @@ const SelectionBox = ({
       </div>
       <div className="select-box-description">
         <ul className="select-box-description-ul">
-          {pro.map((text, i) => (
+          {(typeof pro === "string" ? [pro] : pro).map((text, i) => (
             <Item text={text} Icon={CheckIcon} key={i} />
           ))}
-          {contra.map((text, i) => (
+          {(typeof contra === "string" ? [contra] : contra).map((text, i) => (
             <Item text={text} Icon={CloseIcon} key={i} />
           ))}
         </ul>
