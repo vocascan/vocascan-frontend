@@ -89,7 +89,7 @@ const AllVocabs = () => {
         accessor: "name",
         Cell: ({ row }) => (
           <Button
-            className="text-normal"
+            className="text-normal text-left"
             variant="link"
             onClick={() => editVocab(row.original)}
           >
@@ -101,9 +101,7 @@ const AllVocabs = () => {
         Header: t("screens.allVocabs.description"),
         accessor: "description",
         Cell: ({ row }) => (
-          <div style={{ textAlign: "left" }}>
-            <p>{row.original.description}</p>
-          </div>
+          <p className="text-left text-wrap">{row.original.description}</p>
         ),
       },
       {
@@ -114,7 +112,7 @@ const AllVocabs = () => {
         Header: t("screens.allGroups.active"),
         accessor: "active",
         Cell: ({ row }) => (
-          <div style={{ textAlign: "left" }}>
+          <div>
             {row.original.active ? (
               <CheckCircleIcon className="text-success" />
             ) : (
