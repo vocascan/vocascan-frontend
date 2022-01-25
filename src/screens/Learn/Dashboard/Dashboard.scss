@@ -1,8 +1,25 @@
+@import "../../../constants";
+
 .dashboard {
-  padding: 50px;
-  max-width: 850px;
-  margin: auto;
-  
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .dashboard-inner {
+    width: 90%;
+    margin-top: 65px;
+  }
+
+  @media screen and (min-width: $bp-md) {
+    padding: 50px;
+    max-width: 850px;
+    margin: auto;
+
+    .dashboard-inner {
+      margin-top: 0;
+    }
+  }
+
   &.empty {
     grid-area: main;
     width: 100%;
@@ -17,5 +34,4 @@
       font-size: 25px;
     }
   }
-  
 }

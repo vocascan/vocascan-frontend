@@ -42,40 +42,42 @@ const PackageOverview = ({ data }) => {
 
   return (
     <div className="package-overview">
-      <h1 className="package-inner package-heading">{data?.name}</h1>
-      <p className="package-inner package-unresolved">
-        {t("components.packageOverview.unresolved")}{" "}
-        {data?.stats?.vocabularies?.unresolved}
-      </p>
-      <p className="package-inner package-today">
-        {t("components.packageOverview.today")}{" "}
-        {data?.stats?.vocabularies?.learnedToday?.dueToday}
-      </p>
-      <p className="package-inner package-unactivated">
-        {t("components.packageOverview.unactivated")}{" "}
-        {data?.stats?.vocabularies?.unactivated}
-      </p>
-      <div className="package-inner package-btn-wrapper">
-        <Button
-          block
-          uppercase
-          disabled={!data.stats.vocabularies.learnedToday.dueToday}
-          onClick={() => submitLearn(false)}
-        >
-          {t("global.learn")}
-        </Button>
-      </div>
-      <div className="package-btn-wrapper">
-        <Button
-          variant="outline"
-          appearance="primary-light"
-          uppercase
-          block
-          disabled={!data?.stats?.vocabularies?.unactivated}
-          onClick={() => submitLearn(true)}
-        >
-          {t("global.activate")}
-        </Button>
+      <div className="package-overview-inner">
+        <h1 className="package-text package-heading">{data?.name}</h1>
+        <p className="package-text package-unresolved">
+          {t("components.packageOverview.unresolved")}{" "}
+          {data?.stats?.vocabularies?.unresolved}
+        </p>
+        <p className="package-text package-today">
+          {t("components.packageOverview.today")}{" "}
+          {data?.stats?.vocabularies?.learnedToday?.dueToday}
+        </p>
+        <p className="package-text package-unactivated">
+          {t("components.packageOverview.unactivated")}{" "}
+          {data?.stats?.vocabularies?.unactivated}
+        </p>
+        <div className="package-text package-btn-wrapper">
+          <Button
+            block
+            uppercase
+            disabled={!data.stats.vocabularies.learnedToday.dueToday}
+            onClick={() => submitLearn(false)}
+          >
+            {t("global.learn")}
+          </Button>
+        </div>
+        <div className="package-btn-wrapper">
+          <Button
+            variant="outline"
+            appearance="primary-light"
+            uppercase
+            block
+            disabled={!data?.stats?.vocabularies?.unactivated}
+            onClick={() => submitLearn(true)}
+          >
+            {t("global.activate")}
+          </Button>
+        </div>
       </div>
     </div>
   );

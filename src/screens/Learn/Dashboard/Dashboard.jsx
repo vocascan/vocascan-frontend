@@ -58,9 +58,11 @@ const Dashboard = () => {
   } else {
     return (
       <div className="dashboard">
-        {languagePackages.map((languagePackage, index) => (
-          <PackageOverview key={index} data={languagePackage} />
-        ))}
+        <div className="dashboard-inner">
+          {languagePackages.map((languagePackage, index) => (
+            <PackageOverview key={index} data={languagePackage} />
+          ))}
+        </div>
       </div>
     );
   }
