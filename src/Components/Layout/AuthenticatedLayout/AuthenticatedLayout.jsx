@@ -6,6 +6,7 @@ import { gte } from "semver";
 import Button from "../../Button/Button.jsx";
 import LoadingIndicator from "../../Indicators/LoadingIndicator/LoadingIndicator.jsx";
 import Modal from "../../Modal/Modal.jsx";
+import MobileTopNav from "../../Nav/MobileTopNav.jsx";
 import Nav from "../../Nav/Nav.jsx";
 import TopNav from "../../Nav/TopNav.jsx";
 
@@ -49,6 +50,7 @@ const AuthenticatedLayout = ({ children }) => {
     <div className="root">
       <Nav />
       <TopNav />
+      <MobileTopNav />
       <Modal
         open={isValidServer === false || isValidVersion === false}
         renderClose={false}

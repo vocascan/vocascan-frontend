@@ -1,47 +1,51 @@
 @import "../../colors";
+@import "../../constants";
 
 .nav {
-  width: 65px;
-  height: calc(100vh - 50px);
-  background: $color-background-inverse;
-  grid-area: sidenav;
-  display: flex;
-  flex-direction: column;
-  z-index: 100;
-  justify-content: space-between;
-  transition: width 0.2s ease-in;
-
-  &:hover {
-    width: 200px;
+  display: none;
+  @media screen and (min-width: $bp-md) {
+    width: 65px;
+    height: calc(100vh - 50px);
+    background: $color-background-inverse;
+    grid-area: sidenav;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    justify-content: space-between;
     transition: width 0.2s ease-in;
 
-    .nav-legal {
-      opacity: 100;
-      transition: all 0.6s ease-in;
+    &:hover {
+      width: 200px;
+      transition: width 0.2s ease-in;
+
+      .nav-legal {
+        opacity: 100;
+        transition: all 0.6s ease-in;
+      }
     }
-  }
 
-  .button-list {
-    grid-column: 1;
-    grid-row: 2;
-    margin-top: 40px;
-  }
+    .button-list {
+      grid-column: 1;
+      grid-row: 2;
+      margin-top: 40px;
+    }
 
-  .nav-legal {
-    color: $color-white;
-    margin: 10px auto;
-    font-size: 15px;
-    opacity: 0;
+    .nav-legal {
+      color: $color-white;
+      margin: 10px auto;
+      font-size: 15px;
+      opacity: 0;
 
-    .nav-legal-wrapper {
-      display: flex;
-      align-items: center;
-      margin: 5px 0;
+      .nav-legal-wrapper {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
 
-      a {
-        margin-left: 5px;
-        color: $color-white;
-        text-decoration: none;
+        a {
+          margin-left: 5px;
+          color: $color-white;
+          text-decoration: none;
+        }
       }
     }
   }

@@ -1,4 +1,5 @@
 @import "../../colors";
+@import "../../constants";
 
 .nav-button-wrapper {
   outline: none;
@@ -8,9 +9,9 @@
 .nav-button {
   width: 100%;
   height: 60px;
-  color: $color-white !important;
+  color: $color-main-text !important;
   border: unset;
-  background-color: $color-background-inverse;
+  background-color: $color-background;
   transition: all 0.2s ease-in;
   text-transform: uppercase;
   display: flex;
@@ -19,17 +20,35 @@
   align-items: center;
   position: relative;
 
-  .button-name {
-    position: absolute;
-    left: 60px;
-    opacity: 0;
-    visibility: hidden;
+  @media screen and (min-width: $bp-md) {
+    color: $color-white !important;
+    background-color: $color-background-inverse;
   }
 
-  .button-icon {
-    position: absolute;
-    left: 20px;
-    transition: all 0.2s ease-in;
+  .nav-button-inner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .button-name {
+      margin-left: 30px;
+      @media screen and (min-width: $bp-md) {
+        position: absolute;
+        left: 60px;
+        opacity: 0;
+        visibility: hidden;
+        margin-left: 0;
+      }
+    }
+
+    .button-icon {
+      @media screen and (min-width: $bp-md) {
+        position: absolute;
+        left: 20px;
+        transition: all 0.2s ease-in;
+      }
+    }
   }
 
   &:hover {
@@ -48,9 +67,11 @@
   }
 }
 
-.nav:hover .button-name {
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.2s ease-in;
-  transition-delay: 0.2s;
+@media screen and (min-width: $bp-md) {
+  .nav:hover .button-name {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.2s ease-in;
+    transition-delay: 0.2s;
+  }
 }

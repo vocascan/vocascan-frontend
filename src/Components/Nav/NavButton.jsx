@@ -13,8 +13,10 @@ const NavButton = ({ name, link, icon = null, exact = false }) => {
       tabIndex={-1}
     >
       <button tabIndex={-1} className={`nav-button`}>
-        {icon ? <span className="button-icon">{icon}</span> : null}
-        <span className="button-name">{name}</span>
+        <div className="nav-button-inner">
+          {icon ? <span className="button-icon">{icon}</span> : null}
+          <span className="button-name">{name}</span>
+        </div>
       </button>
     </NavLink>
   );
