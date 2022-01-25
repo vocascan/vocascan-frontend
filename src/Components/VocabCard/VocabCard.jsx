@@ -18,7 +18,7 @@ const RenderForeignWord = ({ currVocab, isTranslation }) => {
   return (
     <div className="foreign-word-wrapper">
       {isTranslation ? (
-        <p className="description">{currVocab.description}</p>
+        <p className="description text-wrap">{currVocab.description}</p>
       ) : null}
       <h1 className={`${isTranslation ? "translations" : ""}`}>
         {currVocab.name}
@@ -41,7 +41,9 @@ const RenderTranslatedWord = ({ currVocab, isTranslation }) => {
 
   return (
     <div className="translated-word-wrapper">
-      {isTranslation ? <p className="my-20">{currVocab.description}</p> : null}
+      {isTranslation ? (
+        <p className="my-20 text-wrap">{currVocab.description}</p>
+      ) : null}
       <div className={`my-20 ${isTranslation ? "translations" : ""}`}>
         {currVocab.Translations.map((el) => el.name).join(", ")}
       </div>
