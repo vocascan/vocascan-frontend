@@ -26,6 +26,8 @@ const MobileTopNav = () => {
   const { t } = useTranslation();
   const [blockScroll, allowScroll] = useScrollBlock();
 
+  const [showNav, setShowNav] = useState(true);
+
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
   const { isValid: isLegalNoticeValid, url: legalNoticeUrl } = useLinkCreator({
@@ -45,13 +47,33 @@ const MobileTopNav = () => {
     setHamburgerOpen(false);
   }, []);
 
+  // if you scroll down, make top nav disappear
+  const controlNavbar = useCallback(() => {
+    if (window.scrollY > 10) {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [controlNavbar]);
+
   useEffect(() => {
     hamburgerOpen ? blockScroll() : allowScroll();
   }, [allowScroll, blockScroll, hamburgerOpen]);
 
   return (
     <>
-      <div className={`mobile-top-nav ${hamburgerOpen && "transparent"}`}>
+      <div
+        className={`mobile-top-nav ${hamburgerOpen && "transparent"} ${
+          !showNav && "hidden"
+        }`}
+      >
         <div className="mobile-top-nav-inner">
           <Link to="/" onClick={closeHamburgerMenu}>
             <div className="link-wrapper">

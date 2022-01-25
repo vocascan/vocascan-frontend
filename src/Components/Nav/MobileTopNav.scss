@@ -12,9 +12,15 @@
   overflow: hidden;
   top: 0;
   z-index: 50;
+  opacity: 100;
+  transition: 0.7s ease-in-out 0s;
 
   &.transparent {
     background: transparent;
+  }
+
+  &.hidden {
+    display: none;
   }
 
   .mobile-top-nav-inner {
