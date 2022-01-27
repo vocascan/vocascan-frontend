@@ -56,27 +56,31 @@ const PackageOverview = ({ data }) => {
           {t("components.packageOverview.unactivated")}{" "}
           {data?.stats?.vocabularies?.unactivated}
         </p>
-        <div className="package-text package-btn-wrapper">
-          <Button
-            block
-            uppercase
-            disabled={!data.stats.vocabularies.learnedToday.dueToday}
-            onClick={() => submitLearn(false)}
-          >
-            {t("global.learn")}
-          </Button>
+        <div className="package-btn-wrapper learn-btn">
+          <div className="package-btn-inner">
+            <Button
+              block
+              uppercase
+              disabled={!data.stats.vocabularies.learnedToday.dueToday}
+              onClick={() => submitLearn(false)}
+            >
+              {t("global.learn")}
+            </Button>
+          </div>
         </div>
-        <div className="package-btn-wrapper">
-          <Button
-            variant="outline"
-            appearance="primary-light"
-            uppercase
-            block
-            disabled={!data?.stats?.vocabularies?.unactivated}
-            onClick={() => submitLearn(true)}
-          >
-            {t("global.activate")}
-          </Button>
+        <div className="package-btn-wrapper activate-btn">
+          <div className="package-btn-inner">
+            <Button
+              variant="outline"
+              appearance="primary-light"
+              uppercase
+              block
+              disabled={!data?.stats?.vocabularies?.unactivated}
+              onClick={() => submitLearn(true)}
+            >
+              {t("global.activate")}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
