@@ -20,7 +20,7 @@ const RenderForeignWord = ({ currVocab, isTranslation }) => {
       {isTranslation ? (
         <p className="description text-wrap">{currVocab.description}</p>
       ) : null}
-      <h1 className={`${isTranslation ? "translations" : ""}`}>
+      <h1 className={`my-20 ${isTranslation ? "translations" : ""}`}>
         {currVocab.name}
       </h1>
       <div className="language-indicator">

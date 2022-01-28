@@ -90,7 +90,15 @@
       border: 1px solid $color-primary;
       border-radius: 10px;
       padding: 10px;
-      font-size: 24px;
+      font-size: 20px;
+    }
+
+    .my-20 {
+      font-size: 20px;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: 24px;
+      }
     }
   }
 
@@ -110,8 +118,12 @@
     .my-20 {
       max-width: 100%;
       margin: 20px 0;
-      font-size: 24px;
+      font-size: 20px;
       padding: 10px;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: 24px;
+      }
     }
   }
 
