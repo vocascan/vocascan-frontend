@@ -8,6 +8,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Button from "../../Components/Button/Button.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import InviteCodeValidIndicator from "../../Components/Indicators/InviteCodeValidIndicator/InviteCodeValidIndicator.jsx";
+import PasswordComplexityIndicator from "../../Components/Indicators/PasswordComplexityIndicator/PasswordComplexityIndicator.jsx";
 import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
 import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
 
@@ -20,6 +21,7 @@ import {
   maxUsernameLength,
   pages,
 } from "../../utils/constants.js";
+import { bytesLength } from "../../utils/index.js";
 
 import "./Register.scss";
 
@@ -41,6 +43,8 @@ const Register = ({ image }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
+  const [passwordComplexity, setPasswordComplexity] = useState(0);
+  const [isPasswordComplexityOk, setIsPasswordComplexityOk] = useState(false);
   const [inviteCode, setInviteCode] = useState("");
   const [serverAddressInput, setServerAddressInput] = useState(serverAddress);
   const [isSamePassword, setIsSamePassword] = useState(true);
@@ -155,6 +159,14 @@ const Register = ({ image }) => {
   );
 
   useEffect(() => {
+    const passwordLength = bytesLength(password);
+
+    setIsPasswordComplexityOk(
+      passwordLength >= 8 && passwordLength <= 72 && passwordComplexity >= 4
+    );
+  }, [password, passwordComplexity]);
+
+  useEffect(() => {
     setIsSamePassword(password === passwordRepeat);
   }, [password, passwordRepeat]);
 
@@ -188,6 +200,7 @@ const Register = ({ image }) => {
         !email ||
         !password ||
         !passwordRepeat ||
+        !isPasswordComplexityOk ||
         !isServerValid ||
         !isSamePassword ||
         !isEmailValid ||
@@ -214,6 +227,7 @@ const Register = ({ image }) => {
     acceptTerms,
     isPrivacyPolicyValid,
     isTermsAndConditionsValid,
+    isPasswordComplexityOk,
   ]);
 
   useEffect(() => {
@@ -298,11 +312,21 @@ const Register = ({ image }) => {
               }}
               value={password}
               error={
-                !isSamePassword && password !== "" && passwordRepeat !== ""
+                (!isSamePassword && password !== "" && passwordRepeat !== "") ||
+                !isPasswordComplexityOk
               }
-              errorText={t("screens.register.passwordsDontMatch")}
+              errorText={
+                !isPasswordComplexityOk
+                  ? t("screens.register.passwordsNotComplex")
+                  : t("screens.register.passwordsDontMatch")
+              }
               maxLength={maxTextfieldLength}
               minLength={8}
+            />
+            <PasswordComplexityIndicator
+              password={password}
+              complexity={passwordComplexity}
+              setComplexity={setPasswordComplexity}
             />
             <TextInput
               required

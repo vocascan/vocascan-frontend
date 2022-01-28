@@ -7,12 +7,14 @@ import PersonIcon from "@material-ui/icons/Person";
 import Button from "../../Components/Button/Button.jsx";
 import ConfirmDialog from "../../Components/ConfirmDialog/ConfirmDialog.jsx";
 import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
+import PasswordComplexityIndicator from "../../Components/Indicators/PasswordComplexityIndicator/PasswordComplexityIndicator.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 import StatsTable from "../../Components/StatsTable/StatsTable.jsx";
 
 import useSnack from "../../hooks/useSnack.js";
 import { signOut } from "../../redux/Actions/login.js";
 import { deleteUser, changePassword } from "../../utils/api.js";
+import { bytesLength } from "../../utils/index.js";
 
 import "./Profile.scss";
 
@@ -32,6 +34,8 @@ const Profile = () => {
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [passwordComplexity, setPasswordComplexity] = useState(0);
+  const [isPasswordComplexityOk, setIsPasswordComplexityOk] = useState(false);
   const [repeatedNewPassword, setRepeatedNewPassword] = useState("");
   const [canSubmitPasswordChange, setCanSubmitPasswordChange] = useState(false);
 
@@ -47,6 +51,8 @@ const Profile = () => {
     setOldPassword("");
     setNewPassword("");
     setRepeatedNewPassword("");
+    setPasswordComplexity(0);
+    setIsPasswordComplexityOk(false);
   }, []);
 
   const openEmailModal = useCallback(() => {
@@ -94,14 +100,23 @@ const Profile = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    const passwordLength = bytesLength(newPassword);
+
+    setIsPasswordComplexityOk(
+      passwordLength >= 8 && passwordLength <= 72 && passwordComplexity >= 4
+    );
+  }, [newPassword, passwordComplexity]);
+
+  useEffect(() => {
     setCanSubmitPasswordChange(
       newPassword === repeatedNewPassword &&
         newPassword !== "" &&
         repeatedNewPassword !== "" &&
-        oldPassword !== ""
+        oldPassword !== "" &&
+        isPasswordComplexityOk
     );
     setNewPasswordError(newPassword !== repeatedNewPassword);
-  }, [newPassword, oldPassword, repeatedNewPassword]);
+  }, [isPasswordComplexityOk, newPassword, oldPassword, repeatedNewPassword]);
 
   useEffect(() => {
     setCanSubmitDelete(deleteConfirmation === username);
@@ -193,6 +208,13 @@ const Profile = () => {
             setNewPassword(value);
           }}
           value={newPassword}
+          error={newPassword !== "" && !isPasswordComplexityOk}
+          errorText={t("screens.register.passwordsNotComplex")}
+        />
+        <PasswordComplexityIndicator
+          password={newPassword}
+          complexity={passwordComplexity}
+          setComplexity={setPasswordComplexity}
         />
         <TextInput
           required

@@ -328,6 +328,7 @@
       "emailInUse": "The email is already used",
       "emailNotValid": "Not a valid email address",
       "passwordsDontMatch": "The passwords are not the same",
+      "passwordsNotComplex": "Password not complex enough",
       "alreadyHaveAccount": "Already have an account?",
       "readPrivacy": "I have read the [Privacy Policy]",
       "acceptTerms": "I accept the [Terms and Conditions]"
