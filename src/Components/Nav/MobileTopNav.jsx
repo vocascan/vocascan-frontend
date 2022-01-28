@@ -47,8 +47,7 @@ const MobileTopNav = () => {
     setHamburgerOpen(false);
   }, []);
 
-  // if you scroll down, make top nav disappear
-  const controlNavbar = useCallback(() => {
+  const listenScrollEvent = useCallback(() => {
     if (window.scrollY > 10) {
       setShowNav(false);
     } else {
@@ -56,12 +55,12 @@ const MobileTopNav = () => {
     }
   }, []);
 
+  //add background color, if nav is below hero section
   useEffect(() => {
-    window.addEventListener("scroll", controlNavbar);
-    return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
-  }, [controlNavbar]);
+    window.addEventListener("scroll", listenScrollEvent);
+
+    return () => window.removeEventListener("scroll", listenScrollEvent);
+  }, [listenScrollEvent]);
 
   useEffect(() => {
     hamburgerOpen ? blockScroll() : allowScroll();

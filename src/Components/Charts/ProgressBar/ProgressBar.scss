@@ -1,12 +1,18 @@
 @import "../../../colors";
+@import "../../../constants";
 
 .progress-bar {
   position: relative;
+  align-self: flex-end;
   height: 20px;
-  width: 100%;
+  width: 85%;
   max-width: 500px;
   background-color: $color-background-muted;
-  margin: 50px 0;
+
+  @media screen and (min-width: $bp-md) {
+    width: 100%;
+    align-self: initial;
+  }
 
   .wrapper {
     height: 100%;

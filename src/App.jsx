@@ -28,7 +28,6 @@ import { getLanguages, getProfile } from "./utils/api.js";
 
 import Image from "./images/logo/color-round.svg";
 
-import "./Components/sections.scss";
 import "./index.scss";
 
 const App = () => {

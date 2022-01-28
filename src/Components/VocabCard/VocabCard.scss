@@ -1,16 +1,20 @@
 @import "../../colors";
+@import "../../constants";
 
 .vocab-card {
   background-color: transparent;
-  width: 100%;
+  width: 85%;
   height: 100%;
   display: flex;
   perspective: 1000px;
 
+  @media screen and (min-width: $bp-md) {
+    width: 100%;
+  }
+
   .card-inner {
     position: relative;
-    width: 50%;
-    min-width: 450px;
+    width: 100%;
     max-width: 600px;
     height: 70%;
     min-height: 400px;
@@ -18,6 +22,11 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+
+    @media screen and (min-width: $bp-md) {
+      width: 50%;
+      min-width: 450px;
+    }
 
     &.flipped {
       transform: rotateY(180deg);
@@ -66,10 +75,12 @@
   }
 
   .foreign-word-wrapper {
-    overflow-wrap: break-word;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow-wrap: break-word;
     flex-direction: column;
-    justify-content: space-around;
 
     .description {
       margin-bottom: 20px;
@@ -84,6 +95,11 @@
   }
 
   .translated-word-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     overflow-wrap: break-word;
 
     .translations {
@@ -96,6 +112,13 @@
       margin: 20px 0;
       font-size: 24px;
       padding: 10px;
+    }
+  }
+
+  .card-button {
+    margin: 0 10px;
+    @media screen and (min-width: $bp-md) {
+      min-width: 180px;
     }
   }
 
