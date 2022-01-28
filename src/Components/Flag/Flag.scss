@@ -1,4 +1,7 @@
 .flag {
+  display: flex;
+  justify-content: center;
+
   span {
     display: inline-block;
     background-repeat: no-repeat;
