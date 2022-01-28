@@ -8,7 +8,6 @@ const PasswordComplexityIndicator = ({
   password,
   complexity,
   setComplexity,
-  className,
 }) => {
   useEffect(() => {
     const passwordLength = bytesLength(password);
@@ -19,13 +18,15 @@ const PasswordComplexityIndicator = ({
     const hasNumbers = /\d/.test(password);
     const hasNonAlphas = /\W/.test(password);
 
-    setComplexity(
-      length
-        ? length + hasUpperCase + hasLowerCase + hasNumbers + hasNonAlphas
-        : passwordLength !== 0
-        ? 1
-        : 0
-    );
+    if (length) {
+      setComplexity(
+        length + hasUpperCase + hasLowerCase + hasNumbers + hasNonAlphas
+      );
+    } else if (passwordLength !== 0) {
+      setComplexity(1);
+    } else {
+      setComplexity(0);
+    }
   }, [password, setComplexity]);
 
   return (
