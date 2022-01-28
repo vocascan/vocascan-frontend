@@ -1,4 +1,5 @@
 @import "../../colors";
+@import "../../constants";
 
 .snackbar {
   position: absolute;
@@ -7,6 +8,10 @@
   visibility: hidden;
   right: 15px;
   display: flex;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
@@ -14,6 +19,12 @@
   width: 300px;
   z-index: 10000;
   transition: all 0.4s ease-in;
+  @media screen and (min-width: $bp-md) {
+    left: auto;
+    right: 15px;
+    margin-left: 0;
+    margin-right: 0;
+  }
 
   &.snackbar-success {
     background-color: $color-green-light;
@@ -31,6 +42,7 @@
   }
 
   .snackbar-text {
+    font-size: 16px;
     font-weight: 400;
   }
 
