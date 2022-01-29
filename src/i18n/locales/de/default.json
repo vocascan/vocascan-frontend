@@ -365,6 +365,7 @@
       "emailInUse": "Die E-Mail wird bereits verwendet",
       "emailNotValid": "Keine gültige E-Mail Adresse",
       "passwordsDontMatch": "Die Passwörter stimmen nicht überein",
+      "passwordsNotComplex": "Passwort ist nicht komplex genug",
       "readPrivacy": "Ich habe die [Datenschutzerklärung] gelesen",
       "title": "Registrieren",
       "usernameInUse": "Der Benutzername ist schon vergeben",
