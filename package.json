@@ -1,6 +1,6 @@
 {
   "name": "vocascan-frontend",
-  "version": "1.2.0-rc.1",
+  "version": "1.2.1",
   "private": true,
   "description": "A highly configurable vocabulary trainer",
   "author": "vocascan <vocascan@gmail.com>",
