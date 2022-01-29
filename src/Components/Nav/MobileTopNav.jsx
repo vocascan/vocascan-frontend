@@ -55,7 +55,6 @@ const MobileTopNav = () => {
     }
   }, []);
 
-  //add background color, if nav is below hero section
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
 
