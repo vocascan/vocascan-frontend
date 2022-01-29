@@ -433,13 +433,17 @@ const VocabForm = ({
         </div>
       </form>
       <Modal
-        title={"Add Package"}
+        title={t("screens.allPackages.addPackage")}
         open={showAddPackage}
         onClose={closePackageModal}
       >
         <PackageForm onSubmitCallback={packageAdded} />
       </Modal>
-      <Modal title={"Add Group"} open={showAddGroup} onClose={closeGroupModal}>
+      <Modal
+        title={t("screens.allGroups.addGroup")}
+        open={showAddGroup}
+        onClose={closeGroupModal}
+      >
         <GroupForm
           fixedPackage
           selectedPackage={selectedPackage}

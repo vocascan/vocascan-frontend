@@ -28,6 +28,14 @@
   &-bold {
     font-weight: bold !important;
   }
+
+  &-wrap {
+    white-space: pre-wrap;
+  }
+
+  &-left {
+    text-align: left;
+  }
 }
 
 .w {

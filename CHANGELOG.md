@@ -3,6 +3,17 @@
 This changelog goes through all the changes that have been made in each release on the
 [vocascan-frontend](https://github.com/vocascan/vocascan-frontend).
 
+## [v1.2.1](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.2.1) - 2022.01.29
+
+This release of vocascan-frontend fixes the country flags in firefox and the linebreaks in the vocab card description. The new password complexity indicator will force secure passwords to the users.
+
+- Features
+  - Password complexity (#97)
+- Bugfixes
+  - fixed flags in firefox (#95)
+  - Fix/translations (#96)
+  - fix linebreaks on vocab card and vocab table (#98)
+
 ## [v1.2.0](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.2.0) - 2022.01.22
 
 This is one of the biggest updates for Vocascan so far. We moved the React app out of the desktop app to split up the desktop app into two different repositories. As a result, the frontend is also accessible from within the browser to make learning on foreign or not supported devices a lot easier. Additionally, there are lots of new features (in conjunction with a Vocascan server) to legally secure your site if you want to make it available to the public.
