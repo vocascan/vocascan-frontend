@@ -163,7 +163,7 @@ const AllVocabs = () => {
             <AddCircleOutlinedIcon onClick={addVocab} />
           </Button>
         </div>
-        <div>
+        <div className="table-wrapper">
           <Table columns={columns} data={data} />
         </div>
       </div>

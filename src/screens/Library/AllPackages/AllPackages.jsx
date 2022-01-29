@@ -276,7 +276,7 @@ const AllPackages = () => {
             <ArrowUpwardIcon onClick={onOpenFileClick} />
           </Button>
         </div>
-        <div>
+        <div className="table-wrapper">
           <Table columns={columns} data={data} />
         </div>
       </div>

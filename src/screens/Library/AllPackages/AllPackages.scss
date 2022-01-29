@@ -40,6 +40,10 @@
     }
   }
 
+  .table-wrapper {
+    overflow: scroll;
+  }
+
   .flag-cell-wrapper {
     display: flex;
     align-items: center;

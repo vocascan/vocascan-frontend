@@ -47,6 +47,10 @@
     }
   }
 
+  .table-wrapper {
+    overflow: scroll;
+  }
+
   .group-description-cell {
     text-align: left;
     text-overflow: ellipsis;
