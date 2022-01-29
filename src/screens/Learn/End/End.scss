@@ -1,13 +1,21 @@
+@import "../../../constants";
+
 .end-screen {
-  padding: 150px;
   max-width: 600px;
-  height: 40%;
+  width: 85%;
+  height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 
+  @media screen and (min-width: $bp-md) {
+    height: 40%;
+    height: 100%;
+  }
+
   .percentage-text {
     margin: 15px 0;
+    font-size: 16px;
   }
 }

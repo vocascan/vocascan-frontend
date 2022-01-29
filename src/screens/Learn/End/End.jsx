@@ -57,19 +57,21 @@ const End = () => {
   );
   return (
     <div className="end-screen">
-      <div>
-        <Congratulation percentage={percentage} />
-        <p className="percentage-text">
-          {t("screens.endScreen.percentageText", {
-            percentage: percentage,
-          })}
-        </p>
-      </div>
+      <div className="end-screen-inner">
+        <div>
+          <Congratulation percentage={percentage} />
+          <p className="percentage-text">
+            {t("screens.endScreen.percentageText", {
+              percentage: percentage,
+            })}
+          </p>
+        </div>
 
-      <Table columns={columns} data={data} pagination={false} />
-      <Button block uppercase onClick={submitEndQuery}>
-        {t("screens.endScreen.dashboard")}
-      </Button>
+        <Table columns={columns} data={data} pagination={false} />
+        <Button block uppercase onClick={submitEndQuery}>
+          {t("screens.endScreen.dashboard")}
+        </Button>
+      </div>
     </div>
   );
 };
