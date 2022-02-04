@@ -16,8 +16,6 @@ import useLinkCreator from "../../hooks/useLinkCreator.js";
 import HamburgerMenuIcon from "../../images/icons/hamburger.svg";
 import VocascanLogo from "../../images/logo/color-round.svg";
 
-import "./MobileTopNav.scss";
-
 import { useScrollBlock } from "../../hooks/useScrollBlock";
 import { pages } from "../../utils/constants";
 import NavButton from "./NavButton";
@@ -68,27 +66,33 @@ const MobileTopNav = () => {
   return (
     <>
       <div
-        className={`mobile-top-nav ${hamburgerOpen && "transparent"} ${
-          !showNav && "hidden"
-        }`}
+        className={`w-full h-16 fixed flex overflow-hidden top-0 z-50 opacity-100 ease-in-out duration-700 delay-0 ${
+          hamburgerOpen && "bg-transparent"
+        } ${!showNav && "hidden"} md:hidden`}
       >
-        <div className="mobile-top-nav-inner">
-          <Link to="/" onClick={closeHamburgerMenu}>
-            <div className="link-wrapper">
-              <img src={VocascanLogo} alt="Logo" />
-              <p>Vocascan</p>
+        <div className="w-5/6 h-full flex flex-row justify-between items-center m-auto">
+          <Link className="no-underline" to="/" onClick={closeHamburgerMenu}>
+            <div className="flex items-center no-underline">
+              <img className="w-8" src={VocascanLogo} alt="Logo" />
+              <p className="font-light pl-3 text-base uppercase">Vocascan</p>
             </div>
           </Link>
           <img
-            className="hamburger-menu"
+            className="w-10"
             src={HamburgerMenuIcon}
             alt="menu"
             onClick={triggerHamburgerMenu}
           />
         </div>
       </div>
-      <div className={`mobile-top-nav-menu ${hamburgerOpen && "active"}`}>
-        <ul className="nav-list">
+      <div
+        className={`w-full h-full top-0 left-0 overflow-hidden items-center ease-in-out duration-700 delay-0 ${
+          hamburgerOpen
+            ? "opacity-100 z-10 flex flex-col justify-center relative"
+            : "opacity-0 -z-10 hidden"
+        } md:hidden`}
+      >
+        <ul className="w-full h-5/6 flex flex-col">
           <NavButton
             name={t("nav.learn")}
             icon={<LocalLibraryIcon />}
@@ -116,29 +120,44 @@ const MobileTopNav = () => {
             link="/custom"
           />
         </ul>
-        <div className="nav-legal">
+        <div className="text-white my-2 mx-auto text-base opacity-0">
           {isLegalNoticeValid && (
-            <div className="nav-legal-wrapper">
+            <div className="flex items-center my-1">
               <VerifiedUserIcon />
-              <a target="_blank" href={legalNoticeUrl} rel="noreferrer">
+              <a
+                className="ml-1 text-white no-underline"
+                target="_blank"
+                href={legalNoticeUrl}
+                rel="noreferrer"
+              >
                 {t("global.legalNotice")}
               </a>
             </div>
           )}
 
           {isTermsAndConditionsValid && (
-            <div className="nav-legal-wrapper">
+            <div className="flex items-center my-1">
               <PolicyIcon />
-              <a target="_blank" href={termsAndConditionsUrl} rel="noreferrer">
+              <a
+                className="ml-1 text-white no-underline"
+                target="_blank"
+                href={termsAndConditionsUrl}
+                rel="noreferrer"
+              >
                 {t("global.termsAndConditions")}
               </a>
             </div>
           )}
 
           {isPrivacyPolicyValid && (
-            <div className="nav-legal-wrapper">
+            <div className="flex items-center my-1">
               <SecurityIcon />
-              <a target="_blank" href={privacyPolicyUrl} rel="noreferrer">
+              <a
+                className="ml-1 text-white no-underline"
+                target="_blank"
+                href={privacyPolicyUrl}
+                rel="noreferrer"
+              >
                 {t("global.privacyPolicy")}
               </a>
             </div>
