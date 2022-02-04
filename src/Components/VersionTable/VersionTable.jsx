@@ -7,10 +7,7 @@ import Table from "../Table/Table.jsx";
 import { getDesktopVersions } from "../../modules/about.js";
 import { dayDateDiff } from "../../utils/index.js";
 
-import {
-  version as webVersion,
-  metadata as webInfo,
-} from "../../../package.json";
+import packageInfo from "../../../package.json";
 
 import "./VersionTable.scss";
 
@@ -109,8 +106,8 @@ const VersionTable = () => {
     () => [
       {
         component: "vocascan-frontend",
-        version: webVersion,
-        ...webInfo,
+        version: packageInfo.version,
+        ...packageInfo.metadata,
       },
       ...(window.VOCASCAN_CONFIG.ENV === "electron"
         ? [

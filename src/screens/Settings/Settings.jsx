@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
 import LanguageSelector from "../../Components/LanguageSelector/LanguageSelector.jsx";
+import VersionTable from "../../Components/VersionTable/VersionTable.jsx";
 
-import VersionTable from "../../Components/VersionTable/VersionTable.js";
 import { openGuide } from "../../redux/Actions/login.js";
 
 import "./Settings.scss";

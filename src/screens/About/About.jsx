@@ -6,7 +6,7 @@ import Details from "../../Components/Details/Details.jsx";
 
 import { contributors, additionalDependencies } from "../../utils/constants.js";
 
-import { dependencies, devDependencies } from "../../../package.json";
+import packageInfo from "../../../package.json";
 
 import "./About.scss";
 
@@ -38,14 +38,14 @@ const About = () => {
         <Details
           summary={t("contributors.dependencies")}
           count={
-            Object.keys(dependencies).length +
-            Object.keys(devDependencies).length +
+            Object.keys(packageInfo.dependencies).length +
+            Object.keys(packageInfo.devDependencies).length +
             Object.keys(additionalDependencies).length
           }
         >
           {Object.entries({
-            ...dependencies,
-            ...devDependencies,
+            ...packageInfo.dependencies,
+            ...packageInfo.devDependencies,
             ...additionalDependencies,
           }).map(([name, version], i) => (
             <a
