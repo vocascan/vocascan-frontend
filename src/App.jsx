@@ -25,7 +25,7 @@ import Settings from "./screens/Settings/Settings.jsx";
 import { setLanguages } from "./redux/Actions/language.js";
 import { signIn, signOut } from "./redux/Actions/login.js";
 import { getLanguages, getProfile } from "./utils/api.js";
-import { applyTheme } from "./utils/theme.js";
+import { useTheme } from "./utils/theme.js";
 
 import Image from "./images/logo/color-round.svg";
 
@@ -33,12 +33,13 @@ import "./Components/sections.scss";
 import "./index.scss";
 
 const App = () => {
+  useTheme();
+
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const languages = useSelector((state) => state.language.languages);
   const user = useSelector((state) => state.login.user);
-  const theme = useSelector((state) => state.setting.theme);
 
   const shouldLogin = !!user.token && !isLoggedIn;
   const { SHOW_PLANS: showPlans, BASE_URL: baseURL } = window.VOCASCAN_CONFIG;
@@ -76,8 +77,6 @@ const App = () => {
     // try login only once on render
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => applyTheme(theme), [theme]);
 
   if (shouldLogin) {
     return (
