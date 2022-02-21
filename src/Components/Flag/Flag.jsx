@@ -6,15 +6,19 @@ import {
   spriteSheetPositions,
 } from "./language-country-map.js";
 
-import "./Flag.scss";
-
 const sizeMap = {
   small: 0.13,
   medium: 0.3,
   large: 0.6,
 };
 
-const Flag = ({ languageCode, border = false, size = "small", scale }) => {
+const Flag = ({
+  languageCode,
+  border = false,
+  size = "small",
+  hover = false,
+  scale,
+}) => {
   const [computedScale, setComputedScale] = useState(0);
 
   useEffect(() => {
@@ -49,8 +53,15 @@ const Flag = ({ languageCode, border = false, size = "small", scale }) => {
   }, [border, computedScale, languageCode]);
 
   return (
-    <div className="flag">
-      <span style={style} />
+    <div
+      className={`flex justify-center hover:cursor-pointer ${
+        hover && "hover:scale-110 ease-in-out duration-200"
+      }`}
+    >
+      <span
+        className="inline-block bg-no-repeat bg-[url('./Components/Flag/flags.png')] text-white"
+        style={style}
+      />
     </div>
   );
 };
