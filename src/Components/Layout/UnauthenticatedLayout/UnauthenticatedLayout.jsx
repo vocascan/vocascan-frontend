@@ -7,20 +7,18 @@ import Flag from "../../Flag/Flag.jsx";
 import LanguageSelector from "../../LanguageSelector/LanguageSelector.jsx";
 import Modal from "../../Modal/Modal.jsx";
 
-import "./UnauthenticatedLayout.scss";
-
 const UnauthenticatedLayout = ({ children }) => {
   const { t } = useTranslation();
   const language = useSelector((state) => state.setting.language);
   const [showLanguageModal, setShowLanguageModal] = useState(false);
 
   return (
-    <div className={`unauthenticated-container`}>
+    <div className="w-full h-screen flex justify-center relative bg-gradient-to-r from-blue-400 to-pink-300">
       <div
         onClick={() => setShowLanguageModal(true)}
-        className="language-selector-wrapper"
+        className="absolute top-3 right-3"
       >
-        <Flag languageCode={language} size="medium" />
+        <Flag languageCode={language} size="medium" hover />
       </div>
       {children}
       <Modal
@@ -29,11 +27,11 @@ const UnauthenticatedLayout = ({ children }) => {
         size="small"
         onClose={() => setShowLanguageModal(false)}
       >
-        <div className="select-language-modal-inner">
+        <div className="self-center mx-0 mt-5 mb-8 w-64">
           <LanguageSelector />
         </div>
 
-        <div className="select-language-modal-close">
+        <div className="self-center">
           <Button onClick={() => setShowLanguageModal(false)}>
             {t("global.close")}
           </Button>
