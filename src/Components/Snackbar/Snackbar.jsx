@@ -3,8 +3,6 @@ import React, { useContext } from "react";
 
 import SnackbarContext from "../../context/SnackbarContext.jsx";
 
-import "./Snackbar.scss";
-
 const Snackbar = () => {
   const { snack } = useContext(SnackbarContext);
 
