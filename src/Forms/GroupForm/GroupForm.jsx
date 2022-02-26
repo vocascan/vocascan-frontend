@@ -15,8 +15,6 @@ import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
 import { maxTextareaLength, maxNameLength } from "../../utils/constants.js";
 
-import "./GroupForm.scss";
-
 const GroupForm = ({
   fixedPackage = false,
   defaultData = null,
@@ -153,48 +151,46 @@ const GroupForm = ({
   }, []);
 
   return (
-    <div className="group-form">
-      <div className="form-wrapper">
-        <div className="dropdown">
-          <div className="select-wrapper">
-            <Select
-              disabled={fixedPackage}
-              required
-              label={t("components.groupForm.languagePackage")}
-              options={packageItems}
-              onChange={(value) => {
-                setLanguagePackage(value);
-              }}
-              value={languagePackage}
-            />
-          </div>
+    <div className="w-full h-4/5 max-w-2xl flex flex-col justify-between">
+      <div className="max-h-12 flex justify-between z-10 my-0 -mx-2.5">
+        <div className="w-full flex my-0 mx-3">
+          <Select
+            disabled={fixedPackage}
+            required
+            label={t("components.groupForm.languagePackage")}
+            options={packageItems}
+            onChange={(value) => {
+              setLanguagePackage(value);
+            }}
+            value={languagePackage}
+          />
         </div>
-
-        <TextInput
-          required
-          placeholder={t("global.name")}
-          onChange={(value) => {
-            setName(value);
-          }}
-          value={name}
-          maxLength={maxNameLength}
-        />
-        <Textarea
-          placeholder={t("screens.allGroups.groupDescription")}
-          onChange={(value) => {
-            setDescription(value);
-          }}
-          value={description}
-          rows={5}
-          maxLength={maxTextareaLength}
-        />
-        <Switch
-          appearance="on-off"
-          optionLeft={t("components.groupForm.activeLabel")}
-          onChange={onChangeActive}
-          checked={localActive}
-        />
       </div>
+
+      <TextInput
+        required
+        placeholder={t("global.name")}
+        onChange={(value) => {
+          setName(value);
+        }}
+        value={name}
+        maxLength={maxNameLength}
+      />
+      <Textarea
+        placeholder={t("screens.allGroups.groupDescription")}
+        onChange={(value) => {
+          setDescription(value);
+        }}
+        value={description}
+        rows={5}
+        maxLength={maxTextareaLength}
+      />
+      <Switch
+        appearance="on-off"
+        optionLeft={t("components.groupForm.activeLabel")}
+        onChange={onChangeActive}
+        checked={localActive}
+      />
 
       <Button disabled={!canSubmit} onClick={submitHandler}>
         {t("global.submit")}

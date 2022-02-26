@@ -17,8 +17,6 @@ import {
 } from "../../utils/constants.js";
 import { findLanguageByCode, getLanguageString } from "../../utils/index.js";
 
-import "./PackageForm.scss";
-
 const PackageForm = ({
   defaultData = null,
   onSubmitCallback = null,
@@ -179,8 +177,8 @@ const PackageForm = ({
   }, [onLoad]);
 
   return (
-    <div className="language-package-form">
-      <div className="form-wrapper">
+    <div className="w-full h-3/4 max-w-3xl flex flex-col justify-between">
+      <div>
         <TextInput
           required
           placeholder={t("global.name")}
@@ -191,8 +189,8 @@ const PackageForm = ({
           maxLength={maxNameLength}
         />
 
-        <div className="dropdown">
-          <div className="select-wrapper">
+        <div className="max-h-12 flex justify-between z-10 my-0 -mx-2.5">
+          <div className="w-full flex my-0 mx-2.5">
             <Select
               required
               label={t("components.packageForm.foreignLanguage")}
@@ -203,7 +201,7 @@ const PackageForm = ({
               value={foreignLanguage}
             />
           </div>
-          <div className="select-wrapper">
+          <div className="w-full flex my-0 mx-2.5">
             <Select
               required
               label={t("components.packageForm.translatedLanguage")}

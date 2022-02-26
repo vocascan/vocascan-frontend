@@ -11,8 +11,6 @@ import { createInviteCode } from "../../utils/api.js";
 import { numberField } from "../../utils/constants.js";
 import { inviteTimeSpans } from "../../utils/constants.js";
 
-import "./InviteCodeForm.scss";
-
 const InviteCodeForm = ({ onSubmitCallback = null }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
@@ -62,8 +60,11 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
   }, [expirationDate.value, maxUses, onSubmitCallback, showSnack, t]);
 
   return (
-    <form className="invite-code-form" onSubmit={submitHandler}>
-      <div className="form-wrapper">
+    <form
+      className="w-full h-full flex justify-center items-center flex-col"
+      onSubmit={submitHandler}
+    >
+      <div className="w-2/3 h-1/2 flex flex-col items-center">
         <TextInput
           placeholder={t("components.inviteCode.maxUses")}
           onChange={(value) => {
@@ -74,7 +75,7 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
           max={numberField[1]}
           min={numberField[0]}
         />
-        <div className="select-wrapper">
+        <div className="w-full h-auto">
           <Select
             required
             label={t("components.inviteCode.expirationDateNormal")}
@@ -86,7 +87,7 @@ const InviteCodeForm = ({ onSubmitCallback = null }) => {
             menuPosition="fixed"
           />
         </div>
-        <Button className="submit-btn" type="submit">
+        <Button className="mt-5" type="submit">
           {t("global.create")}
         </Button>
       </div>

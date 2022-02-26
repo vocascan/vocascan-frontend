@@ -27,8 +27,6 @@ import {
 } from "../../utils/constants.js";
 import { maxTranslations } from "../../utils/constants.js";
 
-import "./VocabForm.scss";
-
 const VocabForm = ({
   defaultData = null,
   onSubmitCallback = null,
@@ -321,11 +319,14 @@ const VocabForm = ({
 
   return (
     <>
-      <form className="vocab-form" onSubmit={onSubmit}>
-        {title && <h1 className="heading">{title}</h1>}
+      <form
+        className="w-full h-3/4 p-12 overflow-y-auto md:max-w-3xl"
+        onSubmit={onSubmit}
+      >
+        {title && <h1 className="hidden md:inline">{title}</h1>}
 
-        <div className="dropdowns">
-          <div className="select-wrapper">
+        <div className="z-10 md:max-h-12 md:flex md:justify-between md:my-5 md:-mx-2.5">
+          <div className="w-full md:my-0 md:mx-2.5">
             <Select
               required
               creatable
@@ -342,7 +343,7 @@ const VocabForm = ({
               noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
             />
           </div>
-          <div className="select-wrapper">
+          <div className="w-full md:my-0 md:mx-2.5">
             <Select
               required
               creatable
@@ -360,7 +361,7 @@ const VocabForm = ({
             />
           </div>
         </div>
-        <div className="input-fields">
+        <div className="flex flex-col">
           <TextInput
             required
             inputRef={focusedInputField}
@@ -413,7 +414,7 @@ const VocabForm = ({
           )}
         </div>
 
-        <div className="form-submit">
+        <div className="w-1/3 my-0 mx-auto flex justify-center mt-10">
           <Button
             block
             tabIndex={-1}
