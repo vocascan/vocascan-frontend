@@ -3,15 +3,13 @@ import React from "react";
 import GroupPreview from "./GroupPreview/GroupPreview.jsx";
 import PackagePreview from "./PackagePreview/PackagePreview.jsx";
 
-import "./ImportPreviewForm.scss";
-
 const ImportPreviewForm = ({
   defaultPackage = null,
   onSubmitCallback = null,
   importedData,
 }) => {
   return (
-    <div className="import-preview">
+    <div className="h-5/6 w-5/6">
       {importedData.type === "vocascan/package" ? (
         <PackagePreview
           onSubmitCallback={onSubmitCallback}

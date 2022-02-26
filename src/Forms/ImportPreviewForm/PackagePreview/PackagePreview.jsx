@@ -22,8 +22,6 @@ import {
   getLanguageString,
 } from "../../../utils/index.js";
 
-import "./PackagePreview.scss";
-
 const PackagePreview = ({ onSubmitCallback, importedData }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
@@ -110,8 +108,8 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
   );
 
   return (
-    <div className="package-preview">
-      <div className="update-fields">
+    <div className="w-full h-full overflow-y-auto flex flex-col justify-between items-center">
+      <div className="w-full h-5/6 overflow-y-auto">
         <TextInput
           autoFocus
           required
@@ -125,8 +123,8 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
           value={languagePackage.name}
           maxLength={255}
         />
-        <div className="dropdown">
-          <div className="select-wrapper">
+        <div className="max-h-12 flex justify-between z-10">
+          <div className="w-1/2 flex mr-3">
             <Select
               required
               label={t("components.packageForm.foreignLanguage")}
@@ -154,7 +152,7 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
               }}
             />
           </div>
-          <div className="select-wrapper">
+          <div className="w-1/2 flex ml-3">
             <Select
               required
               label={t("components.packageForm.translatedLanguage")}
@@ -239,7 +237,7 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
           key={1}
         >
           {languagePackage?.Groups.map((group, i) => (
-            <div className="group-detail" key={i}>
+            <div className="w-11/12 my-0 mx-auto" key={i}>
               <Details
                 summary={group.name}
                 count={group.length}
@@ -256,7 +254,7 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
           ))}
         </Details>
       </div>
-      <div className="submit-btn">
+      <div className="flex justify-center mt-10">
         <Button block uppercase onClick={submitImport} disabled={!importedData}>
           {t("global.import")}
         </Button>

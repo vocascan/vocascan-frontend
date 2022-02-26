@@ -19,8 +19,6 @@ import useSnack from "../../../hooks/useSnack.js";
 import { getPackages, importVocabs } from "../../../utils/api.js";
 import { delay } from "../../../utils/index.js";
 
-import "./GroupPreview.scss";
-
 const GroupPreview = ({
   defaultPackage = null,
   onSubmitCallback,
@@ -156,9 +154,9 @@ const GroupPreview = ({
 
   return (
     <>
-      <div className="group-preview">
-        <div className="update-fields">
-          <div className="customizables">
+      <div className="w-full h-full overflow-y-auto flex flex-col justify-between items-center">
+        <div className="w-full">
+          <div className="mb-5">
             <Select
               required
               creatable
@@ -214,7 +212,6 @@ const GroupPreview = ({
               checked={activateVocabs}
             />
           </div>
-
           <Details
             summary={t("global.vocabs")}
             count={importedGroup?.VocabularyCards.length}
@@ -228,7 +225,7 @@ const GroupPreview = ({
             />
           </Details>
         </div>
-        <div className="submit-btn">
+        <div className="flex justify-center mt-10">
           <Button
             block
             uppercase
