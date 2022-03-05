@@ -14,8 +14,6 @@ import useSnack from "../../hooks/useSnack.js";
 import { signOut } from "../../redux/Actions/login.js";
 import { deleteUser, changePassword } from "../../utils/api.js";
 
-import "./Profile.scss";
-
 const Profile = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -109,22 +107,26 @@ const Profile = () => {
 
   return (
     <>
-      <div className="profile-screen">
-        <div className="profile-avatar-wrapper">
-          <PersonIcon className="profile-avatar" />
+      <div className="max-w-2xl p-12 my-0 mx-auto">
+        <div className="w-36 h-36 rounded-full border border-solid border-alternative my-0 mx-auto flex justify-center items-center">
+          <PersonIcon style={{ fontSize: 70 }} />
         </div>
-        <h1 className="profile-username">{username}</h1>
+        <h1 className="my-5 mx-0">{username}</h1>
         <StatsTable />
-        <h1 className="account-settings-header">
+        <h1 className="text-base font-bold uppercase text-left my-4 mx-0">
           {t("screens.profile.accountSettings.title")}
         </h1>
-        <div className="account-settings">
-          <div className="account-settings-fields border-bottom">
-            <div className="description-wrapper">
-              <h3>{t("screens.profile.accountSettings.password.title")}</h3>
-              <p>{t("screens.profile.accountSettings.password.description")}</p>
+        <div className="border border-solid border-red-standard rounded-2xl flex flex-col">
+          <div className="p-4 flex">
+            <div className="w-4/6 h-3/5 my-auto mx-0 ml-3 flex flex-col justify-around">
+              <h3 className="text-base text-left">
+                {t("screens.profile.accountSettings.password.title")}
+              </h3>
+              <p className="text-xs text-left">
+                {t("screens.profile.accountSettings.password.description")}
+              </p>
             </div>
-            <div className="button-wrapper">
+            <div className="w-2/6">
               <Button
                 block
                 uppercase
@@ -135,23 +137,31 @@ const Profile = () => {
               </Button>
             </div>
           </div>
-          <div className="account-settings-fields border-bottom">
-            <div className="description-wrapper">
-              <h3>{t("screens.profile.accountSettings.email.title")}</h3>
-              <p>{t("screens.profile.accountSettings.email.description")}</p>
+          <div className="p-4 flex border border-solid border-background-muted">
+            <div className="w-4/6 h-3/5 my-auto mx-0 ml-3 flex flex-col justify-around">
+              <h3 className="text-base text-left">
+                {t("screens.profile.accountSettings.email.title")}
+              </h3>
+              <p className="text-xs text-left">
+                {t("screens.profile.accountSettings.email.description")}
+              </p>
             </div>
-            <div className="button-wrapper">
+            <div className="w-2/6">
               <Button block uppercase appearance="red" onClick={openEmailModal}>
                 {t("screens.profile.accountSettings.email.title")}
               </Button>
             </div>
           </div>
-          <div className="account-settings-fields">
-            <div className="description-wrapper">
-              <h3>{t("screens.profile.accountSettings.delete.title")}</h3>
-              <p>{t("screens.profile.accountSettings.delete.description")}</p>
+          <div className="p-4 flex">
+            <div className="w-4/6 h-3/5 my-auto mx-0 ml-3 flex flex-col justify-around">
+              <h3 className="text-base text-left">
+                {t("screens.profile.accountSettings.delete.title")}
+              </h3>
+              <p className="text-xs text-left">
+                {t("screens.profile.accountSettings.delete.description")}
+              </p>
             </div>
-            <div className="button-wrapper">
+            <div className="w-2/6">
               <Button
                 block
                 uppercase

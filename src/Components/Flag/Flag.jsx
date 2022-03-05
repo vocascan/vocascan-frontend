@@ -18,6 +18,7 @@ const Flag = ({
   size = "small",
   hover = false,
   scale,
+  className = "",
 }) => {
   const [computedScale, setComputedScale] = useState(0);
 
@@ -56,7 +57,7 @@ const Flag = ({
     <div
       className={`flex justify-center hover:cursor-pointer ${
         hover && "hover:scale-110 ease-in-out duration-200"
-      }`}
+      } ${className}`}
     >
       <span
         className="inline-block bg-no-repeat bg-[url('./Components/Flag/flags.png')] text-white"

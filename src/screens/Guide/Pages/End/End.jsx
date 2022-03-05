@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import "./End.scss";
-
 const End = ({ setCanContinue }) => {
   const { t } = useTranslation();
 
@@ -11,9 +9,9 @@ const End = ({ setCanContinue }) => {
   }, [setCanContinue]);
 
   return (
-    <div className={"end"}>
-      <div className={"end-heading"}>
-        <h1>{t("screens.guide.end.heading")}</h1>
+    <div className="w-full h-full flex justify-center">
+      <div className="m-auto uppercase">
+        <h1 className="mb-3">{t("screens.guide.end.heading")}</h1>
         <p>{t("screens.guide.end.description")}</p>
       </div>
     </div>

@@ -19,8 +19,6 @@ import VocabDescription from "./Pages/VocabDescription/VocabDescription.jsx";
 import useSnack from "../../hooks/useSnack.js";
 import { closeGuide } from "../../redux/Actions/login.js";
 
-import "./Guide.scss";
-
 const Guide = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -182,7 +180,7 @@ const Guide = () => {
       closeOnEscape={false}
       size="large"
     >
-      <div className="skip-button">
+      <div className="absolute right-14 top-10">
         <Button block uppercase variant={"outline"} onClick={() => onEnd()}>
           {t("global.skip")}
         </Button>

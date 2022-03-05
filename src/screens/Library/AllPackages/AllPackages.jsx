@@ -35,8 +35,6 @@ import {
 } from "../../../utils/api.js";
 import { findLanguageByCode, getLanguageString } from "../../../utils/index.js";
 
-import "./AllPackages.scss";
-
 const AllPackages = () => {
   const { t } = useTranslation();
   const history = useHistory();
@@ -181,8 +179,12 @@ const AllPackages = () => {
         Header: t("screens.allPackages.foreignLanguage"),
         accessor: "foreignWordLanguage",
         Cell: ({ row }) => (
-          <div className="flag-cell-wrapper">
-            <Flag languageCode={row.original.foreignWordLanguage} border />
+          <div className="flex items-center">
+            <Flag
+              className="mr-2"
+              languageCode={row.original.foreignWordLanguage}
+              border
+            />
             {getLanguageString(
               findLanguageByCode(row.original.foreignWordLanguage, languages)
             )}
@@ -193,8 +195,12 @@ const AllPackages = () => {
         Header: t("screens.allPackages.translatedLanguage"),
         accessor: "translatedWordLanguage",
         Cell: ({ row }) => (
-          <div className="flag-cell-wrapper">
-            <Flag languageCode={row.original.translatedWordLanguage} border />
+          <div className="flex items-center">
+            <Flag
+              className="mr-2"
+              languageCode={row.original.translatedWordLanguage}
+              border
+            />
             {getLanguageString(
               findLanguageByCode(row.original.translatedWordLanguage, languages)
             )}
@@ -217,7 +223,7 @@ const AllPackages = () => {
             <Button
               appearance="primary"
               variant="link"
-              className="action-col-btn"
+              className="mr-2"
               onClick={() => openExportPackage(row.original)}
               disabled={!isSupported}
             >
@@ -226,7 +232,7 @@ const AllPackages = () => {
             <Button
               appearance="primary"
               variant="link"
-              className="action-col-btn"
+              className="mr-2"
               onClick={() => editPackage(row.original)}
             >
               <EditOutlinedIcon />
@@ -234,7 +240,7 @@ const AllPackages = () => {
             <Button
               appearance="red"
               variant="link"
-              className="action-col-btn"
+              className="mr-2"
               onClick={() => onDeletePckge(row.original)}
             >
               <DeleteOutlineIcon />
@@ -254,14 +260,17 @@ const AllPackages = () => {
 
   return (
     <>
-      <div className="all-packages-wrapper">
-        <div className="header-wrapper">
+      <div>
+        <div className="relative flex justify-center items-center mb-5">
           <h2 className="heading">{t("screens.allPackages.title")}</h2>
-          <Button className="add" variant="transparent">
+          <Button
+            className="absolute right-0 self-center p-1 rounded-full"
+            variant="transparent"
+          >
             <AddCircleOutlinedIcon onClick={addPackage} />
           </Button>
           <Button
-            className="import"
+            className="absolute right-10 self-center p-1 rounded-full"
             variant="transparent"
             disabled={!isSupported}
           >
@@ -276,7 +285,7 @@ const AllPackages = () => {
             <ArrowUpwardIcon onClick={onOpenFileClick} />
           </Button>
         </div>
-        <div className="table-wrapper">
+        <div className="overflow-scroll">
           <Table columns={columns} data={data} />
         </div>
       </div>

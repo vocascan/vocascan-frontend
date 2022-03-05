@@ -18,8 +18,6 @@ import VocabForm from "../../../Forms/VocabForm/VocabForm.jsx";
 import useSnack from "../../../hooks/useSnack.js";
 import { getGroupVocabulary, deleteVocabulary } from "../../../utils/api.js";
 
-import "./AllVocabs.scss";
-
 const AllVocabs = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
@@ -149,21 +147,24 @@ const AllVocabs = () => {
 
   return (
     <>
-      <div className="all-vocabs-wrapper">
-        <div className="header-wrapper">
+      <div>
+        <div className="relative flex justify-center items-center mb-5">
           <Button
-            className="back"
+            className="absolute left-0 self-center p-1 rounded-full hover:cursor-pointer hover:text-primary-dark"
             variant="transparent"
             onClick={history.goBack}
           >
             <ArrowBackIcon />
           </Button>
           <h2 className="heading">{t("screens.allVocabs.title")}</h2>
-          <Button className="add" variant="transparent">
+          <Button
+            className="absolute right-0 self-center p-1 rounded-full hover:cursor-pointer hover:text-primary-dark"
+            variant="transparent"
+          >
             <AddCircleOutlinedIcon onClick={addVocab} />
           </Button>
         </div>
-        <div className="table-wrapper">
+        <div className="overflow-scroll">
           <Table columns={columns} data={data} />
         </div>
       </div>

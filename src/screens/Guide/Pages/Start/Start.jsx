@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import "./Start.scss";
-
 const Start = ({ setCanContinue }) => {
   const { t } = useTranslation();
 
@@ -11,9 +9,9 @@ const Start = ({ setCanContinue }) => {
   }, [setCanContinue]);
 
   return (
-    <div className="start">
-      <div className="start-heading">
-        <h1>Vocascan</h1>
+    <div className="w-full h-full flex justify-center">
+      <div className="m-auto uppercase">
+        <h1 className="mb-3">Vocascan</h1>
         <p>{t("screens.guide.start.slogan")}</p>
       </div>
     </div>

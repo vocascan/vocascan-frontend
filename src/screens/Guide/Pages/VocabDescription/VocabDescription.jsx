@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 
 import image1 from "./addVocab.png";
 
-import "./VocabDescription.scss";
-
 const VocabDescription = ({ setCanContinue }) => {
   const { t } = useTranslation();
 
@@ -17,21 +15,21 @@ const VocabDescription = ({ setCanContinue }) => {
   }, [setCanContinue]);
 
   return (
-    <div className="vocab-description">
-      <div className="images">
+    <div className="w-full h-full flex flex-row">
+      <div className="w-1/3 flex flex-col my-auto mx-0">
         <img src={image1} alt="" />
       </div>
-      <div className="description">
-        <h1 className="heading">{t("global.vocabs")}</h1>
+      <div className="my-[10%] mx-0 flex justify-between flex-col">
+        <h1 className="text-2xl font-bold">{t("global.vocabs")}</h1>
         <p>{t("screens.guide.vocabDescription.heading")}</p>
-        <ul>
+        <ul className="py-0 px-[5%]">
           {bulletPoints.map((bulletPoint, index) => (
-            <li key={index}>{bulletPoint}</li>
+            <li className="text-xl text-left my-3 mx-24" key={index}>
+              {bulletPoint}
+            </li>
           ))}
         </ul>
-        <p className="end-text">
-          {t("screens.guide.vocabDescription.endText")}
-        </p>
+        <p className="text-xl">{t("screens.guide.vocabDescription.endText")}</p>
       </div>
     </div>
   );

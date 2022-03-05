@@ -8,8 +8,6 @@ import VersionTable from "../../Components/VersionTable/VersionTable.jsx";
 
 import { openGuide } from "../../redux/Actions/login.js";
 
-import "./Settings.scss";
-
 const Settings = () => {
   const { t } = useTranslation();
 
@@ -20,13 +18,13 @@ const Settings = () => {
   }, [dispatch]);
 
   return (
-    <div className="settings-wrapper">
-      <h1 className="heading">{t("screens.settings.title")}</h1>
+    <div className="flex flex-col p-12 max-w-4xl justify-center my-0 mx-auto">
+      <h1 className="mb-5">{t("screens.settings.title")}</h1>
 
       <LanguageSelector />
 
-      <div className="settings-guide">
-        <h3>{t("screens.settings.guide.title")}</h3>
+      <div className="my-10 mx-auto w-1/2">
+        <h3 className="mb-1">{t("screens.settings.guide.title")}</h3>
         <Button block uppercase onClick={reopenGuide}>
           {t("screens.settings.guide.button")}
         </Button>

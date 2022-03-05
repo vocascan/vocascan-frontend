@@ -8,15 +8,13 @@ import { contributors, additionalDependencies } from "../../utils/constants.js";
 
 import packageInfo from "../../../package.json";
 
-import "./About.scss";
-
 const About = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="about">
-      <div className="wrapper">
-        <h1>{t("screens.about.title")}</h1>
+    <div className="w-full flex justify-center items-center">
+      <div className="w-11/12 flex flex-col py-10 px-0">
+        <h1 className="mb-8">{t("screens.about.title")}</h1>
 
         {Object.entries(contributors).map(([key, value], i) => (
           <Details
@@ -52,7 +50,7 @@ const About = () => {
               href={`https://www.npmjs.com/package/${name}`}
               target="_blank"
               rel="noreferrer noopener"
-              className="dependency-card"
+              className="bg-background-inverse text-white p-3 m-2 rounded-lg no-underline ease-in-out duration-150 hover:bg-background-inverseHover"
               key={i}
             >
               {name}: {version}

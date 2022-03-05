@@ -6,15 +6,13 @@ import AllGroups from "./AllGroups/AllGroups.jsx";
 import AllPackages from "./AllPackages/AllPackages.jsx";
 import AllVocabs from "./AllVocabs/AllVocabs.jsx";
 
-import "./Library.scss";
-
 const Library = () => {
   const { t } = useTranslation();
   const { path } = useRouteMatch();
 
   return (
-    <div className="library-wrapper">
-      <h1 className="title">{t("global.library")}</h1>
+    <div className="py-12 px-3 md: p-12">
+      <h1 className="mb-5">{t("global.library")}</h1>
       <Switch>
         <Route exact path={`${path}/`} component={AllPackages} />
         <Route path={`${path}/allGroups/:packageId`} component={AllGroups} />

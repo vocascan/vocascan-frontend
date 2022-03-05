@@ -12,6 +12,7 @@ module.exports = {
         background: {
           standard: "#fff",
           inverse: "#2a2e36",
+          inverseHover: "#2a2e36CC",
           muted: "#eceeee",
           modal: "#00000066",
         },

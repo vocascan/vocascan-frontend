@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 import image1 from "./addPackage1.png";
 import image2 from "./addPackage2.png";
 
-import "./PackageDescription.scss";
-
 const PackageDescription = ({ setCanContinue }) => {
   const { t } = useTranslation();
 
@@ -18,19 +16,19 @@ const PackageDescription = ({ setCanContinue }) => {
   }, [setCanContinue]);
 
   return (
-    <div className="package-description">
-      <div className="images">
-        <img src={image1} alt="" />
-        <img src={image2} alt="" />
+    <div className="w-full h-full flex flex-row">
+      <div className="w-1/3 flex flex-col my-[5%] mx-0">
+        <img className="h-1/2 py-1 px-0 object-cover" src={image1} alt="" />
+        <img className="h-1/2 py-1 px-0 object-cover" src={image2} alt="" />
       </div>
-      <div className="description">
-        <h1 className="heading">{t("global.packages")}</h1>
-        <ul>
+      <div className="my-[10%] mx-0 flex flex-col justify-between">
+        <h1 className="text-2xl font-bold">{t("global.packages")}</h1>
+        <ul className="text-xl text-left my-3 mx-24">
           {bulletPoints.map((bulletPoint, index) => (
             <li key={index}>{bulletPoint}</li>
           ))}
         </ul>
-        <p className="end-text">
+        <p className="text-xl">
           {t("screens.guide.packageDescription.endText")}
         </p>
       </div>
