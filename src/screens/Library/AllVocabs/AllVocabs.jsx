@@ -123,7 +123,7 @@ const AllVocabs = () => {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (
-          <div className="action-col">
+          <div className="flex justify-end">
             <Button variant="link" onClick={() => editVocab(row.original)}>
               <EditOutlinedIcon />
             </Button>
@@ -150,7 +150,7 @@ const AllVocabs = () => {
       <div>
         <div className="relative flex justify-center items-center mb-5">
           <Button
-            className="absolute left-0 self-center p-1 rounded-full hover:cursor-pointer hover:text-primary-dark"
+            className="absolute left-0 self-center p-1 rounded-full hover:cursor-pointer hover:text-primary-dark-standard"
             variant="transparent"
             onClick={history.goBack}
           >
@@ -158,7 +158,7 @@ const AllVocabs = () => {
           </Button>
           <h2 className="heading">{t("screens.allVocabs.title")}</h2>
           <Button
-            className="absolute right-0 self-center p-1 rounded-full hover:cursor-pointer hover:text-primary-dark"
+            className="absolute right-0 self-center p-1 rounded-full hover:cursor-pointer hover:text-primary-dark-standard"
             variant="transparent"
           >
             <AddCircleOutlinedIcon onClick={addVocab} />

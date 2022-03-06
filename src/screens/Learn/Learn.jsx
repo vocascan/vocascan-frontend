@@ -6,13 +6,11 @@ import Direction from "./Direction/Direction.jsx";
 import End from "./End/End.jsx";
 import Query from "./Query/Query.jsx";
 
-import "./Learn.scss";
-
 const Learn = () => {
   const { path } = useRouteMatch();
 
   return (
-    <div className="learn-wrapper">
+    <div className="w-full h-full">
       <Switch>
         <Route exact path={`${path}/`} component={Dashboard} />
         <Route path={`${path}/direction/`} component={Direction} />

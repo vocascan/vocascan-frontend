@@ -7,8 +7,6 @@ import PackageOverview from "../../../Components/PackageOverview/PackageOverview
 import useSnack from "../../../hooks/useSnack.js";
 import { getPackages } from "../../../utils/api.js";
 
-import "./Dashboard.scss";
-
 const Dashboard = () => {
   const { showSnack } = useSnack();
   const { t } = useTranslation();
@@ -43,7 +41,7 @@ const Dashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="dashboard empty">
+      <div className="w-full h-full p-0 flex justify-center items-center md:p-12 md:max-w-4xl md:m-auto">
         <LoadingIndicator size="large" position="center" />
       </div>
     );
@@ -51,14 +49,14 @@ const Dashboard = () => {
   //if language package array is empty, show empty screen
   else if (languagePackages.length === 0) {
     return (
-      <div className="dashboard empty">
-        <h1>{t("screens.dashboard.empty")}</h1>
+      <div className="w-full h-full p-0 flex justify-center items-center md:p-12 md:max-w-4xl md:m-auto">
+        <h1 className="text-2xl uppercase">{t("screens.dashboard.empty")}</h1>
       </div>
     );
   } else {
     return (
-      <div className="dashboard">
-        <div className="dashboard-inner">
+      <div className="w-full flex justify-center md:p-12 md:max-w-4xl md:m-auto">
+        <div className="w-11/12 mt-16 md:mt-0">
           {languagePackages.map((languagePackage, index) => (
             <PackageOverview key={index} data={languagePackage} />
           ))}

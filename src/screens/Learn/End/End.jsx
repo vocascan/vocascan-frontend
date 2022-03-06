@@ -7,8 +7,6 @@ import Button from "../../../Components/Button/Button.jsx";
 import Congratulation from "../../../Components/Congratulation/Congratulation.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 
-import "./End.scss";
-
 const End = () => {
   const correctVocabs = useSelector((state) => state.query.correct);
   const wrongVocabs = useSelector((state) => state.query.wrong);
@@ -56,11 +54,11 @@ const End = () => {
     [correctVocabs, t, wrongVocabs]
   );
   return (
-    <div className="end-screen">
+    <div className="w-10/12 h-screen max-w-xl my-0 mx-auto flex flex-col justify-around md:h-full">
       <div className="end-screen-inner">
         <div>
           <Congratulation percentage={percentage} />
-          <p className="percentage-text">
+          <p className="text-base my-4 mx-0">
             {t("screens.endScreen.percentageText", {
               percentage: percentage,
             })}

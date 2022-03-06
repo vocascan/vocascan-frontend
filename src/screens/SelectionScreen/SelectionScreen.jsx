@@ -10,8 +10,6 @@ import { setSelfHosted } from "../../redux/Actions/login.js";
 import vocascanRound from "../../images/logo/color-round.svg";
 import vocascanCloud from "../../images/logo/vocascan-cloud.svg";
 
-import "./SelectionScreen.scss";
-
 const SelectionScreen = () => {
   const { t } = useTranslation();
 
@@ -26,8 +24,8 @@ const SelectionScreen = () => {
 
   return (
     <UnauthenticatedLayout>
-      <div className="select-srn-wrapper">
-        <div className="boxes">
+      <div className="flex flex-col m-auto">
+        <div className="flex justify-around m-auto">
           <SelectionBox
             heading={t("screens.selectionScreen.vocascanCloud.heading")}
             pro={t("screens.selectionScreen.vocascanCloud.pro", {

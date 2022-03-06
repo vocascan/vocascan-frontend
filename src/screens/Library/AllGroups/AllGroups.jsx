@@ -36,8 +36,6 @@ import {
   exportGroup,
 } from "../../../utils/api.js";
 
-import "./AllGroups.scss";
-
 const AllGroups = () => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
@@ -216,7 +214,7 @@ const AllGroups = () => {
         Cell: ({ row }) => (
           <>
             <p
-              className="group-description-cell"
+              className="text-left overflow-ellipsis overflow-hidden whitespace-nowrap md:max-w-xs lg:max-w-md xl:max-w-xl 2xl:max-w-5xl"
               data-tip={row.original.description}
               data-for={`description-tooltip-${row.original.id}`}
             >
@@ -244,11 +242,11 @@ const AllGroups = () => {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (
-          <div className="action-col">
+          <div className="flex justify-end">
             <Button
               appearance="primary"
               variant="link"
-              className="action-col-btn"
+              className="mr-2"
               onClick={() => openExportGroup(row.original)}
               disabled={!isSupported}
             >
@@ -256,7 +254,7 @@ const AllGroups = () => {
             </Button>
             <Button
               variant="link"
-              className="action-col-btn"
+              className="mr-2"
               onClick={() => editGroup(row.original)}
             >
               <EditOutlinedIcon />
@@ -264,7 +262,7 @@ const AllGroups = () => {
             <Button
               appearance="red"
               variant="link"
-              className="action-col-btn"
+              className="mr-2"
               onClick={() => onDeleteGroup(row.original)}
             >
               <DeleteOutlineIcon />
@@ -299,21 +297,24 @@ const AllGroups = () => {
 
   return (
     <>
-      <div className="all-groups-wrapper">
-        <div className="header-wrapper">
+      <div>
+        <div className="relative flex justify-center items-center mb-5">
           <Button
-            className="back"
+            className="absolute left-0 self-center p-1 rounded-full hover:cursor-pointer hover:text-primary-dark-standard"
             variant="transparent"
             onClick={history.goBack}
           >
             <ArrowBackIcon />
           </Button>
           <h2 className="heading">{t("screens.allGroups.title")}</h2>
-          <Button className="add" variant="transparent">
+          <Button
+            className="absolute right-0 self-center p-1 rounded-full hover:cursor-pointer hover:text-primary-dark-standard"
+            variant="transparent"
+          >
             <AddCircleOutlinedIcon onClick={addGroup} />
           </Button>
           <Button
-            className="import"
+            className="absolute right-10 self-center p-1 rounded-full"
             variant="transparent"
             disabled={!isSupported}
           >
@@ -327,7 +328,7 @@ const AllGroups = () => {
             <ArrowUpwardIcon onClick={onOpenFileClick} />
           </Button>
         </div>
-        <div className="table-wrapper">
+        <div className="overflow-scroll">
           <Table columns={columns} data={data} />
         </div>
       </div>

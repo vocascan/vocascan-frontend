@@ -219,7 +219,7 @@ const AllPackages = () => {
         Header: "",
         accessor: "action",
         Cell: ({ row }) => (
-          <div className="action-col">
+          <div className="flex justify-end">
             <Button
               appearance="primary"
               variant="link"
