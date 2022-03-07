@@ -7,8 +7,6 @@ import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import Button from "../../Components/Button/Button.jsx";
 import Modal from "../../Components/Modal/Modal.jsx";
 
-import "./Admin.scss";
-
 import InviteCode from "../../Components/InviteCode/InviteCode";
 import InviteCodeForm from "../../Forms/InviteCodeForm/InviteCodeForm";
 import { deleteInviteCode, getInviteCodes } from "../../utils/api";
@@ -80,8 +78,8 @@ const Admin = () => {
 
   if (!serverRegistrationLocked) {
     return (
-      <div className="admin">
-        <div className="center-wrapper">
+      <div className="w-full">
+        <div className="w-full h-full flex justify-center items-center text-center">
           <h2>{t("screens.admin.nothingToDo")}</h2>
         </div>
       </div>
@@ -89,20 +87,23 @@ const Admin = () => {
   }
 
   return (
-    <div className="admin">
-      <div className="invite-codes">
-        <div className="invite-codes-wrapper">
-          <div className="invite-code-controls">
+    <div className="w-full">
+      <div className="p-12 flex justify-center">
+        <div className="w-full max-w-3xl md:max-w-[90%] ">
+          <div className="flex justify-between mb-8">
             <h2>{t("screens.admin.title")}</h2>
 
-            <Button className="add-btn" variant="transparent">
+            <Button
+              className="self-center p-1 rounded-full cursor-pointer"
+              variant="transparent"
+            >
               <AddCircleOutlinedIcon
                 onClick={() => setShowInviteCodeModal(true)}
               />
             </Button>
           </div>
 
-          <div className="invite-code-container">
+          <div className="w-full grid grid-cols-1 md:grid-cols-6 gap-3">
             {sortedInviteCodes.map((inviteCode) => (
               <InviteCode
                 key={inviteCode.code}

@@ -21,8 +21,6 @@ import {
   pages,
 } from "../../utils/constants.js";
 
-import "./Register.scss";
-
 const Register = ({ image }) => {
   const { t } = useTranslation();
 
@@ -230,25 +228,23 @@ const Register = ({ image }) => {
 
   return (
     <UnauthenticatedLayout>
-      <div className="register-form">
+      <div className="max-w-md max-h-[750px] m-auto rounded-xl relative flex flex-col justify-around py-10 px-24 bg-white shadow-2xl">
         {showPlans && (
           <ArrowBackIcon
-            className="back-icon"
+            className="text-primary-standard absolute top-5 left-5 hover:cursor-pointer hover:text-primary-dark-standard"
             onClick={() => history.push("/plans")}
           />
         )}
-        <div className="register-form-header">
+        <div className="w-full h-1/3">
           <img
-            className="register-form-header-logo"
+            className="w-24 h-auto mb-3 mx-auto"
             src={image}
             alt="server-logo"
           />
-          <h1 className="register-form-header-heading">
-            {t("screens.register.title")}
-          </h1>
+          <h1 className="uppercase text-2xl">{t("screens.register.title")}</h1>
         </div>
         <form onSubmit={submitRegisterPerson}>
-          <div className="register-form-input">
+          <div className="w-full min-w-[250px] my-7 mx-auto flex flex-col justify-around">
             <TextInput
               required
               autoFocus
@@ -354,7 +350,9 @@ const Register = ({ image }) => {
               />
             )}
             {serverError ? (
-              <p className="form-error">{t("global.serverNotResponding")}</p>
+              <p className="text-left pt-3 text-xs text-red-standard">
+                {t("global.serverNotResponding")}
+              </p>
             ) : (
               <ServerValidIndicator
                 setValid={setIsServerValid}
@@ -364,15 +362,20 @@ const Register = ({ image }) => {
             )}
 
             {isPrivacyPolicyValid && (
-              <div className="checkbox-wrapper">
+              <div className="text-left text-sm my-1 mx-0">
                 <input
                   type="checkbox"
                   name="privacy"
                   onChange={handleReadPrivacy}
                 />
-                <label className="label">
+                <label className="ml-1">
                   {privacyTextBefore}
-                  <a target="_blank" href={privacyPolicyUrl} rel="noreferrer">
+                  <a
+                    className="no-underline text-primary-standard hover:underline"
+                    target="_blank"
+                    href={privacyPolicyUrl}
+                    rel="noreferrer"
+                  >
                     {privacyTextLink}
                   </a>
                   {privacyTextAfter}
@@ -381,15 +384,16 @@ const Register = ({ image }) => {
             )}
 
             {isTermsAndConditionsValid && (
-              <div className="checkbox-wrapper">
+              <div className="text-left text-sm my-1 mx-0">
                 <input
                   type="checkbox"
                   name="terms"
                   onChange={handleAcceptTerms}
                 />
-                <label className="label">
+                <label className="ml-1">
                   {termsTextBefore}
                   <a
+                    className="no-underline text-primary-standard hover:underline"
                     target="_blank"
                     href={termsAndConditionsUrl}
                     rel="noreferrer"
@@ -401,7 +405,7 @@ const Register = ({ image }) => {
               </div>
             )}
           </div>
-          <div className="register-form-submit">
+          <div className="flex flex-col justify-center">
             <Button
               block
               uppercase
@@ -411,10 +415,10 @@ const Register = ({ image }) => {
               {t("global.signUp")}
             </Button>
 
-            <div className="register-form-submit-register">
+            <div className="flex flex-row justify-center text-sm mt-3">
               {t("screens.register.alreadyHaveAccount")}{" "}
               <div
-                className="register-form-submit-register-link"
+                className="text-primary-standard cursor-pointer ml-1"
                 onClick={handleClickLogin}
               >
                 {t("global.signIn")}

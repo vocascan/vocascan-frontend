@@ -15,8 +15,6 @@ import { setServerUrl, signIn } from "../../redux/Actions/login.js";
 import { login, getLanguages } from "../../utils/api.js";
 import { maxTextfieldLength } from "../../utils/constants.js";
 
-import "./Login.scss";
-
 const Login = ({ image }) => {
   const { t } = useTranslation();
 
@@ -124,21 +122,23 @@ const Login = ({ image }) => {
 
   return (
     <UnauthenticatedLayout>
-      <div className="login-form">
+      <div className="max-w-md max-h-[550px] m-auto rounded-xl relative flex flex-col justify-around py-10 px-24 bg-white shadow-2xl">
         {showPlans && (
           <ArrowBackIcon
-            className="back-icon"
+            className="absolute top-5 left-5 text-primary-standard hover:cursor-pointer hover:text-primary-dark-standard"
             onClick={() => history.push("/plans")}
           />
         )}
-        <div className="header">
-          <img className="header-logo" src={image} alt="server-logo" />
-          <h1 className="login-form-header-heading">
-            {t("screens.login.title")}
-          </h1>
+        <div className="w-full h-2/6">
+          <img
+            className="w-24 h-auto mb-3 mx-auto"
+            src={image}
+            alt="server-logo"
+          />
+          <h1 className="uppercase text-2xl">{t("screens.login.title")}</h1>
         </div>
         <form onSubmit={submitLogin}>
-          <div className="form-input">
+          <div className="w-full min-w-[250px] my-7 mx-auto flex flex-col justify-around">
             <TextInput
               autoFocus
               required
@@ -177,7 +177,9 @@ const Login = ({ image }) => {
               />
             )}
             {serverError ? (
-              <p className="form-error">{t("global.serverNotResponding")}</p>
+              <p className="text-right -mt-1 h-7 text-xs text-red-standard">
+                {t("global.serverNotResponding")}
+              </p>
             ) : (
               <ServerValidIndicator
                 setValid={setIsServerValid}
@@ -185,14 +187,14 @@ const Login = ({ image }) => {
               />
             )}
           </div>
-          <div className="login-footer">
+          <div className="flex flex-col justify-center my-5 mx-0">
             <Button block uppercase onClick={submitLogin} disabled={!canSubmit}>
               {t("global.signIn")}
             </Button>
-            <div className="submit-register">
+            <div className="flex flex-row justify-center text-sm mt-3">
               {t("screens.login.dontHaveAccount")}{" "}
               <div
-                className="submit-register-link"
+                className="text-primary-standard ml-1 cursor-pointer"
                 onClick={handleClickRegister}
               >
                 {t("global.signUp")}

@@ -14,8 +14,6 @@ import {
 } from "../../../redux/Actions/query.js";
 import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 
-import "./Query.scss";
-
 const Query = () => {
   const { showSnack } = useSnack();
   const { direction } = useParams();
@@ -147,11 +145,11 @@ const Query = () => {
   }
 
   return (
-    <div className="query-wrapper">
-      <div className="progress">
+    <div className="w-full h-screen grid grid-rows-[15%_85%] md:h-full md:grid-rows-[15%_75%]">
+      <div className="w-full max-w-xl flex justify-self-center justify-items-center items-center justify-center md:min-w-[450px]">
         <ProgressBar value={actualProgress} max={vocabSize} bottomText={true} />
       </div>
-      <div className="content">
+      <div className="w-full flex justify-center items-center">
         {currVocab && (
           <VocabCard
             currVocab={currVocab}
