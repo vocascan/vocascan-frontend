@@ -8,6 +8,8 @@
     height: calc(100vh - 50px);
     background: $color-background-inverse;
     grid-area: sidenav;
+    grid-column: 1;
+    grid-row: 2;
     display: flex;
     flex-direction: column;
     z-index: 49;

@@ -8,8 +8,6 @@ import Button from "../Button/Button.jsx";
 import { clearQuery } from "../../redux/Actions/query.js";
 import { setLearnedPackage } from "../../redux/Actions/query.js";
 
-import "./PackageOverview.scss";
-
 const PackageOverview = ({ data }) => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -41,23 +39,25 @@ const PackageOverview = ({ data }) => {
   );
 
   return (
-    <div className="package-overview">
-      <div className="package-overview-inner">
-        <h1 className="package-text package-heading">{data?.name}</h1>
-        <p className="package-text package-unresolved">
+    <div className="w-full h-32 m-0 overflow-x-hidden bg-background-inverse mb-10 rounded-2xl flex justify-center items-center">
+      <div className="w-11/12 h-4/5 grid grid-cols-[40%_25%_35%] grid-rows-[50%_50%]">
+        <h1 className="text-mainText-inverse m-auto text-left w-10/12 col-start-1 col-end-1 row-start-1 row-end-1 text-base whitespace-nowrap overflow-hidden overflow-ellipsis md:text-2xl">
+          {data?.name}
+        </h1>
+        <p className="text-mainText-inverse text-xs m-auto text-left md:text-sm w-10/12 col-start-1 col-end-1 row-start-2 row-end-2">
           {t("components.packageOverview.unresolved")}{" "}
           {data?.stats?.vocabularies?.unresolved}
         </p>
-        <p className="package-text package-today">
+        <p className="text-mainText-inverse text-xs m-auto text-left md:text-sm w-10/12 col-start-2 col-end-2 row-start-1 row-end-1">
           {t("components.packageOverview.today")}{" "}
           {data?.stats?.vocabularies?.learnedToday?.dueToday}
         </p>
-        <p className="package-text package-unactivated">
+        <p className="text-mainText-inverse text-xs m-auto text-left md:text-sm w-10/12 col-start-2 col-end-2 row-start-2 row-end-2">
           {t("components.packageOverview.unactivated")}{" "}
           {data?.stats?.vocabularies?.unactivated}
         </p>
-        <div className="package-btn-wrapper learn-btn">
-          <div className="package-btn-inner">
+        <div className="w-10/12 h-full flex flex-end justify-end items-center learn-btn col-start-3 col-end-3 row-start-1 row-end-1">
+          <div className="w-full md:w-1/2">
             <Button
               block
               uppercase
@@ -68,8 +68,8 @@ const PackageOverview = ({ data }) => {
             </Button>
           </div>
         </div>
-        <div className="package-btn-wrapper activate-btn">
-          <div className="package-btn-inner">
+        <div className="w-10/12 h-full flex flex-end justify-end items-center learn-btn col-start-3 col-end-3 row-start-2 row-end-2">
+          <div className="w-full md:w-1/2">
             <Button
               variant="outline"
               appearance="primary-light"

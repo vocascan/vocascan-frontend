@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 import Button from "../../Components/Button/Button.jsx";
 import Indicator from "../../Components/Indicators/PageIndicator/PageIndicator.jsx";
 
-import "./SlideShow.scss";
-
 const SlideShow = ({ pages, onEnd, canContinue }) => {
   const { t } = useTranslation();
 
@@ -19,10 +17,14 @@ const SlideShow = ({ pages, onEnd, canContinue }) => {
   }, [index, onEnd, pages.length]);
 
   return (
-    <div className="slideshow">
-      <div className="slideshow-content">{pages[index]}</div>
-      <div className="slideshow-bar">
-        <div className={`bar-property ${index === 0 ? "invisible" : ""}`}>
+    <div className="w-full h-full flex flex-col justify-between">
+      <div className="w-full h-5/6 overflow-auto flex justify-center items-center">
+        {pages[index]}
+      </div>
+      <div className="h-[10%] max-h-12 flex flex-row justify-between ">
+        <div
+          className={`${index === 0 ? "pointer-events-none invisible" : ""}`}
+        >
           <Button
             block
             uppercase
@@ -32,7 +34,7 @@ const SlideShow = ({ pages, onEnd, canContinue }) => {
             {t("global.back")}
           </Button>
         </div>
-        <div className="bar-property indicator">
+        <div className="my-auto mx-0">
           <Indicator pageNumber={index} max={pages.length} />
         </div>
         <div className="bar-property">

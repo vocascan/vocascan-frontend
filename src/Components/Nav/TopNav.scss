@@ -12,6 +12,8 @@
     width: 100%;
     height: 100%;
     grid-area: topnav;
+    grid-column: 1 / 3;
+    grid-row: 1;
     grid-template-columns: 200px auto;
     grid-template-rows: 50px;
     grid-template-areas:
