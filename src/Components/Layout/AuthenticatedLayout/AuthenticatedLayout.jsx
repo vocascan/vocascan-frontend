@@ -17,8 +17,6 @@ import {
 import { getInfo } from "../../../utils/api.js";
 import { minServerVersion } from "../../../utils/constants.js";
 
-import "./AuthenticatedLayout.scss";
-
 const AuthenticatedLayout = ({ children }) => {
   const [isValidServer, setIsValidServer] = useState(null);
   const [isValidVersion, setIsValidVersion] = useState(null);
@@ -47,7 +45,7 @@ const AuthenticatedLayout = ({ children }) => {
   }, [dispatch, serverInfo]);
 
   return (
-    <div className="root">
+    <div className="w-full h-screen m-0 p-0 md:grid md:grid-cols-[65px_auto] md:grid-rows-[50px_auto] md:overflow-hidden">
       <Nav />
       <TopNav />
       <MobileTopNav />
@@ -57,7 +55,7 @@ const AuthenticatedLayout = ({ children }) => {
         title={t("modal.serverNotSupported.title")}
         size="small"
       >
-        <div className="server-error-modal-inner">
+        <div className="py-8 px-0">
           {!isValidServer && (
             <p>{t("modal.serverNotSupported.serverNotVocascanServer")}</p>
           )}
@@ -75,7 +73,7 @@ const AuthenticatedLayout = ({ children }) => {
         <Button onClick={handleLogout}>{t("nav.logout")}</Button>
       </Modal>
       {isValidServer && isValidVersion && (
-        <div className="content">{children}</div>
+        <div className="overflow-y-auto">{children}</div>
       )}
 
       {(isValidServer === null || isValidVersion === null) && (
