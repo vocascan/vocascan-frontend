@@ -8,6 +8,15 @@ module.exports = {
       fontFamily: {
         sans: ["Roboto"],
       },
+      keyframes: {
+        spinCustom: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+      },
+      animation: {
+        spinCustom: "spin 1.5s ease-in-out infinite",
+      },
       colors: {
         background: {
           standard: "#fff",

@@ -9,8 +9,6 @@ import { dayDateDiff } from "../../utils/index.js";
 
 import packageInfo from "../../../package.json";
 
-import "./VersionTable.scss";
-
 const VersionTable = () => {
   const { t } = useTranslation();
 
@@ -86,7 +84,9 @@ const VersionTable = () => {
                 count: dayDateDiff(new Date(date), new Date()),
               })})`
             : "-",
-        Cell: ({ value }) => <p className="table-cell">{value}</p>,
+        Cell: ({ value }) => (
+          <p className="whitespace-pre-wrap text-left">{value}</p>
+        ),
       },
       {
         Header: t("components.versionTable.headers.extra"),
@@ -96,7 +96,9 @@ const VersionTable = () => {
                 .map(([key, value]) => `${key}: ${value}`)
                 .join("\n")
             : "-",
-        Cell: ({ value }) => <p className="table-cell">{value}</p>,
+        Cell: ({ value }) => (
+          <p className="whitespace-pre-wrap text-left">{value}</p>
+        ),
       },
     ],
     [t]

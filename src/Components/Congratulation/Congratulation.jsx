@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 
 import { scaleValue } from "../../utils/index.js";
 
-import "./Congratulation.scss";
-
 const Congratulation = ({ percentage }) => {
   const { t } = useTranslation();
   const [congratulation, setCongratulations] = useState();
@@ -21,7 +19,7 @@ const Congratulation = ({ percentage }) => {
       ]
     );
   }, [percentage, t, translations]);
-  return <p className="congratulation">{congratulation}</p>;
+  return <p className="text-3xl uppercase">{congratulation}</p>;
 };
 
 export default Congratulation;

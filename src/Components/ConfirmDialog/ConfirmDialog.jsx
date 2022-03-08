@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 import Button from "../Button/Button.jsx";
 import Modal from "../Modal/Modal.jsx";
 
-import "./ConfirmDialog.scss";
-
 const ConfirmDialog = ({
   title = null,
   description = null,
@@ -22,12 +20,12 @@ const ConfirmDialog = ({
 
   return (
     <Modal size="small" title={title} open={show} onClose={onClose} xxl>
-      <div className="submit-dialog">
-        <div className="description">
+      <div className="w-4/5 max-w-sm flex flex-col">
+        <div className="py-5 px-0">
           <span>{description}</span>
           {children}
         </div>
-        <div className="actions">
+        <div className="flex justify-between items-center">
           {showAbortButton && (
             <Button onClick={onClose} appearance="primary">
               {cancelText || t("global.abort")}

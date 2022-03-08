@@ -12,8 +12,6 @@ import useDebounce from "../../../hooks/useDebounce.js";
 import { getInfo } from "../../../utils/api.js";
 import { minServerVersion } from "../../../utils/constants.js";
 
-import "./ServerValidIndicator.scss";
-
 const ServerValidIndicator = ({ setValid, setLocked = null, show = true }) => {
   const serverAddress = useSelector((state) => state.login.serverAddress);
   const debouncedServerAddress = useDebounce(serverAddress, 500);
@@ -99,28 +97,28 @@ const ServerValidIndicator = ({ setValid, setLocked = null, show = true }) => {
   }
 
   return (
-    <div className="server-valid-indicator">
+    <div className="-mt-1 text-xs">
       {isValidServer === true &&
         isValidVersion === true &&
         isServerResponding === true &&
         show && (
-          <p className="success">
+          <p className="h-7 text-right text-green-dark flex justify-end items-center">
             {t("components.validServerIndicator.validServer", {
               version: serverVersion,
             })}
 
-            {isLocked && <LockOutlinedIcon fontSize="small" />}
+            {isLocked && <LockOutlinedIcon className="ml-1" fontSize="small" />}
           </p>
         )}
 
       {isValidServer === false && (
-        <p className="error">
+        <p className="h-7 text-right text-red-dark">
           {t("components.validServerIndicator.serverNotVocascanServer")}
         </p>
       )}
 
       {isValidVersion === false && (
-        <p className="error">
+        <p className="h-7 text-right text-red-dark">
           {t("components.validServerIndicator.versionToOld", {
             version: serverVersion,
             minVersion: minServerVersion,
@@ -129,7 +127,7 @@ const ServerValidIndicator = ({ setValid, setLocked = null, show = true }) => {
       )}
 
       {isServerResponding === false && serverAddress !== "" && (
-        <p className="error">
+        <p className="h-7 text-right text-red-dark">
           {t("components.validServerIndicator.serverNotResponding")}
         </p>
       )}

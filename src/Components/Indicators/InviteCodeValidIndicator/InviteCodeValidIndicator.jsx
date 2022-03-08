@@ -7,8 +7,6 @@ import LoadingIndicator from "../LoadingIndicator/LoadingIndicator.jsx";
 import useDebounce from "../../../hooks/useDebounce.js";
 import { checkInviteCode } from "../../../utils/api.js";
 
-import "./InviteCodeValidIndicator.scss";
-
 const ServerValidIndicator = ({ inviteCode, setValid }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [inviteCodeState, setInviteCodeState] = useState(null);
@@ -73,9 +71,9 @@ const ServerValidIndicator = ({ inviteCode, setValid }) => {
   }
 
   return (
-    <div className="invite-code-valid-indicator">
+    <div className="-mt-1 text-xs">
       {inviteCodeState === "valid" && (
-        <p className="valid">
+        <p className="h-7 text-right text-green-dark">
           {t("components.inviteCodeValidIndicator.valid")}
         </p>
       )}
@@ -83,7 +81,7 @@ const ServerValidIndicator = ({ inviteCode, setValid }) => {
       {["notExisting", "used", "expired", "error"].includes(
         inviteCodeState
       ) && (
-        <p className="error">
+        <p className="h-7 text-right text-red-dark">
           {t(`components.inviteCodeValidIndicator.${inviteCodeState}`)}
         </p>
       )}
