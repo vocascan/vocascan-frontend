@@ -320,7 +320,7 @@ const VocabForm = ({
   return (
     <>
       <form
-        className="w-full h-3/4 p-12 overflow-y-auto md:max-w-3xl"
+        className="w-5/6 my-20 h-3/4 overflow-y-auto md:max-w-3xl"
         onSubmit={onSubmit}
       >
         {title && <h1 className="hidden md:inline">{title}</h1>}
@@ -414,7 +414,7 @@ const VocabForm = ({
           )}
         </div>
 
-        <div className="w-1/3 my-0 mx-auto flex justify-center mt-10">
+        <div className="w-5/6 my-0 mx-auto flex justify-center mt-10">
           <Button
             block
             tabIndex={-1}

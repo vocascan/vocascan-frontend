@@ -41,7 +41,7 @@ const Dashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="w-full h-full p-0 flex justify-center items-center md:p-12 md:max-w-4xl md:m-auto">
+      <div className="w-full h-screen p-0 flex justify-center items-center md:w-full md:p-12 md:max-w-4xl md:m-auto">
         <LoadingIndicator size="large" position="center" />
       </div>
     );
@@ -56,7 +56,7 @@ const Dashboard = () => {
   } else {
     return (
       <div className="w-full flex justify-center md:p-12 md:max-w-4xl md:m-auto">
-        <div className="w-11/12 mt-16 md:mt-0">
+        <div className="w-5/6 mt-20 md:mt-0">
           {languagePackages.map((languagePackage, index) => (
             <PackageOverview key={index} data={languagePackage} />
           ))}

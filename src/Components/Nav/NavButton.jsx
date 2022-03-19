@@ -3,7 +3,13 @@ import { NavLink } from "react-router-dom";
 
 import "./NavButton.scss";
 
-const NavButton = ({ name, link, icon = null, exact = false }) => {
+const NavButton = ({
+  name,
+  link,
+  icon = null,
+  exact = false,
+  onClick = {},
+}) => {
   return (
     <NavLink
       to={link}
@@ -12,7 +18,7 @@ const NavButton = ({ name, link, icon = null, exact = false }) => {
       exact={exact}
       tabIndex={-1}
     >
-      <button tabIndex={-1} className={`nav-button`}>
+      <button tabIndex={-1} className={`nav-button`} onClick={onClick}>
         <div className="nav-button-inner">
           {icon ? <span className="button-icon">{icon}</span> : null}
           <span className="button-name">{name}</span>

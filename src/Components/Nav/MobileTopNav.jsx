@@ -1,17 +1,24 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import AddIcon from "@material-ui/icons/Add";
 import BarChartIcon from "@material-ui/icons/BarChart";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import InfoIcon from "@material-ui/icons/Info";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
+import LockIcon from "@material-ui/icons/Lock";
 import PolicyIcon from "@material-ui/icons/Policy";
 import SecurityIcon from "@material-ui/icons/Security";
+import SettingsIcon from "@material-ui/icons/Settings";
 import StyleIcon from "@material-ui/icons/Style";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 
 import useLinkCreator from "../../hooks/useLinkCreator.js";
+import { signOut } from "../../redux/Actions/login.js";
 
 import HamburgerMenuIcon from "../../images/icons/hamburger.svg";
 import VocascanLogo from "../../images/logo/color-round.svg";
@@ -22,11 +29,14 @@ import NavButton from "./NavButton";
 
 const MobileTopNav = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const [blockScroll, allowScroll] = useScrollBlock();
 
   const [showNav, setShowNav] = useState(true);
 
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
+  const isAdmin = useSelector((state) => state.login.user.isAdmin);
 
   const { isValid: isLegalNoticeValid, url: legalNoticeUrl } = useLinkCreator({
     path: pages.legalNotice,
@@ -52,6 +62,10 @@ const MobileTopNav = () => {
       setShowNav(true);
     }
   }, []);
+
+  const handleLogout = useCallback(() => {
+    dispatch(signOut());
+  }, [dispatch]);
 
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -118,6 +132,30 @@ const MobileTopNav = () => {
             name={t("nav.custom")}
             icon={<StyleIcon />}
             link="/custom"
+          />
+          <NavButton
+            name={t("nav.profile")}
+            icon={<AccountCircle />}
+            link="/profile"
+          />
+          <NavButton
+            name={t("nav.settings")}
+            icon={<SettingsIcon />}
+            link="/settings"
+          />
+          {isAdmin && (
+            <NavButton
+              name={t("nav.admin")}
+              icon={<LockIcon />}
+              link="/admin"
+            />
+          )}
+          <NavButton name={t("nav.about")} icon={<InfoIcon />} link="/about" />
+          <NavButton
+            name={t("nav.logout")}
+            icon={<ExitToAppIcon />}
+            link="/logout"
+            onClick={handleLogout}
           />
         </ul>
         <div className="text-white my-2 mx-auto text-base opacity-0">

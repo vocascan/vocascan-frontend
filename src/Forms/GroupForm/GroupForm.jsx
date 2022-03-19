@@ -151,7 +151,7 @@ const GroupForm = ({
   }, []);
 
   return (
-    <div className="w-full h-4/5 max-w-2xl flex flex-col justify-between">
+    <div className="w-full h-4/5 max-w-2xl flex flex-col justify-between my-5 md:my-0">
       <div className="max-h-12 flex justify-between z-10 my-0 -mx-2.5">
         <div className="w-full flex my-0 mx-3">
           <Select

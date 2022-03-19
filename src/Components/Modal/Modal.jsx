@@ -18,9 +18,9 @@ const Modal = ({
   const ref = useRef(null);
 
   const modalLayoutClasses = clsx(
-    size === "" && "w-3/5 h-3/5",
-    size === "small" && "w-2/4 max-w-lg h-auto",
-    size === "large" && "w-4/5 h-4/5",
+    size === "" && "w-5/6 h-4/5 md:h-3/5 md:w-3/5",
+    size === "small" && "w-5/6 md:max-w-lg h-auto md:w-2/4",
+    size === "large" && "w-5/6 h-4/5 md:4/5",
     size === "maxed" && "w-full h-screen"
   );
 
@@ -74,7 +74,7 @@ const Modal = ({
   return (
     <div className="w-full h-screen bg-background-modal z-50 flex justify-center absolute left-0 top-0">
       <div
-        className={`relative m-auto bg-white z-11 py-10 px-16 flex flex-col justify-between items-center border rounded overflow-y-auto ${modalLayoutClasses}`}
+        className={`relative m-auto bg-white z-11 py-10 px-6 flex flex-col justify-between items-center border rounded overflow-y-auto ${modalLayoutClasses} md:px-16`}
         ref={ref}
       >
         {renderClose && (

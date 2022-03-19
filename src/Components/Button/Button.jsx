@@ -14,13 +14,13 @@ const Button = ({
 }) => {
   const defaultStyleClass = clsx(
     appearance === "primary" &&
-      "bg-primary-standard hover:cursor-pointer hover:bg-primary-dark-standard",
+      "bg-primary-standard text-white hover:cursor-pointer hover:bg-primary-dark-standard",
     appearance === "primary-light" &&
-      "bg-primary-light hover:cursor-pointer hover:bg-primary-standard hover:text-white",
+      "bg-primary-light text-white hover:cursor-pointer hover:bg-primary-standard hover:text-white",
     appearance === "red" &&
-      "bg-red-standard hover:cursor-pointer hover:bg-red-dark",
+      "bg-red-standard text-white hover:cursor-pointer hover:bg-red-dark",
     appearance === "green" &&
-      "bg-green-standard hover:cursor-pointer hover:bg-green-dark",
+      "bg-green-standard text-white hover:cursor-pointer hover:bg-green-dark",
     appearance === "dark" &&
       "bg-background-inverse hover:cursor-pointer hover:bg-alternative"
   );
@@ -58,7 +58,7 @@ const Button = ({
       "bg-transparent p-0 text-green-standard hover:text-green-light hover:cursor-pointer"
   );
   const classes = clsx(
-    "flex py-2 px-3 text-base normal-case text-white justify-center items-center rounded-2xl ease-in duration-300",
+    "flex py-2 px-3 text-base normal-case justify-center items-center rounded-2xl ease-in duration-300",
     variant === "default" && defaultStyleClass,
     variant === "outline" && outlineStyleClass,
     variant === "transparent" && transparentStyleClass,
