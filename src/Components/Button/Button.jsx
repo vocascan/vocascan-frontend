@@ -22,7 +22,7 @@ const Button = ({
     appearance === "green" &&
       "bg-green-standard text-white hover:cursor-pointer hover:bg-green-dark",
     appearance === "dark" &&
-      "bg-background-inverse hover:cursor-pointer hover:bg-alternative"
+      "bg-background-inverse text-white hover:cursor-pointer hover:bg-alternative"
   );
 
   const outlineStyleClass = clsx(
