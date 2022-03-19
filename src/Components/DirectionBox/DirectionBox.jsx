@@ -26,7 +26,7 @@ const DirectionBox = ({
 
   return (
     <div
-      className="w-11/12 min-h-[250px] rounded-xl text-mainText-inverse bg-background-inverse flex justify-center items-center m-2.5 hover:cursor-pointer hover:drop-shadow-[0_0px_10px_#4c51ec] hover:ease-in-out hover:duration-200 md:max-w-xl md:min-w-[350px] md:max-h-[600px]"
+      className="w-full min-h-[250px] rounded-xl text-mainText-inverse bg-background-inverse flex justify-center items-center m-2.5 hover:cursor-pointer hover:drop-shadow-[0_0px_10px_#4c51ec] hover:ease-in-out hover:duration-200 md:max-w-xl md:min-w-[350px] md:max-h-[600px]"
       onClick={submitDirection}
     >
       <div className="w-11/12 flex flex-col justify-around items-center ease-in-out duration-200">
