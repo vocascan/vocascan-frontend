@@ -22,24 +22,80 @@ export const numberField = [1, 255];
 
 export const contributors = {
   desktop: [
-    { name: "noctera", description: "25.11.2020" },
-    { name: "luwol03", description: "17.03.2021" },
-    { name: "zikowang", description: "16.03.2021" },
+    {
+      name: "noctera",
+      description: "25.11.2020",
+      url: "https://github.com/noctera",
+      imageUrl: "https://github.com/noctera.png",
+    },
+    {
+      name: "luwol03",
+      description: "17.03.2021",
+      url: "https://github.com/luwol03",
+      imageUrl: "https://github.com/luwol03.png",
+    },
+    {
+      name: "zikowang",
+      description: "16.03.2021",
+      url: "https://github.com/zikowang",
+      imageUrl: "https://github.com/zikowang.png",
+    },
   ],
   server: [
-    { name: "noctera", description: "25.11.2020" },
-    { name: "luwol03", description: "16.12.2020" },
-    { name: "retfloww", description: "08.01.2021" },
+    {
+      name: "noctera",
+      description: "25.11.2020",
+      url: "https://github.com/noctera",
+      imageUrl: "https://github.com/noctera.png",
+    },
+    {
+      name: "luwol03",
+      description: "16.12.2020",
+      url: "https://github.com/luwol03",
+      imageUrl: "https://github.com/luwol03.png",
+    },
+    { name: "retfloww", description: `08.01.2021\n-\n10.03.2021` },
   ],
   translator: [
-    { name: "noctera", description: "Deutsch" },
-    { name: "luwol03", description: "Deutsch" },
+    {
+      name: "noctera",
+      description: "Deutsch",
+      url: "https://github.com/noctera",
+      imageUrl: "https://github.com/noctera.png",
+    },
+    {
+      name: "luwol03",
+      description: "Deutsch",
+      url: "https://github.com/luwol03",
+      imageUrl: "https://github.com/luwol03.png",
+    },
     { name: "retfloww", description: "Polski" },
-    { name: "FlorianJSa", description: "Deutsch" },
+    {
+      name: "Florian-Sabonchi",
+      description: "Deutsch",
+      url: "https://github.com/Florian-Sabonchi",
+      imageUrl: "https://github.com/Florian-Sabonchi.png",
+    },
+    {
+      name: "Dimbel Me",
+      description: "español",
+      url: "https://localazy.com/p/vocascan/contributors/dimbel-me",
+      imageUrl: "https://cdn.localazy.com/user-images/_a8279093027763773803",
+    },
   ],
   miscellaneous: [
-    { name: "rgabisch", description: "Logo" },
-    { name: "DevMimas", description: "Management, Docs" },
+    {
+      name: "rgabisch",
+      description: "Logo",
+      url: "https://github.com/rgabisch",
+      imageUrl: "https://github.com/rgabisch.png",
+    },
+    {
+      name: "DevMimas",
+      description: "Management, Docs",
+      url: "https://github.com/DevMimas",
+      imageUrl: "https://github.com/DevMimas.png",
+    },
   ],
 };
 

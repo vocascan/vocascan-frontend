@@ -1,23 +1,24 @@
 import React from "react";
 
+import PersonIcon from "@material-ui/icons/Person";
+
 import "./ContributorCard.scss";
 
 const Card = ({ name, url, imageUrl, description }) => {
   return (
-    <a
-      href={url ? url : `https://github.com/${name}`}
-      target="_blank"
-      rel="noreferrer noopener"
-    >
+    <a href={url ? url : `/#/about`} target="_blank" rel="noreferrer noopener">
       <div className="card outline">
         <div className="backdrop">
           <div className="name">{name}</div>
-          <div className="description">{description}</div>
+          <p className="description">{description}</p>
         </div>
-        <img
-          src={imageUrl ? imageUrl : `https://github.com/${name}.png`}
-          alt={name}
-        />
+        {imageUrl ? (
+          <img src={imageUrl} alt={name} />
+        ) : (
+          <div className="placeholderimage">
+            <PersonIcon style={{ fontSize: 70 }} />
+          </div>
+        )}
       </div>
     </a>
   );

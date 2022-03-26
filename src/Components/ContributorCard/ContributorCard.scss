@@ -13,6 +13,13 @@
     width: 130px;
   }
 
+  .placeholderimage {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .backdrop {
     transition: border-radius 0.125s ease-in-out, top 0.125s ease-in-out;
     position: absolute;
@@ -35,13 +42,18 @@
       color: #bbb;
       font-size: 12px;
       margin-top: 5px;
+      white-space: pre-wrap;
+      line-height: 1;
     }
   }
 
   &:hover .backdrop {
     top: 0;
 
-    background: linear-gradient(180deg, #{$color-background-inverse+"90"} 0%, $color-background-inverse 75%, $color-background-inverse 100%);
+    background: linear-gradient(180deg,
+    #{$color-background-inverse + "90"} 0%,
+    $color-background-inverse 75%,
+    $color-background-inverse 100%);
 
     .description {
       display: block;
