@@ -285,7 +285,7 @@ const AllPackages = () => {
             <ArrowUpwardIcon onClick={onOpenFileClick} />
           </Button>
         </div>
-        <div className="overflow-scroll">
+        <div className="overflow-scroll md:overflow-hidden">
           <Table columns={columns} data={data} />
         </div>
       </div>
