@@ -325,8 +325,8 @@ const VocabForm = ({
       >
         {title && <h1 className="hidden md:inline">{title}</h1>}
 
-        <div className="z-10 md:max-h-12 md:flex md:justify-between md:my-5 md:-mx-2.5">
-          <div className="w-full md:my-0 md:mx-2.5">
+        <div className="z-10 md:max-h-12 md:flex md:justify-between md:my-5">
+          <div className="w-full md:my-0 md:mr-2.5">
             <Select
               required
               creatable
@@ -343,7 +343,7 @@ const VocabForm = ({
               noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
             />
           </div>
-          <div className="w-full md:my-0 md:mx-2.5">
+          <div className="w-full md:my-0 md:ml-2.5">
             <Select
               required
               creatable
