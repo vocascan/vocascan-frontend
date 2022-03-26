@@ -13,10 +13,10 @@ const UnauthenticatedLayout = ({ children }) => {
   const [showLanguageModal, setShowLanguageModal] = useState(false);
 
   return (
-    <div className="w-full h-screen flex justify-center relative bg-gradient-to-r from-blue-400 to-pink-300">
+    <div className="w-full min-h-screen flex justify-center relative bg-gradient-to-r from-blue-400 to-pink-300">
       <div
         onClick={() => setShowLanguageModal(true)}
-        className="absolute top-3 right-3"
+        className="absolute top-3 right-3 z-10"
       >
         <Flag languageCode={language} size="medium" hover />
       </div>

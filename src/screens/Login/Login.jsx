@@ -122,14 +122,14 @@ const Login = ({ image }) => {
 
   return (
     <UnauthenticatedLayout>
-      <div className="max-w-md max-h-[550px] m-auto rounded-xl relative flex flex-col justify-around py-10 px-24 bg-white shadow-2xl">
+      <div className="w-5/6 m-auto rounded-xl relative flex flex-col justify-around bg-white shadow-2xl md:py-10 md:px-24 md:max-w-md md:max-h-[550px]">
         {showPlans && (
           <ArrowBackIcon
             className="absolute top-5 left-5 text-primary-standard hover:cursor-pointer hover:text-primary-dark-standard"
             onClick={() => history.push("/plans")}
           />
         )}
-        <div className="w-full h-2/6">
+        <div className="w-5/6 mx-auto mt-10 h-2/6 md:mt-0 md:w-full">
           <img
             className="w-24 h-auto mb-3 mx-auto"
             src={image}
@@ -138,7 +138,7 @@ const Login = ({ image }) => {
           <h1 className="uppercase text-2xl">{t("screens.login.title")}</h1>
         </div>
         <form onSubmit={submitLogin}>
-          <div className="w-full min-w-[250px] my-7 mx-auto flex flex-col justify-around">
+          <div className="w-5/6 min-w-[250px] my-7 mx-auto flex flex-col justify-around md:w-full">
             <TextInput
               autoFocus
               required
@@ -187,7 +187,7 @@ const Login = ({ image }) => {
               />
             )}
           </div>
-          <div className="flex flex-col justify-center my-5 mx-0">
+          <div className="w-5/6 mx-auto flex flex-col justify-center my-5 md:w-full md:mx-0">
             <Button block uppercase onClick={submitLogin} disabled={!canSubmit}>
               {t("global.signIn")}
             </Button>

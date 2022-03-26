@@ -228,14 +228,14 @@ const Register = ({ image }) => {
 
   return (
     <UnauthenticatedLayout>
-      <div className="max-w-md max-h-[750px] m-auto rounded-xl relative flex flex-col justify-around py-10 px-24 bg-white shadow-2xl">
+      <div className="w-5/6 m-auto rounded-xl relative flex flex-col justify-around bg-white shadow-2xl md:py-10 md:px-24 md:max-w-md md:max-h-[750px]">
         {showPlans && (
           <ArrowBackIcon
             className="text-primary-standard absolute top-5 left-5 hover:cursor-pointer hover:text-primary-dark-standard"
             onClick={() => history.push("/plans")}
           />
         )}
-        <div className="w-full h-1/3">
+        <div className="w-5/6 mx-auto mt-10 h-1/3 md:mt-0 md:w-full">
           <img
             className="w-24 h-auto mb-3 mx-auto"
             src={image}
@@ -244,7 +244,7 @@ const Register = ({ image }) => {
           <h1 className="uppercase text-2xl">{t("screens.register.title")}</h1>
         </div>
         <form onSubmit={submitRegisterPerson}>
-          <div className="w-full min-w-[250px] my-7 mx-auto flex flex-col justify-around">
+          <div className="w-5/6 min-w-[250px] my-7 mx-auto flex flex-col justify-around md:w-full">
             <TextInput
               required
               autoFocus
@@ -405,7 +405,7 @@ const Register = ({ image }) => {
               </div>
             )}
           </div>
-          <div className="flex flex-col justify-center">
+          <div className="w-5/6 mx-auto mb-2 flex flex-col justify-center md:w-full">
             <Button
               block
               uppercase
