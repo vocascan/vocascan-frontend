@@ -18,12 +18,12 @@ const Settings = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col p-12 max-w-4xl justify-center my-0 mx-auto">
+    <div className="w-5/6 mt-20 mx-auto flex flex-col justify-center md:p-12 md:max-w-4xl md:my-0">
       <h1 className="mb-5">{t("screens.settings.title")}</h1>
 
       <LanguageSelector />
 
-      <div className="my-10 mx-auto w-1/2">
+      <div className="w-full my-10 md:my-10 md:mx-auto md:w-1/2">
         <h3 className="mb-1">{t("screens.settings.guide.title")}</h3>
         <Button block uppercase onClick={reopenGuide}>
           {t("screens.settings.guide.button")}
@@ -32,7 +32,9 @@ const Settings = () => {
 
       <h2>{t("screens.settings.versions")}</h2>
 
-      <VersionTable />
+      <div className="w-full overflow-x-scroll md:overflow-x-hidden">
+        <VersionTable />
+      </div>
     </div>
   );
 };

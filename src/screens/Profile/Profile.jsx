@@ -107,18 +107,21 @@ const Profile = () => {
 
   return (
     <>
-      <div className="max-w-2xl p-12 my-0 mx-auto">
+      <div className="w-5/6 mx-auto mt-20 md:max-w-2xl md:p-12 md:my-0">
         <div className="w-36 h-36 rounded-full border border-solid border-alternative my-0 mx-auto flex justify-center items-center">
           <PersonIcon style={{ fontSize: 70 }} />
         </div>
         <h1 className="my-5 mx-0">{username}</h1>
-        <StatsTable />
+        <div className="w-full overflow-x-scroll md:overflow-x-hidden md:w-full">
+          <StatsTable />
+        </div>
+
         <h1 className="text-base font-bold uppercase text-left my-4 mx-0">
           {t("screens.profile.accountSettings.title")}
         </h1>
         <div className="border border-solid border-red-standard rounded-2xl flex flex-col">
-          <div className="p-4 flex">
-            <div className="w-4/6 h-3/5 my-auto mx-0 ml-3 flex flex-col justify-around">
+          <div className="py-4 px-6 flex justify-between">
+            <div className="w-3/6 h-3/5 my-auto mx-0 flex flex-col justify-around">
               <h3 className="text-base text-left">
                 {t("screens.profile.accountSettings.password.title")}
               </h3>
@@ -137,8 +140,8 @@ const Profile = () => {
               </Button>
             </div>
           </div>
-          <div className="p-4 flex border border-solid border-background-muted">
-            <div className="w-4/6 h-3/5 my-auto mx-0 ml-3 flex flex-col justify-around">
+          <div className="py-4 px-6 justify-between flex border border-solid border-background-muted">
+            <div className="w-3/6 h-3/5 my-auto mx-0 flex flex-col justify-around">
               <h3 className="text-base text-left">
                 {t("screens.profile.accountSettings.email.title")}
               </h3>
@@ -152,8 +155,8 @@ const Profile = () => {
               </Button>
             </div>
           </div>
-          <div className="p-4 flex">
-            <div className="w-4/6 h-3/5 my-auto mx-0 ml-3 flex flex-col justify-around">
+          <div className="py-4 px-6 flex justify-between">
+            <div className="w-3/6 h-3/5 my-auto mx-0 flex flex-col justify-around">
               <h3 className="text-base text-left">
                 {t("screens.profile.accountSettings.delete.title")}
               </h3>

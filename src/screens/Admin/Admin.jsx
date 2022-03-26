@@ -87,31 +87,29 @@ const Admin = () => {
   }
 
   return (
-    <div className="w-full">
-      <div className="p-12 flex justify-center">
-        <div className="w-full max-w-3xl md:max-w-[90%] ">
-          <div className="flex justify-between mb-8">
-            <h2>{t("screens.admin.title")}</h2>
+    <div className="w-5/6 mx-auto md:w-full flex justify-center">
+      <div className="w-full my-20 mx-auto md:max-w-[90%] ">
+        <div className="flex justify-between mb-8">
+          <h2>{t("screens.admin.title")}</h2>
 
-            <Button
-              className="self-center p-1 rounded-full cursor-pointer"
-              variant="transparent"
-            >
-              <AddCircleOutlinedIcon
-                onClick={() => setShowInviteCodeModal(true)}
-              />
-            </Button>
-          </div>
+          <Button
+            className="self-center p-1 rounded-full cursor-pointer"
+            variant="transparent"
+          >
+            <AddCircleOutlinedIcon
+              onClick={() => setShowInviteCodeModal(true)}
+            />
+          </Button>
+        </div>
 
-          <div className="w-full grid grid-cols-1 md:grid-cols-6 gap-3">
-            {sortedInviteCodes.map((inviteCode) => (
-              <InviteCode
-                key={inviteCode.code}
-                data={inviteCode}
-                onDelete={() => handleDelete(inviteCode.code)}
-              />
-            ))}
-          </div>
+        <div className="w-full grid grid-cols-1 md:grid-cols-6 gap-3">
+          {sortedInviteCodes.map((inviteCode) => (
+            <InviteCode
+              key={inviteCode.code}
+              data={inviteCode}
+              onDelete={() => handleDelete(inviteCode.code)}
+            />
+          ))}
         </div>
       </div>
 

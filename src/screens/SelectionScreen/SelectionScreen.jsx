@@ -25,7 +25,7 @@ const SelectionScreen = () => {
   return (
     <UnauthenticatedLayout>
       <div className="flex flex-col m-auto">
-        <div className="flex justify-around m-auto">
+        <div className="flex flex-col justify-around m-auto md:flex-row">
           <SelectionBox
             heading={t("screens.selectionScreen.vocascanCloud.heading")}
             pro={t("screens.selectionScreen.vocascanCloud.pro", {

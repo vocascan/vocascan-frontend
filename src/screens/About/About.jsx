@@ -12,8 +12,8 @@ const About = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="w-full flex justify-center items-center">
-      <div className="w-11/12 flex flex-col py-10 px-0">
+    <div className="w-5/6 mx-auto md:w-full flex justify-center items-center">
+      <div className="w-full md:w-11/12 flex flex-col my-20 px-0">
         <h1 className="mb-8">{t("screens.about.title")}</h1>
 
         {Object.entries(contributors).map(([key, value], i) => (
@@ -27,6 +27,8 @@ const About = () => {
               <Card
                 name={contributor.name}
                 description={contributor.description}
+                url={contributor.url}
+                imageUrl={contributor.imageUrl}
                 key={j}
               />
             ))}
