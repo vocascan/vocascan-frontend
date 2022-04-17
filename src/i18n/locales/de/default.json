@@ -376,7 +376,9 @@
       "title": "Anmelden",
       "vocascanCloud": {
         "button": "Jetzt kostenlos starten",
-        "contra": "Ihre Daten werden auf den Servern von Vocascan gespeichert",
+        "contra": [
+          "Deine Daten werden auf den Servern von Vocascan gespeichert"
+        ],
         "heading": "Vocascan cloud",
         "pro": [
           "Keine Notwendigkeit eines Servers",
