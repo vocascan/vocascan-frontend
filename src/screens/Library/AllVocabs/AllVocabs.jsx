@@ -11,6 +11,7 @@ import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import Button from "../../../Components/Button/Button.jsx";
 import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import VocabForm from "../../../Forms/VocabForm/VocabForm.jsx";
@@ -27,13 +28,14 @@ const AllVocabs = () => {
   const { packageId, groupId } = useParams();
 
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
   const [currentVocab, setCurrentVocab] = useState(null);
   const [showVocabModal, setShowVocabModal] = useState(false);
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
     useState(false);
 
   const fetchVocabs = useCallback(() => {
-    getGroupVocabulary(groupId).then((response) => {
+    getGroupVocabulary(groupId, search).then((response) => {
       setData(() =>
         response.data.map((elem) => {
           return {
@@ -43,7 +45,7 @@ const AllVocabs = () => {
         })
       );
     });
-  }, [groupId]);
+  }, [groupId, search]);
 
   const editVocab = useCallback((voc) => {
     setCurrentVocab(voc);
@@ -162,6 +164,15 @@ const AllVocabs = () => {
           <Button className="add" variant="transparent">
             <AddCircleOutlinedIcon onClick={addVocab} />
           </Button>
+        </div>
+        <div class="filters">
+          <div className="search">
+            <TextInput
+              placeholder={t("global.search")}
+              onChange={setSearch}
+              value={search}
+            />
+          </div>
         </div>
         <div>
           <Table columns={columns} data={data} />
