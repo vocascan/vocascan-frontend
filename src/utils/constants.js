@@ -56,3 +56,5 @@ export const inviteTimeSpans = [
   7 * 24 * 60 * 60, // 7 days
   null, // infinity
 ];
+
+export const defaultTheme = "light";

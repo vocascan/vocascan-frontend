@@ -1,10 +1,11 @@
 import { defineState } from "redux-localstore";
 
+import { defaultTheme } from "../../utils/constants.js";
 import { SET_LANGUAGE, SET_THEME } from "../Actions/index.js";
 
 const defaultState = {
   language: "en",
-  theme: "light",
+  theme: defaultTheme,
 };
 
 const initialState = defineState(defaultState)("setting");
