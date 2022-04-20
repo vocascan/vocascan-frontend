@@ -6,6 +6,7 @@ const htmlPath =
     ? path.resolve(__dirname, "..", "public")
     : "/usr/share/nginx/html";
 const configPath = path.resolve(htmlPath, "config.js");
+const themesPath = path.resolve(htmlPath, "themes");
 
 console.log("Pre-start: Generating config file…");
 
@@ -16,6 +17,10 @@ Object.entries(process.env).forEach(([key, value]) => {
     config[key.replace(/^VOCASCAN_/, "")] = convertToNativeType(value);
   }
 });
+
+if (fs.existsSync(themesPath) && fs.lstatSync(themesPath).isDirectory()) {
+  config.themes = fs.readdirSync(themesPath).map((theme) => `themes/${theme}`);
+}
 
 writeConfig(config);
 
