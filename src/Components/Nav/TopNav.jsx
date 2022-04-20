@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 
 import PersonIcon from "@material-ui/icons/Person";
 
-import ThemeSwitch from "./ThemeSwitch.jsx";
 import UpdateAvailable from "./UpdateAvailable.jsx";
 
 import { available as updateAvailable } from "../../modules/update.js";
@@ -38,7 +37,6 @@ const TopNav = () => {
             <UpdateAvailable />
           </div>
         )}
-        <ThemeSwitch />
         <div className="user">
           <PersonIcon className="icon" />
           {username || email}
