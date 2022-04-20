@@ -4,7 +4,7 @@ import { SET_LANGUAGE, SET_THEME } from "../Actions/index.js";
 
 const defaultState = {
   language: "en",
-  theme: "themes/light.css",
+  theme: "light",
 };
 
 const initialState = defineState(defaultState)("setting");

@@ -19,7 +19,14 @@ Object.entries(process.env).forEach(([key, value]) => {
 });
 
 if (fs.existsSync(themesPath) && fs.lstatSync(themesPath).isDirectory()) {
-  config.themes = fs.readdirSync(themesPath).map((theme) => `themes/${theme}`);
+  config.themes = Object.fromEntries(
+    fs
+      .readdirSync(themesPath)
+      .map((theme) => [
+        theme.replace(/(themes\/|.css)/g, ""),
+        `themes/${theme}`,
+      ])
+  );
 }
 
 writeConfig(config);

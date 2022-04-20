@@ -8,6 +8,6 @@ document.head.appendChild(themeStyleComponent);
 export const useTheme = () => {
   const theme = useSelector((state) => state.setting.theme);
   useEffect(() => {
-    themeStyleComponent.href = theme;
+    themeStyleComponent.href = window.VOCASCAN_CONFIG.themes[theme];
   }, [theme]);
 };
