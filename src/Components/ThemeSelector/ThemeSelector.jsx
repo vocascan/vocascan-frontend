@@ -7,13 +7,16 @@ import Select from "../Form/Select/Select.jsx";
 import { setTheme } from "../../redux/Actions/setting.js";
 
 const ThemeSelector = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const theme = useSelector((state) => state.setting.theme);
 
   const dispatch = useDispatch();
 
-  const mapTheme = (key) => ({ label: t(`themes.${key}`), value: key });
+  const mapTheme = (key) => ({
+    label: i18n.exists(`themes.${key}`) ? t(`themes.${key}`) : key,
+    value: key,
+  });
 
   return (
     <div>
