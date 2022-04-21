@@ -1,6 +1,6 @@
 window.VOCASCAN_CONFIG = JSON.parse(`{
     "themes": {
-        "dark": "themes/dark.css",
-        "light": "themes/light.css"
+        "dark": "default-themes/dark.css",
+        "light": "default-themes/light.css"
     }
 }`);

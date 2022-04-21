@@ -19,7 +19,7 @@ Object.entries(process.env).forEach(([key, value]) => {
 });
 
 if (fs.existsSync(themesPath) && fs.lstatSync(themesPath).isDirectory()) {
-  config.themes = Object.fromEntries(
+  const themes = Object.fromEntries(
     fs
       .readdirSync(themesPath)
       .map((theme) => [
@@ -27,6 +27,7 @@ if (fs.existsSync(themesPath) && fs.lstatSync(themesPath).isDirectory()) {
         `themes/${theme}`,
       ])
   );
+  config.themes = { ...config.themes, ...themes };
 }
 
 writeConfig(config);
