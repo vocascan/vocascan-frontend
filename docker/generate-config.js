@@ -13,7 +13,7 @@ const readConfig = () => {
     /window\.VOCASCAN_CONFIG\s*=\s*JSON.parse\(`([\s\S]*)`\)/
   );
   if (!existing || existing.length < 2) {
-    console.warn("Could not find existing config in config.js");
+    console.warn("Pre-start: ⚠️ Could not find existing config in config.js");
     process.exit();
   }
   return JSON.parse(existing[1]);
