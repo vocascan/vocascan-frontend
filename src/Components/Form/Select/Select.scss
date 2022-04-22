@@ -70,32 +70,20 @@
 
     &__indicators {
       align-items: flex-end;
-
-      .react-select {
-        &__indicator-separator {
-          display: none;
-        }
-      }
-
-      .react-select {
-        &__indicator {
-          padding-left: 0;
-        }
-      }
+    }
+  
+    &__indicator-separator {
+      display: none;
+    }
+  
+    &__indicator {
+      padding-left: 0;
     }
 
-    &__menu {
-      text-align: left;
-    }
-  }
-
-  .react-select {
     &__value-container {
       padding-left: 0;
     }
-  }
-
-  .react-select {
+  
     &__single-value {
       margin-left: 0;
       padding-bottom: 8px;
@@ -105,20 +93,20 @@
       color: $color-main-text;
     }
   }
+}
 
-  .react-select {
-    &__option {
-      text-align: left;
+.react-select {
+  &__menu {
+    text-align: left;
+    background-color: $color-background !important;
+  }
 
-      &--is-selected {
-        background-color: $color-primary;
-      }
+  &__option {
+    text-align: left;
+    background-color: $color-primary !important;
 
-      &--is-focused {
-        background-color: $color-primary;
-        opacity: 0.5;
-        color: $color-white;
-      }
+    &--is-focused {
+      opacity: 0.5;
     }
   }
 }
