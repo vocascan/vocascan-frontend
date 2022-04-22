@@ -36,7 +36,7 @@
 
     &:focus::placeholder,
     &:valid::placeholder {
-      color: $color-primary-dark;
+      color: $color-primary;
       font-size: 11px;
       transform: translateY(-20px);
       visibility: visible !important;
@@ -62,7 +62,7 @@
     &.flow {
       top: -12px;
       font-size: 11px;
-      color: $color-primary-dark;
+      color: $color-primary;
       transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     }
   }
@@ -79,7 +79,7 @@
     position: absolute;
     text-align: left;
     font-size: 11px;
-    color: $color-primary-dark;
+    color: $color-primary;
     bottom: -13px;
   }
 }
