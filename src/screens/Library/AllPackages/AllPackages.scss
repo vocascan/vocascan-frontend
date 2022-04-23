@@ -8,18 +8,18 @@
   .header-wrapper {
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 
     .back {
       position: absolute;
-      left: 0;
       top: 0;
+      left: 0;
 
       &:hover {
-        cursor: pointer;
         color: $color-primary-dark;
+        cursor: pointer;
       }
     }
 

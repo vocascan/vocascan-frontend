@@ -1,16 +1,16 @@
 @import "../../colors";
 
 .about {
-  width: 100%;
-  grid-area: main;
   display: flex;
+  grid-area: main;
   justify-content: center;
+  width: 100%;
   text-align: center;
 
   .wrapper {
-    width: 90%;
     display: flex;
     flex-direction: column;
+    width: 90%;
     padding: 40px 0;
 
     h1 {
@@ -18,12 +18,12 @@
     }
 
     .dependency-card {
-      background-color: $color-background-inverse;
-      color: #fff;
       padding: 10px;
       margin: 6px;
-      border-radius: 8px;
+      color: #fff;
       text-decoration: none;
+      background-color: $color-background-inverse;
+      border-radius: 8px;
       transition: all 0.125s ease-in-out;
 
       &:hover {

@@ -2,8 +2,8 @@
 
 .table {
   width: 100%;
-  border-spacing: 0;
   margin: 20px 0;
+  border-spacing: 0;
 
   .table-striped {
     tr:nth-child(even) {
@@ -17,12 +17,12 @@
     border-bottom: 1px solid $color-main-text;
 
     .header-text {
-      user-select: none;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       font-weight: bold;
       line-height: 24px;
+      user-select: none;
     }
 
     .sort-placeholder {
@@ -31,14 +31,14 @@
   }
 
   .td {
+    height: 30px;
     padding: 5px;
     text-align: left;
-    height: 30px;
 
     a {
       font-weight: bold;
-      text-decoration: none;
       color: $color-primary;
+      text-decoration: none;
 
       &:hover {
         color: $color-primary-dark;
@@ -54,14 +54,14 @@
 
 .pagination {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin: 10px 0;
 
   .pagination-options {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 
   .pagination-button {
@@ -70,8 +70,8 @@
   }
 
   .pagination-text {
-    font-size: 13px;
     padding: 0;
     margin-right: 5px;
+    font-size: 13px;
   }
 }

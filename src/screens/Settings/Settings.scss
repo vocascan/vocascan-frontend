@@ -4,9 +4,9 @@
   display: flex;
   flex-direction: column;
   grid-area: main;
-  padding: 50px;
-  max-width: 900px;
   justify-content: center;
+  max-width: 900px;
+  padding: 50px;
   margin: 0 auto;
 
   .heading {
@@ -14,8 +14,8 @@
   }
 
   .settings-guide {
-    margin: 40px auto;
     width: 50%;
+    margin: 40px auto;
 
     h3 {
       margin-bottom: 5px;

@@ -1,26 +1,26 @@
 .package-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 
   .update-fields {
-    height: 80%;
     width: 100%;
+    height: 80%;
     overflow-y: auto;
 
     .dropdown {
-      height: 50px;
+      z-index: 4;
       display: flex;
       justify-content: space-between;
-      z-index: 4;
+      height: 50px;
 
       .select-wrapper {
-        width: 49%;
         display: flex;
+        width: 49%;
       }
     }
 

@@ -1,23 +1,23 @@
 .direction {
   display: grid;
-  height: 100%;
-  grid-template-rows: 1fr 3fr 1fr;
   grid-template-areas:
     "title"
     "boxes"
     "footer";
+  grid-template-rows: 1fr 3fr 1fr;
+  height: 100%;
 
   .box-title {
-    grid-area: title;
     display: flex;
-    justify-self: center;
+    grid-area: title;
     align-self: center;
+    justify-self: center;
     margin: 50px 0;
   }
 
   .box-wrapper {
-    grid-area: boxes;
     display: flex;
+    grid-area: boxes;
     justify-content: space-around;
     margin: auto;
   }

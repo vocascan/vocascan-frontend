@@ -1,15 +1,15 @@
 @import "../../colors";
 
 .select-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-width: 300px;
   max-width: 400px;
-  margin: 0 20px;
   height: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  border-radius: 10px;
+  margin: 0 20px;
   background: $color-white;
+  border-radius: 10px;
   box-shadow: -1px 3px 5px#b4bed6;
 
   .select-box-header {
@@ -17,29 +17,29 @@
     flex-direction: column;
 
     .select-box-header-heading {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
       background: $color-background-inverse;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
 
       &.important {
         background: $color-red;
       }
 
       .select-box-header-heading-text {
-        color: $color-white;
-        font-size: 20px;
         margin: auto;
+        font-size: 20px;
+        color: $color-white;
       }
     }
 
     .select-box-header-logo {
-      width: 100%;
-      padding: 20px 0;
       display: flex;
       justify-content: center;
+      width: 100%;
+      padding: 20px 0;
 
       .select-box-header-logo-img {
         width: 40%;
@@ -50,8 +50,8 @@
 
   .select-box-description {
     width: 100%;
-    padding: 20px 0;
     min-height: 200px;
+    padding: 20px 0;
 
     .select-box-description-ul {
       width: 100%;
@@ -69,8 +69,8 @@
         }
 
         .description-list-item-item {
-          text-align: left;
           width: 80%;
+          text-align: left;
         }
       }
     }
@@ -78,8 +78,8 @@
 
   .select-box-footer {
     display: flex;
-    justify-content: center;
     align-items: stretch;
+    justify-content: center;
     padding: 20px;
   }
 }

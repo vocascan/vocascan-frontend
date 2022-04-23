@@ -1,9 +1,9 @@
 @import "../../../constants";
 
 .clean-container {
+  display: flex;
   width: 100vw;
   height: 100vh;
-  display: flex;
 
   @media (min-width: $bp-md) {
     width: 100%;

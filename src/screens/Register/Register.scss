@@ -1,23 +1,23 @@
 @import "../../colors";
 
 .register-form {
-  margin: auto;
-  border-radius: 10px;
 
   position: relative;
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
+  justify-content: space-around;
 
   padding: 40px 100px;
+  margin: auto;
   background: $color-white;
+  border-radius: 10px;
   box-shadow: -1px 3px 5px $color-main-text;
 
   .back-icon {
-    color: $color-primary;
     position: absolute;
     top: 20px;
     left: 20px;
+    color: $color-primary;
 
     &:hover {
       color: $color-primary-dark;
@@ -41,24 +41,24 @@
   }
 
   .register-form-input {
-    width: 100%;
-    min-width: 250px;
-    margin: 30px auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    width: 100%;
+    min-width: 250px;
+    margin: 30px auto;
 
     .form-error {
-      text-align: left;
       padding-top: 10px;
       font-size: 11px;
       color: $color-red;
+      text-align: left;
     }
 
     .checkbox-wrapper {
-      text-align: left;
-      font-size: 14px;
       margin: 3px 0;
+      font-size: 14px;
+      text-align: left;
 
       .label {
         margin-left: 5px;
@@ -84,13 +84,13 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      font-size: 14px;
       margin-top: 12px;
+      font-size: 14px;
 
       .register-form-submit-register-link {
+        margin-left: 5px;
         color: $color-primary;
         cursor: pointer;
-        margin-left: 5px;
       }
     }
   }

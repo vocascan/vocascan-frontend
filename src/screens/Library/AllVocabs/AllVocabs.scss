@@ -4,8 +4,8 @@
   .header-wrapper {
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 
     .back {
@@ -16,8 +16,8 @@
       border-radius: 100%;
 
       &:hover {
-        cursor: pointer;
         color: $color-primary-dark;
+        cursor: pointer;
       }
     }
 
@@ -29,8 +29,8 @@
       border-radius: 100%;
 
       &:hover {
-        cursor: pointer;
         color: $color-primary-dark;
+        cursor: pointer;
       }
     }
   }

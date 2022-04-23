@@ -4,16 +4,16 @@
 .root {
   width: 100%;
   height: 100vh;
-  margin: 0;
   padding: 0;
+  margin: 0;
 
   @media (min-width: $bp-md) {
     display: grid;
-    grid-template-columns: 65px auto;
-    grid-template-rows: 50px auto;
     grid-template-areas:
       "topnav topnav"
       "sidenav main";
+    grid-template-rows: 50px auto;
+    grid-template-columns: 65px auto;
     overflow-x: hidden;
   }
 

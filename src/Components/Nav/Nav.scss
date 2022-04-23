@@ -1,14 +1,14 @@
 @import "../../colors";
 
 .nav {
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  grid-area: sidenav;
+  justify-content: space-between;
   width: 65px;
   height: calc(100vh - 50px);
   background: $color-background-inverse;
-  grid-area: sidenav;
-  display: flex;
-  flex-direction: column;
-  z-index: 100;
-  justify-content: space-between;
   transition: width 0.2s ease-in;
 
   &:hover {
@@ -22,15 +22,15 @@
   }
 
   .button-list {
-    grid-column: 1;
     grid-row: 2;
+    grid-column: 1;
     margin-top: 40px;
   }
 
   .nav-legal {
-    color: $color-white;
     margin: 10px auto;
     font-size: 15px;
+    color: $color-white;
     opacity: 0;
 
     .nav-legal-wrapper {

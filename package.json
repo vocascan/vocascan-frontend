@@ -70,8 +70,10 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.5.1",
-    "stylelint": "^14.2.0",
-    "stylelint-config-sass-guidelines": "^9.0.1"
+    "stylelint": "^14.7.1",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-order": "^5.0.0"
   },
   "metadata": {}
 }
