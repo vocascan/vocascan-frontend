@@ -63,8 +63,8 @@ export const createVocabulary = (
     `/languagePackage/${languagePackageId}/group/${groupId}/vocabulary?activate=${activate}`,
     data
   );
-export const getGroupVocabulary = (groupId) =>
-  api.get(`/group/${groupId}/vocabulary`);
+export const getGroupVocabulary = (groupId, search) =>
+  api.get(`/group/${groupId}/vocabulary?search=${search}`);
 export const modifyVocabulary = (data) =>
   api.put(`/vocabulary/${data.id}`, data);
 export const deleteVocabulary = (vocabularyId) =>
