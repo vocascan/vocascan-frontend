@@ -47,11 +47,11 @@
   --color-white: #fff;
   --color-grey: #cbcbcb;
   --color-red-light: #f9c5cc;
-  --color-red: #ff586e;
-  --color-red-dark: #fd334e;
+  --color-red: #e53935;
+  --color-red-dark: #e53935;
   --color-yellow: #ffeb3b;
   --color-yellow-dark: #c8b900;
   --color-green-light: #c8f1e5;
-  --color-green: #0acf97;
+  --color-green: #06b483;
   --color-green-dark: #06b483;
 }
