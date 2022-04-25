@@ -16,6 +16,7 @@ import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import VocabForm from "../../../Forms/VocabForm/VocabForm.jsx";
 
+import useDebounce from "../../../hooks/useDebounce.js";
 import useSnack from "../../../hooks/useSnack.js";
 import { getGroupVocabulary, deleteVocabulary } from "../../../utils/api.js";
 
@@ -34,8 +35,10 @@ const AllVocabs = () => {
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
     useState(false);
 
+  const debouncedSearch = useDebounce(search, 200);
+
   const fetchVocabs = useCallback(() => {
-    getGroupVocabulary(groupId, search).then((response) => {
+    getGroupVocabulary(groupId, debouncedSearch).then((response) => {
       setData(() =>
         response.data.map((elem) => {
           return {
@@ -45,7 +48,7 @@ const AllVocabs = () => {
         })
       );
     });
-  }, [groupId, search]);
+  }, [groupId, debouncedSearch]);
 
   const editVocab = useCallback((voc) => {
     setCurrentVocab(voc);
