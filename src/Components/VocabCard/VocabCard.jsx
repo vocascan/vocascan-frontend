@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
@@ -6,11 +6,6 @@ import Button from "../Button/Button.jsx";
 import Flag from "../Flag/Flag.jsx";
 
 import useLanguage from "../../hooks/useLanguage.js";
-import {
-  touchbarSelect,
-  available as touchBarAvailable,
-  touchbarReset,
-} from "../../modules/touchbar.js";
 
 import "./VocabCard.scss";
 
@@ -79,37 +74,6 @@ const VocabCard = ({
       return !prev;
     });
   }, [onFlip]);
-
-  useEffect(() => {
-    if (touchBarAvailable) {
-      touchbarSelect({
-        options: [
-          {
-            id: 0,
-            label: t("global.wrong"),
-            accessibilityLabel: "Select",
-            backgroundColor: "#ff586e",
-          },
-          {
-            id: 1,
-            label: t("global.correct"),
-            accessibilityLabel: "Select",
-            backgroundColor: "#0acf97",
-          },
-        ],
-      }).then(([err, x]) => {
-        // return if error -> not supported
-        if (err) return;
-
-        if (x.id === 0) onWrong();
-        else if (x.id === 1) onCorrect();
-      });
-
-      return () => touchbarReset();
-    }
-
-    return () => {};
-  }, [onCorrect, onWrong, t]);
 
   return (
     <div className="vocab-card">

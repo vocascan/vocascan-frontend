@@ -2,7 +2,7 @@ let copyToClip = () => Promise.reject();
 
 if (window.VOCASCAN_CONFIG.ENV === "electron") {
   copyToClip = ({ text }) => {
-    return window.electron.invoke("copy-to-clip", { text });
+    return window.electron.ipcRenderer.invoke("copy-to-clip", { text });
   };
 }
 

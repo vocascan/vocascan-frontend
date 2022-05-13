@@ -56,6 +56,7 @@
     "react-select": "^4.3.0",
     "react-table": "^7.6.3",
     "react-tooltip": "^4.2.17",
+    "react-touchbar-electron": "^1.0.1",
     "redux": "^4.0.5",
     "redux-localstore": "^1.0.0",
     "sass": "^1.29.0",
