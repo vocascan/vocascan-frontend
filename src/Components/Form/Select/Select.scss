@@ -107,7 +107,8 @@
 
   &__option {
     text-align: left;
-    background-color: $color-primary !important;
+    background-color: $color-background !important;
+    color: $color-main-text !important;
 
     &--is-focused {
       opacity: 0.5;
@@ -117,7 +118,7 @@
 
 .select-create {
   color: $color-primary;
-  background-color: $color-white;
+  background-color: $color-background;
   border: 0;
   padding: 15px 0;
   border-top: 1px solid $color-background-muted;
