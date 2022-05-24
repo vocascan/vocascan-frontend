@@ -1,8 +1,9 @@
 @import "../../colors";
+@import "../../constants";
 
 .nav {
   z-index: 100;
-  display: flex;
+  display: none;
   flex-direction: column;
   grid-area: sidenav;
   justify-content: space-between;
@@ -10,6 +11,10 @@
   height: calc(100vh - 50px);
   background: $color-background-inverse;
   transition: width 0.2s ease-in;
+
+  @media screen and (min-width: $bp-md) {
+    display: flex;
+  }
 
   &:hover {
     width: 200px;
