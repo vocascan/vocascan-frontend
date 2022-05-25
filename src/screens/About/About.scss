@@ -1,17 +1,27 @@
 @import "../../colors";
+@import "../../constants";
 
 .about {
   display: flex;
   grid-area: main;
   justify-content: center;
-  width: 100%;
-  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+
+  @media screen and (min-width: $bp-md) {
+    width: 100%;
+  }
 
   .wrapper {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    padding: 40px 0;
+    width: 100%;
+    padding: 0;
+    margin: 80px 0;
+
+    @media screen and (min-width: $bp-md) {
+      width: 90%;
+    }
 
     h1 {
       margin-bottom: 30px;
