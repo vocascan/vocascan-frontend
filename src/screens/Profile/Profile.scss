@@ -1,9 +1,15 @@
 @import "../../colors";
+@import "../../constants";
 
 .profile-screen {
-  max-width: 600px;
-  padding: 50px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 80px auto;
+
+  @media screen and (min-width: $bp-md) {
+    max-width: 600px;
+    padding: 50px;
+    margin: 0 auto;
+  }
 
   .profile-avatar-wrapper {
     display: flex;
@@ -23,6 +29,15 @@
 
   .profile-username {
     margin: 20px 0;
+  }
+
+  .table-wrapper {
+    width: 100%;
+    overflow-x: scroll;
+
+    @media screen and (min-width: $bp-md) {
+      overflow-x: hidden;
+    }
   }
 
   .account-settings-header {
