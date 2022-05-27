@@ -1,24 +1,46 @@
+@import "../../../constants";
+
 .direction {
   display: grid;
   grid-template-areas:
     "title"
-    "boxes"
-    "footer";
-  grid-template-rows: 1fr 3fr 1fr;
+    "boxes";
+  grid-template-rows: 0.5fr 4fr;
+  width: 100%;
   height: 100%;
+  margin: 80px 0;
+
+  @media screen and (min-width: $bp-md) {
+    grid-template-areas:
+      "title"
+      "boxes"
+      "footer";
+    grid-template-rows: 1fr 3fr 1fr;
+    margin: 0;
+  }
 
   .box-title {
     display: flex;
     grid-area: title;
     align-self: center;
     justify-self: center;
-    margin: 50px 0;
+    font-size: 18px;
+
+    @media screen and (min-width: $bp-md) {
+      margin: 50px 0;
+      font-size: 24px;
+    }
   }
 
   .box-wrapper {
     display: flex;
+    flex-direction: column;
     grid-area: boxes;
     justify-content: space-around;
     margin: auto;
+
+    @media screen and (min-width: $bp-md) {
+      flex-direction: row;
+    }
   }
 }

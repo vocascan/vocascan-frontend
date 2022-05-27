@@ -3,9 +3,9 @@
 
 .table {
   width: 100%;
-  border-spacing: 0;
-  margin: 20px 0;
   padding-top: 40px;
+  margin: 20px 0;
+  border-spacing: 0;
 
   @media screen and (min-width: $bp-md) {
     padding-top: 0;
@@ -59,21 +59,21 @@
 }
 
 .pagination {
-  display: flex;
-  width: 90%;
-  justify-content: space-between;
-  align-items: center;
   position: absolute;
-  left: 0;
   right: 0;
-  margin-left: auto;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
   margin-right: auto;
+  margin-left: auto;
   @media screen and (min-width: $bp-md) {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     margin: 10px 0;
   }
 
