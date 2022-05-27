@@ -1,4 +1,5 @@
 @import "../../../colors";
+@import "../../../constants";
 
 .all-vocabs-wrapper {
   .header-wrapper {
@@ -32,6 +33,14 @@
         color: $color-primary-dark;
         cursor: pointer;
       }
+    }
+  }
+
+  .table-wrapper {
+    overflow: scroll;
+
+    @media screen and (min-width: $bp-md) {
+      overflow: hidden;
     }
   }
 }

@@ -1,9 +1,15 @@
 @import "../../colors";
+@import "../../constants";
 
 .table {
   width: 100%;
-  margin: 20px 0;
   border-spacing: 0;
+  margin: 20px 0;
+  padding-top: 40px;
+
+  @media screen and (min-width: $bp-md) {
+    padding-top: 0;
+  }
 
   .table-striped {
     tr:nth-child(even) {
@@ -54,9 +60,22 @@
 
 .pagination {
   display: flex;
-  align-items: center;
+  width: 90%;
   justify-content: space-between;
-  margin: 10px 0;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (min-width: $bp-md) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 10px 0;
+  }
 
   .pagination-options {
     display: flex;
