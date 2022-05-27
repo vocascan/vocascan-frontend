@@ -1,6 +1,3 @@
-window.VOCASCAN_CONFIG = JSON.parse(`{
-    "themes": {
-        "dark": "default-themes/dark.css",
-        "light": "default-themes/light.css"
-    }
-}`);
+/**
+ * The configuration will be injected here through the `generate-config.js` script.
+ */

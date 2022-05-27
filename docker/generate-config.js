@@ -1,24 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-const readConfig = () => {
-  if (!fs.existsSync(configPath)) {
-    console.warn(
-      `Pre-start: ⚠️ No existing config file found under "${configPath}".`
-    );
-    process.exit();
-  }
-  const content = fs.readFileSync(configPath, "utf-8");
-  const existing = content.match(
-    /window\.VOCASCAN_CONFIG\s*=\s*JSON.parse\(`([\s\S]*)`\)/
-  );
-  if (!existing || existing.length < 2) {
-    console.warn("Pre-start: ⚠️ Could not find existing config in config.js");
-    process.exit();
-  }
-  return JSON.parse(existing[1]);
-};
-
 const writeConfig = (config) => {
   const json = JSON.stringify(config, null, 4);
   const newContent = `window.VOCASCAN_CONFIG = JSON.parse(\`${json}\`);\n`;
@@ -46,7 +28,7 @@ const themesPath = path.resolve(htmlPath, "themes");
 
 console.log("Pre-start: Generating config file…");
 
-const config = readConfig();
+const config = {};
 
 Object.entries(process.env).forEach(([key, value]) => {
   if (key.startsWith("VOCASCAN_")) {
