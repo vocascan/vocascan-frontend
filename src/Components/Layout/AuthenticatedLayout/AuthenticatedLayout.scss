@@ -19,5 +19,7 @@
 
   .content {
     overflow-y: auto;
+    margin-top: var(--safe-area-inset-top);
+    margin-bottom: var(--safe-area-inset-bottom);
   }
 }

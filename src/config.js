@@ -28,3 +28,32 @@ if (window.VOCASCAN_CONFIG.ENV === undefined) {
 if (window.VOCASCAN_CONFIG.SHOW_PLANS === undefined) {
   window.VOCASCAN_CONFIG.SHOW_PLANS = !window.VOCASCAN_CONFIG.BASE_URL;
 }
+
+export const consumeSafeAreInsets = () => {
+  if (window.VOCASCAN_CONFIG.ENV !== "mobile") {
+    return true;
+  }
+
+  const insets = window.VOCASCAN_CONFIG.safeAreaInsets;
+
+  if (insets) {
+    document.documentElement.style.setProperty(
+      "--safe-area-inset-top",
+      `${insets.top}px`
+    );
+    document.documentElement.style.setProperty(
+      "--safe-area-inset-right",
+      `${insets.right}px`
+    );
+    document.documentElement.style.setProperty(
+      "--safe-area-inset-bottom",
+      `${insets.bottom}px`
+    );
+    document.documentElement.style.setProperty(
+      "--safe-area-inset-left",
+      `${insets.left}px`
+    );
+  }
+
+  return !!insets;
+};

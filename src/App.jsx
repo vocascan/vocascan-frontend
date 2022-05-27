@@ -22,6 +22,7 @@ import Register from "./screens/Register/Register.jsx";
 import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
 import Settings from "./screens/Settings/Settings.jsx";
 
+import { useFunctionPolling } from "./hooks/useFunctionPolling.js";
 import { setLanguages } from "./redux/Actions/language.js";
 import { signIn, signOut } from "./redux/Actions/login.js";
 import { getLanguages, getProfile } from "./utils/api.js";
@@ -31,7 +32,11 @@ import Image from "./images/logo/color-round.svg";
 import "./Components/sections.scss";
 import "./index.scss";
 
+import { consumeSafeAreInsets } from "./config";
+
 const App = () => {
+  useFunctionPolling(consumeSafeAreInsets);
+
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);

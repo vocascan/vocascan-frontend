@@ -1,4 +1,7 @@
+@import '../../../lib.scss';
+
 .unauthenticated-container {
+  @include safe_are_padding();
   background-image: linear-gradient(to top right, #2e5695, #f7d0fb);
   display: flex;
   height: 100vh;
@@ -8,7 +11,7 @@
 
   .language-selector-wrapper {
     position: absolute;
-    top: 10px;
+    top: calc(10px + var(--safe-area-inset-top));
     right: 10px;
 
     .flag {

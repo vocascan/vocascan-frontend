@@ -2,7 +2,12 @@
 
 .nav {
   width: 65px;
-  height: calc(100vh - 50px);
+  height: calc(
+    100vh
+    - 50px
+    - var(--safe-area-inset-top)
+    - var(--safe-area-inset-bottom)
+  );
   background: $color-background-inverse;
   grid-area: sidenav;
   display: flex;
@@ -10,6 +15,8 @@
   z-index: 100;
   justify-content: space-between;
   transition: width 0.2s ease-in;
+  padding-top: var(--safe-area-inset-top);
+  padding-bottom: var(--safe-area-inset-bottom);
 
   &:hover {
     width: 200px;

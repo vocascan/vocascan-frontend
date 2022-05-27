@@ -5,7 +5,7 @@
   display: grid;
   justify-content: space-between;
   align-items: center;
-  z-index: 5;
+  z-index: 200;
   height: 100%;
   width: 100%;
   grid-area: topnav;
@@ -14,6 +14,7 @@
   grid-template-areas:
     "topnav topnav"
     "sidenav main";
+  padding-top: var(--safe-area-inset-top);
 
   .nav-wrapper {
     display: flex;
