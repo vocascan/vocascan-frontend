@@ -1,3 +1,5 @@
+import { prefersDarkTheme } from "./index.js";
+
 export const vocascanServer = "https://web.vocascan.com";
 
 export const pages = {
@@ -57,4 +59,9 @@ export const inviteTimeSpans = [
   null, // infinity
 ];
 
-export const defaultTheme = "light";
+const autoDefaultTheme = prefersDarkTheme() ? "dark" : "light";
+
+export const defaultTheme =
+  window.VOCASCAN_CONFIG.THEME_SELECT === "auto"
+    ? autoDefaultTheme
+    : window.VOCASCAN_CONFIG.THEME_SELECT;

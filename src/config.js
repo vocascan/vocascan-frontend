@@ -13,6 +13,7 @@ window.VOCASCAN_CONFIG = deepmerge(window.VOCASCAN_CONFIG, {
   ENV: undefined,
   BASE_URL: "",
   SHOW_PLANS: undefined,
+  THEME_SELECT: "auto",
   themes: {
     dark: "default-themes/dark.css",
     light: "default-themes/light.css",
