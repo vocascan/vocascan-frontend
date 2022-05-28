@@ -1,3 +1,1 @@
-/**
- * The configuration will be injected here through the `generate-config.js` script.
- */
+window.VOCASCAN_CONFIG = JSON.parse(``);
