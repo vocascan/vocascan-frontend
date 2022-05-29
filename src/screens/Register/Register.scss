@@ -1,17 +1,23 @@
 @import "../../colors";
+@import "../../constants";
 
 .register-form {
-
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
-  padding: 40px 100px;
-  margin: auto;
+  width: 90%;
+  margin: 80px auto;
   background: $color-white;
   border-radius: 10px;
   box-shadow: -1px 3px 5px $color-main-text;
+
+  @media screen and (min-width: $bp-md) {
+    max-width: 300px;
+    max-height: 750px;
+    padding: 40px 100px;
+    margin: auto;
+  }
 
   .back-icon {
     position: absolute;
@@ -26,8 +32,14 @@
   }
 
   .register-form-header {
-    width: 100%;
+    width: 90%;
     height: 33%;
+    margin: 40px auto 0;
+
+    @media screen and (min-width: $bp-md) {
+      width: 100%;
+      margin: 0 auto;
+    }
 
     .register-form-header-logo {
       width: 100px;
@@ -44,9 +56,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 100%;
+    width: 90%;
     min-width: 250px;
     margin: 30px auto;
+
+    @media screen and (min-width: $bp-md) {
+      width: 100%;
+    }
 
     .form-error {
       padding-top: 10px;
@@ -79,6 +95,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 90%;
+    margin: 0 auto 20px;
+
+    @media screen and (min-width: $bp-md) {
+      width: 100%;
+    }
 
     .register-form-submit-register {
       display: flex;
