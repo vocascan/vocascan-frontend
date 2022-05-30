@@ -289,6 +289,7 @@ const AllPackages = () => {
         }
         open={showPackageModal}
         onClose={() => setShowPackageModal(false)}
+        size="large"
       >
         <PackageForm
           defaultData={currentPackage}

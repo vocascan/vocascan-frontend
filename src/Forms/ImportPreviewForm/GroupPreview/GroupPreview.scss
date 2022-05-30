@@ -1,3 +1,5 @@
+@import "../../../constants";
+
 .group-preview {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,13 @@
 
   .update-fields {
     width: 100%;
+
+    .table-wrapper {
+      overflow-x: scroll;
+      @media screen and (min-width: $bp-md) {
+        overflow-x: hidden;
+      }
+    }
 
     .customizables {
       margin-bottom: 20px;

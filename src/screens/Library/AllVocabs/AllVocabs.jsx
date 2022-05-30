@@ -176,7 +176,7 @@ const AllVocabs = () => {
         }
         open={showVocabModal}
         onClose={() => setShowVocabModal(false)}
-        size="xl"
+        size="large"
       >
         <VocabForm
           packageId={packageId}

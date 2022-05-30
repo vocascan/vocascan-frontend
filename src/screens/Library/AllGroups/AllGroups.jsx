@@ -340,6 +340,7 @@ const AllGroups = () => {
         }
         open={showGroupModal}
         onClose={() => setShowGroupModal(false)}
+        size="large"
       >
         <GroupForm
           fixedPackage

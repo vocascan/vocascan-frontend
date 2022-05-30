@@ -1,3 +1,5 @@
+@import "../../../constants";
+
 .package-preview {
   display: flex;
   flex-direction: column;
@@ -12,6 +14,14 @@
     height: 80%;
     overflow-y: auto;
 
+    .table-wrapper {
+      width: 100%;
+      overflow-x: scroll;
+      @media screen and (min-width: $bp-md) {
+        overflow-x: hidden;
+      }
+    }
+
     .dropdown {
       z-index: 4;
       display: flex;
@@ -25,8 +35,12 @@
     }
 
     .group-detail {
-      width: 90%;
+      width: 100%;
       margin: 0 auto;
+
+      @media screen and (min-width: $bp-md) {
+        width: 90%;
+      }
     }
   }
 
