@@ -66,7 +66,6 @@ const MobileTopNav = () => {
   }, []);
 
   const handleLogout = useCallback(() => {
-    console.log("pushed");
     dispatch(signOut());
   }, [dispatch]);
 
@@ -148,12 +147,13 @@ const MobileTopNav = () => {
             />
           )}
           <NavButton name={t("nav.about")} icon={<InfoIcon />} link="/about" />
-          <NavButton
-            name={t("nav.logout")}
-            icon={<ExitToAppIcon />}
-            link="/logout"
-            onClick={() => handleLogout}
-          />
+          <div onClick={handleLogout}>
+            <NavButton
+              name={t("nav.logout")}
+              icon={<ExitToAppIcon />}
+              link="/logout"
+            />
+          </div>
         </ul>
         <div className="mtn-external-link-wrapper">
           {isLegalNoticeValid && (
