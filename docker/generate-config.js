@@ -1,68 +1,73 @@
 const fs = require("fs");
 const path = require("path");
 
-const configPath = path.resolve("/usr/share/nginx/html/config.js");
-
-console.log("Pre-start: Generating config file…");
-
-let content = "";
-try {
-  content = fs.readFileSync(configPath, { encoding: "utf-8" });
-} catch {
-  console.log(
-    `Pre-start: ⚠️ No existing config file found under "${configPath}".`
+const readConfig = () => {
+  if (!fs.existsSync(configPath)) {
+    console.warn(
+      `Pre-start: ⚠️ No existing config file found under "${configPath}".`
+    );
+    process.exit();
+  }
+  const content = fs.readFileSync(configPath, "utf-8");
+  const existing = content.match(
+    /window\.VOCASCAN_CONFIG\s*=\s*JSON.parse\(`([\s\S]*)`\)/
   );
-}
+  if (!existing || existing.length < 2) {
+    console.warn("Pre-start: ⚠️ Could not find existing config in config.js");
+    process.exit();
+  }
+  return JSON.parse(existing[1]);
+};
+
+const writeConfig = (config) => {
+  const json = JSON.stringify(config, null, 4);
+  const newContent = `window.VOCASCAN_CONFIG = JSON.parse(\`${json}\`);\n`;
+  fs.writeFileSync(configPath, newContent, "utf-8");
+};
 
 const convertToNativeType = (input) => {
   if (["true", "false"].includes(input)) {
     return input === "true";
   }
 
-  if (!Number.isNaN(+input)) {
-    return +input;
+  if (!Number.isNaN(parseInt(input))) {
+    return parseInt(input);
   }
 
   return input;
 };
 
-const envVars = Object.entries(process.env).reduce((acc, [key, value]) => {
+const htmlPath =
+  process.env.NODE_ENV === "development"
+    ? path.resolve(__dirname, "..", "public")
+    : "/usr/share/nginx/html";
+const configPath = path.resolve(htmlPath, "config.js");
+const themesPath = path.resolve(htmlPath, "themes");
+
+console.log("Pre-start: Generating config file…");
+
+const config = readConfig();
+
+Object.entries(process.env).forEach(([key, value]) => {
   if (key.startsWith("VOCASCAN_")) {
-    acc[key.replace(/^VOCASCAN_/, "")] = convertToNativeType(value);
+    config[key.replace(/^VOCASCAN_/, "")] = convertToNativeType(value);
   }
+});
 
-  return acc;
-}, {});
-
-const existing = content.match(/window\.VOCASCAN_CONFIG *= *(\{[\s\S]*\})/);
-let existingConfig = {};
-
-if (existing && existing[1]) {
-  // evaluate to get the object string as object
-  // eslint-disable-next-line no-eval
-  existingConfig = eval(`(${existing[1]})`);
-}
-
-const newContent = `window.VOCASCAN_CONFIG = ${JSON.stringify(
-  { ...existingConfig, ...envVars },
-  null,
-  2
-).replace(
-  / {2}"(.*)": (".*"|[^,\n]*),?/gm,
-  (_, key, value) => `  ${key}: ${value.replace(/^"(.*)"$/, "'$1'")},`
-)};\n`;
-
-try {
-  fs.writeFileSync(configPath, newContent, { encoding: "utf-8", flag: "w" });
-  console.log(
-    `Pre-start: ✓ Wrote config file successfully to "${configPath}".`
+if (fs.existsSync(themesPath) && fs.lstatSync(themesPath).isDirectory()) {
+  const themes = Object.fromEntries(
+    fs
+      .readdirSync(themesPath)
+      .map((theme) => [
+        theme.replace(/(themes\/|.css)/g, ""),
+        `themes/${theme}`,
+      ])
   );
-} catch (error) {
-  if (error.code === "ENOENT") {
-    console.error(
-      `Pre-start: X Could not write config file to "${configPath}".`
-    );
-  } else {
-    throw error;
-  }
+  config.themes = { ...config.themes, ...themes };
 }
+
+writeConfig(config);
+
+console.log(
+  `Pre-start: ✓ Successfully written config file to "${configPath}".`
+);

@@ -9,6 +9,7 @@ export const CLOSE_GUIDE = "CLOSE_GUIDE";
 
 export const SET_LANGUAGE = "SET_LANGUAGE";
 export const SET_LANGUAGES = "SET_LANGUAGES";
+export const SET_THEME = "SET_THEME";
 
 export const SET_VOCAB_ACTIVE = "SET_VOCAB_ACTIVE";
 export const SET_VOCAB_ACTIVATE = "SET_VOCAB_ACTIVATE";

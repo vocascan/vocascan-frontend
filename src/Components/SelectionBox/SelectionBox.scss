@@ -9,8 +9,8 @@
   justify-content: space-between;
   flex-direction: column;
   border-radius: 10px;
-  background: $color-white;
-  box-shadow: -1px 3px 5px#b4bed6;
+  background: $color-background;
+  box-shadow: -1px 3px 5px $color-box-shadow-light;
 
   .select-box-header {
     display: flex;
