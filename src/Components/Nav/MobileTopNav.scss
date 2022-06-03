@@ -66,28 +66,26 @@
   left: 0;
   align-items: center;
   width: 100%;
-  height: 100%;
-  margin: 30px 0 0;
+  height: 0;
   overflow: hidden;
   transition: all 0.7s ease-in-out;
+  transition: height 0.2s ease-out;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   @media screen and (min-width: $bp-md) {
     display: none;
   }
 
   &.open {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 100;
+    height: 100%;
   }
 
   &.closed {
     z-index: -10;
-    display: none;
-    opacity: 0;
   }
 
   .mtn-menu-list {
@@ -95,6 +93,7 @@
     flex-direction: column;
     width: 100%;
     height: 90%;
+    padding-top: 64px;
   }
 
   .mtn-external-link-wrapper {
