@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import AddIcon from "@material-ui/icons/Add";
@@ -33,6 +33,8 @@ const MobileTopNav = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [blockScroll, allowScroll] = useScrollBlock();
+
+  const location = useLocation();
 
   const [showNav, setShowNav] = useState(true);
 
@@ -78,6 +80,10 @@ const MobileTopNav = () => {
   useEffect(() => {
     hamburgerOpen ? blockScroll() : allowScroll();
   }, [allowScroll, blockScroll, hamburgerOpen]);
+
+  useEffect(() => {
+    setHamburgerOpen(false);
+  }, [location]);
 
   return (
     <>
