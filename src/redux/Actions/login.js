@@ -9,7 +9,13 @@ import {
   SET_SERVER_INFO,
 } from "./index.js";
 
-export const register = ({ username, email, token, isAdmin }) => {
+export const register = ({
+  username,
+  email,
+  token,
+  isAdmin,
+  emailVerified,
+}) => {
   return {
     type: REGISTER,
     payload: {
@@ -17,11 +23,12 @@ export const register = ({ username, email, token, isAdmin }) => {
       email,
       token,
       isAdmin,
+      emailVerified,
     },
   };
 };
 
-export const signIn = ({ username, email, token, isAdmin }) => {
+export const signIn = ({ username, email, token, isAdmin, emailVerified }) => {
   return {
     type: SIGN_IN,
     payload: {
@@ -29,6 +36,7 @@ export const signIn = ({ username, email, token, isAdmin }) => {
       email,
       token,
       isAdmin,
+      emailVerified,
     },
   };
 };

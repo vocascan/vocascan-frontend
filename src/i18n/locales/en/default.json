@@ -280,6 +280,16 @@
         "button": "Start for free"
       }
     },
+    "emailVerify": {
+      "greeting": "Hey {{name}},",
+      "description": "Your account is not verified, vocascan-server has send you an email. Please verify your email address by clicking on the link provided in the email.",
+      "levelHigh": "You can only use your account if your email address is verified.",
+      "levelMedium": "You have {{time}} left until your account needs to be verified.",
+      "skip": "Skip",
+      "dontReceivedEmail": "If you haven't received the email, [resend the email].",
+      "resendEmailSuccess": "Email was successfully resend.",
+      "resendEmailError": "Error trying to resend the email."
+    },
     "guide": {
       "title": "Guide",
       "start": {

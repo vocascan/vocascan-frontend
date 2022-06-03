@@ -6,8 +6,6 @@ import CookieConsentBanner from "./Components/CookieConsentBanner/CookieConsentB
 import LoadingIndicator from "./Components/Indicators/LoadingIndicator/LoadingIndicator.jsx";
 import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
 import CleanLayout from "./Components/Layout/CleanLayout/CleanLayout.jsx";
-import Snackbar from "./Components/Snackbar/Snackbar.jsx";
-import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import About from "./screens/About/About.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import Admin from "./screens/Admin/Admin.jsx";
@@ -55,6 +53,7 @@ const App = () => {
               email: user.email,
               token: user.token,
               isAdmin: user.isAdmin,
+              emailVerified: user.emailVerified,
             })
           );
         })
@@ -106,27 +105,24 @@ const App = () => {
   } else {
     return (
       <HashRouter>
-        <SnackbarProvider>
-          <AuthenticatedLayout>
-            <Guide />
-            <CookieConsentBanner />
-            <Switch>
-              <Route path="/addVocab" component={AddVocab} />
-              <Route path="/learn" component={Learn} />
-              <Route path="/library" component={Library} />
-              <Route path="/progress" component={Progress} />
-              <Route path="/custom" component={Custom} />
-              <Route path="/settings" component={Settings} />
-              <Route path="/profile" component={Profile} />
-              <Route path="/about" component={About} />
-              {user.isAdmin && <Route path="/admin" component={Admin} />}
-              <Route path="/">
-                <Redirect to="learn" />
-              </Route>
-            </Switch>
-            <Snackbar />
-          </AuthenticatedLayout>
-        </SnackbarProvider>
+        <AuthenticatedLayout>
+          <Guide />
+          <CookieConsentBanner />
+          <Switch>
+            <Route path="/addVocab" component={AddVocab} />
+            <Route path="/learn" component={Learn} />
+            <Route path="/library" component={Library} />
+            <Route path="/progress" component={Progress} />
+            <Route path="/custom" component={Custom} />
+            <Route path="/settings" component={Settings} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/about" component={About} />
+            {user.isAdmin && <Route path="/admin" component={Admin} />}
+            <Route path="/">
+              <Redirect to="learn" />
+            </Route>
+          </Switch>
+        </AuthenticatedLayout>
       </HashRouter>
     );
   }
