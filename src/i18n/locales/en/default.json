@@ -119,6 +119,9 @@
     "languageSelector": {
       "label": "Language"
     },
+    "themeSelector": {
+      "label": "Theme"
+    },
     "importExport": {
       "exportPackage": "Export package",
       "exportGroup": "Export group"
@@ -424,5 +427,9 @@
     "translator": "Translators",
     "miscellaneous": "Miscellaneous contributors",
     "dependencies": "External dependencies"
+  },
+  "themes": {
+    "light": "Light",
+    "dark": "Dark"
   }
 }

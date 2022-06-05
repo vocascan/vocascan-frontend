@@ -25,6 +25,7 @@
     align-items: center;
     border-radius: 5px;
     overflow-y: auto;
+    background-color: $color-background;
 
     &.small {
       width: 40vw;
