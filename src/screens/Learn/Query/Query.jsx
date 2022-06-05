@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import { TouchBar, Button } from "react-touchbar-electron";
 
 import ProgressBar from "../../../Components/Charts/ProgressBar/ProgressBar.jsx";
 import VocabCard from "../../../Components/VocabCard/VocabCard.jsx";
@@ -18,6 +17,8 @@ import {
 import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 
 import "./Query.scss";
+
+import { TouchBar, Button } from "@luwol03/react-touchbar-electron";
 
 const Query = () => {
   const { t } = useTranslation();

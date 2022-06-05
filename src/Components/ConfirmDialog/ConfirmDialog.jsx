@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { TouchBar, Button as TouchBarButton } from "react-touchbar-electron";
 
 import Button from "../Button/Button.jsx";
 import Modal from "../Modal/Modal.jsx";
@@ -8,6 +7,11 @@ import Modal from "../Modal/Modal.jsx";
 import useDebounceCallback from "../../hooks/useDebounceCallback.js";
 
 import "./ConfirmDialog.scss";
+
+import {
+  TouchBar,
+  Button as TouchBarButton,
+} from "@luwol03/react-touchbar-electron";
 
 const ConfirmDialog = ({
   title = null,
