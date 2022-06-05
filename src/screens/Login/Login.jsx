@@ -88,7 +88,6 @@ const Login = ({ image }) => {
               email,
               token: loginResp.data.token,
               isAdmin: loginResp.data.user.isAdmin,
-              emailVerified: loginResp.data.user.emailVerified,
             })
           );
           //fetch languages from server

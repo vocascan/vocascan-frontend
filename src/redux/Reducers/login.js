@@ -19,7 +19,6 @@ const defaultState = {
     email: "",
     token: "",
     isAdmin: false,
-    emailVerified: true,
   },
   selfHosted: false,
   serverAddress: "",

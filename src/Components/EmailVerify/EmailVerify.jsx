@@ -65,7 +65,7 @@ const EmailVerify = ({ onNext = () => {}, serverInfo, user }) => {
       </div>
       <div className="login-footer">
         {serverInfo?.email_confirm?.level !== "high" && secondsLeft > 0 && (
-          <Button block uppercase onClick={onNext}>
+          <Button block uppercase onClick={onNext} variant="outline">
             {t("screens.emailVerify.skip")}
           </Button>
         )}

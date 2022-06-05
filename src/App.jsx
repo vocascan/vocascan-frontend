@@ -53,7 +53,6 @@ const App = () => {
               email: user.email,
               token: user.token,
               isAdmin: user.isAdmin,
-              emailVerified: user.emailVerified,
             })
           );
         })
