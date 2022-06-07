@@ -9,7 +9,7 @@ import "./TextInput.scss";
 const TextInput = ({
   type = "text",
   inputRef = null,
-  placeholder = null,
+  placeholder = "",
   onChange = () => null,
   error = false,
   errorText = null,

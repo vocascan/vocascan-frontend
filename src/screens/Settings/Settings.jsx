@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
 import LanguageSelector from "../../Components/LanguageSelector/LanguageSelector.jsx";
+import ThemeSelector from "../../Components/ThemeSelector/ThemeSelector.jsx";
 
 import VersionTable from "../../Components/VersionTable/VersionTable.js";
 import { openGuide } from "../../redux/Actions/login.js";
@@ -24,6 +25,8 @@ const Settings = () => {
       <h1 className="heading">{t("screens.settings.title")}</h1>
 
       <LanguageSelector />
+
+      <ThemeSelector />
 
       <div className="settings-guide">
         <h3>{t("screens.settings.guide.title")}</h3>

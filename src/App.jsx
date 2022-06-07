@@ -22,6 +22,7 @@ import Register from "./screens/Register/Register.jsx";
 import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
 import Settings from "./screens/Settings/Settings.jsx";
 
+import useTheme from "./hooks/useTheme.js";
 import { setLanguages } from "./redux/Actions/language.js";
 import { signIn, signOut } from "./redux/Actions/login.js";
 import { getLanguages, getProfile } from "./utils/api.js";
@@ -35,6 +36,8 @@ import "swiper/modules/navigation/navigation.scss";
 import "swiper/swiper.scss";
 
 const App = () => {
+  useTheme();
+
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);

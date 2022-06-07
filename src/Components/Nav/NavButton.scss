@@ -14,9 +14,9 @@
   justify-content: center;
   width: 100%;
   height: 60px;
-  color: $color-white !important;
   text-transform: uppercase;
-  background-color: #fff;
+  background-color: $color-background;
+  color: $color-main-text-inverse;
   border: unset;
   transition: all 0.2s ease-in;
 

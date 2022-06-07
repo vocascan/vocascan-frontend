@@ -25,7 +25,7 @@
       top: 15px;
       left: 0;
       font-size: 11px;
-      color: $color-primary-dark;
+      color: $color-primary;
       transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     }
   }
@@ -70,71 +70,67 @@
 
     &__indicators {
       align-items: flex-end;
-
-      .react-select {
-        &__indicator-separator {
-          display: none;
-        }
-      }
-
-      .react-select {
-        &__indicator {
-          padding-left: 0;
-        }
-      }
+    }
+  
+    &__indicator-separator {
+      display: none;
+    }
+  
+    &__indicator {
+      padding-left: 0;
     }
 
-    &__menu {
-      text-align: left;
-    }
-  }
-
-  .react-select {
     &__value-container {
       padding-left: 0;
     }
-  }
-
-  .react-select {
+  
     &__single-value {
       width: 100%;
       padding-bottom: 8px;
       margin-left: 0;
       font-size: 13px;
       text-align: left;
+      color: $color-main-text;
+    }
+
+    &__input {
+      color: $color-main-text;
     }
   }
+}
 
-  .react-select {
-    &__option {
-      text-align: left;
+.react-select {
+  &__menu {
+    text-align: left;
+    background-color: $color-background !important;
+  }
 
-      &--is-selected {
-        background-color: $color-primary;
-      }
+  &__option {
+    text-align: left;
+    background-color: $color-background !important;
+    color: $color-main-text !important;
 
-      &--is-focused {
-        color: $color-white;
-        background-color: $color-primary;
-        opacity: 0.5;
-      }
+    &--is-focused {
+      color: $color-white;
+      background-color: $color-primary;
+      opacity: 0.5;
     }
   }
 }
 
 .select-create {
+  color: $color-primary;
+  background-color: $color-background;
+  border: 0;
+  padding: 15px 0;
+  border-top: 1px solid $color-background-muted;
+  font-size: 13px;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 15px 0;
-  font-size: 13px;
-  color: $color-primary;
-  text-transform: uppercase;
   cursor: pointer;
-  background-color: $color-white;
-  border: 0;
-  border-top: 1px solid $color-background-muted;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   box-shadow: none;
@@ -155,6 +151,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: $color-main-text;
   }
 
   .postfix {

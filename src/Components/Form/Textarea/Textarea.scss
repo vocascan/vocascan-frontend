@@ -22,6 +22,10 @@
     background-size: 100% 100%;
     border: unset;
     border-bottom: solid 1px $color-alternative;
+    background-repeat: no-repeat;
+    resize: vertical;
+    text-align: left;
+    color: $color-main-text;
 
     &:focus {
       background-position: 0 0;
@@ -36,8 +40,8 @@
 
     &:focus::placeholder,
     &:valid::placeholder {
+      color: $color-primary;
       font-size: 11px;
-      color: $color-primary-dark;
       visibility: visible !important;
       transform: translateY(-20px);
     }
@@ -62,7 +66,7 @@
     &.flow {
       top: -12px;
       font-size: 11px;
-      color: $color-primary-dark;
+      color: $color-primary;
       transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     }
   }
@@ -79,7 +83,8 @@
     position: absolute;
     bottom: -13px;
     font-size: 11px;
-    color: $color-primary-dark;
     text-align: left;
+    color: $color-primary;
+    bottom: -13px;
   }
 }

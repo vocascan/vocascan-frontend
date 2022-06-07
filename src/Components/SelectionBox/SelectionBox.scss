@@ -7,10 +7,13 @@
   min-width: 300px;
   max-width: 400px;
   height: 100%;
+  display: flex;
   margin: 0 20px;
-  background: $color-white;
+  justify-content: space-between;
+  flex-direction: column;
   border-radius: 10px;
-  box-shadow: -1px 3px 5px#b4bed6;
+  background: $color-background;
+  box-shadow: -1px 3px 5px $color-box-shadow-light;
 
   .select-box-header {
     display: flex;

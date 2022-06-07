@@ -43,4 +43,13 @@
       overflow: hidden;
     }
   }
+
+  .filters {
+    display: flex;
+    justify-content: flex-end;
+
+    .search {
+      width: 300px;
+    }
+  }
 }
