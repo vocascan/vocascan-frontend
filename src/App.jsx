@@ -9,14 +9,14 @@ import CleanLayout from "./Components/Layout/CleanLayout/CleanLayout.jsx";
 import About from "./screens/About/About.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import Admin from "./screens/Admin/Admin.jsx";
+import Login from "./screens/Auth/Login/Login.jsx";
+import Register from "./screens/Auth/Register/Register.jsx";
 import Custom from "./screens/Custom/Custom.jsx";
 import Guide from "./screens/Guide/Guide.jsx";
 import Learn from "./screens/Learn/Learn.jsx";
 import Library from "./screens/Library/Library.jsx";
-import Login from "./screens/Login/Login.jsx";
 import Profile from "./screens/Profile/Profile.jsx";
 import Progress from "./screens/Progress/Progress.jsx";
-import Register from "./screens/Register/Register.jsx";
 import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
 import Settings from "./screens/Settings/Settings.jsx";
 

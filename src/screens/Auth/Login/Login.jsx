@@ -5,16 +5,16 @@ import { useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-import Button from "../../Components/Button/Button.jsx";
-import EmailVerify from "../../Components/EmailVerify/EmailVerify.jsx";
-import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
-import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
-import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import Button from "../../../Components/Button/Button.jsx";
+import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
+import ServerValidIndicator from "../../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
+import UnauthenticatedLayout from "../../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import EmailVerify from "../EmailVerify/EmailVerify.jsx";
 
-import { setLanguages } from "../../redux/Actions/language.js";
-import { setServerUrl, signIn } from "../../redux/Actions/login.js";
-import { login, getLanguages, getInfo } from "../../utils/api.js";
-import { maxTextfieldLength } from "../../utils/constants.js";
+import { setLanguages } from "../../../redux/Actions/language.js";
+import { setServerUrl, signIn } from "../../../redux/Actions/login.js";
+import { login, getLanguages, getInfo } from "../../../utils/api.js";
+import { maxTextfieldLength } from "../../../utils/constants.js";
 
 import "./Login.scss";
 

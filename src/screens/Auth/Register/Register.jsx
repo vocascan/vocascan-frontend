@@ -5,28 +5,28 @@ import { useHistory } from "react-router-dom";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-import Button from "../../Components/Button/Button.jsx";
-import EmailVerify from "../../Components/EmailVerify/EmailVerify.jsx";
-import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
-import InviteCodeValidIndicator from "../../Components/Indicators/InviteCodeValidIndicator/InviteCodeValidIndicator.jsx";
-import PasswordComplexityIndicator from "../../Components/Indicators/PasswordComplexityIndicator/PasswordComplexityIndicator.jsx";
-import ServerValidIndicator from "../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
-import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import Button from "../../../Components/Button/Button.jsx";
+import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
+import InviteCodeValidIndicator from "../../../Components/Indicators/InviteCodeValidIndicator/InviteCodeValidIndicator.jsx";
+import PasswordComplexityIndicator from "../../../Components/Indicators/PasswordComplexityIndicator/PasswordComplexityIndicator.jsx";
+import ServerValidIndicator from "../../../Components/Indicators/ServerValidIndicator/ServerValidIndicator.jsx";
+import UnauthenticatedLayout from "../../../Components/Layout/UnauthenticatedLayout/UnauthenticatedLayout.jsx";
+import EmailVerify from "../EmailVerify/EmailVerify.jsx";
 
-import useLinkCreator from "../../hooks/useLinkCreator.js";
-import { setLanguages } from "../../redux/Actions/language.js";
-import { setServerUrl, register } from "../../redux/Actions/login.js";
+import useLinkCreator from "../../../hooks/useLinkCreator.js";
+import { setLanguages } from "../../../redux/Actions/language.js";
+import { setServerUrl, register } from "../../../redux/Actions/login.js";
 import {
   register as registerAPI,
   getLanguages,
   getInfo,
-} from "../../utils/api.js";
+} from "../../../utils/api.js";
 import {
   maxTextfieldLength,
   maxUsernameLength,
   pages,
-} from "../../utils/constants.js";
-import { bytesLength } from "../../utils/index.js";
+} from "../../../utils/constants.js";
+import { bytesLength } from "../../../utils/index.js";
 
 import "./Register.scss";
 

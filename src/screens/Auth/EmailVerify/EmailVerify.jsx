@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 
-import Button from "../Button/Button.jsx";
+import Button from "../../../Components/Button/Button.jsx";
 
-import useHumanizer from "../../hooks/useHumanizer.js";
-import useSnack from "../../hooks/useSnack.js";
-import { getProfile, requestEmailVerification } from "../../utils/api.js";
+import useHumanizer from "../../../hooks/useHumanizer.js";
+import useSnack from "../../../hooks/useSnack.js";
+import { getProfile, requestEmailVerification } from "../../../utils/api.js";
 
 import "./EmailVerify.scss";
 
