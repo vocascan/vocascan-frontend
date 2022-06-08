@@ -90,6 +90,7 @@ const Login = ({ image }) => {
               isAdmin: loginResp.data.user.isAdmin,
             })
           );
+
           //fetch languages from server
           fetchLanguages();
         };
