@@ -231,6 +231,7 @@ const Login = ({ image }) => {
         {showEmailVerify && (
           <EmailVerify
             onNext={dispatchLogin.current}
+            setUser={setUserData}
             serverInfo={serverInfo}
             user={userData}
           />

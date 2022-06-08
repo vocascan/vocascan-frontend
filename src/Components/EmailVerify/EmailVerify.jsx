@@ -1,15 +1,22 @@
 import React, { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
+import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
+
 import Button from "../Button/Button.jsx";
 
 import useHumanizer from "../../hooks/useHumanizer.js";
 import useSnack from "../../hooks/useSnack.js";
-import { requestEmailVerification } from "../../utils/api.js";
+import { getProfile, requestEmailVerification } from "../../utils/api.js";
 
 import "./EmailVerify.scss";
 
-const EmailVerify = ({ onNext = () => {}, serverInfo, user }) => {
+const EmailVerify = ({
+  onNext = () => {},
+  serverInfo,
+  user,
+  setUser = () => null,
+}) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
@@ -50,29 +57,84 @@ const EmailVerify = ({ onNext = () => {}, serverInfo, user }) => {
       });
   }, [showSnack, t, user?.token, user?.user?.email]);
 
+  const checkVerificationStatus = useCallback(async () => {
+    try {
+      const profileRes = await getProfile({
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      });
+
+      setUser((d) => ({
+        ...d,
+        user: { ...profileRes.data, email: d?.user?.email },
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  }, [setUser, user?.token]);
+
+  const emailVerified = user?.user?.emailVerified;
+
   return (
     <div className="email-verify">
       <div className="form-input">
         <h2>
           {t("screens.emailVerify.greeting", { name: user.user.username })}
         </h2>
-        <p>{t("screens.emailVerify.description")}</p>
-        {serverInfo?.email_confirm?.level === "high" || secondsLeft <= 0 ? (
-          <p>{t("screens.emailVerify.levelHigh")}</p>
-        ) : (
-          <p>{t("screens.emailVerify.levelMedium", { time })}</p>
+
+        {!emailVerified && (
+          <div>
+            <p>{t("screens.emailVerify.description")}</p>
+            {serverInfo?.email_confirm?.level === "high" || secondsLeft <= 0 ? (
+              <p>{t("screens.emailVerify.levelHigh")}</p>
+            ) : (
+              <p>{t("screens.emailVerify.levelMedium", { time })}</p>
+            )}
+          </div>
+        )}
+
+        {emailVerified && (
+          <div>
+            <p>{t("screens.emailVerify.emailIsVerifiedDesc")}</p>
+
+            <CheckCircleOutlineOutlinedIcon className="checkMarkIcon" />
+          </div>
         )}
       </div>
       <div className="login-footer">
-        {serverInfo?.email_confirm?.level !== "high" && secondsLeft > 0 && (
-          <Button block uppercase onClick={onNext} variant="outline">
-            {t("screens.emailVerify.skip")}
+        {!emailVerified && (
+          <Button
+            block
+            uppercase
+            onClick={checkVerificationStatus}
+            promiseButton
+          >
+            {t("screens.emailVerify.checkVerificationStatus")}
           </Button>
         )}
-        <div className="dont-received">
-          {dontReceivedBefore} <span onClick={resend}>{dontReceivedLink}</span>
-          {dontReceivedAfter}
-        </div>
+
+        {!emailVerified &&
+          serverInfo?.email_confirm?.level !== "high" &&
+          secondsLeft > 0 && (
+            <Button block uppercase onClick={onNext} variant="outline">
+              {t("screens.emailVerify.skip")}
+            </Button>
+          )}
+
+        {emailVerified && (
+          <Button block uppercase onClick={onNext}>
+            {t("screens.emailVerify.next")}
+          </Button>
+        )}
+
+        {!emailVerified && (
+          <div className="dont-received">
+            {dontReceivedBefore}{" "}
+            <span onClick={resend}>{dontReceivedLink}</span>
+            {dontReceivedAfter}
+          </div>
+        )}
       </div>
     </div>
   );

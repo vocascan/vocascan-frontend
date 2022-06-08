@@ -34,7 +34,7 @@ export const checkUrlAvailable = (url, cancelToken) => {
 };
 
 // User
-export const getProfile = () => api.get("/user");
+export const getProfile = (config) => api.get("/user", config);
 export const deleteUser = () => api.delete("/user");
 
 // Language package

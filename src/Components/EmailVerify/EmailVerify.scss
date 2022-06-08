@@ -1,4 +1,4 @@
-@import "../../colors.scss";
+@import "../../colors";
 
 .email-verify {
   max-width: 250px;
@@ -9,6 +9,15 @@
 
   p {
     margin-bottom: 10px;
+  }
+
+  .checkMarkIcon {
+    font-size: 75px;
+    color: $color-green;
+  }
+
+  .login-footer {
+    gap: 10px;
   }
 
   .dont-received {
