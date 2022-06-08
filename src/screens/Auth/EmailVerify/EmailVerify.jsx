@@ -98,7 +98,7 @@ const EmailVerify = ({
           <div>
             <p>{t("screens.emailVerify.emailIsVerifiedDesc")}</p>
 
-            <CheckCircleOutlineOutlinedIcon className="checkMarkIcon" />
+            <CheckCircleOutlineOutlinedIcon className="check-mark-icon" />
           </div>
         )}
       </div>
