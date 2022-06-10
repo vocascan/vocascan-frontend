@@ -20,7 +20,7 @@ import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import useLinkCreator from "../../hooks/useLinkCreator.js";
 import { signOut } from "../../redux/Actions/login.js";
 
-import HamburgerMenuIcon from "../../images/icons/hamburger.svg";
+import { ReactComponent as HamburgerMenuIcon } from "../../images/icons/hamburger.svg";
 import VocascanLogo from "../../images/logo/color-round.svg";
 
 import "./MobileTopNav.scss";
@@ -99,10 +99,8 @@ const MobileTopNav = () => {
               <p>Vocascan</p>
             </div>
           </Link>
-          <img
+          <HamburgerMenuIcon
             className="hamburger-menu"
-            src={HamburgerMenuIcon}
-            alt="menu"
             onClick={triggerHamburgerMenu}
           />
         </div>

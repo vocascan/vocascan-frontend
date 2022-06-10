@@ -18,7 +18,7 @@
   background-color: $color-background;
   color: $color-main-text-inverse;
   border: unset;
-  transition: all 0.2s ease-in;
+  transition: all 150ms linear;
 
   @media screen and (min-width: $bp-md) {
     background-color: $color-background-inverse;
@@ -27,10 +27,10 @@
   .button-name {
     position: absolute;
     left: 60px;
-    color: #000;
+    color: $color-main-text;
 
     @media screen and (min-width: $bp-md) {
-      color: #fff;
+      color: $color-main-text-inverse;
       visibility: hidden;
       opacity: 0;
     }
@@ -39,11 +39,11 @@
   .button-icon {
     position: absolute;
     left: 20px;
-    color: #000;
-    transition: all 0.2s ease-in;
+    color: $color-main-text;
+    transition: all 150ms linear;
 
     @media screen and (min-width: $bp-md) {
-      color: #fff;
+      color: $color-main-text-inverse;
     }
   }
 
@@ -74,6 +74,6 @@
 .nav:hover .button-name {
   visibility: visible;
   opacity: 1;
-  transition: all 0.2s ease-in;
-  transition-delay: 0.2s;
+  transition: all 150ms linear;
+  transition-delay: 150ms;
 }
