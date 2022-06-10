@@ -2,17 +2,17 @@
 
 .select-box {
   display: flex;
+  display: flex;
   flex-direction: column;
+  flex-direction: column;
+  justify-content: space-between;
   justify-content: space-between;
   min-width: 300px;
   max-width: 400px;
   height: 100%;
-  display: flex;
   margin: 0 20px;
-  justify-content: space-between;
-  flex-direction: column;
-  border-radius: 10px;
   background: $color-background;
+  border-radius: 10px;
   box-shadow: -1px 3px 5px $color-box-shadow-light;
 
   .select-box-header {

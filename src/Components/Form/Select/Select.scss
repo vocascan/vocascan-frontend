@@ -89,8 +89,8 @@
       padding-bottom: 8px;
       margin-left: 0;
       font-size: 13px;
-      text-align: left;
       color: $color-main-text;
+      text-align: left;
     }
 
     &__input {
@@ -106,9 +106,9 @@
   }
 
   &__option {
+    color: $color-main-text !important;
     text-align: left;
     background-color: $color-background !important;
-    color: $color-main-text !important;
 
     &--is-focused {
       color: $color-white;
@@ -119,18 +119,18 @@
 }
 
 .select-create {
-  color: $color-primary;
-  background-color: $color-background;
-  border: 0;
-  padding: 15px 0;
-  border-top: 1px solid $color-background-muted;
-  font-size: 13px;
-  text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 15px 0;
+  font-size: 13px;
+  color: $color-primary;
+  text-transform: uppercase;
   cursor: pointer;
+  background-color: $color-background;
+  border: 0;
+  border-top: 1px solid $color-background-muted;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   box-shadow: none;
@@ -149,9 +149,9 @@
 
   .custom-option-wrapper-name {
     overflow: hidden;
+    color: $color-main-text;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: $color-main-text;
   }
 
   .postfix {

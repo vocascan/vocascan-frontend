@@ -7,10 +7,10 @@
   flex-direction: column;
   justify-content: space-around;
   width: 90%;
-  margin: auto;
-  border-radius: 10px;
   padding: 40px 100px;
+  margin: auto;
   background: $color-background;
+  border-radius: 10px;
   box-shadow: -1px 3px 5px $color-box-shadow-light;
 
   @media screen and (min-width: $bp-md) {
