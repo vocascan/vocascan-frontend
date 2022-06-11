@@ -280,6 +280,19 @@
         "button": "Start for free"
       }
     },
+    "emailVerify": {
+      "greeting": "Hey {{name}},",
+      "description": "your account is not verified, vocascan-server has sent you an email. Consider verifying your email address by clicking on the link provided in the email.",
+      "emailIsVerifiedDesc": "your email is verified. Learning vocabulary has never been easier than with vocascan.",
+      "levelHigh": "You can only use your account if your email address is verified.",
+      "levelMedium": "You still have {{time}} until your account needs to be verified",
+      "skip": "Skip",
+      "next": "Next",
+      "checkVerificationStatus": "Check verification status",
+      "dontReceivedEmail": "If you didn't receive the email, [resend the email].",
+      "resendEmailSuccess": "Email was resent successfully.",
+      "resendEmailError": "Error trying to resend the email."
+    },
     "guide": {
       "title": "Guide",
       "start": {

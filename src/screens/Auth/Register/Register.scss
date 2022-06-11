@@ -1,21 +1,22 @@
-@import "../../colors";
-@import "../../constants";
+@import "../../../colors";
+@import "../../../constants";
 
-.login-form {
+.register-form {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   width: 90%;
-  margin: auto;
+  margin: 80px auto;
   background: $color-background;
   border-radius: 10px;
   box-shadow: -1px 3px 5px $color-box-shadow-light;
 
   @media screen and (min-width: $bp-md) {
     max-width: 300px;
-    max-height: 550px;
+    max-height: 750px;
     padding: 40px 100px;
+    margin: auto;
   }
 
   .back-icon {
@@ -30,7 +31,7 @@
     }
   }
 
-  .header {
+  .register-form-header {
     width: 90%;
     height: 33%;
     margin: 40px auto 0;
@@ -40,18 +41,18 @@
       margin: 0 auto;
     }
 
-    .header-logo {
+    .register-form-header-logo {
       width: 100px;
       height: auto;
       margin-bottom: 10px;
     }
 
-    .login-form-header-heading {
+    .register-form-header-heading {
       text-transform: uppercase;
     }
   }
 
-  .form-input {
+  .register-form-input {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -60,38 +61,55 @@
     margin: 30px auto;
 
     @media screen and (min-width: $bp-md) {
-      width: 80%;
+      width: 100%;
     }
 
     .form-error {
-      height: 27px;
-      margin-top: -3px;
+      padding-top: 10px;
       font-size: 11px;
       color: $color-red;
-      text-align: right;
+      text-align: left;
+    }
+
+    .checkbox-wrapper {
+      margin: 3px 0;
+      font-size: 14px;
+      text-align: left;
+
+      .label {
+        margin-left: 5px;
+
+        a {
+          color: $color-primary;
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 
-  .login-footer {
+  .register-form-submit {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 90%;
-    margin: 20px 0;
-    margin: 20px auto;
+    margin: 0 auto 20px;
 
     @media screen and (min-width: $bp-md) {
-      width: 80%;
+      width: 100%;
     }
 
-    .submit-register {
+    .register-form-submit-register {
       display: flex;
       flex-direction: row;
       justify-content: center;
       margin-top: 12px;
       font-size: 14px;
 
-      .submit-register-link {
+      .register-form-submit-register-link {
         margin-left: 5px;
         color: $color-primary;
         cursor: pointer;
