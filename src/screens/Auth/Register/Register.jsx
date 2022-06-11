@@ -151,7 +151,7 @@ const Register = ({ image }) => {
         ) {
           setShowEmailVerify(true);
         } else {
-          registerResp.current();
+          dispatchRegister.current();
         }
       } catch (error) {
         if (error.response?.status === 409) {
