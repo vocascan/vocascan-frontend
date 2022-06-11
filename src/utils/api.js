@@ -23,6 +23,8 @@ export const login = (data) => api.post("/user/login", data);
 export const register = (data, code = null) =>
   api.post(`/user/register${code ? `?inviteCode=${code}` : ""}`, data);
 export const changePassword = (data) => api.patch("/user/reset-password", data);
+export const requestEmailVerification = (data, config) =>
+  api.patch("/user/request-email-verification", data, config);
 
 // Legal
 export const checkUrlAvailable = (url, cancelToken) => {
@@ -32,7 +34,7 @@ export const checkUrlAvailable = (url, cancelToken) => {
 };
 
 // User
-export const getProfile = () => api.get("/user");
+export const getProfile = (config) => api.get("/user", config);
 export const deleteUser = () => api.delete("/user");
 
 // Language package
