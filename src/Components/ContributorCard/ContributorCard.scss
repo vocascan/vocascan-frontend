@@ -38,13 +38,26 @@
     }
   }
 
-  &:hover .backdrop {
-    top: 0;
+  .card-image {
+    width: 128px;
+  }
 
-    background: linear-gradient(180deg, #{$color-background-inverse+"90"} 0%, $color-background-inverse 75%, $color-background-inverse 100%);
+  .card-image-bp {
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .description {
-      display: block;
+  &:hover {
+    .backdrop {
+      top: 0;
+
+      background: $color-background-inverse;
+
+      .description {
+        display: block;
+      }
     }
   }
 }
