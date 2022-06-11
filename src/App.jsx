@@ -31,9 +31,6 @@ import Image from "./images/logo/color-round.svg";
 
 import "./Components/sections.scss";
 import "./index.scss";
-import "swiper/modules/effect-cards/effect-cards.scss";
-import "swiper/modules/navigation/navigation.scss";
-import "swiper/swiper.scss";
 
 const App = () => {
   useTheme();

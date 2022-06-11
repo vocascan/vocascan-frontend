@@ -13,6 +13,9 @@ import vocascanRound from "../../images/logo/color-round.svg";
 import vocascanCloud from "../../images/logo/vocascan-cloud.svg";
 
 import "./SelectionScreen.scss";
+import "swiper/modules/effect-cards/effect-cards.scss";
+import "swiper/modules/navigation/navigation.scss";
+import "swiper/swiper.scss";
 
 import { Navigation, EffectCards } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
@@ -61,19 +64,15 @@ const SelectionScreen = () => {
     />,
   ];
 
-  if (isMdScreen) {
-    return (
-      <UnauthenticatedLayout>
-        <Swiper modules={[Navigation, EffectCards]} navigation effect="cards">
-          {selectionBoxes.map((box, i) => (
-            <SwiperSlide key={i}>{box}</SwiperSlide>
-          ))}
-        </Swiper>
-      </UnauthenticatedLayout>
-    );
-  }
-
-  return (
+  return isMdScreen ? (
+    <UnauthenticatedLayout>
+      <Swiper modules={[Navigation, EffectCards]} navigation effect="cards">
+        {selectionBoxes.map((box, i) => (
+          <SwiperSlide key={i}>{box}</SwiperSlide>
+        ))}
+      </Swiper>
+    </UnauthenticatedLayout>
+  ) : (
     <UnauthenticatedLayout>
       <div className="select-srn-wrapper">
         <div className="boxes">{selectionBoxes}</div>
