@@ -11,6 +11,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import LockIcon from "@material-ui/icons/Lock";
+import MenuIcon from "@material-ui/icons/Menu";
 import PolicyIcon from "@material-ui/icons/Policy";
 import SecurityIcon from "@material-ui/icons/Security";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -20,7 +21,6 @@ import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import useLinkCreator from "../../hooks/useLinkCreator.js";
 import { signOut } from "../../redux/Actions/login.js";
 
-import { ReactComponent as HamburgerMenuIcon } from "../../images/icons/hamburger.svg";
 import VocascanLogo from "../../images/logo/color-round.svg";
 
 import "./MobileTopNav.scss";
@@ -99,10 +99,7 @@ const MobileTopNav = () => {
               <p>Vocascan</p>
             </div>
           </Link>
-          <HamburgerMenuIcon
-            className="hamburger-menu"
-            onClick={triggerHamburgerMenu}
-          />
+          <MenuIcon className="hamburger-menu" onClick={triggerHamburgerMenu} />
         </div>
       </div>
       <div className={`mtn-menu ${hamburgerOpen ? "open" : "closed"}`}>

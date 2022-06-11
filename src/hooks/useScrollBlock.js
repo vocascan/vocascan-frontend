@@ -1,3 +1,4 @@
+// https://gist.github.com/reecelucas/2f510e6b8504008deaaa52732202d2da
 import { useRef } from "react";
 
 const safeDocument = document;
