@@ -64,19 +64,19 @@ const SelectionScreen = () => {
     />,
   ];
 
-  return isMdScreen ? (
+  return (
     <UnauthenticatedLayout>
-      <Swiper modules={[Navigation, EffectCards]} navigation effect="cards">
-        {selectionBoxes.map((box, i) => (
-          <SwiperSlide key={i}>{box}</SwiperSlide>
-        ))}
-      </Swiper>
-    </UnauthenticatedLayout>
-  ) : (
-    <UnauthenticatedLayout>
-      <div className="select-srn-wrapper">
-        <div className="boxes">{selectionBoxes}</div>
-      </div>
+      {isMdScreen ? (
+        <Swiper modules={[Navigation, EffectCards]} navigation effect="cards">
+          {selectionBoxes.map((box, i) => (
+            <SwiperSlide key={i}>{box}</SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <div className="select-srn-wrapper">
+          <div className="boxes">{selectionBoxes}</div>
+        </div>
+      )}
     </UnauthenticatedLayout>
   );
 };
