@@ -10,7 +10,7 @@ import UpdateAvailable from "./UpdateAvailable.jsx";
 import { available as updateAvailable } from "../../modules/update.js";
 import { signOut } from "../../redux/Actions/login.js";
 
-import LogoRound from "../../images/logo/transparent-round.svg";
+import LogoRound from "../../images/logo/color-round.svg";
 
 import "./TopNav.scss";
 
@@ -29,7 +29,8 @@ const TopNav = () => {
   return (
     <div className="top-nav">
       <div className="title">
-        <img src={LogoRound} alt="" className="brand" />
+        <img src={LogoRound} alt="Logo" />
+        <p>Vocascan</p>
       </div>
       <div className="nav-wrapper">
         {updateAvailable && (

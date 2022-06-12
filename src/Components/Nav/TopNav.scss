@@ -66,18 +66,16 @@
   .title {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 65px;
 
-    .brand {
-      height: 35px;
+    img {
+      width: 35px;
+      margin-left: 15px;
     }
 
-    .text {
-      margin: auto 20px;
-      font-size: 17px;
-      color: $color-main-text-inverse;
-      text-transform: uppercase;
+    p {
+      margin-left: 15px;
+      font-size: 16px;
+      color: $color-main-text;
     }
   }
 }
