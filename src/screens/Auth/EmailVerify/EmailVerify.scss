@@ -1,7 +1,13 @@
 @import "../../../colors";
+@import "../../../constants";
 
 .email-verify {
-  max-width: 250px;
+  width: 80%;
+  margin: 0 auto;
+
+  @media screen and (min-width: $bp-md) {
+    max-width: 250px;
+  }
 
   h2 {
     margin-bottom: 10px;

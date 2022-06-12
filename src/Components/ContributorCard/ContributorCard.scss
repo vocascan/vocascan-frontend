@@ -1,30 +1,30 @@
 @import "../../colors";
 
 .card {
+  position: relative;
   display: inline-block;
   width: 130px;
   height: 170px;
   margin: 8px;
-  position: relative;
-  border-radius: 8px;
   overflow: hidden;
+  border-radius: 8px;
 
   img {
     width: 130px;
   }
 
   .backdrop {
-    transition: border-radius 0.125s ease-in-out, top 0.125s ease-in-out;
     position: absolute;
-    bottom: 0;
-    width: 100%;
     top: 130px;
-    background-color: $color-background-inverse;
-    color: #fff;
+    bottom: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: #fff;
+    background-color: $color-background-inverse;
+    transition: border-radius 0.125s ease-in-out, top 0.125s ease-in-out;
 
     .name {
       font-size: 14px;
@@ -32,9 +32,9 @@
 
     .description {
       display: none;
-      color: #bbb;
-      font-size: 12px;
       margin-top: 5px;
+      font-size: 12px;
+      color: #bbb;
     }
   }
 

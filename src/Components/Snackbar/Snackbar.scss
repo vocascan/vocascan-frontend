@@ -2,32 +2,32 @@
 
 .snackbar {
   position: absolute;
-  bottom: 15px;
-  opacity: 0;
-  visibility: hidden;
   right: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  border-radius: 10px;
-  width: 300px;
+  bottom: 15px;
   z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  padding: 10px 20px;
+  visibility: hidden;
+  border-radius: 10px;
+  opacity: 0;
   transition: all 0.4s ease-in;
 
   &.snackbar-success {
-    background-color: $color-green-light;
     color: $color-green-dark;
+    background-color: $color-green-light;
   }
 
   &.snackbar-error {
-    background-color: $color-red-light;
     color: $color-red-dark;
+    background-color: $color-red-light;
   }
 
   &.snackbar-info {
-    background-color: $color-primary-light;
     color: $color-primary-dark;
+    background-color: $color-primary-light;
   }
 
   .snackbar-text {
@@ -35,8 +35,8 @@
   }
 
   &.show {
-    user-select: none;
     visibility: visible;
+    user-select: none;
     opacity: 1;
     transition: all 0.4s ease-in;
   }

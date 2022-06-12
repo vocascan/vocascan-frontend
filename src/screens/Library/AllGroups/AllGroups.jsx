@@ -327,7 +327,7 @@ const AllGroups = () => {
             <ArrowUpwardIcon onClick={onOpenFileClick} />
           </Button>
         </div>
-        <div>
+        <div className="table-wrapper">
           <Table columns={columns} data={data} />
         </div>
       </div>
@@ -340,6 +340,7 @@ const AllGroups = () => {
         }
         open={showGroupModal}
         onClose={() => setShowGroupModal(false)}
+        size="large"
       >
         <GroupForm
           fixedPackage

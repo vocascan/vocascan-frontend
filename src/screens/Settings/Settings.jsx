@@ -36,8 +36,9 @@ const Settings = () => {
       </div>
 
       <h2>{t("screens.settings.versions")}</h2>
-
-      <VersionTable />
+      <div className="table-wrapper">
+        <VersionTable />
+      </div>
     </div>
   );
 };

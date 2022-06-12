@@ -10,24 +10,28 @@
   margin: 20px 0;
 
   .text-area {
-    width: 100%;
     display: block;
-    border: unset;
+    width: 100%;
     padding: 0;
-    border-bottom: solid 1px $color-alternative;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) calc(100% - 2px), $color-primary 2px);
-    background-position: -9999px 0;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    resize: vertical;
-    text-align: left;
     color: $color-main-text;
 
+    text-align: left;
+    text-align: left;
+    resize: vertical;
+    resize: vertical;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) calc(100% - 2px), $color-primary 2px);
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: -9999px 0;
+    background-size: 100% 100%;
+    border: unset;
+    border-bottom: solid 1px $color-alternative;
+
     &:focus {
-      box-shadow: none;
-      outline: none;
       background-position: 0 0;
       border-bottom-color: $color-primary;
+      outline: none;
+      box-shadow: none;
     }
 
     &::placeholder {
@@ -36,28 +40,28 @@
 
     &:focus::placeholder,
     &:valid::placeholder {
-      color: $color-primary;
       font-size: 11px;
-      transform: translateY(-20px);
+      color: $color-primary;
       visibility: visible !important;
+      transform: translateY(-20px);
     }
 
     &:hover {
-      border-bottom-color: $color-primary;
-      box-shadow: none;
-      outline: none;
       background-position: 0 0;
+      border-bottom-color: $color-primary;
+      outline: none;
+      box-shadow: none;
     }
   }
 
   .text-area-label {
-    pointer-events: none;
     position: absolute;
-    left: 0;
     top: 24px;
+    left: 0;
     font-size: 13px;
-    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     color: $color-main-text-light;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
 
     &.flow {
       top: -12px;
@@ -69,17 +73,18 @@
 
   .text-area-error {
     position: absolute;
-    text-align: left;
+    bottom: -13px;
     font-size: 11px;
     color: $color-red;
-    bottom: -13px;
+    text-align: left;
   }
 
   .text-area-indicator {
     position: absolute;
-    text-align: left;
+    bottom: -13px;
+    bottom: -13px;
     font-size: 11px;
     color: $color-primary;
-    bottom: -13px;
+    text-align: left;
   }
 }

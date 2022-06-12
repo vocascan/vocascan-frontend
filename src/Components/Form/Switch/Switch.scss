@@ -3,8 +3,8 @@
 .switch-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: flex-start;
+  justify-content: flex-start;
   margin: 15px 0;
 
   .label-top {
@@ -13,11 +13,11 @@
   }
 
   .info-sign {
-    color: $color-primary-light;
-    margin: 0 -15px;
+    position: relative;
     display: flex;
     align-items: center;
-    position: relative;
+    margin: 0 -15px;
+    color: $color-primary-light;
 
     &:hover {
       cursor: help;
@@ -33,8 +33,8 @@
 
   .label-wrapper {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 
   &.switcher-left {
@@ -48,44 +48,44 @@
     height: 28px;
 
     &.disabled {
-      opacity: 0.3;
       pointer-events: none;
+      opacity: 0.3;
     }
   }
 
   .switch input {
-    opacity: 0;
     width: 0;
     height: 0;
+    opacity: 0;
   }
 
   .slider {
     position: absolute;
-    cursor: pointer;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+    cursor: pointer;
     background-color: $color-background-inverse;
-    transition: 0.4s;
     border-radius: 34px;
+    transition: 0.4s;
 
     &::before {
       border-radius: 50%;
     }
 
     &.slider-on-off {
-      background-color: $color-red-light;
+      background-color: $color-red;
     }
   }
 
   .slider::before {
     position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 4px;
     bottom: 4px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    content: "";
     background-color: $color-white;
     transition: 0.4s;
   }
