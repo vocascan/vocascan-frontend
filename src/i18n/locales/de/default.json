@@ -59,6 +59,9 @@
       "unactivated": "Nicht aktiviert:",
       "unresolved": "Insgesamt zu lernen:"
     },
+    "themeSelector": {
+      "label": "Design"
+    },
     "validServerIndicator": {
       "serverNotResponding": "✗ Server antwortet nicht.",
       "serverNotVocascanServer": "✗ Server ist kein Vocascan Server",
@@ -278,6 +281,19 @@
     "direction": {
       "title": "Bitte wähle Deine Richtung"
     },
+    "emailVerify": {
+      "checkVerificationStatus": "Verifikationsstatus überprüfen",
+      "description": "Dein Account ist nicht verifiziert, vocascan-server hat Dir eine E-Mail geschickt. Bitte verifiziere Deine E-Mail-Adresse, indem Du auf den Link in der E-Mail klickst.",
+      "dontReceivedEmail": "Wenn Du die E-Mail nicht erhalten hast, [sende die E-Mail erneut].",
+      "emailIsVerifiedDesc": "Deine E-Mail-Adresse ist verifiziert. Das Erlernen von Vokabeln war noch nie einfacher als mit Vocascan.",
+      "greeting": "Hallo {{name}},",
+      "levelHigh": "Du kannst Dein Konto nur verwenden, wenn deine E-Mail-Adresse verifiziert ist.",
+      "levelMedium": "Du hast noch {{time}} Zeit, bis Dein Konto verifiziert sein muss",
+      "next": "Weiter",
+      "resendEmailError": "Fehler beim Versuch, die E-Mail erneut zu senden.",
+      "resendEmailSuccess": "E-Mail wurde erfolgreich erneut gesendet.",
+      "skip": "Überspringen"
+    },
     "endScreen": {
       "congratulations": [
         "Das musst Du noch besser üben",
@@ -410,6 +426,10 @@
       "title": "Einstellungen",
       "versions": "Versionen"
     }
+  },
+  "themes": {
+    "dark": "Dunkel",
+    "light": "Hell"
   },
   "units": {
     "time": {
