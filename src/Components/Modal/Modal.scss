@@ -46,6 +46,7 @@
 
       @media screen and (min-width: $bp-md) {
         width: 80vw;
+        max-width: 1200px;
         height: 80vh;
       }
     }
