@@ -35,16 +35,35 @@
       margin-top: 5px;
       font-size: 12px;
       color: #bbb;
+      white-space: pre-line;
     }
   }
 
-  &:hover .backdrop {
-    top: 0;
+  .card-image {
+    width: 128px;
+  }
 
-    background: linear-gradient(180deg, #{$color-background-inverse+"90"} 0%, $color-background-inverse 75%, $color-background-inverse 100%);
+  .card-image-bp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65%;
 
-    .description {
-      display: block;
+    .card-image-bp-icon {
+      font-size: 100px;
+      color: $color-dark;
+    }
+  }
+
+  &:hover {
+    .backdrop {
+      top: 0;
+
+      background: $color-background-inverse;
+
+      .description {
+        display: block;
+      }
     }
   }
 }

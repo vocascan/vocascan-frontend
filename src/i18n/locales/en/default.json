@@ -435,7 +435,7 @@
     }
   },
   "contributors": {
-    "desktop": "Vocascan desktop contributors",
+    "frontend": "Vocascan frontend contributors",
     "server": "Vocascan server contributors",
     "translator": "Translators",
     "miscellaneous": "Miscellaneous contributors",
