@@ -5,11 +5,11 @@
   width: 100%;
 
   .circle {
+    width: 20px;
+    height: 20px;
     border: 2px solid $color-primary-light;
     border-top: 2px solid $color-primary-dark;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
     animation: spin 1.5s ease-in-out infinite;
 
     &.large {

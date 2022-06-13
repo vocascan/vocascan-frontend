@@ -1,5 +1,11 @@
+@import "../../constants";
+
 .skip-button {
   position: absolute;
-  right: 60px;
-  top: 40px;
+  top: 20px;
+  right: 20px;
+
+  @media screen and (min-width: $bp-md) {
+    right: 60px;
+  }
 }

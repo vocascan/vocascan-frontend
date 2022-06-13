@@ -129,7 +129,10 @@ const Profile = () => {
           <PersonIcon className="profile-avatar" />
         </div>
         <h1 className="profile-username">{username}</h1>
-        <StatsTable />
+        <div className="table-wrapper">
+          <StatsTable />
+        </div>
+
         <h1 className="account-settings-header">
           {t("screens.profile.accountSettings.title")}
         </h1>

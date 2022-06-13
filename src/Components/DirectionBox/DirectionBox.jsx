@@ -28,41 +28,43 @@ const DirectionBox = ({
 
   return (
     <div className="direction-box" onClick={submitDirection}>
-      <div className="flags">
-        {direction === "random" ? (
-          <>
-            <Flag languageCode={foreignWordLanguage} size="large" />
-            <SyncAltIcon className="direction-arrow" />
-            <Flag languageCode={translatedWordLanguage} size="large" />
-          </>
-        ) : direction === "backwards" ? (
-          <>
-            <Flag languageCode={translatedWordLanguage} size="large" />
-            <ArrowRightAltIcon className="direction-arrow" />
-            <Flag languageCode={foreignWordLanguage} size="large" />
-          </>
-        ) : (
-          <>
-            <Flag languageCode={foreignWordLanguage} size="large" />
-            <ArrowRightAltIcon className="direction-arrow" />
-            <Flag languageCode={translatedWordLanguage} size="large" />
-          </>
-        )}
-      </div>
-      <div className="languages">
-        {direction === "random"
-          ? t("global.random")
-          : direction === "backwards"
-          ? `${getLanguageString(
-              findLanguageByCode(translatedWordLanguage, languages)
-            )} - ${getLanguageString(
-              findLanguageByCode(foreignWordLanguage, languages)
-            )}`
-          : `${getLanguageString(
-              findLanguageByCode(foreignWordLanguage, languages)
-            )} - ${getLanguageString(
-              findLanguageByCode(translatedWordLanguage, languages)
-            )}`}
+      <div className="direction-box-inner">
+        <div className="flags">
+          {direction === "random" ? (
+            <>
+              <Flag languageCode={foreignWordLanguage} size="large" />
+              <SyncAltIcon className="direction-arrow" />
+              <Flag languageCode={translatedWordLanguage} size="large" />
+            </>
+          ) : direction === "backwards" ? (
+            <>
+              <Flag languageCode={translatedWordLanguage} size="large" />
+              <ArrowRightAltIcon className="direction-arrow" />
+              <Flag languageCode={foreignWordLanguage} size="large" />
+            </>
+          ) : (
+            <>
+              <Flag languageCode={foreignWordLanguage} size="large" />
+              <ArrowRightAltIcon className="direction-arrow" />
+              <Flag languageCode={translatedWordLanguage} size="large" />
+            </>
+          )}
+        </div>
+        <div className="languages">
+          {direction === "random"
+            ? t("global.random")
+            : direction === "backwards"
+            ? `${getLanguageString(
+                findLanguageByCode(translatedWordLanguage, languages)
+              )} - ${getLanguageString(
+                findLanguageByCode(foreignWordLanguage, languages)
+              )}`
+            : `${getLanguageString(
+                findLanguageByCode(foreignWordLanguage, languages)
+              )} - ${getLanguageString(
+                findLanguageByCode(translatedWordLanguage, languages)
+              )}`}
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,41 @@
+@import "../../../colors";
+@import "../../../constants";
+
+.email-verify {
+  width: 80%;
+  margin: 0 auto;
+
+  @media screen and (min-width: $bp-md) {
+    max-width: 250px;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  .check-mark-icon {
+    font-size: 75px;
+    color: $color-green;
+  }
+
+  .login-footer button {
+    margin-bottom: 10px;
+  }
+
+  .dont-received {
+    margin-top: 10px;
+
+    span {
+      color: $color-primary;
+      cursor: pointer;
+    }
+
+    span:hover {
+      text-decoration: underline;
+    }
+  }
+}

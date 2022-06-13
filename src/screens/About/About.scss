@@ -1,29 +1,35 @@
 @import "../../colors";
+@import "../../constants";
 
 .about {
-  width: 100%;
-  grid-area: main;
   display: flex;
+  grid-area: main;
   justify-content: center;
-  text-align: center;
+  width: 100%;
+  margin: 0 auto;
 
   .wrapper {
-    width: 90%;
     display: flex;
     flex-direction: column;
-    padding: 40px 0;
+    width: 100%;
+    padding: 0;
+    margin: 80px 0;
+
+    @media screen and (min-width: $bp-md) {
+      width: 90%;
+    }
 
     h1 {
       margin-bottom: 30px;
     }
 
     .dependency-card {
-      background-color: $color-background-inverse;
-      color: #fff;
       padding: 10px;
       margin: 6px;
-      border-radius: 8px;
+      color: #fff;
       text-decoration: none;
+      background-color: $color-background-inverse;
+      border-radius: 8px;
       transition: all 0.125s ease-in-out;
 
       &:hover {

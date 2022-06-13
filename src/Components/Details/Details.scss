@@ -6,25 +6,25 @@
   margin-bottom: 30px;
 
   .Collapsible__trigger {
-    display: block;
-    border-bottom: 1px solid $color-background-inverse;
     position: relative;
+    display: block;
     padding: 5px 0 5px 20px;
-    user-select: none;
     cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid $color-background-inverse;
 
     &::before {
       position: absolute;
-      left: 0;
       bottom: 11px;
-      content: " ";
+      left: 0;
       width: 5px;
       height: 5px;
-      transition: all 0.125s ease-in-out;
-      transform: rotate(-45deg);
+      content: " ";
+      border-color: $color-background-inverse;
       border-style: solid;
       border-width: 0 2px 2px 0;
-      border-color: $color-background-inverse;
+      transition: all 0.125s ease-in-out;
+      transform: rotate(-45deg);
     }
 
     &.is-open {
@@ -39,9 +39,9 @@
 
       .summary {
         font-size: 14px;
+        font-weight: 400;
         text-transform: uppercase;
         letter-spacing: 2px;
-        font-weight: 400;
       }
     }
   }

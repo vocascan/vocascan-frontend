@@ -1,49 +1,61 @@
 @import "../../colors";
+@import "../../constants";
 
 .direction-box {
-  max-width: 600px;
-  min-width: 350px;
-  max-height: 600px;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 250px;
+  margin: 20px 0;
   color: $color-main-text-inverse;
   background: $color-background-inverse;
+  border-radius: 10px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  transition: all 0.2s ease-in-out;
+  @media screen and (min-width: $bp-md) {
+    min-width: 350px;
+    max-width: 600px;
+    max-height: 600px;
+    margin: 0 20px;
+  }
 
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 0 10px $color-primary;
     transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
-  .flags {
-    margin-top: 50px;
+  .direction-box-inner {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 90%;
 
-    * {
-      margin: 0 5px;
-    }
+    .flags {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 50px;
 
-    .direction-arrow {
-      font-size: 32px;
+      * {
+        margin: 0 5px;
+      }
 
-      &.invert {
-        transform: rotate(180deg);
+      .direction-arrow {
+        font-size: 32px;
+
+        &.invert {
+          transform: rotate(180deg);
+        }
       }
     }
-  }
 
-  .languages {
-    margin-top: 50px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 13px;
+    .languages {
+      margin-top: 50px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
   }
 }

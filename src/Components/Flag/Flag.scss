@@ -1,10 +1,21 @@
 .flag {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+  }
+
   span {
     display: inline-block;
-    background-repeat: no-repeat;
-    background-image: url("flags.png");
 
     // box shadow color
     color: #eee;
+    background-image: url("flags.png");
+    background-repeat: no-repeat;
   }
 }

@@ -64,3 +64,6 @@ export const dayDateDiff = (date1, date2) => {
  * @returns bytesLength
  */
 export const bytesLength = (string) => new TextEncoder().encode(string).length;
+
+export const prefersDarkTheme = () =>
+  window.matchMedia?.("(prefers-color-scheme: dark)").matches;

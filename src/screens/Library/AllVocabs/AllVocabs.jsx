@@ -11,10 +11,12 @@ import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import Button from "../../../Components/Button/Button.jsx";
 import ConfirmDialog from "../../../Components/ConfirmDialog/ConfirmDialog.jsx";
+import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
 import Modal from "../../../Components/Modal/Modal.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 import VocabForm from "../../../Forms/VocabForm/VocabForm.jsx";
 
+import useDebounce from "../../../hooks/useDebounce.js";
 import useSnack from "../../../hooks/useSnack.js";
 import { getGroupVocabulary, deleteVocabulary } from "../../../utils/api.js";
 
@@ -27,13 +29,16 @@ const AllVocabs = () => {
   const { packageId, groupId } = useParams();
 
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
   const [currentVocab, setCurrentVocab] = useState(null);
   const [showVocabModal, setShowVocabModal] = useState(false);
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
     useState(false);
 
+  const debouncedSearch = useDebounce(search, 200);
+
   const fetchVocabs = useCallback(() => {
-    getGroupVocabulary(groupId).then((response) => {
+    getGroupVocabulary(groupId, debouncedSearch).then((response) => {
       setData(() =>
         response.data.map((elem) => {
           return {
@@ -43,7 +48,7 @@ const AllVocabs = () => {
         })
       );
     });
-  }, [groupId]);
+  }, [groupId, debouncedSearch]);
 
   const editVocab = useCallback((voc) => {
     setCurrentVocab(voc);
@@ -163,7 +168,16 @@ const AllVocabs = () => {
             <AddCircleOutlinedIcon onClick={addVocab} />
           </Button>
         </div>
-        <div>
+        <div class="filters">
+          <div className="search">
+            <TextInput
+              placeholder={t("global.search")}
+              onChange={setSearch}
+              value={search}
+            />
+          </div>
+        </div>
+        <div className="table-wrapper">
           <Table columns={columns} data={data} />
         </div>
       </div>
@@ -176,7 +190,7 @@ const AllVocabs = () => {
         }
         open={showVocabModal}
         onClose={() => setShowVocabModal(false)}
-        size="xl"
+        size="large"
       >
         <VocabForm
           packageId={packageId}

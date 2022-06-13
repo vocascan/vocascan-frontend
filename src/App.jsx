@@ -6,22 +6,21 @@ import CookieConsentBanner from "./Components/CookieConsentBanner/CookieConsentB
 import LoadingIndicator from "./Components/Indicators/LoadingIndicator/LoadingIndicator.jsx";
 import AuthenticatedLayout from "./Components/Layout/AuthenticatedLayout/AuthenticatedLayout.jsx";
 import CleanLayout from "./Components/Layout/CleanLayout/CleanLayout.jsx";
-import Snackbar from "./Components/Snackbar/Snackbar.jsx";
-import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 import About from "./screens/About/About.jsx";
 import AddVocab from "./screens/AddVocab/AddVocab.jsx";
 import Admin from "./screens/Admin/Admin.jsx";
+import Login from "./screens/Auth/Login/Login.jsx";
+import Register from "./screens/Auth/Register/Register.jsx";
 import Custom from "./screens/Custom/Custom.jsx";
 import Guide from "./screens/Guide/Guide.jsx";
 import Learn from "./screens/Learn/Learn.jsx";
 import Library from "./screens/Library/Library.jsx";
-import Login from "./screens/Login/Login.jsx";
 import Profile from "./screens/Profile/Profile.jsx";
 import Progress from "./screens/Progress/Progress.jsx";
-import Register from "./screens/Register/Register.jsx";
 import SelectionScreen from "./screens/SelectionScreen/SelectionScreen.jsx";
 import Settings from "./screens/Settings/Settings.jsx";
 
+import useTheme from "./hooks/useTheme.js";
 import { setLanguages } from "./redux/Actions/language.js";
 import { signIn, signOut } from "./redux/Actions/login.js";
 import { getLanguages, getProfile } from "./utils/api.js";
@@ -32,6 +31,8 @@ import "./Components/sections.scss";
 import "./index.scss";
 
 const App = () => {
+  useTheme();
+
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
@@ -103,27 +104,24 @@ const App = () => {
   } else {
     return (
       <HashRouter>
-        <SnackbarProvider>
-          <AuthenticatedLayout>
-            <Guide />
-            <CookieConsentBanner />
-            <Switch>
-              <Route path="/addVocab" component={AddVocab} />
-              <Route path="/learn" component={Learn} />
-              <Route path="/library" component={Library} />
-              <Route path="/progress" component={Progress} />
-              <Route path="/custom" component={Custom} />
-              <Route path="/settings" component={Settings} />
-              <Route path="/profile" component={Profile} />
-              <Route path="/about" component={About} />
-              {user.isAdmin && <Route path="/admin" component={Admin} />}
-              <Route path="/">
-                <Redirect to="learn" />
-              </Route>
-            </Switch>
-            <Snackbar />
-          </AuthenticatedLayout>
-        </SnackbarProvider>
+        <AuthenticatedLayout>
+          <Guide />
+          <CookieConsentBanner />
+          <Switch>
+            <Route path="/addVocab" component={AddVocab} />
+            <Route path="/learn" component={Learn} />
+            <Route path="/library" component={Library} />
+            <Route path="/progress" component={Progress} />
+            <Route path="/custom" component={Custom} />
+            <Route path="/settings" component={Settings} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/about" component={About} />
+            {user.isAdmin && <Route path="/admin" component={Admin} />}
+            <Route path="/">
+              <Redirect to="learn" />
+            </Route>
+          </Switch>
+        </AuthenticatedLayout>
       </HashRouter>
     );
   }

@@ -1,23 +1,28 @@
-@import "../../colors";
+@import "../../../colors";
+@import "../../../constants";
 
 .login-form {
-  margin: auto;
-  border-radius: 10px;
-
   position: relative;
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
+  justify-content: space-around;
+  width: 90%;
+  margin: auto;
+  background: $color-background;
+  border-radius: 10px;
+  box-shadow: -1px 3px 5px $color-box-shadow-light;
 
-  padding: 40px 100px;
-  background: $color-white;
-  box-shadow: -1px 3px 5px $color-main-text;
+  @media screen and (min-width: $bp-md) {
+    max-width: 300px;
+    max-height: 550px;
+    padding: 40px 100px;
+  }
 
   .back-icon {
-    color: $color-primary;
     position: absolute;
     top: 20px;
     left: 20px;
+    color: $color-primary;
 
     &:hover {
       color: $color-primary-dark;
@@ -26,8 +31,14 @@
   }
 
   .header {
-    width: 100%;
+    width: 90%;
     height: 33%;
+    margin: 40px auto 0;
+
+    @media screen and (min-width: $bp-md) {
+      width: 100%;
+      margin: 0 auto;
+    }
 
     .header-logo {
       width: 100px;
@@ -41,19 +52,23 @@
   }
 
   .form-input {
-    width: 100%;
-    min-width: 250px;
-    margin: 30px auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    width: 90%;
+    min-width: 250px;
+    margin: 30px auto;
+
+    @media screen and (min-width: $bp-md) {
+      width: 80%;
+    }
 
     .form-error {
-      text-align: right;
-      margin-top: -3px;
       height: 27px;
+      margin-top: -3px;
       font-size: 11px;
       color: $color-red;
+      text-align: right;
     }
   }
 
@@ -61,19 +76,24 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 90%;
     margin: 20px 0;
+    margin: 20px auto;
+
+    @media screen and (min-width: $bp-md) {
+      width: 80%;
+    }
 
     .submit-register {
       display: flex;
       flex-direction: row;
       justify-content: center;
-      font-size: 14px;
       margin-top: 12px;
+      font-size: 14px;
 
       .submit-register-link {
-        color: $color-primary;
-
         margin-left: 5px;
+        color: $color-primary;
         cursor: pointer;
       }
     }

@@ -2,39 +2,39 @@
 
 .progress-bar {
   position: relative;
-  height: 20px;
   width: 100%;
   max-width: 500px;
-  background-color: $color-background-muted;
+  height: 20px;
   margin: 50px 0;
+  background-color: $color-background-muted;
 
   .wrapper {
-    height: 100%;
-    max-width: 500px;
-    background-color: $color-green;
-    transition: width 1s ease-in-out;
     display: flex;
     width: 0%;
+    max-width: 500px;
+    height: 100%;
+    background-color: $color-green;
+    transition: width 1s ease-in-out;
 
     .percentage {
       position: absolute;
+      left: 50%;
+      align-self: center;
       font-size: 13px;
+      font-weight: bold;
       line-height: 13px;
       color: $color-main-text;
-      font-weight: bold;
-      left: 50%;
       transform: translateX(-50%);
-      align-self: center;
     }
   }
 
   .bottom-text {
-    font-size: 13px;
-    line-height: 13px;
-    color: $color-main-text;
     display: flex;
     justify-content: flex-end;
     padding: 5px 0;
+    font-size: 13px;
+    line-height: 13px;
+    color: $color-main-text;
     letter-spacing: 1px;
   }
 }

@@ -246,11 +246,13 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
                 open={i === 0}
                 key={i}
               >
-                <Table
-                  pagination={false}
-                  columns={columns}
-                  data={group.VocabularyCards}
-                />
+                <div className="table-wrapper">
+                  <Table
+                    pagination={false}
+                    columns={columns}
+                    data={group.VocabularyCards}
+                  />
+                </div>
               </Details>
             </div>
           ))}

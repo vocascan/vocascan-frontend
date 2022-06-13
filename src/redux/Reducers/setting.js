@@ -1,9 +1,11 @@
 import { defineState } from "redux-localstore";
 
-import { SET_LANGUAGE } from "../Actions/index.js";
+import { defaultTheme } from "../../utils/constants.js";
+import { SET_LANGUAGE, SET_THEME } from "../Actions/index.js";
 
 const defaultState = {
   language: "en",
+  theme: defaultTheme,
 };
 
 const initialState = defineState(defaultState)("setting");
@@ -14,6 +16,12 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         language: action.payload.language,
+      };
+
+    case SET_THEME:
+      return {
+        ...state,
+        theme: action.payload.theme,
       };
 
     default:

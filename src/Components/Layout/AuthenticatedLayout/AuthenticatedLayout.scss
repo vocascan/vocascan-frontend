@@ -1,17 +1,23 @@
 @import "../../../colors";
+@import "../../../constants";
 
 .root {
-  display: grid;
-  width: 100%;
+  width: 90%;
   height: 100vh;
-  grid-template-columns: 65px auto;
-  grid-template-rows: 50px auto;
-  grid-template-areas:
-    "topnav topnav"
-    "sidenav main";
-  margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  margin: 0 auto;
+
+  @media (min-width: $bp-md) {
+    display: grid;
+    grid-template-areas:
+      "topnav topnav"
+      "sidenav main";
+    grid-template-rows: 50px auto;
+    grid-template-columns: 65px auto;
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+  }
 
   .server-error-modal-inner {
     padding: 30px 0;
