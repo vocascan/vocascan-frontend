@@ -97,7 +97,7 @@
   },
   "contributors": {
     "dependencies": "Externe Abhängigkeiten",
-    "desktop": "Vocascan Desktop Mitwirkende",
+    "frontend": "Vocascan Frontend Mitwirkende",
     "miscellaneous": "Verschiedene Mitwirkende",
     "server": "Vocascan Server Mitwirkende",
     "translator": "Übersetzer"
