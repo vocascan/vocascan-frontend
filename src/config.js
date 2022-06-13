@@ -1,15 +1,7 @@
 import deepmerge from "deepmerge";
 import isElectron from "is-electron";
 
-const envVars = Object.entries(process.env).reduce((acc, [key, value]) => {
-  if (key.startsWith("REACT_APP_VOCASCAN_")) {
-    acc[key.replace(/^REACT_APP_VOCASCAN_/, "")] = value;
-  }
-  return acc;
-}, {});
-
-window.VOCASCAN_CONFIG = deepmerge(window.VOCASCAN_CONFIG, {
-  ...envVars,
+const defaultConfig = {
   ENV: undefined,
   BASE_URL: "",
   SHOW_PLANS: undefined,
@@ -18,7 +10,20 @@ window.VOCASCAN_CONFIG = deepmerge(window.VOCASCAN_CONFIG, {
     dark: "default-themes/dark.css",
     light: "default-themes/light.css",
   },
-});
+};
+
+const envVars = Object.entries(process.env).reduce((acc, [key, value]) => {
+  if (key.startsWith("REACT_APP_VOCASCAN_")) {
+    acc[key.replace(/^REACT_APP_VOCASCAN_/, "")] = value;
+  }
+  return acc;
+}, {});
+
+window.VOCASCAN_CONFIG = deepmerge.all([
+  defaultConfig,
+  window.VOCASCAN_CONFIG,
+  envVars,
+]);
 
 // detect env automatically if not set
 if (window.VOCASCAN_CONFIG.ENV === undefined) {

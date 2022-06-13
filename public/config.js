@@ -1,1 +1,1 @@
-window.VOCASCAN_CONFIG = JSON.parse(``);
+window.VOCASCAN_CONFIG = JSON.parse(`{}`);
