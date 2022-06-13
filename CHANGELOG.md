@@ -7,8 +7,6 @@ This changelog goes through all the changes that have been made in each release 
 
 In this version, some new features have been added that make it easier to use. Now you can switch between the two predefined light and dark mode themes or load your own themes into your self-hosted frontend instance. Additionally, the frontend has been made responsive to make Vocascan more comfortable to use on mobile devices. Last but not least, a custom blocking of unverified users has been built into the frontend and backend to make it easier to find spam accounts.
 
-[skip ci] updated translations via Localazy
-
 - Features
   - email verification popup (#116)
   - Theme system (#111)
