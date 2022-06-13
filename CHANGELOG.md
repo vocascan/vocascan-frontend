@@ -3,6 +3,20 @@
 This changelog goes through all the changes that have been made in each release on the
 [vocascan-frontend](https://github.com/vocascan/vocascan-frontend).
 
+## [v1.3.0](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.3.0) - 2022.06.13
+
+In this version, some new features have been added that make it easier to use. Now you can switch between the two predefined light and dark mode themes or load your own themes into your self-hosted frontend instance. Additionally, the frontend has been made responsive to make Vocascan more comfortable to use on mobile devices. Last but not least, a custom blocking of unverified users has been built into the frontend and backend to make it easier to find spam accounts.
+
+[skip ci] updated translations via Localazy
+
+- Features
+  - email verification popup (#116)
+  - Theme system (#111)
+  - Add vocabsearch to "All Vocabs" screen (#110)
+- Refactors
+  - Responsive design SCSS (#115)
+  - About page update (#117)
+
 ## [v1.2.1](https://github.com/vocascan/vocascan-frontend/releases/tag/v1.2.1) - 2022.01.29
 
 This release of vocascan-frontend fixes the country flags in firefox and the linebreaks in the vocab card description. The new password complexity indicator will force secure passwords to the users.
