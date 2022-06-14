@@ -49,7 +49,6 @@
   },
   "contributors": {
     "dependencies": "Внешние зависимости",
-    "desktop": "Соавторы Vocascan для десктоп приложения",
     "server": "Соавторы Vocascan для сервера",
     "translator": "Переводчики"
   },

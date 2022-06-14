@@ -221,11 +221,13 @@ const GroupPreview = ({
             open={false}
             key={1}
           >
-            <Table
-              pagination={false}
-              columns={columns}
-              data={importedGroup.VocabularyCards}
-            />
+            <div className="table-wrapper">
+              <Table
+                pagination={false}
+                columns={columns}
+                data={importedGroup.VocabularyCards}
+              />
+            </div>
           </Details>
         </div>
         <div className="submit-btn">

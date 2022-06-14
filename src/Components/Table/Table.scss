@@ -1,9 +1,15 @@
 @import "../../colors";
+@import "../../constants";
 
 .table {
   width: 100%;
-  border-spacing: 0;
+  padding-top: 40px;
   margin: 20px 0;
+  border-spacing: 0;
+
+  @media screen and (min-width: $bp-md) {
+    padding-top: 0;
+  }
 
   .table-striped {
     tr:nth-child(even) {
@@ -17,12 +23,12 @@
     border-bottom: 1px solid $color-main-text;
 
     .header-text {
-      user-select: none;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       font-weight: bold;
       line-height: 24px;
+      user-select: none;
     }
 
     .sort-placeholder {
@@ -31,14 +37,14 @@
   }
 
   .td {
+    height: 30px;
     padding: 5px;
     text-align: left;
-    height: 30px;
 
     a {
       font-weight: bold;
-      text-decoration: none;
       color: $color-primary;
+      text-decoration: none;
 
       &:hover {
         color: $color-primary-dark;
@@ -53,15 +59,28 @@
 }
 
 .pagination {
+  position: absolute;
+  right: 0;
+  left: 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 10px 0;
+  justify-content: space-between;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  @media screen and (min-width: $bp-md) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+  }
 
   .pagination-options {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 
   .pagination-button {
@@ -70,8 +89,8 @@
   }
 
   .pagination-text {
-    font-size: 13px;
     padding: 0;
     margin-right: 5px;
+    font-size: 13px;
   }
 }

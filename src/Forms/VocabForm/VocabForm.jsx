@@ -436,6 +436,7 @@ const VocabForm = ({
         title={t("screens.allPackages.addPackage")}
         open={showAddPackage}
         onClose={closePackageModal}
+        size={"large"}
       >
         <PackageForm onSubmitCallback={packageAdded} />
       </Modal>
@@ -443,6 +444,7 @@ const VocabForm = ({
         title={t("screens.allGroups.addGroup")}
         open={showAddGroup}
         onClose={closeGroupModal}
+        size={"large"}
       >
         <GroupForm
           fixedPackage

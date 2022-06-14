@@ -1,17 +1,17 @@
 @import "../../../colors";
 
 .indicator {
-  width: auto;
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
+  justify-content: space-between;
+  width: auto;
 
   .indicator-dot {
     width: 10px;
     height: 10px;
-    border-radius: 100%;
-    background: $color-grey;
     margin: 0 3px;
+    background: $color-grey;
+    border-radius: 100%;
 
     &.active {
       background: $color-primary;

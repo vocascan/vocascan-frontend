@@ -29,6 +29,8 @@ const About = () => {
               <Card
                 name={contributor.name}
                 description={contributor.description}
+                url={contributor.url}
+                imageUrl={contributor.imageUrl}
                 key={j}
               />
             ))}

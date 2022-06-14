@@ -7,29 +7,30 @@
   align-items: flex-end;
   justify-content: flex-end;
   width: 100%;
-  margin: 5px 0;
   height: 50px;
+  margin: 5px 0;
 
   .text-input {
-    height: 32px;
-    width: 100%;
     display: block;
-    border: unset;
+    width: 100%;
+    height: 32px;
     padding-top: 10px;
-    border-bottom: solid 1px $color-alternative;
-    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) calc(100% - 2px), $color-primary 2px);
-    background-position: -9999px 0;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    text-align: left;
     color: $color-main-text;
 
+    text-align: left;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) calc(100% - 2px), $color-primary 2px);
+    background-repeat: no-repeat;
+    background-position: -9999px 0;
+    background-size: 100% 100%;
+    border: unset;
+    border-bottom: solid 1px $color-alternative;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+
     &:focus {
-      box-shadow: none;
-      outline: none;
       background-position: 0 0;
       border-bottom-color: $color-primary;
+      outline: none;
+      box-shadow: none;
     }
 
     &::placeholder {
@@ -38,28 +39,28 @@
 
     &:focus::placeholder,
     &:valid::placeholder {
-      color: $color-primary;
       font-size: 11px;
-      transform: translateY(-20px);
+      color: $color-primary;
       visibility: visible !important;
+      transform: translateY(-20px);
     }
 
     &:hover {
-      border-bottom-color: $color-primary;
-      box-shadow: none;
-      outline: none;
       background-position: 0 0;
+      border-bottom-color: $color-primary;
+      outline: none;
+      box-shadow: none;
     }
   }
 
   .text-input-label {
-    pointer-events: none;
     position: absolute;
-    left: 0;
     top: 24px;
+    left: 0;
     font-size: 13px;
-    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     color: $color-main-text-light;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
 
     &.flow {
       top: 6px;
@@ -71,18 +72,17 @@
 
   .text-input-error {
     position: absolute;
-    text-align: left;
+    bottom: -13px;
     font-size: 11px;
     color: $color-red;
-    bottom: -13px;
+    text-align: left;
   }
 
   .text-input-indicator {
     position: absolute;
-    text-align: left;
+    bottom: -13px;
     font-size: 11px;
     color: $color-primary;
-    bottom: -13px;
   }
 
   .show-password {
@@ -91,8 +91,8 @@
     transition: color 0.2s ease-in-out;
 
     &:hover {
-      cursor: pointer;
       color: $color-primary;
+      cursor: pointer;
       transition: color 0.2s ease-in-out;
     }
   }

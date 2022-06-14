@@ -1,16 +1,20 @@
 @import "../../colors";
+@import "../../constants";
 
 .vocab-card {
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
   display: flex;
+  width: 95%;
+  height: 100%;
+  background-color: transparent;
   perspective: 1000px;
+
+  @media screen and (min-width: $bp-md) {
+    width: 100%;
+  }
 
   .card-inner {
     position: relative;
-    width: 50%;
-    min-width: 450px;
+    width: 100%;
     max-width: 600px;
     height: 70%;
     min-height: 400px;
@@ -18,6 +22,11 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+
+    @media screen and (min-width: $bp-md) {
+      width: 50%;
+      min-width: 450px;
+    }
 
     &.flipped {
       transform: rotateY(180deg);
@@ -32,10 +41,10 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    cursor: pointer;
     border-radius: 10px;
     box-shadow: 1px 3px 5px $color-box-shadow;
-    cursor: pointer;
+    backface-visibility: hidden;
   }
 
   .card-front {
@@ -43,47 +52,62 @@
     background-color: $color-background-inverse;
 
     .card-front-inner {
-      padding: 20px;
-      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      height: 100%;
+      padding: 20px;
     }
   }
 
   .card-back {
-    transform: rotateY(180deg);
     color: $color-main-text-inverse;
     background-color: $color-background-inverse;
+    transform: rotateY(180deg);
 
     .card-back-inner {
-      padding: 20px;
-      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      height: 100%;
+      padding: 20px;
     }
   }
 
   .foreign-word-wrapper {
-    overflow-wrap: break-word;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow-wrap: break-word;
 
     .description {
       margin-bottom: 20px;
     }
 
     .translations {
+      padding: 10px;
+      font-size: 20px;
       border: 1px solid $color-primary;
       border-radius: 10px;
-      padding: 10px;
-      font-size: 24px;
+    }
+
+    .my-20 {
+      font-size: 20px;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: 24px;
+      }
     }
   }
 
   .translated-word-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
     overflow-wrap: break-word;
 
     .translations {
@@ -93,9 +117,21 @@
 
     .my-20 {
       max-width: 100%;
-      margin: 20px 0;
-      font-size: 24px;
       padding: 10px;
+      margin: 20px 0;
+      font-size: 20px;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .card-button {
+    min-width: 40%;
+    margin: 0 10px;
+    @media screen and (min-width: $bp-md) {
+      min-width: 180px;
     }
   }
 
@@ -116,5 +152,6 @@
   .continue {
     display: flex;
     justify-content: space-evenly;
+    width: 100%;
   }
 }
