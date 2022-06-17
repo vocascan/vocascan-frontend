@@ -8,16 +8,9 @@
   grid-area: sidenav;
   justify-content: space-between;
   width: 65px;
-  height: calc(
-    100vh
-    - 50px
-    - var(--safe-area-inset-top)
-    - var(--safe-area-inset-bottom)
-  );
+  height: calc(100vh - 50px);
   background: $color-background-inverse;
   transition: width 0.2s ease-in;
-  padding-top: var(--safe-area-inset-top);
-  padding-bottom: var(--safe-area-inset-bottom);
 
   @media screen and (min-width: $bp-md) {
     display: flex;

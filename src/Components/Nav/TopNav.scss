@@ -8,7 +8,6 @@
   grid-template-areas:
     "topnav topnav"
     "sidenav main";
-  padding-top: var(--safe-area-inset-top);
   grid-template-rows: 50px;
   grid-template-columns: 200px auto;
   align-items: center;
