@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import Button from "../../Components/Button/Button.jsx";
 import LanguageSelector from "../../Components/LanguageSelector/LanguageSelector.jsx";
+import ThemeSelector from "../../Components/ThemeSelector/ThemeSelector.jsx";
 
 import VersionTable from "../../Components/VersionTable/VersionTable.js";
 import { openGuide } from "../../redux/Actions/login.js";
@@ -25,6 +26,8 @@ const Settings = () => {
 
       <LanguageSelector />
 
+      <ThemeSelector />
+
       <div className="settings-guide">
         <h3>{t("screens.settings.guide.title")}</h3>
         <Button block uppercase onClick={reopenGuide}>
@@ -33,8 +36,9 @@ const Settings = () => {
       </div>
 
       <h2>{t("screens.settings.versions")}</h2>
-
-      <VersionTable />
+      <div className="table-wrapper">
+        <VersionTable />
+      </div>
     </div>
   );
 };

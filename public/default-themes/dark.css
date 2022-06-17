@@ -1,0 +1,59 @@
+:root {
+  --color-background-inverse: #333340;
+  --color-background-muted: #333340;
+  --color-background: #282833;
+  --color-alternative: #333340;
+  --color-form: #333340;
+  --color-box-shadow: #000;
+  --color-box-shadow-light: #000;
+  --color-main-text-light: #fff;
+
+  --color-main-text: #fff;
+  --color-main-text-90: #fff;
+  --color-main-text-80: #fff;
+  --color-main-text-70: #fff;
+  --color-main-text-60: #fff;
+  --color-main-text-50: #fff;
+  --color-main-text-40: #fff;
+  --color-main-text-30: #fff;
+  --color-main-text-20: #fff;
+  --color-main-text-10: #fff;
+
+  --color-main-text-inverse: #fff;
+
+  --color-primary-light: #03dac5;
+
+  --color-primary: #bb86fc;
+  --color-primary-90: #bb86fc;
+  --color-primary-80: #bb86fc;
+  --color-primary-70: #bb86fc;
+  --color-primary-60: #bb86fc;
+  --color-primary-50: #bb86fc;
+  --color-primary-40: #bb86fc;
+  --color-primary-30: #bb86fc;
+  --color-primary-20: #bb86fc;
+  --color-primary-10: #bb86fc;
+
+  --color-primary-dark: #bb86fc;
+  --color-primary-dark-90: #bb86fc;
+  --color-primary-dark-80: #bb86fc;
+  --color-primary-dark-70: #bb86fc;
+  --color-primary-dark-60: #bb86fc;
+  --color-primary-dark-50: #bb86fc;
+  --color-primary-dark-40: #bb86fc;
+  --color-primary-dark-30: #bb86fc;
+  --color-primary-dark-20: #bb86fc;
+  --color-primary-dark-10: #bb86fc;
+
+  --color-white: #fff;
+  --color-dark: #000;
+  --color-grey: #cbcbcb;
+  --color-red-light: #f9c5cc;
+  --color-red: #e53935;
+  --color-red-dark: #e53935;
+  --color-yellow: #ffeb3b;
+  --color-yellow-dark: #c8b900;
+  --color-green-light: #c8f1e5;
+  --color-green: #24aa65;
+  --color-green-dark: #24aa65;
+}

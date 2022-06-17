@@ -6,17 +6,17 @@
 
   .error {
     height: 29px;
-    text-align: right;
     color: $color-red-dark;
+    text-align: right;
   }
 
   .success {
-    height: 29px;
-    text-align: right;
-    color: $color-green-dark;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: flex-end;
+    height: 29px;
+    color: $color-green-dark;
+    text-align: right;
 
     svg {
       margin-left: 5px;

@@ -1,11 +1,11 @@
 @import "../../../colors";
 
 .select-input-container {
-  width: 100%;
   position: relative;
-  height: 50px;
   display: flex;
   justify-content: center;
+  width: 100%;
+  height: 50px;
 
   &.select-disabled {
     pointer-events: none;
@@ -16,16 +16,16 @@
     position: absolute;
     top: 30px;
     left: 0;
-    transform: translateY(-50%);
     font-size: 13px;
-    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     color: $color-main-text-light;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    transform: translateY(-50%);
 
     &.flow {
       top: 15px;
       left: 0;
       font-size: 11px;
-      color: $color-primary-dark;
+      color: $color-primary;
       transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
     }
   }
@@ -35,133 +35,130 @@
     width: 100%;
 
     &__control {
-      width: 100%;
-      border: unset;
       align-items: flex-end;
-      border-radius: 0;
-      border-bottom: 1px solid $color-alternative;
-      transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+      width: 100%;
       background: linear-gradient(to bottom,
       rgba(255, 255, 255, 0) 96%,
       $color-primary 4%);
+      background-repeat: no-repeat;
       background-position: -9999px 0;
       background-size: 100% 100%;
-      background-repeat: no-repeat;
+      border: unset;
+      border-bottom: 1px solid $color-alternative;
+      border-radius: 0;
+      transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
 
       &--is-focused {
-        box-shadow: none;
-        border-bottom: 1px solid $color-primary;
-        background-position: 0 0;
         background: linear-gradient(to bottom,
         rgba(255, 255, 255, 0) 96%,
         $color-primary 4%);
+        background-position: 0 0;
+        border-bottom: 1px solid $color-primary;
+        box-shadow: none;
       }
 
       &:hover {
-        box-shadow: none;
-        outline: none;
-        transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+        cursor: pointer;
         // background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, $color-primary-dark 4%);
         background-position: 0 0;
         border-bottom-color: $color-primary;
-        cursor: pointer;
+        outline: none;
+        box-shadow: none;
+        transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
       }
     }
 
     &__indicators {
       align-items: flex-end;
-
-      .react-select {
-        &__indicator-separator {
-          display: none;
-        }
-      }
-
-      .react-select {
-        &__indicator {
-          padding-left: 0;
-        }
-      }
+    }
+  
+    &__indicator-separator {
+      display: none;
+    }
+  
+    &__indicator {
+      padding-left: 0;
     }
 
-    &__menu {
-      text-align: left;
-    }
-  }
-
-  .react-select {
     &__value-container {
       padding-left: 0;
     }
-  }
-
-  .react-select {
+  
     &__single-value {
-      margin-left: 0;
-      padding-bottom: 8px;
-      font-size: 13px;
       width: 100%;
+      padding-bottom: 8px;
+      margin-left: 0;
+      font-size: 13px;
+      color: $color-main-text;
       text-align: left;
     }
+
+    &__input {
+      color: $color-main-text;
+    }
+  }
+}
+
+.react-select {
+  &__menu {
+    text-align: left;
+    background-color: $color-background !important;
   }
 
-  .react-select {
-    &__option {
-      text-align: left;
+  &__option {
+    color: $color-main-text !important;
+    text-align: left;
+    background-color: $color-background !important;
 
-      &--is-selected {
-        background-color: $color-primary;
-      }
-
-      &--is-focused {
-        background-color: $color-primary;
-        opacity: 0.5;
-        color: $color-white;
-      }
+    &--is-focused {
+      color: $color-white;
+      background-color: $color-primary;
+      opacity: 0.5;
     }
   }
 }
 
 .select-create {
-  color: $color-primary;
-  background-color: $color-white;
-  border: 0;
-  padding: 15px 0;
-  border-top: 1px solid $color-background-muted;
-  font-size: 13px;
-  text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 15px 0;
+  font-size: 13px;
+  color: $color-primary;
+  text-transform: uppercase;
   cursor: pointer;
-  box-shadow: none;
-  border-bottom-left-radius: 5px;
+  background-color: $color-background;
+  border: 0;
+  border-top: 1px solid $color-background-muted;
   border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: none;
 
   &:hover {
-    background-color: $color-primary;
     color: $color-white;
+    background-color: $color-primary;
   }
 }
 
 .custom-option-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   .custom-option-wrapper-name {
-    white-space: nowrap;
     overflow: hidden;
+    color: $color-main-text;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .postfix {
-    font-size: 20px;
     display: flex;
     align-items: center;
     padding-left: 5px;
     margin-left: auto;
+    font-size: 20px;
   }
 }

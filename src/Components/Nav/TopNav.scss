@@ -1,20 +1,25 @@
 @import "../../colors";
+@import "../../constants";
 
 .top-nav {
-  background: $color-background-inverse;
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 200;
-  height: 100%;
-  width: 100%;
+  z-index: 5;
+  display: none;
   grid-area: topnav;
-  grid-template-columns: 200px auto;
-  grid-template-rows: 50px;
   grid-template-areas:
     "topnav topnav"
     "sidenav main";
   padding-top: var(--safe-area-inset-top);
+  grid-template-rows: 50px;
+  grid-template-columns: 200px auto;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  background: $color-background-inverse;
+
+  @media screen and (min-width: $bp-md) {
+    display: grid;
+  }
 
   .nav-wrapper {
     display: flex;
@@ -23,34 +28,34 @@
 
   .update {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     color: $color-white;
 
     &:hover {
-      background-color: $color-primary;
       cursor: pointer;
+      background-color: $color-primary;
     }
   }
 
   .user {
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100%;
+    font-size: 13px;
     color: $color-main-text-inverse;
     cursor: pointer;
-    height: 100%;
-    position: relative;
-    font-size: 13px;
-    width: 200px;
 
     &:hover {
       background-color: $color-primary;
 
       .menu {
-        transition: all 0.2s ease-in;
         right: 0;
         height: auto;
+        transition: all 0.2s ease-in;
       }
     }
 
@@ -60,58 +65,61 @@
   }
 
   .title {
-    width: 65px;
     display: flex;
-    justify-content: center;
     align-items: center;
 
-    .brand {
-      height: 35px;
+    img {
+      width: 35px;
+      margin-left: 15px;
     }
 
-    .text {
-      color: $color-main-text-inverse;
-      text-transform: uppercase;
-      font-size: 17px;
-      margin: auto 20px;
+    p {
+      margin-left: 15px;
+      font-size: 16px;
+      color: $color-main-text;
     }
   }
 }
 
 .menu {
-  width: 200px;
-  height: 200px;
+  position: absolute;
   top: 50px;
   right: -200px;
-  background: $color-background-inverse;
-  position: absolute;
+  display: none;
+  width: 200px;
+  height: 200px;
   padding: 0;
-  transition: all 0.2s ease-in;
-  border-bottom-left-radius: 20px;
   overflow: hidden;
+  background: $color-background-inverse;
+  border-bottom-left-radius: 20px;
+  transition: all 0.2s ease-in;
+
+  @media screen and (min-width: $bp-md) {
+    display: block;
+  }
 
   .menu-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    margin: 0;
     padding: 0;
+    margin: 0;
 
     .menu-list-item {
       list-style: none;
 
       .menu-list-item-btn {
-        font-size: 13px;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 12px 0;
-        line-height: 22px;
-        width: 100%;
         display: flex;
         justify-content: center;
-        color: $color-white;
+        width: 100%;
+        padding: 12px 0;
+        font-size: 13px;
+        line-height: 22px;
+        color: $color-main-text-inverse;
+        text-decoration: none;
+        text-transform: uppercase;
         border-radius: 0;
 
         &:hover {

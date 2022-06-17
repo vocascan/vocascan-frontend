@@ -1,24 +1,28 @@
 @import "../../colors";
+@import "../../constants";
 
 .admin {
-  width: 100%;
   grid-area: main;
+  width: 100%;
 
   .invite-codes {
-    padding: 50px;
     display: flex;
     justify-content: center;
+    margin: 80px 0;
+    @media screen and (min-width: $bp-md) {
+      padding: 50px;
+    }
 
     .invite-codes-wrapper {
       width: 100%;
-      max-width: 1700px;
+      max-width: 400px;
 
-      @media (max-width: 1000px) {
+      @media screen and (min-width: $bp-md) {
         max-width: 600px;
       }
 
-      @media (max-width: 800px) {
-        max-width: 300px;
+      @media screen and (min-width: $bp-lg) {
+        max-width: 1700px;
       }
 
       .invite-code-controls {
@@ -29,16 +33,16 @@
         .add-btn {
           align-self: center;
           padding: 5px;
-          border-radius: 100%;
           cursor: pointer;
+          border-radius: 100%;
         }
       }
 
       .invite-code-container {
-        width: 100%;
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 10px;
+        width: 100%;
 
         @media (max-width: 1600px) {
           grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -64,11 +68,11 @@
   }
 
   .center-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
   }
 }

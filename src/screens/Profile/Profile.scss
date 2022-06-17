@@ -1,19 +1,25 @@
 @import "../../colors";
+@import "../../constants";
 
 .profile-screen {
-  padding: 50px;
-  max-width: 600px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 80px auto;
+
+  @media screen and (min-width: $bp-md) {
+    max-width: 600px;
+    padding: 50px;
+    margin: 0 auto;
+  }
 
   .profile-avatar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 150px;
     height: 150px;
-    border-radius: 100%;
-    border: 1px solid $color-alternative;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border: 1px solid $color-alternative;
+    border-radius: 100%;
 
     .profile-avatar {
       width: 70px;
@@ -25,36 +31,45 @@
     margin: 20px 0;
   }
 
+  .table-wrapper {
+    width: 100%;
+    overflow-x: scroll;
+
+    @media screen and (min-width: $bp-md) {
+      overflow-x: hidden;
+    }
+  }
+
   .account-settings-header {
+    margin: 15px 0;
     font-size: 15px;
     font-weight: bold;
-    text-transform: uppercase;
     text-align: left;
-    margin: 15px 0;
+    text-transform: uppercase;
   }
 
   .account-settings {
-    border: 1px solid $color-red;
-    border-radius: 15px;
     display: flex;
     flex-direction: column;
+    border: 1px solid $color-red;
+    border-radius: 15px;
 
     .account-settings-fields {
-      padding: 15px;
       display: flex;
+      padding: 15px;
 
       &.border-bottom {
         border-bottom: 1px solid $color-background-muted;
       }
 
       .description-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
         width: 65%;
         height: 60%;
         margin: auto 0;
         margin-left: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
 
         h3 {
           font-size: 15px;

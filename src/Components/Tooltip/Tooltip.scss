@@ -2,14 +2,14 @@
 
 .tooltip {
   max-width: 30%;
-  word-wrap: normal;
-  white-space: break-spaces;
   text-align: left;
+  word-wrap: normal;
   overflow-wrap: break-word;
+  white-space: break-spaces;
 
   &.tooltip-default {
-    background-color: $color-background-inverse !important;
     color: $color-main-text-inverse !important;
+    background-color: $color-background-inverse !important;
 
     &::after {
       border-top-color: $color-background-inverse !important;
@@ -27,8 +27,8 @@
   }
 
   &.tooltip-green {
-    background-color: $color-green;
     color: $color-main-text-inverse !important;
+    background-color: $color-green;
 
     &::after {
       border-top-color: $color-green !important;
@@ -37,8 +37,8 @@
   }
 
   &.tooltip-red {
-    background-color: $color-red;
     color: $color-main-text-inverse !important;
+    background-color: $color-red;
 
     &::after {
       border-top-color: $color-red !important;

@@ -1,52 +1,73 @@
 @import "../../colors";
+@import "../../constants";
 
-.package-overview {
-  display: grid;
+.package-overview-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 120px;
-  grid-template-columns: 46% 27% 27%;
-  grid-template-rows: 50% 50%;
-  grid-template-areas:
-    "heading today learnbtn"
-    "unresolved unactivated activatebtn";
-  margin: 0;
-  padding: 10px 15px;
+  height: 128px;
+  margin: 0 0 40px;
   overflow-x: hidden;
-  background-color: $color-background-inverse;
-  margin-bottom: 40px;
+  background: $color-background-inverse;
   border-radius: 15px;
 
-  .package-inner {
-    color: $color-main-text-inverse;
-    font-size: 15px;
-    margin: auto;
-    margin-left: 15px;
-
-    &.package-heading {
-      width: 85%;
-      grid-area: heading;
-      text-align: left;
-      font-size: 25px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    &.package-unresolved {
-      grid-area: unresolved;
-    }
-
-    &.package-today {
-      grid-area: today;
-    }
-
-    &.package-unactivated {
-      grid-area: unactivated;
-    }
-  }
-
-  .package-btn-wrapper {
+  .package-overview {
+    display: grid;
+    grid-template-areas:
+      "heading today learnbtn"
+      "unresolved unactivated activatebtn";
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 46% 27% 27%;
     width: 90%;
-    margin: auto;
+    height: 80%;
+
+    .package-inner {
+      width: 100%;
+      margin: auto;
+      font-size: 15px;
+      color: $color-main-text-inverse;
+      text-align: left;
+
+      &.package-heading {
+        grid-area: heading;
+        overflow: hidden;
+        font-size: 25px;
+        text-align: left;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &.package-unresolved {
+        grid-area: unresolved;
+      }
+
+      &.package-today {
+        grid-area: today;
+      }
+
+      &.package-unactivated {
+        grid-area: unactivated;
+      }
+    }
+
+    .package-btn-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      @media screen and (min-width: $bp-md) {
+        justify-content: flex-end;
+      }
+
+      .package-btn-inner {
+        width: 100%;
+
+        @media screen and (min-width: $bp-md) {
+          width: 70%;
+        }
+      }
+    }
   }
 }

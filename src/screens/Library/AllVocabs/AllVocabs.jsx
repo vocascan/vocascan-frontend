@@ -177,7 +177,7 @@ const AllVocabs = () => {
             />
           </div>
         </div>
-        <div>
+        <div className="table-wrapper">
           <Table columns={columns} data={data} />
         </div>
       </div>
@@ -190,7 +190,7 @@ const AllVocabs = () => {
         }
         open={showVocabModal}
         onClose={() => setShowVocabModal(false)}
-        size="xl"
+        size="large"
       >
         <VocabForm
           packageId={packageId}

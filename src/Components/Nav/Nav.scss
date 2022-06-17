@@ -1,6 +1,12 @@
 @import "../../colors";
+@import "../../constants";
 
 .nav {
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  grid-area: sidenav;
+  justify-content: space-between;
   width: 65px;
   height: calc(
     100vh
@@ -9,14 +15,13 @@
     - var(--safe-area-inset-bottom)
   );
   background: $color-background-inverse;
-  grid-area: sidenav;
-  display: flex;
-  flex-direction: column;
-  z-index: 100;
-  justify-content: space-between;
   transition: width 0.2s ease-in;
   padding-top: var(--safe-area-inset-top);
   padding-bottom: var(--safe-area-inset-bottom);
+
+  @media screen and (min-width: $bp-md) {
+    display: flex;
+  }
 
   &:hover {
     width: 200px;
@@ -29,15 +34,15 @@
   }
 
   .button-list {
-    grid-column: 1;
     grid-row: 2;
+    grid-column: 1;
     margin-top: 40px;
   }
 
   .nav-legal {
-    color: $color-white;
     margin: 10px auto;
     font-size: 15px;
+    color: $color-white;
     opacity: 0;
 
     .nav-legal-wrapper {

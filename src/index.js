@@ -5,6 +5,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
 import App from "./App.jsx";
+import Snackbar from "./Components/Snackbar/Snackbar.jsx";
+import { SnackbarProvider } from "./context/SnackbarContext.jsx";
 
 import I18nProvider from "./i18n/I18nProvider.js";
 import store from "./redux/Store/index.js";
@@ -18,7 +20,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <I18nProvider>
-        <App />
+        <SnackbarProvider>
+          <App />
+          <Snackbar />
+        </SnackbarProvider>
       </I18nProvider>
     </Provider>
   </React.StrictMode>,
