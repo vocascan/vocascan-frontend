@@ -1,7 +1,7 @@
-@import '../../../lib.scss';
+@import "../../../lib";
 
 .unauthenticated-container {
-  @include safe_are_padding();
+  @include safe-area-padding();
   position: relative;
   display: flex;
   justify-content: center;

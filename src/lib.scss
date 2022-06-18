@@ -1,4 +1,4 @@
-@mixin safe_are_padding() {
+@mixin safe-area-padding() {
   padding-top: var(--safe-area-inset-top);
   padding-right: var(--safe-area-inset-right);
   padding-bottom: var(--safe-area-inset-bottom);

@@ -1,10 +1,12 @@
 @import "./colors";
 
 :root {
+  /* stylelint-disable length-zero-no-unit */
   --safe-area-inset-top: 0px;
   --safe-area-inset-bottom: 0px;
   --safe-area-inset-left: 0px;
   --safe-area-inset-right: 0px;
+  /* stylelint-enable length-zero-no-unit */
 }
 
 * {
