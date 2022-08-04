@@ -159,7 +159,7 @@ const MobileTopNav = () => {
         <div className="mtn-external-link-wrapper">
           {isLegalNoticeValid && (
             <div className="mtn-external-link">
-              <VerifiedUserIcon />
+              <VerifiedUserIcon className="mtn-external-link-icon" />
               <a target="_blank" href={legalNoticeUrl} rel="noreferrer">
                 {t("global.legalNotice")}
               </a>
@@ -168,7 +168,7 @@ const MobileTopNav = () => {
 
           {isTermsAndConditionsValid && (
             <div className="mtn-external-link">
-              <PolicyIcon />
+              <PolicyIcon className="mtn-external-link-icon" />
               <a target="_blank" href={termsAndConditionsUrl} rel="noreferrer">
                 {t("global.termsAndConditions")}
               </a>
@@ -177,7 +177,7 @@ const MobileTopNav = () => {
 
           {isPrivacyPolicyValid && (
             <div className="mtn-external-link">
-              <SecurityIcon />
+              <SecurityIcon className="mtn-external-link-icon" />
               <a target="_blank" href={privacyPolicyUrl} rel="noreferrer">
                 {t("global.privacyPolicy")}
               </a>
