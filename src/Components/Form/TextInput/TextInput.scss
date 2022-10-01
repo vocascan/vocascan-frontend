@@ -39,7 +39,6 @@
        * If a solid color is required use 'box-shadow'.
       **/
       background-clip: text !important;
-      -webkit-background-clip: text !important;
       -webkit-text-fill-color: $color-main-text;
       caret-color: $color-main-text;
     }
