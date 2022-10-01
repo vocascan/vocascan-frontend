@@ -24,8 +24,6 @@
     background-size: 100% 100%;
     border: unset;
     border-bottom: solid 1px $color-alternative;
-
-    // No transition duration for background and color - Added for autofill styling fix.
     transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), background 0s, color 0s;
 
     &:focus {
@@ -35,7 +33,6 @@
       box-shadow: none;
     }
     
-    // Overrides the browser autofill styling.
     &:-webkit-autofill {
       /*
        * 'background-clip' to make the background transparent.
