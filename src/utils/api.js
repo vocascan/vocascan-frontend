@@ -49,8 +49,8 @@ export const deletePackage = (languagePackageId) =>
 // Language package group
 export const createGroup = (languagePackageId, data) =>
   api.post(`/languagePackage/${languagePackageId}/group`, data);
-export const getGroups = (languagePackageId) =>
-  api.get(`/languagePackage/${languagePackageId}/group`);
+export const getGroups = (languagePackageId, staged) =>
+  api.get(`/languagePackage/${languagePackageId}/group?staged=${staged}`);
 export const modifyGroup = (data) => api.put(`/group/${data.id}`, data);
 export const deleteGroup = (groupId) => api.delete(`/group/${groupId}`);
 
@@ -65,8 +65,8 @@ export const createVocabulary = (
     `/languagePackage/${languagePackageId}/group/${groupId}/vocabulary?activate=${activate}`,
     data
   );
-export const getGroupVocabulary = (groupId, search) =>
-  api.get(`/group/${groupId}/vocabulary?search=${search}`);
+export const getGroupVocabulary = (groupId, staged, search) =>
+  api.get(`/group/${groupId}/vocabulary?staged=${staged}&search=${search}`);
 export const modifyVocabulary = (data) =>
   api.put(`/vocabulary/${data.id}`, data);
 export const deleteVocabulary = (vocabularyId) =>
@@ -76,10 +76,13 @@ export const deleteVocabulary = (vocabularyId) =>
 export const getQueryVocabulary = (
   languagePackageId,
   staged = false,
-  limit = defaultLimit
+  limit = defaultLimit,
+  groupIds = null
 ) =>
   api.get(
-    `/languagePackage/${languagePackageId}/query?staged=${staged}&limit=${limit}`
+    `/languagePackage/${languagePackageId}/query?staged=${staged}&limit=${limit}${
+      groupIds ? groupIds.map((groupId) => `&groupId=${groupId}`) : null
+    }`
   );
 export const checkQuery = (vocabularyId, answer = false, progress = false) =>
   api.patch(

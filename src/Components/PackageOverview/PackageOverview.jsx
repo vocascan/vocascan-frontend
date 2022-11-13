@@ -28,7 +28,11 @@ const PackageOverview = ({ data }) => {
           staged,
         })
       );
-      history.push("/learn/direction/");
+      if (staged) {
+        history.push("/learn/selection/staged/");
+      } else {
+        history.push("/learn/direction/");
+      }
     },
     [
       data.foreignWordLanguage,
