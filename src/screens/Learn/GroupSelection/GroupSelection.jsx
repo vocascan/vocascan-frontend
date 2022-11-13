@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
@@ -7,6 +7,7 @@ import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import "./GroupSelection.scss";
 
+import Switch from "../../../Components/Form/Switch/Switch";
 import Table from "../../../Components/Table/Table";
 import Tooltip from "../../../Components/Tooltip/Tooltip";
 import useSnack from "../../../hooks/useSnack";
@@ -17,14 +18,41 @@ const GroupSelection = () => {
   const { t } = useTranslation();
 
   const [groups, setGroups] = useState([]);
+  const [selectedGroups, setSelectedGroups] = useState([]);
 
   const languagePackageId = useSelector(
     (state) => state.query.languagePackageId
   );
   const staged = useSelector((state) => state.query.staged);
 
+  const triggerSelection = useCallback(
+    (groupId) => {
+      if (selectedGroups.find((id) => id === groupId)) {
+        setSelectedGroups(selectedGroups.filter((id) => id !== groupId));
+      } else {
+        setSelectedGroups((oldArray) => [...oldArray, groupId]);
+      }
+    },
+    [selectedGroups]
+  );
+
   const columns = useMemo(
     () => [
+      {
+        Header: "Selected",
+        accessor: "selected",
+        Cell: ({ row }) => (
+          <Switch
+            appearance="on-off"
+            onChange={() => {
+              triggerSelection(row.original.id);
+            }}
+            checked={selectedGroups.find(
+              (groupId) => groupId === row.original.id
+            )}
+          />
+        ),
+      },
       {
         Header: t("screens.allGroups.groupName"),
         accessor: "name",
@@ -62,7 +90,7 @@ const GroupSelection = () => {
         ),
       },
     ],
-    [t]
+    [selectedGroups, t, triggerSelection]
   );
 
   useEffect(() => {
@@ -86,6 +114,9 @@ const GroupSelection = () => {
           <Table columns={columns} data={groups} />
         </div>
       </div>
+      {selectedGroups.map((group) => (
+        <h1>{group}</h1>
+      ))}
     </div>
   );
 };
