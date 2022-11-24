@@ -1,20 +1,25 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import "./GroupSelection.scss";
 
+import Button from "../../../Components/Button/Button";
 import Switch from "../../../Components/Form/Switch/Switch";
 import Table from "../../../Components/Table/Table";
 import Tooltip from "../../../Components/Tooltip/Tooltip";
 import useSnack from "../../../hooks/useSnack";
+import { setGroupIds } from "../../../redux/Actions/query";
 import { getGroups } from "../../../utils/api";
 
 const GroupSelection = () => {
   const { showSnack } = useSnack();
+  const history = useHistory();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const [groups, setGroups] = useState([]);
@@ -107,6 +112,15 @@ const GroupSelection = () => {
       });
   }, [languagePackageId, showSnack, staged]);
 
+  const startActivating = useCallback(() => {
+    dispatch(
+      setGroupIds({
+        groupIds: selectedGroups,
+      })
+    );
+    history.push("/learn/direction/");
+  }, [dispatch, history, selectedGroups]);
+
   return (
     <div className="group-selection">
       <div className="group-select-wrapper">
@@ -114,9 +128,16 @@ const GroupSelection = () => {
           <Table columns={columns} data={groups} />
         </div>
       </div>
-      {selectedGroups.map((group) => (
-        <h1>{group}</h1>
-      ))}
+      <div className="button-wrapper">
+        <Button
+          block
+          uppercase
+          onClick={startActivating}
+          disabled={selectedGroups.length === 0}
+        >
+          {t("components.groupSelection.startActivating")}
+        </Button>
+      </div>
     </div>
   );
 };

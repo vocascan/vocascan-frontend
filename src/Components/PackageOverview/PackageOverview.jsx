@@ -24,6 +24,7 @@ const PackageOverview = ({ data }) => {
           translatedWordLanguage: data.translatedWordLanguage,
           //using fixed value until server gives us this property
           languagePackageId: data.id,
+          groupIds: [],
           vocabsToday: data.stats.vocabularies.learnedToday.dueToday,
           staged,
         })

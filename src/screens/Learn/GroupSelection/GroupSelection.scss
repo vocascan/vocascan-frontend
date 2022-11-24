@@ -18,4 +18,13 @@
       }
     }
   }
+
+  .button-wrapper {
+    width: 90%;
+    margin: 0 auto;
+
+    @media screen and (min-width: $bp-md) {
+      width: 30%;
+    }
+  }
 }

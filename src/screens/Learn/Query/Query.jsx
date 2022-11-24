@@ -26,6 +26,7 @@ const Query = () => {
     (state) => state.query.languagePackageId
   );
   const staged = useSelector((state) => state.query.staged);
+  const groupIds = useSelector((state) => state.query.groupIds);
   const limit = useSelector((state) => state.query.vocabsToday);
 
   const [vocabs, setVocabs] = useState([]);
@@ -39,7 +40,7 @@ const Query = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const getVocabulary = useCallback(() => {
-    getQueryVocabulary(languagePackageId, staged, limit)
+    getQueryVocabulary(languagePackageId, staged, limit, groupIds)
       .then((response) => {
         //store stats
         setVocabs(response.data);

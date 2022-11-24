@@ -103,6 +103,9 @@
       "unactivated": "Not activated:",
       "today": "Today:"
     },
+    "groupSelection": {
+      "startActivating": "Start activating"
+    },
     "validServerIndicator": {
       "validServer": "✓ valid server (v{{version}})",
       "serverNotVocascanServer": "✗ server isn't a vocascan server",

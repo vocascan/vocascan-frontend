@@ -81,7 +81,7 @@ export const getQueryVocabulary = (
 ) =>
   api.get(
     `/languagePackage/${languagePackageId}/query?staged=${staged}&limit=${limit}${
-      groupIds ? groupIds.map((groupId) => `&groupId=${groupId}`) : null
+      groupIds ? groupIds.map((groupId) => `&groupId=${groupId}`).join("") : ""
     }`
   );
 export const checkQuery = (vocabularyId, answer = false, progress = false) =>
