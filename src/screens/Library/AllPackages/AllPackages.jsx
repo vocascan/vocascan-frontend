@@ -247,7 +247,7 @@ const AllPackages = () => {
   );
 
   useEffect(() => {
-    getPackages().then((response) => {
+    getPackages(false, false, true).then((response) => {
       setData(response.data);
     });
   }, []);

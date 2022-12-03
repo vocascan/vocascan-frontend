@@ -112,7 +112,7 @@ const AllGroups = () => {
   }, [packageId]);
 
   const groupSubmitted = useCallback(() => {
-    getGroups(packageId, false).then((response) => {
+    getGroups(packageId, false, false).then((response) => {
       setShowGroupModal(false);
       setData(response.data);
     });
@@ -128,7 +128,7 @@ const AllGroups = () => {
       deleteGroup(currentGroup.id)
         .then(() => {
           setCurrentGroup(null);
-          getGroups(packageId, false).then((response) => {
+          getGroups(packageId, false, false).then((response) => {
             setData(response.data);
           });
           setShowDeleteConfirmationModal(false);
@@ -292,7 +292,7 @@ const AllGroups = () => {
         ),
       });
     });
-    getGroups(packageId, false).then((response) => {
+    getGroups(packageId, false, false).then((response) => {
       setData(response.data);
     });
   }, [packageId]);

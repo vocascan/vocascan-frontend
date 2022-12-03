@@ -39,8 +39,14 @@ export const deleteUser = () => api.delete("/user");
 
 // Language package
 export const createPackage = (data) => api.post("/languagePackage", data);
-export const getPackages = (groups = false, stats = false) =>
-  api.get(`/languagePackage?groups=${groups}&stats=${stats}`);
+export const getPackages = (
+  groups = false,
+  stats = false,
+  onlyActivated = false
+) =>
+  api.get(
+    `/languagePackage?groups=${groups}&stats=${stats}&onlyActivated=${onlyActivated}`
+  );
 export const modifyPackage = (data) =>
   api.put(`/languagePackage/${data.id}`, data);
 export const deletePackage = (languagePackageId) =>
@@ -49,8 +55,10 @@ export const deletePackage = (languagePackageId) =>
 // Language package group
 export const createGroup = (languagePackageId, data) =>
   api.post(`/languagePackage/${languagePackageId}/group`, data);
-export const getGroups = (languagePackageId, staged) =>
-  api.get(`/languagePackage/${languagePackageId}/group?staged=${staged}`);
+export const getGroups = (languagePackageId, onlyStaged, onlyActivated) =>
+  api.get(
+    `/languagePackage/${languagePackageId}/group?onlyStaged=${onlyStaged}&onlyActivated=${onlyActivated}`
+  );
 export const modifyGroup = (data) => api.put(`/group/${data.id}`, data);
 export const deleteGroup = (groupId) => api.delete(`/group/${groupId}`);
 
@@ -65,8 +73,10 @@ export const createVocabulary = (
     `/languagePackage/${languagePackageId}/group/${groupId}/vocabulary?activate=${activate}`,
     data
   );
-export const getGroupVocabulary = (groupId, staged, search) =>
-  api.get(`/group/${groupId}/vocabulary?staged=${staged}&search=${search}`);
+export const getGroupVocabulary = (groupId, onlyStaged, search) =>
+  api.get(
+    `/group/${groupId}/vocabulary?onlyStaged=${onlyStaged}&search=${search}`
+  );
 export const modifyVocabulary = (data) =>
   api.put(`/vocabulary/${data.id}`, data);
 export const deleteVocabulary = (vocabularyId) =>
@@ -75,12 +85,13 @@ export const deleteVocabulary = (vocabularyId) =>
 // Query Vocabulary
 export const getQueryVocabulary = (
   languagePackageId,
-  staged = false,
+  onlyStaged = false,
+  onlyActivated = false,
   limit = defaultLimit,
   groupIds = null
 ) =>
   api.get(
-    `/languagePackage/${languagePackageId}/query?staged=${staged}&limit=${limit}${
+    `/languagePackage/${languagePackageId}/query?onlyStaged=${onlyStaged}&onlyActivated=${onlyActivated}&limit=${limit}${
       groupIds ? groupIds.map((groupId) => `&groupId=${groupId}`).join("") : ""
     }`
   );

@@ -17,6 +17,7 @@ const Learn = () => {
       <Switch>
         <Route exact path={`${path}/`} component={Dashboard} />
         <Route path={`${path}/selection/staged`} component={GroupSelection} />
+        <Route path={`${path}/selection/custom`} component={GroupSelection} />
         <Route path={`${path}/direction/`} component={Direction} />
         <Route path={`${path}/query/:direction`} component={Query} />
         <Route path={`${path}/end/`} component={End} />

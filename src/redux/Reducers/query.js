@@ -13,6 +13,8 @@ const initialState = {
   languagePackageId: "",
   vocabsToday: 0,
   staged: false,
+  onlyActivated: false,
+  customLearning: false,
   groupIds: [],
   correct: 0,
   wrong: 0,
@@ -30,6 +32,8 @@ const queryReducer = (state = initialState, action) => {
         groupIds: action.payload.groupIds,
         vocabsToday: action.payload.vocabsToday,
         staged: action.payload.staged,
+        onlyActivated: action.payload.onlyActivated,
+        customLearning: action.payload.customLearning,
       };
 
     case SET_QUERY_CORRECT:

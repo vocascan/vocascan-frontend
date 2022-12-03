@@ -29,6 +29,7 @@ const GroupSelection = () => {
     (state) => state.query.languagePackageId
   );
   const staged = useSelector((state) => state.query.staged);
+  const onlyActivated = useSelector((state) => state.query.onlyActivated);
 
   const triggerSelection = useCallback(
     (groupId) => {
@@ -99,7 +100,7 @@ const GroupSelection = () => {
   );
 
   useEffect(() => {
-    getGroups(languagePackageId, staged)
+    getGroups(languagePackageId, staged, onlyActivated)
       .then((response) => {
         setGroups(response.data);
       })
@@ -110,7 +111,7 @@ const GroupSelection = () => {
         }
         showSnack("error", "Internal Server Error");
       });
-  }, [languagePackageId, showSnack, staged]);
+  }, [languagePackageId, onlyActivated, showSnack, staged]);
 
   const startActivating = useCallback(() => {
     dispatch(

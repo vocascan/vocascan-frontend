@@ -28,6 +28,7 @@ const Query = () => {
   const staged = useSelector((state) => state.query.staged);
   const groupIds = useSelector((state) => state.query.groupIds);
   const limit = useSelector((state) => state.query.vocabsToday);
+  const customLearning = useSelector((state) => state.query.customLearning);
 
   const [vocabs, setVocabs] = useState([]);
   const [vocabSize, setVocabSize] = useState(0);
@@ -40,7 +41,14 @@ const Query = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const getVocabulary = useCallback(() => {
-    getQueryVocabulary(languagePackageId, staged, limit, groupIds)
+    const onlyActivated = !staged && groupIds;
+    getQueryVocabulary(
+      languagePackageId,
+      staged,
+      onlyActivated,
+      limit,
+      groupIds
+    )
       .then((response) => {
         //store stats
         setVocabs(response.data);
@@ -54,19 +62,26 @@ const Query = () => {
 
         showSnack("error", "Internal Server Error");
       });
-  }, [languagePackageId, limit, showSnack, staged]);
+  }, [groupIds, languagePackageId, limit, showSnack, staged]);
 
   const sendVocabCheck = useCallback(
     (vocabularyCardId, answer, progress) => {
       // send result to server
-      checkQuery(vocabularyCardId, answer, progress).catch((event) => {
-        if (event.response?.status === 401 || event.response?.status === 404) {
-          showSnack("error", "Error fetching stats");
-          return;
-        }
 
-        showSnack("error", "Internal Server Error");
-      });
+      // if custom learning disable sending progress to server
+      if (customLearning) {
+        checkQuery(vocabularyCardId, answer, progress).catch((event) => {
+          if (
+            event.response?.status === 401 ||
+            event.response?.status === 404
+          ) {
+            showSnack("error", "Error fetching stats");
+            return;
+          }
+
+          showSnack("error", "Internal Server Error");
+        });
+      }
 
       setButtonDisabled(true);
       setTimeout(() => setButtonDisabled(false), 260);
@@ -101,13 +116,14 @@ const Query = () => {
       }
     },
     [
-      correctVocabs,
-      dispatch,
-      showSnack,
-      vocabSize,
-      vocabs,
-      wrongVocabs,
+      customLearning,
       direction,
+      wrongVocabs,
+      correctVocabs,
+      vocabSize,
+      showSnack,
+      dispatch,
+      vocabs,
     ]
   );
 

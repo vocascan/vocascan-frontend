@@ -14,6 +14,8 @@ export const setLearnedPackage = ({
   groupIds,
   vocabsToday,
   staged,
+  onlyActivated,
+  customLearning,
 }) => {
   return {
     type: SET_LEARNED_PACKAGE,
@@ -24,6 +26,8 @@ export const setLearnedPackage = ({
       groupIds,
       vocabsToday,
       staged,
+      onlyActivated,
+      customLearning,
     },
   };
 };
