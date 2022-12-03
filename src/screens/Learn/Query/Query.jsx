@@ -26,6 +26,7 @@ const Query = () => {
     (state) => state.query.languagePackageId
   );
   const staged = useSelector((state) => state.query.staged);
+  const onlyActivated = useSelector((state) => state.query.onlyActivated);
   const groupIds = useSelector((state) => state.query.groupIds);
   const limit = useSelector((state) => state.query.vocabsToday);
   const customLearning = useSelector((state) => state.query.customLearning);
@@ -41,7 +42,6 @@ const Query = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const getVocabulary = useCallback(() => {
-    const onlyActivated = !staged && groupIds;
     getQueryVocabulary(
       languagePackageId,
       staged,
@@ -62,7 +62,7 @@ const Query = () => {
 
         showSnack("error", "Internal Server Error");
       });
-  }, [groupIds, languagePackageId, limit, showSnack, staged]);
+  }, [groupIds, languagePackageId, limit, onlyActivated, showSnack, staged]);
 
   const sendVocabCheck = useCallback(
     (vocabularyCardId, answer, progress) => {

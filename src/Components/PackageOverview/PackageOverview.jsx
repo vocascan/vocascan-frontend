@@ -27,7 +27,7 @@ const PackageOverview = ({ data }) => {
           groupIds: [],
           vocabsToday: data.stats.vocabularies.learnedToday.dueToday,
           staged,
-          onlyActivated: true,
+          onlyActivated: !staged,
           customLearning: false,
         })
       );

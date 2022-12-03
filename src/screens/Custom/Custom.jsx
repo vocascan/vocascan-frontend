@@ -80,7 +80,7 @@ const Custom = () => {
         <h1>{t("screens.custom.title")}</h1>
         <Switch
           appearance="on-off"
-          optionLeft={"Only Active Vocabs"}
+          optionLeft={"Only activated vocabs"}
           onChange={onChangeOnlyActivated}
           checked={onlyActivated}
         />
