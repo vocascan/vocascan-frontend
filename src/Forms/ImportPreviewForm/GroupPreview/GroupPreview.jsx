@@ -16,7 +16,7 @@ import Table from "../../../Components/Table/Table.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { getPackages, importVocabs } from "../../../utils/api.js";
+import { getPackages, importVocabs, getInfo } from "../../../utils/api.js";
 import { delay } from "../../../utils/index.js";
 
 import "./GroupPreview.scss";
@@ -28,6 +28,8 @@ const GroupPreview = ({
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
+
+  const [maxFileSize, setMaxFileSize] = useState("");
 
   const [importedGroup, setImportedGroup] = useState(importedData);
   const [packages, setPackages] = useState([]);
@@ -57,8 +59,14 @@ const GroupPreview = ({
 
   useEffect(() => {
     fetchPackages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    // fetch max file upload size
+    getInfo()
+      .then((res) => {
+        setMaxFileSize(res?.data?.max_file_upload);
+      })
+      .catch(() => null);
+  }, [fetchPackages]);
 
   const packageAdded = useCallback(
     (newPackage) => {
@@ -90,8 +98,17 @@ const GroupPreview = ({
         await delay(1000);
         onSubmitCallback && onSubmitCallback();
       })
-      .catch((e) => {
-        showSnack("error", t("screens.allGroups.importFailMessage"));
+      .catch((error) => {
+        if (error.response?.status === 413) {
+          showSnack(
+            "error",
+            t("components.importPreviewForm.fileTooLargeFailMessage", {
+              size: maxFileSize,
+            })
+          );
+        } else {
+          showSnack("error", t("screens.allPackages.importFailMessage"));
+        }
       });
   };
 

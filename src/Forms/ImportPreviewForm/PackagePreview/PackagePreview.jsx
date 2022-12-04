@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
@@ -15,7 +15,7 @@ import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { importVocabs } from "../../../utils/api.js";
+import { importVocabs, getInfo } from "../../../utils/api.js";
 import {
   delay,
   findLanguageByCode,
@@ -30,10 +30,22 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
 
   const languages = useSelector((state) => state.language.languages);
 
+  const [maxFileSize, setMaxFileSize] = useState("");
+
   const [languagePackage, setLanguagePackage] = useState(importedData);
   const [importQueryStatus, setImportQueryStatus] = useState(false);
   const [activateVocabs, setActivateVocabs] = useState(false);
   const [vocabsActive, setVocabsActive] = useState(true);
+
+  useEffect(() => {
+    // fetch max file upload size
+    getInfo()
+      .then((res) => {
+        console.log(res);
+        setMaxFileSize(res?.data?.max_file_upload);
+      })
+      .catch(() => null);
+  }, []);
 
   const submitImport = () => {
     importVocabs({
@@ -47,8 +59,18 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
         await delay(1000);
         onSubmitCallback && onSubmitCallback();
       })
-      .catch((e) => {
-        showSnack("error", t("screens.allPackages.importFailMessage"));
+      .catch((error) => {
+        console.log(error);
+        if (error.response?.status === 413) {
+          showSnack(
+            "error",
+            t("components.importPreviewForm.fileTooLargeFailMessage", {
+              size: maxFileSize,
+            })
+          );
+        } else {
+          showSnack("error", t("screens.allPackages.importFailMessage"));
+        }
       });
   };
 
