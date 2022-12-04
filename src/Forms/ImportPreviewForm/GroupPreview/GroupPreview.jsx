@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
@@ -16,7 +17,7 @@ import Table from "../../../Components/Table/Table.jsx";
 import PackageForm from "../../../Forms/PackageForm/PackageForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { getPackages, importVocabs, getInfo } from "../../../utils/api.js";
+import { getPackages, importVocabs } from "../../../utils/api.js";
 import { delay } from "../../../utils/index.js";
 
 import "./GroupPreview.scss";
@@ -29,7 +30,9 @@ const GroupPreview = ({
   const { t } = useTranslation();
   const { showSnack } = useSnack();
 
-  const [maxFileSize, setMaxFileSize] = useState("");
+  const maxFileSize = useSelector(
+    (state) => state.login.serverInfo.max_file_upload
+  );
 
   const [importedGroup, setImportedGroup] = useState(importedData);
   const [packages, setPackages] = useState([]);
@@ -59,13 +62,6 @@ const GroupPreview = ({
 
   useEffect(() => {
     fetchPackages();
-
-    // fetch max file upload size
-    getInfo()
-      .then((res) => {
-        setMaxFileSize(res?.data?.max_file_upload);
-      })
-      .catch(() => null);
   }, [fetchPackages]);
 
   const packageAdded = useCallback(

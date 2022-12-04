@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
@@ -15,7 +15,7 @@ import TextInput from "../../../Components/Form/TextInput/TextInput.jsx";
 import Table from "../../../Components/Table/Table.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { importVocabs, getInfo } from "../../../utils/api.js";
+import { importVocabs } from "../../../utils/api.js";
 import {
   delay,
   findLanguageByCode,
@@ -29,23 +29,14 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
   const { showSnack } = useSnack();
 
   const languages = useSelector((state) => state.language.languages);
-
-  const [maxFileSize, setMaxFileSize] = useState("");
+  const maxFileSize = useSelector(
+    (state) => state.login.serverInfo.max_file_upload
+  );
 
   const [languagePackage, setLanguagePackage] = useState(importedData);
   const [importQueryStatus, setImportQueryStatus] = useState(false);
   const [activateVocabs, setActivateVocabs] = useState(false);
   const [vocabsActive, setVocabsActive] = useState(true);
-
-  useEffect(() => {
-    // fetch max file upload size
-    getInfo()
-      .then((res) => {
-        console.log(res);
-        setMaxFileSize(res?.data?.max_file_upload);
-      })
-      .catch(() => null);
-  }, []);
 
   const submitImport = () => {
     importVocabs({
