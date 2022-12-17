@@ -69,7 +69,7 @@ const Query = () => {
       // send result to server
 
       // if custom learning disable sending progress to server
-      if (customLearning) {
+      if (!customLearning) {
         checkQuery(vocabularyCardId, answer, progress).catch((event) => {
           if (
             event.response?.status === 401 ||
