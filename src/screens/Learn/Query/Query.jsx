@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
@@ -17,6 +18,7 @@ import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 import "./Query.scss";
 
 const Query = () => {
+  const { t } = useTranslation();
   const { showSnack } = useSnack();
   const { direction } = useParams();
   const dispatch = useDispatch();
@@ -56,13 +58,13 @@ const Query = () => {
       })
       .catch((event) => {
         if (event.response?.status === 401 || event.response?.status === 404) {
-          showSnack("error", "Error fetching stats");
+          showSnack("error", t("global.fetchError"));
           return;
         }
 
-        showSnack("error", "Internal Server Error");
+        showSnack("error", t("global.internalServerError"));
       });
-  }, [groupIds, languagePackageId, limit, onlyActivated, showSnack, staged]);
+  }, [groupIds, languagePackageId, limit, onlyActivated, showSnack, staged, t]);
 
   const sendVocabCheck = useCallback(
     (vocabularyCardId, answer, progress) => {

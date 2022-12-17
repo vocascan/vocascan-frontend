@@ -111,7 +111,7 @@ const Custom = () => {
         <div className="custom-learning-switch-wrapper">
           <Switch
             appearance="on-off"
-            optionLeft={"Only activated vocabs"}
+            optionLeft={t("screens.custom.onlyActivatedVocabs")}
             onChange={onChangeOnlyActivated}
             checked={onlyActivated}
           />
