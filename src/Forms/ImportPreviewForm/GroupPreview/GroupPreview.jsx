@@ -62,7 +62,8 @@ const GroupPreview = ({
 
   useEffect(() => {
     fetchPackages();
-  }, [fetchPackages]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const packageAdded = useCallback(
     (newPackage) => {
