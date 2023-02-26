@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
@@ -28,6 +29,10 @@ const GroupPreview = ({
 }) => {
   const { t } = useTranslation();
   const { showSnack } = useSnack();
+
+  const maxFileSize = useSelector(
+    (state) => state.login.serverInfo.max_file_upload
+  );
 
   const [importedGroup, setImportedGroup] = useState(importedData);
   const [packages, setPackages] = useState([]);
@@ -90,8 +95,17 @@ const GroupPreview = ({
         await delay(1000);
         onSubmitCallback && onSubmitCallback();
       })
-      .catch((e) => {
-        showSnack("error", t("screens.allGroups.importFailMessage"));
+      .catch((error) => {
+        if (error.response?.status === 413) {
+          showSnack(
+            "error",
+            t("components.importPreviewForm.fileTooLargeFailMessage", {
+              size: maxFileSize,
+            })
+          );
+        } else {
+          showSnack("error", t("screens.allPackages.importFailMessage"));
+        }
       });
   };
 

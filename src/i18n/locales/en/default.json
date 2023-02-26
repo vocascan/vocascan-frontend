@@ -81,7 +81,8 @@
     "importPreviewForm": {
       "vocabsActive": " Put vocabs in daily query",
       "activateVocabs": "Activate vocabs",
-      "importQueryStatus": "Import vocabs with actual query status"
+      "importQueryStatus": "Import vocabs with actual query status",
+      "fileTooLargeFailMessage": "Uploaded file is too large (max {{size}})"
     },
     "vocabForm": {
       "noPackagesMessage": "No packages found",

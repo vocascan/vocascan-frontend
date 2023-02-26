@@ -29,6 +29,9 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
   const { showSnack } = useSnack();
 
   const languages = useSelector((state) => state.language.languages);
+  const maxFileSize = useSelector(
+    (state) => state.login.serverInfo.max_file_upload
+  );
 
   const [languagePackage, setLanguagePackage] = useState(importedData);
   const [importQueryStatus, setImportQueryStatus] = useState(false);
@@ -47,8 +50,18 @@ const PackagePreview = ({ onSubmitCallback, importedData }) => {
         await delay(1000);
         onSubmitCallback && onSubmitCallback();
       })
-      .catch((e) => {
-        showSnack("error", t("screens.allPackages.importFailMessage"));
+      .catch((error) => {
+        console.log(error);
+        if (error.response?.status === 413) {
+          showSnack(
+            "error",
+            t("components.importPreviewForm.fileTooLargeFailMessage", {
+              size: maxFileSize,
+            })
+          );
+        } else {
+          showSnack("error", t("screens.allPackages.importFailMessage"));
+        }
       });
   };
 
