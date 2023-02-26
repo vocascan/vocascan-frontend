@@ -31,6 +31,7 @@
     "serverNotResponding": "The server is not responding",
     "successMessage": "Success",
     "fetchError": "Something went wrong, please try again later",
+    "internalServerError": "Internal Server Error",
     "paginationPage": "Page {{page}} of {{pageLength}}",
     "paginationShow": "Show {{size}}",
     "learn": "Learn",
@@ -103,6 +104,9 @@
       "unresolved": "Total to learn:",
       "unactivated": "Not activated:",
       "today": "Today:"
+    },
+    "groupSelection": {
+      "startActivating": "Start activating"
     },
     "validServerIndicator": {
       "validServer": "✓ valid server (v{{version}})",
@@ -363,10 +367,11 @@
       "title": "Progress"
     },
     "custom": {
-      "title": "Custom learning"
+      "title": "Custom learning",
+      "onlyActivatedVocabs": "Only activated vocabs"
     },
     "about": {
-      "title": "About vocascan"
+      "title": "About Vocascan"
     }
   },
   "nav": {

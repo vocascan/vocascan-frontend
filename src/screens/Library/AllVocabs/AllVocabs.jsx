@@ -38,7 +38,7 @@ const AllVocabs = () => {
   const debouncedSearch = useDebounce(search, 200);
 
   const fetchVocabs = useCallback(() => {
-    getGroupVocabulary(groupId, debouncedSearch).then((response) => {
+    getGroupVocabulary(groupId, false, debouncedSearch).then((response) => {
       setData(() =>
         response.data.map((elem) => {
           return {

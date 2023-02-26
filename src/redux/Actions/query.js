@@ -4,14 +4,18 @@ import {
   SET_QUERY_WRONG,
   CLEAR_QUERY,
   SET_ACTUAL_PROGRESS,
+  SET_GROUP_IDS,
 } from "./index.js";
 
 export const setLearnedPackage = ({
   foreignWordLanguage,
   translatedWordLanguage,
   languagePackageId,
+  groupIds,
   vocabsToday,
   staged,
+  onlyActivated,
+  customLearning,
 }) => {
   return {
     type: SET_LEARNED_PACKAGE,
@@ -19,8 +23,11 @@ export const setLearnedPackage = ({
       foreignWordLanguage,
       translatedWordLanguage,
       languagePackageId,
+      groupIds,
       vocabsToday,
       staged,
+      onlyActivated,
+      customLearning,
     },
   };
 };
@@ -50,5 +57,14 @@ export const clearQuery = () => {
   return {
     type: CLEAR_QUERY,
     payload: {},
+  };
+};
+
+export const setGroupIds = ({ groupIds }) => {
+  return {
+    type: SET_GROUP_IDS,
+    payload: {
+      groupIds,
+    },
   };
 };

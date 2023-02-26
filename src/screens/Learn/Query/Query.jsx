@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
@@ -17,6 +18,7 @@ import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 import "./Query.scss";
 
 const Query = () => {
+  const { t } = useTranslation();
   const { showSnack } = useSnack();
   const { direction } = useParams();
   const dispatch = useDispatch();
@@ -26,7 +28,10 @@ const Query = () => {
     (state) => state.query.languagePackageId
   );
   const staged = useSelector((state) => state.query.staged);
+  const onlyActivated = useSelector((state) => state.query.onlyActivated);
+  const groupIds = useSelector((state) => state.query.groupIds);
   const limit = useSelector((state) => state.query.vocabsToday);
+  const customLearning = useSelector((state) => state.query.customLearning);
 
   const [vocabs, setVocabs] = useState([]);
   const [vocabSize, setVocabSize] = useState(0);
@@ -39,7 +44,13 @@ const Query = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const getVocabulary = useCallback(() => {
-    getQueryVocabulary(languagePackageId, staged, limit)
+    getQueryVocabulary(
+      languagePackageId,
+      staged,
+      onlyActivated,
+      limit,
+      groupIds
+    )
       .then((response) => {
         //store stats
         setVocabs(response.data);
@@ -47,25 +58,32 @@ const Query = () => {
       })
       .catch((event) => {
         if (event.response?.status === 401 || event.response?.status === 404) {
-          showSnack("error", "Error fetching stats");
+          showSnack("error", t("global.fetchError"));
           return;
         }
 
-        showSnack("error", "Internal Server Error");
+        showSnack("error", t("global.internalServerError"));
       });
-  }, [languagePackageId, limit, showSnack, staged]);
+  }, [groupIds, languagePackageId, limit, onlyActivated, showSnack, staged, t]);
 
   const sendVocabCheck = useCallback(
     (vocabularyCardId, answer, progress) => {
       // send result to server
-      checkQuery(vocabularyCardId, answer, progress).catch((event) => {
-        if (event.response?.status === 401 || event.response?.status === 404) {
-          showSnack("error", "Error fetching stats");
-          return;
-        }
 
-        showSnack("error", "Internal Server Error");
-      });
+      // if custom learning disable sending progress to server
+      if (!customLearning) {
+        checkQuery(vocabularyCardId, answer, progress).catch((event) => {
+          if (
+            event.response?.status === 401 ||
+            event.response?.status === 404
+          ) {
+            showSnack("error", "Error fetching stats");
+            return;
+          }
+
+          showSnack("error", "Internal Server Error");
+        });
+      }
 
       setButtonDisabled(true);
       setTimeout(() => setButtonDisabled(false), 260);
@@ -100,13 +118,14 @@ const Query = () => {
       }
     },
     [
-      correctVocabs,
-      dispatch,
-      showSnack,
-      vocabSize,
-      vocabs,
-      wrongVocabs,
+      customLearning,
       direction,
+      wrongVocabs,
+      correctVocabs,
+      vocabSize,
+      showSnack,
+      dispatch,
+      vocabs,
     ]
   );
 

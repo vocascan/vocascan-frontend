@@ -24,11 +24,18 @@ const PackageOverview = ({ data }) => {
           translatedWordLanguage: data.translatedWordLanguage,
           //using fixed value until server gives us this property
           languagePackageId: data.id,
+          groupIds: [],
           vocabsToday: data.stats.vocabularies.learnedToday.dueToday,
           staged,
+          onlyActivated: !staged,
+          customLearning: false,
         })
       );
-      history.push("/learn/direction/");
+      if (staged) {
+        history.push("/learn/selection/staged/");
+      } else {
+        history.push("/learn/direction/");
+      }
     },
     [
       data.foreignWordLanguage,

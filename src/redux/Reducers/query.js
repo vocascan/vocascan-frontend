@@ -3,6 +3,7 @@ import {
   SET_QUERY_CORRECT,
   SET_QUERY_WRONG,
   CLEAR_QUERY,
+  SET_GROUP_IDS,
   SET_ACTUAL_PROGRESS,
 } from "../Actions/index.js";
 
@@ -12,6 +13,9 @@ const initialState = {
   languagePackageId: "",
   vocabsToday: 0,
   staged: false,
+  onlyActivated: false,
+  customLearning: false,
+  groupIds: [],
   correct: 0,
   wrong: 0,
   actualProgress: 0,
@@ -25,8 +29,11 @@ const queryReducer = (state = initialState, action) => {
         foreignWordLanguage: action.payload.foreignWordLanguage,
         translatedWordLanguage: action.payload.translatedWordLanguage,
         languagePackageId: action.payload.languagePackageId,
+        groupIds: action.payload.groupIds,
         vocabsToday: action.payload.vocabsToday,
         staged: action.payload.staged,
+        onlyActivated: action.payload.onlyActivated,
+        customLearning: action.payload.customLearning,
       };
 
     case SET_QUERY_CORRECT:
@@ -49,6 +56,12 @@ const queryReducer = (state = initialState, action) => {
     case CLEAR_QUERY:
       return {
         ...initialState,
+      };
+
+    case SET_GROUP_IDS:
+      return {
+        ...state,
+        groupIds: action.payload.groupIds,
       };
 
     default:
