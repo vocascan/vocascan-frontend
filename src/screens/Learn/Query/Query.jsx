@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import ProgressBar from "../../../Components/Charts/ProgressBar/ProgressBar.jsx";
 import VocabCard from "../../../Components/VocabCard/VocabCard.jsx";
 
+import useDebounceCallback from "../../../hooks/useDebounceCallback.js";
 import useSnack from "../../../hooks/useSnack.js";
 import {
   setQueryCorrect,
@@ -16,6 +17,8 @@ import {
 import { getQueryVocabulary, checkQuery } from "../../../utils/api.js";
 
 import "./Query.scss";
+
+import { TouchBar, Button } from "@luwol03/react-touchbar-electron";
 
 const Query = () => {
   const { t } = useTranslation();
@@ -161,27 +164,63 @@ const Query = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const onCorrect = useDebounceCallback(
+    useCallback(
+      () => sendVocabCheck(currVocab.id, true, true),
+      [currVocab?.id, sendVocabCheck]
+    ),
+    500
+  );
+  const onWrong = useDebounceCallback(
+    useCallback(
+      () => sendVocabCheck(currVocab.id, false, true),
+      [currVocab?.id, sendVocabCheck]
+    ),
+    500
+  );
+
   if (!loaded) {
     return null;
   }
 
   return (
-    <div className="query-wrapper">
-      <div className="progress">
-        <ProgressBar value={actualProgress} max={vocabSize} bottomText={true} />
-      </div>
-      <div className="content">
-        {currVocab && (
-          <VocabCard
-            currVocab={currVocab}
-            onCorrect={() => sendVocabCheck(currVocab.id, true, true)}
-            onWrong={() => sendVocabCheck(currVocab.id, false, true)}
-            disabled={buttonDisabled}
-            currDirection={currDirection}
+    <>
+      <TouchBar>
+        <Button
+          label={t("global.wrong")}
+          onClick={onWrong}
+          backgroundColor="#ff586e"
+          enabled={!buttonDisabled}
+        />
+        <Button
+          label={t("global.correct")}
+          onClick={onCorrect}
+          backgroundColor="#0acf97"
+          enabled={!buttonDisabled}
+        />
+      </TouchBar>
+
+      <div className="query-wrapper">
+        <div className="progress">
+          <ProgressBar
+            value={actualProgress}
+            max={vocabSize}
+            bottomText={true}
           />
-        )}
+        </div>
+        <div className="content">
+          {currVocab && (
+            <VocabCard
+              currVocab={currVocab}
+              onCorrect={onCorrect}
+              onWrong={onWrong}
+              disabled={buttonDisabled}
+              currDirection={currDirection}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

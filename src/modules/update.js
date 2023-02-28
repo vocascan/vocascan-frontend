@@ -3,10 +3,10 @@ let startUpdate = null;
 const available = window.VOCASCAN_CONFIG.ENV === "electron";
 
 if (available) {
-  updateNotifier = window.electron;
+  updateNotifier = window.electron.ipcRenderer;
 
   startUpdate = () => {
-    window.electron.send("start-update");
+    window.electron.ipcRenderer.send("start-update");
   };
 }
 
