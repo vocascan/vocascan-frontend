@@ -9,6 +9,47 @@ import useLanguage from "../../hooks/useLanguage.js";
 
 import "./VocabCard.scss";
 
+const parseRubyCharacters = (name) => {
+  const regex = /(\[.*?\})/g; // split the string on ruby groups []{}
+  let splitName = name.split(regex);
+
+  if (splitName.length == 1) {
+    return name;
+  }
+
+  let rubiedGroups = [];
+  splitName.forEach((group) => {
+    if (group.startsWith("[")) {
+      const base = group.substring(
+        group.indexOf("[") + 1,
+        group.lastIndexOf("]")
+      );
+
+      const ruby = group.substring(
+        group.indexOf("{") + 1,
+        group.lastIndexOf("}")
+      );
+
+      let rubyTags = (
+        <ruby>
+          {base}
+          <rp>(</rp>
+          <rt>{ruby}</rt>
+          <rp>)</rp>
+        </ruby>
+      );
+
+      rubiedGroups.push(rubyTags);
+    } else {
+      rubiedGroups.push(group);
+    }
+  });
+
+  const rubiedName = <ruby>{rubiedGroups}</ruby>;
+
+  return rubiedName;
+};
+
 const RenderForeignWord = ({ currVocab, isTranslation }) => {
   const foreignWordLanguage = useSelector(
     (state) => state.query.foreignWordLanguage
@@ -21,7 +62,7 @@ const RenderForeignWord = ({ currVocab, isTranslation }) => {
         <p className="description text-wrap">{currVocab.description}</p>
       ) : null}
       <h1 className={`${isTranslation ? "translations" : ""}`}>
-        {currVocab.name}
+        {parseRubyCharacters(currVocab.name)}
       </h1>
       <div className="language-indicator">
         <p>{language?.nativeNames[0]}</p>
@@ -45,7 +86,9 @@ const RenderTranslatedWord = ({ currVocab, isTranslation }) => {
         <p className="my-20 text-wrap">{currVocab.description}</p>
       ) : null}
       <div className={`my-20 ${isTranslation ? "translations" : ""}`}>
-        {currVocab.Translations.map((el) => el.name).join(", ")}
+        {currVocab.Translations.map((el) => parseRubyCharacters(el.name)).join(
+          ", "
+        )}
       </div>
       <div className="language-indicator">
         <p>{language?.nativeNames[0]}</p>
